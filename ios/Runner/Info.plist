@@ -44,4 +44,6 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>This app needs access to location so that we can know exactly where the problem is. We need this permission when you are using 'Sesizeaza o problema'</string>
 </plist>

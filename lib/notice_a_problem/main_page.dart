@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:geolocator/geolocator.dart';
 
 class HomePageNoticeProblem extends StatefulWidget {
   @override
@@ -12,13 +13,17 @@ class HomePageNoticeProblem extends StatefulWidget {
 }
 
 class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
-  bool _validate = false;
+  bool _validateName = false;
+  bool _validateSubject = false;
+  bool _validateDescription = false;
+  bool _validateDropDown = false;
+  bool _validatePath = false;
+  Position position;
+  String dropdownValue = "Select";
 
   List<String> attachments = [];
 
-  final _recipientController = TextEditingController(
-    text: 'luys2007@outlook.com',
-  );
+  String _recipientController = null;
 
   final _subjectController = TextEditingController(text: '');
 
@@ -32,9 +37,9 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
 
   Future<void> send() async {
     final Email email = Email(
-      body:'Nume:' + _nameControler.text + '<br>' + _bodyController.text,
+      body:'Nume:' + _nameControler.text + '<br>' + 'Descriere: <br>' + _bodyController.text + '<br>' + position.toString(),
       subject: _subjectController.text,
-      recipients: [_recipientController.text],
+      recipients: [_recipientController.toString()],
       attachmentPaths: attachments,
       isHTML: true,
     );
@@ -43,7 +48,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
 
     try {
       await FlutterEmailSender.send(email);
-      platformResponse = 'success';
+      platformResponse = 'Succes';
     } catch (error) {
       platformResponse = error.toString();
     }
@@ -63,6 +68,12 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
       _path = file.path;
       attachments.add(_path);
     });
+  }
+
+  void getLocation() async {
+    position = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print(position);
   }
 
   void _showCamera() async {
@@ -117,20 +128,34 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
               icon: const Icon(Icons.send),
               onPressed: () {
                 setState(() {
-                  _nameControler.text.isEmpty ? _validate = true : _validate = false;
-                  _bodyController.text.isEmpty ? _validate = true : _validate = false;
-                  _subjectController.text.isEmpty ? _validate = true : _validate = false;
+                  _nameControler.text.isEmpty ? _validateName = true : _validateName = false;
+                  _bodyController.text.isEmpty ? _validateDescription = true : _validateDescription = false;
+                  _subjectController.text.isEmpty ? _validateSubject = true : _validateSubject = false;
                   if(_path == null) {
-                    _path == null ? _validate = true : _validate = false;
+                    _path == null ? _validatePath = true : _validatePath = false;
                     _scaffoldKey.currentState.showSnackBar(SnackBar(
                       content: Text("You didn't take a photo!"),
                     ));
                   }
+                  if(_validateDropDown == true) {
+                    _scaffoldKey.currentState.showSnackBar(SnackBar(
+                      content: Text("You didn't select a category"),
+                    ));
+                  }
                 });
-                if (_validate == false) {
-                  send();
+                if(position == null) {
+                  getLocation();
+                  _scaffoldKey.currentState.showSnackBar(SnackBar(
+                    content: Text("We need your location. Please accept the location permission or activate your GPS!"),
+                  ));
                 }
-
+                if (_validateName == false)
+                  if(_validateDescription == false)
+                    if(_validateSubject == false)
+                      if(_validatePath == false)
+                        if(_validateDropDown == false)
+                          if(position != null)
+                          send();
               },
             ),
           ],
@@ -162,7 +187,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         ),
                         labelText: 'Name:',
                         prefixText: '',
-                        errorText: _validate ? 'Value Can\'t Be Empty' : null,
+                        errorText: _validateName ? 'Value Can\'t Be Empty' : null,
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                               width: 1, color: Color.fromARGB(255, 54, 190, 166)),
@@ -186,7 +211,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         ),
                         labelText: 'Subject:',
                         prefixText: '',
-                        errorText: _validate ? 'Value Can\'t Be Empty' : null,
+                        errorText: _validateSubject ? 'Value Can\'t Be Empty' : null,
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                               width: 1, color: Color.fromARGB(255, 54, 190, 166)),
@@ -212,7 +237,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                       ),
                       labelText: 'Description:',
                       prefixText: '',
-                      errorText: _validate ? 'Value Can\'t Be Empty' : null,
+                      errorText: _validateDescription ? 'Value Can\'t Be Empty' : null,
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                             width: 1, color: Color.fromARGB(255, 54, 190, 166)),
@@ -227,13 +252,40 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                 Container(
                   margin: EdgeInsets.only(top:20, left:20, right: 20),
                   child: new DropdownButton<String>(
-                    items: <String>['email1@gmail.com', 'email2@gmail.com', 'email3@gmail.com', 'email4@gmail.com'].map((String value) {
+                    value: dropdownValue,
+                    elevation: 16,
+                    style: TextStyle(color: Colors.black),
+                    items: <String>['Select','Primarie', 'Defectiuni', 'Apa'].map((String value) {
                       return new DropdownMenuItem<String>(
                         value: value,
                         child: new Text(value),
                       );
                     }).toList(),
-                    onChanged: (_) {},
+                    onChanged: (String value) {
+                      setState(() {
+                        dropdownValue = value;
+                        if(identical(value.toString(), "Select")) {
+                          _validateDropDown = true;
+                          print(_validateDropDown.toString());
+                          print(_recipientController.toString());
+                        } else if (identical(value.toString(), "Primarie")) {
+                          _recipientController = "email1@gmail.com";
+                          _validateDropDown = false;
+                          print(_validateDropDown.toString());
+                          print(_recipientController.toString());
+                        } else if (identical(value.toString(), "Defectiuni")){
+                          _recipientController = "email2@gmail.com";
+                          _validateDropDown = false;
+                          print(_validateDropDown.toString());
+                          print(_recipientController.toString());
+                        } else if(identical(value.toString(), "Apa")) {
+                          _recipientController = "email3@gmail.com";
+                          _validateDropDown = false;
+                          print(_validateDropDown.toString());
+                          print(_recipientController.toString());
+                        }
+                      });
+                    },
                   ),
                 )
               ],
@@ -242,10 +294,9 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
     );
   }
 
-  void _openImagePicker() async {
-    File pick = await ImagePicker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      attachments.add(pick.path);
-    });
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => getLocation());
   }
 }
