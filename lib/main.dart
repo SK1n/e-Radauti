@@ -4,6 +4,9 @@ import 'package:flutterapperadauti/TownHall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 
+//import 'package:flutterapperadauti/events/ui/menu/menu_page.dart';
+import 'package:flutterapperadauti/events/main.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -70,7 +73,7 @@ class AndroidMobile1 extends StatelessWidget {
                     width: 80.0,
                     height: 80.0,
                       child: FlatButton(
-                        onPressed: null,
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyAppEvents()),);}, //onPressed: null, //onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => TownHallMain()),);},
                         child: SvgPicture.asset('assets/images/calendar.svg'),
                       )
                   ),
