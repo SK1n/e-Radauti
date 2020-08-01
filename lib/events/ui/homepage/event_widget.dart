@@ -7,7 +7,8 @@ import '../../model/event.dart';
 
 class EventWidget extends StatelessWidget {
 
-  final Event event;
+  //final Event event;
+  final Event2 event;
 
   const EventWidget({Key key, this.event}) : super(key: key);
 
@@ -102,7 +103,7 @@ class EventWidget extends StatelessWidget {
                   //data
                   children: <Widget>[
                     Text(
-                      event.punchLine1 + '\n' + event.punchLine2,//'27\nAPR', //'data',//event.duration.toUpperCase(),
+                      event.day + '\n' + event.month,//'27\nAPR', //'data',//event.duration.toUpperCase(),
                       textAlign: TextAlign.center,//TextAlign.right,
                       /*style: eventLocationTextStyle.copyWith(
                         fontWeight: FontWeight.w900,
@@ -151,7 +152,7 @@ class EventWidget extends StatelessWidget {
                   child: new Padding(
                     padding: const EdgeInsets.only(left:5, right:5), //const EdgeInsets.all(5)
                     child: new Text( //const
-                      event.duration,//'13:09', //'ora',//event.duration.toUpperCase(),
+                      event.hour,//'13:09', //'ora',//event.duration.toUpperCase(),
                       textAlign: TextAlign.center,//TextAlign.right,
                       /*style: eventLocationTextStyle.copyWith(
                         fontWeight: FontWeight.w900,
@@ -428,7 +429,7 @@ class EventWidget extends StatelessWidget {
                             Container(
                               width: 160,//150,
                               child: Text(
-                                'Categoria: ' + event.description,
+                                'Categoria: ' + event.categoryName,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 5,
                                 textAlign: TextAlign.left,
@@ -489,7 +490,7 @@ class EventWidget extends StatelessWidget {
                             Container(
                               width: 160,//150,
                               child: Text(
-                                'Organizator: ' + event.description,
+                                'Organizator: ' + event.organization,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 5,
                                 textAlign: TextAlign.left,

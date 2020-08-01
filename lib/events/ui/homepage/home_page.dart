@@ -82,9 +82,9 @@ class HomePage extends StatelessWidget{
                                     ),
                                   );
                                 },
-                                child: EventWidget(
+                                /*child: EventWidget(
                                   event: event,
-                                ),
+                                ),*/
                               ),
                             //Text(event.title)
                           ],
