@@ -4,6 +4,9 @@ import 'package:flutterapperadauti/TownHall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 
+//import 'package:flutterapperadauti/events/ui/menu/menu_page.dart';
+import 'package:flutterapperadauti/events/main.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -14,10 +17,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'E-Radauti',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Color(0xFFFFFFFF),
+        //primarySwatch: Colors.blue,
+        primaryColor: Color(0xFFFFFFFF),//Color(0xFFFF4700)
+      ),
       home: AndroidMobile1(),
     );
   }
 }
+
+/*
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'E-Radauti',
+      home: AndroidMobile1(),
+    );
+  }
+}
+ */
 
 class AndroidMobile1 extends StatelessWidget {
   AndroidMobile1({
@@ -70,7 +92,7 @@ class AndroidMobile1 extends StatelessWidget {
                     width: 80.0,
                     height: 80.0,
                       child: FlatButton(
-                        onPressed: null,
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyAppEvents2()),);}, //MyAppEvents() //onPressed: null, //onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => TownHallMain()),);},
                         child: SvgPicture.asset('assets/images/calendar.svg'),
                       )
                   ),
