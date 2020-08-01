@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 
 class LocalCouncil extends StatelessWidget {
   // This widget is the root of your application.

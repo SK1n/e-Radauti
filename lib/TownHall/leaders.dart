@@ -3,8 +3,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class Leaders extends StatelessWidget {
+  _launchURL(url) async {
+    if (await UrlLauncher.canLaunch(url)) {
+      await UrlLauncher.launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -103,12 +111,18 @@ class Leaders extends StatelessWidget {
                               children: <Widget>[
                                 FlatButton(
                                   child: Icon(Ionicons.logo_facebook),
+                                  onPressed: () {
+                                    _launchURL("facebook.com");
+                                  },
                                 ),
                                 FlatButton(
                                   child: Icon(Ionicons.logo_whatsapp),
                                 ),
                                 FlatButton(
                                   child: Icon(Ionicons.ios_mail),
+                                  onPressed: () {
+                                    UrlLauncher.launch("mailto:email1@gmail.com");
+                                  },
                                 ),
                               ],
                             ),
@@ -183,6 +197,8 @@ class Leaders extends StatelessWidget {
                               children: <Widget>[
                                 FlatButton(
                                   child: Icon(Ionicons.logo_facebook),
+                                  onPressed: () {
+                                  },
                                 ),
                                 FlatButton(
                                   child: Icon(Ionicons.logo_whatsapp),
