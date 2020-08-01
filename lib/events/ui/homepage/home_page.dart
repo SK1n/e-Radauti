@@ -383,11 +383,20 @@ class _MyAppState1 extends State<MyApp1> {
                             child: Text("What's Up", style: whiteHeadingTextStyle,), //snapshot.data.title
                           ),*/
 
+                          //SizedBox(height: 56,),
+                          SizedBox(height: 20,),
+
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 32.0),
                             child: Text(
                               "Categorii",
                               //style: whiteHeadingTextStyle,
+                              style: TextStyle(
+                                //fontSize: 40.0,
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                //color: Color(0xFFFFFFFF), //Color(0xFFFFFFFF),
+                              ),
                             ), //snapshot.data.title //Text("What's Up", style: whiteHeadingTextStyle,),
                           ),
 
@@ -410,6 +419,11 @@ class _MyAppState1 extends State<MyApp1> {
                             child: Text(
                               "Evenimente",
                               //style: whiteHeadingTextStyle,
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                //color: Color(0x99FFFFFF),
+                              ),
                             ), //snapshot.data.title //Text("What's Up", style: whiteHeadingTextStyle,),
                           ),
 
@@ -421,13 +435,13 @@ class _MyAppState1 extends State<MyApp1> {
                                   //for(final event in events.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
                                   for(final event in snapshot.data.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
                                     GestureDetector(
-                                      onTap: (){
+                                      /*onTap: (){
                                         Navigator.of(context).push(
                                           MaterialPageRoute(
                                             builder: (context) => EventDetailsPage(event: event),
                                           ),
                                         );
-                                      },
+                                      },*/
                                       child: EventWidget(
                                         event: event,
                                       ),

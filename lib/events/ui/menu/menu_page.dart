@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/TownHall/town_hall_main.dart';
+import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
+import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
+
+//import 'package:flutterapperadauti/events/ui/menu/menu_page.dart';
+import 'package:flutterapperadauti/events/main.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -99,22 +105,26 @@ class NavDrawer2 extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.photo_filter, color: Color(0xAAFB6340),), //Icon(Icons.input),
             title: Text('Sesizează o problemă'), //Text('Welcome'),
-            onTap: () => {},
+            //onTap: () => {},
+            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageNoticeProblem()),);},
           ),
           ListTile(
             leading: Icon(Icons.location_city, color: Color(0xAAFB6340),), //Icon(Icons.verified_user),
             title: Text('Primărie'), //Text('Profile'),
-            onTap: () => {Navigator.of(context).pop()},
+            //onTap: () => {Navigator.of(context).pop()},
+            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => TownHallMain()),);},
           ),
           ListTile(
             leading: Icon(Icons.calendar_today, color: Color(0xAAFB6340),), //Icon(Icons.settings),
             title: Text('Evenimente'), //Text('Settings'),
-            onTap: () => {Navigator.of(context).pop()},
+            //onTap: () => {Navigator.of(context).pop()},
+            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyAppEvents2()),);},
           ),
           ListTile(
             leading: Icon(Icons.perm_phone_msg, color: Color(0xAAFB6340),), //Icon(Icons.border_color),
             title: Text('Numere utile'), //Text('Feedback'),
-            onTap: () => {Navigator.of(context).pop()},
+            //onTap: () => {Navigator.of(context).pop()},
+            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageNumbers()),);},
           ),
           ListTile(
             leading: Icon(Icons.cached, color: Color(0xAAFB6340),), //Icon(Icons.exit_to_app),

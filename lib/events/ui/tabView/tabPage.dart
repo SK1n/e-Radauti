@@ -156,7 +156,8 @@ class TabBarDemo2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      //length: 2,
+      length: 1,
       child: Scaffold(
         //drawer: NavDrawer2(),
         appBar: AppBar(
@@ -167,18 +168,18 @@ class TabBarDemo2 extends StatelessWidget {
               //Tab(icon: Icon(Icons.directions_car)),
               Tab(
                 //icon: Icon(Icons.directions_car),
-                //text: 'EVENIMENTE NOI',
-                child: Text(
+                text: '',//'EVENIMENTE NOI',
+                /*child: Text(
                   'EVENIMENTE NOI',
                   style: TextStyle(
                     fontSize: 15.0,//12.0 //16.0 //14.0
                     fontWeight: FontWeight.bold,
                     //color: Color(0x99FFFFFF),
                   ),
-                ),
+                ),*/
               ),
               //Tab(icon: Icon(Icons.directions_transit)),
-              Tab(
+              /*Tab(
                 //icon: Icon(Icons.directions_transit),
                 //text: 'EVENIMENTE TRECUTE',
                 child: Text(
@@ -189,7 +190,7 @@ class TabBarDemo2 extends StatelessWidget {
                     //color: Color(0x99FFFFFF),
                   ),
                 ),
-              ),
+              ),*/
               //Tab(icon: Icon(Icons.directions_bike)),
             ],
           ),
@@ -299,7 +300,7 @@ class TabBarDemo2 extends StatelessWidget {
             //Icon(Icons.directions_transit),
             //MyApp1(),
             //HomePage2(),
-            HomePage3(),
+            //HomePage3(),
             //Icon(Icons.directions_bike),
           ],
         ),

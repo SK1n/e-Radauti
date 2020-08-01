@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutterapperadauti/events/styleguide.dart'; //import 'package:flutterapp/styleguide.dart';
 import '../../model/event.dart';
 
@@ -133,9 +134,9 @@ class EventWidget extends StatelessWidget {
                 new DecoratedBox(
                   decoration: new BoxDecoration(
                       color: Colors.grey, //blue
-                      borderRadius: BorderRadius.circular(20.0),//20.0
+                      borderRadius: BorderRadius.circular(2.0),//20.0
                     ),
-                  child: new Text( //const
+                  /*child: new Text( //const
                     event.duration,//'13:09', //'ora',//event.duration.toUpperCase(),
                     textAlign: TextAlign.center,//TextAlign.right,
                     /*style: eventLocationTextStyle.copyWith(
@@ -145,7 +146,39 @@ class EventWidget extends StatelessWidget {
                       fontSize: 18,//40,//13 //16
                       color: Colors.white,//color: Colors.blueGrey,//[300]
                     ),
-                  ),//Text('Some text...'),
+                  ),*///Text('Some text...'),
+
+                  child: new Padding(
+                    padding: const EdgeInsets.only(left:5, right:5), //const EdgeInsets.all(5)
+                    child: new Text( //const
+                      event.duration,//'13:09', //'ora',//event.duration.toUpperCase(),
+                      textAlign: TextAlign.center,//TextAlign.right,
+                      /*style: eventLocationTextStyle.copyWith(
+                        fontWeight: FontWeight.w900,
+                      ),*/
+                      style: TextStyle(
+                        fontSize: 18,//40,//13 //16
+                        color: Colors.white,//color: Colors.blueGrey,//[300]
+                      ),
+                    ),//Text('Some text...'),
+                  ),
+
+                    /*Padding(
+                      padding: const EdgeInsets.only(left:5, right:5), //const EdgeInsets.all(5)
+                      child: new Text( //const
+                        event.duration,//'13:09', //'ora',//event.duration.toUpperCase(),
+                        textAlign: TextAlign.center,//TextAlign.right,
+                        /*style: eventLocationTextStyle.copyWith(
+                        fontWeight: FontWeight.w900,
+                      ),*/
+                        style: TextStyle(
+                          fontSize: 18,//40,//13 //16
+                          color: Colors.white,//color: Colors.blueGrey,//[300]
+                        ),
+                      ),//Text('Some text...'),
+                    )*/
+
+                     //)
                 ),
 
                 /*Row(
@@ -216,7 +249,7 @@ class EventWidget extends StatelessWidget {
                         Row(
                           //titlu
                           children:<Widget>[
-                            Text(
+                            /*Text(
                               event.title,
                               textAlign: TextAlign.left,//TextAlign.center,//TextAlign.right,
                               //style: eventTitleTextStyle,
@@ -228,7 +261,119 @@ class EventWidget extends StatelessWidget {
                                 fontSize: 16,
                                 color: Color(0xAA38A49C), //Color(0xAAFB6340), //Colors.orange[300],
                               ),
+                            ),*/
+
+                            /*FittedBox(
+                              child: Row(
+                                children: <Widget>[
+                                  Icon(Icons.location_on),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    event.location,
+                                    //textAlign: TextAlign.right,
+                                    style: eventLocationTextStyle,
+                                  )
+                                ],
+                              ),
+                            ),*/
+
+                            /*FractionallySizedBox(
+                              heightFactor: .5,
+                              widthFactor: 1.0,
+                              alignment: Alignment.topCenter,
+                              child: child,
+                            ),*/
+
+                            /*FractionallySizedBox(
+                              //heightFactor: .5,
+                              //widthFactor: 1.0, //1.0,
+                              //alignment: Alignment.topCenter,
+                              child: Text(
+                                event.title,
+                                textAlign: TextAlign.left,//TextAlign.center,//TextAlign.right,
+                                //style: eventTitleTextStyle,
+                                /*style: TextStyle(
+                        fontSize: 40,
+                        color: Colors.grey[300],
+                      ),*/
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Color(0xAA38A49C), //Color(0xAAFB6340), //Colors.orange[300],
+                                ),
+                              ),
+                            ),*/
+
+                            /*Flexible(
+                              //flex: 3,
+                              child: Text('Lorem ipsum'),
+                            )*/
+                            /*Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.only(left:5, right:5), //const EdgeInsets.all(5)
+                                  child: Text('Lorem ipsum Lorem ipsum Lorem ipsum'),
+                                ),
+                              ],
+                            ),*/
+                            /*Padding(
+                              padding: const EdgeInsets.only(left:5, right:5), //const EdgeInsets.all(5)
+                              child: Text('Lorem ipsum Lorem ipsum Lorem ipsum'),
+                            ),*/
+                            /*Container(
+                              child: Text('Lorem ipsum Lorem ipsum Lorem ipsum'),
+                            ),*/
+
+                            /*Expanded(
+                              child: Text(
+                                'the very long title',
+                                overflow: TextOverflow.clip,
+                              ),
+                            ),*/
+
+                            /*Text(
+                              "TOP ADDED TOP ADDED TOP ADDED",
+                              textAlign: TextAlign.justify,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(fontSize: 18.0),
+                              maxLines: 2,)*/
+
+                            Container(
+                              width: 160,//150,
+                              child: Text(
+                                event.title,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 5,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Color(0xAA38A49C), //Color(0xAAFB6340), //Colors.orange[300],
+                                ),
+                              ),
                             ),
+
+                            /*FittedBox(
+                              child:Row(
+
+                                children: <Widget>[
+                                  Text(
+                                    event.title,
+                                    textAlign: TextAlign.left,//TextAlign.center,//TextAlign.right,
+                                    //style: eventTitleTextStyle,
+                                    /*style: TextStyle(
+                        fontSize: 40,
+                        color: Colors.grey[300],
+                      ),*/
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Color(0xAA38A49C), //Color(0xAAFB6340), //Colors.orange[300],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),*/
+
                           ],
                         ),
                         Row(
@@ -239,7 +384,7 @@ class EventWidget extends StatelessWidget {
                             SizedBox(
                               width: 5,
                             ),
-                            Text(
+                            /*Text(
                               'categoria ' + event.description, //event.punchLine1 //event.title,
                               textAlign: TextAlign.left,//TextAlign.center,//TextAlign.right,
                               //style: eventTitleTextStyle,
@@ -247,7 +392,53 @@ class EventWidget extends StatelessWidget {
                                 fontSize: 13,//40,
                                 color: Colors.grey[600],//[300]
                               ),
+                            ),*/
+
+                            /*FittedBox(
+                              child: Row(
+                                children: <Widget>[
+                                  Icon(Icons.location_on),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    event.location,
+                                    //textAlign: TextAlign.right,
+                                    style: eventLocationTextStyle,
+                                  )
+                                ],
+                              ),
+                            ),*/
+
+                            /*FittedBox(
+                              child: Text(
+                                'categoria ' + event.description, //event.punchLine1 //event.title,
+                                textAlign: TextAlign.left,//TextAlign.center,//TextAlign.right,
+                                //style: eventTitleTextStyle,
+                                style: TextStyle(
+                                  fontSize: 13,//40,
+                                  color: Colors.grey[600],//[300]
+                                ),
+                              ),
+                            ),*/
+                            /*Flexible(
+                              flex: 3,
+                              child: Container(color: Colors.teal,),
+                            )*/
+                            Container(
+                              width: 160,//150,
+                              child: Text(
+                                'Categoria: ' + event.description,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 5,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontSize: 13,//40,
+                                  color: Colors.grey[600],//[300]
+                                ),
+                              ),
                             ),
+
                           ],
                         ),
                         Row(
@@ -258,7 +449,7 @@ class EventWidget extends StatelessWidget {
                             SizedBox(
                               width: 5,
                             ),
-                            Text(
+                            /*Text(
                               'organizator ' + event.description, //event.punchLine1 //event.title,
                               textAlign: TextAlign.left,//TextAlign.center,//TextAlign.right,
                               //style: eventTitleTextStyle,
@@ -266,7 +457,49 @@ class EventWidget extends StatelessWidget {
                                 fontSize: 13,//40,
                                 color: Colors.grey[600],//[300]
                               ),
+                            ),*/
+
+                            /*FittedBox(
+                              child: Row(
+                                children: <Widget>[
+                                  Icon(Icons.location_on),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    event.location,
+                                    //textAlign: TextAlign.right,
+                                    style: eventLocationTextStyle,
+                                  )
+                                ],
+                              ),
+                            ),*/
+
+                            /*FittedBox(
+                              child: Text(
+                                'organizator ' + event.description, //event.punchLine1 //event.title,
+                                textAlign: TextAlign.left,//TextAlign.center,//TextAlign.right,
+                                //style: eventTitleTextStyle,
+                                style: TextStyle(
+                                  fontSize: 13,//40,
+                                  color: Colors.grey[600],//[300]
+                                ),
+                              ),
+                            ),*/
+                            Container(
+                              width: 160,//150,
+                              child: Text(
+                                'Organizator: ' + event.description,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 5,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontSize: 13,//40,
+                                  color: Colors.grey[600],//[300]
+                                ),
+                              ),
                             ),
+
                           ],
                         ),
                         Row(
@@ -329,14 +562,14 @@ class EventWidget extends StatelessWidget {
                                 ],
                               ),
                             ),*/
-                            Padding(
+                            /*Padding(
                               padding: const EdgeInsets.only(left:5, right:1), //const EdgeInsets.all(5)//right:5
                               child: Column(
                                 children: <Widget>[
                                   Icon(Icons.location_on),
                                 ],
                               ),
-                            ),
+                            ),*/
                             /*Column(
                               children: <Widget>[
                                 Icon(Icons.location_on),
@@ -344,7 +577,7 @@ class EventWidget extends StatelessWidget {
                             ),*/
                             Column(
                               children: <Widget>[
-                                Text(
+                                /*Text(
                                   event.location, // + ' Lorem Ipsum ',
                                   textAlign: TextAlign.right,
                                   //style: eventLocationTextStyle,
@@ -352,7 +585,52 @@ class EventWidget extends StatelessWidget {
                                     fontSize: 13,//40,
                                     color: Colors.grey[600],//[300]
                                   ),
+                                ),*/
+
+                                /*FittedBox(
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(Icons.location_on),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        event.location,
+                                        //textAlign: TextAlign.right,
+                                        style: eventLocationTextStyle,
+                                      )
+                                    ],
+                                  ),
+                                ),*/
+
+                                /*FittedBox(
+                                  child: Text(
+                                    event.location, // + ' Lorem Ipsum ',
+                                    textAlign: TextAlign.right,
+                                    //style: eventLocationTextStyle,
+                                    style: TextStyle(
+                                      fontSize: 13,//40,
+                                      color: Colors.grey[600],//[300]
+                                    ),
+                                  ),
+                                ),*/
+                                Container(
+                                  width: 160,//150,
+                                  alignment: Alignment.bottomRight,
+                                  child: Text(
+                                    event.location,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                    textAlign: TextAlign.right,
+                                    textDirection: TextDirection.rtl,
+                                    style: TextStyle(
+                                      fontSize: 13,//40,
+                                      color: Colors.grey[600],//[300]
+                                    ),
+                                  ),
+
                                 ),
+
                               ],
                             ),
                             /*Icon(Icons.location_on),

@@ -31,12 +31,13 @@ class MyAppEvents extends StatelessWidget { //class MyApp
       //home: MyApp2(),
       //home: TabBarDemo2(), //tappage
       //home: HomePage2(), //pagination
-      home: MyHomePage(),
+      //home: MyHomePage(),
+      home: MyAppEvents2(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyAppEvents2 extends StatelessWidget { //MyHomePage
   //Key scaffoldKey;
 
   // The AppBar's action needs this key to find its own Scaffold.
