@@ -386,7 +386,7 @@ class _MyAppState1 extends State<MyApp1> {
                           //SizedBox(height: 56,),
                           SizedBox(height: 20,),
 
-                          Padding(
+                          /*Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 32.0),
                             child: Text(
                               "Categorii",
@@ -398,9 +398,9 @@ class _MyAppState1 extends State<MyApp1> {
                                 //color: Color(0xFFFFFFFF), //Color(0xFFFFFFFF),
                               ),
                             ), //snapshot.data.title //Text("What's Up", style: whiteHeadingTextStyle,),
-                          ),
+                          ),*/
 
-                          Padding(
+                          /*Padding(
                               padding: const EdgeInsets.symmetric(vertical: 24.0),
                               child: Consumer<AppState>(
                                 builder: (context, appState, _) => SingleChildScrollView(
@@ -412,9 +412,9 @@ class _MyAppState1 extends State<MyApp1> {
                                   ),
                                 ),
                               )
-                          ),
+                          ),*/
 
-                          Padding(
+                          /*Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 32.0),
                             child: Text(
                               "Evenimente",
@@ -425,7 +425,7 @@ class _MyAppState1 extends State<MyApp1> {
                                 //color: Color(0x99FFFFFF),
                               ),
                             ), //snapshot.data.title //Text("What's Up", style: whiteHeadingTextStyle,),
-                          ),
+                          ),*/
 
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16.0),

@@ -141,6 +141,13 @@ Future<List> fetchList2() async {
   });*/
 
   List<String> list = [];
+  String imageLink1;
+  imageLink1 = 'https://firebasestorage.googleapis.com/v0/b/e-radauti-80139.appspot.com/o/';
+  String imageLink2;
+  imageLink2 = '?alt=media&token=1a429f07-6cef-4de2-940f-0f839b2db3ff';
+
+  final regExp = RegExp(r'gs://e-radauti-80139.appspot.com/');
+
   fd.forEach((key, value) {
     key; //print(key);
     /*(value as Map<String, dynamic>).forEach((key2, value2) {
@@ -165,10 +172,10 @@ Future<List> fetchList2() async {
           galleryImages: [],),*/
 
         new Event2(
-          imagePath: 'https://firebasestorage.googleapis.com/v0/b/e-radauti-80139.appspot.com/o/01-Nebunie-de-comedie-Radauti.jpg?alt=media&token=1a429f07-6cef-4de2-940f-0f839b2db3ff', //value['imageUrl'], //data['imageUrl'], //data['url'], //fd[0]['url'], //"assets/event_images/5_km_downtown_run.jpg",
+          imagePath: imageLink1 + value['imageUrl'].replaceAll(regExp, '') + imageLink2, //'https://firebasestorage.googleapis.com/v0/b/e-radauti-80139.appspot.com/o/01-Nebunie-de-comedie-Radauti.jpg?alt=media&token=1a429f07-6cef-4de2-940f-0f839b2db3ff', //value['imageUrl'], //data['imageUrl'], //data['url'], //fd[0]['url'], //"assets/event_images/5_km_downtown_run.jpg",
           title: value['headline'], //data['headline'], //data['title'], //fd[0]['title'], //"5 Kilometer Downtown Run " +
           description: value['descriere'],//value['categoria'], //"Marathon!", //"",
-          location: ',' + value['localitatea'] + '\n ' + value['strada'], //data['localitatea'] + ', ' + data['strada'], //data['subtitle'], //fd[0]['subtitle'], //"Pleasant Park"
+          location: value['localitatea'] + ',' +' ' + value['strada'], //data['localitatea'] + ', ' + data['strada'], //data['subtitle'], //fd[0]['subtitle'], //"Pleasant Park"
           day: value['ziua'].toString(),
           month: value['luna'].toString(),
           hour: value['ora'].toString(), //data['ora'].toString(),  //data['ora'].toString() + ':' + data['minutele'].toString(), //fd[0]['ora'].toString() + 'h', //"3h"
