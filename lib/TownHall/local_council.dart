@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-//import 'package:flutterapperadauti/events/ui/menu/menu_page.dart';
+import 'package:flutterapperadauti/events/ui/menu/menu_page.dart';
 
 class LocalCouncil extends StatelessWidget {
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   Widget addLeadingIcon(){
     return new Container(
       //height: 110.0, //50.0, //25.0,
@@ -35,12 +35,49 @@ class LocalCouncil extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: NavDrawer2(),
       appBar: AppBar(
-        title: const Text('E-Radauti'),
-        backgroundColor: Color.fromARGB(255, 54, 190, 166),
-        actions: <Widget>[
-        ],
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        automaticallyImplyLeading: false,
         leading: addLeadingIcon(),
+        centerTitle: true,
+        title: Container(
+          child: new Stack(
+            alignment: AlignmentDirectional.center,
+            children: <Widget>[
+              Stack(
+                children: <Widget>[
+                  Icon(Icons.location_city, color: Color(0x55FB6340),),
+                  SizedBox(width: 5,),
+                  Container(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0), //10.0 //25.0
+                      child: Text(
+                        'Primărie',
+                        style: TextStyle(
+                          color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          Container(
+            alignment: Alignment.topRight,
+            margin: EdgeInsets.only(top: 0.0, right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
+            child: IconButton(
+              icon: Icon(Icons.menu,
+                size: 24,
+                color: Colors.black, ), //Colors.white
+              onPressed: () => _scaffoldKey.currentState.openDrawer(), //_scaffoldKey.currentState.openDrawer(),
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -73,6 +110,9 @@ class LocalCouncil extends StatelessWidget {
                             width: MediaQuery.of(context).size.width - 80,
                             child: Text(
                                 "Consilieri locali și atribuțiile lor.\nContactează-ți reprezentantul.",
+                                style: TextStyle(
+                                  color: Color(0xFF38A49C), //Color(0xFFFFFFFF),
+                                ),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 5
                             ),
@@ -122,7 +162,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Covali Tiberiu",
                                 style: TextStyle(
-                                  color: Colors.blue,
+                                  color: Color(0xFF38A49C),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20
                                 ),
@@ -184,7 +224,7 @@ class LocalCouncil extends StatelessWidget {
                         "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -231,7 +271,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Chitriuc Ilie",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -293,7 +333,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -341,7 +381,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Carcalete Petru",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -403,7 +443,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -450,7 +490,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Cojocar Vasile Codruțu",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -512,7 +552,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -560,7 +600,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Grijincu Marius Costel",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -624,7 +664,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -671,7 +711,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Jecalo Adi Gheorghiță",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -735,7 +775,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -783,7 +823,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Hacman Mircea Cozma",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -845,7 +885,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -892,7 +932,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Mehedin Maria",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -954,7 +994,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -1002,7 +1042,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Miron Cătălin",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -1064,7 +1104,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -1111,7 +1151,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Popescu Angelica",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -1173,7 +1213,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -1221,7 +1261,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Mutrescu Dan",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -1283,7 +1323,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -1330,7 +1370,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Negruț Romeo",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -1394,7 +1434,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -1442,7 +1482,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Nicolau Bogdan Adrian",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -1504,7 +1544,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -1551,7 +1591,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Preda Florin Mirel",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -1613,7 +1653,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -1661,7 +1701,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Colibaba Marcel",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -1723,7 +1763,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -1770,7 +1810,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Robu  Sorin",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -1832,7 +1872,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -1880,7 +1920,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Simota Gheorghe",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -1944,7 +1984,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -1991,7 +2031,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Tarevici Cezar-Ciprian",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -2053,7 +2093,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
@@ -2101,7 +2141,7 @@ class LocalCouncil extends StatelessWidget {
                               child: Text(
                                 "Vatră Dan",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20
                                 ),
@@ -2163,7 +2203,7 @@ class LocalCouncil extends StatelessWidget {
                           "Contactează"
                       ),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
                       },
