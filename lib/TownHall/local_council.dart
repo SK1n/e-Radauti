@@ -39,6 +39,7 @@ class LocalCouncil extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 54, 190, 166),
         actions: <Widget>[
         ],
+        leading: addLeadingIcon(),
       ),
       body: SingleChildScrollView(
         child: Column(
