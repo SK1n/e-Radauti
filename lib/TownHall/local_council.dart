@@ -5,6 +5,31 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
 class LocalCouncil extends StatelessWidget {
+
+  Widget addLeadingIcon(){
+    return new Container(
+      //height: 110.0, //50.0, //25.0,
+      //width: 110.0, //50.0, //25.0,
+      padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0), //EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 10.0), //EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+      margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0), //const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+      child: new Stack(
+        alignment: AlignmentDirectional.center,
+        children: <Widget>[
+          new Image.asset(
+            "assets/logo_images/app_logo.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+            //width: 90.0, //50.0, //25.0,
+            //height: 90.0, //50.0, //25.0,
+          ),
+          /*new FlatButton(
+              onPressed: (){
+                onLeadingShowCategoryClick();
+              }
+          )*/
+        ],
+      ),
+    );
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
