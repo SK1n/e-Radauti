@@ -160,7 +160,7 @@ class TabBarDemo2 extends StatelessWidget {
       length: 1,
       child: Scaffold(
         //drawer: NavDrawer2(),
-        appBar: AppBar(
+        /*appBar: AppBar(
           /*bottom: TabBar(
             indicatorColor: Color(0xAA38A49C), //Color(0xAAFB6340),
             unselectedLabelColor: Colors.grey,
@@ -292,7 +292,7 @@ class TabBarDemo2 extends StatelessWidget {
               ],
             ),
           ),*/
-        ),
+        ),*/
         body: MyApp1(),
 
         /*TabBarView(
