@@ -253,7 +253,7 @@ class TabBarDemo2 extends StatelessWidget {
                 Stack(
                   //alignment: AlignmentDirectional.center,
                   children: <Widget>[
-                    Icon(Icons.calendar_today, color: Color(0xAAFB6340),),
+                    Icon(Icons.calendar_today, color: Color(0x55FB6340),),
                     SizedBox(width: 5,),
                     Container(
                       child: Padding(
