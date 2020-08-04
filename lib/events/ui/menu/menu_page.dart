@@ -56,6 +56,21 @@ class NavDrawer extends StatelessWidget {
 }
 
 class NavDrawer2 extends StatelessWidget {
+  Widget addDrawerHeaderIcon(){
+    return new Container(
+      padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+      margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
+      child: new Stack(
+        alignment: AlignmentDirectional.center,
+        children: <Widget>[
+          new Image.asset(
+            "assets/logo_images/app_logo.png",
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -63,45 +78,8 @@ class NavDrawer2 extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text(
-              'e-Rădăuți', //'Side menu',
-              style: TextStyle(
-                  //color: Colors.white,
-                  fontSize: 25
-              ),
-            ),
-            /*decoration: BoxDecoration(
-                color: Colors.green,
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage('assets/images/cover.jpg'))),*/
+            child: addDrawerHeaderIcon(),
           ),
-          /*ListTile(
-            leading: Icon(Icons.input),
-            title: Text('Welcome'),
-            onTap: () => {},
-          ),
-          ListTile(
-            leading: Icon(Icons.verified_user),
-            title: Text('Profile'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.border_color),
-            title: Text('Feedback'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text('Logout'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),*/
-
           ListTile(
             leading: Icon(Icons.photo_filter, color: Color(0x55FB6340),), //Icon(Icons.input),
             title: Text('Sesizează o problemă'), //Text('Welcome'),
