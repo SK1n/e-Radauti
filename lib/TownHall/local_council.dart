@@ -41,31 +41,6 @@ class LocalCouncil extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
         automaticallyImplyLeading: false,
         leading: addLeadingIcon(),
-        centerTitle: true,
-        title: Container(
-          child: new Stack(
-            alignment: AlignmentDirectional.center,
-            children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  Icon(Icons.location_city, color: Color(0x55FB6340),),
-                  SizedBox(width: 5,),
-                  Container(
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0), //10.0 //25.0
-                      child: Text(
-                        'Primărie',
-                        style: TextStyle(
-                          color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
         actions: <Widget>[
           Container(
             alignment: Alignment.topRight,
@@ -82,6 +57,57 @@ class LocalCouncil extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            SizedBox(height: 10,),
+            Container(
+              padding: EdgeInsets.only(bottom: 10),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Stack(
+                        alignment: Alignment.topLeft,
+                        children: <Widget>[
+                          //YourScrollViewWidget(),
+                          IconButton(
+                            icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
+                            onPressed: (){
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width-80,
+                        child: new Stack(
+                          alignment: AlignmentDirectional.center,
+                          children: <Widget>[
+                            Stack(
+                              children: <Widget>[
+                                Icon(Icons.location_city, color: Color(0x55FB6340),),
+                                SizedBox(width: 5,),
+                                Container(
+                                  child: Padding(
+                                    padding: EdgeInsets.fromLTRB(30.0, 4.0, 0.0, 0.0), //10.0 //25.0
+                                    child: Text(
+                                      'Primărie',
+                                      style: TextStyle(
+                                        color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
             Container(
               padding: EdgeInsets.only(bottom: 10),
               child: Column(

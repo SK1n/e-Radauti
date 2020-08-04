@@ -14,6 +14,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'E-Radauti',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Color(0xFFFFFFFF),
+        primaryColor: Color(0xFFFFFFFF),
+      ),
       home: AndroidMobile1(),
     );
   }
