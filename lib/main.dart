@@ -76,7 +76,7 @@ class AndroidMobile1 extends StatelessWidget {
                     width: 80.0,
                     height: 80.0,
                       child: FlatButton(
-                        onPressed: null,
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyAppEvents2()),);},
                         child: SvgPicture.asset('assets/images/calendar.svg'),
                       )
                   ),
