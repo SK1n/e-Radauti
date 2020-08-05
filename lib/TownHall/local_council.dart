@@ -243,14 +243,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Covaliu-Tiberiu.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Covaliu-Tiberiu-1.pdf')
                                   ),
@@ -369,14 +369,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Chitruc-Ilie.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Chitriuc-Ilie.pdf')
                                   ),
@@ -496,14 +496,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Carcalete-Petru.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Carcalete-Petru-1.pdf')
                                   ),
@@ -622,14 +622,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Cojocar-Vasile-Codrutu.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Cojocar-Vasile-Codrutu-1.pdf')
                                   ),
@@ -751,14 +751,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Grijincu-Marius-Costel.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Grijincu-Marius.pdf')
                                   ),
@@ -879,14 +879,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Jecalo-Gheorghita.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Jecalo-Gheorghita-1.pdf')
                                   ),
@@ -1006,14 +1006,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Hacman-Mircea.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Hacman-Mircea-1.pdf')
                                   ),
@@ -1132,14 +1132,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Mehedin-Maria.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Mehedin-Maria-1.pdf')
                                   ),
@@ -1259,14 +1259,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Miron-Catalin.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Miron-Catalin-1.pdf')
                                   ),
@@ -1385,14 +1385,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Popescu-Angelica.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Popescu-Angelica-1.pdf')
                                   ),
@@ -1512,14 +1512,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Mutrescu-Dan.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Mutrescu-Dan-1.pdf')
                                   ),
@@ -1640,14 +1640,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Negrut-Catalin-Romeo.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Negrut-Romeo.pdf')
                                   ),
@@ -1767,14 +1767,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Nicolau-Bogdan.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Nicolau-Bogdan-1.pdf')
                                   ),
@@ -1893,14 +1893,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Preda-Florin.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Preda-Florin-1.pdf')
                                   ),
@@ -2020,7 +2020,7 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        //style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       //onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Covaliu-Tiberiu.pdf')
                                     onTap: null,//() {}
@@ -2028,7 +2028,7 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        //style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       //onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Covaliu-Tiberiu-1.pdf')
                                       onTap: null,//() {}
@@ -2148,14 +2148,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Robu-Sorin.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Robu-Sorin-1.pdf')
                                   ),
@@ -2277,14 +2277,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Simota-Gheorghe.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Simota-Gheorghe-1.pdf')
                                   ),
@@ -2403,14 +2403,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Tarevici-Cezar-Ciprian.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Tarevici-Ciprian.pdf')
                                   ),
@@ -2530,14 +2530,14 @@ class LocalCouncil extends StatelessWidget {
                                   new InkWell(
                                       child: new Text(
                                         'Declariație de avere',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Dan-Vatra.pdf')
                                   ),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
-                                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                       ),
                                       onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Dan-Vatra-1.pdf')
                                   ),
