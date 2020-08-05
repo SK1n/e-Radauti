@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/TownHall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
-
 import 'package:flutterapperadauti/events/main.dart';
 
 void main() {
@@ -19,8 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
-        //primarySwatch: Colors.blue,
-        primaryColor: Color(0xFFFFFFFF),//Color(0xFFFF4700)
+        primaryColor: Color(0xFFFFFFFF),
       ),
       home: AndroidMobile1(),
     );
@@ -78,7 +76,7 @@ class AndroidMobile1 extends StatelessWidget {
                     width: 80.0,
                     height: 80.0,
                       child: FlatButton(
-                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyAppEvents2()),);}, //MyAppEvents() //onPressed: null, //onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => TownHallMain()),);},
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyAppEvents2()),);},
                         child: SvgPicture.asset('assets/images/calendar.svg'),
                       )
                   ),

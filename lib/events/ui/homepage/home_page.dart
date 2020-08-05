@@ -82,9 +82,9 @@ class HomePage extends StatelessWidget{
                                     ),
                                   );
                                 },
-                                child: EventWidget(
+                                /*child: EventWidget(
                                   event: event,
-                                ),
+                                ),*/
                               ),
                             //Text(event.title)
                           ],
@@ -382,11 +382,62 @@ class _MyAppState1 extends State<MyApp1> {
                             padding: const EdgeInsets.symmetric(horizontal: 32.0),
                             child: Text("What's Up", style: whiteHeadingTextStyle,), //snapshot.data.title
                           ),*/
+                          SizedBox(height: 10,),
+                          Container(
+                            padding: EdgeInsets.only(bottom: 10),
+                            child: Column(
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    Stack(
+                                      alignment: Alignment.topLeft,
+                                      children: <Widget>[
+                                        //YourScrollViewWidget(),
+                                        IconButton(
+                                          icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
+                                          onPressed: (){
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width-80,
+                                      child: new Stack(
+                                        alignment: AlignmentDirectional.center,
+                                        children: <Widget>[
+                                          Stack(
+                                            children: <Widget>[
+                                              Icon(Icons.location_city, color: Color(0x55FB6340),),
+                                              SizedBox(width: 5,),
+                                              Container(
+                                                child: Padding(
+                                                  padding: EdgeInsets.fromLTRB(30.0, 4.0, 0.0, 0.0), //10.0 //25.0
+                                                  child: Text(
+                                                    'Evenimente',
+                                                    style: TextStyle(
+                                                      color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
 
                           //SizedBox(height: 56,),
-                          SizedBox(height: 20,),
+                          //SizedBox(height: 20,),
 
-                          Padding(
+                          /*Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 32.0),
                             child: Text(
                               "Categorii",
@@ -398,9 +449,9 @@ class _MyAppState1 extends State<MyApp1> {
                                 //color: Color(0xFFFFFFFF), //Color(0xFFFFFFFF),
                               ),
                             ), //snapshot.data.title //Text("What's Up", style: whiteHeadingTextStyle,),
-                          ),
+                          ),*/
 
-                          Padding(
+                          /*Padding(
                               padding: const EdgeInsets.symmetric(vertical: 24.0),
                               child: Consumer<AppState>(
                                 builder: (context, appState, _) => SingleChildScrollView(
@@ -412,9 +463,9 @@ class _MyAppState1 extends State<MyApp1> {
                                   ),
                                 ),
                               )
-                          ),
+                          ),*/
 
-                          Padding(
+                          /*Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 32.0),
                             child: Text(
                               "Evenimente",
@@ -425,7 +476,7 @@ class _MyAppState1 extends State<MyApp1> {
                                 //color: Color(0x99FFFFFF),
                               ),
                             ), //snapshot.data.title //Text("What's Up", style: whiteHeadingTextStyle,),
-                          ),
+                          ),*/
 
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16.0),

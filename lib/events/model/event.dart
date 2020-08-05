@@ -18,6 +18,25 @@ class Event {
       this.galleryImages});
 }
 
+class Event2 {
+  //final String imagePath, title, description, location, duration, punchLine1, punchLine2;
+  final String imagePath, title, description, location, day, month, hour, organization, categoryName;
+  final List categoryIds, galleryImages;
+
+  Event2(
+      {this.imagePath,
+        this.title,
+        this.description,
+        this.location,
+        this.day,
+        this.month,
+        this.hour,
+        this.organization,
+        this.categoryName,
+        this.categoryIds,
+        this.galleryImages});
+}
+
 //2
 Future<List> fetchList() async {
   //
@@ -72,7 +91,10 @@ Future<List> fetchList2() async {
     children.add(new ListTile());
   }*/
   //final children = <Widget>[];
-  final List<Event> children = <Event>[]; //final children = <Widget>[];
+  //final List<Event> children = <Event>[]; //final children = <Widget>[];
+  //final List<Event> children2 = <Event>[];
+  final List<Event2> children = <Event2>[];
+  final List<Event2> children2 = <Event2>[];
 
   /*for (final data in fd) {
     //children.add(new ListTile());
@@ -119,8 +141,15 @@ Future<List> fetchList2() async {
   });*/
 
   List<String> list = [];
+  String imageLink1;
+  imageLink1 = 'https://firebasestorage.googleapis.com/v0/b/e-radauti-80139.appspot.com/o/';
+  String imageLink2;
+  imageLink2 = '?alt=media&token=1a429f07-6cef-4de2-940f-0f839b2db3ff';
+
+  final regExp = RegExp(r'gs://e-radauti-80139.appspot.com/');
+
   fd.forEach((key, value) {
-    print(key);
+    key; //print(key);
     /*(value as Map<String, dynamic>).forEach((key2, value2) {
       print(key2);
       print(value2);
@@ -131,7 +160,7 @@ Future<List> fetchList2() async {
 
     children.add(
       //new ListTile()
-        new Event(
+        /*new Event(
           imagePath: 'https://firebasestorage.googleapis.com/v0/b/e-radauti-80139.appspot.com/o/01-Nebunie-de-comedie-Radauti.jpg?alt=media&token=1a429f07-6cef-4de2-940f-0f839b2db3ff', //value['imageUrl'], //data['imageUrl'], //data['url'], //fd[0]['url'], //"assets/event_images/5_km_downtown_run.jpg",
           title: value['headline'], //data['headline'], //data['title'], //fd[0]['title'], //"5 Kilometer Downtown Run " +
           description: value['categoria'], //"Marathon!", //"",
@@ -140,10 +169,53 @@ Future<List> fetchList2() async {
           punchLine1: value['ziua'].toString(), //data['ziua'].toString(), //data['data'].toString(), //"Marathon!",
           punchLine2: value['luna'].toString(), //data['luna'].toString(), //data['luna'].toString(), //"The latest fad in foodology, get the inside scoup.",
           categoryIds:[0,1],
-          galleryImages: [],)
+          galleryImages: [],),*/
+
+        new Event2(
+          imagePath: imageLink1 + value['imageUrl'].replaceAll(regExp, '') + imageLink2, //'https://firebasestorage.googleapis.com/v0/b/e-radauti-80139.appspot.com/o/01-Nebunie-de-comedie-Radauti.jpg?alt=media&token=1a429f07-6cef-4de2-940f-0f839b2db3ff', //value['imageUrl'], //data['imageUrl'], //data['url'], //fd[0]['url'], //"assets/event_images/5_km_downtown_run.jpg",
+          title: value['headline'], //data['headline'], //data['title'], //fd[0]['title'], //"5 Kilometer Downtown Run " +
+          description: value['descriere'],//value['categoria'], //"Marathon!", //"",
+          location: value['localitatea'] + ',' +' ' + value['strada'], //data['localitatea'] + ', ' + data['strada'], //data['subtitle'], //fd[0]['subtitle'], //"Pleasant Park"
+          day: value['ziua'].toString(),
+          month: value['luna'].toString(),
+          hour: value['ora'].toString(), //data['ora'].toString(),  //data['ora'].toString() + ':' + data['minutele'].toString(), //fd[0]['ora'].toString() + 'h', //"3h"
+          organization: value['organizator'].toString(), //data['ziua'].toString(), //data['data'].toString(), //"Marathon!",
+          categoryName: value['categoria'], //data['luna'].toString(), //data['luna'].toString(), //"The latest fad in foodology, get the inside scoup.",
+          categoryIds:[0,1],
+          galleryImages: [],),
+        /*Event2(
+            {this.imagePath,
+              this.title,
+              this.description,
+              this.location,
+              this.day,
+              this.month,
+              this.hour,
+              this.organization,
+              this.categoryName,
+              this.categoryIds,
+              this.galleryImages});*/
+
     );
 
   });
+
+  for(int i = children.length-1; i >= children.length-1-9; i--){
+    children2.add(
+      //new ListTile()
+        /*new Event(
+          imagePath: 'https://firebasestorage.googleapis.com/v0/b/e-radauti-80139.appspot.com/o/01-Nebunie-de-comedie-Radauti.jpg?alt=media&token=1a429f07-6cef-4de2-940f-0f839b2db3ff', //value['imageUrl'], //data['imageUrl'], //data['url'], //fd[0]['url'], //"assets/event_images/5_km_downtown_run.jpg",
+          title: value['headline'], //data['headline'], //data['title'], //fd[0]['title'], //"5 Kilometer Downtown Run " +
+          description: value['categoria'], //"Marathon!", //"",
+          location: value['localitatea'], // + ', ' + value['strada'], //data['localitatea'] + ', ' + data['strada'], //data['subtitle'], //fd[0]['subtitle'], //"Pleasant Park"
+          duration: value['ora'].toString(), //data['ora'].toString(),  //data['ora'].toString() + ':' + data['minutele'].toString(), //fd[0]['ora'].toString() + 'h', //"3h"
+          punchLine1: value['ziua'].toString(), //data['ziua'].toString(), //data['data'].toString(), //"Marathon!",
+          punchLine2: value['luna'].toString(), //data['luna'].toString(), //data['luna'].toString(), //"The latest fad in foodology, get the inside scoup.",
+          categoryIds:[0,1],
+          galleryImages: [],)*/
+        children[i],
+    );
+  }
 
   /*for (final data in list) {
     //children.add(new ListTile());
@@ -221,7 +293,8 @@ Future<List> fetchList2() async {
   final events = [fiveKmRunEvent, cookingEvent];*/
 
   //return events;
-  return children;
+  //return children;
+  return children2;
 }
 
 

@@ -46,46 +46,24 @@ class MyAppEvents2 extends StatelessWidget { //MyHomePage
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      //key: scaffoldKey,
-      //drawer: NavDrawer2(),
-      appBar: AppBar(
-        //leading: null,
-        automaticallyImplyLeading: false,
-        title: Container(
-          alignment: Alignment.topRight,
-          margin: EdgeInsets.only(top: 0.0, right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
-          child: IconButton(
-            icon: Icon(Icons.menu,
-              size: 24,
-              color: Colors.black, ), //Colors.white
-            onPressed: () => _scaffoldKey.currentState.openDrawer(), //_scaffoldKey.currentState.openDrawer(),
-          ),
-        ),//Text('Side menu'),
-        //flexibleSpace:
-        //title: Text('Side menu'),
-        //leading: Icon(Icons.add_alert),
-        /*leading: Image.asset(
-          "assets/logo_images/app_logo_final2.jpg", //"assets/logo_images/app_logo_final.png", //"assets/guest_images/guest1.jpg", //guest.imagePath,
-          //width: 90,
-          //height: 90,
-          //fit: BoxFit.cover,
-        ),*///Icon(Icons.add_alert),
-        leading: addLeadingIcon(),
-      ),
       drawer: NavDrawer2(),
-      //endDrawer: NavDrawer2(),
-
-        /*new Container(
-          alignment: Alignment.topRight,
-          margin: EdgeInsets.only(top: 20.0, right: 10.0),
-          child: IconButton(
-            icon: Icon(Icons.menu,
-              size: 24,
-              color: Colors.white,),
-            onPressed: () => scaffoldKey.currentState.openDrawer(),
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        automaticallyImplyLeading: false,
+        leading: addLeadingIcon(),
+        actions: <Widget>[
+          Container(
+            alignment: Alignment.topRight,
+            margin: EdgeInsets.only(top: 0.0, right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
+            child: IconButton(
+              icon: Icon(Icons.menu,
+                size: 24,
+                color: Colors.black, ), //Colors.white
+              onPressed: () => _scaffoldKey.currentState.openDrawer(), //_scaffoldKey.currentState.openDrawer(),
+            ),
           ),
-        ),*/
-
+        ],
+      ),
       body: TabBarDemo2(),
     );
   }
