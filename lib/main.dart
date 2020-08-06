@@ -85,7 +85,7 @@ class AndroidMobile1 extends StatelessWidget {
                       padding: EdgeInsets.only(left: 10),
                       //width: MediaQuery.of(context).size.width - 101,
                       child: Text(
-                        "Bine ai venit!",
+                        "Bun venit!",
                         style: TextStyle(
                             color: Color(0xFF000000),
                             fontWeight: FontWeight.bold,
