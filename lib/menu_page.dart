@@ -104,40 +104,104 @@ class NavDrawer2 extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.access_time, color: Color(0xAAC4C4C4),),//Icon(Icons.cached, color: Color(0xAAFB6340),), //Icon(Icons.exit_to_app),
-            title: Text(
-              'Reciclare (coming soon)',
-              style: TextStyle(
-                color: Color(0xAAC4C4C4), //Color(0xFFFFFFFF),
+            title: new RichText(
+              text: new TextSpan(
+                children: [
+                  new TextSpan(
+                    text: 'Reciclare\n',
+                    style: TextStyle(
+                      color: Color(0xFF979797), //Color(0xFFFFFFFF),
+                      fontWeight: FontWeight.bold,
+                      //fontSize: 16,
+                    ),
+                  ),
+                  new TextSpan(
+                    text: 'Coming soon',
+                    style: TextStyle(
+                      color: Color(0xFFC4C4C4), //Color(0xFFFFFFFF),
+                      //fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
               ),
             ), //Text('Logout'),
             onTap: null, //() => {Navigator.of(context).pop()},
           ),
           ListTile(
             leading: Icon(Icons.access_time, color: Color(0xAAC4C4C4),), //Icon(Icons.settings),
-            title: Text(
-              'Joburi (coming soon)',
-              style: TextStyle(
-                color: Color(0xAAC4C4C4), //Color(0xFFFFFFFF),
+            title: new RichText(
+              text: new TextSpan(
+                children: [
+                  new TextSpan(
+                    text: 'Joburi\n',
+                    style: TextStyle(
+                      color: Color(0xFF979797), //Color(0xFFFFFFFF),
+                      fontWeight: FontWeight.bold,
+                      //fontSize: 16,
+                    ),
+                  ),
+                  new TextSpan(
+                    text: 'Coming soon',
+                    style: TextStyle(
+                      color: Color(0xFFC4C4C4), //Color(0xFFFFFFFF),
+                      //fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
               ),
             ), //Text('Evenimente'), //Text('Settings'),
             onTap: null,//() => {Navigator.of(context).pop()},
           ),
           ListTile(
             leading: Icon(Icons.access_time, color: Color(0xAAC4C4C4),), //Icon(Icons.border_color),
-            title: Text(
-              'Voluntariat (coming soon)',
-              style: TextStyle(
-                color: Color(0xAAC4C4C4), //Color(0xFFFFFFFF),
+            title: new RichText(
+              text: new TextSpan(
+                children: [
+                  new TextSpan(
+                    text: 'Voluntariat\n',
+                    style: TextStyle(
+                      color: Color(0xFF979797), //Color(0xFFFFFFFF),
+                      fontWeight: FontWeight.bold,
+                      //fontSize: 16,
+                    ),
+                  ),
+                  new TextSpan(
+                    text: 'Coming soon',
+                    style: TextStyle(
+                      color: Color(0xFFC4C4C4), //Color(0xFFFFFFFF),
+                      //fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
               ),
             ), //Text('Numere utile'), //Text('Feedback'),
             onTap: null,//() => {Navigator.of(context).pop()},
           ),
           ListTile(
             leading: Icon(Icons.access_time, color: Color(0xAAC4C4C4),), //Icon(Icons.exit_to_app),
-            title: Text(
-              'Transport (coming soon)',
-              style: TextStyle(
-                color: Color(0xAAC4C4C4), //Color(0xFFFFFFFF),
+            title: new RichText(
+              text: new TextSpan(
+                children: [
+                  new TextSpan(
+                    text: 'Transport\n',
+                    style: TextStyle(
+                      color: Color(0xFF979797), //Color(0xFFFFFFFF),
+                      fontWeight: FontWeight.bold,
+                      //fontSize: 16,
+                    ),
+                  ),
+                  new TextSpan(
+                    text: 'Coming soon',
+                    style: TextStyle(
+                      color: Color(0xFFC4C4C4), //Color(0xFFFFFFFF),
+                      //fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
               ),
             ), //Text('Reciclare'), //Text('Logout'),
             onTap: null, //() => {Navigator.of(context).pop()},
