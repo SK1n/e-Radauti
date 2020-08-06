@@ -234,112 +234,8 @@ class _MyAppState1 extends State<MyApp1> {
   @override
   void initState() {
     super.initState();
-    //futureList = fetchList();
     futureList = fetchList2();
   }
-
-  @override
-  /*Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: FutureBuilder<List>( //FutureBuilder<Album>
-          future: futureList,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              //return Text(snapshot.data.title);
-              return ChangeNotifierProvider<AppState>(
-                create: (_) => AppState(),
-                child: Stack(
-                  children: <Widget>[
-                    HomePageBackground(screenHeight: MediaQuery.of(context).size.height,),
-                    /*SafeArea(
-              child:
-            ),*/
-                    SingleChildScrollView(
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            SizedBox(height: 56,),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                              child: Row(
-                                children: <Widget>[
-                                  Text(
-                                    "LOCAL EVENTS",
-                                    style: fadedTextStyle,
-                                  ),
-                                  Spacer(),
-                                  Icon(
-                                    Icons.person_outline,
-                                    color: Color(0x99FFFFFF),
-                                    size: 30,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                              child: Text("What's Up", style: whiteHeadingTextStyle,), //snapshot.data.title
-                            ),
-                            Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 24.0),
-                                child: Consumer<AppState>(
-                                  builder: (context, appState, _) => SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      children: <Widget>[
-                                        for (final category in categories ) CategoryWidget (category: category)
-                                      ],
-                                    ),
-                                  ),
-                                )
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                              child: Consumer<AppState>(
-                                builder: (context, appState, _) => Column(
-                                  children: <Widget>[
-                                    //for(final event in events.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
-                                    for(final event in snapshot.data.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
-                                      GestureDetector(
-                                        onTap: (){
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) => EventDetailsPage(event: event),
-                                            ),
-                                          );
-                                        },
-                                        child: EventWidget(
-                                          event: event,
-                                        ),
-                                      ),
-                                    //Text(event.title)
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ]
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            } else if (snapshot.hasError) {
-              return Center(
-                child: Text("${snapshot.error}"),
-              );
-            }
-
-            // By default, show a loading spinner.
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          },
-        ),
-      ),
-    );
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -353,35 +249,10 @@ class _MyAppState1 extends State<MyApp1> {
               child: Stack(
                 children: <Widget>[
                   HomePageBackground(screenHeight: MediaQuery.of(context).size.height,),
-                  /*SafeArea(
-              child:
-            ),*/
                   SingleChildScrollView(
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          /*SizedBox(height: 56,),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                            child: Row(
-                              children: <Widget>[
-                                Text(
-                                  "LOCAL EVENTS",
-                                  style: fadedTextStyle,
-                                ),
-                                Spacer(),
-                                Icon(
-                                  Icons.person_outline,
-                                  color: Color(0x99FFFFFF),
-                                  size: 30,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                            child: Text("What's Up", style: whiteHeadingTextStyle,), //snapshot.data.title
-                          ),*/
                           SizedBox(height: 10,),
                           Container(
                             padding: EdgeInsets.only(bottom: 10),

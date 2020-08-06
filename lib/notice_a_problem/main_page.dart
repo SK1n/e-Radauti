@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:camera/camera.dart';
+import 'package:flutterapperadauti/menu_page.dart';
 import 'take_picture.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -121,58 +122,69 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
     return Scaffold(
       key: _scaffoldKey,
         appBar: AppBar(
-          title: const Text('E-Radauti'),
-          backgroundColor: Color.fromARGB(255, 54, 190, 166),
+          backgroundColor: Color.fromARGB(255, 255, 255, 255),
+          automaticallyImplyLeading: false,
+          leading: Container(
+            padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+            margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
+            child: Image.asset("assets/logo_images/app_logo.png"),
+          ),
           actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.send),
-              onPressed: () {
-                setState(() {
-                  _nameControler.text.isEmpty ? _validateName = true : _validateName = false;
-                  _bodyController.text.isEmpty ? _validateDescription = true : _validateDescription = false;
-                  _subjectController.text.isEmpty ? _validateSubject = true : _validateSubject = false;
-                  if(_path == null) {
-                    _path == null ? _validatePath = true : _validatePath = false;
-                    _scaffoldKey.currentState.showSnackBar(SnackBar(
-                      content: Text("You didn't take a photo!"),
-                    ));
-                  }
-                  if(_validateDropDown == true) {
-                    _scaffoldKey.currentState.showSnackBar(SnackBar(
-                      content: Text("You didn't select a category"),
-                    ));
-                  }
-                });
-                if(position == null) {
-                  getLocation();
-                  _scaffoldKey.currentState.showSnackBar(SnackBar(
-                    content: Text("We need your location. Please accept the location permission or activate your GPS!"),
-                  ));
-                }
-                if (_validateName == false)
-                  if(_validateDescription == false)
-                    if(_validateSubject == false)
-                      if(_validatePath == false)
-                        if(_validateDropDown == false)
-                          if(position != null)
-                          send();
-              },
+            Container(
+              alignment: Alignment.topRight,
+              margin: EdgeInsets.only(top: 0.0, right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
+              child: IconButton(
+                icon: Icon(Icons.menu,
+                  size: 24,
+                  color: Colors.black, ), //Colors.white
+                onPressed: () => _scaffoldKey.currentState.openDrawer(), //_scaffoldKey.currentState.openDrawer(),
+              ),
             ),
           ],
         ),
+        drawer: NavDrawer2(),
         body: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  alignment: Alignment.bottomCenter,
-                  width: 80.0,
-                  height: 80.0,
-                  child: FlatButton(
-                    onPressed: () {
-                       _showOptions(context);
-                       },
-                    child: SvgPicture.asset('assets/images/notice_a_problem.svg'),
-                  ),
+                Row(
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: IconButton(
+                        icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
+                        onPressed: (){
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width-80,
+                      child: new Stack(
+                        alignment: AlignmentDirectional.center,
+                        children: <Widget>[
+                          Stack(
+                            children: <Widget>[
+                              Icon(Icons.camera, color: Color(0x55FB6340),),
+                              SizedBox(width: 5,),
+                              Container(
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(30.0, 4.0, 0.0, 0.0), //10.0 //25.0
+                                  child: Text(
+                                    'Sesizeaza o problema',
+                                    style: TextStyle(
+                                      color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 Container(
                     margin: EdgeInsets.only(top: 20, left: 20, right: 20),
@@ -183,18 +195,21 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                       decoration: new InputDecoration(
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(
-                              color: Color.fromARGB(255, 54, 190, 166)),
+                              color: Color(0xAAFB6340)),
                         ),
                         labelText: 'Name:',
                         prefixText: '',
                         errorText: _validateName ? 'Value Can\'t Be Empty' : null,
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                              width: 1, color: Color.fromARGB(255, 54, 190, 166)),
+                              width: 1, color: Color(0xAAFB6340)),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                              width: 1, color: Color.fromARGB(255, 54, 190, 166)),
+                              width: 1, color: Color(0xAAFB6340)),
+                        ),
+                        labelStyle: TextStyle(
+                          color: Colors.grey,
                         ),
                       ),
                     )),
@@ -207,18 +222,21 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                       decoration: new InputDecoration(
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(
-                              color: Color.fromARGB(255, 54, 190, 166)),
+                              color: Color(0xAAFB6340)),
                         ),
                         labelText: 'Subject:',
                         prefixText: '',
                         errorText: _validateSubject ? 'Value Can\'t Be Empty' : null,
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                              width: 1, color: Color.fromARGB(255, 54, 190, 166)),
+                              width: 1, color: Color(0xAAFB6340)),
+                        ),
+                        labelStyle: TextStyle(
+                          color: Colors.grey,
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                              width: 1, color: Color.fromARGB(255, 54, 190, 166)),
+                              width: 1, color: Color(0xAAFB6340)),
                         ),
                       ),
                     )),
@@ -233,18 +251,21 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                     decoration: new InputDecoration(
                       border: new OutlineInputBorder(
                         borderSide: new BorderSide(
-                            color: Color.fromARGB(255, 54, 190, 166)),
+                            color: Color(0xAAFB6340)),
                       ),
                       labelText: 'Description:',
+                      labelStyle: TextStyle(
+                        color: Colors.grey,
+                      ),
                       prefixText: '',
                       errorText: _validateDescription ? 'Value Can\'t Be Empty' : null,
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                            width: 1, color: Color.fromARGB(255, 54, 190, 166)),
+                            width: 1, color: Color(0xAAFB6340)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                            width: 1, color: Color.fromARGB(255, 54, 190, 166)),
+                            width: 1, color: Color(0xAAFB6340)),
                       ),
                     ),
                   )
@@ -286,6 +307,62 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         }
                       });
                     },
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top:20, left:20, right: 20),
+                  width: MediaQuery.of(context).size.width,
+                  child: FlatButton(
+                    color: Color(0xAAFB6340),
+                    textColor: Colors.white,
+                    onPressed: () {
+                      _showOptions(context);
+                    },
+                    child: Text(
+                        "Take a picture"
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top:0, left:20, right: 20),
+                  width: MediaQuery.of(context).size.width,
+                  child: FlatButton(
+                    color: Color(0xAAFB6340),
+                    textColor: Colors.white,
+                    onPressed: () {
+                      setState(() {
+                        _nameControler.text.isEmpty ? _validateName = true : _validateName = false;
+                        _bodyController.text.isEmpty ? _validateDescription = true : _validateDescription = false;
+                        _subjectController.text.isEmpty ? _validateSubject = true : _validateSubject = false;
+                        if(_path == null) {
+                          _path == null ? _validatePath = true : _validatePath = false;
+                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                            content: Text("You didn't take a photo!"),
+                          ));
+                        }
+                        if(_validateDropDown == true) {
+                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                            content: Text("You didn't select a category"),
+                          ));
+                        }
+                        if(position == null) {
+                          getLocation();
+                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                            content: Text("We need your location. Please accept the location permission or activate your GPS!"),
+                          ));
+                        }
+                        if (_validateName == false)
+                          if(_validateDescription == false)
+                            if(_validateSubject == false)
+                              if(_validatePath == false)
+                                if(_validateDropDown == false)
+                                  if(position != null)
+                                    send();
+                      });
+                    },
+                    child: Text(
+                      "Send"
+                    ),
                   ),
                 )
               ],

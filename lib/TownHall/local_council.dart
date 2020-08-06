@@ -1,13 +1,9 @@
 import 'dart:io';
-import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutterapperadauti/events/ui/menu/menu_page.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
-import 'package:flutter/services.dart';
-import 'package:flutter/gestures.dart';
+import 'package:flutterapperadauti/menu_page.dart';
 
 class LocalCouncil extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -40,11 +36,14 @@ class LocalCouncil extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: NavDrawer2(),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
         automaticallyImplyLeading: false,
-        leading: addLeadingIcon(),
+        leading: Container(
+          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+          margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
+          child: Image.asset("assets/logo_images/app_logo.png"),
+        ),
         actions: <Widget>[
           Container(
             alignment: Alignment.topRight,
@@ -58,10 +57,10 @@ class LocalCouncil extends StatelessWidget {
           ),
         ],
       ),
+      drawer: NavDrawer2(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(height: 10,),
             Container(
               padding: EdgeInsets.only(bottom: 10),
               child: Column(
@@ -273,7 +272,6 @@ class LocalCouncil extends StatelessWidget {
                       color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
                       },
                     ),
                   ),
@@ -399,7 +397,6 @@ class LocalCouncil extends StatelessWidget {
                       color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
                       },
                     ),
                   ),
@@ -526,7 +523,6 @@ class LocalCouncil extends StatelessWidget {
                       color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
                       },
                     ),
                   ),
@@ -909,7 +905,6 @@ class LocalCouncil extends StatelessWidget {
                       color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
                       },
                     ),
                   ),
@@ -1036,7 +1031,6 @@ class LocalCouncil extends StatelessWidget {
                       color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
                       },
                     ),
                   ),
@@ -1162,7 +1156,6 @@ class LocalCouncil extends StatelessWidget {
                       color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
                       },
                     ),
                   ),
@@ -1289,7 +1282,6 @@ class LocalCouncil extends StatelessWidget {
                       color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
                       },
                     ),
                   ),
@@ -1415,7 +1407,6 @@ class LocalCouncil extends StatelessWidget {
                       color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
                       },
                     ),
                   ),
@@ -1542,7 +1533,6 @@ class LocalCouncil extends StatelessWidget {
                       color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
                       },
                     ),
                   ),
@@ -1670,7 +1660,6 @@ class LocalCouncil extends StatelessWidget {
                       color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
                       },
                     ),
                   ),
@@ -2433,7 +2422,6 @@ class LocalCouncil extends StatelessWidget {
                       color: Color(0xFF38A49C),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
                       },
                     ),
                   ),

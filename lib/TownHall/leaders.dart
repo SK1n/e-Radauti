@@ -3,9 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutterapperadauti/menu_page.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class Leaders extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   _launchURL(url) async {
     if (await UrlLauncher.canLaunch(url)) {
       await UrlLauncher.launch(url);
@@ -13,19 +15,74 @@ class Leaders extends StatelessWidget {
       throw 'Could not launch $url';
     }
   }
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
-        title: const Text('E-Radauti'),
-        backgroundColor: Color.fromARGB(255, 54, 190, 166),
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        leading: Container(
+          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+          margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
+          child: Image.asset("assets/logo_images/app_logo.png"),
+        ),
         actions: <Widget>[
+          Container(
+            alignment: Alignment.topRight,
+            margin: EdgeInsets.only(top: 0.0, right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
+            child: IconButton(
+              icon: Icon(Icons.menu,
+                size: 24,
+                color: Colors.black, ), //Colors.white
+              onPressed: () => _scaffoldKey.currentState.openDrawer(), //_scaffoldKey.currentState.openDrawer(),
+            ),
+          ),
         ],
       ),
+      drawer: NavDrawer2(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            Row(
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                    icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width-80,
+                  child: new Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: <Widget>[
+                      Stack(
+                        children: <Widget>[
+                          Icon(Icons.location_city, color: Color(0x55FB6340),),
+                          SizedBox(width: 5,),
+                          Container(
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(30.0, 4.0, 0.0, 0.0), //10.0 //25.0
+                              child: Text(
+                                'Primărie',
+                                style: TextStyle(
+                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
             Container(
               padding: EdgeInsets.only(bottom: 10),
               child: Column(
