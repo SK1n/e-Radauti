@@ -4,7 +4,6 @@ import 'package:flutterapperadauti/TownHall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/events/main.dart';
-import 'package:flutterapperadauti/events/ui/menu/menu_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,7 +36,6 @@ class AndroidMobile1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: NavDrawer2(),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         leading: Container(
@@ -52,18 +50,6 @@ class AndroidMobile1 extends StatelessWidget {
             ],
           ),
         ),
-        actions: <Widget>[
-          Container(
-            //alignment: Alignment.topRight,
-            margin: EdgeInsets.only(top: 0.0, right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
-            child: IconButton(
-              icon: Icon(Icons.menu,
-                size: 24,
-                color: Colors.black, ), //Colors.white
-              onPressed: () => _scaffoldKey.currentState.openDrawer(), //_scaffoldKey.currentState.openDrawer(),
-            ),
-          ),
-        ],
       ),
       body:
       CustomScrollView(
