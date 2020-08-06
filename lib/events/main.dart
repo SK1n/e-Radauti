@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutterapperadauti/events/ui/homepage/home_page.dart';
 import 'package:flutterapperadauti/events/ui/tabView/tabPage.dart';
 import 'package:flutterapperadauti/menu_page.dart';
 
@@ -49,7 +50,7 @@ class MyAppEvents2 extends StatelessWidget {
           ),
         ],
       ),
-      body: TabBarDemo2(),
+      body: MyApp1(),
     );
   }
 }

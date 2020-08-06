@@ -14,86 +14,16 @@ class EventWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /*return Card(
-      margin: const EdgeInsets.symmetric(vertical: 20),
-      elevation: 4,
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(24)),
-      ),
-      child: Padding(
-        //padding: const EdgeInsets.symmetric(horizontal: 20),
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(30),),
-              child: Image.network(
-                event.imagePath,
-                height: 150, fit: BoxFit.fitWidth,
-              ),//Image.asset(event.imagePath, height: 150, fit: BoxFit.fitWidth,),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0, left: 8.0,),
-              child:Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          event.title,
-                          style: eventTitleTextStyle,
-                        ),
-                        SizedBox(height: 10,),
-                        FittedBox(
-                          child: Row(
-                            children: <Widget>[
-                              Icon(Icons.location_on),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                event.location,
-                                //textAlign: TextAlign.right,
-                                style: eventLocationTextStyle,
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Text(
-                      event.duration.toUpperCase(),
-                      textAlign: TextAlign.right,
-                      style: eventLocationTextStyle.copyWith(
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );*/
 
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 20),
+      margin: const EdgeInsets.only( bottom: 15.0 ),
       elevation: 4,
       color: Colors.white,
+      //childAspectRatio: (MediaQuery.of(context).size.width/2 - 22.5) / (MediaQuery.of(context).size.height/5 - 60),
       shape: RoundedRectangleBorder(
-        //borderRadius: BorderRadius.all(Radius.circular(24)),
         borderRadius: BorderRadius.all(Radius.circular(2)),
       ),
       child: Padding(
-        //padding: const EdgeInsets.symmetric(horizontal: 20),
         padding: const EdgeInsets.all(5),//const EdgeInsets.all(20),
         child: Row(
           children: <Widget>[
@@ -102,9 +32,6 @@ class EventWidget extends StatelessWidget {
                 Text(
                   event.day + '\n' + event.month,//'27\nAPR', //'data',//event.duration.toUpperCase(),
                   textAlign: TextAlign.center,//TextAlign.right,
-                  /*style: eventLocationTextStyle.copyWith(
-                        fontWeight: FontWeight.w900,
-                      ),*/
                   style: TextStyle(
                     fontSize: 18,//40,//13 //16
                     color: Colors.grey[600],//[300]
@@ -120,10 +47,6 @@ class EventWidget extends StatelessWidget {
                   ),
                 ),
 
-                /*const DecoratedBox(
-                      decoration: const BoxDecoration(color: Colors.blue),
-                      child: const Text('Some text...'),
-                    ),*/
                 new DecoratedBox(
                   decoration: new BoxDecoration(
                       color: Colors.grey, //blue
@@ -134,9 +57,6 @@ class EventWidget extends StatelessWidget {
                     child: new Text( //const
                       event.hour,//'13:09', //'ora',//event.duration.toUpperCase(),
                       textAlign: TextAlign.center,//TextAlign.right,
-                      /*style: eventLocationTextStyle.copyWith(
-                        fontWeight: FontWeight.w900,
-                      ),*/
                       style: TextStyle(
                         fontSize: 18,//40,//13 //16
                         color: Colors.white,//color: Colors.blueGrey,//[300]
@@ -161,9 +81,9 @@ class EventWidget extends StatelessWidget {
                             borderRadius: BorderRadius.all(Radius.circular(10),),
                             child: Image.network(
                               event.imagePath,
-                              height: 150,//120,//150,
+                              height: MediaQuery.of(context).size.height/4,//120,//150,
                               fit: BoxFit.fitHeight,//BoxFit.fitWidth,
-                              width: 100,//150,//50,
+                              width: MediaQuery.of(context).size.width/4,//150,//50,
                             ),//Image.asset(event.imagePath, height: 150, fit: BoxFit.fitWidth,),
                           ),
                         ),
@@ -177,7 +97,7 @@ class EventWidget extends StatelessWidget {
                           //titlu
                           children:<Widget>[
                             Container(
-                              width: 170,//150,
+                              width: MediaQuery.of(context).size.width/2 - ((MediaQuery.of(context).size.width/4)/4),//150,
                               child: Padding(
                                 padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0), //10.0 //25.0
                                 //child: Text('Evenimente'),
@@ -209,7 +129,7 @@ class EventWidget extends StatelessWidget {
                               width: 5,
                             ),
                             Container(
-                              width: 170,//150,
+                              width: MediaQuery.of(context).size.width/2 - ((MediaQuery.of(context).size.width/4)/4 + 15.0),//150,
                               child: Padding(
                                 padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0), //10.0 //25.0
                                 //child: Text('Evenimente'),
@@ -242,7 +162,7 @@ class EventWidget extends StatelessWidget {
                               width: 5,
                             ),
                             Container(
-                              width: 170,//150,
+                              width: MediaQuery.of(context).size.width/2 - ((MediaQuery.of(context).size.width/4)/4 + 15.0),//150,
                               child: Padding(
                                 padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0), //10.0 //25.0
                                 //child: Text('Evenimente'),
@@ -274,7 +194,7 @@ class EventWidget extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              width: 170,
+                              width: MediaQuery.of(context).size.width/2 - ((MediaQuery.of(context).size.width/4)/4 + 15.0),
                               child: new Stack(
                                 children: <Widget>[
                                   Container(
@@ -298,83 +218,7 @@ class EventWidget extends StatelessWidget {
 
                           ],
                         ),
-                        /*Row(
-                          children: <Widget>[
-                            Column(
-                              //particip
-                              children:<Widget>[
-                                /*RaisedButton(
-                          onPressed: () {},
-                          child: const Text('Enabled Button', style: TextStyle(fontSize: 20)),
-                        ),*/
-                                RaisedButton(
-                                  //color: _list[i] ? Colors.green : Colors.red,
-                                  color: Color(0xAA38A49C), //Color(0xAAFB6340), //Colors.orange,
-                                  onPressed: () {},
-                                  child: const Text(
-                                      'Particip!',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.white,//Color(0xAAFB6340),
-                                      ),
-                                  ),
-                                ),
-                                /*Text(
-                          'particip',//event.title,
-                          //style: eventTitleTextStyle,
-                        ),*/
-                              ],
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Column(
-                              //inscrisi
-                              children:<Widget>[
-                                Row(
-                                  textDirection: TextDirection.rtl,
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        //Icon(Icons.location_on),
-                                        /*Column(
-                                      children: <Widget>[
-                                        Text(
-                                          '0',//'inscrisi',//event.title,
-                                          //style: eventTitleTextStyle,
-                                          style: TextStyle(
-                                            fontSize: 13,//40,
-                                            color: Colors.grey[600],//[300]
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        Icon(Icons.people),
-                                      ],
-                                    ),*/
-                                        Text(
-                                          '0',//'inscrisi',//event.title,
-                                          //style: eventTitleTextStyle,
-                                          style: TextStyle(
-                                            fontSize: 13,//40,
-                                            color: Colors.grey[600],//[300]
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        //Icon(Icons.location_on),//.people .supervisor_account
-                                        Icon(Icons.people),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),*/
+
                       ],
                     ),
                   ],
