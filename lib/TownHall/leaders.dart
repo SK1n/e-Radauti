@@ -161,7 +161,7 @@ class Leaders extends StatelessWidget {
                               width: MediaQuery.of(context).size.width - 101,
                               padding: EdgeInsets.only(left: 10),
                               child: Text(
-                                "Primar \nMunicipiul Radauti"
+                                "Primar"
                               ),
                             ),
                             Row(
@@ -225,7 +225,7 @@ class Leaders extends StatelessWidget {
                         width: 91,
                         child: CircleAvatar(
                           radius: 50,
-                          backgroundImage: AssetImage("assets/images/NistorTatar.png"),
+                          backgroundImage: AssetImage("assets/images/NicolauBogdan.jpg"),
                         ),
                       ),
                       Container(
@@ -235,7 +235,7 @@ class Leaders extends StatelessWidget {
                               padding: EdgeInsets.only(left: 10),
                               width: MediaQuery.of(context).size.width - 101,
                               child: Text(
-                                "Nistor Tatar",
+                                "Bogdan Adrian Nicoau",
                                 style: TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.bold,
@@ -247,7 +247,7 @@ class Leaders extends StatelessWidget {
                               width: MediaQuery.of(context).size.width - 101,
                               padding: EdgeInsets.only(left: 10),
                               child: Text(
-                                  "Primar \nMunicipiul Radauti"
+                                  "Viceprimar"
                               ),
                             ),
                             Row(
