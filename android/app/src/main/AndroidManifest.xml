@@ -13,8 +13,8 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="flutterapperadauti"
-        android:icon="@mipmap/ic_launcher">
+        android:label="e-Rădăuți"
+        android:icon="@mipmap/app_logo">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

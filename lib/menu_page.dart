@@ -86,7 +86,7 @@ class NavDrawer2 extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.location_city, color: Color(0x55FB6340),), //Icon(Icons.verified_user),
-            title: Text('Primărie'), //Text('Profile'),
+            title: Text('Administrație locală'), //Text('Profile'),
             //onTap: () => {Navigator.of(context).pop()},
             onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => TownHallMain()),);},
           ),

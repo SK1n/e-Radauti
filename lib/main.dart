@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splashscreen/splashscreen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/TownHall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
@@ -6,21 +7,46 @@ import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/events/main.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MyAppRC());
 }
 
-class MyApp extends StatelessWidget {
+class MyAppRC extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'E-Radauti',
+      title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
         primaryColor: Color(0xFFFFFFFF),
       ),
       home: AndroidMobile1(),
+    );
+  }
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => new _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return new SplashScreen(
+      seconds: 10,
+      navigateAfterSeconds: new AndroidMobile1(),
+      title: new Text('Aplicația e-Rădăuți',
+        style: new TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20.0,
+          color: Colors.black,
+        ),
+      ),
+      image: Image.asset("assets/logo_images/app_logo.png"),
+      backgroundColor: Colors.white,
+      photoSize: 80.0,
     );
   }
 }
@@ -154,7 +180,7 @@ class AndroidMobile1 extends StatelessWidget {
                               Icon(Icons.location_city, color: Color(0x55FB6340),),
                               SizedBox(width: 5,),
                               Text(
-                                'Primărie',
+                                'Administrație \nlocală',
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 3,
                                 style: TextStyle(

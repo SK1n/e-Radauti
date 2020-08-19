@@ -43,96 +43,99 @@ class Leaders extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.centerLeft,
-                  child: IconButton(
-                    icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
-                    onPressed: (){
-                      Navigator.pop(context);
-                    },
+            Container(
+              padding: EdgeInsets.only(bottom: 15, top: 20),
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: IconButton(
+                      icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
+                      onPressed: (){
+                        Navigator.pop(context);
+                      },
+                    ),
                   ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width-80,
-                  child: new Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: <Widget>[
-                      Stack(
-                        children: <Widget>[
-                          Icon(Icons.location_city, color: Color(0x55FB6340),),
-                          SizedBox(width: 5,),
-                          Container(
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(30.0, 4.0, 0.0, 0.0), //10.0 //25.0
-                              child: Text(
-                                'Primărie',
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
+                  Container(
+                    width: MediaQuery.of(context).size.width-80,
+                    child: new Stack(
+                      alignment: AlignmentDirectional.center,
+                      children: <Widget>[
+                        Stack(
+                          children: <Widget>[
+                            Icon(Icons.location_city, color: Color(0x55FB6340), size: 30,),
+                            Container(
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(35.0, 6.0, 0.0, 0.0), //10.0 //25.0
+                                child: Text(
+                                  'Administrație locală',
+                                  style: TextStyle(
+                                    color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 19,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Container(
-              padding: EdgeInsets.only(bottom: 10),
+              padding: EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 15 ),
               child: Column(
                 children: <Widget>[
                   Row(
                     children: <Widget>[
                       Container(
-                        width: 80,
-                        height: 80,
-                        child: FlatButton(
-                          child: SvgPicture.asset("assets/images/circle_69E781.svg"),
+                        height: 30,
+                        width: 30,
+                        child: SvgPicture.asset("assets/images/circle_69E781.svg"),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width - 90,
+                        padding: EdgeInsets.only(left: 10,),
+                        child: Text(
+                          "Conducere",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
-                      Column(
-                        children: <Widget>[
-                          Container(
-                            width: MediaQuery.of(context).size.width-80,
-                            child: Text(
-                              "Conducere",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width - 80,
-                            child: Text(
-                                "Informatii despre primar, viceprimar si atributiile fiecaruia",
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 5
-                            ),
-                          ),
-                        ],
-                      )
-
                     ],
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 10),
+                    width: MediaQuery.of(context).size.width - 50,
+                    child: Text(
+                      "Informații despre primar, viceprimar și atribuțiile fiecăruia.",
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 5,
+                      style: TextStyle(
+                        color: Color(0xFF38A49C),
+                        fontSize: 15,
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:10.0),
+              padding:EdgeInsets.symmetric(horizontal:15.0),
               child:Container(
                 height:1.0,
                 color:Color.fromRGBO(0, 0, 0, 0.1),),),
             Container(
-              padding: EdgeInsets.only(left: 10,top: 10, bottom: 10),
+              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
                         height: 91,
@@ -143,40 +146,44 @@ class Leaders extends StatelessWidget {
                         ),
                       ),
                       Container(
+                        padding: EdgeInsets.only(left: 10),
                         child: Column(
                           children: <Widget>[
                             Container(
-                              padding: EdgeInsets.only(left: 10),
-                              width: MediaQuery.of(context).size.width - 101,
+                              width: MediaQuery.of(context).size.width - 136,
                               child: Text(
-                                "Nistor Tatar",
+                                "Nistor Tătar",
                                 style: TextStyle(
-                                  color: Colors.blue,
+                                  color: Color(0xFF38A49C),
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 20
+                                  fontSize: 21,
                                 ),
                               ),
                             ),
                             Container(
-                              width: MediaQuery.of(context).size.width - 101,
-                              padding: EdgeInsets.only(left: 10),
+                              padding: EdgeInsets.only(bottom: 10),
+                              width: MediaQuery.of(context).size.width - 136,
                               child: Text(
-                                "Primar"
+                                "Primar \nMunicipiul Rădăuți",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                             Row(
                               children: <Widget>[
                                 FlatButton(
-                                  child: Icon(Ionicons.logo_facebook),
+                                  child: Icon(Ionicons.logo_facebook, color: Colors.indigo, size: 40,),
                                   onPressed: () {
                                     _launchURL("facebook.com");
                                   },
                                 ),
                                 FlatButton(
-                                  child: Icon(Ionicons.logo_whatsapp),
+                                  child: Icon(Ionicons.logo_whatsapp, color: Colors.green , size: 40,),
                                 ),
                                 FlatButton(
-                                  child: Icon(Ionicons.ios_mail),
+                                  child: Icon(Ionicons.ios_mail, color: Colors.orangeAccent, size: 40,),
                                   onPressed: () {
                                     UrlLauncher.launch("mailto:email1@gmail.com");
                                   },
@@ -184,23 +191,39 @@ class Leaders extends StatelessWidget {
                               ],
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 10),
-                              width: MediaQuery.of(context).size.width - 101,
+                              padding: EdgeInsets.only(top: 10),
+                              width: MediaQuery.of(context).size.width - 136,
                               child: Text(
-                                "Informatii aditionale",
+                                "Informații adiționale",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   decoration: TextDecoration.underline,
+                                  fontSize: 15,
                                 ),
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 10),
-                              width: MediaQuery.of(context).size.width -101,
-                              child: Text(
-                                "Declaratie de avere. \nDeclaratie de interese."
+                              width: MediaQuery.of(context).size.width - 136,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  new InkWell(
+                                      child: new Text(
+                                        'Declariație de avere',
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                                      ),
+                                      onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Nistor-Tatar-1.pdf')
+                                  ),
+                                  new InkWell(
+                                      child: new Text(
+                                        'Declarație de interese',
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                                      ),
+                                      onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Tatar-Nistor-1.pdf')
+                                  ),
+                                ],
                               ),
-                            )
+                            ),
                           ],
                         ),
                       )
@@ -210,15 +233,16 @@ class Leaders extends StatelessWidget {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:10.0),
+              padding:EdgeInsets.symmetric(horizontal:15.0),
               child:Container(
                 height:1.0,
                 color:Color.fromRGBO(0, 0, 0, 0.1),),),
             Container(
-              padding: EdgeInsets.only(left: 10,top: 10, bottom: 10),
+              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
                         height: 91,
@@ -229,60 +253,84 @@ class Leaders extends StatelessWidget {
                         ),
                       ),
                       Container(
+                        padding: EdgeInsets.only(left: 10),
                         child: Column(
                           children: <Widget>[
                             Container(
-                              padding: EdgeInsets.only(left: 10),
-                              width: MediaQuery.of(context).size.width - 101,
+                              width: MediaQuery.of(context).size.width - 136,
                               child: Text(
-                                "Bogdan Adrian Nicoau",
+                                "Bogdan Adrian Nicolau",
                                 style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 20
+                                    fontSize: 21,
                                 ),
                               ),
                             ),
                             Container(
-                              width: MediaQuery.of(context).size.width - 101,
-                              padding: EdgeInsets.only(left: 10),
+                              padding: EdgeInsets.only(bottom: 10),
+                              width: MediaQuery.of(context).size.width - 136,
                               child: Text(
-                                  "Viceprimar"
+                                "Viceprimar \nMunicipiul Rădăuți",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                             Row(
                               children: <Widget>[
                                 FlatButton(
-                                  child: Icon(Ionicons.logo_facebook),
+                                  child: Icon(Ionicons.logo_facebook, color: Colors.indigo, size: 40,),
                                   onPressed: () {
+                                    _launchURL("facebook.com");
                                   },
                                 ),
                                 FlatButton(
-                                  child: Icon(Ionicons.logo_whatsapp),
+                                  child: Icon(Ionicons.logo_whatsapp, color: Colors.green , size: 40,),
                                 ),
                                 FlatButton(
-                                  child: Icon(Ionicons.ios_mail),
+                                  child: Icon(Ionicons.ios_mail, color: Colors.orangeAccent, size: 40,),
+                                  onPressed: () {
+                                    UrlLauncher.launch("mailto:email1@gmail.com");
+                                  },
                                 ),
                               ],
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 10),
-                              width: MediaQuery.of(context).size.width - 101,
+                              padding: EdgeInsets.only(top: 10),
+                              width: MediaQuery.of(context).size.width - 136,
                               child: Text(
-                                "Informatii aditionale",
+                                "Informații adiționale",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   decoration: TextDecoration.underline,
+                                  fontSize: 15,
                                 ),
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 10),
-                              width: MediaQuery.of(context).size.width -101,
-                              child: Text(
-                                  "Declaratie de avere. \nDeclaratie de interese."
+                              width: MediaQuery.of(context).size.width - 136,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  new InkWell(
+                                      child: new Text(
+                                        'Declariație de avere',
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                                      ),
+                                      onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Nicolau-Bogdan-2.pdf')
+                                  ),
+                                  new InkWell(
+                                      child: new Text(
+                                        'Declarație de interese',
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                                      ),
+                                      onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Nicolau-Bogdan-1-1.pdf')
+                                  ),
+                                ],
                               ),
-                            )
+                            ),
                           ],
                         ),
                       )
@@ -292,7 +340,114 @@ class Leaders extends StatelessWidget {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:10.0),
+              padding:EdgeInsets.symmetric(horizontal:15.0),
+              child:Container(
+                height:1.0,
+                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+            Container(
+              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        height: 91,
+                        width: 91,
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundImage: AssetImage("assets/images/MarinicaSofroni.jpg"),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              width: MediaQuery.of(context).size.width - 136,
+                              child: Text(
+                                "Marinică Sofroni",
+                                style: TextStyle(
+                                    color: Color(0xFF38A49C),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 21,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(bottom: 10),
+                              width: MediaQuery.of(context).size.width - 136,
+                              child: Text(
+                                "Secretar \nMunicipiul Rădăuți",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Row(
+                              children: <Widget>[
+                                FlatButton(
+                                  child: Icon(Ionicons.logo_facebook, color: Colors.indigo, size: 40,),
+                                  onPressed: () {
+                                    _launchURL("facebook.com");
+                                  },
+                                ),
+                                FlatButton(
+                                  child: Icon(Ionicons.logo_whatsapp, color: Colors.green , size: 40,),
+                                ),
+                                FlatButton(
+                                  child: Icon(Ionicons.ios_mail, color: Colors.orangeAccent, size: 40,),
+                                  onPressed: () {
+                                    UrlLauncher.launch("mailto:email1@gmail.com");
+                                  },
+                                ),
+                              ],
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(top: 10),
+                              width: MediaQuery.of(context).size.width - 136,
+                              child: Text(
+                                "Informații adiționale",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width - 136,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  new InkWell(
+                                      child: new Text(
+                                        'Declariație de avere',
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                                      ),
+                                      onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Sofroni-Marinica-2.pdf')
+                                  ),
+                                  new InkWell(
+                                      child: new Text(
+                                        'Declarație de interese',
+                                        style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                                      ),
+                                      onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Sofroni-Marinica-1-1.pdf')
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding:EdgeInsets.symmetric(horizontal:15.0),
               child:Container(
                 height:1.0,
                 color:Color.fromRGBO(0, 0, 0, 0.1),),),
