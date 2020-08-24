@@ -35,6 +35,8 @@ dependencies:
   provider: ^3.2.0
   http: ^0.12.0+2
   flutter_paginator: ^0.0.6
+  mailer: ^3.0.4
+  gallery_saver: ^2.0.1
   splashscreen: ^1.2.0
 
 
