@@ -236,7 +236,6 @@ class _MyAppState1 extends State<MyApp1> {
     super.initState();
     futureList = fetchList2();
   }
-
   @override
   Widget build(BuildContext context) {
     return Container(
