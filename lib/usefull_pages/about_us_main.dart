@@ -20,6 +20,8 @@ class AboutUsMain extends StatelessWidget {
             child: Image.asset("assets/logo_images/app_logo.png"),
           ),
           bottom: TabBar(
+            indicatorColor: Color(0xAA38A49C),
+            unselectedLabelColor: Colors.grey,
             tabs: [
               Tab(text: 'DESPRE NOI'),
               Tab(text: 'DESPRE APLICAȚIE'),
