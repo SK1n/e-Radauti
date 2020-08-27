@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:flutterapperadauti/TownHall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/events/main.dart';
+import 'package:flutterapperadauti/usefull_pages/partner.dart';
+import 'package:flutterapperadauti/usefull_pages/credits.dart';
+import 'package:flutterapperadauti/usefull_pages/contact.dart';
+import 'package:flutterapperadauti/usefull_pages/confidential.dart';
+import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
 
 void main() {
   runApp(MyAppRC());
@@ -82,9 +88,9 @@ class AndroidMobile1 extends StatelessWidget {
         slivers: <Widget>[
           SliverToBoxAdapter(
             child: SizedBox(
-              height: (MediaQuery.of(context).size.height/5 - 45),
+              height: 90, //(MediaQuery.of(context).size.height/5 - 45),
               child: Container(
-                //padding: EdgeInsets.only(left: 10,top: 10, bottom: 10),
+                //padding: EdgeInsets.only(top: 12.5, bottom: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -112,7 +118,7 @@ class AndroidMobile1 extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: (MediaQuery.of(context).size.height/5 - 45)*5,
+              height: (MediaQuery.of(context).size.height - 270),
               child: Container(
                 child: GridView.count(
                   primary: false,
@@ -561,6 +567,81 @@ class AndroidMobile1 extends StatelessWidget {
                       )
                   ),
                 ),*/
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 90, //(MediaQuery.of(context).size.height/5 - 45),
+              child: Container(
+                //padding: EdgeInsets.only(left: 10,top: 10, bottom: 10),
+                //width: MediaQuery.of(context).size.width - 10,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    //1
+                    Container(
+                      //padding: EdgeInsets.only(left: 0, right: 5,),
+                      width: MediaQuery.of(context).size.width/5 - 5,
+                      child: new InkWell(
+                          child: new Text(
+                            'Despre noi',
+                            style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                          ),
+                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUsMain()),);},
+                      ),
+                    ),
+                    //2
+                    Container(
+                      //padding: EdgeInsets.only(left: 0, right: 5,),
+                      width: MediaQuery.of(context).size.width/5 + 35,
+                      child: new InkWell(
+                          child: new Text(
+                            'Confidențialitate',
+                            style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                          ),
+                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Confidential()),);},
+                      ),
+                    ),
+                    //3
+                    Container(
+                      //padding: EdgeInsets.only(left: 0, right: 5,),
+                      width: MediaQuery.of(context).size.width/5 - 15,
+                      child: new InkWell(
+                          child: new Text(
+                            'Contact',
+                            style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                          ),
+
+                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Contact()),);},
+                      ),
+                    ),
+                    //4
+                    Container(
+                      //padding: EdgeInsets.only(left: 0, right: 0,),
+                      width: MediaQuery.of(context).size.width/5 - 15,
+                      child: new InkWell(
+                          child: new Text(
+                            'Credits',
+                            style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                          ),
+                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Credits()),);},
+                      ),
+                    ),
+                    //5
+                    Container(
+                      //padding: EdgeInsets.only(left: 5, right: 5,),
+                      width: MediaQuery.of(context).size.width/5 - 15,
+                      child: new InkWell(
+                          child: new Text(
+                            'Parteneri',
+                            style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                          ),
+                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Partner()),);},
+                      ),
+                    ),
                   ],
                 ),
               ),
