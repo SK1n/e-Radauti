@@ -61,34 +61,27 @@ class Partner extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(bottom: 30,),
+              padding: EdgeInsets.only(bottom: 20,),
               width: MediaQuery.of(context).size.width - 30,
-              child: Image.asset(
-                "assets/images/primaria.jpg",
-                fit: BoxFit.cover,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Image.asset(
+                    "assets/images/hard_power_radauti.png",
+                    //fit: BoxFit.cover,
+                  ),
+                ],
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 10,),
-              width: MediaQuery.of(context).size.width - 80,
+              width: MediaQuery.of(context).size.width - 30,
+              //padding: EdgeInsets.only(left: 10,),
               child: Text(
-                "Informații despre primar, viceprimar și atribuțiile fiecăruia.",
-                overflow: TextOverflow.ellipsis,
-                maxLines: 5,
-                style: TextStyle(
-                  color: Color(0xFF38A49C),
-                  fontSize: 15,
-                ),
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width - 120,
-              padding: EdgeInsets.only(left: 10,),
-              child: Text(
-                "Conducere",
+                "Hard Power Services Rădăuți",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
+                  color: Colors.grey,
                 ),
               ),
             ),

@@ -62,25 +62,15 @@ class Credits extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.only(top: 10,),
-              width: MediaQuery.of(context).size.width - 80,
+              width: MediaQuery.of(context).size.width - 30,
               child: Text(
-                "Informații despre primar, viceprimar și atribuțiile fiecăruia.",
+                'Icons made by Vectors Market, Icon Pond, Freepik, DinosoftLabs, DinosoftLabs, '
+                +
+                'Pixel Buddha, Roundicons and Alfredo Hernandez from www..flaticon.com',
                 overflow: TextOverflow.ellipsis,
                 maxLines: 5,
                 style: TextStyle(
-                  color: Color(0xFF38A49C),
                   fontSize: 15,
-                ),
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width - 120,
-              padding: EdgeInsets.only(left: 10,),
-              child: Text(
-                "Conducere",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
                 ),
               ),
             ),

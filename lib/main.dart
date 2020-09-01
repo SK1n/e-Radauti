@@ -11,7 +11,7 @@ import 'package:flutterapperadauti/usefull_pages/credits.dart';
 import 'package:flutterapperadauti/usefull_pages/contact.dart';
 import 'package:flutterapperadauti/usefull_pages/confidential.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
-
+ 
 void main() {
   runApp(MyAppRC());
 }
@@ -615,7 +615,7 @@ class AndroidMobile1 extends StatelessWidget {
                             style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                           ),
 
-                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Contact()),);},
+                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Contact2()),);},
                       ),
                     ),
                     //4
