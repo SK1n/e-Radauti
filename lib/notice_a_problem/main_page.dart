@@ -52,13 +52,13 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _mailer() async {
-    String username = 'luys50734@gmail.com';
-    String password = 'An1meL1fe';
+    String username = 'radautiulcivic@gmail.com';
+    String password = 'pass123.CIVIC';
 
     final smtpServer = gmail(username, password);
     final message = Message()
       ..from = Address(username, _nameController.text)
-      ..recipients.add('luys2007@outlook.com')
+      ..recipients.add(_recipientController.toString())
      // ..ccRecipients.addAll(['radautiulcivic@gmail.com','coman.paul@yahoo.com'])
       ..subject =
           ' Petiție ' + _subjectController.text + ' - aplicația e-Rădăuți'
@@ -110,14 +110,16 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         isLoading = false;
       });
     } on MailerException catch (e) {
-      print('Message not sent.');
+      print('Message not sent.' + e.message);
       _scaffoldKey.currentState.showSnackBar(SnackBar(
         content: Text("Mesaj netrimis!"),
       ));
       for (var p in e.problems) {
         print('Problem: ${p.code}: ${p.msg}');
       }
-      isLoading = false;
+      setState(() {
+        isLoading = false;
+      });
     }
   }
 
@@ -581,7 +583,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                 value: dropdownValue,
                 elevation: 16,
                 style: TextStyle(color: Colors.black),
-                items: <String>['Selecteaza', 'Primarie', 'Defectiuni', 'Apa']
+                items: <String>['Selecteaza', 'Primaria Radauti', 'Servicii Comunale', 'ACET Radauti', 'Consiliul Judetean Suceava', 'Garda De Mediu Suceava', 'Garda Forestiera Suceava', 'Radautiul Civic']
                     .map((String value) {
                   return new DropdownMenuItem<String>(
                     value: value,
@@ -591,11 +593,43 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                 onChanged: (String value) {
                   setState(() {
                     dropdownValue = value;
+                    switch (value) {
+                      case "Selecteaza": {
+                        _validateDropDown = true;
+                      } break;
+                      case "Primaria Radauti": {
+                        _recipientController = "relatiipublice@primariaradauti.ro";
+                        _validateDropDown = false;
+                      } break;
+                      case "Servicii Comunale" : {
+                        _recipientController = "office@serviciicomunale.ro";
+                        _validateDropDown = false;
+                      } break;
+                      case "ACET Radauti" : {
+                        _recipientController = "agentia.radauti@acetsv.ro";
+                        _validateDropDown = false;
+                      } break;
+                      case "Consiliul Judetean Suceava" : {
+                        _recipientController = "contact@cjsuceava.ro";
+                        _validateDropDown = false;
+                      } break;
+                      case "Garda De Mediu Suceava" : {
+                        _recipientController = "cjsuceava@gnm.ro";
+                        _validateDropDown = false;
+                      } break;
+                      case "Garda Forestiera Suceava" : {
+                        _recipientController = "gardaforestiera.suceava@gmail.com";
+                        _validateDropDown = false;
+                      } break;
+                      case "Radautiul Civic" : {
+                        _recipientController = "radautiulcivic@gmail.com";
+                        _validateDropDown = false;
+                      } break;
+                    }
+                    /*
                     if (identical(value.toString(), "Selecteaza")) {
                       _validateDropDown = true;
-                      print(_validateDropDown.toString());
-                      print(_recipientController.toString());
-                    } else if (identical(value.toString(), "Primarie")) {
+                    } else if (identical(value.toString(), "Primaria Radauti")) {
                       _recipientController = "email1@gmail.com";
                       _validateDropDown = false;
                       print(_validateDropDown.toString());
@@ -610,7 +644,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                       _validateDropDown = false;
                       print(_validateDropDown.toString());
                       print(_recipientController.toString());
-                    }
+                    }*/
                   });
                 },
               ),
