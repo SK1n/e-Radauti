@@ -10,7 +10,6 @@ import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:fluttericon/elusive_icons.dart';
 
 
 class HomePageNoticeProblem extends StatefulWidget {
@@ -54,13 +53,13 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _mailer() async {
-    String username = 'luys50734@gmail.com';
-    String password = 'An1meL1fe';
+    String username = 'radautiulcivic@gmail.com';
+    String password = 'pass123.CIVIC';
 
     final smtpServer = gmail(username, password);
     final message = Message()
       ..from = Address(username, _nameController.text)
-      ..recipients.add('luys2007@outlook.com')
+      ..recipients.add(_recipientController)
      // ..ccRecipients.addAll(['radautiulcivic@gmail.com','coman.paul@yahoo.com'])
       ..subject =
           ' Petiție ' + _subjectController.text + ' - aplicația e-Rădăuți'
@@ -596,7 +595,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                 value: dropdownValue,
                 elevation: 16,
                 style: TextStyle(color: Colors.black),
-                items: <String>['Selecteaza', 'Primaria Radauti', 'Servicii Comunale', 'ACET Radauti', 'Consiliul Judetean Suceava', 'Garda De Mediu Suceava', 'Garda Forestiera Suceava', 'Radautiul Civic']
+                items: <String>['Categorie', 'Primaria Radauti', 'Servicii Comunale', 'ACET Radauti', 'Consiliul Judetean Suceava', 'Garda De Mediu Suceava', 'Garda Forestiera Suceava', 'Radautiul Civic']
                     .map((String value) {
                   return new DropdownMenuItem<String>(
                     value: value,
@@ -641,18 +640,6 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                     }
                   });
                 },
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-              width: MediaQuery.of(context).size.width,
-              child: FlatButton(
-                color: Color.fromRGBO(56, 164, 156, 10),
-                textColor: Colors.white,
-                onPressed: () {
-                  //_showOptions(context);
-                },
-                child: Text("Fă o poză"),
               ),
             ),
               Container(
