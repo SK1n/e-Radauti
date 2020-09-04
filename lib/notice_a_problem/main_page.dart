@@ -410,7 +410,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                           labelText: 'Email:',
                           prefixText: '',
                           errorText:
-                          _validateEmail ? 'Nu ați introdus un email!' : null,
+                          _validateEmail ? 'Nu ați introdus email!' : null,
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 width: 1,
@@ -446,7 +446,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                             labelText: 'Telefon:',
                             prefixText: '',
                             errorText: _validateNumber
-                                ? 'Nu ați introdus un număr de telefon!'
+                                ? 'Nu ați introdus telefon!'
                                 : null,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -590,12 +590,12 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
               ],
             ),
             Container(
-              margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+              margin: EdgeInsets.only(top: 0, left: 20, right: 20, bottom: 20,),
               child: new DropdownButton<String>(
                 value: dropdownValue,
                 elevation: 16,
                 style: TextStyle(color: Colors.black),
-                items: <String>['Categorie', 'Primaria Radauti', 'Servicii Comunale', 'ACET Radauti', 'Consiliul Judetean Suceava', 'Garda De Mediu Suceava', 'Garda Forestiera Suceava', 'Radautiul Civic']
+                items: <String>['Categorie', 'Primăria Rădăuți', 'Servicii Comunale', 'ACET Rădăuți', 'Consiliul Județean Suceava', 'Garda De Mediu Suceava', 'Garda Forestieră Suceava', 'Rădăuțiul Civic']
                     .map((String value) {
                   return new DropdownMenuItem<String>(
                     value: value,
@@ -609,7 +609,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                       case "Categorie": {
                         _validateDropDown = true;
                       } break;
-                      case "Primaria Radauti": {
+                      case "Primăria Rădăuți": {
                         _recipientController = "relatiipublice@primariaradauti.ro";
                         _validateDropDown = false;
                       } break;
@@ -617,11 +617,11 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         _recipientController = "office@serviciicomunale.ro";
                         _validateDropDown = false;
                       } break;
-                      case "ACET Radauti" : {
+                      case "ACET Rădăuți" : {
                         _recipientController = "agentia.radauti@acetsv.ro";
                         _validateDropDown = false;
                       } break;
-                      case "Consiliul Judetean Suceava" : {
+                      case "Consiliul Județean Suceava" : {
                         _recipientController = "contact@cjsuceava.ro";
                         _validateDropDown = false;
                       } break;
@@ -629,11 +629,11 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         _recipientController = "cjsuceava@gnm.ro";
                         _validateDropDown = false;
                       } break;
-                      case "Garda Forestiera Suceava" : {
+                      case "Garda Forestieră Suceava" : {
                         _recipientController = "gardaforestiera.suceava@gmail.com";
                         _validateDropDown = false;
                       } break;
-                      case "Radautiul Civic" : {
+                      case "Rădăuțiul Civic" : {
                         _recipientController = "radautiulcivic@gmail.com";
                         _validateDropDown = false;
                       } break;
@@ -643,7 +643,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
               ),
             ),
               Container(
-                margin: EdgeInsets.only(top: 0, left: 20, right: 20),
+                margin: EdgeInsets.only(top: 0, left: 20, right: 20, bottom: 20,),
                 width: MediaQuery.of(context).size.width,
                 child: FlatButton(
                   color: Color.fromRGBO(56, 164, 156, 10),
@@ -671,19 +671,19 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                       } else {
                         _validatePath = true;
                         _scaffoldKey.currentState.showSnackBar(SnackBar(
-                          content: Text("Nu ai facut poza!"),
+                          content: Text("Nu ați făcut/incărcat nici o poză!"),
                         ));
                       }
                       if (_validateDropDown == true) {
                         _scaffoldKey.currentState.showSnackBar(SnackBar(
-                          content: Text("Nu ai selectat o categorie"),
+                          content: Text("Nu ați selectat o categorie!"),
                         ));
                       }
                       if (position == null) {
                         getLocation();
                         _scaffoldKey.currentState.showSnackBar(SnackBar(
                           content: Text(
-                              "Ne trebuie locatia dvs. Va rugam acceptati permisiunea de GPS"),
+                              "Ne trebuie locația dvs.! Vă rugăm acceptați permisiunea de GPS!"),
                         ));
                       }
                       if (_validateName == false) {
@@ -695,7 +695,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                                   if(attachments[0] == null) {
                                     _scaffoldKey.currentState.showSnackBar(SnackBar(
                                       content: Text(
-                                          "Nu ati facut/incarcat nici o poza!"),
+                                          "Nu ați făcut/incărcat nici o poză!"),
                                     ));
                                   } else {
                                     setState(() {
