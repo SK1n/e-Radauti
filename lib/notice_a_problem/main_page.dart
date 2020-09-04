@@ -9,6 +9,8 @@ import 'package:flutter/services.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:gallery_saver/gallery_saver.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:fluttericon/elusive_icons.dart';
 
 
 class HomePageNoticeProblem extends StatefulWidget {
@@ -24,7 +26,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   bool _validatePath = false;
   bool _validateNumber = false;
   bool _validateEmail = false;
-  String dropdownValue = "Selecteaza";
+  String dropdownValue = "Categorie";
   Position position;
   File recordedImage1;
   File recordedImage2;
@@ -52,13 +54,13 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _mailer() async {
-    String username = 'radautiulcivic@gmail.com';
-    String password = 'pass123.CIVIC';
+    String username = 'luys50734@gmail.com';
+    String password = 'An1meL1fe';
 
     final smtpServer = gmail(username, password);
     final message = Message()
       ..from = Address(username, _nameController.text)
-      ..recipients.add(_recipientController.toString())
+      ..recipients.add('luys2007@outlook.com')
      // ..ccRecipients.addAll(['radautiulcivic@gmail.com','coman.paul@yahoo.com'])
       ..subject =
           ' Petiție ' + _subjectController.text + ' - aplicația e-Rădăuți'
@@ -110,16 +112,14 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         isLoading = false;
       });
     } on MailerException catch (e) {
-      print('Message not sent.' + e.message);
+      print('Message not sent.');
       _scaffoldKey.currentState.showSnackBar(SnackBar(
         content: Text("Mesaj netrimis!"),
       ));
       for (var p in e.problems) {
         print('Problem: ${p.code}: ${p.msg}');
       }
-      setState(() {
-        isLoading = false;
-      });
+      isLoading = false;
     }
   }
 
@@ -174,14 +174,14 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                       _takePhoto(i);
                     },
                     leading: Icon(Icons.photo_camera),
-                    title: Text("Take a picture from camera")),
+                    title: Text("Faceți o fotografie de la cameră")),
                 ListTile(
                     onTap: () {
                       Navigator.pop(context);
                       _showPhotoLibrary(i);
                     },
                     leading: Icon(Icons.photo_library),
-                    title: Text("Choose from photo library"))
+                    title: Text("Alegeți din biblioteca foto"))
               ]));
         });
   }
@@ -298,144 +298,120 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         body: isLoading
             ? Center(
           child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation <Color> (Color(0x55FB6340)),
-          ),)
+            valueColor: AlwaysStoppedAnimation <Color> (Color(0xFF38A49C)),
+          ),
+        )
             : SingleChildScrollView(
-            child: Column(
-          children: [
-            Row(
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.centerLeft,
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.keyboard_arrow_left,
-                      color: Color(0xFF979797),
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(bottom: 15, top: 20),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.keyboard_arrow_left,
+                          color: Color(0xFF979797),
+                        ),
+                        //_left Icons.arrow_back
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                     ),
-                    //_left Icons.arrow_back
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width - 80,
-                  child: new Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: <Widget>[
-                      Stack(
+                    Container(
+                      width: MediaQuery.of(context).size.width - 80,
+                      child: new Stack(
+                        alignment: AlignmentDirectional.center,
                         children: <Widget>[
-                          Icon(
-                            Icons.camera,
-                            color: Color(0x55FB6340),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Container(
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  30.0, 4.0, 0.0, 0.0), //10.0 //25.0
-                              child: Text(
-                                'Sesizeaza o problema',
-                                style: TextStyle(
-                                  color: Color(0xFF000000),
-                                  //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
+                          Stack(
+                            children: <Widget>[
+                              Container(
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(
+                                      0.0, 0.0, 0.0, 0.0), //10.0 //25.0
+                                  child: Icon(
+                                    Icons.photo_filter,
+                                    color: Color(0x55FB6340),
+                                    size: 30,
+                                  ),
                                 ),
                               ),
-                            ),
+                              Container(
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(
+                                      35.0, 0.0, 0.0, 0.0), //10.0 //25.0
+                                  child: Text(
+                                    'Sesizează \no problemă',
+                                    style: TextStyle(
+                                      color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 19,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            Container(
-                margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-                child: TextField(
-                  textCapitalization: TextCapitalization.sentences,
-                  controller: _nameController,
-                  enabled: true,
-                  decoration: new InputDecoration(
-                    border: new OutlineInputBorder(
-                      borderSide: new BorderSide(
-                          color: Color.fromRGBO(56, 164, 156, 10)),
-                    ),
-                    labelText: 'Nume si prenume:',
-                    prefixText: '',
-                    errorText:
-                        _validateName ? 'Nu ati introdus nume dvs.' : null,
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
-                    ),
-                    labelStyle: TextStyle(
-                      color: Colors.grey,
-                    ),
-                  ),
-                )),
-            Container(
-              margin: EdgeInsets.fromLTRB(20, 20, 0, 20),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    width: MediaQuery.of(context).size.width / 2 - 30,
-                    child: TextField(
-                      textCapitalization: TextCapitalization.sentences,
-                      controller: _emailController,
-                      enabled: true,
-                      decoration: new InputDecoration(
-                        border: new OutlineInputBorder(
-                          borderSide: new BorderSide(
-                              color: Color.fromRGBO(56, 164, 156, 10)),
-                        ),
-                        labelText: 'Email:',
-                        prefixText: '',
-                        errorText:
-                            _validateEmail ? 'Nu ati introdus un email!' : null,
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1,
-                              color: Color.fromRGBO(56, 164, 156, 10)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1,
-                              color: Color.fromRGBO(56, 164, 156, 10)),
-                        ),
-                        labelStyle: TextStyle(
-                          color: Colors.grey,
-                        ),
+              ),
+              Container(
+                  margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                  child: TextField(
+                    textCapitalization: TextCapitalization.sentences,
+                    controller: _nameController,
+                    enabled: true,
+                    decoration: new InputDecoration(
+                      border: new OutlineInputBorder(
+                        borderSide: new BorderSide(
+                            color: Color(0xFF38A49C)),
+                      ),
+                      prefixIcon: Icon(Icons.person, color: Color(0x55FB6340), size: 20,),
+                      //hintText: "Enter Your Name",
+                      labelText: 'Nume și prenume:',
+                      prefixText: '',
+                      errorText:
+                      _validateName ? 'Nu ați introdus numele dvs.!' : null,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 1, color: Color(0xFF38A49C)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 1, color: Color(0xFF38A49C)),
+                      ),
+                      labelStyle: TextStyle(
+                        color: Colors.grey,
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 10, right: 10),
-                  ),
-                  Container(
+                  )),
+              Container(
+                margin: EdgeInsets.fromLTRB(20, 20, 0, 20),
+                child: Row(
+                  children: <Widget>[
+                    Container(
                       width: MediaQuery.of(context).size.width / 2 - 30,
                       child: TextField(
                         textCapitalization: TextCapitalization.sentences,
-                        controller: _numberController,
+                        controller: _emailController,
                         enabled: true,
                         decoration: new InputDecoration(
                           border: new OutlineInputBorder(
                             borderSide: new BorderSide(
                                 color: Color.fromRGBO(56, 164, 156, 10)),
                           ),
-                          labelText: 'Numar de telefon:',
+                          prefixIcon: Icon(Ionicons.ios_mail, color: Color(0x55FB6340), size: 20,),
+                          //hintText: "Enter Your Name",
+                          labelText: 'Email:',
                           prefixText: '',
-                          errorText: _validateNumber
-                              ? 'Nu ati introdus un numar de telefon!'
-                              : null,
+                          errorText:
+                          _validateEmail ? 'Nu ați introdus un email!' : null,
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 width: 1,
@@ -450,101 +426,138 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                             color: Colors.grey,
                           ),
                         ),
-                      )),
-                ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10),
+                    ),
+                    Container(
+                        width: MediaQuery.of(context).size.width / 2 - 30,
+                        child: TextField(
+                          textCapitalization: TextCapitalization.sentences,
+                          controller: _numberController,
+                          enabled: true,
+                          decoration: new InputDecoration(
+                            border: new OutlineInputBorder(
+                              borderSide: new BorderSide(
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
+                            ),
+                            prefixIcon: Icon(Icons.phone, color: Color(0x55FB6340), size: 20,),
+                            //hintText: "Enter Your Name",
+                            labelText: 'Telefon:',
+                            prefixText: '',
+                            errorText: _validateNumber
+                                ? 'Nu ați introdus un număr de telefon!'
+                                : null,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1,
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1,
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
+                            ),
+                            labelStyle: TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                        )),
+                  ],
+                ),
               ),
-            ),
-            Container(
-                margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-                child: TextField(
-                  textCapitalization: TextCapitalization.sentences,
-                  controller: _subjectController,
-                  enabled: true,
-                  decoration: new InputDecoration(
-                    border: new OutlineInputBorder(
-                      borderSide: new BorderSide(
-                          color: Color.fromRGBO(56, 164, 156, 10)),
+              Container(
+                  margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                  child: TextField(
+                    textCapitalization: TextCapitalization.sentences,
+                    controller: _subjectController,
+                    enabled: true,
+                    decoration: new InputDecoration(
+                      border: new OutlineInputBorder(
+                        borderSide: new BorderSide(
+                            color: Color.fromRGBO(56, 164, 156, 10)),
+                      ),
+                      labelText: 'Subiect:',
+                      prefixText: '',
+                      errorText:
+                      _validateSubject ? 'Nu ați introdus subiectul!' : null,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
+                      ),
+                      labelStyle: TextStyle(
+                        color: Colors.grey,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
+                      ),
                     ),
-                    labelText: 'Subiect:',
-                    prefixText: '',
-                    errorText:
-                        _validateSubject ? 'Nu ati introdus subiectul' : null,
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
+                  )),
+              Container(
+                  margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                  child: TextField(
+                    textCapitalization: TextCapitalization.sentences,
+                    controller: _bodyController,
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    enabled: true,
+                    decoration: new InputDecoration(
+                      border: new OutlineInputBorder(
+                        borderSide: new BorderSide(
+                            color: Color.fromRGBO(56, 164, 156, 10)),
+                      ),
+                      labelText: 'Descriere:',
+                      labelStyle: TextStyle(
+                        color: Colors.grey,
+                      ),
+                      prefixText: '',
+                      errorText: _validateDescription
+                          ? 'Nu ați introdus o descriere!'
+                          : null,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
+                      ),
                     ),
-                    labelStyle: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
-                    ),
-                  ),
-                )),
-            Container(
-                margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-                child: TextField(
-                  textCapitalization: TextCapitalization.sentences,
-                  controller: _bodyController,
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  enabled: true,
-                  decoration: new InputDecoration(
-                    border: new OutlineInputBorder(
-                      borderSide: new BorderSide(
-                          color: Color.fromRGBO(56, 164, 156, 10)),
-                    ),
-                    labelText: 'Descriere:',
-                    labelStyle: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    prefixText: '',
-                    errorText: _validateDescription
-                        ? 'Nu ati introdus o descriere'
-                        : null,
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
-                    ),
-                  ),
-                )),
-            GridView.count(
-              crossAxisCount: 2,
-              primary: false,
-              shrinkWrap: true,
-              padding: const EdgeInsets.all(20),
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              children: <Widget>[
-                FlatButton(
-                  child: recordedImage1 == null
-                      ? FlatButton(
+                  )),
+              GridView.count(
+                crossAxisCount: 2,
+                primary: false,
+                shrinkWrap: true,
+                padding: const EdgeInsets.only(top: 0, left: 20, right: 20, bottom: 0,),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                children: <Widget>[
+                  FlatButton(
+                    child: recordedImage1 == null
+                        ? FlatButton(
                       child: SvgPicture.asset('assets/images/photo.svg'),
                       onPressed: () {
                         getImage(context, 0);
                       },
-                      )
-                      : FlatButton(
+                    )
+                        : FlatButton(
                       child: Image.file(recordedImage1),
                       onPressed: () {
                         getImage(context, 0);
                       },
-                    onLongPress: () {
-                      removePicture(0);
-                    },
+                      onLongPress: () {
+                        removePicture(0);
+                      },
+                    ),
                   ),
-                ),
-                FlatButton(
-                  child: recordedImage2 == null
-                      ? FlatButton(
-                    child: SvgPicture.asset('assets/images/photo.svg'),
-                    onPressed: () {
-                      getImage(context, 1);
+                  FlatButton(
+                    child: recordedImage2 == null
+                        ? FlatButton(
+                      child: SvgPicture.asset('assets/images/photo.svg'),
+                      onPressed: () {
+                        getImage(context, 1);
                       },
                   )
                       : FlatButton(
@@ -552,20 +565,20 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                       onPressed: () {
                         getImage(context, 1);
                       },
-                    onLongPress: () {
-                      removePicture(1);
-                    },
+                      onLongPress: () {
+                        removePicture(1);
+                      },
+                    ),
                   ),
-                ),
-                FlatButton(
-                  child: recordedImage3 == null
-                      ? FlatButton(
+                  FlatButton(
+                    child: recordedImage3 == null
+                        ? FlatButton(
                       child: SvgPicture.asset('assets/images/photo.svg'),
                       onPressed: () {
                         getImage(context, 2);
                       },
-                  )
-                      : FlatButton(
+                    )
+                        : FlatButton(
                       child: Image.file(recordedImage3),
                       onPressed: () {
                         getImage(context, 2);
@@ -594,7 +607,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                   setState(() {
                     dropdownValue = value;
                     switch (value) {
-                      case "Selecteaza": {
+                      case "Categorie": {
                         _validateDropDown = true;
                       } break;
                       case "Primaria Radauti": {
@@ -626,25 +639,6 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         _validateDropDown = false;
                       } break;
                     }
-                    /*
-                    if (identical(value.toString(), "Selecteaza")) {
-                      _validateDropDown = true;
-                    } else if (identical(value.toString(), "Primaria Radauti")) {
-                      _recipientController = "email1@gmail.com";
-                      _validateDropDown = false;
-                      print(_validateDropDown.toString());
-                      print(_recipientController.toString());
-                    } else if (identical(value.toString(), "Defectiuni")) {
-                      _recipientController = "email2@gmail.com";
-                      _validateDropDown = false;
-                      print(_validateDropDown.toString());
-                      print(_recipientController.toString());
-                    } else if (identical(value.toString(), "Apa")) {
-                      _recipientController = "email3@gmail.com";
-                      _validateDropDown = false;
-                      print(_validateDropDown.toString());
-                      print(_recipientController.toString());
-                    }*/
                   });
                 },
               ),
@@ -658,17 +652,17 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                 onPressed: () {
                   //_showOptions(context);
                 },
-                child: Text("Fa o poza"),
+                child: Text("Fă o poză"),
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 0, left: 20, right: 20),
-              width: MediaQuery.of(context).size.width,
-              child: FlatButton(
-                color: Color.fromRGBO(56, 164, 156, 10),
-                textColor: Colors.white,
-                onPressed: () {
-                  attachments.removeWhere((item) => item == null);
+              Container(
+                margin: EdgeInsets.only(top: 0, left: 20, right: 20),
+                width: MediaQuery.of(context).size.width,
+                child: FlatButton(
+                  color: Color.fromRGBO(56, 164, 156, 10),
+                  textColor: Colors.white,
+                  onPressed: () {
+                    attachments.removeWhere((item) => item == null);
                     setState(() {
                       _nameController.text.isEmpty
                           ? _validateName = true
@@ -729,12 +723,14 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         }
                       }
                     });
-                },
-                child: Text("Trimite"),
-              ),
-            )
-          ],
-        )));
+                  },
+                  child: Text("Trimite"),
+                ),
+              )
+            ],
+          ),
+        )
+    );
   }
 
   void initState() {
