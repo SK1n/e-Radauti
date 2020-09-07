@@ -241,7 +241,7 @@ class _MyAppState1 extends State<MyApp1> {
     return Container(
       child: CustomScrollView(
           slivers: <Widget>[
-            SliverToBoxAdapter(
+            /*SliverToBoxAdapter(
               child: SizedBox(
                 height: (55),
                 child: Container(
@@ -295,10 +295,11 @@ class _MyAppState1 extends State<MyApp1> {
                   ),
                 ),
               ),
-            ),
+            ),*/
             SliverToBoxAdapter(
               child: Container(
                 //height: (MediaQuery.of(context).size.height/5-45)*5,
+                padding: EdgeInsets.only(top: 20.0,),
                 child: Container(
                   child: FutureBuilder<List>( //FutureBuilder<Album>
                     future: futureList,

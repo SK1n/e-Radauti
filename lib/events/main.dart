@@ -1,25 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutterapperadauti/events/ui/homepage/home_page.dart';
 import 'package:flutterapperadauti/events/ui/tabView/tabPage.dart';
 import 'package:flutterapperadauti/menu_page.dart';
 
-class MyAppEvents extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: Color(0xFFFFFFFF),
-        primaryColor: Color(0xFFFFFFFF),//Color(0xFFFF4700)
-      ),
-      home: MyAppEvents2(),
-    );
-  }
-}
-
-class MyAppEvents2 extends StatelessWidget {
+class EventsMain extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -50,7 +34,7 @@ class MyAppEvents2 extends StatelessWidget {
           ),
         ],
       ),
-      body: MyApp1(),
+      body: TabDemo(), //
     );
   }
 }

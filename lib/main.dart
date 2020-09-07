@@ -203,7 +203,7 @@ class AndroidMobile1 extends StatelessWidget {
                     ),
                     //2
                     GestureDetector(
-                      onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyAppEvents2()),);},
+                      onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => EventsMain()),);},
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,

@@ -94,7 +94,7 @@ class NavDrawer2 extends StatelessWidget {
             leading: Icon(Icons.calendar_today, color: Color(0x55FB6340),), //Icon(Icons.settings),
             title: Text('Evenimente'), //Text('Settings'),
             //onTap: () => {Navigator.of(context).pop()},
-            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyAppEvents2()),);},
+            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => EventsMain()),);},
           ),
           ListTile(
             leading: Icon(Icons.perm_phone_msg, color: Color(0x55FB6340),), //Icon(Icons.border_color),
