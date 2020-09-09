@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/events/ui/homepage/home_page1.dart';
 import 'package:flutterapperadauti/events/ui/homepage/home_page2.dart';
+import 'package:expandable/expandable.dart';
+import 'dart:math' as math;
 
 class TabDemo extends StatefulWidget {
   @override
@@ -69,34 +71,41 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
         ),
       ),
       backgroundColor: Colors.white,
-      body: DefaultTabController(
-          length: 2,
-          child: Column(
-            children: <Widget>[
-              Material(
-                color: Colors.grey.shade300,
-                child: TabBar(
-                  unselectedLabelColor: Colors.grey,//unselectedLabelColor: Colors.blue,
-                  //labelColor: Colors.blue,
-                  indicatorColor: Color(0xAA38A49C),//indicatorColor: Colors.white,
-                  controller: _tabController,
-                  labelPadding: const EdgeInsets.all(0.0),
-                  tabs: [
-                    _getTab(
+      body:
+      ExpandableTheme(
+        data:
+        const ExpandableThemeData(
+          iconColor: Color(0xAA38A49C), //Colors.blue
+          useInkWell: true,
+        ),
+        child: DefaultTabController(
+            length: 2,
+            child: Column(
+              children: <Widget>[
+                Material(
+                  color: Colors.grey.shade300,
+                  child: TabBar(
+                    unselectedLabelColor: Colors.grey,//unselectedLabelColor: Colors.blue,
+                    //labelColor: Colors.blue,
+                    indicatorColor: Color(0xAA38A49C),//indicatorColor: Colors.white,
+                    controller: _tabController,
+                    labelPadding: const EdgeInsets.all(0.0),
+                    tabs: [
+                      _getTab(
                         0,
-                      Center(
-                        child: Text(
-                          'EVENIMENTE NOI',
-                          style: TextStyle(
-                            fontSize: 15.0,//12.0 //16.0 //14.0
-                            fontWeight: FontWeight.bold,
+                        Center(
+                          child: Text(
+                            'EVENIMENTE NOI',
+                            style: TextStyle(
+                              fontSize: 15.0,//12.0 //16.0 //14.0
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    _getTab(
+                      _getTab(
                         1,
-                      Center(
+                        Center(
                           child: Text(
                             'EVENIMENTE TRECUTE',
                             style: TextStyle(
@@ -104,23 +113,26 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: TabBarView(
-                  physics: NeverScrollableScrollPhysics(),
-                  controller: _tabController,
-                  children: [
-                    NewEvents(),
-                    LastEvents(),
-                  ],
+                Expanded(
+                  child: TabBarView(
+                    physics: NeverScrollableScrollPhysics(),
+                    controller: _tabController,
+                    children: [
+                      NewEvents(),
+                      LastEvents(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          )),
+              ],
+            ),
+        ),
+      ),
+
     );
   }
 

@@ -142,7 +142,11 @@ class _NewEventsState extends State<NewEvents> {
                       return Container(
                         height: (MediaQuery.of(context).size.height - 55),
                         child: Center(
-                          child: CircularProgressIndicator(),
+                          child:
+                          CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation <Color> (Color(0xFF38A49C)),
+                          ),
+                          //CircularProgressIndicator(),
                         ),
                       );
                     },
