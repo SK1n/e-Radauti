@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutterapperadauti/events/styleguide.dart'; //import 'package:flutterapp/styleguide.dart';
-import '../../model/last_events.dart';
+import '../../model/event.dart';
 import 'package:expandable/expandable.dart';
-import 'dart:math' as math;
 
-//import 'package:flutterapperadauti/TownHall/town_hall_main.dart';
+class NewEventWidget extends StatelessWidget {
+  final Event event;
+  const NewEventWidget({Key key, this.event}) : super(key: key);
 
-const loremIpsum =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-
-class LastEventWidget extends StatelessWidget {
-  final LastEvent event;
-  const LastEventWidget({Key key, this.event}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ExpandableNotifier(
-        child: Padding(
+        child: Container(
           padding: const EdgeInsets.all(0),
+          //width: 900,
           child: Card(
             margin: const EdgeInsets.only( right: 0, left: 0, bottom: 15.0 ),
+            //elevation: 4,
+            //color: Colors.white,
+            //childAspectRatio: (MediaQuery.of(context).size.width/2 - 22.5) / (MediaQuery.of(context).size.height/5 - 60),
+            /*shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(2)),
+            ),*/
             clipBehavior: Clip.antiAlias,
             child: Column(
               children: <Widget>[
@@ -218,6 +220,51 @@ class LastEventWidget extends StatelessWidget {
 
                                     ],
                                   ),
+                                  Row(
+                                    children: <Widget>[
+                                      Column(
+                                        //particip
+                                        children:<Widget>[
+                                          RaisedButton(
+                                            color: Color(0xAA38A49C), //Color(0xAAFB6340), //Colors.orange,
+                                            onPressed: () {},
+                                            child: const Text(
+                                              'Particip!',
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,//Color(0xAAFB6340),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Column(
+                                        //inscrisi
+                                        children:<Widget>[
+                                          Row(
+                                            children: <Widget>[
+                                              Text(
+                                                event.nrParticipants,//'0',//'inscrisi',//event.title,
+                                                //style: eventTitleTextStyle,
+                                                style: TextStyle(
+                                                  fontSize: 13,//40,
+                                                  color: Colors.grey[600],//[300]
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 5,
+                                              ),
+                                              Icon(Icons.people),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
 
                                 ],
                               ),
@@ -228,15 +275,7 @@ class LastEventWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                /*SizedBox(
-                  height: 150,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.orange,
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                ),*/
+
                 ScrollOnExpand(
                   scrollOnExpand: true,
                   scrollOnCollapse: false,
@@ -252,7 +291,7 @@ class LastEventWidget extends StatelessWidget {
                           style: Theme.of(context).textTheme.body2,
                         )),
                     collapsed: Text(
-                      loremIpsum,
+                      '',
                       softWrap: true,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -263,7 +302,7 @@ class LastEventWidget extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(bottom: 10),
                           child: Text(
-                            event.description,//loremIpsum,
+                            event.description,//
                             softWrap: true,
                             overflow: TextOverflow.fade,
                           ),

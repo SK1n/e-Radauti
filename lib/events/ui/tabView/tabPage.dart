@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/events/ui/homepage/home_page1.dart';
-import 'package:flutterapperadauti/events/ui/homepage/home_page2.dart';
-import 'package:expandable/expandable.dart';
-import 'dart:math' as math;
+import 'package:flutterapperadauti/events/ui/event_page/new_event_page.dart';
+import 'package:flutterapperadauti/events/ui/event_page/last_event_page.dart';
+
 
 class TabDemo extends StatefulWidget {
   @override
@@ -32,107 +31,97 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        //title: Text("Tab Demo"),
-        automaticallyImplyLeading: false,
-        leading: Container(
-          //padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-          //margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
-          child: Container(
-            alignment: Alignment.centerLeft,
-            child: IconButton(
-              icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
-              onPressed: (){
-                Navigator.pop(context);
-              },
-            ),
-          ),
-        ),
-        centerTitle: true,
-        title: Container(
-          child: new Stack(
-            alignment: AlignmentDirectional.center,
+    return Column(
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.only(bottom: 15, top: 20),
+          child: Row(
             children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  Icon(Icons.calendar_today, color: Color(0xAAFB6340),),
-                  SizedBox(width: 5,),
-                  Container(
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0), //10.0 //25.0
-                      child: Text('Evenimente'),
+              Container(
+                alignment: Alignment.centerLeft,
+                child: IconButton(
+                  icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width-80,
+                child: new Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: <Widget>[
+                    Stack(
+                      children: <Widget>[
+                        Icon(Icons.calendar_today, color: Color(0x55FB6340), size: 30,),
+                        Container(
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(35.0, 6.0, 0.0, 0.0), //10.0 //25.0
+                            child: Text(
+                              'Evenimente',
+                              style: TextStyle(
+                                color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 19,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
         ),
-      ),
-      backgroundColor: Colors.white,
-      body:
-      ExpandableTheme(
-        data:
-        const ExpandableThemeData(
-          iconColor: Color(0xAA38A49C), //Colors.blue
-          useInkWell: true,
-        ),
-        child: DefaultTabController(
-            length: 2,
-            child: Column(
-              children: <Widget>[
-                Material(
-                  color: Colors.grey.shade300,
-                  child: TabBar(
-                    unselectedLabelColor: Colors.grey,//unselectedLabelColor: Colors.blue,
-                    //labelColor: Colors.blue,
-                    indicatorColor: Color(0xAA38A49C),//indicatorColor: Colors.white,
-                    controller: _tabController,
-                    labelPadding: const EdgeInsets.all(0.0),
-                    tabs: [
-                      _getTab(
-                        0,
-                        Center(
-                          child: Text(
-                            'EVENIMENTE NOI',
-                            style: TextStyle(
-                              fontSize: 15.0,//12.0 //16.0 //14.0
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                      _getTab(
-                        1,
-                        Center(
-                          child: Text(
-                            'EVENIMENTE TRECUTE',
-                            style: TextStyle(
-                              fontSize: 15.0,//12.0 //16.0 //14.0
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+        Material(
+          color: Colors.grey.shade300,
+          child: TabBar(
+            unselectedLabelColor: Colors.grey,//unselectedLabelColor: Colors.blue,
+            //labelColor: Colors.blue,
+            indicatorColor: Color(0xAA38A49C),//indicatorColor: Colors.white,
+            controller: _tabController,
+            labelPadding: const EdgeInsets.all(0.0),
+            tabs: [
+              _getTab(
+                0,
+                Center(
+                  child: Text(
+                    'EVENIMENTE NOI',
+                    style: TextStyle(
+                      fontSize: 15.0,//12.0 //16.0 //14.0
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                Expanded(
-                  child: TabBarView(
-                    physics: NeverScrollableScrollPhysics(),
-                    controller: _tabController,
-                    children: [
-                      NewEvents(),
-                      LastEvents(),
-                    ],
+              ),
+              _getTab(
+                1,
+                Center(
+                  child: Text(
+                    'EVENIMENTE TRECUTE',
+                    style: TextStyle(
+                      fontSize: 15.0,//12.0 //16.0 //14.0
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
+          ),
         ),
-      ),
-
+        Expanded(
+          child: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
+            controller: _tabController,
+            children: [
+              NewEvents(),
+              LastEvents(),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
