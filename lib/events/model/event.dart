@@ -5,7 +5,7 @@ import 'dart:async';
 class Event {
   //final String imagePath, title, description, location, duration, punchLine1, punchLine2;
   final String imagePath, title, description, location, day, month, hour, organization, categoryName, nrParticipants;
-  final int dayT, monthT;
+  final int dayT, monthT, yearT;
   final List categoryIds, galleryImages;
 
   Event(
@@ -17,6 +17,7 @@ class Event {
         this.month,
         this.dayT,
         this.monthT,
+        this.yearT,
         this.hour,
         this.organization,
         this.categoryName,
@@ -57,6 +58,7 @@ Future<List> fetchListEvent() async {
         month: value['luna'].toString(),
         dayT: value['ziua'],
         monthT: value['endluna'],
+        yearT: value['endan'],
         hour: value['ora'].toString(), //data['ora'].toString(),  //data['ora'].toString() + ':' + data['minutele'].toString(), //fd[0]['ora'].toString() + 'h', //"3h"
         organization: value['organizator'].toString(), //data['ziua'].toString(), //data['data'].toString(), //"Marathon!",
         categoryName: value['categoria'], //data['luna'].toString(), //data['luna'].toString(), //"The latest fad in foodology, get the inside scoup.",

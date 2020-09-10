@@ -19,8 +19,23 @@ class LastEvents extends StatefulWidget {
 
 class _LastEventsState extends State<LastEvents> {
   Future<List> futureList;
-  var nr = 0;
+  int contor = 1;
   Function function;
+  Widget function2(Event event){
+    if (contor <= 10){
+      contor = contor + 1;
+      print('contor = $contor');
+      return GestureDetector(
+        child: LastEventWidget(
+          event: event,
+        ),
+      );
+    }else{
+      //contor = 11;
+      return Container();
+    }
+
+  }
 
   @override
   void initState() {
@@ -61,12 +76,8 @@ class _LastEventsState extends State<LastEvents> {
                                                     //for(final event in events.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
                                                     //for(final event in snapshot.data.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
                                                     //for(final event in snapshot.data.where((e) => DateTime.utc(2020, e.monthT, e.dayT).isBefore(DateTime.now())  ))
-                                                    for(final event in snapshot.data.where((e) => DateTime.utc(2020, e.monthT, e.dayT).isBefore(DateTime.utc(2020, 3, 7))  ))
-                                                      GestureDetector(
-                                                        child: LastEventWidget(
-                                                          event: event,
-                                                        ),
-                                                      )
+                                                    for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isBefore(DateTime.utc(2020, 3, 14))  ))
+                                                      function2(event)
                                                       /*GestureDetector(
                                                         child: LastEventWidget(
                                                           event: event,
