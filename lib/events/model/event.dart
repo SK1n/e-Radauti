@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 
 class Event {
-  //final String imagePath, title, description, location, duration, punchLine1, punchLine2;
   final String imagePath, title, description, location, day, month, hour, organization, categoryName, nrParticipants;
   final int dayT, monthT, yearT;
   final List categoryIds, galleryImages;

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:flutterapperadauti/TownHall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
@@ -213,7 +211,6 @@ class AndroidMobile1 extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(2)),
                         ),
                         child: Padding(
-                          //padding: const EdgeInsets.symmetric(horizontal: 20),
                           padding: const EdgeInsets.all(0),//const EdgeInsets.all(20),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
