@@ -12,23 +12,7 @@ class AboutUsApp extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(top: 20, bottom: 10,),
-            child: Row(
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.centerLeft,
-                  child: IconButton(
-                    icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
-                    onPressed: (){
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            //padding: EdgeInsets.only(bottom: 30,),
+            padding: EdgeInsets.only(top: 10,),
             width: MediaQuery.of(context).size.width - 30,
             child: Image.asset(
               "assets/images/coperta_hai_sa_digitalizam.png",
@@ -51,13 +35,11 @@ class AboutUsApp extends StatelessWidget {
             padding: EdgeInsets.only(top: 10,),
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
-              'Aplicația „e-Rădăuți” este un proiect voluntar născut din dorința de a duce orașul '
+              'Aplicația „e-Rădăuți” este un proiect voluntar născut în 2017 din dorința de a duce orașul '
               +
               'mai aproape de era digitală, de a facilita accesul localnicilor și a turiștilor la '
               +
               'resurselor culturale ale orașului și de implicare în acțiunile locale.',
-              overflow: TextOverflow.ellipsis,
-              maxLines: 5,
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -68,13 +50,11 @@ class AboutUsApp extends StatelessWidget {
             padding: EdgeInsets.only(top: 10,),
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
-              'Aplicația este rezultatul unui concurs în premieră în '
+              'Aplicația s-a născut în urma unui concurs în premieră în '
               +
               'oraș intitulat „Hai să digitalizăm orașul” în care au participat optsprezece '
               +
               'elevi din două licee din Rădăuți.',
-              overflow: TextOverflow.ellipsis,
-              maxLines: 5,
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -89,11 +69,9 @@ class AboutUsApp extends StatelessWidget {
               +
               'de profesioniști în domeniul IT și Design iar resursele financiare pentru premii '
               +
-              'au fost provenite din donații ale membrilor „Rădăuțiul civic”, a juriului și a '
+              'au fost provenite din donații ale membrilor „Rădăuțiul civic”, ale juriului și ale '
               +
               'firmei locale „Hard Power Services”.',
-              overflow: TextOverflow.ellipsis,
-              maxLines: 6,
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -101,18 +79,59 @@ class AboutUsApp extends StatelessWidget {
           ),
           //4
           Container(
+            padding: EdgeInsets.only(top: 10),
+            width: MediaQuery.of(context).size.width - 30,
+            child: Text(
+              'Noua versiune a aplicației e-Rădăuți este implementată în anul 2020 cu ajutorul fondurilor obținute '
+              +
+              'de la asociația Geeks for Democracy, prin Fondul pentru Democrație și este dedicată doar '
+              +
+              'localnicilor, renunțând temporar la partea dedicată turiștilor.',
+              style: TextStyle(
+                fontSize: 15,
+              ),
+            ),
+          ),
+          //5
+          Container(
+            padding: EdgeInsets.only(top: 10),
+            width: MediaQuery.of(context).size.width - 30,
+            child: Text(
+              'De asemenea această versiunea se bazează și pe sprijinul oferit de Code4Romania, în cadrul '
+              +
+              'ședințelor tehnice Civic Tech 911, în care ne-au oferit sprijin cum să organizăm layout și alte '
+              +
+              'aspecte tehnice.',
+              style: TextStyle(
+                fontSize: 15,
+              ),
+            ),
+          ),
+          //6
+          Container(
+            padding: EdgeInsets.only(top: 10),
+            width: MediaQuery.of(context).size.width - 30,
+            child: Text(
+              'Acest upgrade a venit cu noi funcționalități dar și cu îmbunătățiri ale funcționalităților deja '
+              +
+              'existente, aplicația fiind disponibilă în premieră și pe iOS, nu doar pe Android.',
+              style: TextStyle(
+                fontSize: 15,
+              ),
+            ),
+          ),
+          //7
+          Container(
             padding: EdgeInsets.only(top: 10, bottom: 20,),
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
-              'După concurs, cinci dintre elevii câștigători au continuat dezvoltarea aplicației „e-Rădăuți” '
+              'Aplicația este rezultatul muncii unei echipe formate din Ciprian Dicu, Luis Scripcaru, '
               +
-              'alături de un alt coleg voluntar. Echipa e-Rădăuți este alcătuită acum din șase elevi: '
+              'Paul Coman - pe partea de dezvoltare, cod și algoritmi, Viviana Huțuleac și '
               +
-              'Leonard Bereholschi, Cosmin Dărăbăneanu, Luis Scripcaru, Mihai Pricob, Radu Bouaru, '
+              'Daniela Tiron pe partea de comunicare și grafică și Luca Ciubotaru pe partea de management de '
               +
-              'Robert Pomohaci, și un coordonator de proiect mentorul Paul Coman.',
-              overflow: TextOverflow.ellipsis,
-              maxLines: 7,
+              'proiect.',
               style: TextStyle(
                 fontSize: 15,
               ),

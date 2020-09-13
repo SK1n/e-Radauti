@@ -7,10 +7,11 @@ import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/events/main.dart';
 import 'package:flutterapperadauti/usefull_pages/partner.dart';
-import 'package:flutterapperadauti/usefull_pages/credits.dart';
 import 'package:flutterapperadauti/usefull_pages/contact.dart';
 import 'package:flutterapperadauti/usefull_pages/confidential.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
+import 'package:flutterapperadauti/events/ui/device_calendar/device_calendar_file.dart';
+import 'package:flutterapperadauti/events/ui/add_2_calendar/add_2_calendar_file.dart';
  
 void main() {
   runApp(MyAppRC());
@@ -118,7 +119,7 @@ class AndroidMobile1 extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: (MediaQuery.of(context).size.height - 270),
+              height: (MediaQuery.of(context).size.height - 250),
               child: Container(
                 child: GridView.count(
                   primary: false,
@@ -574,52 +575,72 @@ class AndroidMobile1 extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 90, //(MediaQuery.of(context).size.height/5 - 45),
-              child: Container(
-                //padding: EdgeInsets.only(left: 10,top: 10, bottom: 10),
-                //width: MediaQuery.of(context).size.width - 10,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    //1
-                    Container(
-                      //padding: EdgeInsets.only(left: 0, right: 5,),
-                      width: MediaQuery.of(context).size.width/5 - 5,
-                      child: new InkWell(
-                          child: new Text(
-                            'Despre noi',
-                            style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+              height: 50,
+              child: Column(
+                //mainAxisAlignment: MainAxisAlignment.center,
+                //direction: Axis.horizontal,
+                children: <Widget>[
+                  Container(
+                    height: 15,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        //1
+                        Container(
+                          //padding: EdgeInsets.only(left: 0, right: 5,),
+                          //width: MediaQuery.of(context).size.width/4 - 10,
+                          child: new InkWell(
+                            child: new Text(
+                              'Despre noi',
+                              style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline, color: Color(0xFF32325D), fontSize: 15,),
+                            ),
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUsMain()),);},
                           ),
-                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUsMain()),);},
-                      ),
-                    ),
-                    //2
-                    Container(
-                      //padding: EdgeInsets.only(left: 0, right: 5,),
-                      width: MediaQuery.of(context).size.width/5 + 35,
-                      child: new InkWell(
-                          child: new Text(
-                            'Confidențialitate',
-                            style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                        ),
+                        VerticalDivider(
+                          color: Colors.black,
+                          //width: 20,
+                        ),
+                        //2
+                        Container(
+                          //padding: EdgeInsets.only(left: 0, right: 5,),
+                          //width: MediaQuery.of(context).size.width/4 + 25 ,
+                          child: new InkWell(
+                            child: new Text(
+                              'Confidențialitate',
+                              style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline, color: Color(0xFF32325D), fontSize: 15,),
+                            ),
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Confidential()),);},
                           ),
-                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Confidential()),);},
-                      ),
-                    ),
-                    //3
-                    Container(
-                      //padding: EdgeInsets.only(left: 0, right: 5,),
-                      width: MediaQuery.of(context).size.width/5 - 15,
-                      child: new InkWell(
-                          child: new Text(
-                            'Contact',
-                            style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
-                          ),
+                        ),
+                        VerticalDivider(
+                          color: Colors.black,
+                          //width: 20,
+                        ),
+                        //3
+                        Container(
+                          //padding: EdgeInsets.only(left: 5, right: 5,),
+                          //width: MediaQuery.of(context).size.width/4 -15,
+                          child: new InkWell(
+                            child: new Text(
+                              'Contact',
+                              style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline, color: Color(0xFF32325D), fontSize: 15,), //Color(0xFFFFFFFF),
+                            ),
 
-                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Contact2()),);},
-                      ),
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Contact()),);},
+                          ),
+                        ),
+                      ],
                     ),
-                    //4
-                    Container(
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      //4
+                      /*Container(
                       //padding: EdgeInsets.only(left: 0, right: 0,),
                       width: MediaQuery.of(context).size.width/5 - 15,
                       child: new InkWell(
@@ -629,21 +650,34 @@ class AndroidMobile1 extends StatelessWidget {
                           ),
                           onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Credits()),);},
                       ),
-                    ),
-                    //5
-                    Container(
-                      //padding: EdgeInsets.only(left: 5, right: 5,),
+                    ),*/
+                      /*Container(
+                      //padding: EdgeInsets.only(left: 0, right: 0,),
                       width: MediaQuery.of(context).size.width/5 - 15,
                       child: new InkWell(
+                        child: new Text(
+                          'Calendar',
+                          style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                        ),
+                        onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Add2CalendarEvent()),);},
+                      ),
+                    ),*/
+
+                      //5
+                      Container(
+                        //padding: EdgeInsets.only(left: 5, right: 5,),
+                        //width: MediaQuery.of(context).size.width/4 - 15,
+                        child: new InkWell(
                           child: new Text(
                             'Parteneri',
-                            style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                            style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline, color: Color(0xFF32325D), fontSize: 15,),
                           ),
                           onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Partner()),);},
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

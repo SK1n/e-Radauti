@@ -24,7 +24,7 @@ class _LastEventsState extends State<LastEvents> {
   Widget function2(Event event){
     if (contor <= 10){
       contor = contor + 1;
-      print('contor = $contor');
+      //print('contor = $contor');
       return GestureDetector(
         child: LastEventWidget(
           event: event,
@@ -75,8 +75,8 @@ class _LastEventsState extends State<LastEvents> {
                                                   children: <Widget>[
                                                     //for(final event in events.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
                                                     //for(final event in snapshot.data.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
-                                                    //for(final event in snapshot.data.where((e) => DateTime.utc(2020, e.monthT, e.dayT).isBefore(DateTime.now())  ))
-                                                    for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isBefore(DateTime.utc(2020, 3, 14))  ))
+                                                    //for(final event in snapshot.data.where((e) => DateTime.utc(2020, e.monthT, e.dayT).isBefore(DateTime.now())  )) //DateTime.utc(2020, 3, 14)
+                                                    for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isBefore(DateTime.now())  ))
                                                       function2(event)
                                                       /*GestureDetector(
                                                         child: LastEventWidget(

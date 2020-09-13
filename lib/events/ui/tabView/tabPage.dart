@@ -76,11 +76,11 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
           ),
         ),
         Material(
-          color: Colors.grey.shade300,
+          //color: Colors.grey.shade300,
           child: TabBar(
             unselectedLabelColor: Colors.grey,//unselectedLabelColor: Colors.blue,
             //labelColor: Colors.blue,
-            indicatorColor: Color(0xAA38A49C),//indicatorColor: Colors.white,
+            indicatorColor: Colors.white,//indicatorColor: Color(0xAA38A49C),
             controller: _tabController,
             labelPadding: const EdgeInsets.all(0.0),
             tabs: [
@@ -133,7 +133,7 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
           child: child,
           decoration: BoxDecoration(
               color:
-              (_selectedTab == index ? Colors.white : Colors.grey.shade300),
+              (_selectedTab == index ? Colors.white : Colors.white),
               borderRadius: _generateBorderRadius(index)),
         ),
       ),
