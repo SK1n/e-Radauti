@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_app.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_content.dart';
 import 'package:flutterapperadauti/usefull_pages/contact.dart';
-import 'package:flutterapperadauti/menu_page.dart';
 
 class AboutUsMain extends StatelessWidget {
   @override
@@ -26,32 +24,41 @@ class AboutUsMain extends StatelessWidget {
             unselectedLabelColor: Colors.grey,
             tabs: [
               Tab(
-                  child: Text(
-                    'DESPRE NOI',
-                    style: TextStyle(
-                      fontSize: 15.0,//12.0 //16.0 //14.0
-                      fontWeight: FontWeight.bold,
-                      //color: Color(0x99FFFFFF),
-                    ),
+                child: Text(
+                  'DESPRE NOI',
+                  style: TextStyle(
+                    fontSize: 15.0, //12.0 //16.0 //14.0
+                    fontWeight: FontWeight.bold,
+                    //color: Color(0x99FFFFFF),
                   ),
+                ),
               ),
               Tab(
-                  child: Text(
-                    'DESPRE APLICAȚIE',
-                    style: TextStyle(
-                      fontSize: 15.0,//12.0 //16.0 //14.0
-                      fontWeight: FontWeight.bold,
-                      //color: Color(0x99FFFFFF),
-                    ),
+                child: Text(
+                  'DESPRE APLICAȚIE',
+                  style: TextStyle(
+                    fontSize: 15.0, //12.0 //16.0 //14.0
+                    fontWeight: FontWeight.bold,
+                    //color: Color(0x99FFFFFF),
                   ),
+                ),
               ),
             ],
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FloatingActionButton(
-          child:  Icon(Ionicons.ios_mail, color: Colors.white, size: 35,),
-          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Contact2()),);},
+          child: Icon(
+            Ionicons.ios_mail,
+            color: Colors.white,
+            size: 35,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Contact2()),
+            );
+          },
         ),
         body: TabBarView(
           children: [

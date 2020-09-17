@@ -1,17 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapperadauti/TownHall/leaders.dart';
-import 'package:flutterapperadauti/TownHall/local_council.dart';
-import 'package:flutterapperadauti/menu_page.dart';
-import 'dart:developer';
-import 'dart:io';
-import 'package:image_picker/image_picker.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/services.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
-import 'package:gallery_saver/gallery_saver.dart';
 
 class Contact extends StatelessWidget {
   @override
@@ -30,14 +22,20 @@ class Contact extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(top: 20, bottom: 10,),
+              padding: EdgeInsets.only(
+                top: 20,
+                bottom: 10,
+              ),
               child: Row(
                 children: <Widget>[
                   Container(
                     alignment: Alignment.centerLeft,
                     child: IconButton(
-                      icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
-                      onPressed: (){
+                      icon: Icon(
+                        Icons.keyboard_arrow_left,
+                        color: Color(0xFF979797),
+                      ), //_left Icons.arrow_back
+                      onPressed: () {
                         Navigator.pop(context);
                       },
                     ),
@@ -69,7 +67,9 @@ class Contact extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 10,),
+              padding: EdgeInsets.only(
+                top: 10,
+              ),
               width: MediaQuery.of(context).size.width - 80,
               child: Text(
                 "Informații despre primar, viceprimar și atribuțiile fiecăruia.",
@@ -83,7 +83,9 @@ class Contact extends StatelessWidget {
             ),
             Container(
               width: MediaQuery.of(context).size.width - 120,
-              padding: EdgeInsets.only(left: 10,),
+              padding: EdgeInsets.only(
+                left: 10,
+              ),
               child: Text(
                 "Conducere",
                 style: TextStyle(
@@ -148,11 +150,10 @@ class _Contact2State extends State<Contact2> {
     final message = Message()
       ..from = Address(username, _nameController.text)
       ..recipients.add('ciprian.dicu7@yahoo.com')
-    // ..ccRecipients.addAll(['radautiulcivic@gmail.com','coman.paul@yahoo.com'])
-      ..subject =
-          ' Mesaj secțiunea Contact ' + ' - aplicația e-Rădăuți'
+      // ..ccRecipients.addAll(['radautiulcivic@gmail.com','coman.paul@yahoo.com'])
+      ..subject = ' Mesaj secțiunea Contact ' + ' - aplicația e-Rădăuți'
       ..html = 'Către,'
-          '     ' +
+              '     ' +
           ' Rădăuțiul civic    ' +
           '<br><br>' +
           'Stimată doamnă/ Stimate domn,<br><br>' +
@@ -347,7 +348,6 @@ class _Contact2State extends State<Contact2> {
     });
   }*/
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -363,190 +363,204 @@ class _Contact2State extends State<Contact2> {
         ),
         body: isLoading
             ? Center(
-          child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation <Color> (Color(0xFF38A49C)),
-          ),)
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
+                ),
+              )
             : SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(top: 20, bottom: 10,),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        child: IconButton(
-                          icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
-                          onPressed: (){
-                            Navigator.pop(context);
-                          },
+                child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(
+                      top: 20,
+                      bottom: 10,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.keyboard_arrow_left,
+                              color: Color(0xFF979797),
+                            ), //_left Icons.arrow_back
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
                         ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width - 80,
-                        child: new Stack(
-                          alignment: AlignmentDirectional.center,
-                          children: <Widget>[
-                            Stack(
-                              children: <Widget>[
-                                //Icon(Icons.location_city, color: Color(0x55FB6340), size: 30,),
-                                Container(
-                                  child: Text(
-                                    'Contact',
-                                    style: TextStyle(
-                                      color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 19,
+                        Container(
+                          width: MediaQuery.of(context).size.width - 80,
+                          child: new Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: <Widget>[
+                              Stack(
+                                children: <Widget>[
+                                  //Icon(Icons.location_city, color: Color(0x55FB6340), size: 30,),
+                                  Container(
+                                    child: Text(
+                                      'Contact',
+                                      style: TextStyle(
+                                        color: Color(
+                                            0xFF000000), //Color(0xFFFFFFFF),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 19,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                    margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-                    child: TextField(
-                      textCapitalization: TextCapitalization.sentences,
-                      controller: _nameController,
-                      enabled: true,
-                      decoration: new InputDecoration(
-                        border: new OutlineInputBorder(
-                          borderSide: new BorderSide(
-                              color: Color.fromRGBO(56, 164, 156, 10)),
+                  Container(
+                      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                      child: TextField(
+                        textCapitalization: TextCapitalization.sentences,
+                        controller: _nameController,
+                        enabled: true,
+                        decoration: new InputDecoration(
+                          border: new OutlineInputBorder(
+                            borderSide: new BorderSide(
+                                color: Color.fromRGBO(56, 164, 156, 10)),
+                          ),
+                          labelText: 'Nume și prenume:',
+                          prefixText: '',
+                          errorText: _validateName
+                              ? 'Nu ați introdus numele dvs.'
+                              : null,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1,
+                                color: Color.fromRGBO(56, 164, 156, 10)),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1,
+                                color: Color.fromRGBO(56, 164, 156, 10)),
+                          ),
+                          labelStyle: TextStyle(
+                            color: Colors.grey,
+                          ),
                         ),
-                        labelText: 'Nume și prenume:',
-                        prefixText: '',
-                        errorText:
-                        _validateName ? 'Nu ați introdus numele dvs.' : null,
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
-                        ),
-                        labelStyle: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                    )),
-                Container(
-                  margin: EdgeInsets.fromLTRB(20, 20, 0, 20),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        width: MediaQuery.of(context).size.width  - 30,
-                        child: TextField(
-                          textCapitalization: TextCapitalization.sentences,
-                          controller: _emailController,
-                          enabled: true,
-                          decoration: new InputDecoration(
-                            border: new OutlineInputBorder(
-                              borderSide: new BorderSide(
-                                  color: Color.fromRGBO(56, 164, 156, 10)),
-                            ),
-                            labelText: 'Email:',
-                            prefixText: '',
-                            errorText:
-                            _validateEmail ? 'Nu ați introdus un email!' : null,
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 1,
-                                  color: Color.fromRGBO(56, 164, 156, 10)),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 1,
-                                  color: Color.fromRGBO(56, 164, 156, 10)),
-                            ),
-                            labelStyle: TextStyle(
-                              color: Colors.grey,
+                      )),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(20, 20, 0, 20),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          width: MediaQuery.of(context).size.width - 30,
+                          child: TextField(
+                            textCapitalization: TextCapitalization.sentences,
+                            controller: _emailController,
+                            enabled: true,
+                            decoration: new InputDecoration(
+                              border: new OutlineInputBorder(
+                                borderSide: new BorderSide(
+                                    color: Color.fromRGBO(56, 164, 156, 10)),
+                              ),
+                              labelText: 'Email:',
+                              prefixText: '',
+                              errorText: _validateEmail
+                                  ? 'Nu ați introdus un email!'
+                                  : null,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 1,
+                                    color: Color.fromRGBO(56, 164, 156, 10)),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 1,
+                                    color: Color.fromRGBO(56, 164, 156, 10)),
+                              ),
+                              labelStyle: TextStyle(
+                                color: Colors.grey,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                    margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-                    child: TextField(
-                      textCapitalization: TextCapitalization.sentences,
-                      controller: _bodyController,
-                      keyboardType: TextInputType.multiline,
-                      maxLines: null,
-                      enabled: true,
-                      decoration: new InputDecoration(
-                        border: new OutlineInputBorder(
-                          borderSide: new BorderSide(
-                              color: Color.fromRGBO(56, 164, 156, 10)),
+                  Container(
+                      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                      child: TextField(
+                        textCapitalization: TextCapitalization.sentences,
+                        controller: _bodyController,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        enabled: true,
+                        decoration: new InputDecoration(
+                          border: new OutlineInputBorder(
+                            borderSide: new BorderSide(
+                                color: Color.fromRGBO(56, 164, 156, 10)),
+                          ),
+                          labelText: 'Mesaj:',
+                          labelStyle: TextStyle(
+                            color: Colors.grey,
+                          ),
+                          prefixText: '',
+                          errorText: _validateDescription
+                              ? 'Nu ați introdus un mesaj'
+                              : null,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1,
+                                color: Color.fromRGBO(56, 164, 156, 10)),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1,
+                                color: Color.fromRGBO(56, 164, 156, 10)),
+                          ),
                         ),
-                        labelText: 'Mesaj:',
-                        labelStyle: TextStyle(
-                          color: Colors.grey,
-                        ),
-                        prefixText: '',
-                        errorText: _validateDescription
-                            ? 'Nu ați introdus un mesaj'
-                            : null,
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1, color: Color.fromRGBO(56, 164, 156, 10)),
-                        ),
-                      ),
-                    )),
-                Container(
-                  margin: EdgeInsets.only(top: 0, left: 20, right: 20),
-                  width: MediaQuery.of(context).size.width,
-                  child: FlatButton(
-                    color: Color.fromRGBO(56, 164, 156, 10),
-                    textColor: Colors.white,
-                    onPressed: () {
-                      //attachments.removeWhere((item) => item == null);
-                      setState(() {
-                        _nameController.text.isEmpty
-                            ? _validateName = true
-                            : _validateName = false;
-                        _bodyController.text.isEmpty
-                            ? _validateDescription = true
-                            : _validateDescription = false;
-                        _emailController.text.isEmpty
-                            ? _validateEmail = true
-                            : _validateEmail = false;
-                        /*if (position == null) {
+                      )),
+                  Container(
+                    margin: EdgeInsets.only(top: 0, left: 20, right: 20),
+                    width: MediaQuery.of(context).size.width,
+                    child: FlatButton(
+                      color: Color.fromRGBO(56, 164, 156, 10),
+                      textColor: Colors.white,
+                      onPressed: () {
+                        //attachments.removeWhere((item) => item == null);
+                        setState(() {
+                          _nameController.text.isEmpty
+                              ? _validateName = true
+                              : _validateName = false;
+                          _bodyController.text.isEmpty
+                              ? _validateDescription = true
+                              : _validateDescription = false;
+                          _emailController.text.isEmpty
+                              ? _validateEmail = true
+                              : _validateEmail = false;
+                          /*if (position == null) {
                           getLocation();
                           _scaffoldKey.currentState.showSnackBar(SnackBar(
                             content: Text(
                                 "Ne trebuie locatia dvs. Va rugam acceptati permisiunea de GPS"),
                           ));
                         }*/
-                        if (_validateName == false) {
-                          if (_validateDescription == false) {
-                            if (_validateEmail == false) {
-                              setState(() {
-                                isLoading = true;
-                              });
-                              _mailer();
+                          if (_validateName == false) {
+                            if (_validateDescription == false) {
+                              if (_validateEmail == false) {
+                                setState(() {
+                                  isLoading = true;
+                                });
+                                _mailer();
+                              }
                             }
                           }
-                        }
-                      });
-                    },
-                    child: Text("Trimite"),
-                  ),
-                )
-              ],
-            )));
+                        });
+                      },
+                      child: Text("Trimite"),
+                    ),
+                  )
+                ],
+              )));
   }
 
   void initState() {

@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterapperadauti/jobs/remoteJson.dart';
 import 'package:flutterapperadauti/menu_page.dart';
-import 'package:flutterapperadauti/usefull_numbers/public_institutions.dart';
 
-class HomePageNumbers extends StatelessWidget {
+class HomePageJobs extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,18 +21,23 @@ class HomePageNumbers extends StatelessWidget {
         actions: <Widget>[
           Container(
             alignment: Alignment.topRight,
-            margin: EdgeInsets.only(top: 0.0, right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
+            margin: EdgeInsets.only(
+                top: 0.0,
+                right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
             child: IconButton(
-              icon: Icon(Icons.menu,
+              icon: Icon(
+                Icons.menu,
                 size: 24,
-                color: Colors.black, ), //Colors.white
-              onPressed: () => _scaffoldKey.currentState.openDrawer(), //_scaffoldKey.currentState.openDrawer(),
+                color: Colors.black,
+              ), //Colors.white
+              onPressed: () => _scaffoldKey.currentState
+                  .openDrawer(), //_scaffoldKey.currentState.openDrawer(),
             ),
           ),
         ],
-    ),
-    drawer: NavDrawer2(),
-    body: null,
+      ),
+      drawer: NavDrawer2(),
+      body: RemoteJson(),
     );
   }
 }

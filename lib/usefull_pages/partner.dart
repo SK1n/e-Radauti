@@ -1,9 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapperadauti/TownHall/leaders.dart';
-import 'package:flutterapperadauti/TownHall/local_council.dart';
-import 'package:flutterapperadauti/menu_page.dart';
 
 class Partner extends StatelessWidget {
   @override
@@ -22,14 +18,20 @@ class Partner extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(top: 20, bottom: 10,),
+              padding: EdgeInsets.only(
+                top: 20,
+                bottom: 10,
+              ),
               child: Row(
                 children: <Widget>[
                   Container(
                     alignment: Alignment.centerLeft,
                     child: IconButton(
-                      icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
-                      onPressed: (){
+                      icon: Icon(
+                        Icons.keyboard_arrow_left,
+                        color: Color(0xFF979797),
+                      ), //_left Icons.arrow_back
+                      onPressed: () {
                         Navigator.pop(context);
                       },
                     ),
@@ -61,7 +63,9 @@ class Partner extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(bottom: 20,),
+              padding: EdgeInsets.only(
+                bottom: 20,
+              ),
               width: MediaQuery.of(context).size.width - 30,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
