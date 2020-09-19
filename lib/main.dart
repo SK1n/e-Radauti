@@ -4,12 +4,11 @@ import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/events/main.dart';
+import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
 import 'package:flutterapperadauti/usefull_pages/partner.dart';
 import 'package:flutterapperadauti/usefull_pages/contact.dart';
 import 'package:flutterapperadauti/usefull_pages/confidential.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
-import 'package:flutterapperadauti/events/ui/device_calendar/device_calendar_file.dart';
-import 'package:flutterapperadauti/events/ui/add_2_calendar/add_2_calendar_file.dart';
 
 void main() {
   runApp(MyAppRC());
