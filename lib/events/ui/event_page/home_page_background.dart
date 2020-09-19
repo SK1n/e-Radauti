@@ -16,11 +16,6 @@ class HomePageBackground extends StatelessWidget {
           color: themeData.primaryColor,
         ),
     );
-
-    /*return Container(
-      height: screenHeight * 0.5,
-      color: themeData.primaryColor,
-    );*/
   }
 }
 
