@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapperadauti/TownHall/leaders.dart';
-import 'package:flutterapperadauti/TownHall/local_council.dart';
-import 'package:flutterapperadauti/menu_page.dart';
 
 class AboutUsContent extends StatelessWidget {
   @override

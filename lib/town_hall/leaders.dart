@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -171,18 +170,23 @@ class Leaders extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Row(
+                            new ButtonBar(
+                              mainAxisSize: MainAxisSize.min, // this will take space as minimum as posible(to center)
                               children: <Widget>[
-                                FlatButton(
+                                new RaisedButton(
+                                  color: Colors.white,
                                   child: Icon(Ionicons.logo_facebook, color: Colors.indigo, size: 40,),
                                   onPressed: () {
                                     _launchURL("facebook.com");
                                   },
                                 ),
-                                FlatButton(
+                                new RaisedButton(
+                                  color: Colors.white,
                                   child: Icon(Ionicons.logo_whatsapp, color: Colors.green , size: 40,),
+                                  onPressed: null,
                                 ),
-                                FlatButton(
+                                new RaisedButton(
+                                  color: Colors.white,
                                   child: Icon(Ionicons.ios_mail, color: Colors.orangeAccent, size: 40,),
                                   onPressed: () {
                                     UrlLauncher.launch("mailto:email1@gmail.com");
@@ -278,18 +282,23 @@ class Leaders extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Row(
+                            new ButtonBar(
+                              mainAxisSize: MainAxisSize.min, // this will take space as minimum as posible(to center)
                               children: <Widget>[
-                                FlatButton(
+                                new RaisedButton(
+                                  color: Colors.white,
                                   child: Icon(Ionicons.logo_facebook, color: Colors.indigo, size: 40,),
                                   onPressed: () {
                                     _launchURL("facebook.com");
                                   },
                                 ),
-                                FlatButton(
+                                new RaisedButton(
+                                  color: Colors.white,
                                   child: Icon(Ionicons.logo_whatsapp, color: Colors.green , size: 40,),
+                                  onPressed: null,
                                 ),
-                                FlatButton(
+                                new RaisedButton(
+                                  color: Colors.white,
                                   child: Icon(Ionicons.ios_mail, color: Colors.orangeAccent, size: 40,),
                                   onPressed: () {
                                     UrlLauncher.launch("mailto:email1@gmail.com");
@@ -345,7 +354,7 @@ class Leaders extends StatelessWidget {
                 height:1.0,
                 color:Color.fromRGBO(0, 0, 0, 0.1),),),
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 30),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -385,18 +394,23 @@ class Leaders extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Row(
+                            new ButtonBar(
+                              mainAxisSize: MainAxisSize.min, // this will take space as minimum as posible(to center)
                               children: <Widget>[
-                                FlatButton(
+                                new RaisedButton(
+                                  color: Colors.white,
                                   child: Icon(Ionicons.logo_facebook, color: Colors.indigo, size: 40,),
                                   onPressed: () {
                                     _launchURL("facebook.com");
                                   },
                                 ),
-                                FlatButton(
+                                new RaisedButton(
+                                  color: Colors.white,
                                   child: Icon(Ionicons.logo_whatsapp, color: Colors.green , size: 40,),
+                                  onPressed: null,
                                 ),
-                                FlatButton(
+                                new RaisedButton(
+                                  color: Colors.white,
                                   child: Icon(Ionicons.ios_mail, color: Colors.orangeAccent, size: 40,),
                                   onPressed: () {
                                     UrlLauncher.launch("mailto:email1@gmail.com");
@@ -446,11 +460,11 @@ class Leaders extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
+            /*Padding(
               padding:EdgeInsets.symmetric(horizontal:15.0),
               child:Container(
                 height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+                color:Color.fromRGBO(0, 0, 0, 0.1),),),*/
           ],
         ),
       ),

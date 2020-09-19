@@ -4,8 +4,11 @@ import 'package:flutterapperadauti/events/ui/event_page/last_event_page.dart';
 
 
 class TabDemo extends StatefulWidget {
+  final GlobalKey<ScaffoldState> scaffoldState;
+  TabDemo({Key key, this.scaffoldState,}) : super(key: key);
+
   @override
-  _TabDemoState createState() => _TabDemoState();
+  _TabDemoState createState() => _TabDemoState(scaffoldState,);
 }
 
 class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
@@ -13,6 +16,8 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
   TabController _tabController;
 
   int _selectedTab = 0;
+  final GlobalKey<ScaffoldState> scaffoldState;
+  _TabDemoState(this.scaffoldState,);
 
   @override
   void initState() {

@@ -2,13 +2,13 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 
-class Event {
+class EventApp {
   //final String imagePath, title, description, location, duration, punchLine1, punchLine2;
   final String imagePath, title, description, location, day, month, hour, organization, categoryName, nrParticipants;
-  final int dayT, monthT, yearT;
+  final int dayT, monthT, yearT, hourT, minuteT;
   final List categoryIds, galleryImages;
 
-  Event(
+  EventApp(
       {this.imagePath,
         this.title,
         this.description,
@@ -18,6 +18,8 @@ class Event {
         this.dayT,
         this.monthT,
         this.yearT,
+        this.hourT,
+        this.minuteT,
         this.hour,
         this.organization,
         this.categoryName,
@@ -34,8 +36,8 @@ Future<List> fetchListEvent() async {
   http.Response r = await http.get('https://e-radauti-80139.firebaseio.com/-Events.json');
   fd = json.decode(r.body);
 
-  final List<Event> children = <Event>[];
-  final List<Event> children2 = <Event>[];
+  final List<EventApp> children = <EventApp>[];
+  final List<EventApp> children2 = <EventApp>[];
 
   String imageLink1;
   imageLink1 = 'https://firebasestorage.googleapis.com/v0/b/e-radauti-80139.appspot.com/o/';
@@ -49,13 +51,15 @@ Future<List> fetchListEvent() async {
 
     children.add(
 
-      new Event(
+      new EventApp(
         imagePath: imageLink1 + value['imageUrl'].replaceAll(regExp, '') + imageLink2, //'https://firebasestorage.googleapis.com/v0/b/e-radauti-80139.appspot.com/o/01-Nebunie-de-comedie-Radauti.jpg?alt=media&token=1a429f07-6cef-4de2-940f-0f839b2db3ff', //value['imageUrl'], //data['imageUrl'], //data['url'], //fd[0]['url'], //"assets/event_images/5_km_downtown_run.jpg",
         title: value['headline'], //data['headline'], //data['title'], //fd[0]['title'], //"5 Kilometer Downtown Run " +
         description: value['descriere'],//value['categoria'], //"Marathon!", //"",
         location: value['localitatea'] + ',' +' ' + value['strada'], //data['localitatea'] + ', ' + data['strada'], //data['subtitle'], //fd[0]['subtitle'], //"Pleasant Park"
         day: value['ziua'].toString(),
         month: value['luna'].toString(),
+        minuteT: value['endminute"'],
+        hourT: value['endora'],
         dayT: value['ziua'],
         monthT: value['endluna'],
         yearT: value['endan'],

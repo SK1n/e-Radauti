@@ -11,16 +11,19 @@ import 'package:provider/provider.dart';
 import 'home_page_background.dart';
 
 class NewEvents extends StatefulWidget {
-  NewEvents({Key key}) : super(key: key);
+  final GlobalKey<ScaffoldState> scaffoldState;
+  NewEvents({Key key, this.scaffoldState,}) : super(key: key);
 
   @override
-  _NewEventsState createState() => _NewEventsState();
+  _NewEventsState createState() => _NewEventsState(scaffoldState);
 }
 
 class _NewEventsState extends State<NewEvents> {
   Future<List> futureList;
   //var berlinWallFell = new DateTime.utc(1989, 11, 9);
   var berlinWallFell = new DateTime.utc(2020, 3, 19);
+  final GlobalKey<ScaffoldState> scaffoldState;
+   _NewEventsState( this.scaffoldState,);
 
   @override
   void initState() {
@@ -63,10 +66,12 @@ class _NewEventsState extends State<NewEvents> {
                                                     //for(final event in snapshot.data.where((e) => DateTime.utc(2020, e.monthT, e.dayT).isAfter(DateTime.utc(2020, 3, 7))  ))
                                                     //for(final event in snapshot.data.where((e) => DateTime.utc(2020, e.monthT, e.dayT).isAfter(DateTime.now()) || DateTime.utc(2020, e.monthT, e.dayT).isAfter(DateTime.now()) ))
                                                     for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isAfter(DateTime.now()) || DateTime.utc(e.yearT, e.monthT, e.dayT).isAtSameMomentAs(DateTime.now()) ))
+                                                    //for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isAfter(DateTime.utc(2020, 3, 7))  ))
                                                     //e.categoryIds.contains(appState.selectedCategoryId)
                                                       GestureDetector(
                                                         child: NewEventWidget(
                                                           event: event,
+                                                          scaffoldState: scaffoldState,
                                                         ),
                                                       ),
                                                     //Text(event.title)

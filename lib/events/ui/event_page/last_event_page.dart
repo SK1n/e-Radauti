@@ -20,8 +20,7 @@ class LastEvents extends StatefulWidget {
 class _LastEventsState extends State<LastEvents> {
   Future<List> futureList;
   int contor = 1;
-  Function function;
-  Widget function2(Event event){
+  Widget function(EventApp event){
     if (contor <= 10){
       contor = contor + 1;
       //print('contor = $contor');
@@ -73,17 +72,9 @@ class _LastEventsState extends State<LastEvents> {
                                               child: Consumer<AppState>(
                                                 builder: (context, appState, _) => Column(
                                                   children: <Widget>[
-                                                    //for(final event in events.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
-                                                    //for(final event in snapshot.data.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
-                                                    //for(final event in snapshot.data.where((e) => DateTime.utc(2020, e.monthT, e.dayT).isBefore(DateTime.now())  )) //DateTime.utc(2020, 3, 14)
                                                     for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isBefore(DateTime.now())  ))
-                                                      function2(event)
-                                                      /*GestureDetector(
-                                                        child: LastEventWidget(
-                                                          event: event,
-                                                        ),
-                                                      ),*/
-                                                    //Text(event.title)
+                                                      function(event)
+
                                                   ],
                                                 ),
                                               ),

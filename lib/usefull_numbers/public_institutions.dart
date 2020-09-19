@@ -328,7 +328,7 @@ class PublicInstitutions extends StatelessWidget {
                 color:Color.fromRGBO(0, 0, 0, 0.1),),),
             //3
             Container(
-              padding: EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 10,),
+              padding: EdgeInsets.only(left: 25, right: 25, bottom: 30, top: 10,),
               child: Column(
                 children: <Widget>[
                   //1,2
@@ -448,11 +448,11 @@ class PublicInstitutions extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
+            /*Padding(
               padding:EdgeInsets.symmetric(horizontal:15.0),
               child:Container(
                 height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+                color:Color.fromRGBO(0, 0, 0, 0.1),),),*/
           ],
         ),
       )

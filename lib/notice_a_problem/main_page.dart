@@ -25,7 +25,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   bool _validatePath = false;
   bool _validateNumber = false;
   bool _validateEmail = false;
-  String dropdownValue = "Categorie";
+  String dropdownValue = "Destinatar";
   Position position;
   File recordedImage1;
   File recordedImage2;
@@ -526,12 +526,12 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                     ),
                   )),
               GridView.count(
-                crossAxisCount: 2,
+                crossAxisCount: 3,
                 primary: false,
                 shrinkWrap: true,
-                padding: const EdgeInsets.only(top: 0, left: 20, right: 20, bottom: 0,),
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
+                padding: const EdgeInsets.only(top: 0, left: 0, right: 0, bottom: 0,),
+                //crossAxisSpacing: 10,
+                //mainAxisSpacing: 10,
                 children: <Widget>[
                   FlatButton(
                     child: recordedImage1 == null
@@ -589,24 +589,27 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                 ),
               ],
             ),
+            Text('Alege destinația sesizării din lista de mai jos'),
             Container(
               margin: EdgeInsets.only(top: 0, left: 20, right: 20, bottom: 20,),
               child: new DropdownButton<String>(
                 value: dropdownValue,
                 elevation: 16,
                 style: TextStyle(color: Colors.black),
-                items: <String>['Categorie', 'Primăria Rădăuți', 'Servicii Comunale', 'ACET Rădăuți', 'Consiliul Județean Suceava', 'Garda De Mediu Suceava', 'Garda Forestieră Suceava', 'Rădăuțiul Civic']
+                items: <String>['Destinatar', 'Primăria Rădăuți', 'Servicii Comunale', 'ACET Rădăuți', 'Consiliul Județean Suceava', 'Garda De Mediu Suceava', 'Garda Forestieră Suceava', 'Rădăuțiul Civic']
                     .map((String value) {
                   return new DropdownMenuItem<String>(
                     value: value,
-                    child: new Text(value),
+                    child: Center(
+                      child: new Text(value),
+                    ),
                   );
                 }).toList(),
                 onChanged: (String value) {
                   setState(() {
                     dropdownValue = value;
                     switch (value) {
-                      case "Categorie": {
+                      case "Destinatar": {
                         _validateDropDown = true;
                       } break;
                       case "Primăria Rădăuți": {

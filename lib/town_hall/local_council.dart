@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -2661,7 +2660,7 @@ class LocalCouncil extends StatelessWidget {
                 color:Color.fromRGBO(0, 0, 0, 0.1),),),
             //10
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 30),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2794,11 +2793,11 @@ class LocalCouncil extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
+            /*Padding(
               padding:EdgeInsets.symmetric(horizontal:15.0),
               child:Container(
                 height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+                color:Color.fromRGBO(0, 0, 0, 0.1),),),*/
           ],
         ),
       ),

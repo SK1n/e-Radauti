@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapperadauti/TownHall/leaders.dart';
-import 'package:flutterapperadauti/TownHall/local_council.dart';
+import 'package:flutterapperadauti/town_hall/leaders.dart';
+import 'package:flutterapperadauti/town_hall/local_council.dart';
+import 'package:flutterapperadauti/town_hall/council_meetings.dart';
+import 'package:flutterapperadauti/town_hall/local_legislation.dart';
 import 'package:flutterapperadauti/menu_page.dart';
 
 class TownHallMain extends StatelessWidget {
@@ -244,7 +246,7 @@ class TownHallMain extends StatelessWidget {
                   ],
                 ),
               ),
-              onTap: null, //() {Navigator.push(context, MaterialPageRoute(builder: (context) => LocalCouncil()),);},
+              onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => CouncilMeetings()),);},
             ), ///Conducere
             Padding(
               padding:EdgeInsets.symmetric(horizontal:15.0),
@@ -253,7 +255,7 @@ class TownHallMain extends StatelessWidget {
                 color:Color.fromRGBO(0, 0, 0, 0.1),),),
             GestureDetector(
               child: Container(
-                padding: EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 10,),
+                padding: EdgeInsets.only(left: 25, right: 25, bottom: 30, top: 10,),
                 child: Row(
                   children: <Widget>[
                     Column(
@@ -269,7 +271,7 @@ class TownHallMain extends StatelessWidget {
                               width: MediaQuery.of(context).size.width - 120,
                               padding: EdgeInsets.only(left: 10,),
                               child: Text(
-                                "Legislație locală",
+                                "Hotărâri de Consiliu Local",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
@@ -282,7 +284,7 @@ class TownHallMain extends StatelessWidget {
                           padding: EdgeInsets.only(top: 10,),
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
-                            "Descoperă ultimile hotărâri locale, proiecte, formulare etc.",
+                            "Descoperă hotărârile de consiliu local adoptate și proiectele acestora.",
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -299,13 +301,13 @@ class TownHallMain extends StatelessWidget {
                   ],
                 ),
               ),
-              onTap: null, //() {Navigator.push(context, MaterialPageRoute(builder: (context) => LocalCouncil()),);},
+              onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => LocalLegislation()),);}, //null,
             ), ///Conducere
-            Padding(
+            /*Padding(
               padding:EdgeInsets.symmetric(horizontal:15.0),
               child:Container(
                 height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+                color:Color.fromRGBO(0, 0, 0, 0.1),),),*/
           ],
         ),
       ),

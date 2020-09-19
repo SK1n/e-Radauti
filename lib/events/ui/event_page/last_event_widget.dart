@@ -5,7 +5,7 @@ import '../../model/event.dart';
 import 'package:expandable/expandable.dart';
 
 class LastEventWidget extends StatelessWidget {
-  final Event event;
+  final EventApp event;
   const LastEventWidget({Key key, this.event}) : super(key: key);
   @override
   Widget build(BuildContext context) {

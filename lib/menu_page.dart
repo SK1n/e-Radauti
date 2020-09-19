@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/TownHall/town_hall_main.dart';
+import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/events/main.dart';

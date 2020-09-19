@@ -3,13 +3,25 @@ import 'package:flutter/painting.dart';
 import 'package:flutterapperadauti/events/styleguide.dart'; //import 'package:flutterapp/styleguide.dart';
 import '../../model/event.dart';
 import 'package:expandable/expandable.dart';
+import 'package:add_2_calendar/add_2_calendar.dart';
 
 class NewEventWidget extends StatelessWidget {
-  final Event event;
-  const NewEventWidget({Key key, this.event}) : super(key: key);
+  final EventApp event;
+  final GlobalKey<ScaffoldState> scaffoldState;
+  const NewEventWidget({Key key, this.event, this.scaffoldState,}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
+    Event eventCalendar = Event(
+      title: event.title, //'Test event',
+      description: event.description,//'example',
+      location: event.location, //'Flutter app',
+      startDate: DateTime.utc(event.yearT, event.monthT, event.dayT, event.hourT, event.minuteT),//DateTime.utc(event.yearT, event.monthT, event.dayT, event.hourT, event.minuteT), //DateTime.now(),
+      endDate: DateTime.utc(event.yearT, event.monthT, event.dayT, event.hourT, event.minuteT).add(Duration(hours: 2,)), //DateTime.utc(event.yearT, event.monthT, event.dayT, event.hourT, event.minuteT).add(Duration(days: 1)),//
+      allDay: false,
+    );
+
     return ExpandableNotifier(
         child: Container(
           padding: const EdgeInsets.all(0),
@@ -227,7 +239,12 @@ class NewEventWidget extends StatelessWidget {
                                         children:<Widget>[
                                           RaisedButton(
                                             color: Color(0xAA38A49C), //Color(0xAAFB6340), //Colors.orange,
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Add2Calendar.addEvent2Cal(eventCalendar).then((success) {
+                                                scaffoldState.currentState.showSnackBar(
+                                                    SnackBar(content: Text(success ? 'Success' : 'Error')));
+                                              });
+                                            },
                                             child: const Text(
                                               'Particip!',
                                               style: TextStyle(

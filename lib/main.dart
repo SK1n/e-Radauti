@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
-import 'package:flutterapperadauti/TownHall/town_hall_main.dart';
+import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/events/main.dart';
@@ -12,7 +10,7 @@ import 'package:flutterapperadauti/usefull_pages/confidential.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
 import 'package:flutterapperadauti/events/ui/device_calendar/device_calendar_file.dart';
 import 'package:flutterapperadauti/events/ui/add_2_calendar/add_2_calendar_file.dart';
- 
+
 void main() {
   runApp(MyAppRC());
 }
@@ -664,6 +662,8 @@ class AndroidMobile1 extends StatelessWidget {
                     ),*/
 
                       //5
+
+                      
                       Container(
                         //padding: EdgeInsets.only(left: 5, right: 5,),
                         //width: MediaQuery.of(context).size.width/4 - 15,
