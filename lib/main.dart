@@ -663,7 +663,7 @@ class AndroidMobile1 extends StatelessWidget {
 
                       //5
 
-                      
+
                       Container(
                         //padding: EdgeInsets.only(left: 5, right: 5,),
                         //width: MediaQuery.of(context).size.width/4 - 15,
