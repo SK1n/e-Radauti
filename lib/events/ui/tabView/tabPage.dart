@@ -4,8 +4,11 @@ import 'package:flutterapperadauti/events/ui/event_page/last_event_page.dart';
 
 
 class TabDemo extends StatefulWidget {
+  final GlobalKey<ScaffoldState> scaffoldState;
+  TabDemo({Key key, this.scaffoldState,}) : super(key: key);
+
   @override
-  _TabDemoState createState() => _TabDemoState();
+  _TabDemoState createState() => _TabDemoState(scaffoldState,);
 }
 
 class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
@@ -13,6 +16,8 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
   TabController _tabController;
 
   int _selectedTab = 0;
+  final GlobalKey<ScaffoldState> scaffoldState;
+  _TabDemoState(this.scaffoldState,);
 
   @override
   void initState() {
@@ -76,11 +81,11 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
           ),
         ),
         Material(
-          color: Colors.grey.shade300,
+          //color: Colors.grey.shade300,
           child: TabBar(
             unselectedLabelColor: Colors.grey,//unselectedLabelColor: Colors.blue,
             //labelColor: Colors.blue,
-            indicatorColor: Color(0xAA38A49C),//indicatorColor: Colors.white,
+            indicatorColor: Colors.white,//indicatorColor: Color(0xAA38A49C),
             controller: _tabController,
             labelPadding: const EdgeInsets.all(0.0),
             tabs: [
@@ -133,7 +138,7 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
           child: child,
           decoration: BoxDecoration(
               color:
-              (_selectedTab == index ? Colors.white : Colors.grey.shade300),
+              (_selectedTab == index ? Colors.white : Colors.white),
               borderRadius: _generateBorderRadius(index)),
         ),
       ),

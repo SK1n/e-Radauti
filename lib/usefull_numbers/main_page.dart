@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/menu_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/public_institutions.dart';
+import 'package:flutterapperadauti/usefull_numbers/miscellaneous.dart';
+import 'package:flutterapperadauti/usefull_numbers/local_authorities.dart';
+import 'package:flutterapperadauti/usefull_numbers/contractors.dart';
 
 class HomePageNumbers extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -94,7 +97,7 @@ class HomePageNumbers extends StatelessWidget {
                             Container(
                               width: MediaQuery.of(context).size.width - 120,
                               padding: EdgeInsets.only(left: 10,),
-                              child: Text('Numere de urgență',
+                              child: Text('Autorități locale',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
@@ -106,7 +109,8 @@ class HomePageNumbers extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.only(top: 10,),
                           width: MediaQuery.of(context).size.width - 80,
-                          child: Text('Lorem ipsum dolor sit amet dum pendebat morsum col.',
+                          child: Text('Date de contact pentru principalele instituții de protecție civilă '
+                              '(a consumatorilui, copilului, animalelor, mediului, etc.)',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -122,7 +126,7 @@ class HomePageNumbers extends StatelessWidget {
                     ),
                   ],
                 ),
-                onTap: null,
+                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => LocalAuthorities()),);},
               ),
             ),
             Padding(
@@ -159,7 +163,8 @@ class HomePageNumbers extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.only(top: 10,),
                           width: MediaQuery.of(context).size.width - 80,
-                          child: Text('Lorem ipsum dolor sit amet dum pendebat morsum col.',
+                          child: Text('Date de contact pentru informații sau reclamații '
+                              'privind serviciile de alimentare cu apă, canalizare sau servicii comunale',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -175,7 +180,7 @@ class HomePageNumbers extends StatelessWidget {
                     ),
                   ],
                 ),
-                onTap: null,
+                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Miscellaneous()),);},
               ),
             ),
             Padding(
@@ -212,7 +217,8 @@ class HomePageNumbers extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.only(top: 10,),
                           width: MediaQuery.of(context).size.width - 80,
-                          child: Text('Lorem ipsum dolor sit amet dum pendebat morsum col.',
+                          child: Text('Date de contact pentru principalele instituții '
+                              'publice locale (primărie, spital, poliție etc.)',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -237,7 +243,7 @@ class HomePageNumbers extends StatelessWidget {
                 height:1.0,
                 color:Color.fromRGBO(0, 0, 0, 0.1),),),
             Container(
-              padding: EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 10,),
+              padding: EdgeInsets.only(left: 25, right: 25, bottom: 30, top: 10,),
               child: GestureDetector(
                 child: Row(
                   children: <Widget>[
@@ -255,6 +261,7 @@ class HomePageNumbers extends StatelessWidget {
                               padding: EdgeInsets.only(left: 10,),
                               child: Text('Tehnicieni și alți specialiști',
                                 style: TextStyle(
+                                  color: Color(0xFF979797),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
                                 ),
@@ -265,11 +272,11 @@ class HomePageNumbers extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.only(top: 10,),
                           width: MediaQuery.of(context).size.width - 80,
-                          child: Text('Lorem ipsum dolor sit amet dum pendebat morsum col.',
+                          child: Text('Coming soon',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
-                              color: Color(0xFF38A49C),
+                              color: Color(0xFFC4C4C4),//color: Color(0xFF38A49C),
                               fontSize: 15,
                             ),
                           ),
@@ -284,11 +291,11 @@ class HomePageNumbers extends StatelessWidget {
                 onTap: null,
               ),
             ),
-            Padding(
+            /*Padding(
               padding:EdgeInsets.symmetric(horizontal:15.0),
               child:Container(
                 height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+                color:Color.fromRGBO(0, 0, 0, 0.1),),),*/
           ],
         ),
       ),

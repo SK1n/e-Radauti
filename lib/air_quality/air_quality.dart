@@ -1,38 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/jobs/job_model.dart';
+import 'package:flutterapperadauti/air_quality/airquality_model.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../menu_page.dart';
 
-class JobPage extends StatefulWidget {
+class AirQualityPage extends StatefulWidget {
   @override
-  _JobPageState createState() => _JobPageState();
+  _AirQualityPageState createState() => _AirQualityPageState();
 }
 
-class _JobPageState extends State<JobPage> {
-  List<JobModel> jobList;
+class _AirQualityPageState extends State<AirQualityPage> {
+  List<AirQualityModel> airqualityList;
   Map<String, dynamic> jsonResponse;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  Future<List<JobModel>> _getJobs() async {
+  Future<List<AirQualityModel>> _getAirQuality() async {
     var response = await http.get(
-        "https://www.eradauti.ro/api/context?pathname=/anunturi/locuri-de-munca-20");
+        "https://www.airvisual.com/api/v2/node/5ded3e13994dfe107f7013a0");
     this.setState(() {
       jsonResponse = json.decode(response.body);
     });
-    jobList = List<JobModel>();
+    airqualityList = List<AirQualityModel>();
     jsonResponse.forEach((key, value) {
       // print(key);
-      jobList = (jsonResponse['context']['posts']['records'] as List)
-          .map<JobModel>((j) => JobModel.fromJson(j))
+      airqualityList = (jsonResponse['historical']['current'] as List)
+          .map<AirQualityModel>((j) => AirQualityModel.fromJson(j))
           .toList();
-      //JobModel job = JobModel.fromJson(value);
-      //jobList.add(job);
+      //AirQualityModel airquality = AirQualityModel.fromJson(value);
+      //airqualityList.add(airquality);
     });
 
-    // print(jobList);
-    return jobList;
+    // print(airqualityList);
+    return airqualityList;
   }
 
   @override
@@ -66,18 +66,18 @@ class _JobPageState extends State<JobPage> {
         drawer: NavDrawer2(),
         body: Container(
           child: FutureBuilder(
-            future: _getJobs(),
+            future: _getAirQuality(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
                 return Center(
                   child: CircularProgressIndicator(
                     valueColor:
-                        AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
+                    AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
                   ),
                 );
               } else {
                 return new ListView.builder(
-                    itemCount: jobList == null ? 0 : jobList.length,
+                    itemCount: airqualityList == null ? 0:1,//0 : 1, //airqualityList.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                           padding: EdgeInsets.only(top: 10),
@@ -88,47 +88,33 @@ class _JobPageState extends State<JobPage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      jobList[index].title.toString(),
+                                    Text('Temperature în centrul Rădăuțiului este momentan: \n'+
+                                        airqualityList[index].temperature.toString() + '\$deg C \n',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    jobList[index].price.toString() == 'null'
-                                        ? Text('')
-                                        : Row(children: [
-                                            Text(
-                                              'Pret: ',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            Text(
-                                                jobList[index].price.toString(),
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            Text(
-                                                jobList[index]
-                                                    .currency
-                                                    .toString(),
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                          ]),
+                                    Text('Umiditatea relativă este: \n'+
+                                        airqualityList[index].humidity.toString() + '% \n',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+
+                                    Text('Concentrația de PM2.5: \n'+
+                                      airqualityList[index].pm25.toString() + 'ug/m3 \n',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+
+                                    Text('Concentrația de CO2 este: \n'+
+                                        airqualityList[index].co2.toString() + 'ppm \n',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+
                                   ],
                                 ),
                               ),
-                              Container(
-                                padding: EdgeInsets.only(bottom: 10),
-                                child: ListTile(
-                                  onTap: () {},
-                                  title: Text(jobList[index].title.toString()),
-                                  subtitle: Text(
-                                    jobList[index].rawContent.toString(),
-                                    maxLines: 4,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                              ),
+
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 15.0),
                                 child: Container(
