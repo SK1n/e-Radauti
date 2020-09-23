@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/air_quality/airquality_model.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
+import 'package:dio_http_cache/dio_http_cache.dart';
 
 import '../menu_page.dart';
 
@@ -15,24 +15,22 @@ class _AirQualityPageState extends State<AirQualityPage> {
   Map<String, dynamic> jsonResponse;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  Future<List<AirQualityModel>> _getAirQuality() async {
-    var response = await http.get(
-        "https://www.airvisual.com/api/v2/node/5ded3e13994dfe107f7013a0");
-    this.setState(() {
-      jsonResponse = json.decode(response.body);
-    });
-    airqualityList = List<AirQualityModel>();
-    jsonResponse.forEach((key, value) {
-      // print(key);
-      airqualityList = (jsonResponse['historical']['current'] as List)
-          .map<AirQualityModel>((j) => AirQualityModel.fromJson(j))
-          .toList();
-      //AirQualityModel airquality = AirQualityModel.fromJson(value);
-      //airqualityList.add(airquality);
-    });
+  Future<AirQualityModel> _getAirQuality() async {
+    var dio = Dio();
+    Response dioResponse;
 
-    // print(airqualityList);
-    return airqualityList;
+    try {
+      dio.interceptors.add(
+          DioCacheManager(CacheConfig(baseUrl: "https://www.airvisual.com"))
+              .interceptor);
+      dioResponse = await dio.get(
+          "https://www.airvisual.com/api/v2/node/5ded3e13994dfe107f7013a0",
+          options: buildCacheOptions(Duration(days: 1)));
+      debugPrint('dioResponse:' + dioResponse.data.toString());
+    } catch (e) {
+      print('catch error: $e');
+    }
+    return AirQualityModel.fromJson(dioResponse.data["current"]);
   }
 
   @override
@@ -72,64 +70,36 @@ class _AirQualityPageState extends State<AirQualityPage> {
                 return Center(
                   child: CircularProgressIndicator(
                     valueColor:
-                    AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
+                        AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
                   ),
                 );
               } else {
-                return new ListView.builder(
-                    itemCount: airqualityList == null ? 0:1,//0 : 1, //airqualityList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                          padding: EdgeInsets.only(top: 10),
-                          child: Column(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Temperature în centrul Rădăuțiului este momentan: \n'+
-                                        airqualityList[index].temperature.toString() + '\$deg C \n',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text('Umiditatea relativă este: \n'+
-                                        airqualityList[index].humidity.toString() + '% \n',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-
-                                    Text('Concentrația de PM2.5: \n'+
-                                      airqualityList[index].pm25.toString() + 'ug/m3 \n',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-
-                                    Text('Concentrația de CO2 este: \n'+
-                                        airqualityList[index].co2.toString() + 'ppm \n',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-
-                                  ],
-                                ),
-                              ),
-
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 15.0),
-                                child: Container(
-                                  height: 1.0,
-                                  color: Color.fromRGBO(0, 0, 0, 1),
-                                ),
-                              ),
-                            ],
-                          ));
-                    });
+                return Container(
+                  padding: EdgeInsets.only(left: 10, top: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                          'Temperature în centrul Rădăuțiului este momentan: ${snapshot.data.temperature.toString()}',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text(
+                        'Umiditatea relativă este: ${snapshot.data.humidity.toString()}',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        'Concentrația de PM2.5: ${snapshot.data.pm25.toString()} ug/m3 ',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        'Concentrația de CO2 este: ${snapshot.data.co2.toString()} ppm ',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                );
               }
-
             },
           ),
-
         ));
   }
 }

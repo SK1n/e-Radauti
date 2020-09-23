@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/jobs/remoteJson.dart';
 import 'package:flutterapperadauti/menu_page.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/jobs/furniture_page.dart';
@@ -24,12 +23,17 @@ class HomePageJobs extends StatelessWidget {
         actions: <Widget>[
           Container(
             alignment: Alignment.topRight,
-            margin: EdgeInsets.only(top: 0.0, right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
+            margin: EdgeInsets.only(
+                top: 0.0,
+                right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
             child: IconButton(
-              icon: Icon(Icons.menu,
+              icon: Icon(
+                Icons.menu,
                 size: 24,
-                color: Colors.black, ), //Colors.white
-              onPressed: () => _scaffoldKey.currentState.openDrawer(), //_scaffoldKey.currentState.openDrawer(),
+                color: Colors.black,
+              ), //Colors.white
+              onPressed: () => _scaffoldKey.currentState
+                  .openDrawer(), //_scaffoldKey.currentState.openDrawer(),
             ),
           ),
         ],
@@ -39,14 +43,20 @@ class HomePageJobs extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(top: 20, bottom: 15,),
+              padding: EdgeInsets.only(
+                top: 20,
+                bottom: 15,
+              ),
               child: Row(
                 children: <Widget>[
                   Container(
                     alignment: Alignment.centerLeft,
                     child: IconButton(
-                      icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
-                      onPressed: (){
+                      icon: Icon(
+                        Icons.keyboard_arrow_left,
+                        color: Color(0xFF979797),
+                      ), //_left Icons.arrow_back
+                      onPressed: () {
                         Navigator.pop(context);
                       },
                     ),
@@ -58,14 +68,24 @@ class HomePageJobs extends StatelessWidget {
                       children: <Widget>[
                         Stack(
                           children: <Widget>[
-                            Icon(Icons.announcement, color: Color(0x55FB6340), size: 30,),
+                            Icon(
+                              Icons.announcement,
+                              color: Color(0x55FB6340),
+                              size: 30,
+                            ),
                             Container(
                               child: Padding(
-                                padding: EdgeInsets.fromLTRB(35.0, 6.0, 0.0, 0.0,), //10.0 //25.0
+                                padding: EdgeInsets.fromLTRB(
+                                  35.0,
+                                  6.0,
+                                  0.0,
+                                  0.0,
+                                ), //10.0 //25.0
                                 child: Text(
                                   'Anunțuri',
                                   style: TextStyle(
-                                    color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                                    color:
+                                        Color(0xFF000000), //Color(0xFFFFFFFF),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 19,
                                   ),
@@ -81,7 +101,12 @@ class HomePageJobs extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 15,),
+              padding: EdgeInsets.only(
+                left: 25,
+                right: 25,
+                bottom: 10,
+                top: 15,
+              ),
               child: GestureDetector(
                 child: Row(
                   children: <Widget>[
@@ -92,12 +117,16 @@ class HomePageJobs extends StatelessWidget {
                             Container(
                               height: 30,
                               width: 30,
-                              child: SvgPicture.asset('assets/images/circle_FFDECC.svg'),
+                              child: SvgPicture.asset(
+                                  'assets/images/circle_FFDECC.svg'),
                             ),
                             Container(
                               width: MediaQuery.of(context).size.width - 120,
-                              padding: EdgeInsets.only(left: 10,),
-                              child: Text('Locuri de Muncă',
+                              padding: EdgeInsets.only(
+                                left: 10,
+                              ),
+                              child: Text(
+                                'Locuri de Muncă',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
@@ -107,9 +136,12 @@ class HomePageJobs extends StatelessWidget {
                           ],
                         ),
                         Container(
-                          padding: EdgeInsets.only(top: 10,),
+                          padding: EdgeInsets.only(
+                            top: 10,
+                          ),
                           width: MediaQuery.of(context).size.width - 80,
-                          child: Text('Locuri de muncă preluate de pe portalul www.eradauti.ro',
+                          child: Text(
+                            'Locuri de muncă preluate de pe portalul www.eradauti.ro',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -121,36 +153,55 @@ class HomePageJobs extends StatelessWidget {
                       ],
                     ),
                     Container(
-                      child: Icon(Icons.keyboard_arrow_right, color: Color(0xFF979797),),
+                      child: Icon(
+                        Icons.keyboard_arrow_right,
+                        color: Color(0xFF979797),
+                      ),
                     ),
                   ],
                 ),
-                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => JobPage()),);},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => JobPage()),
+                  );
+                },
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             Container(
-              padding: EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 10,),
+              padding: EdgeInsets.only(
+                left: 25,
+                right: 25,
+                bottom: 10,
+                top: 10,
+              ),
               child: GestureDetector(
                 child: Row(
                   children: <Widget>[
                     Column(
                       children: <Widget>[
                         Row(
-                          children:<Widget>[
+                          children: <Widget>[
                             Container(
                               height: 30,
                               width: 30,
-                              child: SvgPicture.asset('assets/images/circle_69E781.svg'),
+                              child: SvgPicture.asset(
+                                  'assets/images/circle_69E781.svg'),
                             ),
                             Container(
                               width: MediaQuery.of(context).size.width - 120,
-                              padding: EdgeInsets.only(left: 10,),
-                              child: Text('Imobiliare',
+                              padding: EdgeInsets.only(
+                                left: 10,
+                              ),
+                              child: Text(
+                                'Imobiliare',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
@@ -160,9 +211,12 @@ class HomePageJobs extends StatelessWidget {
                           ],
                         ),
                         Container(
-                          padding: EdgeInsets.only(top: 10,),
+                          padding: EdgeInsets.only(
+                            top: 10,
+                          ),
                           width: MediaQuery.of(context).size.width - 80,
-                          child: Text('Anunțuri de imobiliare postate preluate de pe portalul www.eradauti.ro',
+                          child: Text(
+                            'Anunțuri de imobiliare postate preluate de pe portalul www.eradauti.ro',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -174,20 +228,30 @@ class HomePageJobs extends StatelessWidget {
                       ],
                     ),
                     Container(
-                      child: Icon(Icons.keyboard_arrow_right, color: Color(0xFF979797),),
+                      child: Icon(
+                        Icons.keyboard_arrow_right,
+                        color: Color(0xFF979797),
+                      ),
                     ),
                   ],
                 ),
-                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => FurniturePage()),);},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FurniturePage()),
+                  );
+                },
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
 
-              /*Padding(
+            /*Padding(
               padding:EdgeInsets.symmetric(horizontal:15.0),
               child:Container(
                 height:1.0,
