@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/air_quality/air_quality_chart.dart';
+import 'package:flutterapperadauti/air_quality/air_quality_chart_model.dart';
 import 'package:flutterapperadauti/air_quality/airquality_model.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 import '../menu_page.dart';
 
@@ -14,6 +17,9 @@ class _AirQualityPageState extends State<AirQualityPage> {
   List<AirQualityModel> airqualityList;
   Map<String, dynamic> jsonResponse;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  List<AirQualityChartModel> data = [];
+  var co2value;
+  charts.Color barColorCo2;
 
   Future<AirQualityModel> _getAirQuality() async {
     var dio = Dio();
@@ -74,12 +80,63 @@ class _AirQualityPageState extends State<AirQualityPage> {
                   ),
                 );
               } else {
+                co2value = snapshot.data.co2 / 10;
+                if (snapshot.data.co2 > 250 && snapshot.data.co2 < 450) {
+                  barColorCo2 =
+                      charts.ColorUtil.fromDartColor(Colors.green[200]);
+                } else if (snapshot.data.co2 > 450 &&
+                    snapshot.data.co2 <= 1000) {
+                  barColorCo2 =
+                      charts.ColorUtil.fromDartColor(Colors.green[100]);
+                } else if (snapshot.data.co2 > 1000 &&
+                    snapshot.data.co2 <= 2000) {
+                  barColorCo2 =
+                      charts.ColorUtil.fromDartColor(Colors.yellow[300]);
+                } else if (snapshot.data.co2 > 2000 &&
+                    snapshot.data.co2 <= 5000) {
+                  barColorCo2 = charts.ColorUtil.fromDartColor(Colors.red[100]);
+                } else if (snapshot.data.co2 > 5000 &&
+                    snapshot.data.co2 <= 40000) {
+                  barColorCo2 = charts.ColorUtil.fromDartColor(Colors.red[200]);
+                } else if (snapshot.data.co2 > 40000) {
+                  barColorCo2 = charts.ColorUtil.fromDartColor(Colors.red[300]);
+                } else {
+                  barColorCo2 =
+                      charts.ColorUtil.fromDartColor(Colors.greenAccent[200]);
+                }
+                data = [
+                  AirQualityChartModel(
+                    val: snapshot.data.humidity.toDouble(),
+                    valueType:
+                        'Umiditate\n${snapshot.data.humidity.toString()}',
+                    barColor: charts.ColorUtil.fromDartColor(Colors.blue),
+                  ),
+                  AirQualityChartModel(
+                    val: co2value,
+                    valueType: "CO2\n${snapshot.data.co2.toString()}",
+                    barColor: barColorCo2,
+                  ),
+                  AirQualityChartModel(
+                      val: snapshot.data.pm25.toDouble(),
+                      valueType:
+                          'PM2.5\n${snapshot.data.pm25.toString()} ug/m3',
+                      barColor: charts.ColorUtil.fromDartColor(
+                          Colors.lightGreen[300])),
+                  AirQualityChartModel(
+                      val: snapshot.data.temperature.toDouble(),
+                      valueType: '°C\n${snapshot.data.temperature.toString()}',
+                      barColor:
+                          charts.ColorUtil.fromDartColor(Colors.lime[300])),
+                ];
                 return Container(
                   padding: EdgeInsets.only(left: 10, top: 10),
-                  child: Column(
+                  child: AirQualityChart(data: data),
+
+                  /*Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      AirQualityChart(data: data),
+                        Text(
                           'Temperature în centrul Rădăuțiului este momentan: ${snapshot.data.temperature.toString()}',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Text(
@@ -95,7 +152,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
-                  ),
+                  ),*/
                 );
               }
             },

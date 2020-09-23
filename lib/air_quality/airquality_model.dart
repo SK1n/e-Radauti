@@ -11,8 +11,4 @@ class AirQualityModel {
         co2 = json['co'].toDouble(),
         humidity = json['hm'].toDouble(),
         temperature = json['tp'].toDouble();
-  //   rawContent = json['raw_content'],
-  //   content = json['content'],
-  //   price = json['price'],
-  //  currency = json['currency'];
 }
