@@ -3,8 +3,11 @@ import 'package:flutterapperadauti/air_quality/air_quality_chart.dart';
 import 'package:flutterapperadauti/air_quality/air_quality_chart_model.dart';
 import 'package:flutterapperadauti/air_quality/airquality_model.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:flutterapperadauti/air_quality/change_color.dart';
+import 'package:flutterapperadauti/air_quality/legend.dart';
 
 import '../menu_page.dart';
 
@@ -68,94 +71,120 @@ class _AirQualityPageState extends State<AirQualityPage> {
           ],
         ),
         drawer: NavDrawer2(),
-        body: Container(
-          child: FutureBuilder(
-            future: _getAirQuality(),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.data == null) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    valueColor:
-                        AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
-                  ),
-                );
-              } else {
-                co2value = snapshot.data.co2 / 10;
-                if (snapshot.data.co2 > 250 && snapshot.data.co2 < 450) {
-                  barColorCo2 =
-                      charts.ColorUtil.fromDartColor(Colors.green[200]);
-                } else if (snapshot.data.co2 > 450 &&
-                    snapshot.data.co2 <= 1000) {
-                  barColorCo2 =
-                      charts.ColorUtil.fromDartColor(Colors.green[100]);
-                } else if (snapshot.data.co2 > 1000 &&
-                    snapshot.data.co2 <= 2000) {
-                  barColorCo2 =
-                      charts.ColorUtil.fromDartColor(Colors.yellow[300]);
-                } else if (snapshot.data.co2 > 2000 &&
-                    snapshot.data.co2 <= 5000) {
-                  barColorCo2 = charts.ColorUtil.fromDartColor(Colors.red[100]);
-                } else if (snapshot.data.co2 > 5000 &&
-                    snapshot.data.co2 <= 40000) {
-                  barColorCo2 = charts.ColorUtil.fromDartColor(Colors.red[200]);
-                } else if (snapshot.data.co2 > 40000) {
-                  barColorCo2 = charts.ColorUtil.fromDartColor(Colors.red[300]);
-                } else {
-                  barColorCo2 =
-                      charts.ColorUtil.fromDartColor(Colors.greenAccent[200]);
-                }
-                data = [
-                  AirQualityChartModel(
-                    val: snapshot.data.humidity.toDouble(),
-                    valueType:
-                        'Umiditate\n${snapshot.data.humidity.toString()}',
-                    barColor: charts.ColorUtil.fromDartColor(Colors.blue),
-                  ),
-                  AirQualityChartModel(
-                    val: co2value,
-                    valueType: "CO2\n${snapshot.data.co2.toString()}",
-                    barColor: barColorCo2,
-                  ),
-                  AirQualityChartModel(
-                      val: snapshot.data.pm25.toDouble(),
-                      valueType:
-                          'PM2.5\n${snapshot.data.pm25.toString()} ug/m3',
-                      barColor: charts.ColorUtil.fromDartColor(
-                          Colors.lightGreen[300])),
-                  AirQualityChartModel(
-                      val: snapshot.data.temperature.toDouble(),
-                      valueType: '°C\n${snapshot.data.temperature.toString()}',
-                      barColor:
-                          charts.ColorUtil.fromDartColor(Colors.lime[300])),
-                ];
-                return Container(
-                  padding: EdgeInsets.only(left: 10, top: 10),
-                  child: AirQualityChart(data: data),
-
-                  /*Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AirQualityChart(data: data),
-                        Text(
-                          'Temperature în centrul Rădăuțiului este momentan: ${snapshot.data.temperature.toString()}',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text(
-                        'Umiditatea relativă este: ${snapshot.data.humidity.toString()}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(bottom: 15, top: 20),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.keyboard_arrow_left,
+                          color: Color(0xFF979797),
+                        ),
+                        //_left Icons.arrow_back
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                       ),
-                      Text(
-                        'Concentrația de PM2.5: ${snapshot.data.pm25.toString()} ug/m3 ',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width - 80,
+                      child: new Stack(
+                        alignment: AlignmentDirectional.center,
+                        children: <Widget>[
+                          Stack(
+                            children: <Widget>[
+                              Container(
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(
+                                      0.0, 0.0, 0.0, 0.0), //10.0 //25.0
+                                  child: Icon(
+                                    Icons.photo_filter,
+                                    color: Color(0x55FB6340),
+                                    size: 30,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(
+                                      35.0, 0.0, 0.0, 0.0), //10.0 //25.0
+                                  child: Text(
+                                    'Sesizează \no problemă',
+                                    style: TextStyle(
+                                      color: Color(
+                                          0xFF000000), //Color(0xFFFFFFFF),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 19,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Concentrația de CO2 este: ${snapshot.data.co2.toString()} ppm ',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),*/
-                );
-              }
-            },
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                child: FutureBuilder(
+                  future: _getAirQuality(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.data == null) {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
+                        ),
+                      );
+                    } else {
+                      co2value = snapshot.data.co2 / 10;
+                      debugPrint(
+                          'function response: ${changeColorInstance.changeColorHumidity(snapshot.data.humidity)}');
+                      data = [
+                        AirQualityChartModel(
+                          val: snapshot.data.humidity.toDouble(),
+                          valueType:
+                              'Umiditate\n${snapshot.data.humidity.toString()}',
+                          barColor: changeColorInstance
+                              .changeColorHumidity(snapshot.data.humidity),
+                        ),
+                        AirQualityChartModel(
+                          val: co2value,
+                          valueType: "CO2\n${snapshot.data.co2.toString()}",
+                          barColor: changeColorInstance
+                              .changeColorCo2(snapshot.data.humidity),
+                        ),
+                        AirQualityChartModel(
+                            val: snapshot.data.pm25.toDouble(),
+                            valueType:
+                                'PM2.5\n${snapshot.data.pm25.toString()} ug/m3',
+                            barColor: changeColorInstance
+                                .changeColorPm25(snapshot.data.humidity)),
+                      ];
+                      return Container(
+                          padding: EdgeInsets.only(left: 10, top: 10),
+                          child: Container(
+                            child: Column(
+                              children: [
+                                AirQualityChart(data: data),
+                                Text(
+                                    'Temperatura actuala este: ${snapshot.data.temperature.toString()}°C'),
+                                AirQualityLegend()
+                              ],
+                            ),
+                          ));
+                    }
+                  },
+                ),
+              )
+            ],
           ),
         ));
   }
