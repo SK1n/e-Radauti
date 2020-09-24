@@ -10,6 +10,7 @@ import 'package:flutterapperadauti/usefull_pages/contact.dart';
 import 'package:flutterapperadauti/usefull_pages/confidential.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
+import 'package:flutterapperadauti/transport/transport_main_page.dart';
 
 void main() {
   runApp(MyAppRC());
@@ -339,7 +340,7 @@ class AndroidMobile1 extends StatelessWidget {
                     ),
                     //4
                     GestureDetector(
-                      onTap: null,
+                      onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageTransport()),);},
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -354,36 +355,19 @@ class AndroidMobile1 extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Icon(Icons.access_time, color: Color(0xAAC4C4C4),),
+                              Icon(Icons.train, color: Color(0x55FB6340),),
                               SizedBox(width: 5,),
-                              Container(
-                                width: MediaQuery.of(context).size.width/2 - 77,//150,
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0), //10.0 //25.0
-                                  child: new RichText(
-                                    text: new TextSpan(
-                                      children: [
-                                        new TextSpan(
-                                          text: 'Voluntariat\n',
-                                          style: TextStyle(
-                                            color: Color(0xFF979797), //Color(0xFFFFFFFF),
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        new TextSpan(
-                                          text: 'Coming soon',
-                                          style: TextStyle(
-                                            color: Color(0xFFC4C4C4), //Color(0xFFFFFFFF),
-                                            //fontWeight: FontWeight.bold,
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                              Text(
+                                'Transport',
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 3,
+                                style: TextStyle(
+                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
                                 ),
                               ),
+
                             ],
                           ),
                         ),
@@ -415,7 +399,7 @@ class AndroidMobile1 extends StatelessWidget {
                                     text: new TextSpan(
                                       children: [
                                         new TextSpan(
-                                          text: 'Transport\n',
+                                          text: 'Voluntariat\n',
                                           style: TextStyle(
                                             color: Color(0xFF979797), //Color(0xFFFFFFFF),
                                             fontWeight: FontWeight.bold,
