@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterapperadauti/TownHall/leaders.dart';
+import 'package:flutterapperadauti/TownHall/local_council.dart';
+import 'package:flutterapperadauti/menu_page.dart';
 
 class AboutUsContent extends StatelessWidget {
   @override
@@ -33,10 +37,10 @@ class AboutUsContent extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
               'Grupul de inițiativă Rădăuțiul civic a apărut în luna iunie 2017 in mod oficial, după o serie de acțiuni civice '
-                  +
-                  'implementate deja de unii membri, pe bază de voluntariat și din dorința de a da ceva înapoi orașului lor natal, '
-                  +
-                  'iar în septembrie 2018 acesta a devenit asociație neguvernamentală.',
+              +
+              'implementate deja de unii membri, pe bază de voluntariat și din dorința de a da ceva înapoi orașului lor natal, '
+              +
+              'iar în septembrie 2018 acesta a devenit asociație neguvernamentală.',
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -48,8 +52,8 @@ class AboutUsContent extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
               'Viziunea asociației „Rădăuțiul Civic” este cea a unui Rădăuți dezvoltat, cu o societate civilă '
-                  +
-                  'puternică, cu cetățeni responsabili, educați informați și activi, care promovează binele comunității.',
+              +
+              'puternică, cu cetățeni responsabili, educați informați și activi, care promovează binele comunității.',
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -61,8 +65,8 @@ class AboutUsContent extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
               'Misiunea asociației „Rădăuțiul Civic” este de a stimula cetățenia activă pentru dezvoltarea '
-                  +
-                  'comunității locale.',
+              +
+              'comunității locale.',
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -74,18 +78,18 @@ class AboutUsContent extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
               'Printre valorile de bază ale grupului nostru civic se numără:'
-                  +
-                  '\n- integritatea și onestitatea membrilor și a comunității;'
-                  +
-                  '\n- profesionalismul - mizăm pe acțiuni de calitate, nu pentru imagine ci pentru un impact real în comunitate;'
-                  +
-                  '\n- responsabilitatea - suntem și ne asumăm responsabilitatea pentru acțiunile noastre. Numai prin asumare putem să producem o schimbare în bine în jurul nostru;'
-                  +
-                  '\n- transparența  și adevărul în acțiunile și obiectivele noastre;'
-                  +
-                  '\n- non partizanatul - ca orice inițiativă civică, acest grup nu este și nu va fi partizan politic;'
-                  +
-                  '\n- devotamentul și curajul se numără de asemenea printre valorile noastre.',
+              +
+              '\n- integritatea și onestitatea membrilor și a comunității;'
+              +
+              '\n- profesionalismul - mizăm pe acțiuni de calitate, nu pentru imagine ci pentru un impact real în comunitate;'
+              +
+              '\n- responsabilitatea - suntem și ne asumăm responsabilitatea pentru acțiunile noastre. Numai prin asumare putem să producem o schimbare în bine în jurul nostru;'
+              +
+              '\n- transparența  și adevărul în acțiunile și obiectivele noastre;'
+              +
+              '\n- non partizanatul - ca orice inițiativă civică, acest grup nu este și nu va fi partizan politic;'
+              +
+              '\n- devotamentul și curajul se numără de asemenea printre valorile noastre.',
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -97,10 +101,10 @@ class AboutUsContent extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
               'Ne plac oamenii cu idei, oamenii activim oameni care FAC și nu doar spun. Ne plac oamenii care '
-                  +
-                  'oferă soluții, nu doar care critică și ne plac oamenii care cred că prin puterea exemplului pot pune '
-                  +
-                  'lucrurile în mișcare.',
+              +
+              'oferă soluții, nu doar care critică și ne plac oamenii care cred că prin puterea exemplului pot pune '
+              +
+              'lucrurile în mișcare.',
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -112,12 +116,12 @@ class AboutUsContent extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
               'Suntem cetățeni în fiecare zi nu doar când mergem din 4 în 4 ani la vot sau când avem vreo '
-                  +
-                  'problemă. Dacă ne dorim un oraș care să înflorească și care să se dezvolte, acest lucru ține și de '
-                  +
-                  'noi și de ceea ce facem în fiecare zi pentru asta. O democrație funcțională nu poate exista prin '
-                  +
-                  'simpla participare la vot, ci prin asumarea statutului de cetățean în fiecare zi.',
+              +
+              'problemă. Dacă ne dorim un oraș care să înflorească și care să se dezvolte, acest lucru ține și de '
+              +
+              'noi și de ceea ce facem în fiecare zi pentru asta. O democrație funcțională nu poate exista prin '
+              +
+              'simpla participare la vot, ci prin asumarea statutului de cetățean în fiecare zi.',
               style: TextStyle(
                 fontSize: 15,
               ),

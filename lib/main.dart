@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
+import 'package:flutterapperadauti/TownHall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/events/main.dart';
-import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
 import 'package:flutterapperadauti/usefull_pages/partner.dart';
 import 'package:flutterapperadauti/usefull_pages/contact.dart';
 import 'package:flutterapperadauti/usefull_pages/confidential.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
-import 'package:flutterapperadauti/air_quality/air_quality.dart';
-import 'package:flutterapperadauti/transport/transport_main_page.dart';
-
+import 'package:flutterapperadauti/events/ui/device_calendar/device_calendar_file.dart';
+import 'package:flutterapperadauti/events/ui/add_2_calendar/add_2_calendar_file.dart';
+ 
 void main() {
   runApp(MyAppRC());
 }
@@ -272,7 +273,7 @@ class AndroidMobile1 extends StatelessWidget {
                     ),
                     //3
                     GestureDetector(
-                      onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageJobs()),);},
+                      onTap: null,
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -287,26 +288,43 @@ class AndroidMobile1 extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Icon(Icons.announcement, color: Color(0x55FB6340),),
+                              Icon(Icons.access_time, color: Color(0xAAC4C4C4),),
                               SizedBox(width: 5,),
-                              Text(
-                                'Anunțuri',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
+                              Container(
+                                width: MediaQuery.of(context).size.width/2 - 77,//150,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0), //10.0 //25.0
+                                  child: new RichText(
+                                    text: new TextSpan(
+                                      children: [
+                                        new TextSpan(
+                                          text: 'Reciclare\n',
+                                          style: TextStyle(
+                                            color: Color(0xFF979797), //Color(0xFFFFFFFF),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        new TextSpan(
+                                          text: 'Coming soon',
+                                          style: TextStyle(
+                                            color: Color(0xFFC4C4C4), //Color(0xFFFFFFFF),
+                                            //fontWeight: FontWeight.bold,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
-
                             ],
                           ),
                         ),
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => AirQualityPage()),);},
+                      onTap: null,
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -321,16 +339,34 @@ class AndroidMobile1 extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Icon(Icons.bubble_chart, color: Color(0x55FB6340),),
+                              Icon(Icons.access_time, color: Color(0xAAC4C4C4),),
                               SizedBox(width: 5,),
-                              Text(
-                                'Calitatea Aerului',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
+                              Container(
+                                width: MediaQuery.of(context).size.width/2 - 77,//150,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0), //10.0 //25.0
+                                  child: new RichText(
+                                    text: new TextSpan(
+                                      children: [
+                                        new TextSpan(
+                                          text: 'Joburi\n',
+                                          style: TextStyle(
+                                            color: Color(0xFF979797), //Color(0xFFFFFFFF),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        new TextSpan(
+                                          text: 'Coming soon',
+                                          style: TextStyle(
+                                            color: Color(0xFFC4C4C4), //Color(0xFFFFFFFF),
+                                            //fontWeight: FontWeight.bold,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
@@ -339,40 +375,6 @@ class AndroidMobile1 extends StatelessWidget {
                       ),
                     ),
                     //4
-                    GestureDetector(
-                      onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageTransport()),);},
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          //borderRadius: BorderRadius.all(Radius.circular(24)),
-                          borderRadius: BorderRadius.all(Radius.circular(2)),
-                        ),
-                        child: Padding(
-                          //padding: const EdgeInsets.symmetric(horizontal: 20),
-                          padding: const EdgeInsets.all(0),//const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(Icons.train, color: Color(0x55FB6340),),
-                              SizedBox(width: 5,),
-                              Text(
-                                'Transport',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
                     GestureDetector(
                       onTap: null,
                       child: Card(
@@ -424,7 +426,148 @@ class AndroidMobile1 extends StatelessWidget {
                         ),
                       ),
                     ),
+                    GestureDetector(
+                      onTap: null,
+                      child: Card(
+                        margin: const EdgeInsets.symmetric(vertical: 0),
+                        elevation: 4,
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          //borderRadius: BorderRadius.all(Radius.circular(24)),
+                          borderRadius: BorderRadius.all(Radius.circular(2)),
+                        ),
+                        child: Padding(
+                          //padding: const EdgeInsets.symmetric(horizontal: 20),
+                          padding: const EdgeInsets.all(0),//const EdgeInsets.all(20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(Icons.access_time, color: Color(0xAAC4C4C4),),
+                              SizedBox(width: 5,),
+                              Container(
+                                width: MediaQuery.of(context).size.width/2 - 77,//150,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0), //10.0 //25.0
+                                  child: new RichText(
+                                    text: new TextSpan(
+                                      children: [
+                                        new TextSpan(
+                                          text: 'Transport\n',
+                                          style: TextStyle(
+                                            color: Color(0xFF979797), //Color(0xFFFFFFFF),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        new TextSpan(
+                                          text: 'Coming soon',
+                                          style: TextStyle(
+                                            color: Color(0xFFC4C4C4), //Color(0xFFFFFFFF),
+                                            //fontWeight: FontWeight.bold,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                     //
+                    /*Container(
+                  child: Container(
+                    width: 80.0,
+                    height: 80.0,
+                      child: FlatButton(
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageNoticeProblem()),);},
+                        child: SvgPicture.asset('assets/images/notice_a_problem.svg'),
+                      )
+                  ),
+                ),
+                Container(
+                  child: Container(
+                    width: 80.0,
+                    height: 80.0,
+                      child: FlatButton(
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => TownHallMain()),);},
+                        child: SvgPicture.asset('assets/images/announcess.svg'),
+                      )
+                  ),
+                ),
+                Container(
+                  child: Container(
+                    width: 80.0,
+                    height: 80.0,
+                      child: FlatButton(
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyAppEvents2()),);},
+                        child: SvgPicture.asset('assets/images/calendar.svg'),
+                      )
+                  ),
+                ),
+                Container(
+                  child: Container(
+                    width: 80.0,
+                    height: 80.0,
+                      child: FlatButton(
+                        onPressed: null,
+                        child: SvgPicture.asset('assets/images/agenda.svg'),
+                      )
+                  ),
+                ),
+                Container(
+                  child: Container(
+                    width: 80.0,
+                    height: 80.0,
+                    child: FlatButton(
+                      onPressed: null,
+                      child: SvgPicture.asset('assets/images/recycling.svg'),
+                    )
+                  ),
+                ),
+                Container(
+                  child: Container(
+                    width: 80.0,
+                    height: 80.0,
+                      child: FlatButton(
+                        onPressed: null,
+                        child: SvgPicture.asset('assets/images/job.svg'),
+                      )
+                  ),
+                ),
+                Container(
+                  child: Container(
+                    width: 80.0,
+                    height: 80.0,
+                      child: FlatButton(
+                        onPressed: null,
+                        child: SvgPicture.asset('assets/images/volunteer.svg'),
+                      )
+                  ),
+                ),
+                Container(
+                  child: Container(
+                    width: 80.0,
+                    height: 80.0,
+                      child: FlatButton(
+                        onPressed: null,
+                        child: SvgPicture.asset('assets/images/tours.svg'),
+                      )
+                  ),
+                ),
+                Container(
+                  child: Container(
+                      width: 80.0,
+                      height: 80.0,
+                      child: FlatButton(
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageNumbers()),);},
+                        child: SvgPicture.asset('assets/images/phone_call.svg'),
+                      )
+                  ),
+                ),*/
                   ],
                 ),
               ),
@@ -521,8 +664,6 @@ class AndroidMobile1 extends StatelessWidget {
                     ),*/
 
                       //5
-
-
                       Container(
                         //padding: EdgeInsets.only(left: 5, right: 5,),
                         //width: MediaQuery.of(context).size.width/4 - 15,
@@ -546,4 +687,5 @@ class AndroidMobile1 extends StatelessWidget {
   }
 }
 
-//c:\flutter\flutter\bin\flutter build apk --release --build-name=1.0.5 --build-number=6
+const String _svg_xhraer =
+    '<svg viewBox="4.5 9.0 14.1 16.2" ><path transform="translate(0.0, -0.88)" d="M 4.5 18 L 18.63995361328125 18" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /><path  d="M 4.5 9 L 18.63995361328125 9" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /><path transform="translate(0.0, -1.76)" d="M 4.5 27 L 18.63995361328125 27" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg>';
