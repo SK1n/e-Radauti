@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutterapperadauti/air_quality/air_quality_chart.dart';
-import 'package:flutterapperadauti/air_quality/air_quality_chart_model.dart';
 import 'package:flutterapperadauti/air_quality/airquality_model.dart';
 import 'package:dio/dio.dart';
-//import 'package:flutter_icons/flutter_icons.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:flutterapperadauti/air_quality/change_color.dart';
+import 'package:flutterapperadauti/air_quality/value_adapter.dart';
 import 'package:flutterapperadauti/air_quality/legend.dart';
 
 import '../menu_page.dart';
@@ -21,7 +18,6 @@ class _AirQualityPageState extends State<AirQualityPage> {
   List<AirQualityModel> airqualityList;
   Map<String, dynamic> jsonResponse;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  List<AirQualityChartModel> data = [];
   var co2value;
   charts.Color barColorCo2;
   bool isLoading = false;
@@ -149,8 +145,6 @@ class _AirQualityPageState extends State<AirQualityPage> {
                             return Container(child: Text(' '));
                           } else {
                             isLoading = true;
-                            debugPrint(
-                                'function response: ${changeColorInstance.changeColorHumidity(snapshot.data.humidity)}');
                             return Container(
                               padding: EdgeInsets.all(10),
                               child: Column(
