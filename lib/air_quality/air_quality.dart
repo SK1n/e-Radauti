@@ -149,7 +149,10 @@ class _AirQualityPageState extends State<AirQualityPage> {
                               padding: EdgeInsets.all(10),
                               child: Column(
                                 children: [
-                                  Text('Date'),
+                                  Text('CENTRU RĂDĂUȚI',style: TextStyle(fontSize: 24, color: Color(0xFF000000), fontWeight: FontWeight.bold,),),
+                                  Text(
+                                    '${snapshot.data.datasiora.toString()}',
+                                    style: TextStyle(fontSize: 24),),
                                   Container(
                                     padding: EdgeInsets.all(10),
                                     child: Card(
@@ -168,13 +171,19 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                               .size
                                                               .width -
                                                           40) /
-                                                      3.3,
+                                                      3,
                                                   child: Column(
                                                     children: [
-                                                      Text(
+                                                    Align(
+                                                    alignment: Alignment.topLeft,
+                                                      child: Text(
+                                                          'Calitatea aerului: \n' + '${changeColorInstance.changeTextQuality(snapshot.data.pm25)}', style: TextStyle(fontSize: 16),),
+
+                                                    ),
+                                                      /*Text(
                                                           'Calitatea aerului:'),
                                                       Text(
-                                                          '${changeColorInstance.changeTextQuality(snapshot.data.pm25)}'),
+                                                          '${changeColorInstance.changeTextQuality(snapshot.data.pm25)}'),*/
                                                     ],
                                                   ),
                                                 ),
@@ -189,7 +198,14 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                   child: Column(
                                                     children: [
                                                       Text(
-                                                          'PM2.5\n ${snapshot.data.pm25.toString()}\nug/m3'),
+                                                          'PM2.5',
+                                                        style: TextStyle(fontSize: 14),),
+                                                      Text(
+                                                        '${snapshot.data.pm25.toString()}',
+                                                        style: TextStyle(fontSize: 24),),
+                                                      Text(
+                                                        'ug/m3',
+                                                        style: TextStyle(fontSize: 18),),
                                                     ],
                                                   ),
                                                 ),
@@ -204,7 +220,14 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                   child: Column(
                                                     children: [
                                                       Text(
-                                                          'CO2\n${snapshot.data.co2.toString()}\nppm'),
+                                                          'CO2',style: TextStyle(fontSize: 14)
+                                                      ),
+                                                      Text(
+                                                          '${snapshot.data.co2.toString()}',style: TextStyle(fontSize: 24)
+                                                      ),
+                                                      Text(
+                                                          'ppm',style: TextStyle(fontSize: 18)
+                                                      ),
                                                     ],
                                                   ),
                                                 )
@@ -213,24 +236,26 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                           ),
                                           Padding(
                                             padding: EdgeInsets.only(
-                                                top: 20, bottom: 20),
+                                                top: 10, bottom: 10),
                                             child: Row(
                                               children: [
                                                 Icon(
                                                   Ionicons.ios_thermometer,
-                                                  size: 40,
+                                                  size: 30,
+                                                  color: Color(0xFF979797),
                                                 ),
                                                 Text(
-                                                    '${snapshot.data.temperature.toString()}°C'),
+                                                    '${snapshot.data.temperature.toString()}°C',style: TextStyle(fontSize: 24)),
                                                 Padding(
                                                     padding: EdgeInsets.only(
                                                         left: 50)),
                                                 Icon(
                                                   Ionicons.ios_water,
-                                                  size: 40,
+                                                  size: 30,
+                                                  color: Color(0xFF979797),
                                                 ),
                                                 Text(
-                                                    '${snapshot.data.humidity.toString()}%'),
+                                                    '${snapshot.data.humidity.toString()}%',style: TextStyle(fontSize: 24)),
                                               ],
                                             ),
                                           )

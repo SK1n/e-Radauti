@@ -5,13 +5,17 @@ var changeColorInstance = ChangeColor();
 class ChangeColor {
   String changeTextQuality(value) {
     if (value > 0 && value <= 12) {
-      return "Buna";
+      return "Bună";
     } else if (value > 12 && value <= 35.4) {
-      return "Moderat";
+      return "Moderată";
     } else if (value > 35.4 && value <= 55.4) {
       return 'Rea';
+    } else if (value > 55.4 && value <= 150) {
+      return 'Nesănătoasă';
+    } else if (value > 150 && value <= 250) {
+      return 'Foarte nesănătoasă';
     } else {
-      return 'Grava';
+      return 'Gravă';
     }
   }
 
