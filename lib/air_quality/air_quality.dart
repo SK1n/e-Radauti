@@ -150,9 +150,9 @@ class _AirQualityPageState extends State<AirQualityPage> {
                               child: Column(
                                 children: [
                                   Text('CENTRU RĂDĂUȚI',style: TextStyle(fontSize: 24, color: Color(0xFF000000), fontWeight: FontWeight.bold,),),
-                                  Text(
-                                    '${snapshot.data.datasiora.toString()}',
-                                    style: TextStyle(fontSize: 24),),
+                                  Text('${snapshot.data.datasiora.toString().replaceAll('T', '  ').replaceAll('Z', '  ')}', style: TextStyle(fontSize: 24),),
+
+
                                   Container(
                                     padding: EdgeInsets.all(10),
                                     child: Card(
@@ -171,13 +171,13 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                               .size
                                                               .width -
                                                           40) /
-                                                      3,
+                                                      2.8,
                                                   child: Column(
                                                     children: [
                                                     Align(
                                                     alignment: Alignment.topLeft,
                                                       child: Text(
-                                                          'Calitatea aerului: \n' + '${changeColorInstance.changeTextQuality(snapshot.data.pm25)}', style: TextStyle(fontSize: 16),),
+                                                          ' Calitatea aerului: \n ' + '${changeColorInstance.changeTextQuality(snapshot.data.pm25)}', style: TextStyle(fontSize: 16),),
 
                                                     ),
                                                       /*Text(
