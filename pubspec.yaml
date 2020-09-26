@@ -56,8 +56,6 @@ dependencies:
 
   #For expanding and collapsing plugin
   expandable: ^4.1.4
-  device_calendar: ^3.1.0
-  add_2_calendar: ^1.4.0
 
 
 

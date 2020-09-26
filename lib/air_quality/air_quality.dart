@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/air_quality/air_quality_chart.dart';
 import 'package:flutterapperadauti/air_quality/air_quality_chart_model.dart';
 import 'package:flutterapperadauti/air_quality/airquality_model.dart';
@@ -23,6 +24,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
   List<AirQualityChartModel> data = [];
   var co2value;
   charts.Color barColorCo2;
+  bool isLoading = false;
 
   Future<AirQualityModel> _getAirQuality() async {
     var dio = Dio();
@@ -71,190 +73,187 @@ class _AirQualityPageState extends State<AirQualityPage> {
           ],
         ),
         drawer: NavDrawer2(),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.only(bottom: 15, top: 20),
-                child: Row(
-                  children: <Widget>[
+        body: isLoading
+            ? Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
+                ),
+              )
+            : SingleChildScrollView(
+                child: Column(
+                  children: [
                     Container(
-                      alignment: Alignment.centerLeft,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.keyboard_arrow_left,
-                          color: Color(0xFF979797),
-                        ),
-                        //_left Icons.arrow_back
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width - 80,
-                      child: new Stack(
-                        alignment: AlignmentDirectional.center,
+                      padding: EdgeInsets.only(bottom: 15, top: 20),
+                      child: Row(
                         children: <Widget>[
-                          Stack(
-                            children: <Widget>[
-                              Container(
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                      0.0, 0.0, 0.0, 0.0), //10.0 //25.0
-                                  child: Icon(
-                                    Icons.bubble_chart,
-                                    color: Color(0x55FB6340),
-                                    size: 30,
-                                  ),
-                                ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.keyboard_arrow_left,
+                                color: Color(0xFF979797),
                               ),
-                              Container(
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                      35.0, 0.0, 0.0, 0.0), //10.0 //25.0
-                                  child: Text(
-                                    'Calitatea aerului',
-                                    style: TextStyle(
-                                      color: Color(
-                                          0xFF000000), //Color(0xFFFFFFFF),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 19,
+                              //_left Icons.arrow_back
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width - 80,
+                            child: new Stack(
+                              alignment: AlignmentDirectional.center,
+                              children: <Widget>[
+                                Stack(
+                                  children: <Widget>[
+                                    Container(
+                                      child: Padding(
+                                        padding: EdgeInsets.fromLTRB(
+                                            0.0, 0.0, 0.0, 0.0), //10.0 //25.0
+                                        child: Icon(
+                                          Icons.bubble_chart,
+                                          color: Color(0x55FB6340),
+                                          size: 30,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-
+                                    Container(
+                                      child: Padding(
+                                        padding: EdgeInsets.fromLTRB(
+                                            35.0, 0.0, 0.0, 0.0), //10.0 //25.0
+                                        child: Text(
+                                          'Calitatea aerului',
+                                          style: TextStyle(
+                                            color: Color(
+                                                0xFF000000), //Color(0xFFFFFFFF),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 19,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),
                     ),
-
+                    Container(
+                      child: FutureBuilder(
+                        future: _getAirQuality(),
+                        builder:
+                            (BuildContext context, AsyncSnapshot snapshot) {
+                          if (snapshot.data == null) {
+                            return Container(child: Text(' '));
+                          } else {
+                            isLoading = true;
+                            debugPrint(
+                                'function response: ${changeColorInstance.changeColorHumidity(snapshot.data.humidity)}');
+                            return Container(
+                              padding: EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Text('Date'),
+                                  Container(
+                                    padding: EdgeInsets.all(10),
+                                    child: Card(
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            color: changeColorInstance
+                                                .changeColorQuality(
+                                                    snapshot.data.pm25),
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  padding: EdgeInsets.only(
+                                                      top: 10, bottom: 10),
+                                                  width: (MediaQuery.of(context)
+                                                              .size
+                                                              .width -
+                                                          40) /
+                                                      3.3,
+                                                  child: Column(
+                                                    children: [
+                                                      Text(
+                                                          'Calitatea aerului:'),
+                                                      Text(
+                                                          '${changeColorInstance.changeTextQuality(snapshot.data.pm25)}'),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Container(
+                                                  padding: EdgeInsets.only(
+                                                      top: 10, bottom: 10),
+                                                  width: (MediaQuery.of(context)
+                                                              .size
+                                                              .width -
+                                                          40) /
+                                                      3.3,
+                                                  child: Column(
+                                                    children: [
+                                                      Text(
+                                                          'PM2.5\n ${snapshot.data.pm25.toString()}\nug/m3'),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Container(
+                                                  padding: EdgeInsets.only(
+                                                      top: 10, bottom: 10),
+                                                  width: (MediaQuery.of(context)
+                                                              .size
+                                                              .width -
+                                                          40) /
+                                                      3.3,
+                                                  child: Column(
+                                                    children: [
+                                                      Text(
+                                                          'CO2\n${snapshot.data.co2.toString()}\nppm'),
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                                top: 20, bottom: 20),
+                                            child: Row(
+                                              children: [
+                                                Icon(
+                                                  Ionicons.ios_thermometer,
+                                                  size: 40,
+                                                ),
+                                                Text(
+                                                    '${snapshot.data.temperature.toString()}°C'),
+                                                Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 50)),
+                                                Icon(
+                                                  Ionicons.ios_water,
+                                                  size: 40,
+                                                ),
+                                                Text(
+                                                    '${snapshot.data.humidity.toString()}%'),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  AirQualityLegend(),
+                                ],
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    ),
                   ],
                 ),
-              ),
-              Container(
-                  padding: EdgeInsets.only(left: 20, right: 20),
-                  child:
-                  Text('Pe această pagină puteți urmări valorile măsurate de către aparatul AirVisual instalat în centrul Municipiului Rădăuți (Piața Garoafelor).\n\nValorile se actualizează o dată pe oră și corespund concentrației de CO2 (în ppm - părți pe milion), concentrației de PM2.5 (în ug/m3 - micrograme pe metru cub), temperaturii și umidității relative a aerului, în procente (%).\n\nPentru o analiză mai completă a datelor, descărcați aplicația AirVisual.',
-                      style: TextStyle(
-                      color: Color(
-                      0xFF000000), //Color(0xFFFFFFFF),
-                //fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ), )
-
-              ),
-              Container(
-                child: FutureBuilder(
-                  future: _getAirQuality(),
-                  builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (snapshot.data == null) {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
-                        ),
-                      );
-                      } else {
-                      co2value = snapshot.data.co2;
-
-                      debugPrint(
-                          'function response: ${changeColorInstance.changeColorHumidity(snapshot.data.humidity)}');
-                      data = [
-                        AirQualityChartModel(
-                          val: snapshot.data.humidity.toDouble(),
-                          valueType:
-                              'Umiditate\n${snapshot.data.humidity.toString()} %',
-                          barColor: changeColorInstance
-                              .changeColorHumidity(snapshot.data.humidity),
-                        ),
-/*                        AirQualityChartModel(
-                          val: co2value,
-                          valueType: "CO2\n${snapshot.data.co2.toString()}",
-                          barColor: changeColorInstance
-                              .changeColorCo2(snapshot.data.humidity),
-                        ),*/
-
-                        AirQualityChartModel(
-                            val: snapshot.data.pm25.toDouble(),
-                            valueType:
-                                'PM2.5\n${snapshot.data.pm25.toString()} ug/m3',
-                            barColor: changeColorInstance
-                                .changeColorPm25(snapshot.data.pm25)),
-                      ];
-
-                      return Container(
-                          padding: EdgeInsets.only(left: 10, top: 10),
-                          child: Container(
-                            child: Column(
-                              children: [
-                                AirQualityChart(data: data),
-                                Text(
-                                    'Temperatura aerului este: ${snapshot.data.temperature.toString()}°C'),
-                                /*AirQualityLegend()*/
-                              ],
-                            ),
-                          ));
-                    }
-                  },
-                ),
-              ),
-              Container(
-                child: FutureBuilder(
-                  future: _getAirQuality(),
-                  builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (snapshot.data == null) {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          valueColor:
-                          AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
-                        ),
-                      );
-                    } else {
-                      co2value = snapshot.data.co2;
-                      debugPrint(
-                          'function response: ${changeColorInstance.changeColorCo2(snapshot.data.co2)} ppm');
-                      data = [
-/*                        AirQualityChartModel(
-                          val: snapshot.data.humidity.toDouble(),
-                          valueType:
-                          'Umiditate\n${snapshot.data.humidity.toString()}',
-                          barColor: changeColorInstance
-                              .changeColorHumidity(snapshot.data.humidity),
-                        ),*/
-                        AirQualityChartModel(
-                          val: co2value,
-                          valueType: "CO2\n${snapshot.data.co2.toString()} ppm",
-                          barColor: changeColorInstance
-                              .changeColorCo2(snapshot.data.co2),
-                        ),
-/*                        AirQualityChartModel(
-                            val: snapshot.data.pm25.toDouble(),
-                            valueType:
-                            'PM2.5\n${snapshot.data.pm25.toString()} ug/m3',
-                            barColor: changeColorInstance
-                                .changeColorPm25(snapshot.data.humidity)),*/
-                      ];
-                      return Container(
-                          padding: EdgeInsets.only(left: 10, top: 10),
-                          child: Container(
-                            child: Column(
-                              children: [
-                                AirQualityChart(data: data),
-                                /*Text(
-                                    'Temperatura actuala este: ${snapshot.data.temperature.toString()}°C'),*/
-                                AirQualityLegend()
-                              ],
-                            ),
-                          ));
-                    }
-                  },
-                ),
-              )
-            ],
-          ),
-        ));
+              ));
   }
 }

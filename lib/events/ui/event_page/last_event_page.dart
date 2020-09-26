@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/events/app_state.dart';
-import 'package:flutterapperadauti/events/model/category.dart';
 import 'package:flutterapperadauti/events/model/event.dart';
-//
 
-import 'package:flutterapperadauti/events/styleguide.dart';
-import 'package:flutterapperadauti/events/ui/event_page/category_widget.dart';
 import 'package:flutterapperadauti/events/ui/event_page/last_event_widget.dart';
 import 'package:provider/provider.dart';
 import 'home_page_background.dart';
@@ -21,7 +17,7 @@ class _LastEventsState extends State<LastEvents> {
   Future<List> futureList;
   int contor = 1;
   Function function;
-  Widget function2(Event event){
+  Widget function2(EventApp event){
     if (contor <= 10){
       contor = contor + 1;
       //print('contor = $contor');
@@ -31,7 +27,6 @@ class _LastEventsState extends State<LastEvents> {
         ),
       );
     }else{
-      //contor = 11;
       return Container();
     }
 
