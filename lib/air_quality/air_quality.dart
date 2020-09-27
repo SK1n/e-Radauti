@@ -145,14 +145,25 @@ class _AirQualityPageState extends State<AirQualityPage> {
                             return Container(child: Text(' '));
                           } else {
                             isLoading = true;
+                            var date = snapshot.data.airTS.toString();
                             return Container(
                               padding: EdgeInsets.all(10),
                               child: Column(
                                 children: [
-                                  Text('CENTRU RĂDĂUȚI',style: TextStyle(fontSize: 24, color: Color(0xFF000000), fontWeight: FontWeight.bold,),),
-                                  Text('${snapshot.data.datasiora.toString().replaceAll('T', '  ').replaceAll('Z', '  ')}', style: TextStyle(fontSize: 24),),
-
-
+                                  Text(
+                                    'CENTRU RĂDĂUȚI',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Color(0xFF000000),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    '${date.replaceAll('T', '  ').replaceAll('Z', '  ').replaceRange(17, null, '')}',
+                                    style: TextStyle(
+                                        fontSize: 34,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                   Container(
                                     padding: EdgeInsets.all(10),
                                     child: Card(
@@ -174,12 +185,10 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                       2.8,
                                                   child: Column(
                                                     children: [
-                                                    Align(
-                                                    alignment: Alignment.topLeft,
-                                                      child: Text(
-                                                          ' Calitatea aerului: \n ' + '${changeColorInstance.changeTextQuality(snapshot.data.pm25)}', style: TextStyle(fontSize: 16),),
-
-                                                    ),
+                                                      changeColorInstance
+                                                          .changeTextQuality(
+                                                              snapshot
+                                                                  .data.pm25),
                                                       /*Text(
                                                           'Calitatea aerului:'),
                                                       Text(
@@ -198,14 +207,20 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                   child: Column(
                                                     children: [
                                                       Text(
-                                                          'PM2.5',
-                                                        style: TextStyle(fontSize: 14),),
+                                                        'PM2.5',
+                                                        style: TextStyle(
+                                                            fontSize: 14),
+                                                      ),
                                                       Text(
                                                         '${snapshot.data.pm25.toString()}',
-                                                        style: TextStyle(fontSize: 24),),
+                                                        style: TextStyle(
+                                                            fontSize: 24),
+                                                      ),
                                                       Text(
                                                         'ug/m3',
-                                                        style: TextStyle(fontSize: 18),),
+                                                        style: TextStyle(
+                                                            fontSize: 18),
+                                                      ),
                                                     ],
                                                   ),
                                                 ),
@@ -219,15 +234,16 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                       3.3,
                                                   child: Column(
                                                     children: [
+                                                      Text('CO2',
+                                                          style: TextStyle(
+                                                              fontSize: 14)),
                                                       Text(
-                                                          'CO2',style: TextStyle(fontSize: 14)
-                                                      ),
-                                                      Text(
-                                                          '${snapshot.data.co2.toString()}',style: TextStyle(fontSize: 24)
-                                                      ),
-                                                      Text(
-                                                          'ppm',style: TextStyle(fontSize: 18)
-                                                      ),
+                                                          '${snapshot.data.co2.toString()}',
+                                                          style: TextStyle(
+                                                              fontSize: 24)),
+                                                      Text('ppm',
+                                                          style: TextStyle(
+                                                              fontSize: 18)),
                                                     ],
                                                   ),
                                                 )
@@ -245,7 +261,9 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                   color: Color(0xFF979797),
                                                 ),
                                                 Text(
-                                                    '${snapshot.data.temperature.toString()}°C',style: TextStyle(fontSize: 24)),
+                                                    '${snapshot.data.temperature.toString()}°C',
+                                                    style: TextStyle(
+                                                        fontSize: 24)),
                                                 Padding(
                                                     padding: EdgeInsets.only(
                                                         left: 50)),
@@ -255,7 +273,9 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                   color: Color(0xFF979797),
                                                 ),
                                                 Text(
-                                                    '${snapshot.data.humidity.toString()}%',style: TextStyle(fontSize: 24)),
+                                                    '${snapshot.data.humidity.toString()}%',
+                                                    style: TextStyle(
+                                                        fontSize: 24)),
                                               ],
                                             ),
                                           )

@@ -3,19 +3,67 @@ import 'package:flutter/material.dart';
 var changeColorInstance = ChangeColor();
 
 class ChangeColor {
-  String changeTextQuality(value) {
+  RichText changeTextQuality(value) {
     if (value > 0 && value <= 12) {
-      return "Bună";
+      return RichText(
+          text: TextSpan(
+              text: 'Calitatea aerului: \n\n',
+              style: TextStyle(color: Colors.black),
+              children: [
+            TextSpan(
+                text: 'Bună',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          ]));
     } else if (value > 12 && value <= 35.4) {
-      return "Moderată";
+      return RichText(
+          text: TextSpan(
+              text: 'Calitatea aerului: \n\n',
+              style: TextStyle(color: Colors.black),
+              children: [
+            TextSpan(
+                text: 'Moderată',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          ]));
     } else if (value > 35.4 && value <= 55.4) {
-      return 'Rea';
+      return RichText(
+          text: TextSpan(
+              text: 'Calitatea aerului: \n\n',
+              style: TextStyle(color: Colors.black),
+              children: [
+            TextSpan(
+                text: 'Rea',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          ]));
     } else if (value > 55.4 && value <= 150) {
-      return 'Nesănătoasă';
+      return RichText(
+          text: TextSpan(
+              text: 'Calitatea aerului: \n\n',
+              style: TextStyle(color: Colors.black),
+              children: [
+            TextSpan(
+                text: 'Nesănătoasă',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          ]));
     } else if (value > 150 && value <= 250) {
-      return 'Foarte nesănătoasă';
+      return RichText(
+          text: TextSpan(
+              text: 'Calitatea aerului: \n\n',
+              style: TextStyle(color: Colors.black),
+              children: [
+            TextSpan(
+                text: 'Foarte nesănătoasă',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          ]));
     } else {
-      return 'Gravă';
+      return RichText(
+          text: TextSpan(
+              text: 'Calitatea aerului: \n\n',
+              style: TextStyle(color: Colors.black),
+              children: [
+            TextSpan(
+                text: 'Gravă',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+          ]));
     }
   }
 
