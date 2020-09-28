@@ -77,10 +77,12 @@ class Taxi extends StatelessWidget {
                         ],
                       ),
                     ),
+
                   ],
                 ),
               ),
               //1
+
               Container(
                 padding: EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 10,),
                 child: Column(

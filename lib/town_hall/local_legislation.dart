@@ -1674,13 +1674,54 @@ class LocalLegislation extends StatelessWidget {
                             },
                           ),
                         ),
+
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              ExpandableNotifier(
+                child: Container(
+                  padding: const EdgeInsets.only(
+                    left: 15,
+                    right: 15,
+                  ),
+                  width: MediaQuery.of(context).size.width,
+                  child: Card(
+                    margin:
+                    const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
+//elevation: 4,
+//color: Colors.white,
+//childAspectRatio: (MediaQuery.of(context).size.width/2 - 22.5) / (MediaQuery.of(context).size.height/5 - 60),
+/*shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(2)),
+            ),*/
+                    clipBehavior: Clip.antiAlias,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(
+                              5), //const EdgeInsets.all(20),
+                          child: Row(
+                            children: <Widget>[
+                              Column(
+                                children: <Widget>[],
+                              ),
+                              Column(
+                                children: <Widget>[],
+                              ),
+                            ],
+                          ),
+                        ),
+
                         ScrollOnExpand(
                           scrollOnExpand: true,
                           scrollOnCollapse: false,
                           child: ExpandablePanel(
                             theme: const ExpandableThemeData(
                               headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
+                              ExpandablePanelHeaderAlignment.center,
                               tapBodyToCollapse: true,
                             ),
                             header: Padding(
@@ -1721,7 +1762,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 4 privind aprobarea Devizului general reactualizat ulterior încheierii contractelor de achiziție publică și aprobarea cofinanţării costurilor neeligibile pentru obiectivul de investiții „Extindere și modernizare Grădinița cu program normal ”Sfânta Treime” Rădăuți”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1737,7 +1778,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 5 privind aprobarea Devizului general reactualizat ulterior încheierii contractelor de achiziție publică și aprobarea cofinanţării costurilor neeligibile pentru obiectivul de investiții „Reabilitare și modernizare Grădinița cu program normal nr. 6 Rădăuți”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1753,7 +1794,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 6 privind aprobarea Devizului general reactualizat ulterior încheierii contractelor de achiziție publică și aprobarea cofinanţării costurilor neeligibile pentru obiectivul de investiții „Extindere Școala Gimnazială ”Mihai Eminescu” Rădăuți cu un corp de clădire nou (P+2E)”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1769,7 +1810,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 7 privind aprobarea Devizului general reactualizat ulterior încheierii contractelor de achiziție publică și aprobarea cofinanţării costurilor neeligibile pentru obiectivul de investiții „Termoizolare față de pentru Grădinița cu program prelungit ”Prichindelul” Rădăuți”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1785,7 +1826,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 8 privind aprobarea pentru anul 2019 a Planului de acţiuni sau lucrări de interes local, pentru repartizarea orelor de muncă pentru persoanele beneficiare de prevederile Legii nr.416/2001 privind venitul minim garantat, care prestează acţiuni ori lucrări de interes local", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1801,7 +1842,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 9 privind exprimarea acceptului de înfiinţare a ,,Consorţiului Şcolar Rădăuţi”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1817,7 +1858,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 11 privind aprobarea dezmembrării terenului situat în Comuna Frătăuţii Vechi, sat Măneuţi, judeţul Suceava, identic cu imobilul cu nr. cadastral:30782", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1833,7 +1874,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 12 privind aprobarea înscrierii în Cartea funciară a terenului curţi-construcţii în suprafaţă de 35,00 mp aparţinând domeniului public al Municipiului Rădăuţi, situate în Municipiul Rădăuţi, str. Mihai Viteazu f. nr., în vederea trecerii în domeniul privat şi concesionării", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1849,7 +1890,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 13 privind completarea inventarului bunurilor care fac parte din domeniul privat al municipiului Rădăuţi, judeţul Suceava cu o suprafaţă de 300 mp teren curţi –construcţii situat în intravilanul municipiului Rădăuţi, str. Tolocii nr. 97", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1865,7 +1906,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 14 privind desemnarea consilierilor locali care să facă parte din comisia de vânzare prin licitaţie publică a imobilelor aparţinând domeniului privat al municipiului Rădăuţi şi aprobarea modelului cadru al Caietului de sarcini pentru procedura vânzării prin licitaţie publică", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1881,7 +1922,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 15 privind aprobarea vânzării prin licitaţie publică a două imobile, aparţinând domeniului privat al municipiului Rădăuţi, situate în str. ing. Andronic Motrescu f.nr. respectiv, str. Jalcău f.nr.", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1897,7 +1938,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 16 privind aprobarea vânzării prin licitaţie publică a cinci imobile, aparţinând domeniului privat al municipiului Rădăuţi, situate în str. Tolocii f.n, str. Gheorghe Tofan f.n, str. Mihail Kogalniceanu nr. 19 şi str. Sfantul Dumitru f.n", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1913,7 +1954,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 25 privind aprobarea înscrierii în Cartea Funciară a terenului curţi-construcţii în suprafaţă de 18,20 mp aparţinând domeniului public al Municipiului Rădăuţi, situate în Municipiul Rădăuţi, str. Mihai Viteazu, nr. 3D, în vederea trecerii în domeniul privat şi concesionării", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1929,7 +1970,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 26 privind stabilirea salariilor pentru funcțiile publice și contractuale din cadrul aparatului de specialitate al primarului, sectoarelor subordonate și serviciilor publice din subordinea Consiliului Local Rădăuți", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1945,7 +1986,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 27 privind modificarea statului de funcții al Spitalului Municipal Sf. Dr. Cosma și Damian Rădăuți, prin transformarea unor posturi și suplimentarea cu un post de îngrijitoare în CPU", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1961,7 +2002,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 31 privind aprobarea organizării Târgului ,,Mărţişor 2019”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1977,7 +2018,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 32 privind aprobarea modificării statului de funcţii, ca urmare a promovării în grad professional imediat superior, a auditorului public intern din cadrul aparatului propriu de specialitate al primarului Municipiului Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -1993,7 +2034,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 33 privind aprobarea unor acte de autoritate pentru apărarea împotriva incendiilor", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2009,7 +2050,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 34 pentru aprobarea Regulamentului privind atestarea/autorizarea administratorilor de condominii", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2025,7 +2066,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 35 pentru aprobarea ,,Regulamentului compartimentului specializat din cadrul Primăriei Municipiului Rădăuţi, privind sprijinirea, îndrumarea şi controlul asociaţilor de proprietari” din Municipiul Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2041,7 +2082,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 36 privind aprobarea contului de execuţie la 31.12.2018", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2057,7 +2098,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 37 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Modernizare trotuar prin pavare, strada Bogdan Vodă (din faţa imobilului nr. 36 până la intersecţie str. Mihai Viteazu – partea dreaptă), Rădăuţi, judeţul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2073,7 +2114,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 38 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Modernizare trotuar prin pavare, strada str. Simion Bărnuțiu (intersecție str. Tudor Vladimirescu cu str. Gheorghe Lazăr- partea dreaptă), Rădăuţi, judeţul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2089,7 +2130,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 39 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Modernizare trotuar prin pavare, strada Aron Pumnul (intersecție str. Simion Bărnuțiu – intersecție str. Oborului – partea dreaptă și partea stângă), Rădăuţi, judeţul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2105,7 +2146,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 40 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Modernizare trotuar prin pavare, strada Volovăţului, partea dreaptă ( intersecţie Baia Comunală – Alee Bloc RCS&RDS Volovăţului şi alee acces spaţiu verde din faţa parcării din str. Călăraşi), municipiul Rădăuţi, judeţul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2121,7 +2162,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 41 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici pentru obiectivul de investiții «Reparaţii acoperiș (şarpantă şi învelitoare) la clădirea din str. Piaţa Unirii, nr. 67 (latura sud)» municipiul Rădăuţi, judeţul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2137,7 +2178,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 42 privind aprobarea documentațiilor tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivele de investiții «Modernizări cu asfalt» str. 9 Mai, str. Tineretului, str. Plugarilor, str. Pepenăriei, str. Papetăriei, str. Mănăstirii, str. Mică, str. C. Dobrogeanu Gherea, str. Merilor, str. Berăriei, str. C.Colibaba, str. Recoltei, str. Sitarilor, municipiul Rădăuți, județul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2153,7 +2194,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 43 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Modernizare pistă de atletism, stadion municipal Rădăuţi» municipiul Rădăuţi, judeţul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2169,7 +2210,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 44 privind stabilirea componenţei echipe mobile pentru intervenţia de urgenţă în cazurile de violenţă domestică la nivelul municipiului Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2185,7 +2226,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 45 privind includerea în domeniul privat al municipiului Rădăuţi, judeţul Suceava, a două parcele de teren", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2201,7 +2242,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 46 privind includerea în domeniul privat al municipiului Rădăuţi, judeţul Suceava, a două parcele de teren", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2217,7 +2258,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 47 privind includerea în domeniul privat al municipiului Rădăuţi, judeţul Suceava, al unui nr. de 22 parcele de teren", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2233,7 +2274,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 48 privind includerea în domeniul privat al municipiului Rădăuți, judeţul Suceava a suprafeţei de 428,25 mp reprezentând cotă indiviză de ¾ din terenul identificat cadastral sub nr. 34307, înscris în C.F. 34307, situat în str. Volovăţului nr. 39, municipiul Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2249,7 +2290,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 49 privind aprobarea înscrierii în Cartea Funciară a terenului curţi-construcţii în suprafaţă de 5,00 mp aparţinând domeniului public al Municipiului Rădăuţi, situat în str. Gen. Iacob Zadik nr. 18, în vederea trecerii în domeniul privat şi concesionării", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2265,7 +2306,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 50 privind închirierea prin licitaţie publică deschisă, organizată în condiţiile legii, a unor terenuri aflate în domeniul privat al Municipiului Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2281,7 +2322,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 51 privind închirierea prin licitaţie publică deschisă, organizată în condiţiile legii, a unui teren în suprafaţă de 14 mp aflat în domeniul public al Municipiului Rădăuţi, situat în Municipiul Rădăuţi, str. Piaţa Unirii f. nr", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2297,7 +2338,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 52 privind închirierea prin licitaţie publică deschisă, organizată în condiţiile legii, a unui teren în suprafaţă de 4 mp aflat în domeniul public al Municipiului Rădăuţi, situat în Municipiul Rădăuţi, str. Piaţa Unirii f. nr.", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2313,7 +2354,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 53 pentru modificarea H.C.L. nr. 16/23.01.2019 privind aprobarea vânzării prin licitaţie publică a cinci imobile, aparţinând domeniului privat al municipiului Rădăuţi, situate în str. Tolocii f.n, str. Gheorghe Tofan f.n, str. Mihail Kogalniceanu nr. 19 şi str. Sfântul Dumitru f.n.", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2329,7 +2370,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 54 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situate în str. Plugarilor f.n", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2345,7 +2386,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 55 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Mihai Bodnar nr. 43", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2361,7 +2402,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 56 privind aprobarea vânzării prin licitaţie publică a imobilului aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Jalcău f.n", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2377,7 +2418,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 57 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. ing. Andronic Motrescu f.n", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2393,7 +2434,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 58 privind aprobarea vânzării prin licitaţie publică a imobilului aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Jalcău f.n", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2409,7 +2450,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 59 privind aprobarea vânzării prin licitaţie publică a două imobile, aparţinând domeniului privat al municipiului Rădăuţi, situate în str. Jalcău nr. 28", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2425,7 +2466,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 60 privind aprobarea vânzării prin licitaţie publică a două imobile, aparţinând domeniului privat al municipiului Rădăuţi, situate în str. Jalcău nr. 26", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2441,7 +2482,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 61 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Rozelor f.n", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2457,7 +2498,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 75 privind aprobarea tarifelor pentru serviciile medicale cu plată prestate de către Spitalul ,,Sf. Dr. Coşma şi Damian”Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2473,7 +2514,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 76 privind modificarea statului de funcţii al Spitalului Municipal Sf. Dr. Cosma şi Damian Rădăuţi, prin transformarea unor posturi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2489,7 +2530,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 77 privind aprobarea Planului de Ordine şi Siguranţă Publică al Poliţiei Locale Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2505,7 +2546,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 78 cuprinzând norme stabilite de consiliul local Rădăuţi pentru instituţiile publice, agenţii economici, persoanele juridice şi cetăţeni (persoane fizice) cu privire la: gospodărirea, asigurarea igienei publice, salubrizării, întreţinerea spaţiilor verzi, protecţia mediului înconjurător, întreţinerea şi folosirea construcţiilor şi utilizarea drumurilor publice, buna convieţuire, ordinea şi liniştea publică, utilizarea domeniului public şi privat şi afişarea materialelor publicitare", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2521,7 +2562,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 79 privind aprobarea prelungirii, pe o perioadă de 2 ani, a contractului privind activitatea de iluminat public în Municipiul Rădăuţi nr. 3575/13.04.2007 încheiat între Municipiul Rădăuţi şi S.C. Servicii Comunale S.A. Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2537,7 +2578,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 80 privind aprobarea Strategiei de Dezvoltare a Serviciilor Sociale la nivelul municipiului Rădăuţi pentru perioada 2019-2029", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2553,7 +2594,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 81 privind aprobarea Planului anual de acțiune privind serviciile sociale administrate și finanțate din bugetul local, pentru anul 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2569,7 +2610,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 82 privind modificarea inventarului bunurilor care fac parte din domeniul public al municipiului Rădăuţi, judeţul Suceava, înscris în Anexa la Hotărarea Consiliului Local nr. 82/26.08.1999, cu modificările şi completările ulterioare", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2585,7 +2626,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 83 privind aprobarea radierii dreptului de prorietate, înscris pentru municipiul Rădăuţi – domeniul public, în baza H.C.L. nr. 126/23.07.2009 din C.F. nr. 30668 Frătăuţii Noi, pentru imobilul cu nr. cadastral 30668 Frătăuţii Noi, în suprafaţă de 90.463 mp şi aprobarea rectificării C.F. în sensul radierii dreptului de proprietate înscris pentru municipiul Rădăuţi – domeniul public, în baza Actului notarial. nr. 29/07.02.2019 din C.F. 35152 Frătăuţii Vechi pentru imobilul cu nr. cadastral 35152, în suprafaţă de 4.324 mp şi C.F. 35153 Frătăuţii Vechi, pentru imobilul cu nr. cadastral 35153, în suprafaţă de 137.600 mp, provenite din dezmembrarea imobilului cu nr. cadastral 30782", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2601,7 +2642,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 84 privind includerea unui bun imobil în domeniul public al municipiului Rădăuţi, judeţul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2617,7 +2658,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 85 privind includerea în domeniul privat al municipiului Rădăuţi, judeţul Suceava, a trei parcele de teren", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2633,7 +2674,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 86 privind includerea în domeniul privat al municipiului Rădăuţi, judeţul Suceava a patru parcele de teren", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2649,7 +2690,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 87 privind includerea în domeniul privat al municipiului Rădăuţi, judeţul Suceava a terenului curţi – construcţii în suprafaţă de 14.199 mp, situat în intravilanul municipiului Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2665,7 +2706,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 88 privind includerea în domeniul privat al municipiului Rădăuţi, judeţul Suceava a terenului arabil în suprafaţă de 200 mp situat în intravilanul municipiului Rădăuţi, str. Vladimir Trebici f.n", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2681,7 +2722,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 89 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Dimitrie Onciul nr. 35 A", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2697,7 +2738,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 90 privind concesionarea, prin licitaţie publică, a terenului în suprafaţă de 64,00 mp teren, situat în intravilanul Municipiului Rădăuţi, str. Grănicerului f.nr., în vederea construirii unui spaţiu comercial pentru produse alimentare şi industriale", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2713,7 +2754,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 91 privind actualizarea devizului general pentru obiectivul de investiţii << Mordenizare cu asfalt str. Hipodromului, str. Cucului, str. Mihai Pitei, str. Valea Seacă, str. Şerpuită, str. Uzinei, str. Cărămidăriei şi str. Tirului, municipiul Rădăuţi, judeţul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2729,7 +2770,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 92 privind alegerea președintilor de ședință a Consiliului Local al municipiului Rădăuți pentru perioada aprilie 2019 – iunie 2020", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2745,7 +2786,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 93 privind trecerea din domeniul public în domeniul privat al Municipiului Rădăuţi a terenului în suprafaţă de 35,00 mp, situat în intravilanul Municipiului Rădăuţi, str. Mihai Viteazu f. Nr., şi concesionarea acestuia către Firma Davalmar Com S.R.L. fără licitaţie publică, în vederea extinderii construcţiei", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2761,7 +2802,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 97 privind aprobarea Devizului general reactualizat în baza OUG nr. 114/2018 şi aprobarea cofinanţării pentru obiectivul de investiţii ..Termoizolare faţade pentru Grădiniţa cu program prelungit ,, Prichindelul” Rădăuţi”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2777,7 +2818,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 98 privind aprobarea Proiectului ,,VENUS – Împreună pentru o viaţă în siguranţă”, şi a contribuţiei proprii în proiect, a Municipiului Rădăuţi, în vederea finanţării în cadrul Programului Operaţional Capital Uman 2017-2020", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2793,7 +2834,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 99 privind aprobarea implementării de către Municipiul Rădăuţi a acţiunii/proiectului << WiFi4U Promovarea conectivităţii la internet în comunităţile locale>> conform Acordului de Grant încheiat prin Mecanismul pentru interconectarea Europei (MIE) WiFi4EU nr. INEA/CEF/WiFi4EU/1-2019/009493 – 012519 şi stabilirea locaţiilor de amplasare a punctelor de acces a reţelei Wi-Fi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2809,7 +2850,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 100 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Modernizare cu asfalt str. Parcului, municipiul Rădăuţi, judeţul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2825,7 +2866,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 101 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Parcare şi trotuar dreapta ( int. Calea Bucovinei cu Piaţa Mică – Bogdan Vodă) str. Grănicerului, municipiul Rădăuţi, judeţul Suceava, modernizare cu asfalt »", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2841,7 +2882,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 102 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Modernizare cu asfalt str. Fagilor, municipiul Rădăuţi, judeţul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2857,7 +2898,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 103 privind stabilirea costului mediu lunar de întreţinere pentru o persoană vârstnică şi a contribuţiei lunare de întreţinere datorate de persoanele vârstnice sau de către susţinătorii legali ai persoanelor vârstnice asistate în Căminul pentru Persoane Vârstnice Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2873,7 +2914,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 104 privind aprobarea creditelor de angajament pentru acţiuni multianuale la obiectivul de investiţii ,,Proiectare şi execuţie lucrări – Modernizare cu asfalt str. 9 Mai, str. Tineretului, str. Plugarilor, str. Pepenăriei, str. Papetăriei, str. Mănăstirii, str. Mică, str. Constantin Dobrogeanu Gherea, str. Merilor, str. Berăriei, str. Constantin Colibaba, str. Recoltei, str. Sitarilor, str. Parcului, str. Fagilor în Municipiul Rădăuţi – diriginţie şantier, comisioane ISC”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2889,7 +2930,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 105 privind aprobarea bugetului propriu al Municipiului Rădăuţi şi al unităţilor subordonate Consiliului Local al Municipiului Rădăuţi, pentru anul 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2905,7 +2946,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 106 privind aprobarea actului adiţional nr. 1 la contractul de dare în administrare al serviciului de transport, distribuţie şi furnizare a energiei termice în sistem centralizat în Municipiul Rădăuţi nr. 17021/22.11.2018, înregistrat la S.C. Servicii Comunale S.A. cu nr. 3081/28.11.2018", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2921,7 +2962,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 107 privind aprobarea modificării statului de funcţii, pentru personalul contractual din cadrul Direcţiei de Asistenţă Socială, Aparatul de specialitate al primarului şi Aparatul de lucru al Consiliului Local, care a susţinut examenul de promovare în grad profesional", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2937,7 +2978,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 108 privind aprobarea modificării statului de funcţii pentru o funcţie publică vacantă din cadrul aparatului propriu de specialitate al primarului municipiului Rădăuţi – Direcţia Poliţiei Locale", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2953,7 +2994,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 109 pentru modificarea şi completarea H.C.L. nr. 75/16.04.2009, H.C.L. nr. 189/18.12.2014 şi H.C.L. nr. 8/23.01.2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2969,7 +3010,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 110 privind includerea în domeniul privat al Municipiului Rădăuţi, judeţul Suceava, a şase parcele de teren", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -2985,7 +3026,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 111 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Unirea Principatelor f.n.", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3001,7 +3042,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 112 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Porumbelului nr. 1", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3017,7 +3058,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 113 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Jalcău nr. 42", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3033,7 +3074,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 114 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Putnei f.n.", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3049,7 +3090,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 116 privind indexarea impozitelor şi taxelor locale, care constau într-o anumită sumă în lei sau care sunt stabilite pe baza unei anumite sume în lei", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3065,7 +3106,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 117 privind aprobarea Regulamentului pentru ocuparea domeniului public/privat al municipiului Rădăuţi, în vederea desfăşurării de activităţi sezoniere şi ocazionale", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3081,7 +3122,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 118 pentru modificarea H.C.L. nr. 108/29.05.2018 privind însuşirea unor bunuri ca aparţinând domeniului privat al Municipiului Rădăuţi, prelungirea termenului contractului de concesiune f. nr. Din 08.06.1993 şi schimbarea titularului contractului de concesiune nr. 16/7747 din 19.11.2002", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3097,7 +3138,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 119 cuprinzând norme stabilite de consiliul local Rădăuţi pentru instituţiile publice, agenţii economici, persoanele juridice şi cetăţeni (persoane fizice) cu privire la: gospodărirea, asigurarea igienei publice, salubrizării, întreţinerea spaţiilor verzi, protecţia mediului înconjurător, întreţinerea şi folosirea construcţiilor şi utilizarea drumurilor publice, buna convieţuire, ordinea şi liniştea publică, utilizarea domeniului public şi privat şi afişarea materialelor publicitare", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3113,7 +3154,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 120 privind aprobarea transmiterii în folosinţă gratuită a unor suprafeţe de teren şi/sau a dreptului de uz şi servitute cu titlu gratuit de trecere subterană pentru anumite suprafaţe de teren de până la 20 ml pe durata existenţei acestor racorduri/branşamente/capacităţi energetice din domeniul public sau privat al municipiului Rădăuţi, judeţul Suceava către operatorii de utilităţi pentru apă şi canalizare, gaze naturale şi energie electrică", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3129,7 +3170,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 121 privind aprobarea Listei de priorităţi pentru anul 2019 în vederea repartizării, prin închiriere, a locuinţelor construite prin ANL", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3145,7 +3186,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 122 privind aprobarea Regulamentului de Organizare şi Funcţionare al Serviciului Public Comunitar Local de Evidenţă a Persoanelor al municipiului Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3161,7 +3202,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 123 privind aprobarea ”Planului de asigurare cu resurse umane, materiale şi financiare pentru gestionarea situaţiilor de urgenţă de pe teritoriul administrativ al municipiului Rădăuţi pentru anul 2018”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3177,7 +3218,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 128 privind aprobarea vânzării prin licitaţie publică a două imobile, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Volovăţului f.n", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3193,7 +3234,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 130 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Modernizare cu asfalt str. Spitalului (int. Cale ferată – int. Str. Volovăţului), str. Volovăţului (int. Str. Spitalului – int. Str. Tudor Vladimirescu), municipiul Rădăuţi, judeţul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3209,7 +3250,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 131 privind aprobarea documentațiilor tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivele de investiții «Reabilitare străzi, municipiul Rădăuţi, jud. Suceava» str. Bogdan Vodă, str. Gării, str. Spitalului, str. Teiului, str. Ieraclie Porumbescu, str. Volovăţului, str. Ion Nistor, str. Constantin Dobrogeanu Gherea, str. Dimitre Dan, str. Şcolii Noi, str. Piaţa Unirii, str. Mărţişor, str. Măcelarilor, str. Topliţei, str. Horia, str. Grănicerului, str. Sf. Dumitru, str. Pictor Grigorescu, municipiul Rădăuți, județul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3225,7 +3266,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 132 privind rectificarea bugetului local de venituri şi cheltuieli pentru anul 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3241,7 +3282,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 133 pentru modificarea şi completarea Hotărârii Consiliului Local Rădăuţi nr. 104/17.04.2019 privind aprobarea creditelor de angajament pentru acţiuni multianuale la obiectivul de investiţii ,,Proiectare şi execuţie lucrări – Modernizare cu asfalt str. 9 Mai, str. Tineretului, str. Plugarilor, str. Pepenăriei, str. Papetăriei, str. Mănăstirii, str. Mică, str. Constantin Dobrogeanu Gherea, str. Merilor, str. Berăriei, str. Constantin Colibaba, str. Recoltei, str. Sitarilor, str. Parcului, str. Fagilor în Municipiul Rădăuţi – diriginţie şantier, comisioane ISC”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3257,7 +3298,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 134 privind aprobarea bugetului de venituri şi cheltuieli al S.C. Servicii Comunale S.A. Rădăuţi, pentru anul 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3273,7 +3314,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 135 privind aprobarea modificării statului de funcţii pentru o funcţie contractuală vacantă din cadrul aparatului propriu de specialitate al primarului municipiului Rădăuţi, Direcţia Tehnică", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3289,7 +3330,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 136 de modificare şi completare a HCL nr. 108/29.04.2019 privind aprobarea modificării statului de funcţii pentru o funcţie publică vacantă din cadrul aparatului propriu de specialitate al primarului municipiului Rădăuţi – Direcţia Poliţiei Locale", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3305,7 +3346,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 137 privind transformarea unei funcţii publice de execuţie ca urmare a susţinerii examenului de promovare în grad profesional de către un funcţionar public în cadrul Direcţiei de Asistenţă Socială din subordinea Consiliului Local al municipiului Rădăuţi, judeţul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3321,7 +3362,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 138 privind includerea în domeniului privat al municipiului Rădăuţi, judeţul Suceava a terenului curţi — construcţii în suprafaţă de 750 mp situat în intravilanul municipiului Rădăuţi, str. Gării şi aprobarea dezmembrării acestuia în două imobile identificate cadastral cu nr. 54463, în suprafaţă de 285 mp, respectiv nr. cadastral 54464, în suprafaţă de 465 mp", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3337,7 +3378,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 139 privind includerea în domeniului privat al municipiului Rădăuţi, judeţul Suceava a terenului curţi-construcţii în suprafaţă de 234,77 mp situat în intravilanul municipiului Rădăuţi, str. Ion Nistor nr. 22, identificat cadastral cu nr. 771/2 înscris în C.F. nr. 54549 Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3353,7 +3394,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 140 privind includerea în domeniul privat al municipiului Rădăuţi, judeţul Suceava a trei parcele de teren", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3369,7 +3410,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 141 privind includerea în domeniul privat al municipiului Rădăuţi, judeţul Suceava a patru parcele de teren", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3385,7 +3426,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 142 privind includerea în domeniul privat al Municipiului Rădăuţi cu terenul în suprafaţă de 32 mp situat în Municipiul Rădăuţi, str. Putnei, bloc nr. 11, în vederea concesionării", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3401,7 +3442,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 143 privind aprobarea înscrierii în C.F. a terenului curţi-construcţii în suprafaţă de 39,00 mp aparţinând domeniului public al Municipiului Rădăuţi, situat în Municipiul Rădăuţi, str. Calea Bucovinei nr. 3C, în vederea trecerii în domeniul privat şi concesionării", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3417,7 +3458,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 144 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. ing. Andronic Motrescu nr. 2H", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3433,7 +3474,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 145 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Horea 61A.", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3449,7 +3490,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 146 privind aprobarea vânzării prin licitaţie publică a imobilului aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Calea Cernăuţi nr. 81.", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3465,7 +3506,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 147 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Horodnicului f.n.", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3481,7 +3522,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 148 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Vasile Bumbac f.nr.", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3497,7 +3538,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 149 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Dorobanţului nr. 9", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3513,7 +3554,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 157 privind modificarea statului de funcţii al Spitalului Municipal Sf. Dr. Cosma şi Damian Rădăuţi, prin transformarea unor posturi în nivele superioare", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3529,7 +3570,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 158 privind aprobarea tarifelor pentru serviciile medicale cu plată prestate de către Spitalul ,,Sf. Dr. Cosma şi Damian” Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3545,7 +3586,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 159 privind aprobarea Regulamentului de acordare a sumelor reprezentând stimulente financiare lunare acordate medicilor din Spitalul Municipal ,,Sf. Doctori Cosma şi Damian” Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3561,7 +3602,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 160 privind aprobarea contractării unui credit în valoare de 285.000 euro (fătă TVA) pe o perioadă de maxim 5 ani, de către S.C. Servicii Comunale S.A. Rădăuţi, în vederea achiziţionării unei staţii de preparat mixturi asfaltice, tip SMAV 50", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3577,7 +3618,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 161 privind modificarea inventarului bunurilor care fac parte din domeniul public al municipiului Rădăuţi, judeţul Suceava, înscris în Anexa la Hotărarea Consiliului Local nr. 82/26.08.1999, cu modificările şi completările ulterioare", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3593,7 +3634,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 162 privind completarea inventarului bunurilor care fac parte din domeniul public al municipiului Rădăuţi, judeţul Suceava, înscris în Anexă la Hotărârea Consiliului Local nr. 82/26.08.1999, cu modificările şi completările ulterioare", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3609,7 +3650,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 163 privind aprobarea înscrierii în Cartea Funciară a terenului curţi-construcţii în suprafaţă de 27,00 mp aparţinând domeniului public al Municipiului Rădăuţi, situate în Municipiul Rădăuţi, str. Mihai Viteazu nr. 3D, în vederea trecerii în domeniul privat şi concesionării", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3625,7 +3666,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 164 privind aprobarea dezmembrării terenului situat în municipiul Rădăuţi, str. Horodnicului nr. 32, identic cu nr. Cadastral :52746", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3641,7 +3682,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 165 privind aprobarea vănzării prin licitaţie publică a imobilului aparţinând domeniului privat al municipiului Rădăuţi, situat în str. ing. Andronic Motrescu f.nr", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3657,7 +3698,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 166 privind aprobarea vănzării prin licitaţie publică a imobilului aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Tineretului", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3673,7 +3714,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 167 privind aprobarea vânzării prin licitaţie publică a imobilului, aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Mihai Pitei f.nr.", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3689,7 +3730,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 168 privind aprobarea vănzării prin licitaţie publică a imobilului aparţinând domeniului privat al municipiului Rădăuţi, situat în str. Mihai Pitei nr. 70", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3705,7 +3746,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 177 privind aprobarea modificării statului de funcţii pentru o funcţie publică vacantă din cadrul aparatului propriu de specialitate al primarului municipiului Rădăuţi – Direcţia Poliţiei Locale", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3721,7 +3762,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 178 privind acordarea ,,Diplomei de Aur“ şi a unui premiu, cuplurilor din municipiul Rădăuţi care au împlinit/împlinesc 50 de ani de căsătorie neîntreruptă în cursul anului 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3737,7 +3778,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 179 privind aprobarea contului de execuţie la 31.03.2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3753,7 +3794,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 180 privind aprobarea tarifelor pentru serviciul public de producere, transport şi distribuţie a energiei termice începând cu 01.07.2019, prestate de către S.C. SERVICII COMUNALE S.A. Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3769,7 +3810,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 181 privind actualizarea devizului general pentru obiectivul de investiții «Modernizare cu asfalt str. Hipodromului, str. Cucului, str. Mihai Pitei, str. Valea Seacă, str. Şerpuită, str. Uzinei, str. Caramidăriei şi str.Tirului, municipiul Rădăuți, județul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3785,7 +3826,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 182 privind aprobarea înscrierii în cartea funciară a unor unităţi individuale din imobilul construcţiei situat în strada Ştefan cel Mare nr. 25, a cotelor părţi comune din imobilul şi a cotelor din terenul aferent, aflate în proprietatea privată a municipiului Rădăuţi, judeţul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3801,7 +3842,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 183 privind trecerea din domeniul public în domeniul privat al municipiului Rădăuţi a terenului în suprafaţă de 124 mp identificat cadastral sub nr. 52698 înscris în C.F. nr. 52698 a municipiului Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3817,7 +3858,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 190 privind rectificarea bugetului local de venituri şi cheltuieli pentru anul 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3833,7 +3874,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 191 privind aprobarea preţului pentru colectarea, transportul şi depozitarea deşeurilor în municipiul Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3849,7 +3890,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 192 privind amplasarea bustului căpitanului aviator Vasile Niculescu în municipiul Rădăuți- parcul situat pe strada Calea Bucovinei – spațiul verde zona Stadionului", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3865,7 +3906,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 193 privind rectificarea bugetului de venituri şi cheltuieli pentru anul 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3881,7 +3922,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 194 privind rectificarea bugetului local de venituri şi cheltuieli pentru anul 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3897,7 +3938,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 195 privind aprobarea creditelor de angajament pentru acţiuni multianuale la obiectivul de investiţii “Întocmit registru spaţii verzi în Municipiul Rădăuţi “şi “Actualizare Plan Urbanistic General şi Regulament Local de Urbanism“", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3913,7 +3954,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 197 privind aprobarea modificării organigramei şi a statului de funcţii ale consiliului local şi ale aparatului de specialitate al primarului municipiului Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3929,7 +3970,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 198 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Amenajare parcare partea stângă str. Grănicerului şi reparaţii reţea electrică de iluminat public pe partea stângă str. Grănicerului, municipiul Rădăuţi, judeţul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3945,7 +3986,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 199 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Amenajare trotuare partea dreaptă str. Grănicerului, municipiul Rădăuţi, judeţul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3961,7 +4002,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 200 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Amenajări parcări şi alee str. Stadionului, municipiul Rădăuţi, judeţul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3977,7 +4018,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 201 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Amenajări parcări şi alee str. Mihai Viteazul (lângă loc joacă), municipiul Rădăuţi, judeţul Suceava »", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -3993,7 +4034,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 202 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Amenajare grupuri sanitare corp B, strada Calea Bucovinei, nr. 9 (Corp C1) din cadrul Colegiului Naţional ,,Eudoxiu Hurmuzachi“ Rădăuţi, în vederea obţinerii autorizaţiei de funcţionare de la DSP Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4009,7 +4050,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 203 privind aprobarea Devizului general actualizat în baza OUG nr. 114/2018 și aprobarea indicatorilor tehnico-economici actualizați pentru obiectivul de investiții „Modernizare pistă de atletism, stadion municipiul Rădăuți”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4025,7 +4066,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 204 privind aprobarea înscrierii în Cartea Funciară a terenului curţi-construcţii în suprafaţă de 1,20 mp aparţinând domeniului public al Municipiului Rădăuţi, situat în Municipiul Rădăuţi, str. 22 Decembrie nr. 17, sc. A, în vederea trecerii în domeniul privat şi concesionării", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4041,7 +4082,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 211 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Împrejmuire şi drum acces Piaţa Obor» municipiul Rădăuţi, judeţul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4057,7 +4098,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 212 privind modificarea H.C.L. nr. 191/24.07.2019 privind aprobarea preţului pentru colectarea, transportul şi depozitarea deşeurilor în municipiul Rădăuţi.", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4073,7 +4114,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 213 privind aprobarea cooperarii cu EGGER ROMANIA SRL în vederea amplasării de către aceasta în municipiul Rădăuți – Parcul I, a unui ecran cu led-uri care să afşseze valorile emisiilor de formaldehida înregistrate de fabrica acesteia din municipiul Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4089,7 +4130,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 214 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Extindere reţea de iluminat public pe str. Andronic Motrescu şi str. Merilor» municipiul Rădăuţi, judeţul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4105,7 +4146,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 215 pentru modificarea şi completarea H.C.L. nr. 273/2018 privind stabilirea impozitelor şi taxelor locale pentru anul 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4121,7 +4162,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 217 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Amenajare parcări resedintastr.Mihai Viteazu bloc nr.23, municipiul Radauti, judetul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4137,7 +4178,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 218 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Amenajare parcări resedinta str. Mihai Viteazu bloc 22, municipiul Radauti, judetul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4153,7 +4194,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 219 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Extindere retea alimentare cu apa pe str.Grivitei, str.Vladimir Trebici, str.Plevnei, str.Pompierilor (partial) si extindere retea canalizare str.Vladimir Trebici, str.Pompierilor (partial) in municipiul Radauti, jud.Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4169,7 +4210,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 220 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Amenajare trotuar str.Piata Unirii (int. str. Dimitrie Onciu – int. str. Ion Nistor partea dreapta), municipiul Radauti, judetul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4185,7 +4226,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 221 privind aprobarea amenajării şi sistematizării unui acces rutier şi pietonal din DN 2H – Calea Bucovinei, municipiul Rădăuţi, la spaţiul commercial ce se va construi pe parcela cu nr. cadastral 53582 Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4201,7 +4242,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 222 pentru modificarea Hotărârii nr. 222 din 24.11.2016 privind aprobarea asocierii dintre Municipiul Rădăuţi şi o persoană juridică, în vederea derulării activităţii de capturare şi predare a câinilor comunitari fără stăpân în Municipiul Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4217,7 +4258,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 223 privind trecerea din domeniul privat al municipiului Rădăuţi în domeniul public al municipiului Rădăuţi a terenului în suprafaţă de 19 mp, situate pe strada Libertăţii nr. 49-51, identificat cadastral sub nr. 54267 înscris în C.F. nr. 54267 a municipiului Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4233,7 +4274,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 229 privind rectificarea bugetului local de venituri şi cheltuieli pentru anul 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4249,7 +4290,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 230 privind aprobarea documentaţiei tehnico-economice şi a indicatorilor tehnico-economici pentru obiectivul de investiţii ,,Amenajare loc joacă pentru copii, construire copertină şi împrejmuire“ la Grădiniţa cu Program Prelungit Pinochio Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4265,7 +4306,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 231 privind aprobarea documentaţiei tehnico-economice şi a indicatorilor tehnico-economici pentru obiectivul de investiţii ,,Amenajare spaţiu activităţi în aer liber“ la Şcoala Gimnazială Mihai Eminescu Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4281,7 +4322,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 232 privind aprobarea creditelor de angajament pentru acţiuni multianuale la obiectivul de investiţii ,,Amenajare loc joacă pentru copii, construire copertină şi împrejmuire“ la Grădiniţa cu Program Prelungit Pinochio Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4297,7 +4338,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 233 privind aprobarea creditelor de angajament pentru acţiuni multianuale la obiectivul de investiţii ,,Extindere reţea alimentară cu apă pe str. Griviţei, str. Vladimir Trebici, str. Plevnei, str. Pompierilor (parţial) şi extindere reţea canalizare str. Vladimir Trebici, str. Pompierilor (parţial) în municipiul Rădăuţi, judeţul Suceava“", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4313,7 +4354,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 234 pentru aprobarea Programului privind acordarea de finanţări nerambursabile în anul 2019 din bugetul propriu al municipiului Rădăuţi, pentru activităţi nonprofit de interes local", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4329,7 +4370,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 235 privind schimbarea destinaţiei din stradă cu sens unic, în parcare, a tronsonului din strada Piaţa Unirii, Municipiul Rădăuţi, judeţul Suceava şi montarea a trei bariere", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4345,7 +4386,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 236 privind rectificarea bugetului local de venituri si cheltuieli pentru anul 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4361,7 +4402,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 237 pentru aprobarea Regulamentului privind procedura de vânzare a bunurilor imobile din domeniul privat al municipiului Rădăuţi, judeţul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4377,7 +4418,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 238 pentru aprobarea Regulamentului privind procedura de închiriere a bunurilor imobile din domeniul public al municipiului Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4393,7 +4434,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 239 privind atestarea apartenenței la domeniul privat al Municipiului Rădăuți a imobilului cu nr. cadastral 31294 Rădăuți, nr. topo 4040/316 din strada Obor f.n Municipiul Rădăuți și radierea dreptului de folosință înscris pentru Agenția Națională pentru Locuințe, pentru imobilul cu nr. cadastral 31294 Rădăuți, nr. topo 4040/316 din str. Obor f.n Municipiul Rădăuți", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4409,7 +4450,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 240 pentru modificarea Hotărârii nr. 222 din 24.11.2016 privind aprobarea asocierii dintre Municipiul Rădăuţi şi o persoana juridică, în vederea derulării activităţii de capturare, transport şi predare a câinilor comunitari fără stăpân în Municipiul Rădăuţi, cu modificările şi completările ulterioare", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4425,7 +4466,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 241 privind modificarea statului de funcţii al Spitalului Municipal Sf. Dr. Cosma şi Damian Rădăuţi, prin transformarea şi suplimentarea unor posturi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4441,7 +4482,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 242 privind aprobarea dezmembrării terenului situat în municipiul Rădăuţi, str. Pandurilor f.nr., identic cu imobilul cu nr. cadastral:54516", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4457,7 +4498,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 243 privind închirierea prin licitaţie publică, a unor spaţii cu altă destinaţie decât cea de locuinţă, situate în Municipiului Rădăuţi, str. Ştefan cel Mare nr. 25, spaţii aflate în domeniul privat al municipiului", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4473,7 +4514,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 244 privind aprobarea amenajării şi sistematizării unui acces rutier şi pietonal din DN 2H – Calea Bucovinei, municipiul Rădăuţi, la spaţiul comercial ce se va construi pe parcela cu nr. cadastral 53582 Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4489,7 +4530,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 245 privind conferirea titlului de ,,Cetăţean de Onoare al Municipiului Rădăuţi”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4505,7 +4546,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 246 privind acordarea unor facilităţi fiscale", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4521,7 +4562,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 254 privind asocierea Municipiului Rădăuţi cu Creţu Manole – Întreprindere Familială, în vederea amenajării unui patinoar artificial, în Parcarea centrală, perioada 18.11.2019 – 15.02.2020", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4537,7 +4578,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 257 privind validarea mandatului de consilier local al domnului Hacman Mircea Cozma", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4553,7 +4594,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 258 privind rectificarea bugetului local de venituri şi cheltuieli pentru anul 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4569,7 +4610,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 259 privind aprobarea organizării Sărbătorilor de iarnă în Municipiul Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4585,7 +4626,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 260 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Amenajare esplanadă, trepte CEC BANK, municipiul Rădăuţi, judeţul Suceava»", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4601,7 +4642,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 261 pentru modificarea H.C.L. nr. 216/26.09.2019 şi H.C.L. nr. 196/29.08.2019 privind aprobarea acordării unui sprijin financiar pentru zece medici din cadrul Spitalului Municipal Sf. Doctori Cosma şi Damian", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4617,7 +4658,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 262 privind transformarea unei funcții publice de execuție ca urmare a finalizării perioadei de stagiu de către un funcționar public cadrul Direcţiei de Asistenţă Socială din subordinea Consiliului Local al municipiului Rădăuţi, judeţul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4633,7 +4674,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 263 privind aprobarea prelungirii duratei contractului de dare în administrare a serviciului public de transport distribuţie şi furnizare a energiei termice în sistem centralizat nr. 17021/22.11.2018, înregistrat la S.C. Servicii Comunale cu nr. 3081/28.11.2018, până la încheierea contractului sectorial pentru serviciul public de alimentare cu energie termică în Municipiul Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4649,7 +4690,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 268 privind predarea către Ministerul Dezvoltării Regionale, Administrației Publice prin Compania Naţională de Investiţii “C.N.I.” S.A., a amplasamentului şi asigurarea condiţiilor în vederea executării obiectivului de investiţii , „Construire baza sportivă TIP 1” municipiul Rădăuți, judeţul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4665,7 +4706,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 270 privind aprobarea modificării Contractului de Delegare al Gestiunii și mandatarea AJAC Suceava să semneze Actul Adițional nr. 5 în numele și pe seama UAT municipiul Rădăuți", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4681,7 +4722,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 271 privind aprobarea STUDIULUI DE FEZABILITATE și a indicatorilor tehnico-economici ai proiectului regional ”Dezvoltarea infrastructurii de apă și apă uzată din județul Suceava, în perioada 2014 – 2020”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4697,7 +4738,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 272 privind aprobarea valorii investițiilor aferente UAT municipiul Rădăuṭi și a participării Consiliului Local al UAT municipiul Rădăuṭi la cofinanțareaProiectului regional ”Dezvoltarea infrastructurii de apă și apă uzată din județul Suceava în perioada 2014 – 2020”;", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4713,7 +4754,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 273 privind aprobarea Planului anual de evoluție a tarifelor conform rezultatelor Analizei Cost-Beneficiu pentru Proiectul regional ”Dezvoltarea infrastructurii de apă și apă uzată din județul Suceava în perioada 2014 – 2020”și mandatarea reprezentantului UAT municipiul Rădăuți să susțină și să voteze în Adunarea Generală a Asociaţiei Judeţene pentru Apă şi Canalizare Suceava(AJAC Suceava) aprobarea Planului anual de evoluție a tarifelor", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4729,7 +4770,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 274 privind punerea la dispoziția Societății ACET S.A. Suceava a terenurilor aferente investițiilor din cadrul Proiectului regional ”Dezvoltarea infrastructurii de apă și apă uzată din județul Suceava, în perioada 2014 – 2020", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4745,7 +4786,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 275 privind aprobarea tarifelor pentru serviciul public de producere, transport şi distribuţie a energiei termice începând cu 01.11.2019, prestate de către S.C. SERVICII COMUNALE S.A. Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4761,7 +4802,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 276 privind rectificarea bugetului local de venituri si cheltuieli pentru anul 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4777,7 +4818,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 277 privind aprobarea cuantumului burselor şcolare pentru elevii din învăţământul preuniversitar de stat din municipiul Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4793,7 +4834,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 278 privind rectificarea bugetului local de venituri si cheltuieli pentru anul 2019", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4809,7 +4850,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 279 privind aprobarea documentaţiei tehnico – economice şi a indicatorilor tehnico – economici pentru obiectivul de investiţii ,,Lucrări de construire grupuri sanitare la Şcoala Gimnazială Regina Elisabeta (Sala de Sport) din municipiul Rădăuţi”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4825,7 +4866,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 280 privind aprobarea creditelor de angajament pentru acţiuni multianuale la obiectivul de investiţii ,,Lucrări de construire grupuri sanitare la Şcoala Gimnazială Regina Elisabeta (Sala de Sport) din municipiul Rădăuţi”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4841,7 +4882,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 281 privind aprobarea documentației tehnico-economice și a indicatorilor tehnico-economici, pentru obiectivul de investiții «Amplasare ascensor transport bolnavi pentru exterior la clădire – C1 Spital vechi» municipiul Rădăuţi, judeţul Suceava", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4857,7 +4898,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 282 privind aprobarea transformării unor posturi de natură contractuală în funcţii publice şi modificarea statului de funcţii al aparatului de specialitate al primarului municipiului Rădăuţi", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4873,7 +4914,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 283 pentru modificarea şi completarea HCL 160 din 24.09.2009 pentru aprobarea Regulamentului de Organizare şi funcţionarea a parcărilor de reşedinţă aflate pe raza municipiului Rădăuţi, a listei locurilor de parcare, a preţului de închiriere precum şi a modelului acordului de rezervare", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4889,7 +4930,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 284 privind menţinerea reţelei şcolare a unităţilor de învăţământ preuniversitar de stat şi particular din municipiul Rădăuţi, pentru anul şcolar 2020-2021", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4905,7 +4946,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 285 privind aprobarea dezmembrării terenului situat în municipiul Rădăuţi, str. Mihai Pitei f.n. identic cu imobilul cu nr. cadastral:54093", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),
@@ -4921,7 +4962,7 @@ class LocalLegislation extends StatelessWidget {
                                           "Hotarare nr. 287 privind aprobarea Planului Urbanistic Zonal (P.U.Z) şi Regulamentul Local de Urbanism pentru ,,Construire locuinţă unifamilială cu regim de înălţime P+M şi împrejmuire, pe strada Frâncei f. nr., în municipiul Rădăuţi, judeţul Suceava”", //
                                           style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                           ),
                                         ),

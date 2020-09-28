@@ -166,7 +166,7 @@ class AndroidMobile1 extends StatelessWidget {
                                   padding: EdgeInsets.fromLTRB(
                                       0.0, 0.0, 0.0, 0.0), //10.0 //25.0
                                   child: Text(
-                                    'SesizeazÄƒ o problemÄƒ',
+                                    'Sesizează o problemă',
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 3,
                                     style: TextStyle(
@@ -214,7 +214,7 @@ class AndroidMobile1 extends StatelessWidget {
                                 width: 5,
                               ),
                               Text(
-                                'AdministraÈ›ie \nlocalÄƒ',
+                                'Administrație \nlocală',
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 3,
                                 style: TextStyle(
@@ -350,7 +350,7 @@ class AndroidMobile1 extends StatelessWidget {
                                 width: 5,
                               ),
                               Text(
-                                'AnunÈ›uri',
+                                'Anunțuri',
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 3,
                                 style: TextStyle(
@@ -567,7 +567,7 @@ class AndroidMobile1 extends StatelessWidget {
                           //width: MediaQuery.of(context).size.width/4 + 25 ,
                           child: new InkWell(
                             child: new Text(
-                              'ConfidenÈ›ialitate',
+                              'Confidențialitate',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 decoration: TextDecoration.underline,
@@ -654,7 +654,7 @@ class AndroidMobile1 extends StatelessWidget {
                             'Parteneri',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.underline,
+                              //decoration: TextDecoration.underline,
                               color: Color(0xFF32325D),
                               fontSize: 15,
                             ),

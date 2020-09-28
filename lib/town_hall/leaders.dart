@@ -164,7 +164,7 @@ class Leaders extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 50,
                           backgroundImage:
-                              AssetImage("assets/images/NistorTatar.png"),
+                              AssetImage("assets/images/loghin.jpg"),
                         ),
                       ),
                       Container(
@@ -174,7 +174,7 @@ class Leaders extends StatelessWidget {
                             Container(
                               width: MediaQuery.of(context).size.width - 136,
                               child: Text(
-                                "Nistor Tătar",
+                                "Bogdan Loghin",
                                 style: TextStyle(
                                   color: Color(0xFF38A49C),
                                   fontWeight: FontWeight.bold,
@@ -202,7 +202,7 @@ class Leaders extends StatelessWidget {
                                     size: 40,
                                   ),
                                   onPressed: () {
-                                    _launchURL("facebook.com");
+                                    _launchURL("https://www.facebook.com/BogdanLoghinPNL/");
                                   },
                                 ),
                                 FlatButton(
