@@ -140,7 +140,7 @@ class LocalCouncil extends StatelessWidget {
                           left: 10,
                         ),
                         child: Text(
-                          "Consiliul Local",
+                          "Consiliul Local 2016-2020",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,

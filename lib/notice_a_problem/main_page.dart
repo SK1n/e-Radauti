@@ -649,8 +649,8 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                     Container(
                       margin: EdgeInsets.only(
                         top: 0,
-                        left: 20,
-                        right: 20,
+                        left: 0,
+                        right: 0,
                         bottom: 20,
                       ),
                       child: new DropdownButton<String>(

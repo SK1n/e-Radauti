@@ -44,9 +44,9 @@ class _MyAppState extends State<MyApp> {
       seconds: 10,
       navigateAfterSeconds: new AndroidMobile1(),
       title: new Text(
-        'AplicaÈ›ia e-RÄƒdÄƒuÈ›i',
+        'Aplicația e-Rădăuți',
         style: new TextStyle(
-          fontWeight: FontWeight.bold,
+          //fontWeight: FontWeight.bold,
           fontSize: 20.0,
           color: Colors.black,
         ),
