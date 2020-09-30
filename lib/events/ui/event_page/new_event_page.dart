@@ -65,8 +65,8 @@ class _NewEventsState extends State<NewEvents> {
                                                     //for(final event in snapshot.data.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
                                                     //for(final event in snapshot.data.where((e) => DateTime.utc(2020, e.monthT, e.dayT).isAfter(DateTime.utc(2020, 3, 7))  ))
                                                     //for(final event in snapshot.data.where((e) => DateTime.utc(2020, e.monthT, e.dayT).isAfter(DateTime.now()) || DateTime.utc(2020, e.monthT, e.dayT).isAfter(DateTime.now()) ))
-                                                    for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isAfter(DateTime.now()) || DateTime.utc(e.yearT, e.monthT, e.dayT).isAtSameMomentAs(DateTime.now()) ))
-                                                    //for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isAfter(DateTime.utc(2020, 3, 7))  ))
+                                                    //for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isAfter(DateTime.now()) || DateTime.utc(e.yearT, e.monthT, e.dayT).isAtSameMomentAs(DateTime.now()) ))
+                                                    for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isAfter(DateTime.utc(2020, 3, 7))  ))
                                                     //e.categoryIds.contains(appState.selectedCategoryId)
                                                       GestureDetector(
                                                         child: NewEventWidget(
