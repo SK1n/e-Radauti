@@ -39,14 +39,24 @@ dependencies:
   mailer: ^3.0.4
   gallery_saver: ^2.0.1
   splashscreen: ^1.2.0
-  expandable: ^4.1.4
   device_calendar: ^3.1.0
   add_2_calendar: ^1.4.0
   flutter_widget_from_html: ^0.5.0+3
   webview_flutter: ^0.3.22+1
   flick_video_player: ^0.1.1
   video_player: ^0.10.12+2
+
+  #Dio plugins for json fetch
   dio: ^3.0.10
+  dio_http_cache: ^0.2.9
+
+  #Chart plugins
+  charts_flutter: ^0.9.0
+  fl_chart: ^0.11.1
+
+  #For expanding and collapsing plugin
+  expandable: ^4.1.4
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -70,6 +80,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/logo_images/
+    #- assets/images/Taxi/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
