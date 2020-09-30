@@ -29,6 +29,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   File recordedImage2;
   File recordedImage3;
   bool isLoading = false;
+  bool checkBox = false;
 
   List<Attachment> attachments = [null, null, null];
 
@@ -53,50 +54,42 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   void _mailer() async {
     String username = 'radautiulcivic@gmail.com';
     String password = 'pass123.CIVIC';
-
     final smtpServer = gmail(username, password);
-    final message = Message()
-      ..from = Address(username, _nameController.text)
-      ..recipients.add(_recipientController)
-      // ..ccRecipients.addAll(['radautiulcivic@gmail.com','coman.paul@yahoo.com'])
-      ..subject =
-          ' Petiție ' + _subjectController.text + ' - aplicația e-Rădăuți'
-      ..html = 'Către,'
-              '     ' +
-          dropdownValue.toString() +
-          '<br><br>' +
-          'Stimată doamnă/ Stimate domn,<br><br>' +
-          'Subsemnatul ' +
-          _nameController.text +
-          ', vă supun atenției următoarea problemă:<br><br>' +
-          _bodyController.text +
-          '<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați măsurile ce se impun.<br><br> Cele sesizate sunt la următoarea adresă ' +
-          ' Lat:' +
-          position.latitude.toString() +
-          ' Long:' +
-          position.longitude.toString() +
-          "( <a href ='https://www.google.com/maps/place/" +
-          position.latitude.toString() +
-          "+" +
-          position.longitude.toString() +
-          "'>Adresa</a> )"
-              '<br><br>' +
-          'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și ' +
-          'a fost transmisă prin intermediul aplicației mobile e-Rădăuți, dezvoltată'
-              ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>' +
-          'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa ' +
-          _emailController.text +
-          '.<br><br>' +
-          'Cu stimă,<br><br>' +
-          '     ' +
-          _nameController.text +
-          '<br><br>' +
-          '     ' +
-          'Tel: ' +
-          _numberController.text +
-          '/' +
-          _emailController.text
-      ..attachments = attachments;
+    var message;
+    if (checkBox == true) {
+      message = Message()
+        ..from = Address(username, _nameController.text)
+        ..recipients.add(_recipientController)
+        ..subject = ' Petiție ${_subjectController.text} - aplicația e-Rădăuți'
+        ..html = 'Către, ${dropdownValue.toString()} <br><br> Stimată doamnă/ Stimate domn,' +
+            '<br><br>Subsemnatul ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>' +
+            '${_bodyController.text}<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați măsurile ce se impun.<br><br> Cele sesizate sunt la următoarea adresă ' +
+            ' Lat:${position.latitude.toString()} Long:${position.longitude.toString()}' +
+            "( <a href ='https://www.google.com/maps/place/${position.latitude.toString()}+${position.longitude.toString()}" +
+            "'>Adresa</a> )<br><br>" +
+            'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și ' +
+            'a fost transmisă prin intermediul aplicației mobile e-Rădăuți, dezvoltată'
+                ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>' +
+            'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa ${_emailController.text}' +
+            '.<br><br>Cu stimă,<br><br>' +
+            '     ${_nameController.text}<br><br>     Tel: ${_numberController.text}/${_emailController.text}'
+        ..attachments = attachments;
+    } else {
+      message = Message()
+        ..from = Address(username, _nameController.text)
+        ..recipients.add(_recipientController)
+        ..subject = ' Petiție ${_subjectController.text} - aplicația e-Rădăuți'
+        ..html = 'Către, ${dropdownValue.toString()} <br><br> Stimată doamnă/ Stimate domn,' +
+            '<br><br>Subsemnatul ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>' +
+            '${_bodyController.text}<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați măsurile ce se impun.<br><br>' +
+            'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și ' +
+            'a fost transmisă prin intermediul aplicației mobile e-Rădăuți, dezvoltată'
+                ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>' +
+            'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa ${_emailController.text}' +
+            '.<br><br>Cu stimă,<br><br>' +
+            '     ${_nameController.text}<br><br>     Tel: ${_numberController.text}/${_emailController.text}'
+        ..attachments = attachments;
+    }
 
     try {
       final sendReport = await send(message, smtpServer);
@@ -580,8 +573,6 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         right: 0,
                         bottom: 0,
                       ),
-                      //crossAxisSpacing: 10,
-                      //mainAxisSpacing: 10,
                       children: <Widget>[
                         FlatButton(
                           onPressed: () {},
@@ -645,6 +636,28 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         ),
                       ],
                     ),
+                    CheckboxListTile(
+                      title: Text('Adaugati locatia dvs. la email'),
+                      secondary: checkBox == false
+                          ? Icon(MaterialIcons.location_off)
+                          : Icon(MaterialIcons.location_on),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: checkBox,
+                      onChanged: (bool value) {
+                        setState(() {
+                          checkBox = value;
+                          if (checkBox == true) {
+                            if (position == null) {
+                              getLocation();
+                              _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                content: Text(
+                                    "Ne trebuie locația dvs.! Vă rugăm acceptați permisiunea de GPS!"),
+                              ));
+                            }
+                          }
+                        });
+                      },
+                    ),
                     Text('Alege destinația sesizării din lista de mai jos'),
                     Container(
                       margin: EdgeInsets.only(
@@ -677,60 +690,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         onChanged: (String value) {
                           setState(() {
                             dropdownValue = value;
-                            switch (value) {
-                              case "Destinatar":
-                                {
-                                  _validateDropDown = true;
-                                }
-                                break;
-                              case "Primăria Rădăuți":
-                                {
-                                  _recipientController =
-                                      "relatiipublice@primariaradauti.ro";
-                                  _validateDropDown = false;
-                                }
-                                break;
-                              case "Servicii Comunale":
-                                {
-                                  _recipientController =
-                                      "office@serviciicomunale.ro";
-                                  _validateDropDown = false;
-                                }
-                                break;
-                              case "ACET Rădăuți":
-                                {
-                                  _recipientController =
-                                      "agentia.radauti@acetsv.ro";
-                                  _validateDropDown = false;
-                                }
-                                break;
-                              case "Consiliul Județean Suceava":
-                                {
-                                  _recipientController = "contact@cjsuceava.ro";
-                                  _validateDropDown = false;
-                                }
-                                break;
-                              case "Garda De Mediu Suceava":
-                                {
-                                  _recipientController = "cjsuceava@gnm.ro";
-                                  _validateDropDown = false;
-                                }
-                                break;
-                              case "Garda Forestieră Suceava":
-                                {
-                                  _recipientController =
-                                      "gardaforestiera.suceava@gmail.com";
-                                  _validateDropDown = false;
-                                }
-                                break;
-                              case "Rădăuțiul Civic":
-                                {
-                                  _recipientController =
-                                      "radautiulcivic@gmail.com";
-                                  _validateDropDown = false;
-                                }
-                                break;
-                            }
+                            dropDownValueIdentifier(value);
                           });
                         },
                       ),
@@ -748,70 +708,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         textColor: Colors.white,
                         onPressed: () {
                           attachments.removeWhere((item) => item == null);
-                          setState(() {
-                            _nameController.text.isEmpty
-                                ? _validateName = true
-                                : _validateName = false;
-                            _bodyController.text.isEmpty
-                                ? _validateDescription = true
-                                : _validateDescription = false;
-                            _subjectController.text.isEmpty
-                                ? _validateSubject = true
-                                : _validateSubject = false;
-                            _emailController.text.isEmpty
-                                ? _validateEmail = true
-                                : _validateEmail = false;
-                            _numberController.text.isEmpty
-                                ? _validateNumber = true
-                                : _validateNumber = false;
-                            if (recordedImage1 != null ||
-                                recordedImage2 != null ||
-                                recordedImage3 != null) {
-                              _validatePath = false;
-                            } else {
-                              _validatePath = true;
-                              _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                content:
-                                    Text("Nu ați făcut/incărcat nici o poză!"),
-                              ));
-                            }
-                            if (_validateDropDown == true) {
-                              _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                content: Text("Nu ați selectat o categorie!"),
-                              ));
-                            }
-                            if (position == null) {
-                              getLocation();
-                              _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                content: Text(
-                                    "Ne trebuie locația dvs.! Vă rugăm acceptați permisiunea de GPS!"),
-                              ));
-                            }
-                            if (_validateName == false) {
-                              if (_validateDescription == false) {
-                                if (_validateSubject == false) {
-                                  if (_validateDropDown == false) {
-                                    if (position != null) {
-                                      if (_validatePath == false) {
-                                        if (attachments[0] == null) {
-                                          _scaffoldKey.currentState
-                                              .showSnackBar(SnackBar(
-                                            content: Text(
-                                                "Nu ați făcut/incărcat nici o poză!"),
-                                          ));
-                                        } else {
-                                          setState(() {
-                                            isLoading = true;
-                                          });
-                                          _mailer();
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          });
+                          verifyInputsAndSendEmail();
                         },
                         child: Text("Trimite"),
                       ),
@@ -821,8 +718,123 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
               ));
   }
 
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => getLocation());
+// _validateDropDown is true if selected values is 'Destinatar' and the
+// user will get a message saying that he has to select a delivery location
+// else _validateDropDown is false and _recipientController gets the address to delivery location
+  void dropDownValueIdentifier(value) {
+    switch (value) {
+      case "Destinatar":
+        {
+          _validateDropDown = true;
+          debugPrint('valoare email: $_recipientController');
+        }
+        break;
+      case "Primăria Rădăuți":
+        {
+          _recipientController = "relatiipublice@primariaradauti.ro";
+          _validateDropDown = false;
+          debugPrint('valoare email: $_recipientController');
+        }
+        break;
+      case "Servicii Comunale":
+        {
+          _recipientController = "office@serviciicomunale.ro";
+          _validateDropDown = false;
+          debugPrint('valoare email: $_recipientController');
+        }
+        break;
+      case "ACET Rădăuți":
+        {
+          _recipientController = "agentia.radauti@acetsv.ro";
+          _validateDropDown = false;
+          debugPrint('valoare email: $_recipientController');
+        }
+        break;
+      case "Consiliul Județean Suceava":
+        {
+          _recipientController = "contact@cjsuceava.ro";
+          _validateDropDown = false;
+          debugPrint('valoare email: $_recipientController');
+        }
+        break;
+      case "Garda De Mediu Suceava":
+        {
+          _recipientController = "cjsuceava@gnm.ro";
+          _validateDropDown = false;
+          debugPrint('valoare email: $_recipientController');
+        }
+        break;
+      case "Garda Forestieră Suceava":
+        {
+          _recipientController = "gardaforestiera.suceava@gmail.com";
+          _validateDropDown = false;
+          debugPrint('valoare email: $_recipientController');
+        }
+        break;
+      case "Rădăuțiul Civic":
+        {
+          _recipientController = "radautiulcivic@gmail.com";
+          _validateDropDown = false;
+          debugPrint('valoare email: $_recipientController');
+        }
+        break;
+    }
+  }
+
+//We check if every text input field is not empty and
+// if there is at least one image, if everything is OK we send the email
+  void verifyInputsAndSendEmail() {
+    setState(() {
+      _nameController.text.isEmpty
+          ? _validateName = true
+          : _validateName = false;
+      _bodyController.text.isEmpty
+          ? _validateDescription = true
+          : _validateDescription = false;
+      _subjectController.text.isEmpty
+          ? _validateSubject = true
+          : _validateSubject = false;
+      _emailController.text.isEmpty
+          ? _validateEmail = true
+          : _validateEmail = false;
+      _numberController.text.isEmpty
+          ? _validateNumber = true
+          : _validateNumber = false;
+      if (recordedImage1 != null ||
+          recordedImage2 != null ||
+          recordedImage3 != null) {
+        _validatePath = false;
+      } else {
+        _validatePath = true;
+        _scaffoldKey.currentState.showSnackBar(SnackBar(
+          content: Text("Nu ați făcut/incărcat nici o poză!"),
+        ));
+      }
+      if (_validateDropDown == true) {
+        _scaffoldKey.currentState.showSnackBar(SnackBar(
+          content: Text("Nu ați selectat o categorie!"),
+        ));
+      }
+      if (_validateName == false) {
+        if (_validateDescription == false) {
+          if (_validateSubject == false) {
+            if (_validateDropDown == false) {
+              if (_validatePath == false) {
+                if (attachments[0] == null) {
+                  _scaffoldKey.currentState.showSnackBar(SnackBar(
+                    content: Text("Nu ați făcut/incărcat nici o poză!"),
+                  ));
+                } else {
+                  setState(() {
+                    isLoading = true;
+                  });
+                  _mailer();
+                }
+              }
+            }
+          }
+        }
+      }
+    });
   }
 }

@@ -164,7 +164,7 @@ class Leaders extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 50,
                           backgroundImage:
-                              AssetImage("assets/images/loghin.jpg"),
+                              AssetImage("assets/images/NistorTatar.png"),
                         ),
                       ),
                       Container(
@@ -174,7 +174,7 @@ class Leaders extends StatelessWidget {
                             Container(
                               width: MediaQuery.of(context).size.width - 136,
                               child: Text(
-                                "Bogdan Loghin",
+                                "Nistor Tatar",
                                 style: TextStyle(
                                   color: Color(0xFF38A49C),
                                   fontWeight: FontWeight.bold,
@@ -202,10 +202,10 @@ class Leaders extends StatelessWidget {
                                     size: 40,
                                   ),
                                   onPressed: () {
-                                    _launchURL("https://www.facebook.com/BogdanLoghinPNL/");
+                                    _launchURL(
+                                        "https://www.facebook.com/NistorTatarPrimar");
                                   },
                                 ),
-
                                 FlatButton(
                                   child: Icon(
                                     Ionicons.ios_mail,
@@ -246,7 +246,7 @@ class Leaders extends StatelessWidget {
                                         ),
                                       ),
                                       onTap: () => UrlLauncher.launch(
-                                          'https://primariaradauti.ro/wp-content/uploads/2019/12/Loghin_Bogdan_Andrei..pdf')),
+                                          'https://primariaradauti.ro/wp-content/uploads/2020/07/Nistor-Tatar-1.pdf')),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
@@ -257,7 +257,7 @@ class Leaders extends StatelessWidget {
                                         ),
                                       ),
                                       onTap: () => UrlLauncher.launch(
-                                          'https://primariaradauti.ro/wp-content/uploads/2019/12/Loghin_Bogdan_Andrei.-1.pdf')),
+                                          'https://primariaradauti.ro/wp-content/uploads/2020/07/Tatar-Nistor-1.pdf')),
                                 ],
                               ),
                             ),
@@ -331,14 +331,6 @@ class Leaders extends StatelessWidget {
                                     _launchURL("facebook.com");
                                   },
                                 ),
-/*                                FlatButton(
-                                  onPressed: () {},
-                                  child: Icon(
-                                    Ionicons.logo_whatsapp,
-                                    color: Colors.green,
-                                    size: 40,
-                                  ),
-                                ),*/
                                 FlatButton(
                                   child: Icon(
                                     Ionicons.ios_mail,
@@ -347,7 +339,7 @@ class Leaders extends StatelessWidget {
                                   ),
                                   onPressed: () {
                                     UrlLauncher.launch(
-                                        "mailto:email1@gmail.com");
+                                        "mailto:viceprimar@primariaradauti.ro");
                                   },
                                 ),
                               ],
@@ -461,17 +453,10 @@ class Leaders extends StatelessWidget {
                                     size: 40,
                                   ),
                                   onPressed: () {
-                                    _launchURL("https://www.facebook.com/sofroni.marinica");
+                                    _launchURL(
+                                        "https://www.facebook.com/sofroni.marinica");
                                   },
                                 ),
-/*                                FlatButton(
-                                  onPressed: () {},
-                                  child: Icon(
-                                    Ionicons.logo_whatsapp,
-                                    color: Colors.green,
-                                    size: 40,
-                                  ),
-                                ),*/
                                 FlatButton(
                                   child: Icon(
                                     Ionicons.ios_mail,

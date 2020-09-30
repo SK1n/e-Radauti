@@ -23,15 +23,10 @@ class _JobPageState extends State<JobPage> {
     });
     jobList = List<JobModel>();
     jsonResponse.forEach((key, value) {
-      // print(key);
       jobList = (jsonResponse['context']['posts']['records'] as List)
           .map<JobModel>((j) => JobModel.fromJson(j))
           .toList();
-      //JobModel job = JobModel.fromJson(value);
-      //jobList.add(job);
     });
-
-    // print(jobList);
     return jobList;
   }
 
@@ -51,7 +46,6 @@ class _JobPageState extends State<JobPage> {
             Container(
               alignment: Alignment.topRight,
               margin: EdgeInsets.only(top: 0.0, right: 0.0),
-              // EdgeInsets.only(top: 20.0, right: 10.0),
               child: IconButton(
                 icon: Icon(
                   Icons.menu,
