@@ -198,8 +198,8 @@ Future<String> fetchFacebookVideoLink() async {
   String link = fd['link'];
   //link = 'https://www.facebook.com/watch/?v=195642925014310&extid=L8LJHdVM1GdJpBfY';
   String html = '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
-            link
-            + '''"></iframe>''';
+      link
+      + '''"></iframe>''';
 
   print(html);
   return html;

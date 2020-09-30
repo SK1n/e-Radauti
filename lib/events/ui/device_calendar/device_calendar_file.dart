@@ -30,6 +30,7 @@ class CalendarPageState extends State<CalendarPage> {
   Calendar _selectedCalendar;
   List<Event> _calendarEvents;
 
+  // ignore: non_constant_identifier_names
   MyHomePageState() {
     _deviceCalendarPlugin = new DeviceCalendarPlugin();
   }
@@ -100,22 +101,22 @@ class CalendarPageState extends State<CalendarPage> {
       ),
       floatingActionButton: !(_selectedCalendar?.isReadOnly ?? true)
           ? new FloatingActionButton(
-        onPressed: () async {
-          final now = new DateTime.now();
-          final eventToCreate = new Event(_selectedCalendar.id);
-          eventToCreate.title =
-          "Event created with Device Calendar Plugin";
-          eventToCreate.start = now;
-          eventToCreate.end = now.add(new Duration(hours: 1));
-          final createEventResult = await _deviceCalendarPlugin
-              .createOrUpdateEvent(eventToCreate);
-          if (createEventResult.isSuccess &&
-              (createEventResult.data?.isNotEmpty ?? false)) {
-            _retrieveCalendarEvents(_selectedCalendar.id);
-          }
-        },
-        child: new Icon(Icons.add),
-      )
+              onPressed: () async {
+                final now = new DateTime.now();
+                final eventToCreate = new Event(_selectedCalendar.id);
+                eventToCreate.title =
+                    "Event created with Device Calendar Plugin";
+                eventToCreate.start = now;
+                eventToCreate.end = now.add(new Duration(hours: 1));
+                final createEventResult = await _deviceCalendarPlugin
+                    .createOrUpdateEvent(eventToCreate);
+                if (createEventResult.isSuccess &&
+                    (createEventResult.data?.isNotEmpty ?? false)) {
+                  _retrieveCalendarEvents(_selectedCalendar.id);
+                }
+              },
+              child: new Icon(Icons.add),
+            )
           : new Container(),
     );
   }
@@ -144,7 +145,7 @@ class CalendarPageState extends State<CalendarPage> {
       final startDate = new DateTime.now().add(new Duration(days: -30));
       final endDate = new DateTime.now().add(new Duration(days: 30));
       final retrieveEventsParams =
-      new RetrieveEventsParams(startDate: startDate, endDate: endDate);
+          new RetrieveEventsParams(startDate: startDate, endDate: endDate);
       final eventsResult = await _deviceCalendarPlugin.retrieveEvents(
           calendarId, retrieveEventsParams);
 
@@ -230,9 +231,9 @@ class EventItem extends StatelessWidget {
                       new Expanded(
                         child: new Text(
                           _calendarEvent?.attendees
-                              ?.where((a) => a.name?.isNotEmpty ?? false)
-                              ?.map((a) => a.name)
-                              ?.join(', ') ??
+                                  ?.where((a) => a.name?.isNotEmpty ?? false)
+                                  ?.map((a) => a.name)
+                                  ?.join(', ') ??
                               '',
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -243,14 +244,15 @@ class EventItem extends StatelessWidget {
               ],
             ),
           ),
+          // ignore: deprecated_member_use
           new ButtonTheme.bar(
             child: new ButtonBar(
               children: <Widget>[
                 new IconButton(
                   onPressed: () async {
                     final deleteResult =
-                    await _deviceCalendarPlugin.deleteEvent(
-                        _calendarEvent.calendarId, _calendarEvent.eventId);
+                        await _deviceCalendarPlugin.deleteEvent(
+                            _calendarEvent.calendarId, _calendarEvent.eventId);
                     if (deleteResult.isSuccess && deleteResult.data) {
                       onDeleteSucceeded();
                     }

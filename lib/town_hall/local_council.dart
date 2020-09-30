@@ -120,7 +120,7 @@ class LocalCouncil extends StatelessWidget {
                         width: MediaQuery.of(context).size.width - 90,
                         padding: EdgeInsets.only(left: 10,),
                         child: Text(
-                          "Consiliul Local",
+                          "Consiliul Local 2016-2020",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,

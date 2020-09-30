@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+//import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/menu_page.dart';
-import 'package:flutterapperadauti/usefull_numbers/public_institutions.dart';
-import 'package:flutterapperadauti/usefull_numbers/miscellaneous.dart';
-import 'package:flutterapperadauti/usefull_numbers/local_authorities.dart';
+import 'package:flutterapperadauti/transport/Taxi.dart';
 
-class HomePageNumbers extends StatelessWidget {
+
+class HomePageTransport extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -69,7 +68,7 @@ class HomePageNumbers extends StatelessWidget {
                         Stack(
                           children: <Widget>[
                             Icon(
-                              Icons.perm_phone_msg,
+                              Icons.train,
                               color: Color(0x55FB6340),
                               size: 30,
                             ),
@@ -82,7 +81,7 @@ class HomePageNumbers extends StatelessWidget {
                                   0.0,
                                 ), //10.0 //25.0
                                 child: Text(
-                                  'Numere utile',
+                                  'Transport',
                                   style: TextStyle(
                                     color:
                                         Color(0xFF000000), //Color(0xFFFFFFFF),
@@ -115,18 +114,19 @@ class HomePageNumbers extends StatelessWidget {
                         Row(
                           children: <Widget>[
                             Container(
-                              height: 30,
-                              width: 30,
-                              child: SvgPicture.asset(
-                                  'assets/images/circle_FFDECC.svg'),
-                            ),
+                                child: Icon(
+                                  Icons.local_taxi,
+                                  color: Color(0xFF979797),
+                                ),
+                              ),
+                            //),
                             Container(
                               width: MediaQuery.of(context).size.width - 120,
                               padding: EdgeInsets.only(
                                 left: 10,
                               ),
                               child: Text(
-                                'Autorități locale',
+                                'Taximetriști',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
@@ -141,8 +141,7 @@ class HomePageNumbers extends StatelessWidget {
                           ),
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
-                            'Date de contact pentru principalele instituții de protecție civilă '
-                            '(a consumatorilui, copilului, animalelor, mediului, etc.)',
+                            'Aici puteți găsi numele taximetriștilor din Rădăuți, numărul lor de telefon, tipul mașinii și numărul de înmatriculare',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -164,7 +163,7 @@ class HomePageNumbers extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LocalAuthorities()),
+                    MaterialPageRoute(builder: (context) => Taxi()),
                   );
                 },
               ),
@@ -181,7 +180,7 @@ class HomePageNumbers extends StatelessWidget {
                 left: 25,
                 right: 25,
                 bottom: 10,
-                top: 10,
+                top: 15,
               ),
               child: GestureDetector(
                 child: Row(
@@ -191,171 +190,19 @@ class HomePageNumbers extends StatelessWidget {
                         Row(
                           children: <Widget>[
                             Container(
-                              height: 30,
-                              width: 30,
-                              child: SvgPicture.asset(
-                                  'assets/images/circle_69E781.svg'),
+                              child: Icon(
+                                Icons.directions_railway,
+                                color: Color(0xFF979797),
+                              ),
                             ),
+                            //),
                             Container(
                               width: MediaQuery.of(context).size.width - 120,
                               padding: EdgeInsets.only(
                                 left: 10,
                               ),
                               child: Text(
-                                'Deranjamente',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            top: 10,
-                          ),
-                          width: MediaQuery.of(context).size.width - 80,
-                          child: Text(
-                            'Date de contact pentru informații sau reclamații '
-                            'privind serviciile de alimentare cu apă, canalizare sau servicii comunale',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 5,
-                            style: TextStyle(
-                              color: Color(0xFF38A49C),
-                              fontSize: 15,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Color(0xFF979797),
-                      ),
-                    ),
-                  ],
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Miscellaneous()),
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: Container(
-                height: 1.0,
-                color: Color.fromRGBO(0, 0, 0, 0.1),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                left: 25,
-                right: 25,
-                bottom: 10,
-                top: 10,
-              ),
-              child: GestureDetector(
-                child: Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              height: 30,
-                              width: 30,
-                              child: SvgPicture.asset(
-                                  'assets/images/circle_194C80.svg'),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width - 120,
-                              padding: EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Text(
-                                'Instituții publice',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            top: 10,
-                          ),
-                          width: MediaQuery.of(context).size.width - 80,
-                          child: Text(
-                            'Date de contact pentru principalele instituții '
-                            'publice locale (primărie, spital, poliție etc.)',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 5,
-                            style: TextStyle(
-                              color: Color(0xFF38A49C),
-                              fontSize: 15,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Color(0xFF979797),
-                      ),
-                    ),
-                  ],
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PublicInstitutions()),
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: Container(
-                height: 1.0,
-                color: Color.fromRGBO(0, 0, 0, 0.1),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                left: 25,
-                right: 25,
-                bottom: 10,
-                top: 10,
-              ),
-              child: GestureDetector(
-                child: Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              height: 30,
-                              width: 30,
-                              child: SvgPicture.asset(
-                                  'assets/images/circle_EB7D16.svg'),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width - 120,
-                              padding: EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Text(
-                                'Tehnicieni și alți specialiști',
+                                'Tren',
                                 style: TextStyle(
                                   color: Color(0xFF979797),
                                   fontWeight: FontWeight.bold,
@@ -371,16 +218,15 @@ class HomePageNumbers extends StatelessWidget {
                           ),
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
-                            'Coming soon',
+                            'În curând',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
-                              color:
-                                  Color(0xFFC4C4C4), //color: Color(0xFF38A49C),
+                              color: Color(0xFF979797),
                               fontSize: 15,
                             ),
                           ),
-                        ),
+                        )
                       ],
                     ),
                     Container(
@@ -391,7 +237,7 @@ class HomePageNumbers extends StatelessWidget {
                     ),
                   ],
                 ),
-                onTap: null,
+                onTap: null
               ),
             ),
             Padding(
@@ -401,6 +247,84 @@ class HomePageNumbers extends StatelessWidget {
                 color: Color.fromRGBO(0, 0, 0, 0.1),
               ),
             ),
+            Container(
+              padding: EdgeInsets.only(
+                left: 25,
+                right: 25,
+                bottom: 10,
+                top: 15,
+              ),
+              child: GestureDetector(
+                child: Row(
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              child: Icon(
+                                Icons.directions_bus,
+                                color: Color(0xFF979797),
+                              ),
+                            ),
+                            //),
+                            Container(
+                              width: MediaQuery.of(context).size.width - 120,
+                              padding: EdgeInsets.only(
+                                left: 10,
+                              ),
+                              child: Text(
+                                'Autobuz',
+                                style: TextStyle(
+                                  color: Color(0xFF979797),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(
+                            top: 10,
+                          ),
+                          width: MediaQuery.of(context).size.width - 80,
+                          child: Text(
+                            'În curând',
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 5,
+                            style: TextStyle(
+                              color: Color(0xFF979797),
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      child: Icon(
+                        Icons.keyboard_arrow_right,
+                        color: Color(0xFF979797),
+                      ),
+                    ),
+                  ],
+                ),
+                onTap: null
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
+
+            /*Padding(
+              padding:EdgeInsets.symmetric(horizontal:15.0),
+              child:Container(
+                height:1.0,
+                color:Color.fromRGBO(0, 0, 0, 0.1),),),*/
           ],
         ),
       ),

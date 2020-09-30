@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+//import 'package:flutterapp/styleguide.dart';
 import '../../model/event.dart';
 import 'package:expandable/expandable.dart';
 
@@ -266,7 +267,8 @@ class LastEventWidget extends StatelessWidget {
                     padding: EdgeInsets.all(0),
                     child: Text(
                       "", //"ExpandablePanel",
-                      style: Theme.of(context).textTheme.bodyText1,
+                      // ignore: deprecated_member_use
+                      style: Theme.of(context).textTheme.body2,
                     )),
                 collapsed: Text(
                   '',

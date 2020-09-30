@@ -29,14 +29,14 @@ class AboutUsContent extends StatelessWidget {
           ),
           //1
           Container(
-            padding: EdgeInsets.only(top: 10,),
+            padding: EdgeInsets.only(
+              top: 10,
+            ),
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
-              'Grupul de inițiativă Rădăuțiul civic a apărut în luna iunie 2017 in mod oficial, după o serie de acțiuni civice '
-              +
-              'implementate deja de unii membri, pe bază de voluntariat și din dorința de a da ceva înapoi orașului lor natal, '
-              +
-              'iar în septembrie 2018 acesta a devenit asociație neguvernamentală.',
+              'Grupul de inițiativă Rădăuțiul civic a apărut în luna iunie 2017 in mod oficial, după o serie de acțiuni civice ' +
+                  'implementate deja de unii membri, pe bază de voluntariat și din dorința de a da ceva înapoi orașului lor natal, ' +
+                  'iar în septembrie 2018 acesta a devenit asociație neguvernamentală.',
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -44,12 +44,13 @@ class AboutUsContent extends StatelessWidget {
           ),
           //2
           Container(
-            padding: EdgeInsets.only(top: 10,),
+            padding: EdgeInsets.only(
+              top: 10,
+            ),
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
-              'Viziunea asociației „Rădăuțiul Civic” este cea a unui Rădăuți dezvoltat, cu o societate civilă '
-              +
-              'puternică, cu cetățeni responsabili, educați informați și activi, care promovează binele comunității.',
+              'Viziunea asociației „Rădăuțiul Civic” este cea a unui Rădăuți dezvoltat, cu o societate civilă ' +
+                  'puternică, cu cetățeni responsabili, educați informați și activi, care promovează binele comunității.',
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -57,12 +58,13 @@ class AboutUsContent extends StatelessWidget {
           ),
           //3
           Container(
-            padding: EdgeInsets.only(top: 10,),
+            padding: EdgeInsets.only(
+              top: 10,
+            ),
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
-              'Misiunea asociației „Rădăuțiul Civic” este de a stimula cetățenia activă pentru dezvoltarea '
-              +
-              'comunității locale.',
+              'Misiunea asociației „Rădăuțiul Civic” este de a stimula cetățenia activă pentru dezvoltarea ' +
+                  'comunității locale.',
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -70,22 +72,18 @@ class AboutUsContent extends StatelessWidget {
           ),
           //4
           Container(
-            padding: EdgeInsets.only(top: 10,),
+            padding: EdgeInsets.only(
+              top: 10,
+            ),
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
-              'Printre valorile de bază ale grupului nostru civic se numără:'
-              +
-              '\n- integritatea și onestitatea membrilor și a comunității;'
-              +
-              '\n- profesionalismul - mizăm pe acțiuni de calitate, nu pentru imagine ci pentru un impact real în comunitate;'
-              +
-              '\n- responsabilitatea - suntem și ne asumăm responsabilitatea pentru acțiunile noastre. Numai prin asumare putem să producem o schimbare în bine în jurul nostru;'
-              +
-              '\n- transparența  și adevărul în acțiunile și obiectivele noastre;'
-              +
-              '\n- non partizanatul - ca orice inițiativă civică, acest grup nu este și nu va fi partizan politic;'
-              +
-              '\n- devotamentul și curajul se numără de asemenea printre valorile noastre.',
+              'Printre valorile de bază ale grupului nostru civic se numără:' +
+                  '\n- integritatea și onestitatea membrilor și a comunității;' +
+                  '\n- profesionalismul - mizăm pe acțiuni de calitate, nu pentru imagine ci pentru un impact real în comunitate;' +
+                  '\n- responsabilitatea - suntem și ne asumăm responsabilitatea pentru acțiunile noastre. Numai prin asumare putem să producem o schimbare în bine în jurul nostru;' +
+                  '\n- transparența  și adevărul în acțiunile și obiectivele noastre;' +
+                  '\n- non partizanatul - ca orice inițiativă civică, acest grup nu este și nu va fi partizan politic;' +
+                  '\n- devotamentul și curajul se numără de asemenea printre valorile noastre.',
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -93,14 +91,14 @@ class AboutUsContent extends StatelessWidget {
           ),
           //5
           Container(
-            padding: EdgeInsets.only(top: 10,),
+            padding: EdgeInsets.only(
+              top: 10,
+            ),
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
-              'Ne plac oamenii cu idei, oamenii activim oameni care FAC și nu doar spun. Ne plac oamenii care '
-              +
-              'oferă soluții, nu doar care critică și ne plac oamenii care cred că prin puterea exemplului pot pune '
-              +
-              'lucrurile în mișcare.',
+              'Ne plac oamenii cu idei, oamenii activim oameni care FAC și nu doar spun. Ne plac oamenii care ' +
+                  'oferă soluții, nu doar care critică și ne plac oamenii care cred că prin puterea exemplului pot pune ' +
+                  'lucrurile în mișcare.',
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -108,16 +106,15 @@ class AboutUsContent extends StatelessWidget {
           ),
           //6
           Container(
-            padding: EdgeInsets.only(top: 10,),
+            padding: EdgeInsets.only(
+              top: 10,
+            ),
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
-              'Suntem cetățeni în fiecare zi nu doar când mergem din 4 în 4 ani la vot sau când avem vreo '
-              +
-              'problemă. Dacă ne dorim un oraș care să înflorească și care să se dezvolte, acest lucru ține și de '
-              +
-              'noi și de ceea ce facem în fiecare zi pentru asta. O democrație funcțională nu poate exista prin '
-              +
-              'simpla participare la vot, ci prin asumarea statutului de cetățean în fiecare zi.',
+              'Suntem cetățeni în fiecare zi nu doar când mergem din 4 în 4 ani la vot sau când avem vreo ' +
+                  'problemă. Dacă ne dorim un oraș care să înflorească și care să se dezvolte, acest lucru ține și de ' +
+                  'noi și de ceea ce facem în fiecare zi pentru asta. O democrație funcțională nu poate exista prin ' +
+                  'simpla participare la vot, ci prin asumarea statutului de cetățean în fiecare zi.',
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -125,7 +122,10 @@ class AboutUsContent extends StatelessWidget {
           ),
           //7
           Container(
-            padding: EdgeInsets.only(top: 10, bottom: 20,),
+            padding: EdgeInsets.only(
+              top: 10,
+              bottom: 20,
+            ),
             width: MediaQuery.of(context).size.width - 30,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -133,10 +133,14 @@ class AboutUsContent extends StatelessWidget {
                 new InkWell(
                     child: new Text(
                       'www.radautiulcivic.ro',
-                      style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color(0xFF38A49C),
+                        fontSize: 15,
+                      ),
                     ),
-                    onTap: () => UrlLauncher.launch('https://www.radautiulcivic.ro/')
-                ),
+                    onTap: () =>
+                        UrlLauncher.launch('https://www.radautiulcivic.ro/')),
               ],
             ),
           ),
