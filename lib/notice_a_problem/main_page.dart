@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,13 +32,12 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   File recordedImage3;
   bool isLoading = false;
   bool checkBox = false;
+  double _timeLeft = 15;
+  Timer _timer;
 
   List<Attachment> attachments = [null, null, null];
-
   String _recipientController;
-
   final _subjectController = TextEditingController(text: '');
-
   final _bodyController = TextEditingController(
     text: '',
   );
@@ -52,10 +52,28 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   );
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  void startTimer() {
+    _timeLeft = 0.0;
+    if (_timer != null) {
+      _timer.cancel();
+    }
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_timeLeft < 16) {
+          _timeLeft = _timeLeft + 0.1;
+        } else {
+          _timer.cancel();
+        }
+      });
+    });
+  }
+
   void _mailer() async {
     String username = 'radautiulcivic@gmail.com';
     String password = 'pass123.CIVIC';
     final smtpServer = gmail(username, password);
+    Duration timeoutEmail = new Duration(hours: 0, minutes: 0, seconds: 10);
+
     var message;
     if (checkBox == true) {
       message = Message()
@@ -93,7 +111,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         ..attachments = attachments;
     }
     try {
-      final sendReport = await send(message, smtpServer);
+      final sendReport = await send(message, smtpServer, timeout: timeoutEmail);
       print('Message sent: ' + sendReport.toString());
       showDialog(context: context, builder: (_) => popoutSucces());
       setState(() {
@@ -109,17 +127,11 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         isLoading = false;
       });
     } catch (e) {
-      debugPrint('Message not sent.');
       setState(() {
         isLoading = false;
       });
-      showDialog(context: context, builder: (_) => popoutFailed(e.message));
-      _scaffoldKey.currentState.showSnackBar(SnackBar(
-        content: Text("Mesaj netrimis!"),
-      ));
-      for (var p in e.problems) {
-        print('Problem: ${p.code}: ${p.msg}');
-      }
+      debugPrint(e.problems.message);
+      showDialog(context: context, builder: (_) => popoutFailed(e.problems));
     }
   }
 
@@ -312,8 +324,21 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         drawer: NavDrawer2(),
         body: isLoading
             ? Center(
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
+                child: Stack(
+                  children: [
+                    CircularProgressIndicator(
+                      value: _timeLeft,
+                      valueColor:
+                          AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Text(
+                        '${15 - _timeLeft.toInt() * 10}',
+                        style: TextStyle(fontSize: 24),
+                      ),
+                    ),
+                  ],
                 ),
               )
             : SingleChildScrollView(
@@ -775,7 +800,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         break;
       case "Rădăuțiul Civic":
         {
-          _recipientController = "radautiulcivic@gmail.com";
+          _recipientController = "666grade@gmail.com";
           _validateDropDown = false;
           debugPrint('valoare email: $_recipientController');
         }
@@ -830,6 +855,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                   setState(() {
                     isLoading = true;
                   });
+                  startTimer();
                   _mailer();
                 }
               }
@@ -858,10 +884,10 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
     );
   }
 
-  CupertinoAlertDialog popoutFailed(error) {
+  CupertinoAlertDialog popoutFailed(e) {
     return CupertinoAlertDialog(
       title: Text('A aparut o eroare'),
-      content: Text('Mesajul nu a fost trimis din cauza ca:\n $error'),
+      content: Text('Mesajul nu a fost trimis din cauza ca:\n $e'),
       actions: [
         CupertinoDialogAction(
           child: FlatButton(
@@ -876,7 +902,10 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
             child: Text('Incearca din nou'),
             onPressed: () {
               Navigator.pop(context);
-              isLoading = true;
+              setState(() {
+                isLoading = true;
+              });
+              startTimer();
               _mailer();
             },
           ),

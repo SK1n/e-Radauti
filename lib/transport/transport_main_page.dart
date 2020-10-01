@@ -98,7 +98,7 @@ class HomePageTransport extends StatelessWidget {
                 ],
               ),
             ),
-            /*Container(
+            Container(
               padding: EdgeInsets.only(
                 left: 25,
                 right: 25,
@@ -113,11 +113,11 @@ class HomePageTransport extends StatelessWidget {
                         Row(
                           children: <Widget>[
                             Container(
-                                child: Icon(
-                                  Icons.local_taxi,
-                                  color: Color(0xFF979797),
-                                ),
+                              child: Icon(
+                                Icons.local_taxi,
+                                color: Color(0xFF979797),
                               ),
+                            ),
                             //),
                             Container(
                               width: MediaQuery.of(context).size.width - 120,
@@ -166,7 +166,7 @@ class HomePageTransport extends StatelessWidget {
                   );
                 },
               ),
-            ),*/
+            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: Container(
