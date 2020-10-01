@@ -61,17 +61,18 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         ..from = Address(username, _nameController.text)
         ..recipients.add(_recipientController)
         ..subject = ' Petiție ${_subjectController.text} - aplicația e-Rădăuți'
-        ..html = 'Către, ${dropdownValue.toString()} <br><br> Stimată doamnă/ Stimate domn,' +
-            '<br><br>Subsemnatul ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>' +
-            '${_bodyController.text}<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați măsurile ce se impun.<br><br> Cele sesizate sunt la următoarea adresă ' +
-            ' Lat:${position.latitude.toString()} Long:${position.longitude.toString()}' +
-            "( <a href ='https://www.google.com/maps/place/${position.latitude.toString()}+${position.longitude.toString()}" +
-            "'>Adresa</a> )<br><br>" +
-            'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și ' +
+        ..html = 'Către, ${dropdownValue.toString()} <br><br> Stimată doamnă/ Stimate domn,'
+            '<br><br>Subsemnatul ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>'
+            '${_bodyController.text}<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați'
+            ' măsurile ce se impun.<br><br> Cele sesizate sunt la următoarea adresă '
+            ' Lat:${position.latitude.toString()} Long:${position.longitude.toString()}'
+            "( <a href ='https://www.google.com/maps/place/${position.latitude.toString()}+${position.longitude.toString()}"
+            "'>Adresa</a> )<br><br>"
+            'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și '
             'a fost transmisă prin intermediul aplicației mobile e-Rădăuți, dezvoltată'
-                ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>' +
-            'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa ${_emailController.text}' +
-            '.<br><br>Cu stimă,<br><br>' +
+            ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>'
+            'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa ${_emailController.text}'
+            '.<br><br>Cu stimă,<br><br>'
             '     ${_nameController.text}<br><br>     Tel: ${_numberController.text}/${_emailController.text}'
         ..attachments = attachments;
     } else {
@@ -79,18 +80,17 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         ..from = Address(username, _nameController.text)
         ..recipients.add(_recipientController)
         ..subject = ' Petiție ${_subjectController.text} - aplicația e-Rădăuți'
-        ..html = 'Către, ${dropdownValue.toString()} <br><br> Stimată doamnă/ Stimate domn,' +
-            '<br><br>Subsemnatul ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>' +
-            '${_bodyController.text}<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați măsurile ce se impun.<br><br>' +
-            'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și ' +
+        ..html = 'Către, ${dropdownValue.toString()} <br><br> Stimată doamnă/ Stimate domn,'
+            '<br><br>Subsemnatul ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>'
+            '${_bodyController.text}<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați măsurile ce se impun.<br><br>'
+            'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și '
             'a fost transmisă prin intermediul aplicației mobile e-Rădăuți, dezvoltată'
-                ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>' +
-            'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa ${_emailController.text}' +
-            '.<br><br>Cu stimă,<br><br>' +
+            ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>'
+            'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa ${_emailController.text}'
+            '.<br><br>Cu stimă,<br><br>'
             '     ${_nameController.text}<br><br>     Tel: ${_numberController.text}/${_emailController.text}'
         ..attachments = attachments;
     }
-
     try {
       final sendReport = await send(message, smtpServer);
       print('Message sent: ' + sendReport.toString());

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/menu_page.dart';
 import 'package:flutterapperadauti/transport/Taxi.dart';
 
-
 class HomePageTransport extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
@@ -99,7 +98,7 @@ class HomePageTransport extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
+            /*Container(
               padding: EdgeInsets.only(
                 left: 25,
                 right: 25,
@@ -167,6 +166,77 @@ class HomePageTransport extends StatelessWidget {
                   );
                 },
               ),
+            ),*/
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(
+                left: 25,
+                right: 25,
+                bottom: 10,
+                top: 15,
+              ),
+              child: GestureDetector(
+                  child: Row(
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Container(
+                                child: Icon(
+                                  Icons.directions_railway,
+                                  color: Color(0xFF979797),
+                                ),
+                              ),
+                              //),
+                              Container(
+                                width: MediaQuery.of(context).size.width - 120,
+                                padding: EdgeInsets.only(
+                                  left: 10,
+                                ),
+                                child: Text(
+                                  'Tren',
+                                  style: TextStyle(
+                                    color: Color(0xFF979797),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(
+                              top: 10,
+                            ),
+                            width: MediaQuery.of(context).size.width - 80,
+                            child: Text(
+                              'În curând',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 5,
+                              style: TextStyle(
+                                color: Color(0xFF979797),
+                                fontSize: 15,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      Container(
+                        child: Icon(
+                          Icons.keyboard_arrow_right,
+                          color: Color(0xFF979797),
+                        ),
+                      ),
+                    ],
+                  ),
+                  onTap: null),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
@@ -183,134 +253,61 @@ class HomePageTransport extends StatelessWidget {
                 top: 15,
               ),
               child: GestureDetector(
-                child: Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              child: Icon(
-                                Icons.directions_railway,
-                                color: Color(0xFF979797),
-                              ),
-                            ),
-                            //),
-                            Container(
-                              width: MediaQuery.of(context).size.width - 120,
-                              padding: EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Text(
-                                'Tren',
-                                style: TextStyle(
+                  child: Row(
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Container(
+                                child: Icon(
+                                  Icons.directions_bus,
                                   color: Color(0xFF979797),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            top: 10,
-                          ),
-                          width: MediaQuery.of(context).size.width - 80,
-                          child: Text(
-                            'În curând',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 5,
-                            style: TextStyle(
-                              color: Color(0xFF979797),
-                              fontSize: 15,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Color(0xFF979797),
-                      ),
-                    ),
-                  ],
-                ),
-                onTap: null
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: Container(
-                height: 1.0,
-                color: Color.fromRGBO(0, 0, 0, 0.1),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                left: 25,
-                right: 25,
-                bottom: 10,
-                top: 15,
-              ),
-              child: GestureDetector(
-                child: Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              child: Icon(
-                                Icons.directions_bus,
-                                color: Color(0xFF979797),
-                              ),
-                            ),
-                            //),
-                            Container(
-                              width: MediaQuery.of(context).size.width - 120,
-                              padding: EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Text(
-                                'Autobuz',
-                                style: TextStyle(
-                                  color: Color(0xFF979797),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
+                              //),
+                              Container(
+                                width: MediaQuery.of(context).size.width - 120,
+                                padding: EdgeInsets.only(
+                                  left: 10,
+                                ),
+                                child: Text(
+                                  'Autobuz',
+                                  style: TextStyle(
+                                    color: Color(0xFF979797),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            top: 10,
+                            ],
                           ),
-                          width: MediaQuery.of(context).size.width - 80,
-                          child: Text(
-                            'În curând',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 5,
-                            style: TextStyle(
-                              color: Color(0xFF979797),
-                              fontSize: 15,
+                          Container(
+                            padding: EdgeInsets.only(
+                              top: 10,
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Color(0xFF979797),
+                            width: MediaQuery.of(context).size.width - 80,
+                            child: Text(
+                              'În curând',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 5,
+                              style: TextStyle(
+                                color: Color(0xFF979797),
+                                fontSize: 15,
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                onTap: null
-              ),
+                      Container(
+                        child: Icon(
+                          Icons.keyboard_arrow_right,
+                          color: Color(0xFF979797),
+                        ),
+                      ),
+                    ],
+                  ),
+                  onTap: null),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),

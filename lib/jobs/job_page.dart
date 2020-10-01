@@ -87,8 +87,10 @@ class _JobPageState extends State<JobPage> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
+                                    Text(
+                                        'Exipra pe data de: ${jobList[index].dateExpires.toString().replaceAll('T', '  ').replaceAll('Z', '  ').replaceRange(17, null, '')}'),
                                     jobList[index].price.toString() == 'null'
-                                        ? Text('')
+                                        ? Text('Nu exista un pret precizat')
                                         : Row(children: [
                                             Text(
                                               'Pret: ',

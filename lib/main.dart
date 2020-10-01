@@ -71,6 +71,17 @@ class AndroidMobile1 extends StatelessWidget {
       key: _scaffoldKey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        title: Container(
+          alignment: Alignment.center,
+          child: Text(
+            'e-Rădăuți',
+            style: TextStyle(
+              color: Color(0xFF000000), //Color(0xFFFFFFFF),
+              fontWeight: FontWeight.bold,
+              fontSize: 19,
+            ),
+          ),
+        ),
         leading: Container(
           padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
