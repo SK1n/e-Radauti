@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/menu_page.dart';
 import 'package:flutter/material.dart';
@@ -94,9 +95,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
     try {
       final sendReport = await send(message, smtpServer);
       print('Message sent: ' + sendReport.toString());
-      _scaffoldKey.currentState.showSnackBar(SnackBar(
-        content: Text("Mesaj trimis!"),
-      ));
+      showDialog(context: context, builder: (_) => popoutSucces());
       setState(() {
         attachments = [null, null, null];
         recordedImage1 = null;
@@ -109,15 +108,18 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         _emailController.text = '';
         isLoading = false;
       });
-    } on MailerException catch (e) {
-      print('Message not sent.');
+    } catch (e) {
+      debugPrint('Message not sent.');
+      setState(() {
+        isLoading = false;
+      });
+      showDialog(context: context, builder: (_) => popoutFailed(e.message));
       _scaffoldKey.currentState.showSnackBar(SnackBar(
         content: Text("Mesaj netrimis!"),
       ));
       for (var p in e.problems) {
         print('Problem: ${p.code}: ${p.msg}');
       }
-      isLoading = false;
     }
   }
 
@@ -430,7 +432,6 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                                   color: Color(0x55FB6340),
                                   size: 20,
                                 ),
-                                //hintText: "Enter Your Name",
                                 labelText: 'Email:',
                                 prefixText: '',
                                 errorText: _validateEmail
@@ -638,6 +639,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                     ),
                     CheckboxListTile(
                       title: Text('Adaugati locatia dvs. la email'),
+                      activeColor: Color.fromRGBO(56, 164, 156, 10),
                       secondary: checkBox == false
                           ? Icon(MaterialIcons.location_off)
                           : Icon(MaterialIcons.location_on),
@@ -836,5 +838,50 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         }
       }
     });
+  }
+
+  CupertinoAlertDialog popoutSucces() {
+    return CupertinoAlertDialog(
+      title: Text('A fost trimis cu succes!'),
+      content:
+          Text('Mesajul a fost trimis cu succes catre $_recipientController'),
+      actions: [
+        CupertinoDialogAction(
+          child: FlatButton(
+            child: Text('Okay'),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  CupertinoAlertDialog popoutFailed(error) {
+    return CupertinoAlertDialog(
+      title: Text('A aparut o eroare'),
+      content: Text('Mesajul nu a fost trimis din cauza ca:\n $error'),
+      actions: [
+        CupertinoDialogAction(
+          child: FlatButton(
+            child: Text('Okay'),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+        CupertinoDialogAction(
+          child: FlatButton(
+            child: Text('Incearca din nou'),
+            onPressed: () {
+              Navigator.pop(context);
+              isLoading = true;
+              _mailer();
+            },
+          ),
+        ),
+      ],
+    );
   }
 }
