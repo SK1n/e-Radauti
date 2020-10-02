@@ -84,7 +84,7 @@ class Leaders extends StatelessWidget {
                                   'Administrație locală',
                                   style: TextStyle(
                                     color:
-                                        Color(0xFF000000), //Color(0xFFFFFFFF),
+                                    Color(0xFF000000), //Color(0xFFFFFFFF),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 19,
                                   ),
@@ -101,7 +101,7 @@ class Leaders extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 15),
+              EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 15),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -110,7 +110,7 @@ class Leaders extends StatelessWidget {
                         height: 30,
                         width: 30,
                         child:
-                            SvgPicture.asset("assets/images/circle_69E781.svg"),
+                        SvgPicture.asset("assets/images/circle_69E781.svg"),
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width - 90,
@@ -152,7 +152,7 @@ class Leaders extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -164,7 +164,7 @@ class Leaders extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 50,
                           backgroundImage:
-                              AssetImage("assets/images/NistorTatar.png"),
+                          AssetImage("assets/images/loghin.jpg"),
                         ),
                       ),
                       Container(
@@ -174,7 +174,7 @@ class Leaders extends StatelessWidget {
                             Container(
                               width: MediaQuery.of(context).size.width - 136,
                               child: Text(
-                                "Nistor Tătar",
+                                "Bogdan Loghin",
                                 style: TextStyle(
                                   color: Color(0xFF38A49C),
                                   fontWeight: FontWeight.bold,
@@ -202,17 +202,10 @@ class Leaders extends StatelessWidget {
                                     size: 40,
                                   ),
                                   onPressed: () {
-                                    _launchURL("facebook.com");
+                                    _launchURL("https://www.facebook.com/BogdanLoghinPNL/");
                                   },
                                 ),
-                                FlatButton(
-                                  onPressed: () {},
-                                  child: Icon(
-                                    Ionicons.logo_whatsapp,
-                                    color: Colors.green,
-                                    size: 40,
-                                  ),
-                                ),
+
                                 FlatButton(
                                   child: Icon(
                                     Ionicons.ios_mail,
@@ -221,7 +214,7 @@ class Leaders extends StatelessWidget {
                                   ),
                                   onPressed: () {
                                     UrlLauncher.launch(
-                                        "mailto:email1@gmail.com");
+                                        "mailto:primar@primariaradauti.ro");
                                   },
                                 ),
                               ],
@@ -253,7 +246,7 @@ class Leaders extends StatelessWidget {
                                         ),
                                       ),
                                       onTap: () => UrlLauncher.launch(
-                                          'https://primariaradauti.ro/wp-content/uploads/2020/07/Nistor-Tatar-1.pdf')),
+                                          'https://primariaradauti.ro/wp-content/uploads/2019/12/Loghin_Bogdan_Andrei..pdf')),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
@@ -264,7 +257,7 @@ class Leaders extends StatelessWidget {
                                         ),
                                       ),
                                       onTap: () => UrlLauncher.launch(
-                                          'https://primariaradauti.ro/wp-content/uploads/2020/07/Tatar-Nistor-1.pdf')),
+                                          'https://primariaradauti.ro/wp-content/uploads/2019/12/Loghin_Bogdan_Andrei.-1.pdf')),
                                 ],
                               ),
                             ),
@@ -285,7 +278,7 @@ class Leaders extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -297,7 +290,7 @@ class Leaders extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 50,
                           backgroundImage:
-                              AssetImage("assets/images/NicolauBogdan.jpg"),
+                          AssetImage("assets/images/NicolauBogdan.jpg"),
                         ),
                       ),
                       Container(
@@ -338,14 +331,14 @@ class Leaders extends StatelessWidget {
                                     _launchURL("facebook.com");
                                   },
                                 ),
-                                FlatButton(
+/*                                FlatButton(
                                   onPressed: () {},
                                   child: Icon(
                                     Ionicons.logo_whatsapp,
                                     color: Colors.green,
                                     size: 40,
                                   ),
-                                ),
+                                ),*/
                                 FlatButton(
                                   child: Icon(
                                     Ionicons.ios_mail,
@@ -418,7 +411,7 @@ class Leaders extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -430,7 +423,7 @@ class Leaders extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 50,
                           backgroundImage:
-                              AssetImage("assets/images/MarinicaSofroni.jpg"),
+                          AssetImage("assets/images/MarinicaSofroni.jpg"),
                         ),
                       ),
                       Container(
@@ -468,17 +461,17 @@ class Leaders extends StatelessWidget {
                                     size: 40,
                                   ),
                                   onPressed: () {
-                                    _launchURL("facebook.com");
+                                    _launchURL("https://www.facebook.com/sofroni.marinica");
                                   },
                                 ),
-                                FlatButton(
+/*                                FlatButton(
                                   onPressed: () {},
                                   child: Icon(
                                     Ionicons.logo_whatsapp,
                                     color: Colors.green,
                                     size: 40,
                                   ),
-                                ),
+                                ),*/
                                 FlatButton(
                                   child: Icon(
                                     Ionicons.ios_mail,
@@ -487,7 +480,7 @@ class Leaders extends StatelessWidget {
                                   ),
                                   onPressed: () {
                                     UrlLauncher.launch(
-                                        "mailto:email1@gmail.com");
+                                        "mailto:secretar@primariaradauti.ro");
                                   },
                                 ),
                               ],

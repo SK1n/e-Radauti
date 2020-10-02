@@ -27,8 +27,6 @@ class _FurniturePageState extends State<FurniturePage> {
           .map<JobModel>((j) => JobModel.fromJson(j))
           .toList();
     });
-
-    // print(jobList);
     return jobList;
   }
 
@@ -69,7 +67,7 @@ class _FurniturePageState extends State<FurniturePage> {
                 return Center(
                   child: CircularProgressIndicator(
                     valueColor:
-                        AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
+                    AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
                   ),
                 );
               } else {
@@ -90,27 +88,29 @@ class _FurniturePageState extends State<FurniturePage> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
+                                    Text(
+                                        'Exipra pe data de: ${jobList[index].dateExpires.toString().replaceAll('T', '  ').replaceAll('Z', '  ').replaceRange(17, null, '')}'),
                                     jobList[index].price.toString() == 'null'
-                                        ? Text('')
+                                        ? Text('Nu exista un pret precizat')
                                         : Row(children: [
-                                            Text(
-                                              'Pret: ',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            Text(
-                                                jobList[index].price.toString(),
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            Text(
-                                                jobList[index]
-                                                    .currency
-                                                    .toString(),
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                          ]),
+                                      Text(
+                                        'Pret: ',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                          jobList[index].price.toString(),
+                                          style: TextStyle(
+                                              fontWeight:
+                                              FontWeight.bold)),
+                                      Text(
+                                          jobList[index]
+                                              .currency
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontWeight:
+                                              FontWeight.bold)),
+                                    ]),
                                   ],
                                 ),
                               ),
