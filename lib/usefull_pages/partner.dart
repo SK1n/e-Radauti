@@ -18,14 +18,20 @@ class Partner extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(top: 20, bottom: 10,),
+              padding: EdgeInsets.only(
+                top: 20,
+                bottom: 10,
+              ),
               child: Row(
                 children: <Widget>[
                   Container(
                     alignment: Alignment.centerLeft,
                     child: IconButton(
-                      icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
-                      onPressed: (){
+                      icon: Icon(
+                        Icons.keyboard_arrow_left,
+                        color: Color(0xFF979797),
+                      ), //_left Icons.arrow_back
+                      onPressed: () {
                         Navigator.pop(context);
                       },
                     ),
@@ -56,34 +62,11 @@ class Partner extends StatelessWidget {
                 ],
               ),
             ),
-            //1
+            // 1 FONDUL PENTRU DEMOCRATIE
             Container(
-              padding: EdgeInsets.only(bottom: 10,),
-              width: MediaQuery.of(context).size.width - 30,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Image.asset(
-                    "assets/images/hard_power_radauti.png",
-                  ),
-                ],
+              padding: EdgeInsets.only(
+                bottom: 10,
               ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width - 30,
-              padding: EdgeInsets.only(bottom: 20,),
-              child: Text(
-                "Hard Power Services Rădăuți",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-            //2
-            Container(
-              padding: EdgeInsets.only(bottom: 10,),
               width: MediaQuery.of(context).size.width - 30,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -98,7 +81,9 @@ class Partner extends StatelessWidget {
             ),
             Container(
               width: MediaQuery.of(context).size.width - 30,
-              padding: EdgeInsets.only(bottom: 20,),
+              padding: EdgeInsets.only(
+                bottom: 20,
+              ),
               child: Text(
                 "Fondul pentru Democrație",
                 style: TextStyle(
@@ -108,9 +93,11 @@ class Partner extends StatelessWidget {
                 ),
               ),
             ),
-            //3
+            //2 CODE4ROMANIA
             Container(
-              padding: EdgeInsets.only(bottom: 10,),
+              padding: EdgeInsets.only(
+                bottom: 10,
+              ),
               width: MediaQuery.of(context).size.width - 30,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -125,9 +112,40 @@ class Partner extends StatelessWidget {
             ),
             Container(
               width: MediaQuery.of(context).size.width - 30,
-              padding: EdgeInsets.only(bottom: 20,),
+              padding: EdgeInsets.only(
+                bottom: 20,
+              ),
               child: Text(
                 "Code4Romania",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+            //3 HARD POWER RADAUTI
+            Container(
+              padding: EdgeInsets.only(
+                bottom: 10,
+              ),
+              width: MediaQuery.of(context).size.width - 30,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Image.asset(
+                    "assets/images/hard_power_radauti.png",
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width - 30,
+              padding: EdgeInsets.only(
+                bottom: 20,
+              ),
+              child: Text(
+                "Hard Power Services Rădăuți",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,

@@ -27,8 +27,6 @@ class _FurniturePageState extends State<FurniturePage> {
           .map<JobModel>((j) => JobModel.fromJson(j))
           .toList();
     });
-
-    // print(jobList);
     return jobList;
   }
 
@@ -90,8 +88,10 @@ class _FurniturePageState extends State<FurniturePage> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
+                                    Text(
+                                        'Exipra pe data de: ${jobList[index].dateExpires.toString().replaceAll('T', '  ').replaceAll('Z', '  ').replaceRange(17, null, '')}'),
                                     jobList[index].price.toString() == 'null'
-                                        ? Text('')
+                                        ? Text('Nu exista un pret precizat')
                                         : Row(children: [
                                             Text(
                                               'Pret: ',

@@ -5,9 +5,10 @@ class JobModel {
   final String content;
   final int price;
   final String currency;
+  final String dateExpires;
 
   JobModel(this.title, this.id, this.rawContent, this.content, this.price,
-      this.currency);
+      this.currency, this.dateExpires);
 
   JobModel.fromJson(Map<String, dynamic> json)
       : title = json['title'],
@@ -15,5 +16,6 @@ class JobModel {
         rawContent = json['raw_content'],
         content = json['content'],
         price = json['price'],
-        currency = json['currency'];
+        currency = json['currency'],
+        dateExpires = json['date_expires'];
 }
