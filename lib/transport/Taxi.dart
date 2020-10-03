@@ -14,27 +14,27 @@ import 'package:flutterapperadauti/transport/transport_main_page.dart';
 
 
 
-class Taxi extends StatelessWidget {
+class Taxi2 extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'e-Radauti',
+      title: 'e-RÄƒdÄƒuÈ›i',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
         primaryColor: Color(0xFFFFFFFF),
 
       ),
-      home: AndroidMobile1(),
+      home: Taxi(),
     );
   }
 }
 
 
 
-class AndroidMobile1 extends StatelessWidget {
-  AndroidMobile1({
+class Taxi extends StatelessWidget {
+  Taxi({
     Key key,
   }) : super(key: key);
 
@@ -75,51 +75,57 @@ class AndroidMobile1 extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(
-            child: Row(
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.centerLeft,
-                  child: IconButton(
-                    icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),),
-                    onPressed: (){
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width - 80,
-                  child: new Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: <Widget>[
-                      Stack(
+            child: SizedBox(
+              height: 80,
+              child: Container(
+                padding: const EdgeInsets.only(top: 20,),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: IconButton(
+                        icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),),
+                        onPressed: (){
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width - 80,
+                      child: new Stack(
+                        alignment: AlignmentDirectional.center,
                         children: <Widget>[
-                          Icon(Icons.local_taxi, color: Color(0x55FB6340), size: 30,),
-                          SizedBox(width: 5,),
-                          Container(
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(35.0, 6.0, 0.0, 0.0,), //10.0 //25.0
-                              child: Text(
-                                'Taximetriști',
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 19,
+                          Stack(
+                            children: <Widget>[
+                              Icon(Icons.local_taxi, color: Color(0x55FB6340), size: 30,),
+                              SizedBox(width: 5,),
+                              Container(
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(35.0, 6.0, 0.0, 0.0,), //10.0 //25.0
+                                  child: Text(
+                                    'Taximetriști',
+                                    style: TextStyle(
+                                      color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 19,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
+                    ),
 
-              ],
+                  ],
+                ),
+              ),
             ),
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: (MediaQuery.of(context).size.height - 250),
+              height: (MediaQuery.of(context).size.height + 450),
               child: Container(
                 child: GridView.count(
                   primary: false,
@@ -127,58 +133,10 @@ class AndroidMobile1 extends StatelessWidget {
                   crossAxisSpacing: 15,
                   mainAxisSpacing: 15,
                   crossAxisCount: 2,
-                  childAspectRatio: 1.1,
+                  //childAspectRatio: 1.1,
                   //(MediaQuery.of(context).size.width / 2 - 22.5) /
                   //    (MediaQuery.of(context).size.height / 5 - 60),
                   children: <Widget>[
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageNoticeProblem()),
-                        );
-                      },
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Column(
-                            children: <Widget>[
-                              Align(
-                                child: new Column(
-                                  children: <Widget>[
-                                    new Image.asset(
-                                      "assets/images/Taxi/SV14PLS_png.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                      width: 80.0, //50.0, //25.0,
-                                      height: 80.0, //50.0, //25.0,
-                                    ),
-                                    new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
-                                      child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          new Text('ASURDOAIEI IONUȚ',
-                                            style: new TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,),)],),),
-                                    new Text('DACIA LOGAN',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('0752 436 011',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('SV-14PLS'),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                      ),
-                    ),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -218,54 +176,6 @@ class AndroidMobile1 extends StatelessWidget {
                                     new Text('DACIA LOGAN',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                                     new Text('0740 348 225',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                                     new Text('SV-12NLJ'),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageNoticeProblem()),
-                        );
-                      },
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Column(
-                            children: <Widget>[
-                              Align(
-                                child: new Column(
-                                  children: <Widget>[
-                                    new Image.asset(
-                                      "assets/images/Taxi/SV51LIE_png.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                      width: 80.0, //50.0, //25.0,
-                                      height: 80.0, //50.0, //25.0,
-                                    ),
-                                    new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
-                                      child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          new Text('BUCEVSCHI ILIE',
-                                            style: new TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,),)],),),
-                                    new Text('VOLKSWAGEN',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('0720 217 728',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('SV-51LIE'),
                                   ],
                                 ),
                               ),
@@ -393,7 +303,7 @@ class AndroidMobile1 extends StatelessWidget {
                                 child: new Column(
                                   children: <Widget>[
                                     new Image.asset(
-                                      "assets/images/Taxi/SV11NEL_png.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                      "assets/images/Taxi/SV11NEL.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
                                       width: 80.0, //50.0, //25.0,
                                       height: 80.0, //50.0, //25.0,
                                     ),
@@ -442,7 +352,7 @@ class AndroidMobile1 extends StatelessWidget {
                                 child: new Column(
                                   children: <Widget>[
                                     new Image.asset(
-                                      "assets/images/Taxi/SV62LAZ_png.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                      "assets/images/Taxi/SV62LAZ.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
                                       width: 80.0, //50.0, //25.0,
                                       height: 80.0, //50.0, //25.0,
                                     ),
@@ -490,7 +400,7 @@ class AndroidMobile1 extends StatelessWidget {
                                 child: new Column(
                                   children: <Widget>[
                                     new Image.asset(
-                                      "assets/images/Taxi/SV12TWL_png.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                      "assets/images/Taxi/SV12TWL.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
                                       width: 80.0, //50.0, //25.0,
                                       height: 80.0, //50.0, //25.0,
                                     ),
@@ -708,7 +618,7 @@ class AndroidMobile1 extends StatelessWidget {
                                 child: new Column(
                                   children: <Widget>[
                                     new Image.asset(
-                                      "assets/images/Taxi/SV16TOD_png.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                      "assets/images/Taxi/SV16TOD.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
                                       width: 80.0, //50.0, //25.0,
                                       height: 80.0, //50.0, //25.0,
                                     ),
