@@ -12,7 +12,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/prop_4" />
+            android:src="@mipmap/prop_6" />
     </item>
 
 </layer-list>

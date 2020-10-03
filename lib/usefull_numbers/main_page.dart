@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/menu_page.dart';
-import 'package:flutterapperadauti/usefull_numbers/public_institutions.dart';
-import 'package:flutterapperadauti/usefull_numbers/miscellaneous.dart';
 import 'package:flutterapperadauti/usefull_numbers/local_authorities.dart';
+import 'package:flutterapperadauti/usefull_numbers/miscellaneous.dart';
+import 'package:flutterapperadauti/usefull_numbers/public_institutions.dart';
 
 class HomePageNumbers extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -126,7 +126,7 @@ class HomePageNumbers extends StatelessWidget {
                                 left: 10,
                               ),
                               child: Text(
-                                'Autorități locale',
+                                'Instituții publice',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
@@ -164,7 +164,7 @@ class HomePageNumbers extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LocalAuthorities()),
+                    MaterialPageRoute(builder: (context) => PublicInstitutions()),
                   );
                 },
               ),
@@ -278,7 +278,7 @@ class HomePageNumbers extends StatelessWidget {
                                 left: 10,
                               ),
                               child: Text(
-                                'Instituții publice',
+                                'Autorități locale',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
@@ -293,7 +293,7 @@ class HomePageNumbers extends StatelessWidget {
                           ),
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
-                            'Date de contact pentru principalele instituții '
+                            'Date de contact pentru principalele autorități '
                             'publice locale (primărie, spital, poliție etc.)',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
@@ -317,7 +317,7 @@ class HomePageNumbers extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => PublicInstitutions()),
+                        builder: (context) => LocalAuthorities()),
                   );
                 },
               ),

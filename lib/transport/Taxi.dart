@@ -14,7 +14,7 @@ import 'package:flutterapperadauti/transport/transport_main_page.dart';
 
 
 
-class Taxi extends StatelessWidget {
+class Taxi2 extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -26,15 +26,15 @@ class Taxi extends StatelessWidget {
         primaryColor: Color(0xFFFFFFFF),
 
       ),
-      home: AndroidMobile1(),
+      home: Taxi(),
     );
   }
 }
 
 
 
-class AndroidMobile1 extends StatelessWidget {
-  AndroidMobile1({
+class Taxi extends StatelessWidget {
+  Taxi({
     Key key,
   }) : super(key: key);
 
@@ -75,51 +75,57 @@ class AndroidMobile1 extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(
-            child: Row(
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.centerLeft,
-                  child: IconButton(
-                    icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),),
-                    onPressed: (){
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width - 80,
-                  child: new Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: <Widget>[
-                      Stack(
+            child: SizedBox(
+              height: 80,
+              child: Container(
+                padding: const EdgeInsets.only(top: 20,),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: IconButton(
+                        icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),),
+                        onPressed: (){
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width - 80,
+                      child: new Stack(
+                        alignment: AlignmentDirectional.center,
                         children: <Widget>[
-                          Icon(Icons.local_taxi, color: Color(0x55FB6340), size: 30,),
-                          SizedBox(width: 5,),
-                          Container(
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(35.0, 6.0, 0.0, 0.0,), //10.0 //25.0
-                              child: Text(
-                                'Taximetriști',
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 19,
+                          Stack(
+                            children: <Widget>[
+                              Icon(Icons.local_taxi, color: Color(0x55FB6340), size: 30,),
+                              SizedBox(width: 5,),
+                              Container(
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(35.0, 6.0, 0.0, 0.0,), //10.0 //25.0
+                                  child: Text(
+                                    'Taximetriști',
+                                    style: TextStyle(
+                                      color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 19,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
+                    ),
 
-              ],
+                  ],
+                ),
+              ),
             ),
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: (MediaQuery.of(context).size.height - 250),
+              height: (MediaQuery.of(context).size.height + 450),
               child: Container(
                 child: GridView.count(
                   primary: false,
@@ -127,7 +133,7 @@ class AndroidMobile1 extends StatelessWidget {
                   crossAxisSpacing: 15,
                   mainAxisSpacing: 15,
                   crossAxisCount: 2,
-                  childAspectRatio: 1.1,
+                  //childAspectRatio: 1.1,
                   //(MediaQuery.of(context).size.width / 2 - 22.5) /
                   //    (MediaQuery.of(context).size.height / 5 - 60),
                   children: <Widget>[

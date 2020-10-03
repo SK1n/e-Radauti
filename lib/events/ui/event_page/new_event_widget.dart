@@ -17,21 +17,23 @@ class NewEventWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Event eventCalendar = Event(
-      title: event.title, //'Test event',
-      description: event.description, //'example',
-      location: event.location, //'Flutter app',
-      startDate: DateTime.utc(
+      title: event.title,
+      description: event.description,
+      location: event.location,
+      startDate:
+      DateTime.utc(
           event.yearT,
           event.monthT,
-          event.dayT,
-          event.hourT,
-          event
-              .minuteT), //DateTime.utc(event.yearT, event.monthT, event.dayT, event.hourT, event.minuteT), //DateTime.now(),
-      endDate: DateTime.utc(
-              event.yearT, event.monthT, event.dayT, event.hourT, event.minuteT)
-          .add(Duration(
-        hours: 2,
-      )), //DateTime.utc(event.yearT, event.monthT, event.dayT, event.hourT, event.minuteT).add(Duration(days: 1)),//
+          event.dayT, event.hourT,).add(Duration(
+        hours: -1,
+      )),
+      endDate:
+      DateTime.utc(
+        event.yearT,
+        event.monthT,
+        event.dayT, event.hourT,).add(Duration(
+        hours: 3,
+      )),
       allDay: false,
     );
 
