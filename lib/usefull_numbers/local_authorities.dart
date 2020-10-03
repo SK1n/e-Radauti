@@ -455,7 +455,7 @@ class LocalAuthorities extends StatelessWidget {
                 color:Color.fromRGBO(0, 0, 0, 0.1),),),*/
             ],
           ),
-        )
+        ),
     );
   }
 }
