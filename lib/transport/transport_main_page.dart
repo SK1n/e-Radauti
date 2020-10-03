@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/menu_page.dart';
-import 'package:flutterapperadauti/transport/Taxi.dart';
-
+import 'package:flutterapperadauti/transport/Taximetristi.dart';
 
 class HomePageTransport extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -114,11 +113,11 @@ class HomePageTransport extends StatelessWidget {
                         Row(
                           children: <Widget>[
                             Container(
-                                child: Icon(
-                                  Icons.local_taxi,
-                                  color: Color(0xFF979797),
-                                ),
+                              child: Icon(
+                                Icons.local_taxi,
+                                color: Color(0xFF979797),
                               ),
+                            ),
                             //),
                             Container(
                               width: MediaQuery.of(context).size.width - 120,
@@ -183,62 +182,61 @@ class HomePageTransport extends StatelessWidget {
                 top: 15,
               ),
               child: GestureDetector(
-                child: Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              child: Icon(
-                                Icons.directions_railway,
-                                color: Color(0xFF979797),
-                              ),
-                            ),
-                            //),
-                            Container(
-                              width: MediaQuery.of(context).size.width - 120,
-                              padding: EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Text(
-                                'Tren',
-                                style: TextStyle(
+                  child: Row(
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Container(
+                                child: Icon(
+                                  Icons.directions_railway,
                                   color: Color(0xFF979797),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            top: 10,
+                              //),
+                              Container(
+                                width: MediaQuery.of(context).size.width - 120,
+                                padding: EdgeInsets.only(
+                                  left: 10,
+                                ),
+                                child: Text(
+                                  'Tren',
+                                  style: TextStyle(
+                                    color: Color(0xFF979797),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          width: MediaQuery.of(context).size.width - 80,
-                          child: Text(
-                            'În curând',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 5,
-                            style: TextStyle(
-                              color: Color(0xFF979797),
-                              fontSize: 15,
+                          Container(
+                            padding: EdgeInsets.only(
+                              top: 10,
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Color(0xFF979797),
+                            width: MediaQuery.of(context).size.width - 80,
+                            child: Text(
+                              'În curând',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 5,
+                              style: TextStyle(
+                                color: Color(0xFF979797),
+                                fontSize: 15,
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                onTap: null
-              ),
+                      Container(
+                        child: Icon(
+                          Icons.keyboard_arrow_right,
+                          color: Color(0xFF979797),
+                        ),
+                      ),
+                    ],
+                  ),
+                  onTap: null),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
@@ -255,62 +253,61 @@ class HomePageTransport extends StatelessWidget {
                 top: 15,
               ),
               child: GestureDetector(
-                child: Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              child: Icon(
-                                Icons.directions_bus,
-                                color: Color(0xFF979797),
-                              ),
-                            ),
-                            //),
-                            Container(
-                              width: MediaQuery.of(context).size.width - 120,
-                              padding: EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Text(
-                                'Autobuz',
-                                style: TextStyle(
+                  child: Row(
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Container(
+                                child: Icon(
+                                  Icons.directions_bus,
                                   color: Color(0xFF979797),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            top: 10,
+                              //),
+                              Container(
+                                width: MediaQuery.of(context).size.width - 120,
+                                padding: EdgeInsets.only(
+                                  left: 10,
+                                ),
+                                child: Text(
+                                  'Autobuz',
+                                  style: TextStyle(
+                                    color: Color(0xFF979797),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          width: MediaQuery.of(context).size.width - 80,
-                          child: Text(
-                            'În curând',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 5,
-                            style: TextStyle(
-                              color: Color(0xFF979797),
-                              fontSize: 15,
+                          Container(
+                            padding: EdgeInsets.only(
+                              top: 10,
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Color(0xFF979797),
+                            width: MediaQuery.of(context).size.width - 80,
+                            child: Text(
+                              'În curând',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 5,
+                              style: TextStyle(
+                                color: Color(0xFF979797),
+                                fontSize: 15,
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                onTap: null
-              ),
+                      Container(
+                        child: Icon(
+                          Icons.keyboard_arrow_right,
+                          color: Color(0xFF979797),
+                        ),
+                      ),
+                    ],
+                  ),
+                  onTap: null),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
