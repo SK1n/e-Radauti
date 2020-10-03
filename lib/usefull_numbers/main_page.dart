@@ -85,7 +85,7 @@ class HomePageNumbers extends StatelessWidget {
                                   'Numere utile',
                                   style: TextStyle(
                                     color:
-                                        Color(0xFF000000), //Color(0xFFFFFFFF),
+                                    Color(0xFF000000), //Color(0xFFFFFFFF),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 19,
                                   ),
@@ -142,7 +142,7 @@ class HomePageNumbers extends StatelessWidget {
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
                             'Date de contact pentru principalele instituții de protecție civilă '
-                            '(a consumatorilui, copilului, animalelor, mediului, etc.)',
+                                '(a consumatorilui, copilului, animalelor, mediului, etc.)',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -218,7 +218,7 @@ class HomePageNumbers extends StatelessWidget {
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
                             'Date de contact pentru informații sau reclamații '
-                            'privind serviciile de alimentare cu apă, canalizare sau servicii comunale',
+                                'privind serviciile de alimentare cu apă, canalizare sau servicii comunale',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -294,7 +294,7 @@ class HomePageNumbers extends StatelessWidget {
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
                             'Date de contact pentru principalele autorități '
-                            'publice locale (primărie, spital, poliție etc.)',
+                                'publice locale (primărie, spital, poliție etc.)',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -376,7 +376,7 @@ class HomePageNumbers extends StatelessWidget {
                             maxLines: 5,
                             style: TextStyle(
                               color:
-                                  Color(0xFFC4C4C4), //color: Color(0xFF38A49C),
+                              Color(0xFFC4C4C4), //color: Color(0xFF38A49C),
                               fontSize: 15,
                             ),
                           ),
