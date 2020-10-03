@@ -16,12 +16,14 @@ void main() {
   runApp(MyAppRC());
 }
 
+
+
 class MyAppRC extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'e-RÄƒdÄƒuÈ›i',
+      title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
@@ -71,17 +73,6 @@ class AndroidMobile1 extends StatelessWidget {
       key: _scaffoldKey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Container(
-          alignment: Alignment.center,
-          child: Text(
-            'e-Rădăuți',
-            style: TextStyle(
-              color: Color(0xFF000000), //Color(0xFFFFFFFF),
-              fontWeight: FontWeight.bold,
-              fontSize: 19,
-            ),
-          ),
-        ),
         leading: Container(
           padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
@@ -541,7 +532,7 @@ class AndroidMobile1 extends StatelessWidget {
                 //direction: Axis.horizontal,
                 children: <Widget>[
                   Container(
-                    height: 15,
+                    height: 17,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -665,7 +656,7 @@ class AndroidMobile1 extends StatelessWidget {
                             'Parteneri',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              //decoration: TextDecoration.underline,
+                              decoration: TextDecoration.underline,
                               color: Color(0xFF32325D),
                               fontSize: 15,
                             ),
