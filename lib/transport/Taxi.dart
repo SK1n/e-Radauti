@@ -19,7 +19,7 @@ class Taxi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'e-RÄƒdÄƒuÈ›i',
+      title: 'e-Radauti',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
@@ -150,28 +150,124 @@ class AndroidMobile1 extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               Align(
-                                  child: new Column(
-                                    children: <Widget>[
-                                      new Image.asset(
-                                        "assets/images/Taxi/SV12NLJ.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                        width: 80.0, //50.0, //25.0,
-                                        height: 80.0, //50.0, //25.0,
-                                      ),
-                                      new Container(
-                                        padding: new EdgeInsets.only(top: 16.0),
-                                        child: new Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            new Text('BOICU COSTICĂ',
-                                              style: new TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.black,),)],),),
-                                      new Text('DACIA LOGAN',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                      new Text('0740 348 225',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                      new Text('SV-12NLJ'),
-                                    ],
-                                  ),
+                                child: new Column(
+                                  children: <Widget>[
+                                    new Image.asset(
+                                      "assets/images/Taxi/SV14PLS_png.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                      width: 80.0, //50.0, //25.0,
+                                      height: 80.0, //50.0, //25.0,
+                                    ),
+                                    new Container(
+                                      padding: new EdgeInsets.only(top: 16.0),
+                                      child: new Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          new Text('ASURDOAIEI IONUȚ',
+                                            style: new TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,),)],),),
+                                    new Text('DACIA LOGAN',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                    new Text('0752 436 011',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                    new Text('SV-14PLS'),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomePageNoticeProblem()),
+                        );
+                      },
+                      child: Card(
+                        margin: const EdgeInsets.symmetric(vertical: 0),
+                        elevation: 4,
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(0),
+                          child: Column(
+                            children: <Widget>[
+                              Align(
+                                child: new Column(
+                                  children: <Widget>[
+                                    new Image.asset(
+                                      "assets/images/Taxi/SV12NLJ.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                      width: 80.0, //50.0, //25.0,
+                                      height: 80.0, //50.0, //25.0,
+                                    ),
+                                    new Container(
+                                      padding: new EdgeInsets.only(top: 16.0),
+                                      child: new Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          new Text('BOICU COSTICĂ',
+                                            style: new TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,),)],),),
+                                    new Text('DACIA LOGAN',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                    new Text('0740 348 225',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                    new Text('SV-12NLJ'),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomePageNoticeProblem()),
+                        );
+                      },
+                      child: Card(
+                        margin: const EdgeInsets.symmetric(vertical: 0),
+                        elevation: 4,
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(0),
+                          child: Column(
+                            children: <Widget>[
+                              Align(
+                                child: new Column(
+                                  children: <Widget>[
+                                    new Image.asset(
+                                      "assets/images/Taxi/SV51LIE_png.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                      width: 80.0, //50.0, //25.0,
+                                      height: 80.0, //50.0, //25.0,
+                                    ),
+                                    new Container(
+                                      padding: new EdgeInsets.only(top: 16.0),
+                                      child: new Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          new Text('BUCEVSCHI ILIE',
+                                            style: new TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,),)],),),
+                                    new Text('VOLKSWAGEN',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                    new Text('0720 217 728',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                    new Text('SV-51LIE'),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -297,7 +393,7 @@ class AndroidMobile1 extends StatelessWidget {
                                 child: new Column(
                                   children: <Widget>[
                                     new Image.asset(
-                                      "assets/images/Taxi/SV11NEL.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                      "assets/images/Taxi/SV11NEL_png.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
                                       width: 80.0, //50.0, //25.0,
                                       height: 80.0, //50.0, //25.0,
                                     ),
@@ -346,7 +442,7 @@ class AndroidMobile1 extends StatelessWidget {
                                 child: new Column(
                                   children: <Widget>[
                                     new Image.asset(
-                                      "assets/images/Taxi/SV62LAZ.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                      "assets/images/Taxi/SV62LAZ_png.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
                                       width: 80.0, //50.0, //25.0,
                                       height: 80.0, //50.0, //25.0,
                                     ),
@@ -394,7 +490,7 @@ class AndroidMobile1 extends StatelessWidget {
                                 child: new Column(
                                   children: <Widget>[
                                     new Image.asset(
-                                      "assets/images/Taxi/SV12TWL.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                      "assets/images/Taxi/SV12TWL_png.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
                                       width: 80.0, //50.0, //25.0,
                                       height: 80.0, //50.0, //25.0,
                                     ),
@@ -612,7 +708,7 @@ class AndroidMobile1 extends StatelessWidget {
                                 child: new Column(
                                   children: <Widget>[
                                     new Image.asset(
-                                      "assets/images/Taxi/SV16TOD.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                      "assets/images/Taxi/SV16TOD_png.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
                                       width: 80.0, //50.0, //25.0,
                                       height: 80.0, //50.0, //25.0,
                                     ),

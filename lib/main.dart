@@ -139,8 +139,8 @@ class AndroidMobile1 extends StatelessWidget {
                   mainAxisSpacing: 15,
                   crossAxisCount: 2,
                   childAspectRatio:
-                      (MediaQuery.of(context).size.width / 2 - 22.5) /
-                          (MediaQuery.of(context).size.height / 5 - 60),
+                  (MediaQuery.of(context).size.width / 2 - 22.5) /
+                      (MediaQuery.of(context).size.height / 5 - 60),
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
@@ -667,7 +667,7 @@ class AndroidMobile1 extends StatelessWidget {
                             'Parteneri',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.underline,
+                              //decoration: TextDecoration.underline,
                               color: Color(0xFF32325D),
                               fontSize: 15,
                             ),

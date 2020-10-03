@@ -66,7 +66,7 @@ class _JobPageState extends State<JobPage> {
                 return Center(
                   child: CircularProgressIndicator(
                     valueColor:
-                        AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
+                    AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
                   ),
                 );
               } else {
@@ -92,24 +92,24 @@ class _JobPageState extends State<JobPage> {
                                     jobList[index].price.toString() == 'null'
                                         ? Text('Nu exista un pret precizat')
                                         : Row(children: [
-                                            Text(
-                                              'Pret: ',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            Text(
-                                                jobList[index].price.toString(),
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            Text(
-                                                jobList[index]
-                                                    .currency
-                                                    .toString(),
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                          ]),
+                                      Text(
+                                        'Pret: ',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                          jobList[index].price.toString(),
+                                          style: TextStyle(
+                                              fontWeight:
+                                              FontWeight.bold)),
+                                      Text(
+                                          jobList[index]
+                                              .currency
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontWeight:
+                                              FontWeight.bold)),
+                                    ]),
                                   ],
                                 ),
                               ),
