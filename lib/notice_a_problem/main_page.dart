@@ -32,8 +32,6 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   File recordedImage3;
   bool isLoading = false;
   bool checkBox = false;
-  double _timeLeft = 15;
-  Timer _timer;
 
   List<Attachment> attachments = [null, null, null];
   String _recipientController;
@@ -52,28 +50,10 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   );
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  void startTimer() {
-    _timeLeft = 0.0;
-    if (_timer != null) {
-      _timer.cancel();
-    }
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_timeLeft < 16) {
-          _timeLeft = _timeLeft + 0.1;
-        } else {
-          _timer.cancel();
-        }
-      });
-    });
-  }
-
   void _mailer() async {
     String username = 'radautiulcivic@gmail.com';
     String password = 'pass123.CIVIC';
     final smtpServer = gmail(username, password);
-    Duration timeoutEmail = new Duration(hours: 0, minutes: 0, seconds: 10);
-
     var message;
     if (checkBox == true) {
       message = Message()
@@ -111,7 +91,8 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         ..attachments = attachments;
     }
     try {
-      final sendReport = await send(message, smtpServer, timeout: timeoutEmail);
+      final sendReport =
+          await send(message, smtpServer, timeout: Duration(seconds: 10));
       print('Message sent: ' + sendReport.toString());
       showDialog(context: context, builder: (_) => popoutSucces());
       setState(() {
@@ -126,12 +107,19 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         _emailController.text = '';
         isLoading = false;
       });
-    } catch (e) {
+    } on MailerException catch (e) {
+      for (var p in e.problems) {
+        print('Problem: ${p.code}: ${p.msg}');
+      }
       setState(() {
         isLoading = false;
       });
-      debugPrint(e.problems.message);
       showDialog(context: context, builder: (_) => popoutFailed(e.problems));
+    } on SocketException catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      showDialog(context: context, builder: (_) => popoutFailed(e.message));
     }
   }
 
@@ -324,20 +312,14 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         drawer: NavDrawer2(),
         body: isLoading
             ? Center(
-                child: Stack(
+                child: Column(
                   children: [
                     CircularProgressIndicator(
-                      value: _timeLeft,
                       valueColor:
                           AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Text(
-                        '${15 - _timeLeft.toInt() * 10}',
-                        style: TextStyle(fontSize: 24),
-                      ),
-                    ),
+                    Text(
+                        'Va rugam sa asteptati.\nIncercam sa trimitem email-ul!')
                   ],
                 ),
               )
@@ -855,7 +837,6 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                   setState(() {
                     isLoading = true;
                   });
-                  startTimer();
                   _mailer();
                 }
               }
@@ -905,7 +886,6 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
               setState(() {
                 isLoading = true;
               });
-              startTimer();
               _mailer();
             },
           ),
