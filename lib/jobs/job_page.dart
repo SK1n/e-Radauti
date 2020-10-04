@@ -146,7 +146,7 @@ class _JobPageState extends State<JobPage> {
                                     children: [
                                       Container(
                                         width:
-                                            MediaQuery.of(context).size.width,
+                                        MediaQuery.of(context).size.width,
                                         margin: EdgeInsets.only(
                                             left: 10, right: 10, bottom: 10),
                                         child: FlatButton(
@@ -161,7 +161,7 @@ class _JobPageState extends State<JobPage> {
                                                     builder: (context) =>
                                                         AnnouncementWebView(
                                                             slug:
-                                                                'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
+                                                            'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
                                           },
                                         ),
                                       )

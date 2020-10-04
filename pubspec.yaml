@@ -78,7 +78,6 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/images/Taxi/
     - assets/logo_images/
     - assets/images/Taxi/
 
