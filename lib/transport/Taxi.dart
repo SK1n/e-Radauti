@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:splashscreen/splashscreen.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/events/main.dart';
 import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
-import 'package:flutterapperadauti/usefull_pages/partner.dart';
-import 'package:flutterapperadauti/usefull_pages/contact.dart';
-import 'package:flutterapperadauti/usefull_pages/confidential.dart';
-import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/transport/transport_main_page.dart';
 

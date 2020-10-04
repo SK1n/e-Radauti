@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/jobs/announcements_web_view.dart';
 import 'package:flutterapperadauti/jobs/job_model.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -78,40 +79,56 @@ class _FurniturePageState extends State<FurniturePage> {
                           padding: EdgeInsets.only(top: 10),
                           child: Column(
                             children: [
-                              Container(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      jobList[index].title.toString(),
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                        'Exipra pe data de: ${jobList[index].dateExpires.toString().replaceAll('T', '  ').replaceAll('Z', '  ').replaceRange(17, null, '')}'),
-                                    jobList[index].price.toString() == 'null'
-                                        ? Text('Nu exista un pret precizat')
-                                        : Row(children: [
+                              InkWell(
+                                onTap: () => {
+                                  debugPrint(
+                                      'https://www.eradauti.ro/anunturi/imobiliare-19/${jobList[index].slug.toString()}-${jobList[index].id.toString()}'),
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => AnnouncementWebView(
+                                              slug:
+                                              'https://www.eradauti.ro/anunturi/imobiliare-19/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                    children: [
                                       Text(
-                                        'Pret: ',
+                                        jobList[index].title.toString(),
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                          jobList[index].price.toString(),
+                                          'Exipra pe data de: ${jobList[index].dateExpires.toString().replaceAll('T', '  ').replaceAll('Z', '  ').replaceRange(17, null, '')}'),
+                                      jobList[index].price.toString() == 'null'
+                                          ? Text('Nu exista un pret precizat')
+                                          : Row(children: [
+                                        Text(
+                                          'Pret: ',
                                           style: TextStyle(
                                               fontWeight:
-                                              FontWeight.bold)),
-                                      Text(
-                                          jobList[index]
-                                              .currency
-                                              .toString(),
-                                          style: TextStyle(
-                                              fontWeight:
-                                              FontWeight.bold)),
-                                    ]),
-                                  ],
+                                              FontWeight.bold),
+                                        ),
+                                        Text(
+                                            jobList[index]
+                                                .price
+                                                .toString(),
+                                            style: TextStyle(
+                                                fontWeight:
+                                                FontWeight.bold)),
+                                        Text(
+                                            jobList[index]
+                                                .currency
+                                                .toString(),
+                                            style: TextStyle(
+                                                fontWeight:
+                                                FontWeight.bold)),
+                                      ]),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Container(
