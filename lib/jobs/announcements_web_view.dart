@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:flutterapperadauti/menu_page.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class AnnouncementWebView extends StatefulWidget {
   final String slug;
@@ -12,6 +12,7 @@ class AnnouncementWebView extends StatefulWidget {
 
 class _AnnouncementWebViewState extends State<AnnouncementWebView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  num _stackToView = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,13 +35,27 @@ class _AnnouncementWebViewState extends State<AnnouncementWebView> {
                 Icons.menu,
                 size: 24,
                 color: Colors.black,
-              ), //Colors.white
+              ),
               onPressed: () => _scaffoldKey.currentState.openDrawer(),
             ),
           ),
         ],
       ),
       drawer: NavDrawer2(),
+      body: IndexedStack(
+        index: _stackToView,
+        children: [
+          WebView(
+            initialUrl: widget.slug,
+            onPageFinished: (String url) {
+              setState(() {
+                _stackToView = 0;
+              });
+            },
+          ),
+          Container(child: Center(child: CircularProgressIndicator())),
+        ],
+      ),
     );
   }
 }

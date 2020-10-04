@@ -79,77 +79,25 @@ class _FurniturePageState extends State<FurniturePage> {
                           padding: EdgeInsets.only(top: 10),
                           child: Column(
                             children: [
-                              InkWell(
-                                onTap: () => {
-                                  debugPrint(
-                                      'https://www.eradauti.ro/anunturi/imobiliare-19/${jobList[index].slug.toString()}-${jobList[index].id.toString()}'),
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => AnnouncementWebView(
-                                              slug:
-                                                  'https://www.eradauti.ro/anunturi/imobiliare-19/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.only(left: 10),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        jobList[index].title.toString(),
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                          'Exipra pe data de: ${jobList[index].dateExpires.toString().replaceAll('T', '  ').replaceAll('Z', '  ').replaceRange(17, null, '')}'),
-                                      jobList[index].price.toString() == 'null'
-                                          ? Text('Nu exista un pret precizat')
-                                          : Row(children: [
-                                              Text(
-                                                'Pret: ',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              Text(
-                                                  jobList[index]
-                                                      .price
-                                                      .toString(),
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold)),
-                                              Text(
-                                                  jobList[index]
-                                                      .currency
-                                                      .toString(),
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold)),
-                                            ]),
-                                    ],
-                                  ),
-                                ),
-                              ),
                               Container(
-                                padding: EdgeInsets.only(bottom: 10),
-                                child: ListTile(
-                                  onTap: () {},
-                                  title: Text(jobList[index].title.toString()),
-                                  subtitle: Text(
-                                    jobList[index].rawContent.toString(),
-                                    maxLines: 4,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                                width: MediaQuery.of(context).size.width,
+                                margin: EdgeInsets.all(10),
+                                child: FlatButton(
+                                  color: Colors.blue[300],
+                                  padding: EdgeInsets.all(10),
+                                  child: Text(
+                                      '${jobList[index].title.toString().toUpperCase()}'),
+                                  onPressed: () => {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                AnnouncementWebView(
+                                                    slug:
+                                                        'https://www.eradauti.ro/anunturi/imobiliare-19/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
+                                  },
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 15.0),
-                                child: Container(
-                                  height: 1.0,
-                                  color: Color.fromRGBO(0, 0, 0, 1),
-                                ),
-                              ),
+                              )
                             ],
                           ));
                     });
