@@ -73,7 +73,7 @@ Future<List> fetchListEvent() async {
                 'strada'], //data['localitatea'] + ', ' + data['strada'], //data['subtitle'], //fd[0]['subtitle'], //"Pleasant Park"
         day: value['ziua'].toString(),
         month: value['luna'].toString(),
-        minuteT: value['endminute"'],
+        minuteT: value['endminute'],
         hourT: value['endora'],
         dayT: value['ziua'],
         monthT: value['endluna'],

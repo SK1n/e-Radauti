@@ -59,7 +59,7 @@ class _NewEventsState extends State<NewEvents> {
                                               child: Consumer<AppState>(
                                                 builder: (context, appState, _) => Column(
                                                   children: <Widget>[
-                                                    for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isAfter(DateTime.now().add(Duration(days: -1,))) || DateTime.utc(e.yearT, e.monthT, e.dayT).isAtSameMomentAs(DateTime.now().add(Duration(days: -1,))) ))
+                                                    for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isAfter(DateTime.now().add(Duration(hours: -(DateTime.now().hour + 1),))) ))
                                                       GestureDetector(
                                                         child: NewEventWidget(
                                                           event: event,
