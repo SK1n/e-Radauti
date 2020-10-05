@@ -65,7 +65,7 @@ class _LastEventsState extends State<LastEvents> {
                                               child: Consumer<AppState>(
                                                 builder: (context, appState, _) => Column(
                                                   children: <Widget>[
-                                                    for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isBefore(DateTime.now().add(Duration(days: -1,)))  ))
+                                                    for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isBefore(DateTime.now().add(Duration(hours: -(DateTime.now().hour + 1),)))  ))
                                                       function(event)
                                                   ],
                                                 ),

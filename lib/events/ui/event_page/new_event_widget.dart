@@ -22,18 +22,16 @@ class NewEventWidget extends StatelessWidget {
       location: event.location,
       startDate:
       DateTime.utc(
-        event.yearT,
-        event.monthT,
-        event.dayT, event.hourT,).add(Duration(
-        hours: -1,
+          event.yearT,
+          event.monthT,
+          event.dayT, event.hourT, event.minuteT).add(Duration(
+        hours: -3,
       )),
       endDate:
       DateTime.utc(
         event.yearT,
         event.monthT,
-        event.dayT, event.hourT,).add(Duration(
-        hours: 3,
-      )),
+        event.dayT, event.hourT, ),
       allDay: false,
     );
 

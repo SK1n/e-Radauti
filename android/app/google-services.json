@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "324802643995",
+    "firebase_url": "https://checkup-7b62e.firebaseio.com",
+    "project_id": "checkup-7b62e",
+    "storage_bucket": "checkup-7b62e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:324802643995:android:fad89626a748836f",
+        "android_client_info": {
+          "package_name": "eRadautiiOS.exemplu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "324802643995-po0i0g2aijevdccnp8p48r0saojtkteh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa2_VFLx4xDtFSiMVllP7wtDEhWgjjZ4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "324802643995-po0i0g2aijevdccnp8p48r0saojtkteh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:324802643995:android:81fe82de7d7dfb4546d0be",
+        "android_client_info": {
+          "package_name": "radautiul_civic.e_radauti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "324802643995-po0i0g2aijevdccnp8p48r0saojtkteh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa2_VFLx4xDtFSiMVllP7wtDEhWgjjZ4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "324802643995-po0i0g2aijevdccnp8p48r0saojtkteh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
