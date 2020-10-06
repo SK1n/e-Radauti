@@ -28,7 +28,7 @@ class _NewEventsState extends State<NewEvents> {
   @override
   void initState() {
     super.initState();
-    futureList = fetchListEvent();
+    futureList = fetchListNewEvent();
   }
   @override
   Widget build(BuildContext context) {
