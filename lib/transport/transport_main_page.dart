@@ -115,7 +115,7 @@ class HomePageTransport extends StatelessWidget {
                             Container(
                               child: Icon(
                                 Icons.local_taxi,
-                                color: Color(0xFF979797),
+                                color: Color(0x55FB6340),
                               ),
                             ),
                             //),
