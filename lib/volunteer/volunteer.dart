@@ -1,39 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
-import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
-import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
-import 'package:flutterapperadauti/events/main.dart';
-import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
-import 'package:flutterapperadauti/air_quality/air_quality.dart';
-import 'package:flutterapperadauti/transport/transport_main_page.dart';
+import 'package:flutterapperadauti/menu_page.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
-
-
-class Taxi2 extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'e-RÄƒdÄƒuÈ›i',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: Color(0xFFFFFFFF),
-        primaryColor: Color(0xFFFFFFFF),
-
-      ),
-      home: Taxi(),
-    );
-  }
-}
-
-
-
-class Taxi extends StatelessWidget {
-  Taxi({
+class VolunteerPage extends StatelessWidget {
+  VolunteerPage({
     Key key,
   }) : super(key: key);
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  static const IconData volunteer_activism = IconData(0xead2, fontFamily: 'MaterialIcons');
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +19,7 @@ class Taxi extends StatelessWidget {
         leading: Container(
           padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
-          child: new Stack(
-            alignment: AlignmentDirectional.center,
-            children: <Widget>[
-              new Image.asset(
-                "assets/logo_images/app_logo.png", //Constant.iconNotification,
-              ),
-            ],
-          ),
+          child: Image.asset("assets/logo_images/app_logo.png"),
         ),
         actions: <Widget>[
           Container(
@@ -66,7 +34,7 @@ class Taxi extends StatelessWidget {
           ),
         ],
       ),
-
+      drawer: NavDrawer2(),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(
@@ -92,13 +60,13 @@ class Taxi extends StatelessWidget {
                         children: <Widget>[
                           Stack(
                             children: <Widget>[
-                              Icon(Icons.local_taxi, color: Color(0x55FB6340), size: 30,),
+                              Icon(volunteer_activism, color: Color(0x55FB6340), size: 30,),
                               SizedBox(width: 5,),
                               Container(
                                 child: Padding(
                                   padding: EdgeInsets.fromLTRB(35.0, 6.0, 0.0, 0.0,), //10.0 //25.0
                                   child: Text(
-                                    'Taximetriști',
+                                    'Voluntariat',
                                     style: TextStyle(
                                       color: Color(0xFF000000), //Color(0xFFFFFFFF),
                                       fontWeight: FontWeight.bold,
@@ -133,13 +101,7 @@ class Taxi extends StatelessWidget {
                   //    (MediaQuery.of(context).size.height / 5 - 60),
                   children: <Widget>[
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageNoticeProblem()),
-                        );
-                      },
+                      onTap: null,
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -147,32 +109,38 @@ class Taxi extends StatelessWidget {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Column(
+                          padding: const EdgeInsets.all(3),
+                          child: new Column(
                             children: <Widget>[
-                              Align(
-                                child: new Column(
+                              new Image.asset(
+                                "assets/images/volunteer/rc_logo_web.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                width: 80.0, //50.0, //25.0,
+                                height: 80.0, //50.0, //25.0,
+                              ),
+                              new Container(
+                                padding: new EdgeInsets.only(top: 3.0),
+                                child: new Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    new Image.asset(
-                                      "assets/images/Taxi/SV12NLJ.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                      width: 80.0, //50.0, //25.0,
-                                      height: 80.0, //50.0, //25.0,
-                                    ),
-                                    new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
-                                      child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          new Text('BOICU COSTICĂ',
-                                            style: new TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,),)],),),
-                                    new Text('DACIA LOGAN',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('0740 348 225',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('SV-12NLJ'),
-                                  ],
+                                    new Text('Rădăuțiul Civic',
+                                      style: new TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,),)],),),
+                              new Text('Domeniul: Civic',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Text('Telefon: 0741 975 076',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Text('radautiulcivic@gmail.com'),
+                              new InkWell(
+                                child: new Text(
+                                  'www.radautiulcivic.ro',
+                                  style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Color(0xFF38A49C),
+                                    fontSize: 15,
+                                  ),
                                 ),
+                                onTap: () => UrlLauncher.launch(
+                                    'https://www.radautiulcivic.ro/'),
                               ),
                             ],
                           ),
@@ -181,13 +149,7 @@ class Taxi extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => TownHallMain()),
-                        );
-                      },
+                      onTap: null,
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -195,32 +157,45 @@ class Taxi extends StatelessWidget {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Column(
+                          padding: const EdgeInsets.all(3),
+                          child: new Column(
                             children: <Widget>[
-                              Align(
-                                child: new Column(
+                              new Image.asset(
+                                "assets/images/volunteer/toastmasters.jpg", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                width: 80.0, //50.0, //25.0,
+                                height: 80.0, //50.0, //25.0,
+                              ),
+                              new Container(
+                                padding: new EdgeInsets.only(top: 3.0),
+                                child: new Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    new Image.asset(
-                                      "assets/images/Taxi/SV27COV.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                      width: 80.0, //50.0, //25.0,
-                                      height: 80.0, //50.0, //25.0,
-                                    ),
-                                    new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
-                                      child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          new Text('COVAȘĂ SORIN',
-                                            style: new TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,),)],),),
-                                    new Text('DACIA LOGAN',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('0742 041 403',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('SV-27COV'),
-                                  ],
+                                    new Text('Toastmasters Rădăuți',
+                                      style: new TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,),)],),),
+                              new Text(
+                                'Domeniul: Dezvoltare personală, Public speaking',
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 3,
+                                style: new TextStyle(fontSize: 14, color: Colors.grey[800]),
+                              ),
+                              new Text('Telefon: 0740 757 280',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Text('radautitm@gmail.com'),
+                              new InkWell(
+                                child: new Text(
+                                  'https://www.facebook.com/radautitoastmasters/',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 3,
+                                  style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Color(0xFF38A49C),
+                                    fontSize: 15,
+                                  ),
                                 ),
+                                onTap: () => UrlLauncher.launch(
+                                    'https://www.facebook.com/radautitoastmasters/'),
                               ),
                             ],
                           ),
@@ -230,12 +205,7 @@ class Taxi extends StatelessWidget {
                     ),
                     //2
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => EventsMain()),
-                        );
-                      },
+                      onTap: null,
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -243,32 +213,40 @@ class Taxi extends StatelessWidget {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Column(
+                          padding: const EdgeInsets.only(top: 3,),
+                          child: new Column(
                             children: <Widget>[
-                              Align(
-                                child: new Column(
+                              new Image.asset(
+                                "assets/images/volunteer/eco_montan.jpg", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                width: 80.0, //50.0, //25.0,
+                                height: 80.0, //50.0, //25.0,
+                              ),
+                              new Container(
+                                padding: new EdgeInsets.only(top: 3.0),
+                                child: new Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    new Image.asset(
-                                      "assets/images/Taxi/SV13NOC.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                      width: 80.0, //50.0, //25.0,
-                                      height: 80.0, //50.0, //25.0,
-                                    ),
-                                    new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
-                                      child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          new Text('DIACONESCU FLORIN',
-                                            style: new TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,),)],),),
-                                    new Text('VW TOURAN (CREM)',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('0766 210 240',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('SV-13NOC'),
-                                  ],
+                                    new Text('Club Eco Montan',
+                                      style: new TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,),)],),),
+                              new Text('Domeniul: Drumeții montane, Mediu',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Text('Telefon: 0746 814 430',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Text('clubulecomontan@gmail.com'),
+                              new InkWell(
+                                child: new Text(
+                                  'https://www.facebook.com/ClubulEcoMontanBucovinaRadauti/',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 3,
+                                  style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Color(0xFF38A49C),
+                                    fontSize: 15,
+                                  ),
                                 ),
+                                onTap: () => UrlLauncher.launch(
+                                    'https://www.facebook.com/ClubulEcoMontanBucovinaRadauti/'),
                               ),
                             ],
                           ),
@@ -277,13 +255,7 @@ class Taxi extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageNumbers()),
-                        );
-                      },
+                      onTap: null,
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -291,32 +263,38 @@ class Taxi extends StatelessWidget {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Column(
+                          padding: const EdgeInsets.all(3),
+                          child: new Column(
                             children: <Widget>[
-                              Align(
-                                child: new Column(
+                              new Image.asset(
+                                "assets/images/volunteer/asociatia_bafi.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                width: 80.0, //50.0, //25.0,
+                                height: 80.0, //50.0, //25.0,
+                              ),
+                              new Container(
+                                padding: new EdgeInsets.only(top: 3.0),
+                                child: new Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    new Image.asset(
-                                      "assets/images/Taxi/SV11NEL.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                      width: 80.0, //50.0, //25.0,
-                                      height: 80.0, //50.0, //25.0,
-                                    ),
-                                    new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
-                                      child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          new Text('GRAB IOAN',
-                                            style: new TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,),)],),),
-                                    new Text('MERCEDES E-CLASS',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('0740 593 510',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('SV-11NEL'),
-                                  ],
+                                    new Text('BAFI (Bucuria de a fi)',
+                                      style: new TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,),)],),),
+                              new Text('Domeniul: Social, Ecologie',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Text('Telefon: 0755 403 224',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Text('asociatia@bafi.ro'),
+                              new InkWell(
+                                child: new Text(
+                                  'www.bafi.ro',
+                                  style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Color(0xFF38A49C),
+                                    fontSize: 15,
+                                  ),
                                 ),
+                                onTap: () => UrlLauncher.launch(
+                                    'http://www.bafi.ro'),
                               ),
                             ],
                           ),
@@ -326,13 +304,7 @@ class Taxi extends StatelessWidget {
                     ),
                     //3
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageJobs()),
-                        );
-                      },
+                      onTap: null,
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -340,32 +312,38 @@ class Taxi extends StatelessWidget {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Column(
+                          padding: const EdgeInsets.all(3),
+                          child: new Column(
                             children: <Widget>[
-                              Align(
-                                child: new Column(
+                              new Image.asset(
+                                "assets/images/volunteer/door_to_home.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                width: 80.0, //50.0, //25.0,
+                                height: 80.0, //50.0, //25.0,
+                              ),
+                              new Container(
+                                padding: new EdgeInsets.only(top: 3.0),
+                                child: new Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    new Image.asset(
-                                      "assets/images/Taxi/SV62LAZ.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                      width: 80.0, //50.0, //25.0,
-                                      height: 80.0, //50.0, //25.0,
-                                    ),
-                                    new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
-                                      child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          new Text('LAZĂR GHEORGHE',
-                                            style: new TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,),)],),),
-                                    new Text('DACIA SANDERO',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('0741 283 879',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('SV-62LAZ'),
-                                  ],
+                                    new Text('Asociația Door to Home',
+                                      style: new TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,),)],),),
+                              new Text('Domeniul: Social, Filantropic',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Text('Telefon: 0230 562 751',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Text('info@doortohome.ro'),
+                              new InkWell(
+                                child: new Text(
+                                  'http://doortohome.ro/',
+                                  style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Color(0xFF38A49C),
+                                    fontSize: 15,
+                                  ),
                                 ),
+                                onTap: () => UrlLauncher.launch(
+                                    'http://doortohome.ro/'),
                               ),
                             ],
                           ),
@@ -374,13 +352,7 @@ class Taxi extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AirQualityPage()),
-                        );
-                      },
+                      onTap: null,
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -388,32 +360,40 @@ class Taxi extends StatelessWidget {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Column(
+                          padding: const EdgeInsets.all(3),
+                          child: new Column(
                             children: <Widget>[
-                              Align(
-                                child: new Column(
+                              new Image.asset(
+                                "assets/images/volunteer/maria_ward.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                width: 80.0, //50.0, //25.0,
+                                height: 80.0, //50.0, //25.0,
+                              ),
+                              new Container(
+                                padding: new EdgeInsets.only(top: 3.0),
+                                child: new Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    new Image.asset(
-                                      "assets/images/Taxi/SV12TWL.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                      width: 80.0, //50.0, //25.0,
-                                      height: 80.0, //50.0, //25.0,
+                                    new Text('Asociația Maria Ward',
+                                      style: new TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,),)],),),
+                              new Text('Domeniul: Social',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Text('Telefon: 0757 114 181',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Text('centrul.mariaward@gmail.com'),
+                              new InkWell(
+                                  child: new Text(
+                                    'https://centrulsocialmariaward.org/',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 3,
+                                    style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      color: Color(0xFF38A49C),
+                                      fontSize: 15,
                                     ),
-                                    new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
-                                      child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          new Text('MIHALESCU TONI',
-                                            style: new TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,),)],),),
-                                    new Text('DACIA LOGAN',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('0742 161 708',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('SV-12TWL'),
-                                  ],
-                                ),
+                                  ),
+                                  onTap: () => UrlLauncher.launch(
+                                      'https://centrulsocialmariaward.org/'),
                               ),
                             ],
                           ),
@@ -423,54 +403,6 @@ class Taxi extends StatelessWidget {
                     ),
                     //4
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageTransport()),
-                        );
-                      },
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Column(
-                            children: <Widget>[
-                              Align(
-                                child: new Column(
-                                  children: <Widget>[
-                                    new Image.asset(
-                                      "assets/images/Taxi/SV74MSV.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                      width: 80.0, //50.0, //25.0,
-                                      height: 80.0, //50.0, //25.0,
-                                    ),
-                                    new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
-                                      child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          new Text('PASLARIU MIHAI',
-                                            style: new TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,),)],),),
-                                    new Text('VOLKSWAGEN',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('0744 622 405',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('SV-74MSV'),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                      ),
-                    ),
-                    GestureDetector(
                       onTap: null,
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
@@ -479,32 +411,40 @@ class Taxi extends StatelessWidget {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Column(
+                          padding: const EdgeInsets.all(3),
+                          child: new Column(
                             children: <Widget>[
-                              Align(
-                                child: new Column(
+                              new Image.asset(
+                                "assets/images/volunteer/umania.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                width: 80.0, //50.0, //25.0,
+                                height: 80.0, //50.0, //25.0,
+                              ),
+                              new Container(
+                                padding: new EdgeInsets.only(top: 3.0),
+                                child: new Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    new Image.asset(
-                                      "assets/images/Taxi/SV21PCR.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                      width: 80.0, //50.0, //25.0,
-                                      height: 80.0, //50.0, //25.0,
+                                    new Text('Asociația Umania',
+                                      style: new TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,),)],),),
+                              new Text('Domeniul: Social',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Text('Telefon: -',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Text('ioanadeliar@gmail.com'),
+                              new InkWell(
+                                  child: new Text(
+                                    'https://www.facebook.com/umania.ffs',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 3,
+                                    style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      color: Color(0xFF38A49C),
+                                      fontSize: 15,
                                     ),
-                                    new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
-                                      child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          new Text('PESCLEVEI RADU',
-                                            style: new TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,),)],),),
-                                    new Text('DACIA DOKKER',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('0741 697 725',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('SV-21PCR'),
-                                  ],
-                                ),
+                                  ),
+                                  onTap: () => UrlLauncher.launch(
+                                      'https://www.facebook.com/umania.ffs'),
                               ),
                             ],
                           ),
@@ -513,132 +453,6 @@ class Taxi extends StatelessWidget {
                       ),
                     ),
 
-                    GestureDetector(
-                      onTap: null,
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Column(
-                            children: <Widget>[
-                              Align(
-                                child: new Column(
-                                  children: <Widget>[
-                                    new Image.asset(
-                                      "assets/images/Taxi/SV01LMM.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                      width: 80.0, //50.0, //25.0,
-                                      height: 80.0, //50.0, //25.0,
-                                    ),
-                                    new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
-                                      child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          new Text('ROSE TAXI',
-                                            style: new TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,),)],),),
-                                    new Text('DACIA LOGAN',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('0754 554 488',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('SV-01LMM'),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: null,
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Column(
-                            children: <Widget>[
-                              Align(
-                                child: new Column(
-                                  children: <Widget>[
-                                    new Image.asset(
-                                      "assets/images/Taxi/SV04PNZ.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                      width: 80.0, //50.0, //25.0,
-                                      height: 80.0, //50.0, //25.0,
-                                    ),
-                                    new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
-                                      child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          new Text('TIPERCIUC VASILE',
-                                            style: new TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,),)],),),
-                                    new Text('DACIA LOGAN',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('0745 536 280',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('SV-04PNZ'),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: null,
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Column(
-                            children: <Widget>[
-                              Align(
-                                child: new Column(
-                                  children: <Widget>[
-                                    new Image.asset(
-                                      "assets/images/Taxi/SV16TOD.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
-                                      width: 80.0, //50.0, //25.0,
-                                      height: 80.0, //50.0, //25.0,
-                                    ),
-                                    new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
-                                      child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          new Text('TODERAȘ VIOREL',
-                                            style: new TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,),)],),),
-                                    new Text('VW PASSAT',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('0745 683 668',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                                    new Text('SV-16TOD'),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                      ),
-                    ),
                     //
                   ],
                 ),
