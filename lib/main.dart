@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/services/push_notifications_service.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
@@ -12,12 +13,14 @@ import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/transport/transport_main_page.dart';
 
+import 'locator.dart';
+
 void main() {
+  setupLocator();
   runApp(MyAppRC());
 }
 
 class MyAppRC extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -64,6 +67,13 @@ class AndroidMobile1 extends StatelessWidget {
   }) : super(key: key);
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  final PushNotificationsService _pushNotificationsService =
+      locator<PushNotificationsService>();
+
+  Future handleStartUpLogic() async {
+    await _pushNotificationsService.initialise();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -631,35 +641,7 @@ class AndroidMobile1 extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      //4
-                      /*Container(
-                      //padding: EdgeInsets.only(left: 0, right: 0,),
-                      width: MediaQuery.of(context).size.width/5 - 15,
-                      child: new InkWell(
-                          child: new Text(
-                            'Credits',
-                            style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
-                          ),
-                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Credits()),);},
-                      ),
-                    ),*/
-                      /*Container(
-                      //padding: EdgeInsets.only(left: 0, right: 0,),
-                      width: MediaQuery.of(context).size.width/5 - 15,
-                      child: new InkWell(
-                        child: new Text(
-                          'Calendar',
-                          style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
-                        ),
-                        onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Add2CalendarEvent()),);},
-                      ),
-                    ),*/
-
-                      //5
-
                       Container(
-                        //padding: EdgeInsets.only(left: 5, right: 5,),
-                        //width: MediaQuery.of(context).size.width/4 - 15,
                         child: new InkWell(
                           child: new Text(
                             'Parteneri',

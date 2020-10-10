@@ -45,6 +45,13 @@ dependencies:
   flick_video_player: ^0.1.1
   video_player: ^0.10.12+2
 
+  #GetIT plugin
+  get_it: ^5.0.1
+
+  #Firebase plugins
+  firebase_messaging: "^7.0.3"
+  firebase_core: "^0.5.0+1"
+
   #Dio plugins for json fetch
   dio: ^3.0.10
   dio_http_cache: ^0.2.9
