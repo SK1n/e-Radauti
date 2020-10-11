@@ -16,8 +16,7 @@ class LastEvents extends StatefulWidget {
 class _LastEventsState extends State<LastEvents> {
   Future<List> futureList;
   int contor = 1;
-  Function function;
-  Widget function2(EventApp event){
+  Widget function(EventApp event){
     if (contor <= 10){
       contor = contor + 1;
       //print('contor = $contor');
@@ -44,14 +43,12 @@ class _LastEventsState extends State<LastEvents> {
           slivers: <Widget>[
             SliverToBoxAdapter(
               child: Container(
-                //height: (MediaQuery.of(context).size.height/5-45)*5,
                 padding: EdgeInsets.only(top: 20.0,),
                 child: Container(
                   child: FutureBuilder<List>( //FutureBuilder<Album>
                     future: futureList,
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        //return Text(snapshot.data.title);
                         return ChangeNotifierProvider<AppState>(
                             create: (_) => AppState(),
                             child: Stack(
@@ -68,17 +65,8 @@ class _LastEventsState extends State<LastEvents> {
                                               child: Consumer<AppState>(
                                                 builder: (context, appState, _) => Column(
                                                   children: <Widget>[
-                                                    //for(final event in events.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
-                                                    //for(final event in snapshot.data.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
-                                                    //for(final event in snapshot.data.where((e) => DateTime.utc(2020, e.monthT, e.dayT).isBefore(DateTime.now())  )) //DateTime.utc(2020, 3, 14)
-                                                    for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isBefore(DateTime.now())  ))
-                                                      function2(event)
-                                                      /*GestureDetector(
-                                                        child: LastEventWidget(
-                                                          event: event,
-                                                        ),
-                                                      ),*/
-                                                    //Text(event.title)
+                                                    for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isBefore(DateTime.now().add(Duration(hours: -(DateTime.now().hour + 1),)))  ))
+                                                      function(event)
                                                   ],
                                                 ),
                                               ),
@@ -92,20 +80,19 @@ class _LastEventsState extends State<LastEvents> {
                         );
                       } else if (snapshot.hasError) {
                         return Container(
-                          height: (MediaQuery.of(context).size.height - 55),
+                          height: (MediaQuery.of(context).size.height - 270),
                           child: Center(
                             child: Text("${snapshot.error}"),
                           ),
                         );
                       }
                       return Container(
-                        height: (MediaQuery.of(context).size.height - 55),
+                        height: (MediaQuery.of(context).size.height - 270),
                         child: Center(
                           child:
                           CircularProgressIndicator(
                             valueColor: AlwaysStoppedAnimation <Color> (Color(0xFF38A49C)),
                           ),
-                          //CircularProgressIndicator(),
                         ),
                       );
                     },

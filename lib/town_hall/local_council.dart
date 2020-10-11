@@ -106,7 +106,7 @@ class LocalCouncil extends StatelessWidget {
                                   'Administrație locală',
                                   style: TextStyle(
                                     color:
-                                        Color(0xFF000000), //Color(0xFFFFFFFF),
+                                    Color(0xFF000000), //Color(0xFFFFFFFF),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 19,
                                   ),
@@ -123,7 +123,7 @@ class LocalCouncil extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 15),
+              EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 15),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -132,7 +132,7 @@ class LocalCouncil extends StatelessWidget {
                         height: 30,
                         width: 30,
                         child:
-                            SvgPicture.asset("assets/images/circle_194C80.svg"),
+                        SvgPicture.asset("assets/images/circle_194C80.svg"),
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width - 90,
@@ -174,7 +174,7 @@ class LocalCouncil extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -188,7 +188,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  AssetImage("assets/images/CovaliTiberiu.png"),
+                              AssetImage("assets/images/CovaliTiberiu.png"),
                             ),
                           ),
                           Container(
@@ -324,7 +324,7 @@ class LocalCouncil extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -338,7 +338,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  null, //AssetImage("assets/images/ChitriucIlie.png"),
+                              null, //AssetImage("assets/images/ChitriucIlie.png"),
                             ),
                           ),
                           Container(
@@ -476,7 +476,7 @@ class LocalCouncil extends StatelessWidget {
             //2
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -626,7 +626,7 @@ class LocalCouncil extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -640,7 +640,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  AssetImage("assets/images/CojocarVasile.jpg"),
+                              AssetImage("assets/images/CojocarVasile.jpg"),
                             ),
                           ),
                           Container(
@@ -718,7 +718,7 @@ class LocalCouncil extends StatelessWidget {
                                         'Declariație de avere',
                                         style: TextStyle(
                                             decoration:
-                                                TextDecoration.underline,
+                                            TextDecoration.underline,
                                             color: Color(0xFF38A49C),
                                             fontSize: 15),
                                       ),
@@ -778,7 +778,7 @@ class LocalCouncil extends StatelessWidget {
             //3
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -932,7 +932,7 @@ class LocalCouncil extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -946,7 +946,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  AssetImage("assets/images/JecaloAdi.jpg"),
+                              AssetImage("assets/images/JecaloAdi.jpg"),
                             ),
                           ),
                           Container(
@@ -1085,7 +1085,7 @@ class LocalCouncil extends StatelessWidget {
             //4
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -1099,7 +1099,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  null, //AssetImage("assets/images/HacmanMircea.png"),
+                              null, //AssetImage("assets/images/HacmanMircea.png"),
                             ),
                           ),
                           Container(
@@ -1235,7 +1235,7 @@ class LocalCouncil extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -1249,7 +1249,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  AssetImage("assets/images/MehedinMaria.png"),
+                              AssetImage("assets/images/MehedinMaria.png"),
                             ),
                           ),
                           Container(
@@ -1387,7 +1387,7 @@ class LocalCouncil extends StatelessWidget {
             //5
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -1401,7 +1401,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  AssetImage("assets/images/MironCatalin.jpg"),
+                              AssetImage("assets/images/MironCatalin.jpg"),
                             ),
                           ),
                           Container(
@@ -1538,7 +1538,7 @@ class LocalCouncil extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -1552,7 +1552,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  null, //AssetImage("assets/images/PopescuAngelica.png"),
+                              null, //AssetImage("assets/images/PopescuAngelica.png"),
                             ),
                           ),
                           Container(
@@ -1690,7 +1690,7 @@ class LocalCouncil extends StatelessWidget {
             //6
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -1704,7 +1704,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  AssetImage("assets/images/MutrescuDan.jpg"),
+                              AssetImage("assets/images/MutrescuDan.jpg"),
                             ),
                           ),
                           Container(
@@ -1841,7 +1841,7 @@ class LocalCouncil extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -1855,7 +1855,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  AssetImage("assets/images/NegrutRomeo.jpg"),
+                              AssetImage("assets/images/NegrutRomeo.jpg"),
                             ),
                           ),
                           Container(
@@ -1994,7 +1994,7 @@ class LocalCouncil extends StatelessWidget {
             //7
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2008,7 +2008,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  AssetImage("assets/images/NicolauBogdan.jpg"),
+                              AssetImage("assets/images/NicolauBogdan.jpg"),
                             ),
                           ),
                           Container(
@@ -2147,7 +2147,7 @@ class LocalCouncil extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2161,7 +2161,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  AssetImage("assets/images/PredaFlorin.jpg"),
+                              AssetImage("assets/images/PredaFlorin.jpg"),
                             ),
                           ),
                           Container(
@@ -2301,7 +2301,7 @@ class LocalCouncil extends StatelessWidget {
             //8
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2315,7 +2315,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  null, //AssetImage("assets/images/RemanMihai.jpg"),
+                              null, //AssetImage("assets/images/RemanMihai.jpg"),
                             ),
                           ),
                           Container(
@@ -2451,7 +2451,7 @@ class LocalCouncil extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2465,7 +2465,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  AssetImage("assets/images/RobuSorin.jpg"),
+                              AssetImage("assets/images/RobuSorin.jpg"),
                             ),
                           ),
                           Container(
@@ -2605,7 +2605,7 @@ class LocalCouncil extends StatelessWidget {
             //9
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2759,7 +2759,7 @@ class LocalCouncil extends StatelessWidget {
             ),
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2773,7 +2773,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  AssetImage("assets/images/TereviciCezar.jpg"),
+                              AssetImage("assets/images/TereviciCezar.jpg"),
                             ),
                           ),
                           Container(
@@ -2911,7 +2911,7 @@ class LocalCouncil extends StatelessWidget {
             //10
             Container(
               padding:
-                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
+              EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2925,7 +2925,7 @@ class LocalCouncil extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  AssetImage("assets/images/VatraDan.jpg"),
+                              AssetImage("assets/images/VatraDan.jpg"),
                             ),
                           ),
                           Container(

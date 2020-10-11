@@ -83,7 +83,7 @@ class HomePageTransport extends StatelessWidget {
                                   'Transport',
                                   style: TextStyle(
                                     color:
-                                        Color(0xFF000000), //Color(0xFFFFFFFF),
+                                    Color(0xFF000000), //Color(0xFFFFFFFF),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 19,
                                   ),

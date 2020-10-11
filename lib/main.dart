@@ -20,11 +20,13 @@ void main() {
   runApp(MyAppRC());
 }
 
+
+
 class MyAppRC extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'e-RÄƒdÄƒuÈ›i',
+      title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
@@ -147,8 +149,8 @@ class AndroidMobile1 extends StatelessWidget {
                   mainAxisSpacing: 15,
                   crossAxisCount: 2,
                   childAspectRatio:
-                      (MediaQuery.of(context).size.width / 2 - 22.5) /
-                          (MediaQuery.of(context).size.height / 5 - 60),
+                  (MediaQuery.of(context).size.width / 2 - 22.5) /
+                      (MediaQuery.of(context).size.height / 5 - 60),
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
@@ -551,7 +553,7 @@ class AndroidMobile1 extends StatelessWidget {
                 //direction: Axis.horizontal,
                 children: <Widget>[
                   Container(
-                    height: 15,
+                    height: 17,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[

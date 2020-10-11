@@ -108,7 +108,7 @@ class _FurniturePageState extends State<FurniturePage> {
                                   'Anunturi',
                                   style: TextStyle(
                                     color:
-                                        Color(0xFF000000), //Color(0xFFFFFFFF),
+                                    Color(0xFF000000), //Color(0xFFFFFFFF),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 19,
                                   ),
@@ -150,7 +150,7 @@ class _FurniturePageState extends State<FurniturePage> {
                                       children: [
                                         Container(
                                           width:
-                                              MediaQuery.of(context).size.width,
+                                          MediaQuery.of(context).size.width,
                                           margin: EdgeInsets.only(
                                               left: 10, right: 10, bottom: 10),
                                           child: FlatButton(
@@ -165,7 +165,7 @@ class _FurniturePageState extends State<FurniturePage> {
                                                       builder: (context) =>
                                                           AnnouncementWebView(
                                                               slug:
-                                                                  'https://www.eradauti.ro/anunturi/imobiliare-19/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
+                                                              'https://www.eradauti.ro/anunturi/imobiliare-19/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
                                             },
                                           ),
                                         )

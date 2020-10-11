@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/menu_page.dart';
-import 'package:flutterapperadauti/usefull_numbers/public_institutions.dart';
-import 'package:flutterapperadauti/usefull_numbers/miscellaneous.dart';
 import 'package:flutterapperadauti/usefull_numbers/local_authorities.dart';
+import 'package:flutterapperadauti/usefull_numbers/miscellaneous.dart';
+import 'package:flutterapperadauti/usefull_numbers/public_institutions.dart';
 
 class HomePageNumbers extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -85,7 +85,7 @@ class HomePageNumbers extends StatelessWidget {
                                   'Numere utile',
                                   style: TextStyle(
                                     color:
-                                        Color(0xFF000000), //Color(0xFFFFFFFF),
+                                    Color(0xFF000000), //Color(0xFFFFFFFF),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 19,
                                   ),
@@ -126,7 +126,7 @@ class HomePageNumbers extends StatelessWidget {
                                 left: 10,
                               ),
                               child: Text(
-                                'Autorități locale',
+                                'Instituții publice',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
@@ -142,7 +142,7 @@ class HomePageNumbers extends StatelessWidget {
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
                             'Date de contact pentru principalele instituții de protecție civilă '
-                            '(a consumatorilui, copilului, animalelor, mediului, etc.)',
+                                '(a consumatorilui, copilului, animalelor, mediului, etc.)',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -164,7 +164,7 @@ class HomePageNumbers extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LocalAuthorities()),
+                    MaterialPageRoute(builder: (context) => PublicInstitutions()),
                   );
                 },
               ),
@@ -218,7 +218,7 @@ class HomePageNumbers extends StatelessWidget {
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
                             'Date de contact pentru informații sau reclamații '
-                            'privind serviciile de alimentare cu apă, canalizare sau servicii comunale',
+                                'privind serviciile de alimentare cu apă, canalizare sau servicii comunale',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -278,7 +278,7 @@ class HomePageNumbers extends StatelessWidget {
                                 left: 10,
                               ),
                               child: Text(
-                                'Instituții publice',
+                                'Autorități locale',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
@@ -293,8 +293,8 @@ class HomePageNumbers extends StatelessWidget {
                           ),
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
-                            'Date de contact pentru principalele instituții '
-                            'publice locale (primărie, spital, poliție etc.)',
+                            'Date de contact pentru principalele autorități '
+                                'publice locale (primărie, spital, poliție etc.)',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -317,7 +317,7 @@ class HomePageNumbers extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => PublicInstitutions()),
+                        builder: (context) => LocalAuthorities()),
                   );
                 },
               ),
@@ -376,7 +376,7 @@ class HomePageNumbers extends StatelessWidget {
                             maxLines: 5,
                             style: TextStyle(
                               color:
-                                  Color(0xFFC4C4C4), //color: Color(0xFF38A49C),
+                              Color(0xFFC4C4C4), //color: Color(0xFF38A49C),
                               fontSize: 15,
                             ),
                           ),
