@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
@@ -58,7 +59,6 @@ class NavDrawer extends StatelessWidget {
 }
 
 class NavDrawer2 extends StatelessWidget {
-  static const IconData volunteer_activism = IconData(0xead2, fontFamily: 'MaterialIcons');
   Widget addDrawerHeaderIcon() {
     return new Container(
       padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
@@ -98,7 +98,7 @@ class NavDrawer2 extends StatelessWidget {
           generateListTile(
               context, Icons.train, 'Transport', HomePageTransport()),
           generateListTile(
-              context, volunteer_activism, 'Voluntariat', VolunteerPage()),
+              context, FontAwesome5.hand_holding_heart, 'Voluntariat', VolunteerPage()),
         ],
       ),
     );

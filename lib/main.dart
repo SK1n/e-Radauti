@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
@@ -67,7 +68,6 @@ class AndroidMobile1 extends StatelessWidget {
   }) : super(key: key);
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  static const IconData volunteer_activism = IconData(0xead2, fontFamily: 'MaterialIcons');
 
   @override
   Widget build(BuildContext context) {
@@ -483,7 +483,7 @@ class AndroidMobile1 extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Icon(
-                                volunteer_activism,
+                                FontAwesome5.hand_holding_heart,
                                 color: Color(0x55FB6340),
                               ),
                               SizedBox(

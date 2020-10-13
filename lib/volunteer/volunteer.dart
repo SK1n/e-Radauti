@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:flutterapperadauti/menu_page.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
@@ -8,7 +9,6 @@ class VolunteerPage extends StatelessWidget {
   }) : super(key: key);
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  static const IconData volunteer_activism = IconData(0xead2, fontFamily: 'MaterialIcons');
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class VolunteerPage extends StatelessWidget {
                         children: <Widget>[
                           Stack(
                             children: <Widget>[
-                              Icon(volunteer_activism, color: Color(0x55FB6340), size: 30,),
+                              Icon(FontAwesome5.hand_holding_heart, color: Color(0x55FB6340), size: 30,),
                               SizedBox(width: 5,),
                               Container(
                                 child: Padding(
