@@ -88,7 +88,7 @@ class VolunteerPage extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: (MediaQuery.of(context).size.height + 450),
+              height: 1250,
               child: Container(
                 child: GridView.count(
                   primary: false,
@@ -96,6 +96,7 @@ class VolunteerPage extends StatelessWidget {
                   crossAxisSpacing: 15,
                   mainAxisSpacing: 15,
                   crossAxisCount: 2,
+                  childAspectRatio: (MediaQuery.of(context).size.width / 2 - 22.5)/280,
                   //childAspectRatio: 1.1,
                   //(MediaQuery.of(context).size.width / 2 - 22.5) /
                   //    (MediaQuery.of(context).size.height / 5 - 60),
@@ -129,7 +130,24 @@ class VolunteerPage extends StatelessWidget {
                                         color: Colors.black,),)],),),
                               new Text('Domeniul: Civic',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                               new Text('Telefon: 0741 975 076',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                              new Text('radautiulcivic@gmail.com'),
+                              new Container(
+                                //padding: new EdgeInsets.only(top: 3.0),
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    new Text('radautiulcivic@gmail',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    new Text('.com',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               new InkWell(
                                 child: new Text(
                                   'www.radautiulcivic.ro',
@@ -167,31 +185,75 @@ class VolunteerPage extends StatelessWidget {
                               ),
                               new Container(
                                 padding: new EdgeInsets.only(top: 3.0),
-                                child: new Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
-                                    new Text('Toastmasters Rădăuți',
+                                    new Text('Toastmasters',
                                       style: new TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.black,),)],),),
-                              new Text(
-                                'Domeniul: Dezvoltare personală, Public speaking',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                                style: new TextStyle(fontSize: 14, color: Colors.grey[800]),
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    new Text('Rădăuți',
+                                      style: new TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              new Container(
+                                //padding: new EdgeInsets.only(top: 3.0),
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    new Text('Domeniul: Dezvoltare',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey[800],
+                                      ),
+                                    ),
+                                    new Text('personală, Public',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey[800],
+                                      ),
+                                    ),
+                                    new Text('speaking',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey[800],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                               new Text('Telefon: 0740 757 280',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                               new Text('radautitm@gmail.com'),
                               new InkWell(
-                                child: new Text(
-                                  'https://www.facebook.com/radautitoastmasters/',
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 3,
-                                  style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: Color(0xFF38A49C),
-                                    fontSize: 15,
+                                child: new Container(
+                                  //padding: new EdgeInsets.only(top: 3.0),
+                                  child: new Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      new Text('www.facebook.com/',
+                                        style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          color: Color(0xFF38A49C),
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                      new Text('radautitoastmasters/',
+                                        style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          color: Color(0xFF38A49C),
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 onTap: () => UrlLauncher.launch(
@@ -213,7 +275,8 @@ class VolunteerPage extends StatelessWidget {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 3,),
+                          padding: const EdgeInsets.only(top: 3,right: 3, left: 3,
+                          ),
                           child: new Column(
                             children: <Widget>[
                               new Image.asset(
@@ -231,18 +294,75 @@ class VolunteerPage extends StatelessWidget {
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black,),)],),),
-                              new Text('Domeniul: Drumeții montane, Mediu',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                              new Container(
+                                //padding: new EdgeInsets.only(top: 3.0),
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    new Text('Domeniul: Drumeții',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey[800],
+                                      ),
+                                    ),
+                                    new Text('montane, Mediu',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey[800],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               new Text('Telefon: 0746 814 430',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                              new Text('clubulecomontan@gmail.com'),
+                              //new Text('clubulecomontan@gmail.com'),
+                              new Container(
+                                //padding: new EdgeInsets.only(top: 3.0),
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    new Text('clubulecomontan@',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    new Text('gmail.com',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               new InkWell(
-                                child: new Text(
-                                  'https://www.facebook.com/ClubulEcoMontanBucovinaRadauti/',
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 3,
-                                  style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: Color(0xFF38A49C),
-                                    fontSize: 15,
+                                child:
+                                new Container(
+                                  //padding: new EdgeInsets.only(top: 3.0),
+                                  child: new Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      new Text('www.facebook.com/',
+                                        style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          color: Color(0xFF38A49C),
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                      new Text('ClubulEcoMontan',
+                                        style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          color: Color(0xFF38A49C),
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                      new Text('BucovinaRadauti/',
+                                        style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          color: Color(0xFF38A49C),
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 onTap: () => UrlLauncher.launch(
@@ -273,15 +393,46 @@ class VolunteerPage extends StatelessWidget {
                               ),
                               new Container(
                                 padding: new EdgeInsets.only(top: 3.0),
-                                child: new Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
-                                    new Text('BAFI (Bucuria de a fi)',
+                                    new Text('BAFI (Bucuria',
                                       style: new TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.black,),)],),),
-                              new Text('Domeniul: Social, Ecologie',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    new Text('de a fi)',
+                                      style: new TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              new Container(
+                                //padding: new EdgeInsets.only(top: 3.0),
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    new Text('Domeniul: Social,',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey[800],
+                                      ),
+                                    ),
+                                    new Text('Ecologie',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey[800],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               new Text('Telefon: 0755 403 224',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                               new Text('asociatia@bafi.ro'),
                               new InkWell(
@@ -322,20 +473,51 @@ class VolunteerPage extends StatelessWidget {
                               ),
                               new Container(
                                 padding: new EdgeInsets.only(top: 3.0),
-                                child: new Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
-                                    new Text('Asociația Door to Home',
+                                    new Text('Asociația Door',
                                       style: new TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.black,),)],),),
-                              new Text('Domeniul: Social, Filantropic',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    new Text('to Home',
+                                      style: new TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              new Container(
+                                //padding: new EdgeInsets.only(top: 3.0),
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    new Text('Domeniul: Social,',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey[800],
+                                      ),
+                                    ),
+                                    new Text('Filantropic',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey[800],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               new Text('Telefon: 0230 562 751',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                               new Text('info@doortohome.ro'),
                               new InkWell(
                                 child: new Text(
-                                  'http://doortohome.ro/',
+                                  'doortohome.ro',
                                   style: TextStyle(
                                     decoration: TextDecoration.underline,
                                     color: Color(0xFF38A49C),
@@ -370,26 +552,68 @@ class VolunteerPage extends StatelessWidget {
                               ),
                               new Container(
                                 padding: new EdgeInsets.only(top: 3.0),
-                                child: new Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
-                                    new Text('Asociația Maria Ward',
+                                    new Text('Asociația Maria',
                                       style: new TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.black,),)],),),
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    new Text('Ward',
+                                      style: new TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               new Text('Domeniul: Social',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                               new Text('Telefon: 0757 114 181',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                              new Text('centrul.mariaward@gmail.com'),
+                              new Container(
+                                //padding: new EdgeInsets.only(top: 3.0),
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    new Text('centrul.mariaward',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    new Text('@gmail.com',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               new InkWell(
-                                  child: new Text(
-                                    'https://centrulsocialmariaward.org/',
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 3,
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xFF38A49C),
-                                      fontSize: 15,
+                                  child:
+                                  new Container(
+                                    //padding: new EdgeInsets.only(top: 3.0),
+                                    child: new Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        new Text('centrulsocialmaria',
+                                          style: TextStyle(
+                                            decoration: TextDecoration.underline,
+                                            color: Color(0xFF38A49C),
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                        new Text('ward.org',
+                                          style: TextStyle(
+                                            decoration: TextDecoration.underline,
+                                            color: Color(0xFF38A49C),
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                   onTap: () => UrlLauncher.launch(
@@ -431,16 +655,46 @@ class VolunteerPage extends StatelessWidget {
                                         color: Colors.black,),)],),),
                               new Text('Domeniul: Social',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                               new Text('Telefon: -',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
-                              new Text('ioanadeliar@gmail.com'),
+                              new Container(
+                                //padding: new EdgeInsets.only(top: 3.0),
+                                child: new Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    new Text('ioanadeliar@',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    new Text('gmail.com',
+                                      style: new TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               new InkWell(
-                                  child: new Text(
-                                    'https://www.facebook.com/umania.ffs',
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 3,
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xFF38A49C),
-                                      fontSize: 15,
+                                  child:
+                                  new Container(
+                                    //padding: new EdgeInsets.only(top: 3.0),
+                                    child: new Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        new Text('www.facebook.com/',
+                                          style: TextStyle(
+                                            decoration: TextDecoration.underline,
+                                            color: Color(0xFF38A49C),
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                        new Text('umania.ffs',
+                                          style: TextStyle(
+                                            decoration: TextDecoration.underline,
+                                            color: Color(0xFF38A49C),
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                   onTap: () => UrlLauncher.launch(
