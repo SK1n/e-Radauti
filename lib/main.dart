@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/services/push_notifications_service.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
@@ -12,11 +13,12 @@ import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/transport/transport_main_page.dart';
 
+import 'locator.dart';
+
 void main() {
+  setupLocator();
   runApp(MyAppRC());
 }
-
-
 
 class MyAppRC extends StatelessWidget {
   // This widget is the root of your application.
@@ -66,6 +68,13 @@ class AndroidMobile1 extends StatelessWidget {
   }) : super(key: key);
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  final PushNotificationsService _pushNotificationsService =
+      locator<PushNotificationsService>();
+
+  Future handleStartUpLogic() async {
+    await _pushNotificationsService.initialise();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -128,8 +137,8 @@ class AndroidMobile1 extends StatelessWidget {
                   mainAxisSpacing: 15,
                   crossAxisCount: 2,
                   childAspectRatio:
-                  (MediaQuery.of(context).size.width / 2 - 22.5) /
-                      (MediaQuery.of(context).size.height / 5 - 60),
+                      (MediaQuery.of(context).size.width / 2 - 22.5) /
+                          (MediaQuery.of(context).size.height / 5 - 60),
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
