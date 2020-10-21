@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/transport/transport_main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
+import 'package:flutterapperadauti/volunteer/volunteer.dart';
 import 'package:flutterapperadauti/events/main.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -95,35 +97,8 @@ class NavDrawer2 extends StatelessWidget {
               AirQualityPage()),
           generateListTile(
               context, Icons.train, 'Transport', HomePageTransport()),
-          ListTile(
-            leading: Icon(
-              Icons.access_time,
-              color: Color(0xAAC4C4C4),
-            ), //Icon(Icons.border_color),
-            title: new RichText(
-              text: new TextSpan(
-                children: [
-                  new TextSpan(
-                    text: 'Voluntariat\n',
-                    style: TextStyle(
-                      color: Color(0xFF979797), //Color(0xFFFFFFFF),
-                      fontWeight: FontWeight.bold,
-                      //fontSize: 16,
-                    ),
-                  ),
-                  new TextSpan(
-                    text: 'Coming soon',
-                    style: TextStyle(
-                      color: Color(0xFFC4C4C4), //Color(0xFFFFFFFF),
-                      //fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-            ), //Text('Numere utile'), //Text('Feedback'),
-            onTap: null, //() => {Navigator.of(context).pop()},
-          ),
+          generateListTile(
+              context, FontAwesome5.hand_holding_heart, 'Voluntariat', VolunteerPage()),
         ],
       ),
     );
