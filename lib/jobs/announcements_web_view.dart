@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math' show max;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/menu_page.dart';
@@ -14,6 +17,7 @@ class AnnouncementWebView extends StatefulWidget {
 class _AnnouncementWebViewState extends State<AnnouncementWebView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   num _stackToView = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +47,6 @@ class _AnnouncementWebViewState extends State<AnnouncementWebView> {
           Container(
             alignment: Alignment.topRight,
             margin: EdgeInsets.only(top: 0.0, right: 0.0),
-            // EdgeInsets.only(top: 20.0, right: 10.0),
             child: IconButton(
               icon: Icon(
                 Icons.menu,
@@ -59,18 +62,18 @@ class _AnnouncementWebViewState extends State<AnnouncementWebView> {
       body: IndexedStack(
         index: _stackToView,
         children: [
-          SingleChildScrollView(
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              child: WebView(
-                javascriptMode: JavascriptMode.unrestricted,
-                initialUrl: widget.slug,
-                onPageFinished: (String url) {
-                  setState(() {
-                    _stackToView = 0;
-                  });
-                },
-              ),
+          Container(
+            child: WebView(
+              javascriptMode: JavascriptMode.unrestricted,
+              initialUrl: widget.slug,
+              onPageFinished: (String url) async {
+                setState(() {
+                  _stackToView = 0;
+                });
+              },
+              onWebViewCreated: (WebViewController c) {
+                debugPrint("webView created");
+              },
             ),
           ),
           Container(child: Center(child: CircularProgressIndicator())),
