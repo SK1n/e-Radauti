@@ -87,6 +87,17 @@ class AndroidMobile1 extends StatelessWidget {
             ],
           ),
         ),
+        title: Container(
+          //alignment: Alignment.center,
+          child: Text(
+            'e-Rădăuți',
+            style: TextStyle(
+              color: Color(0xFF32325D), //Color(0xFFFFFFFF),
+              fontWeight: FontWeight.bold,
+              fontSize: 17,
+            ),
+          ),
+        ),
       ),
       body: CustomScrollView(
         slivers: <Widget>[
@@ -609,30 +620,6 @@ class AndroidMobile1 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       //4
-                      /*Container(
-                      //padding: EdgeInsets.only(left: 0, right: 0,),
-                      width: MediaQuery.of(context).size.width/5 - 15,
-                      child: new InkWell(
-                          child: new Text(
-                            'Credits',
-                            style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
-                          ),
-                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Credits()),);},
-                      ),
-                    ),*/
-                      /*Container(
-                      //padding: EdgeInsets.only(left: 0, right: 0,),
-                      width: MediaQuery.of(context).size.width/5 - 15,
-                      child: new InkWell(
-                        child: new Text(
-                          'Calendar',
-                          style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
-                        ),
-                        onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Add2CalendarEvent()),);},
-                      ),
-                    ),*/
-
-                      //5
 
                       Container(
                         //padding: EdgeInsets.only(left: 5, right: 5,),
@@ -667,5 +654,3 @@ class AndroidMobile1 extends StatelessWidget {
     );
   }
 }
-
-//c:\flutter\flutter\bin\flutter build apk --release --build-name=1.0.5 --build-number=6

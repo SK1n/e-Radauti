@@ -69,7 +69,7 @@ class AboutUsApp extends StatelessWidget {
             child: Text(
               'Aplicațiile dezvoltate în timpul concursului au fost evaluate de un juriu internațional ' +
                   'de profesioniști în domeniul IT și Design iar resursele financiare pentru premii ' +
-                  'au fost provenite din donații ale membrilor „Rădăuțiul civic”, ale juriului și ale ' +
+                  'au fost provenite din donații ale membrilor „Rădăuțiul Civic”, ale juriului și ale ' +
                   'firmei locale „Hard Power Services”.',
               style: TextStyle(
                 fontSize: 15,

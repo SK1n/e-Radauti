@@ -216,7 +216,7 @@ class HomePageJobs extends StatelessWidget {
                           ),
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
-                            'Anunțuri de imobiliare postate preluate de pe portalul www.eradauti.ro',
+                            'Anunțuri de imobiliare preluate de pe portalul www.eradauti.ro',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(

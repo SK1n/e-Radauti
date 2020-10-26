@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
+import 'package:flutter/gestures.dart';
 
 class Confidential extends StatelessWidget {
   @override
@@ -82,6 +84,55 @@ class Confidential extends StatelessWidget {
                 ),
               ),
             ),
+
+            //
+            Container(
+              padding: EdgeInsets.only(top: 10,),
+              width: MediaQuery.of(context).size.width - 30,
+              child: RichText(
+                text: TextSpan(
+                  text: 'Aplicația este un instrument mobil de facilitare a comunicării dintre localnici, instituțiile locale și '
+                      +
+                      'grupul „Rădăuțiul Civic”. Rolul comunicării este de implicare civică sau de raportare a diferitelor probleme '
+                      +
+                      'întâlnite în societate. În funcție de opțiunea accesată, informațiile pe care utilizatorul la va introduce în '
+                      +
+                      'diferitele formulare vor fi direcționate către adresa noastră de e-mail oferită de serviciul Google Mail: '
+                      +
+                      'radautiulcivic@gmail.com sau către instituțiile locale precum Primăria Rădăuți, Servicii Comunale, ACET '
+                      +
+                      'Rădăuți, Consiliul Județean Suceava, Garda de Mediu Suceava, Garda Forestieră Suceava etc. Când datele '
+                      +
+                      'sunt trimise către „Rădăuțiul Civic”, ele vor fi stocate pe serverul adresei de e-mail, de aceea recomandăm '
+                      +
+                      'vizitarea politicii de confidențialitate a Google Inc (',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'https://policies.google.com/privacy',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color(0xFF38A49C),
+                        fontSize: 15,
+                      ),
+                      recognizer: new TapGestureRecognizer()
+                        ..onTap = () => UrlLauncher.launch('https://policies.google.com/privacy'),
+                    ),
+                    TextSpan(
+                        text: '). '
+                            +
+                            'Când sunt trimise către instituțiile publice, ele vor fi stocate pe serverele dedicate, fără a fi procesate '
+                            +
+                            'sau stocate de către „Rădăuțiul Civic”. Recomandăm contactarea agențiilor în legătură cu stocarea datelor.'
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
             //1.2
             Container(
               padding: EdgeInsets.only(top: 10,),
@@ -113,6 +164,130 @@ class Confidential extends StatelessWidget {
                 ),
               ),
             ),
+
+            //
+            Container(
+              padding: EdgeInsets.only(top: 10,),
+              width: MediaQuery.of(context).size.width - 30,
+              child: RichText(
+                text: TextSpan(
+                  text: 'Dacă alegi să folosești aplicația noastră accepți faptul '
+                      +
+                      'că vom colecta și folosi informații care au legătura cu acești termeni. Informațiile personale colectate '
+                      +
+                      'vor fi folosite atunci când se transmit cereri sau plângeri către „Rădăuțiul Civic”.  Opțiuni precum '
+                      +
+                      'Sesizează o problemă trimit datele personale (numele și prenumele, adresa de e-mail, numărul de '
+                      +
+                      'telefon și locația) către adresa de e-mail radautiulcivic@gmail.com (când este trimisă către „Rădăuțiul '
+                      +
+                      'Civic”) la care au acces membrii grupului „Rădăuțiul Civic” sau către ',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                  ),
+                  children: <InlineSpan>[
+                    //1
+                    TextSpan(
+                      text: 'relatiipublice@primariaradauti.ro',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color(0xFF38A49C),
+                        fontSize: 15,
+                      ),
+                      recognizer: new TapGestureRecognizer()
+                        ..onTap = () => UrlLauncher.launch('mailto:relatiipublice@primariaradauti.ro'),
+                    ),
+                    TextSpan(
+                        text: ', '
+                    ),
+                    //2
+                    TextSpan(
+                      text: 'office@serviciicomunale.ro',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color(0xFF38A49C),
+                        fontSize: 15,
+                      ),
+                      recognizer: new TapGestureRecognizer()
+                        ..onTap = () => UrlLauncher.launch('mailto:office@serviciicomunale.ro'),
+                    ),
+                    TextSpan(
+                        text: ', '
+                    ),
+                    //3
+                    TextSpan(
+                      text: 'agentia.radauti@acetsv.ro',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color(0xFF38A49C),
+                        fontSize: 15,
+                      ),
+                      recognizer: new TapGestureRecognizer()
+                        ..onTap = () => UrlLauncher.launch('mailto:agentia.radauti@acetsv.ro'),
+                    ),
+                    TextSpan(
+                        text: ', '
+                    ),
+                    //4
+                    TextSpan(
+                      text: 'contact@cjsuceava.ro',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color(0xFF38A49C),
+                        fontSize: 15,
+                      ),
+                      recognizer: new TapGestureRecognizer()
+                        ..onTap = () => UrlLauncher.launch('mailto:contact@cjsuceava.ro'),
+                    ),
+                    TextSpan(
+                        text: ', '
+                    ),
+                    //5
+                    TextSpan(
+                      text: 'cjsuceava@gnm.ro',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color(0xFF38A49C),
+                        fontSize: 15,
+                      ),
+                      recognizer: new TapGestureRecognizer()
+                        ..onTap = () => UrlLauncher.launch('mailto:cjsuceava@gnm.ro'),
+                    ),
+                    TextSpan(
+                        text: ', '
+                    ),
+                    //6
+                    TextSpan(
+                      text: 'gardaforestiera.suceava@gmail.com',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color(0xFF38A49C),
+                        fontSize: 15,
+                      ),
+                      recognizer: new TapGestureRecognizer()
+                        ..onTap = () => UrlLauncher.launch('mailto:gardaforestiera.suceava@gmail.com'),
+                    ),
+                    //*
+                    TextSpan(
+                        text: ' pentru agențiile publice la care vor avea acces diferite persoane '
+                            +
+                            'publice angajate la agențiile respective.\nOpțiunea de contactare a persoanelor de la conducere (Primar, '
+                            +
+                            'Viceprimar, Secretar sau Consilieri) se va realiza folosind adresa de e-mail a persoanei selectate, folosind '
+                            +
+                            'numărul de telefon sau adresa de Facebook. Datele trimise către fiecare persoană din conducere vor fi stocate '
+                            +
+                            'și procesate de către aceștia, ceea ce înseamnă că „Rădăuțiul Civic” nu are niciun control asupra felului '
+                            +
+                            'în care sunt folosite. Pentru a afla cum sunt procesate, vă recomandăm să îi contactați în privat pe fiecare.'
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+
             //1.3
             Container(
               padding: EdgeInsets.only(top: 10,),
