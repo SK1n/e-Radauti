@@ -40,7 +40,6 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   File recordedImage3;
   bool isLoading = false;
   bool checkBox = false;
-  String errorMessage;
 
   List<Attachment> attachments = [null, null, null];
   String _recipientController;
@@ -116,25 +115,25 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         isLoading = false;
       });
     } on MailerException catch (e) {
-      for (var p in e.problems) {
-        errorMessage += p.msg + '\n';
-        debugPrint('Problema: ${p.code}: ${p.msg}');
-      }
+      debugPrint('mailerException: ${e.message}');
       setState(() {
         isLoading = false;
       });
-      showDialog(context: context, builder: (_) => popoutFailed(errorMessage));
+      showDialog(context: context, builder: (_) => popoutFailed(e.message));
     } on SocketException catch (e) {
+      debugPrint('socketException: ${e.message}');
       setState(() {
         isLoading = false;
       });
       showDialog(context: context, builder: (_) => popoutFailed(e.message));
     } on TimeoutException catch (e) {
+      debugPrint('timeoutException: ${e.message}');
       setState(() {
         isLoading = false;
       });
       showDialog(context: context, builder: (_) => popoutFailed(e.message));
     } catch (e) {
+      debugPrint('otherErrors: ${e.message}');
       setState(() {
         isLoading = false;
       });
