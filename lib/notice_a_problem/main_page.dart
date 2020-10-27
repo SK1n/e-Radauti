@@ -40,6 +40,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   File recordedImage3;
   bool isLoading = false;
   bool checkBox = false;
+  String errorMessage;
 
   List<Attachment> attachments = [null, null, null];
   String _recipientController;
@@ -116,18 +117,24 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
       });
     } on MailerException catch (e) {
       for (var p in e.problems) {
-        print('Problema: ${p.code}: ${p.msg}');
+        errorMessage += p.msg + '\n';
+        debugPrint('Problema: ${p.code}: ${p.msg}');
       }
       setState(() {
         isLoading = false;
       });
-      showDialog(context: context, builder: (_) => popoutFailed(e.problems));
+      showDialog(context: context, builder: (_) => popoutFailed(errorMessage));
     } on SocketException catch (e) {
       setState(() {
         isLoading = false;
       });
       showDialog(context: context, builder: (_) => popoutFailed(e.message));
     } on TimeoutException catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      showDialog(context: context, builder: (_) => popoutFailed(e.message));
+    } catch (e) {
       setState(() {
         isLoading = false;
       });
@@ -651,7 +658,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                     Container(
                       margin: EdgeInsets.only(top: 20, left: 20, right: 20),
                       child: CheckboxListTile(
-                        title: Text('Adaugati locatia dvs. la email'),
+                        title: Text('Adăugați locația dvs. la email'),
                         activeColor: Color.fromRGBO(56, 164, 156, 10),
                         secondary: checkBox == false
                             ? Icon(MaterialIcons.location_off)
