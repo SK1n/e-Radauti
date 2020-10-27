@@ -332,7 +332,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                           AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
                     ),
                     Text(
-                        'Va rugam sa asteptati.\nIncercam sa trimitem email-ul!'),
+                        'Va rugam sa asteptati.\nEmail-ul este in curs de trimitere!'),
                   ],
                 ),
               )
@@ -432,94 +432,80 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                           ),
                         )),
                     Container(
-                      margin: EdgeInsets.fromLTRB(20, 20, 0, 20),
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            width: MediaQuery.of(context).size.width / 2 - 30,
-                            child: TextField(
-                              keyboardType: TextInputType.emailAddress,
-                              textCapitalization: TextCapitalization.sentences,
-                              controller: _emailController,
-                              enabled: true,
-                              decoration: new InputDecoration(
-                                border: new OutlineInputBorder(
-                                  borderSide: new BorderSide(
-                                      color: Color.fromRGBO(56, 164, 156, 10)),
-                                ),
-                                prefixIcon: Icon(
-                                  Ionicons.ios_mail,
-                                  color: Color(0x55FB6340),
-                                  size: 20,
-                                ),
-                                labelText: 'Email:',
-                                prefixText: '',
-                                errorText: _validateEmail
-                                    ? 'Nu ați introdus un email valabil.\nAcesta trebuie să fie de forma orice@orice.orice'
-                                    : null,
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 1,
-                                      color: Color.fromRGBO(56, 164, 156, 10)),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 1,
-                                      color: Color.fromRGBO(56, 164, 156, 10)),
-                                ),
-                                labelStyle: TextStyle(
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
+                      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                      child: TextField(
+                        keyboardType: TextInputType.emailAddress,
+                        textCapitalization: TextCapitalization.sentences,
+                        controller: _emailController,
+                        enabled: true,
+                        decoration: new InputDecoration(
+                          border: new OutlineInputBorder(
+                            borderSide: new BorderSide(
+                                color: Color.fromRGBO(56, 164, 156, 10)),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 10, right: 10),
+                          prefixIcon: Icon(
+                            Ionicons.ios_mail,
+                            color: Color(0x55FB6340),
+                            size: 20,
                           ),
-                          Container(
-                              width: MediaQuery.of(context).size.width / 2 - 30,
-                              child: TextField(
-                                keyboardType: TextInputType.number,
-                                textCapitalization:
-                                    TextCapitalization.sentences,
-                                controller: _numberController,
-                                enabled: true,
-                                decoration: new InputDecoration(
-                                  border: new OutlineInputBorder(
-                                    borderSide: new BorderSide(
-                                        color:
-                                            Color.fromRGBO(56, 164, 156, 10)),
-                                  ),
-                                  prefixIcon: Icon(
-                                    Icons.phone,
-                                    color: Color(0x55FB6340),
-                                    size: 20,
-                                  ),
-                                  labelText: 'Telefon:',
-                                  prefixText: '',
-                                  errorText: _validateNumber
-                                      ? 'Nu ați introdus un număr de telefon!'
-                                      : null,
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        width: 1,
-                                        color:
-                                            Color.fromRGBO(56, 164, 156, 10)),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        width: 1,
-                                        color:
-                                            Color.fromRGBO(56, 164, 156, 10)),
-                                  ),
-                                  labelStyle: TextStyle(
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                              )),
-                        ],
+                          labelText: 'Email:',
+                          prefixText: '',
+                          errorText: _validateEmail
+                              ? 'Nu ați introdus un email valabil.\nAcesta trebuie să fie de forma orice@orice.orice'
+                              : null,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1,
+                                color: Color.fromRGBO(56, 164, 156, 10)),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1,
+                                color: Color.fromRGBO(56, 164, 156, 10)),
+                          ),
+                          labelStyle: TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
                       ),
                     ),
+                    Container(
+                        margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          textCapitalization: TextCapitalization.sentences,
+                          controller: _numberController,
+                          enabled: true,
+                          decoration: new InputDecoration(
+                            border: new OutlineInputBorder(
+                              borderSide: new BorderSide(
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.phone,
+                              color: Color(0x55FB6340),
+                              size: 20,
+                            ),
+                            labelText: 'Telefon:',
+                            prefixText: '',
+                            errorText: _validateNumber
+                                ? 'Nu ați introdus un număr de telefon!'
+                                : null,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1,
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1,
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
+                            ),
+                            labelStyle: TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                        )),
                     Container(
                         margin: EdgeInsets.only(top: 20, left: 20, right: 20),
                         child: TextField(
@@ -657,30 +643,36 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         ),
                       ],
                     ),
-                    Text(
-                        'Este obligatoriu cel puțin o poză!\nPentru a șterge o poză, țineți degetul apăsat pe imaginea respectivă!'),
-                    CheckboxListTile(
-                      title: Text('Adaugati locatia dvs. la email'),
-                      activeColor: Color.fromRGBO(56, 164, 156, 10),
-                      secondary: checkBox == false
-                          ? Icon(MaterialIcons.location_off)
-                          : Icon(MaterialIcons.location_on),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      value: checkBox,
-                      onChanged: (bool value) {
-                        setState(() {
-                          checkBox = value;
-                          if (checkBox == true) {
-                            if (position == null) {
-                              getLocation();
-                              _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                content: Text(
-                                    "Ne trebuie locația dvs.! Vă rugăm acceptați permisiunea de GPS!"),
-                              ));
+                    Container(
+                      margin: EdgeInsets.only(top: 10, left: 20, right: 20),
+                      child: Text(
+                          'Este obligatoriu cel puțin o poză!\nPentru a șterge o poză, țineți degetul apăsat pe imaginea respectivă!'),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                      child: CheckboxListTile(
+                        title: Text('Adaugati locatia dvs. la email'),
+                        activeColor: Color.fromRGBO(56, 164, 156, 10),
+                        secondary: checkBox == false
+                            ? Icon(MaterialIcons.location_off)
+                            : Icon(MaterialIcons.location_on),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: checkBox,
+                        onChanged: (bool value) {
+                          setState(() {
+                            checkBox = value;
+                            if (checkBox == true) {
+                              if (position == null) {
+                                getLocation();
+                                _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                  content: Text(
+                                      "Ne trebuie locația dvs.! Vă rugăm acceptați permisiunea de GPS!"),
+                                ));
+                              }
                             }
-                          }
-                        });
-                      },
+                          });
+                        },
+                      ),
                     ),
                     Text('Alege destinația sesizării din lista de mai jos'),
                     Container(
@@ -821,9 +813,10 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
       _emailController.text.isEmpty
           ? _validateEmail = true
           : _validateEmail = false;
+      debugPrint('validate email: ${_emailController.text.isValidEmail()}');
       _emailController.text.isValidEmail()
-          ? _validateEmail = true
-          : _validateEmail = false;
+          ? _validateEmail = false
+          : _validateEmail = true;
       _numberController.text.isEmpty
           ? _validateNumber = true
           : _validateNumber = false;
