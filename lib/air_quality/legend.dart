@@ -161,13 +161,9 @@ class AirQualityLegend extends StatelessWidget {
                                 child: FlatButton(
                                   child: Icon(
                                     Ionicons.ios_square,
-<<<<<<< HEAD
                                     color: Colors.green,
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
-=======
-                                    color: Colors.green[300], //[50],
->>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
                                   ),
                                   onPressed: null,
                                 ),
@@ -190,13 +186,9 @@ class AirQualityLegend extends StatelessWidget {
                                 child: FlatButton(
                                   child: Icon(
                                     Ionicons.ios_square,
-<<<<<<< HEAD
                                     color: Colors.yellow,
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
-=======
-                                    color: Colors.yellow[200], //[100],
->>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
                                   ),
                                   onPressed: null,
                                 ),
@@ -219,13 +211,9 @@ class AirQualityLegend extends StatelessWidget {
                                 child: FlatButton(
                                   child: Icon(
                                     Ionicons.ios_square,
-<<<<<<< HEAD
                                     color: Colors.orange,
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
-=======
-                                    color: Colors.red[200], //[200],
->>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
                                   ),
                                   onPressed: null,
                                 ),
@@ -249,13 +237,9 @@ class AirQualityLegend extends StatelessWidget {
                                   onPressed: null,
                                   child: Icon(
                                     Ionicons.ios_square,
-<<<<<<< HEAD
                                     color: Colors.red,
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
-=======
-                                    color: Colors.red[500],
->>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
                                   ),
                                 ),
                               ),

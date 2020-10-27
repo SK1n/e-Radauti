@@ -22,8 +22,6 @@ void main() {
   runApp(MyAppRC());
 }
 
-
-
 class MyAppRC extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -108,17 +106,6 @@ class AndroidMobile1 extends StatelessWidget {
             ],
           ),
         ),
-        title: Container(
-          //alignment: Alignment.center,
-          child: Text(
-            'e-Rădăuți',
-            style: TextStyle(
-              color: Color(0xFF32325D), //Color(0xFFFFFFFF),
-              fontWeight: FontWeight.bold,
-              fontSize: 17,
-            ),
-          ),
-        ),
       ),
       body: CustomScrollView(
         slivers: <Widget>[
@@ -162,8 +149,8 @@ class AndroidMobile1 extends StatelessWidget {
                   mainAxisSpacing: 15,
                   crossAxisCount: 2,
                   childAspectRatio:
-                  (MediaQuery.of(context).size.width / 2 - 22.5) /
-                      (MediaQuery.of(context).size.height / 5 - 60),
+                      (MediaQuery.of(context).size.width / 2 - 22.5) /
+                          (MediaQuery.of(context).size.height / 5 - 60),
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
@@ -640,11 +627,6 @@ class AndroidMobile1 extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-<<<<<<< HEAD
-=======
-                      //4
-
->>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
                       Container(
                         child: new InkWell(
                           child: new Text(

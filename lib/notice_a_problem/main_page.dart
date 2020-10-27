@@ -12,6 +12,14 @@ import 'package:mailer/smtp_server.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
+extension EmailValidator on String {
+  bool isValidEmail() {
+    return RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(this);
+  }
+}
+
 class HomePageNoticeProblem extends StatefulWidget {
   @override
   _HomePageNoticeProblemState createState() => _HomePageNoticeProblemState();
@@ -92,11 +100,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
     }
     try {
       final sendReport = await send(message, smtpServer);
-<<<<<<< HEAD
-      print('Message sent: ' + sendReport.toString());
-=======
-      print('Mesaj trimis: ' + sendReport.toString());
->>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
+      debugPrint('Mesaj trimis: ' + sendReport.toString());
       showDialog(context: context, builder: (_) => popoutSucces());
       setState(() {
         attachments = [null, null, null];
@@ -320,46 +324,12 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         drawer: NavDrawer2(),
         body: isLoading
             ? Center(
-<<<<<<< HEAD
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircularProgressIndicator(
                       valueColor:
                           AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
-=======
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircularProgressIndicator(
-                valueColor:
-                AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
-              ),
-              Text(
-                  'Vă rugăm să așteptați.\nÎncercăm să trimitem email-ul!'),
-            ],
-          ),
-        )
-            : SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.only(bottom: 15, top: 20),
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.keyboard_arrow_left,
-                          color: Color(0xFF979797),
-                        ),
-                        //_left Icons.arrow_back
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
->>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
                     ),
                     Text(
                         'Va rugam sa asteptati.\nIncercam sa trimitem email-ul!'),
@@ -443,7 +413,6 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                               color: Color(0x55FB6340),
                               size: 20,
                             ),
-                            //hintText: "Enter Your Name",
                             labelText: 'Nume și prenume:',
                             prefixText: '',
                             errorText: _validateName
@@ -469,6 +438,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                           Container(
                             width: MediaQuery.of(context).size.width / 2 - 30,
                             child: TextField(
+                              keyboardType: TextInputType.emailAddress,
                               textCapitalization: TextCapitalization.sentences,
                               controller: _emailController,
                               enabled: true,
@@ -485,7 +455,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                                 labelText: 'Email:',
                                 prefixText: '',
                                 errorText: _validateEmail
-                                    ? 'Nu ați introdus email!'
+                                    ? 'Nu ați introdus un email valabil.\nAcesta trebuie să fie de forma orice@orice.orice'
                                     : null,
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -509,6 +479,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                           Container(
                               width: MediaQuery.of(context).size.width / 2 - 30,
                               child: TextField(
+                                keyboardType: TextInputType.number,
                                 textCapitalization:
                                     TextCapitalization.sentences,
                                 controller: _numberController,
@@ -524,11 +495,10 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                                     color: Color(0x55FB6340),
                                     size: 20,
                                   ),
-                                  //hintText: "Enter Your Name",
                                   labelText: 'Telefon:',
                                   prefixText: '',
                                   errorText: _validateNumber
-                                      ? 'Nu ați introdus telefon!'
+                                      ? 'Nu ați introdus un număr de telefon!'
                                       : null,
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -687,6 +657,8 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         ),
                       ],
                     ),
+                    Text(
+                        'Este obligatoriu cel puțin o poză!\nPentru a șterge o poză, țineți degetul apăsat pe imaginea respectivă!'),
                     CheckboxListTile(
                       title: Text('Adaugati locatia dvs. la email'),
                       activeColor: Color.fromRGBO(56, 164, 156, 10),
@@ -765,98 +737,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         child: Text("Trimite"),
                       ),
                     )
-<<<<<<< HEAD
                   ],
-=======
-                        : FlatButton(
-                      child: Image.file(recordedImage3),
-                      onPressed: () {
-                        getImage(context, 2);
-                      },
-                      onLongPress: () {
-                        removePicture(2);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              CheckboxListTile(
-                title: Text('Adăugați locația dvs. la email'),
-                activeColor: Color.fromRGBO(56, 164, 156, 10),
-                secondary: checkBox == false
-                    ? Icon(MaterialIcons.location_off)
-                    : Icon(MaterialIcons.location_on),
-                controlAffinity: ListTileControlAffinity.leading,
-                value: checkBox,
-                onChanged: (bool value) {
-                  setState(() {
-                    checkBox = value;
-                    if (checkBox == true) {
-                      if (position == null) {
-                        getLocation();
-                        _scaffoldKey.currentState.showSnackBar(SnackBar(
-                          content: Text(
-                              "Ne trebuie locația dvs.! Vă rugăm acceptați permisiunea de GPS!"),
-                        ));
-                      }
-                    }
-                  });
-                },
-              ),
-              Text('Alege destinația sesizării din lista de mai jos'),
-              Container(
-                margin: EdgeInsets.only(
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 20,
-                ),
-                child: new DropdownButton<String>(
-                  value: dropdownValue,
-                  elevation: 16,
-                  style: TextStyle(color: Colors.black),
-                  items: <String>[
-                    'Destinatar',
-                    'Primăria Rădăuți',
-                    'Servicii Comunale',
-                    'ACET Rădăuți',
-                    'Consiliul Județean Suceava',
-                    'Garda De Mediu Suceava',
-                    'Garda Forestieră Suceava',
-                    'Rădăuțiul Civic'
-                  ].map((String value) {
-                    return new DropdownMenuItem<String>(
-                      value: value,
-                      child: Center(
-                        child: new Text(value),
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (String value) {
-                    setState(() {
-                      dropdownValue = value;
-                      dropDownValueIdentifier(value);
-                    });
-                  },
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  top: 0,
-                  left: 20,
-                  right: 20,
-                  bottom: 20,
-                ),
-                width: MediaQuery.of(context).size.width,
-                child: FlatButton(
-                  color: Color.fromRGBO(56, 164, 156, 10),
-                  textColor: Colors.white,
-                  onPressed: () {
-                    attachments.removeWhere((item) => item == null);
-                    verifyInputsAndSendEmail();
-                  },
-                  child: Text("Trimite"),
->>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
                 ),
               ));
   }
@@ -940,6 +821,9 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
       _emailController.text.isEmpty
           ? _validateEmail = true
           : _validateEmail = false;
+      _emailController.text.isValidEmail()
+          ? _validateEmail = true
+          : _validateEmail = false;
       _numberController.text.isEmpty
           ? _validateNumber = true
           : _validateNumber = false;
@@ -985,11 +869,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
     return CupertinoAlertDialog(
       title: Text('A fost trimis cu succes!'),
       content:
-<<<<<<< HEAD
           Text('Mesajul a fost trimis cu succes catre $_recipientController'),
-=======
-      Text('Mesajul a fost trimis cu succes către $_recipientController'),
->>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
       actions: [
         CupertinoDialogAction(
           child: FlatButton(
