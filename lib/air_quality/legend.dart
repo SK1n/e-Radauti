@@ -161,9 +161,13 @@ class AirQualityLegend extends StatelessWidget {
                                 child: FlatButton(
                                   child: Icon(
                                     Ionicons.ios_square,
+<<<<<<< HEAD
                                     color: Colors.green,
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
+=======
+                                    color: Colors.green[300], //[50],
+>>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
                                   ),
                                   onPressed: null,
                                 ),
@@ -171,7 +175,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este bun',
+                                  'Nivelul de PM2.5 este bun (0 - 12 ug/m3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -186,9 +190,13 @@ class AirQualityLegend extends StatelessWidget {
                                 child: FlatButton(
                                   child: Icon(
                                     Ionicons.ios_square,
+<<<<<<< HEAD
                                     color: Colors.yellow,
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
+=======
+                                    color: Colors.yellow[200], //[100],
+>>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
                                   ),
                                   onPressed: null,
                                 ),
@@ -196,7 +204,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este moderat',
+                                  'Nivelul de PM2.5 este moderat (12 - 35 ug/m3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -211,9 +219,13 @@ class AirQualityLegend extends StatelessWidget {
                                 child: FlatButton(
                                   child: Icon(
                                     Ionicons.ios_square,
+<<<<<<< HEAD
                                     color: Colors.orange,
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
+=======
+                                    color: Colors.red[200], //[200],
+>>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
                                   ),
                                   onPressed: null,
                                 ),
@@ -221,7 +233,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este daunator pentru persoanele sensibile',
+                                  'Nivelul de PM2.5 este daunator pentru persoanele sensibile (35 - 55 ug/m3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -237,16 +249,20 @@ class AirQualityLegend extends StatelessWidget {
                                   onPressed: null,
                                   child: Icon(
                                     Ionicons.ios_square,
+<<<<<<< HEAD
                                     color: Colors.red,
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
+=======
+                                    color: Colors.red[500],
+>>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
                                   ),
                                 ),
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este daunator pentru toate persoanele',
+                                  'Nivelul de PM2.5 este daunator pentru toate persoanele (55 - 150 ug/m3)',
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
                                 ),

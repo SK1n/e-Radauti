@@ -67,7 +67,7 @@ class ChangeColor {
     }
   }
 
-//Reminder: if you change any of this values, please also change it in legend.dart
+//TODO:  if you change any of this values, please also change it in legend.dart
 //otherwise the colors won't match
   Color changeColorQuality(value) {
     if (value > 0 && value <= 12) {

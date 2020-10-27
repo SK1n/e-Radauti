@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
-import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
-import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
-import 'package:flutterapperadauti/events/main.dart';
-import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
-import 'package:flutterapperadauti/air_quality/air_quality.dart';
-import 'package:flutterapperadauti/transport/transport_main_page.dart';
+import 'package:flutterapperadauti/menu_page.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 
 
@@ -14,7 +9,7 @@ class Taxi2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'e-RÄƒdÄƒuÈ›i',
+      title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
@@ -133,13 +128,9 @@ class Taxi extends StatelessWidget {
                   //    (MediaQuery.of(context).size.height / 5 - 60),
                   children: <Widget>[
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageNoticeProblem()),
-                        );
-                      },
+                    onTap: () {
+              UrlLauncher.launch("tel://0752436011");
+              },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -159,7 +150,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5.0),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -182,11 +173,7 @@ class Taxi extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageNoticeProblem()),
-                        );
+                        UrlLauncher.launch("tel://0740348225");
                       },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
@@ -207,7 +194,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -230,11 +217,7 @@ class Taxi extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageNoticeProblem()),
-                        );
+                        UrlLauncher.launch("tel://0720217728");
                       },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
@@ -255,7 +238,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -278,11 +261,7 @@ class Taxi extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => TownHallMain()),
-                        );
+                        UrlLauncher.launch("tel://0742041403");
                       },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
@@ -303,7 +282,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -327,10 +306,7 @@ class Taxi extends StatelessWidget {
                     //2
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => EventsMain()),
-                        );
+                        UrlLauncher.launch("tel://0766210240");
                       },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
@@ -351,7 +327,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -374,11 +350,7 @@ class Taxi extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageNumbers()),
-                        );
+                        UrlLauncher.launch("tel://0740593510");
                       },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
@@ -399,7 +371,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -408,7 +380,7 @@ class Taxi extends StatelessWidget {
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black,),)],),),
-                                    new Text('MERCEDES E-CLASS',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                    new Text('MERCEDES-BENZ E-CLASS',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                                     new Text('0740 593 510',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                                     new Text('SV-11NEL'),
                                   ],
@@ -423,11 +395,7 @@ class Taxi extends StatelessWidget {
                     //3
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageJobs()),
-                        );
+                        UrlLauncher.launch("tel://0741283879");
                       },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
@@ -448,7 +416,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -471,11 +439,7 @@ class Taxi extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AirQualityPage()),
-                        );
+                        UrlLauncher.launch("tel://0742161708");
                       },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
@@ -496,7 +460,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -520,11 +484,7 @@ class Taxi extends StatelessWidget {
                     //4
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageTransport()),
-                        );
+                        UrlLauncher.launch("tel://0744622405");
                       },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
@@ -545,7 +505,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -567,7 +527,9 @@ class Taxi extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: null,
+                      onTap: () {
+                        UrlLauncher.launch("tel://0741697725");
+                      },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -587,7 +549,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -610,7 +572,9 @@ class Taxi extends StatelessWidget {
                     ),
 
                     GestureDetector(
-                      onTap: null,
+                      onTap: () {
+                        UrlLauncher.launch("tel://0754554488");
+                      },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -630,7 +594,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -652,7 +616,9 @@ class Taxi extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: null,
+                      onTap: () {
+                        UrlLauncher.launch("tel://0745536280");
+                      },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -672,7 +638,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -694,7 +660,9 @@ class Taxi extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: null,
+                      onTap: () {
+                        UrlLauncher.launch("tel://0745683668");
+                      },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -714,7 +682,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -723,7 +691,7 @@ class Taxi extends StatelessWidget {
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black,),)],),),
-                                    new Text('VW PASSAT',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                    new Text('VOLSKWAGEN PASSAT',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                                     new Text('0745 683 668',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                                     new Text('SV-16TOD'),
                                   ],

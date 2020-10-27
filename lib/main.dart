@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/services/push_notifications_service.dart';
 import 'package:splashscreen/splashscreen.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
@@ -12,6 +13,7 @@ import 'package:flutterapperadauti/usefull_pages/confidential.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/transport/transport_main_page.dart';
+import 'package:flutterapperadauti/volunteer/volunteer.dart';
 
 import 'locator.dart';
 
@@ -104,6 +106,17 @@ class AndroidMobile1 extends StatelessWidget {
                 "assets/logo_images/app_logo.png", //Constant.iconNotification,
               ),
             ],
+          ),
+        ),
+        title: Container(
+          //alignment: Alignment.center,
+          child: Text(
+            'e-Rădăuți',
+            style: TextStyle(
+              color: Color(0xFF32325D), //Color(0xFFFFFFFF),
+              fontWeight: FontWeight.bold,
+              fontSize: 17,
+            ),
           ),
         ),
       ),
@@ -479,7 +492,13 @@ class AndroidMobile1 extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: null,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => VolunteerPage()),
+                        );
+                      },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 0),
                         elevation: 4,
@@ -496,42 +515,20 @@ class AndroidMobile1 extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Icon(
-                                Icons.access_time,
-                                color: Color(0xAAC4C4C4),
+                                FontAwesome5.hand_holding_heart,
+                                color: Color(0x55FB6340),
                               ),
                               SizedBox(
                                 width: 5,
                               ),
-                              Container(
-                                width: MediaQuery.of(context).size.width / 2 -
-                                    77, //150,
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                      0.0, 0.0, 0.0, 0.0), //10.0 //25.0
-                                  child: new RichText(
-                                    text: new TextSpan(
-                                      children: [
-                                        new TextSpan(
-                                          text: 'Voluntariat\n',
-                                          style: TextStyle(
-                                            color: Color(
-                                                0xFF979797), //Color(0xFFFFFFFF),
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        new TextSpan(
-                                          text: 'Coming soon',
-                                          style: TextStyle(
-                                            color: Color(
-                                                0xFFC4C4C4), //Color(0xFFFFFFFF),
-                                            //fontWeight: FontWeight.bold,
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                              Text(
+                                'Voluntariat',
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 3,
+                                style: TextStyle(
+                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
                                 ),
                               ),
                             ],
@@ -643,6 +640,11 @@ class AndroidMobile1 extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+<<<<<<< HEAD
+=======
+                      //4
+
+>>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
                       Container(
                         child: new InkWell(
                           child: new Text(
@@ -674,5 +676,4 @@ class AndroidMobile1 extends StatelessWidget {
     );
   }
 }
-
 //c:\flutter\flutter\bin\flutter build apk --release --build-name=1.0.5 --build-number=6

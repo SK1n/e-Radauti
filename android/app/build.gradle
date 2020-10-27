@@ -65,4 +65,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.firebase:firebase-messaging:20.3.0'
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
 apply plugin: 'com.google.gms.google-services'

@@ -25,7 +25,7 @@ class NewEventWidget extends StatelessWidget {
           event.yearT,
           event.monthT,
           event.dayT, event.hourT, event.minuteT).add(Duration(
-        hours: -3,
+        hours: -2,
       )),
       endDate:
       DateTime.utc(

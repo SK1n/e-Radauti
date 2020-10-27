@@ -371,7 +371,7 @@ class HomePageNumbers extends StatelessWidget {
                           ),
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
-                            'Coming soon',
+                            'În curând',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(

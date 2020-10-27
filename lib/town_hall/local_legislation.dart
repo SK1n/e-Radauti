@@ -1680,7 +1680,10 @@ class LocalLegislation extends StatelessWidget {
                   ),
                 ),
               ),
+<<<<<<< HEAD
 
+=======
+>>>>>>> be3e1252ad58bf3ac6e91469e15c69da0f33ac07
               ExpandableNotifier(
                 child: Container(
                   padding: const EdgeInsets.only(
