@@ -654,4 +654,4 @@ class AndroidMobile1 extends StatelessWidget {
     );
   }
 }
-//c:\flutter\flutter\bin\flutter build apk --release --build-name=1.0.5 --build-number=6
+//c:\flutter\flutter\bin\flutter build apk --release --build-name=1.6 --build-number=37
