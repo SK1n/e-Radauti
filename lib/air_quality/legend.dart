@@ -440,7 +440,7 @@ class AirQualityLegend extends StatelessWidget {
                                 child: FlatButton(
                                   child: Icon(
                                     Ionicons.ios_square,
-                                    color: Colors.green, //[50],
+                                    color: Colors.green[300], //[50],
                                   ),
                                   onPressed: null,
                                 ),
@@ -448,7 +448,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este bun',
+                                  'Nivelul de PM2.5 este bun (0 - 12 ug/m3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -463,7 +463,7 @@ class AirQualityLegend extends StatelessWidget {
                                 child: FlatButton(
                                   child: Icon(
                                     Ionicons.ios_square,
-                                    color: Colors.yellow, //[100],
+                                    color: Colors.yellow[200], //[100],
                                   ),
                                   onPressed: null,
                                 ),
@@ -471,7 +471,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este moderat',
+                                  'Nivelul de PM2.5 este moderat (12 - 35 ug/m3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -486,7 +486,7 @@ class AirQualityLegend extends StatelessWidget {
                                 child: FlatButton(
                                   child: Icon(
                                     Ionicons.ios_square,
-                                    color: Colors.orange, //[200],
+                                    color: Colors.red[200], //[200],
                                   ),
                                   onPressed: null,
                                 ),
@@ -494,7 +494,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este daunator pentru persoanele sensibile',
+                                  'Nivelul de PM2.5 este daunator pentru persoanele sensibile (35 - 55 ug/m3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -510,14 +510,14 @@ class AirQualityLegend extends StatelessWidget {
                                   onPressed: null,
                                   child: Icon(
                                     Ionicons.ios_square,
-                                    color: Colors.pink[300],
+                                    color: Colors.red[500],
                                   ),
                                 ),
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este daunator pentru toate persoanele',
+                                  'Nivelul de PM2.5 este daunator pentru toate persoanele (55 - 150 ug/m3)',
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
                                 ),

@@ -150,7 +150,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5.0),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -194,7 +194,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -238,7 +238,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -282,7 +282,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -327,7 +327,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -371,7 +371,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -380,7 +380,7 @@ class Taxi extends StatelessWidget {
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black,),)],),),
-                                    new Text('MERCEDES E-CLASS',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                    new Text('MERCEDES-BENZ E-CLASS',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                                     new Text('0740 593 510',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                                     new Text('SV-11NEL'),
                                   ],
@@ -416,7 +416,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -460,7 +460,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -505,7 +505,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -549,7 +549,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -594,7 +594,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -638,7 +638,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -682,7 +682,7 @@ class Taxi extends StatelessWidget {
                                       height: 80.0, //50.0, //25.0,
                                     ),
                                     new Container(
-                                      padding: new EdgeInsets.only(top: 16.0),
+                                      padding: new EdgeInsets.only(top: 5),
                                       child: new Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -691,7 +691,7 @@ class Taxi extends StatelessWidget {
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black,),)],),),
-                                    new Text('VW PASSAT',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                    new Text('VOLSKWAGEN PASSAT',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                                     new Text('0745 683 668',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
                                     new Text('SV-16TOD'),
                                   ],

@@ -34,7 +34,7 @@ class AboutUsContent extends StatelessWidget {
             ),
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
-              'Grupul de inițiativă Rădăuțiul civic a apărut în luna iunie 2017 in mod oficial, după o serie de acțiuni civice ' +
+              'Grupul de inițiativă Rădăuțiul civic a apărut în luna iunie 2017 în mod oficial, după o serie de acțiuni civice ' +
                   'implementate deja de unii membri, pe bază de voluntariat și din dorința de a da ceva înapoi orașului lor natal, ' +
                   'iar în septembrie 2018 acesta a devenit asociație neguvernamentală.',
               style: TextStyle(
@@ -50,7 +50,7 @@ class AboutUsContent extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
               'Viziunea asociației „Rădăuțiul Civic” este cea a unui Rădăuți dezvoltat, cu o societate civilă ' +
-                  'puternică, cu cetățeni responsabili, educați informați și activi, care promovează binele comunității.',
+                  'puternică, cu cetățeni responsabili, educați, informați și activi, care promovează binele comunității.',
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -96,7 +96,7 @@ class AboutUsContent extends StatelessWidget {
             ),
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
-              'Ne plac oamenii cu idei, oamenii activim oameni care FAC și nu doar spun. Ne plac oamenii care ' +
+              'Ne plac oamenii cu idei, oamenii activi, oameni care FAC și nu doar spun. Ne plac oamenii care ' +
                   'oferă soluții, nu doar care critică și ne plac oamenii care cred că prin puterea exemplului pot pune ' +
                   'lucrurile în mișcare.',
               style: TextStyle(

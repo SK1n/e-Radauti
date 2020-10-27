@@ -91,9 +91,8 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         ..attachments = attachments;
     }
     try {
-      final sendReport =
-      await send(message, smtpServer, timeout: Duration(seconds: 10));
-      print('Message sent: ' + sendReport.toString());
+      final sendReport = await send(message, smtpServer);
+      print('Mesaj trimis: ' + sendReport.toString());
       showDialog(context: context, builder: (_) => popoutSucces());
       setState(() {
         attachments = [null, null, null];
@@ -109,13 +108,18 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
       });
     } on MailerException catch (e) {
       for (var p in e.problems) {
-        print('Problem: ${p.code}: ${p.msg}');
+        print('Problema: ${p.code}: ${p.msg}');
       }
       setState(() {
         isLoading = false;
       });
       showDialog(context: context, builder: (_) => popoutFailed(e.problems));
     } on SocketException catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      showDialog(context: context, builder: (_) => popoutFailed(e.message));
+    } on TimeoutException catch (e) {
       setState(() {
         isLoading = false;
       });
@@ -179,7 +183,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                       _takePhoto(i);
                     },
                     leading: Icon(Icons.photo_camera),
-                    title: Text("Faceți o fotografie de la cameră")),
+                    title: Text("Faceți o fotografie cu camera")),
                 ListTile(
                     onTap: () {
                       Navigator.pop(context);
@@ -313,13 +317,14 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         body: isLoading
             ? Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircularProgressIndicator(
                 valueColor:
                 AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
               ),
               Text(
-                  'Va rugam sa asteptati.\nIncercam sa trimitem email-ul!')
+                  'Vă rugăm să așteptați.\nÎncercăm să trimitem email-ul!'),
             ],
           ),
         )
@@ -645,7 +650,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                 ],
               ),
               CheckboxListTile(
-                title: Text('Adaugati locatia dvs. la email'),
+                title: Text('Adăugați locația dvs. la email'),
                 activeColor: Color.fromRGBO(56, 164, 156, 10),
                 secondary: checkBox == false
                     ? Icon(MaterialIcons.location_off)
@@ -782,7 +787,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         break;
       case "Rădăuțiul Civic":
         {
-          _recipientController = "666grade@gmail.com";
+          _recipientController = "radautiulcivic@gmail.com";
           _validateDropDown = false;
           debugPrint('valoare email: $_recipientController');
         }
@@ -816,7 +821,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
       } else {
         _validatePath = true;
         _scaffoldKey.currentState.showSnackBar(SnackBar(
-          content: Text("Nu ați făcut/incărcat nici o poză!"),
+          content: Text("Nu ați făcut/incărcat nicio poză!"),
         ));
       }
       if (_validateDropDown == true) {
@@ -851,7 +856,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
     return CupertinoAlertDialog(
       title: Text('A fost trimis cu succes!'),
       content:
-      Text('Mesajul a fost trimis cu succes catre $_recipientController'),
+      Text('Mesajul a fost trimis cu succes către $_recipientController'),
       actions: [
         CupertinoDialogAction(
           child: FlatButton(
@@ -867,8 +872,8 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
 
   CupertinoAlertDialog popoutFailed(e) {
     return CupertinoAlertDialog(
-      title: Text('A aparut o eroare'),
-      content: Text('Mesajul nu a fost trimis din cauza ca:\n $e'),
+      title: Text('A apărut o eroare'),
+      content: Text('Mesajul nu a fost trimis din cauză că:\n $e'),
       actions: [
         CupertinoDialogAction(
           child: FlatButton(
@@ -880,7 +885,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         ),
         CupertinoDialogAction(
           child: FlatButton(
-            child: Text('Incearca din nou'),
+            child: Text('Încearcă din nou'),
             onPressed: () {
               Navigator.pop(context);
               setState(() {

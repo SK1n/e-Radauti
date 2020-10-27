@@ -290,7 +290,7 @@ class Leaders extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 50,
                           backgroundImage:
-                          AssetImage("assets/images/NicolauBogdan.jpg"),
+                          AssetImage("assets/images/circle_69E781.svg"),
                         ),
                       ),
                       Container(
@@ -300,7 +300,7 @@ class Leaders extends StatelessWidget {
                             Container(
                               width: MediaQuery.of(context).size.width - 136,
                               child: Text(
-                                "Bogdan Adrian Nicolau",
+                                "ÎN CURÂND",
                                 style: TextStyle(
                                   color: Color(0xFF38A49C),
                                   fontWeight: FontWeight.bold,
@@ -378,8 +378,7 @@ class Leaders extends StatelessWidget {
                                           fontSize: 15,
                                         ),
                                       ),
-                                      onTap: () => UrlLauncher.launch(
-                                          'https://primariaradauti.ro/wp-content/uploads/2020/07/Nicolau-Bogdan-2.pdf')),
+                                      onTap: null),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
@@ -389,8 +388,7 @@ class Leaders extends StatelessWidget {
                                           fontSize: 15,
                                         ),
                                       ),
-                                      onTap: () => UrlLauncher.launch(
-                                          'https://primariaradauti.ro/wp-content/uploads/2020/07/Nicolau-Bogdan-1-1.pdf')),
+                                      onTap: null),
                                 ],
                               ),
                             ),
