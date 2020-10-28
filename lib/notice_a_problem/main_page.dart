@@ -12,6 +12,14 @@ import 'package:mailer/smtp_server.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
+extension EmailValidator on String {
+  bool isValidEmail() {
+    return RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(this);
+  }
+}
+
 class HomePageNoticeProblem extends StatefulWidget {
   @override
   _HomePageNoticeProblemState createState() => _HomePageNoticeProblemState();
@@ -91,9 +99,8 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         ..attachments = attachments;
     }
     try {
-      final sendReport =
-      await send(message, smtpServer, timeout: Duration(seconds: 10));
-      print('Message sent: ' + sendReport.toString());
+      final sendReport = await send(message, smtpServer);
+      debugPrint('Mesaj trimis: ' + sendReport.toString());
       showDialog(context: context, builder: (_) => popoutSucces());
       setState(() {
         attachments = [null, null, null];
@@ -108,14 +115,25 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         isLoading = false;
       });
     } on MailerException catch (e) {
-      for (var p in e.problems) {
-        print('Problem: ${p.code}: ${p.msg}');
-      }
+      debugPrint('mailerException: ${e.message}');
       setState(() {
         isLoading = false;
       });
-      showDialog(context: context, builder: (_) => popoutFailed(e.problems));
+      showDialog(context: context, builder: (_) => popoutFailed(e.message));
     } on SocketException catch (e) {
+      debugPrint('socketException: ${e.message}');
+      setState(() {
+        isLoading = false;
+      });
+      showDialog(context: context, builder: (_) => popoutFailed(e.message));
+    } on TimeoutException catch (e) {
+      debugPrint('timeoutException: ${e.message}');
+      setState(() {
+        isLoading = false;
+      });
+      showDialog(context: context, builder: (_) => popoutFailed(e.message));
+    } catch (e) {
+      debugPrint('otherErrors: ${e.message}');
       setState(() {
         isLoading = false;
       });
@@ -179,7 +197,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                       _takePhoto(i);
                     },
                     leading: Icon(Icons.photo_camera),
-                    title: Text("Faceți o fotografie de la cameră")),
+                    title: Text("Faceți o fotografie cu camera")),
                 ListTile(
                     onTap: () {
                       Navigator.pop(context);
@@ -312,120 +330,117 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         drawer: NavDrawer2(),
         body: isLoading
             ? Center(
-          child: Column(
-            children: [
-              CircularProgressIndicator(
-                valueColor:
-                AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
-              ),
-              Text(
-                  'Va rugam sa asteptati.\nIncercam sa trimitem email-ul!')
-            ],
-          ),
-        )
-            : SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.only(bottom: 15, top: 20),
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.keyboard_arrow_left,
-                          color: Color(0xFF979797),
-                        ),
-                        //_left Icons.arrow_back
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircularProgressIndicator(
+                      valueColor:
+                          AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
                     ),
+                    Text(
+                        'Va rugam sa asteptati.\nEmail-ul este in curs de trimitere!'),
+                  ],
+                ),
+              )
+            : SingleChildScrollView(
+                child: Column(
+                  children: [
                     Container(
-                      width: MediaQuery.of(context).size.width - 80,
-                      child: new Stack(
-                        alignment: AlignmentDirectional.center,
+                      padding: EdgeInsets.only(bottom: 15, top: 20),
+                      child: Row(
                         children: <Widget>[
-                          Stack(
-                            children: <Widget>[
-                              Container(
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                      0.0, 0.0, 0.0, 0.0), //10.0 //25.0
-                                  child: Icon(
-                                    Icons.photo_filter,
-                                    color: Color(0x55FB6340),
-                                    size: 30,
-                                  ),
-                                ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.keyboard_arrow_left,
+                                color: Color(0xFF979797),
                               ),
-                              Container(
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                      35.0, 0.0, 0.0, 0.0), //10.0 //25.0
-                                  child: Text(
-                                    'Sesizează \no problemă',
-                                    style: TextStyle(
-                                      color: Color(
-                                          0xFF000000), //Color(0xFFFFFFFF),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 19,
+                              //_left Icons.arrow_back
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width - 80,
+                            child: new Stack(
+                              alignment: AlignmentDirectional.center,
+                              children: <Widget>[
+                                Stack(
+                                  children: <Widget>[
+                                    Container(
+                                      child: Padding(
+                                        padding: EdgeInsets.fromLTRB(
+                                            0.0, 0.0, 0.0, 0.0), //10.0 //25.0
+                                        child: Icon(
+                                          Icons.photo_filter,
+                                          color: Color(0x55FB6340),
+                                          size: 30,
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    Container(
+                                      child: Padding(
+                                        padding: EdgeInsets.fromLTRB(
+                                            35.0, 0.0, 0.0, 0.0), //10.0 //25.0
+                                        child: Text(
+                                          'Sesizează \no problemă',
+                                          style: TextStyle(
+                                            color: Color(
+                                                0xFF000000), //Color(0xFFFFFFFF),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 19,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-              Container(
-                  margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-                  child: TextField(
-                    textCapitalization: TextCapitalization.sentences,
-                    controller: _nameController,
-                    enabled: true,
-                    decoration: new InputDecoration(
-                      border: new OutlineInputBorder(
-                        borderSide:
-                        new BorderSide(color: Color(0xFF38A49C)),
-                      ),
-                      prefixIcon: Icon(
-                        Icons.person,
-                        color: Color(0x55FB6340),
-                        size: 20,
-                      ),
-                      //hintText: "Enter Your Name",
-                      labelText: 'Nume și prenume:',
-                      prefixText: '',
-                      errorText: _validateName
-                          ? 'Nu ați introdus numele dvs.!'
-                          : null,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            width: 1, color: Color(0xFF38A49C)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            width: 1, color: Color(0xFF38A49C)),
-                      ),
-                      labelStyle: TextStyle(
-                        color: Colors.grey,
-                      ),
-                    ),
-                  )),
-              Container(
-                margin: EdgeInsets.fromLTRB(20, 20, 0, 20),
-                child: Row(
-                  children: <Widget>[
                     Container(
-                      width: MediaQuery.of(context).size.width / 2 - 30,
+                        margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                        child: TextField(
+                          textCapitalization: TextCapitalization.sentences,
+                          controller: _nameController,
+                          enabled: true,
+                          decoration: new InputDecoration(
+                            border: new OutlineInputBorder(
+                              borderSide:
+                                  new BorderSide(color: Color(0xFF38A49C)),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.person,
+                              color: Color(0x55FB6340),
+                              size: 20,
+                            ),
+                            labelText: 'Nume și prenume:',
+                            prefixText: '',
+                            errorText: _validateName
+                                ? 'Nu ați introdus numele dvs.!'
+                                : null,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1, color: Color(0xFF38A49C)),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1, color: Color(0xFF38A49C)),
+                            ),
+                            labelStyle: TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                        )),
+                    Container(
+                      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
                       child: TextField(
+                        keyboardType: TextInputType.emailAddress,
                         textCapitalization: TextCapitalization.sentences,
                         controller: _emailController,
                         enabled: true,
@@ -442,7 +457,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                           labelText: 'Email:',
                           prefixText: '',
                           errorText: _validateEmail
-                              ? 'Nu ați introdus email!'
+                              ? 'Nu ați introdus un email valabil.\nAcesta trebuie să fie de forma orice@orice.orice'
                               : null,
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -460,271 +475,269 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 10),
-                    ),
                     Container(
-                        width: MediaQuery.of(context).size.width / 2 - 30,
+                        margin: EdgeInsets.only(top: 20, left: 20, right: 20),
                         child: TextField(
-                          textCapitalization:
-                          TextCapitalization.sentences,
+                          keyboardType: TextInputType.number,
+                          textCapitalization: TextCapitalization.sentences,
                           controller: _numberController,
                           enabled: true,
                           decoration: new InputDecoration(
                             border: new OutlineInputBorder(
                               borderSide: new BorderSide(
-                                  color:
-                                  Color.fromRGBO(56, 164, 156, 10)),
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
                             ),
                             prefixIcon: Icon(
                               Icons.phone,
                               color: Color(0x55FB6340),
                               size: 20,
                             ),
-                            //hintText: "Enter Your Name",
                             labelText: 'Telefon:',
                             prefixText: '',
                             errorText: _validateNumber
-                                ? 'Nu ați introdus telefon!'
+                                ? 'Nu ați introdus un număr de telefon!'
                                 : null,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   width: 1,
-                                  color:
-                                  Color.fromRGBO(56, 164, 156, 10)),
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   width: 1,
-                                  color:
-                                  Color.fromRGBO(56, 164, 156, 10)),
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
                             ),
                             labelStyle: TextStyle(
                               color: Colors.grey,
                             ),
                           ),
                         )),
+                    Container(
+                        margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                        child: TextField(
+                          textCapitalization: TextCapitalization.sentences,
+                          controller: _subjectController,
+                          enabled: true,
+                          decoration: new InputDecoration(
+                            border: new OutlineInputBorder(
+                              borderSide: new BorderSide(
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
+                            ),
+                            labelText: 'Subiect:',
+                            prefixText: '',
+                            errorText: _validateSubject
+                                ? 'Nu ați introdus subiectul!'
+                                : null,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1,
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
+                            ),
+                            labelStyle: TextStyle(
+                              color: Colors.grey,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1,
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
+                            ),
+                          ),
+                        )),
+                    Container(
+                        margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                        child: TextField(
+                          textCapitalization: TextCapitalization.sentences,
+                          controller: _bodyController,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          enabled: true,
+                          decoration: new InputDecoration(
+                            border: new OutlineInputBorder(
+                              borderSide: new BorderSide(
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
+                            ),
+                            labelText: 'Descriere:',
+                            labelStyle: TextStyle(
+                              color: Colors.grey,
+                            ),
+                            prefixText: '',
+                            errorText: _validateDescription
+                                ? 'Nu ați introdus o descriere!'
+                                : null,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1,
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1,
+                                  color: Color.fromRGBO(56, 164, 156, 10)),
+                            ),
+                          ),
+                        )),
+                    GridView.count(
+                      crossAxisCount: 3,
+                      primary: false,
+                      shrinkWrap: true,
+                      padding: const EdgeInsets.only(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                      ),
+                      children: <Widget>[
+                        FlatButton(
+                          onPressed: () {},
+                          child: recordedImage1 == null
+                              ? FlatButton(
+                                  child: SvgPicture.asset(
+                                      'assets/images/photo.svg'),
+                                  onPressed: () {
+                                    getImage(context, 0);
+                                  },
+                                )
+                              : FlatButton(
+                                  child: Image.file(recordedImage1),
+                                  onPressed: () {
+                                    getImage(context, 0);
+                                  },
+                                  onLongPress: () {
+                                    removePicture(0);
+                                  },
+                                ),
+                        ),
+                        FlatButton(
+                          onPressed: () {},
+                          child: recordedImage2 == null
+                              ? FlatButton(
+                                  child: SvgPicture.asset(
+                                      'assets/images/photo.svg'),
+                                  onPressed: () {
+                                    getImage(context, 1);
+                                  },
+                                )
+                              : FlatButton(
+                                  child: Image.file(recordedImage2),
+                                  onPressed: () {
+                                    getImage(context, 1);
+                                  },
+                                  onLongPress: () {
+                                    removePicture(1);
+                                  },
+                                ),
+                        ),
+                        FlatButton(
+                          onPressed: () {},
+                          child: recordedImage3 == null
+                              ? FlatButton(
+                                  child: SvgPicture.asset(
+                                      'assets/images/photo.svg'),
+                                  onPressed: () {
+                                    getImage(context, 2);
+                                  },
+                                )
+                              : FlatButton(
+                                  child: Image.file(recordedImage3),
+                                  onPressed: () {
+                                    getImage(context, 2);
+                                  },
+                                  onLongPress: () {
+                                    removePicture(2);
+                                  },
+                                ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 10, left: 20, right: 20),
+                      child: Text(
+                          'Este obligatoriu cel puțin o poză!\nPentru a șterge o poză, țineți degetul apăsat pe imaginea respectivă!'),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                      child: CheckboxListTile(
+                        title: Text('Adăugați locația dvs. la email'),
+                        activeColor: Color.fromRGBO(56, 164, 156, 10),
+                        secondary: checkBox == false
+                            ? Icon(MaterialIcons.location_off)
+                            : Icon(MaterialIcons.location_on),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: checkBox,
+                        onChanged: (bool value) {
+                          setState(() {
+                            checkBox = value;
+                            if (checkBox == true) {
+                              if (position == null) {
+                                getLocation();
+                                _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                  content: Text(
+                                      "Ne trebuie locația dvs.! Vă rugăm acceptați permisiunea de GPS!"),
+                                ));
+                              }
+                            }
+                          });
+                        },
+                      ),
+                    ),
+                    Text('Alege destinația sesizării din lista de mai jos'),
+                    Container(
+                      margin: EdgeInsets.only(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 20,
+                      ),
+                      child: new DropdownButton<String>(
+                        value: dropdownValue,
+                        elevation: 16,
+                        style: TextStyle(color: Colors.black),
+                        items: <String>[
+                          'Destinatar',
+                          'Primăria Rădăuți',
+                          'Servicii Comunale',
+                          'ACET Rădăuți',
+                          'Consiliul Județean Suceava',
+                          'Garda De Mediu Suceava',
+                          'Garda Forestieră Suceava',
+                          'Rădăuțiul Civic'
+                        ].map((String value) {
+                          return new DropdownMenuItem<String>(
+                            value: value,
+                            child: Center(
+                              child: new Text(value),
+                            ),
+                          );
+                        }).toList(),
+                        onChanged: (String value) {
+                          setState(() {
+                            dropdownValue = value;
+                            dropDownValueIdentifier(value);
+                          });
+                        },
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        top: 0,
+                        left: 20,
+                        right: 20,
+                        bottom: 20,
+                      ),
+                      width: MediaQuery.of(context).size.width,
+                      child: FlatButton(
+                        color: Color.fromRGBO(56, 164, 156, 10),
+                        textColor: Colors.white,
+                        onPressed: () {
+                          attachments.removeWhere((item) => item == null);
+                          verifyInputsAndSendEmail();
+                        },
+                        child: Text("Trimite"),
+                      ),
+                    )
                   ],
                 ),
-              ),
-              Container(
-                  margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-                  child: TextField(
-                    textCapitalization: TextCapitalization.sentences,
-                    controller: _subjectController,
-                    enabled: true,
-                    decoration: new InputDecoration(
-                      border: new OutlineInputBorder(
-                        borderSide: new BorderSide(
-                            color: Color.fromRGBO(56, 164, 156, 10)),
-                      ),
-                      labelText: 'Subiect:',
-                      prefixText: '',
-                      errorText: _validateSubject
-                          ? 'Nu ați introdus subiectul!'
-                          : null,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            width: 1,
-                            color: Color.fromRGBO(56, 164, 156, 10)),
-                      ),
-                      labelStyle: TextStyle(
-                        color: Colors.grey,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            width: 1,
-                            color: Color.fromRGBO(56, 164, 156, 10)),
-                      ),
-                    ),
-                  )),
-              Container(
-                  margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-                  child: TextField(
-                    textCapitalization: TextCapitalization.sentences,
-                    controller: _bodyController,
-                    keyboardType: TextInputType.multiline,
-                    maxLines: null,
-                    enabled: true,
-                    decoration: new InputDecoration(
-                      border: new OutlineInputBorder(
-                        borderSide: new BorderSide(
-                            color: Color.fromRGBO(56, 164, 156, 10)),
-                      ),
-                      labelText: 'Descriere:',
-                      labelStyle: TextStyle(
-                        color: Colors.grey,
-                      ),
-                      prefixText: '',
-                      errorText: _validateDescription
-                          ? 'Nu ați introdus o descriere!'
-                          : null,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            width: 1,
-                            color: Color.fromRGBO(56, 164, 156, 10)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            width: 1,
-                            color: Color.fromRGBO(56, 164, 156, 10)),
-                      ),
-                    ),
-                  )),
-              GridView.count(
-                crossAxisCount: 3,
-                primary: false,
-                shrinkWrap: true,
-                padding: const EdgeInsets.only(
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                ),
-                children: <Widget>[
-                  FlatButton(
-                    onPressed: () {},
-                    child: recordedImage1 == null
-                        ? FlatButton(
-                      child: SvgPicture.asset(
-                          'assets/images/photo.svg'),
-                      onPressed: () {
-                        getImage(context, 0);
-                      },
-                    )
-                        : FlatButton(
-                      child: Image.file(recordedImage1),
-                      onPressed: () {
-                        getImage(context, 0);
-                      },
-                      onLongPress: () {
-                        removePicture(0);
-                      },
-                    ),
-                  ),
-                  FlatButton(
-                    onPressed: () {},
-                    child: recordedImage2 == null
-                        ? FlatButton(
-                      child: SvgPicture.asset(
-                          'assets/images/photo.svg'),
-                      onPressed: () {
-                        getImage(context, 1);
-                      },
-                    )
-                        : FlatButton(
-                      child: Image.file(recordedImage2),
-                      onPressed: () {
-                        getImage(context, 1);
-                      },
-                      onLongPress: () {
-                        removePicture(1);
-                      },
-                    ),
-                  ),
-                  FlatButton(
-                    onPressed: () {},
-                    child: recordedImage3 == null
-                        ? FlatButton(
-                      child: SvgPicture.asset(
-                          'assets/images/photo.svg'),
-                      onPressed: () {
-                        getImage(context, 2);
-                      },
-                    )
-                        : FlatButton(
-                      child: Image.file(recordedImage3),
-                      onPressed: () {
-                        getImage(context, 2);
-                      },
-                      onLongPress: () {
-                        removePicture(2);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              CheckboxListTile(
-                title: Text('Adaugati locatia dvs. la email'),
-                activeColor: Color.fromRGBO(56, 164, 156, 10),
-                secondary: checkBox == false
-                    ? Icon(MaterialIcons.location_off)
-                    : Icon(MaterialIcons.location_on),
-                controlAffinity: ListTileControlAffinity.leading,
-                value: checkBox,
-                onChanged: (bool value) {
-                  setState(() {
-                    checkBox = value;
-                    if (checkBox == true) {
-                      if (position == null) {
-                        getLocation();
-                        _scaffoldKey.currentState.showSnackBar(SnackBar(
-                          content: Text(
-                              "Ne trebuie locația dvs.! Vă rugăm acceptați permisiunea de GPS!"),
-                        ));
-                      }
-                    }
-                  });
-                },
-              ),
-              Text('Alege destinația sesizării din lista de mai jos'),
-              Container(
-                margin: EdgeInsets.only(
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 20,
-                ),
-                child: new DropdownButton<String>(
-                  value: dropdownValue,
-                  elevation: 16,
-                  style: TextStyle(color: Colors.black),
-                  items: <String>[
-                    'Destinatar',
-                    'Primăria Rădăuți',
-                    'Servicii Comunale',
-                    'ACET Rădăuți',
-                    'Consiliul Județean Suceava',
-                    'Garda De Mediu Suceava',
-                    'Garda Forestieră Suceava',
-                    'Rădăuțiul Civic'
-                  ].map((String value) {
-                    return new DropdownMenuItem<String>(
-                      value: value,
-                      child: Center(
-                        child: new Text(value),
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (String value) {
-                    setState(() {
-                      dropdownValue = value;
-                      dropDownValueIdentifier(value);
-                    });
-                  },
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  top: 0,
-                  left: 20,
-                  right: 20,
-                  bottom: 20,
-                ),
-                width: MediaQuery.of(context).size.width,
-                child: FlatButton(
-                  color: Color.fromRGBO(56, 164, 156, 10),
-                  textColor: Colors.white,
-                  onPressed: () {
-                    attachments.removeWhere((item) => item == null);
-                    verifyInputsAndSendEmail();
-                  },
-                  child: Text("Trimite"),
-                ),
-              )
-            ],
-          ),
-        ));
+              ));
   }
 
 // _validateDropDown is true if selected values is 'Destinatar' and the
@@ -782,7 +795,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         break;
       case "Rădăuțiul Civic":
         {
-          _recipientController = "666grade@gmail.com";
+          _recipientController = "radautiulcivic@gmail.com";
           _validateDropDown = false;
           debugPrint('valoare email: $_recipientController');
         }
@@ -806,6 +819,10 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
       _emailController.text.isEmpty
           ? _validateEmail = true
           : _validateEmail = false;
+      debugPrint('validate email: ${_emailController.text.isValidEmail()}');
+      _emailController.text.isValidEmail()
+          ? _validateEmail = false
+          : _validateEmail = true;
       _numberController.text.isEmpty
           ? _validateNumber = true
           : _validateNumber = false;
@@ -816,7 +833,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
       } else {
         _validatePath = true;
         _scaffoldKey.currentState.showSnackBar(SnackBar(
-          content: Text("Nu ați făcut/incărcat nici o poză!"),
+          content: Text("Nu ați făcut/incărcat nicio poză!"),
         ));
       }
       if (_validateDropDown == true) {
@@ -851,7 +868,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
     return CupertinoAlertDialog(
       title: Text('A fost trimis cu succes!'),
       content:
-      Text('Mesajul a fost trimis cu succes catre $_recipientController'),
+          Text('Mesajul a fost trimis cu succes catre $_recipientController'),
       actions: [
         CupertinoDialogAction(
           child: FlatButton(
@@ -867,8 +884,8 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
 
   CupertinoAlertDialog popoutFailed(e) {
     return CupertinoAlertDialog(
-      title: Text('A aparut o eroare'),
-      content: Text('Mesajul nu a fost trimis din cauza ca:\n $e'),
+      title: Text('A apărut o eroare'),
+      content: Text('Mesajul nu a fost trimis din cauză că:\n $e'),
       actions: [
         CupertinoDialogAction(
           child: FlatButton(
@@ -880,7 +897,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         ),
         CupertinoDialogAction(
           child: FlatButton(
-            child: Text('Incearca din nou'),
+            child: Text('Încearcă din nou'),
             onPressed: () {
               Navigator.pop(context);
               setState(() {

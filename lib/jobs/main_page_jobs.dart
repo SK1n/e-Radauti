@@ -85,7 +85,7 @@ class HomePageJobs extends StatelessWidget {
                                   'Anunțuri',
                                   style: TextStyle(
                                     color:
-                                        Color(0xFF000000), //Color(0xFFFFFFFF),
+                                    Color(0xFF000000), //Color(0xFFFFFFFF),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 19,
                                   ),
@@ -261,7 +261,7 @@ class HomePageJobs extends StatelessWidget {
       ),
     );
   }
-  /*Widget build(BuildContext context) {
+/*Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(

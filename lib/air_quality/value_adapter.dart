@@ -67,15 +67,17 @@ class ChangeColor {
     }
   }
 
+//TODO:  if you change any of this values, please also change it in legend.dart
+//otherwise the colors won't match
   Color changeColorQuality(value) {
     if (value > 0 && value <= 12) {
-      return Colors.green[300];
+      return Colors.green;
     } else if (value > 12 && value <= 35.4) {
-      return Colors.yellow[200];
+      return Colors.yellow;
     } else if (value > 35.4 && value <= 55.4) {
-      return Colors.red[200];
+      return Colors.orange;
     } else {
-      return Colors.red[500];
+      return Colors.red;
     }
   }
 }
