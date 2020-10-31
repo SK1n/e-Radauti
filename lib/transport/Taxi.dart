@@ -121,9 +121,9 @@ class Taxi extends StatelessWidget {
                   primary: false,
                   padding: const EdgeInsets.all(15),
                   crossAxisSpacing: 15,
-                  mainAxisSpacing: 15,
+                  mainAxisSpacing: 20,
                   crossAxisCount: 2,
-                  childAspectRatio: 1.1,
+                  childAspectRatio: 1,
                   //(MediaQuery.of(context).size.width / 2 - 22.5) /
                   //    (MediaQuery.of(context).size.height / 5 - 60),
                   children: <Widget>[

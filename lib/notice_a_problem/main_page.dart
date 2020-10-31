@@ -12,6 +12,14 @@ import 'package:mailer/smtp_server.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
+extension EmailValidator on String {
+  bool isValidEmail() {
+    return RegExp(
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(this);
+  }
+}
+
 class HomePageNoticeProblem extends StatefulWidget {
   @override
   _HomePageNoticeProblemState createState() => _HomePageNoticeProblemState();
@@ -32,6 +40,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
   File recordedImage3;
   bool isLoading = false;
   bool checkBox = false;
+  String errorMessage;
 
   List<Attachment> attachments = [null, null, null];
   String _recipientController;
@@ -61,7 +70,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         ..recipients.add(_recipientController)
         ..subject = ' Petiție ${_subjectController.text} - aplicația e-Rădăuți'
         ..html = 'Către, ${dropdownValue.toString()} <br><br> Stimată doamnă/ Stimate domn,'
-            '<br><br>Subsemnatul ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>'
+            '<br><br>Subsemnatul/Subsemnata ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>'
             '${_bodyController.text}<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați'
             ' măsurile ce se impun.<br><br> Cele sesizate sunt la următoarea adresă '
             ' Lat:${position.latitude.toString()} Long:${position.longitude.toString()}'
@@ -69,7 +78,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
             "'>Adresa</a> )<br><br>"
             'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și '
             'a fost transmisă prin intermediul aplicației mobile e-Rădăuți, dezvoltată'
-            ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>'
+            ' de Asociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>'
             'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa ${_emailController.text}'
             '.<br><br>Cu stimă,<br><br>'
             '     ${_nameController.text}<br><br>     Tel: ${_numberController.text}/${_emailController.text}'
@@ -80,11 +89,11 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
         ..recipients.add(_recipientController)
         ..subject = ' Petiție ${_subjectController.text} - aplicația e-Rădăuți'
         ..html = 'Către, ${dropdownValue.toString()} <br><br> Stimată doamnă/ Stimate domn,'
-            '<br><br>Subsemnatul ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>'
+            '<br><br>Subsemnatul/Subsemnata ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>'
             '${_bodyController.text}<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați măsurile ce se impun.<br><br>'
             'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și '
             'a fost transmisă prin intermediul aplicației mobile e-Rădăuți, dezvoltată'
-            ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>'
+            ' de Asociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>'
             'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa ${_emailController.text}'
             '.<br><br>Cu stimă,<br><br>'
             '     ${_nameController.text}<br><br>     Tel: ${_numberController.text}/${_emailController.text}'
@@ -92,7 +101,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
     }
     try {
       final sendReport = await send(message, smtpServer);
-      print('Mesaj trimis: ' + sendReport.toString());
+      debugPrint('Mesaj trimis: ' + sendReport.toString());
       showDialog(context: context, builder: (_) => popoutSucces());
       setState(() {
         attachments = [null, null, null];
@@ -108,18 +117,24 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
       });
     } on MailerException catch (e) {
       for (var p in e.problems) {
-        print('Problema: ${p.code}: ${p.msg}');
+        errorMessage += p.msg + '\n';
+        debugPrint('Problema: ${p.code}: ${p.msg}');
       }
       setState(() {
         isLoading = false;
       });
-      showDialog(context: context, builder: (_) => popoutFailed(e.problems));
+      showDialog(context: context, builder: (_) => popoutFailed(errorMessage));
     } on SocketException catch (e) {
       setState(() {
         isLoading = false;
       });
       showDialog(context: context, builder: (_) => popoutFailed(e.message));
     } on TimeoutException catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      showDialog(context: context, builder: (_) => popoutFailed(e.message));
+    } catch (e) {
       setState(() {
         isLoading = false;
       });
@@ -324,7 +339,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                 AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
               ),
               Text(
-                  'Vă rugăm să așteptați.\nÎncercăm să trimitem email-ul!'),
+                  'Va rugam sa asteptati.\nEmail-ul este in curs de trimitere!'),
             ],
           ),
         )
@@ -405,7 +420,6 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                         color: Color(0x55FB6340),
                         size: 20,
                       ),
-                      //hintText: "Enter Your Name",
                       labelText: 'Nume și prenume:',
                       prefixText: '',
                       errorText: _validateName
@@ -425,93 +439,80 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                     ),
                   )),
               Container(
-                margin: EdgeInsets.fromLTRB(20, 20, 0, 20),
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2 - 30,
-                      child: TextField(
-                        textCapitalization: TextCapitalization.sentences,
-                        controller: _emailController,
-                        enabled: true,
-                        decoration: new InputDecoration(
-                          border: new OutlineInputBorder(
-                            borderSide: new BorderSide(
-                                color: Color.fromRGBO(56, 164, 156, 10)),
-                          ),
-                          prefixIcon: Icon(
-                            Ionicons.ios_mail,
-                            color: Color(0x55FB6340),
-                            size: 20,
-                          ),
-                          labelText: 'Email:',
-                          prefixText: '',
-                          errorText: _validateEmail
-                              ? 'Nu ați introdus email!'
-                              : null,
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 1,
-                                color: Color.fromRGBO(56, 164, 156, 10)),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 1,
-                                color: Color.fromRGBO(56, 164, 156, 10)),
-                          ),
-                          labelStyle: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
+                margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  textCapitalization: TextCapitalization.sentences,
+                  controller: _emailController,
+                  enabled: true,
+                  decoration: new InputDecoration(
+                    border: new OutlineInputBorder(
+                      borderSide: new BorderSide(
+                          color: Color.fromRGBO(56, 164, 156, 10)),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 10),
+                    prefixIcon: Icon(
+                      Ionicons.ios_mail,
+                      color: Color(0x55FB6340),
+                      size: 20,
                     ),
-                    Container(
-                        width: MediaQuery.of(context).size.width / 2 - 30,
-                        child: TextField(
-                          textCapitalization:
-                          TextCapitalization.sentences,
-                          controller: _numberController,
-                          enabled: true,
-                          decoration: new InputDecoration(
-                            border: new OutlineInputBorder(
-                              borderSide: new BorderSide(
-                                  color:
-                                  Color.fromRGBO(56, 164, 156, 10)),
-                            ),
-                            prefixIcon: Icon(
-                              Icons.phone,
-                              color: Color(0x55FB6340),
-                              size: 20,
-                            ),
-                            //hintText: "Enter Your Name",
-                            labelText: 'Telefon:',
-                            prefixText: '',
-                            errorText: _validateNumber
-                                ? 'Nu ați introdus telefon!'
-                                : null,
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 1,
-                                  color:
-                                  Color.fromRGBO(56, 164, 156, 10)),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 1,
-                                  color:
-                                  Color.fromRGBO(56, 164, 156, 10)),
-                            ),
-                            labelStyle: TextStyle(
-                              color: Colors.grey,
-                            ),
-                          ),
-                        )),
-                  ],
+                    labelText: 'Email:',
+                    prefixText: '',
+                    errorText: _validateEmail
+                        ? 'Nu ați introdus un email valabil.\nAcesta trebuie să fie de forma orice@orice.orice'
+                        : null,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          width: 1,
+                          color: Color.fromRGBO(56, 164, 156, 10)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          width: 1,
+                          color: Color.fromRGBO(56, 164, 156, 10)),
+                    ),
+                    labelStyle: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
                 ),
               ),
+              Container(
+                  margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    textCapitalization: TextCapitalization.sentences,
+                    controller: _numberController,
+                    enabled: true,
+                    decoration: new InputDecoration(
+                      border: new OutlineInputBorder(
+                        borderSide: new BorderSide(
+                            color: Color.fromRGBO(56, 164, 156, 10)),
+                      ),
+                      prefixIcon: Icon(
+                        Icons.phone,
+                        color: Color(0x55FB6340),
+                        size: 20,
+                      ),
+                      labelText: 'Telefon:',
+                      prefixText: '',
+                      errorText: _validateNumber
+                          ? 'Nu ați introdus un număr de telefon!'
+                          : null,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 1,
+                            color: Color.fromRGBO(56, 164, 156, 10)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 1,
+                            color: Color.fromRGBO(56, 164, 156, 10)),
+                      ),
+                      labelStyle: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
+                  )),
               Container(
                   margin: EdgeInsets.only(top: 20, left: 20, right: 20),
                   child: TextField(
@@ -649,28 +650,36 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
                   ),
                 ],
               ),
-              CheckboxListTile(
-                title: Text('Adăugați locația dvs. la email'),
-                activeColor: Color.fromRGBO(56, 164, 156, 10),
-                secondary: checkBox == false
-                    ? Icon(MaterialIcons.location_off)
-                    : Icon(MaterialIcons.location_on),
-                controlAffinity: ListTileControlAffinity.leading,
-                value: checkBox,
-                onChanged: (bool value) {
-                  setState(() {
-                    checkBox = value;
-                    if (checkBox == true) {
-                      if (position == null) {
-                        getLocation();
-                        _scaffoldKey.currentState.showSnackBar(SnackBar(
-                          content: Text(
-                              "Ne trebuie locația dvs.! Vă rugăm acceptați permisiunea de GPS!"),
-                        ));
+              Container(
+                margin: EdgeInsets.only(top: 10, left: 20, right: 20),
+                child: Text(
+                    'Este obligatoriu cel puțin o poză!\nPentru a șterge o poză, țineți degetul apăsat pe imaginea respectivă!'),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                child: CheckboxListTile(
+                  title: Text('Adăugați locația dvs. la email'),
+                  activeColor: Color.fromRGBO(56, 164, 156, 10),
+                  secondary: checkBox == false
+                      ? Icon(MaterialIcons.location_off)
+                      : Icon(MaterialIcons.location_on),
+                  controlAffinity: ListTileControlAffinity.leading,
+                  value: checkBox,
+                  onChanged: (bool value) {
+                    setState(() {
+                      checkBox = value;
+                      if (checkBox == true) {
+                        if (position == null) {
+                          getLocation();
+                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                            content: Text(
+                                "Ne trebuie locația dvs.! Vă rugăm acceptați permisiunea de GPS!"),
+                          ));
+                        }
                       }
-                    }
-                  });
-                },
+                    });
+                  },
+                ),
               ),
               Text('Alege destinația sesizării din lista de mai jos'),
               Container(
@@ -811,6 +820,10 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
       _emailController.text.isEmpty
           ? _validateEmail = true
           : _validateEmail = false;
+      debugPrint('validate email: ${_emailController.text.isValidEmail()}');
+      _emailController.text.isValidEmail()
+          ? _validateEmail = false
+          : _validateEmail = true;
       _numberController.text.isEmpty
           ? _validateNumber = true
           : _validateNumber = false;
@@ -856,7 +869,7 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
     return CupertinoAlertDialog(
       title: Text('A fost trimis cu succes!'),
       content:
-      Text('Mesajul a fost trimis cu succes către $_recipientController'),
+      Text('Mesajul a fost trimis cu succes catre $_recipientController'),
       actions: [
         CupertinoDialogAction(
           child: FlatButton(

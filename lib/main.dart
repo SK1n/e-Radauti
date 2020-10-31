@@ -109,11 +109,11 @@ class AndroidMobile1 extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Container(
+/*                    Container(
                       height: 50,
                       width: 50,
                       child: Image.asset("assets/images/birthday.png"),
-                    ),
+                    ),*/
                     Container(
                       padding: EdgeInsets.only(left: 10),
                       //width: MediaQuery.of(context).size.width - 101,
@@ -654,4 +654,4 @@ class AndroidMobile1 extends StatelessWidget {
     );
   }
 }
-//c:\flutter\flutter\bin\flutter build apk --release --build-name=1.6 --build-number=37
+//c:\flutter\flutter\bin\flutter build apk --release --build-name=1.6 --build-number=38
