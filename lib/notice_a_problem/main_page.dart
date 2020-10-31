@@ -844,17 +844,19 @@ class _HomePageNoticeProblemState extends State<HomePageNoticeProblem> {
       if (_validateName == false) {
         if (_validateDescription == false) {
           if (_validateSubject == false) {
-            if (_validateDropDown == false) {
-              if (_validatePath == false) {
-                if (attachments[0] == null) {
-                  _scaffoldKey.currentState.showSnackBar(SnackBar(
-                    content: Text("Nu ați făcut/incărcat nici o poză!"),
-                  ));
-                } else {
-                  setState(() {
-                    isLoading = true;
-                  });
-                  _mailer();
+            if (_validateEmail == false) {
+              if (_validateDropDown == false) {
+                if (_validatePath == false) {
+                  if (attachments[0] == null) {
+                    _scaffoldKey.currentState.showSnackBar(SnackBar(
+                      content: Text("Nu ați făcut/incărcat nici o poză!"),
+                    ));
+                  } else {
+                    setState(() {
+                      isLoading = true;
+                    });
+                    _mailer();
+                  }
                 }
               }
             }
