@@ -46,19 +46,19 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return new SplashScreen(
-      seconds: 10,
+      seconds: 5, //10
       navigateAfterSeconds: new AndroidMobile1(),
-      title: new Text(
-        'Aplicația e-Rădăuți',
+      /*title: new Text(
+        'e-Rădăuți',
         style: new TextStyle(
           //fontWeight: FontWeight.bold,
           fontSize: 20.0,
-          color: Colors.black,
+          color: Color(0xFF32325D), //Colors.black
         ),
-      ),
-      image: Image.asset("assets/logo_images/app_logo.png"),
+      ),*/
+      image: Image.asset("assets/logo_images/prop_6.png"),
       backgroundColor: Colors.white,
-      photoSize: 80.0,
+      photoSize: 150.0,
     );
   }
 }
@@ -83,17 +83,6 @@ class AndroidMobile1 extends StatelessWidget {
       key: _scaffoldKey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Container(
-          alignment: Alignment.center,
-          child: Text(
-            'e-Rădăuți',
-            style: TextStyle(
-              color: Color(0xFF000000), //Color(0xFFFFFFFF),
-              fontWeight: FontWeight.bold,
-              fontSize: 19,
-            ),
-          ),
-        ),
         leading: Container(
           padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
@@ -104,6 +93,17 @@ class AndroidMobile1 extends StatelessWidget {
                 "assets/logo_images/app_logo.png", //Constant.iconNotification,
               ),
             ],
+          ),
+        ),
+        title: Container(
+          //alignment: Alignment.center,
+          child: Text(
+            'e-Rădăuți',
+            style: TextStyle(
+              color: Color(0xFF32325D), //Color(0xFFFFFFFF),
+              fontWeight: FontWeight.bold,
+              fontSize: 17,
+            ),
           ),
         ),
       ),
@@ -117,11 +117,11 @@ class AndroidMobile1 extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Container(
+                    /*Container(
                       height: 50,
                       width: 50,
-                      child: Image.asset("assets/images/birthday.png"),
-                    ),
+                      child: null, //Image.asset("assets/images/birthday.png"),
+                    ),*/
                     Container(
                       padding: EdgeInsets.only(left: 10),
                       //width: MediaQuery.of(context).size.width - 101,
@@ -627,13 +627,17 @@ class AndroidMobile1 extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                      //4
+
                       Container(
+                        //padding: EdgeInsets.only(left: 5, right: 5,),
+                        //width: MediaQuery.of(context).size.width/4 - 15,
                         child: new InkWell(
                           child: new Text(
                             'Parteneri',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              //decoration: TextDecoration.underline,
+                              decoration: TextDecoration.underline,
                               color: Color(0xFF32325D),
                               fontSize: 15,
                             ),
