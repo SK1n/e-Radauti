@@ -1,10 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:flutterapperadauti/menu_page.dart';
 
-class LocalCouncil extends StatelessWidget {
+class LocalCouncil extends StatefulWidget {
+  @override
+  _LocalCouncilState createState() => _LocalCouncilState();
+}
+
+class _LocalCouncilState extends State<LocalCouncil> {
+  String dropdownValue = "Platforma de contact";
+  String _recipientController;
+  bool _validateDropDown = false;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   Widget addLeadingIcon(){
     return new Container(
@@ -266,7 +275,7 @@ class LocalCouncil extends StatelessWidget {
                       )
                     ],
                   ),
-                  Container(
+                  /*Container(
                     padding: EdgeInsets.only(top: 10,),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
@@ -286,6 +295,100 @@ class LocalCouncil extends StatelessWidget {
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
                         UrlLauncher.launch("tel://0722458858");
+                      },
+                    ),
+                  ),*/
+                  /*Container(
+                    padding: EdgeInsets.only(top: 10.0,),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        FlatButton(
+                          child: Icon(
+                            Ionicons.logo_facebook,
+                            color: Colors.indigo,
+                            size: 40,
+                          ),
+                          onPressed: () {
+                            //_launchURL("https://www.facebook.com/BogdanLoghinPNL/");
+                            UrlLauncher.launch(
+                                "https://www.facebook.com/airinei.cristina.7");
+                          },
+                        ),
+
+                        FlatButton(
+                          child: Icon(
+                            Ionicons.ios_mail,
+                            color: Colors.orangeAccent,
+                            size: 40,
+                          ),
+                          onPressed: () {
+                            /*UrlLauncher.launch(
+                              "mailto:primar@primariaradauti.ro");*/
+                            UrlLauncher.launch("tel://0722458858");
+                          },
+                        ),
+                      ],
+                    ),
+                  ),*/
+                  Container(
+                    margin: EdgeInsets.only(
+                      top: 10,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                    ),
+                    child: new DropdownButton<String>(
+                      value: dropdownValue,
+                      elevation: 16,
+                      style: TextStyle(color: Colors.black),
+                      items: <String>[
+                        'Platforma de contact',
+                        'Facebook',
+                        'Telefon',
+                      ].map((String value) {
+                        return new DropdownMenuItem<String>(
+                          value: value,
+                          child: Center(
+                            child: new Text(value),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String value) {
+                        setState(() {
+                          dropdownValue = value;
+                          dropDownValueIdentifier(value);
+                        });
+                      },
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 10,),
+                    width: MediaQuery.of(context).size.width - 35,
+                    child: FlatButton(
+                      child: Text(
+                        "Contactează",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      color: Color(0xFF38A49C),
+                      textColor: Colors.white,
+                      disabledColor: Colors.grey,
+                      disabledTextColor: Colors.black,
+                      splashColor: Color(0x8838A49C),
+                      onPressed: () {
+                        if (_validateDropDown == true) {
+                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                            content: Text("Nu ați selectat o categorie!"),
+                          ));
+                        } else {
+                          UrlLauncher.launch(_recipientController);
+                        };
+                        /*UrlLauncher.launch(
+                            "mailto:primar@primariaradauti.ro");*/
+                        //UrlLauncher.launch("tel://0722458858");
                       },
                     ),
                   ),
@@ -2924,5 +3027,34 @@ class LocalCouncil extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // _validateDropDown is true if selected values is 'Destinatar' and the
+// user will get a message saying that he has to select a delivery location
+// else _validateDropDown is false and _recipientController gets the address to delivery location
+  void dropDownValueIdentifier(value) {
+    switch (value) {
+      case "Platforma de contact":
+        {
+          _recipientController = null;
+          _validateDropDown = true;
+          debugPrint('valoare email: $_recipientController');
+        }
+        break;
+      case "Facebook":
+        {
+          _recipientController = "https://www.facebook.com/airinei.cristina.7";
+          _validateDropDown = false;
+          debugPrint('valoare email: $_recipientController');
+        }
+        break;
+      case "Telefon":
+        {
+          _recipientController = "tel://0722458858";
+          _validateDropDown = false;
+          debugPrint('valoare email: $_recipientController');
+        }
+        break;
+    }
   }
 }
