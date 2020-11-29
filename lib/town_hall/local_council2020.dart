@@ -282,8 +282,11 @@ class LocalCouncil extends StatelessWidget {
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
-                      onPressed: null, /*() {
-                      },*/
+                      onPressed: () {
+                        /*UrlLauncher.launch(
+                            "mailto:primar@primariaradauti.ro");*/
+                        UrlLauncher.launch("tel://0722458858");
+                      },
                     ),
                   ),
                 ],
@@ -570,8 +573,11 @@ class LocalCouncil extends StatelessWidget {
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
-                      onPressed: null, /*() {
-                      },*/
+                      onPressed: () {
+                        /*UrlLauncher.launch(
+                            "mailto:primar@primariaradauti.ro");*/
+                        UrlLauncher.launch("tel://0744848138");
+                      },
                     ),
                   ),
                 ],
@@ -858,9 +864,11 @@ class LocalCouncil extends StatelessWidget {
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
-                      onPressed: null, /*() {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
-                      },*/
+                      onPressed: () {
+                        /*UrlLauncher.launch(
+                            "mailto:primar@primariaradauti.ro");*/
+                        UrlLauncher.launch("tel://0744508199");
+                      },
                     ),
                   ),
                 ],
@@ -1291,8 +1299,10 @@ class LocalCouncil extends StatelessWidget {
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
-                      onPressed: null, /*() {
-                      },*/
+                      onPressed: () {
+                        UrlLauncher.launch(
+                            "mailto:luciannanu@yahoo.com");
+                      },
                     ),
                   ),
                 ],
@@ -1869,8 +1879,10 @@ class LocalCouncil extends StatelessWidget {
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
-                      onPressed: null, /*() {
-                      },*/
+                      onPressed: () {
+                        UrlLauncher.launch(
+                            "mailto:onica.marius@gmail.com");
+                      },
                     ),
                   ),
                 ],
@@ -2014,9 +2026,11 @@ class LocalCouncil extends StatelessWidget {
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
-                      onPressed: null, /*() {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
-                      },*/
+                      onPressed: () {
+                        /*UrlLauncher.launch(
+                            "mailto:primar@primariaradauti.ro");*/
+                        UrlLauncher.launch("tel://0787886725");
+                      },
                     ),
                   ),
                 ],
@@ -2304,9 +2318,11 @@ class LocalCouncil extends StatelessWidget {
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
-                      onPressed: null, /*() {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
-                      },*/
+                      onPressed: () {
+                        /*UrlLauncher.launch(
+                            "mailto:primar@primariaradauti.ro");*/
+                        UrlLauncher.launch("tel://0736358130");
+                      },
                     ),
                   ),
                 ],
@@ -2449,9 +2465,11 @@ class LocalCouncil extends StatelessWidget {
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
-                      onPressed: null, /*() {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
-                      },*/
+                      onPressed: () {
+                        /*UrlLauncher.launch(
+                            "mailto:primar@primariaradauti.ro");*/
+                        UrlLauncher.launch("tel://0736655521");
+                      },
                     ),
                   ),
                 ],
@@ -2595,9 +2613,11 @@ class LocalCouncil extends StatelessWidget {
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
-                      onPressed: null, /*() {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
-                      },*/
+                      onPressed: () {
+                        /*UrlLauncher.launch(
+                            "mailto:primar@primariaradauti.ro");*/
+                        UrlLauncher.launch("tel://0742766042");
+                      },
                     ),
                   ),
                 ],
@@ -2774,7 +2794,7 @@ class LocalCouncil extends StatelessWidget {
                             padding: EdgeInsets.only(top: 10),
                             height: 50,
                             width: 50,
-                            child: null, //Image.asset("assets/images/upr.jpg"),
+                            child: Image.asset("assets/images/psd.png"),
                           ),
                         ],
                       ),
@@ -2885,9 +2905,11 @@ class LocalCouncil extends StatelessWidget {
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
-                      onPressed: null, /*() {
-                        //UrlLauncher.launch("mailto:registratura@primarie.ro");
-                      },*/
+                      onPressed: () {
+                        /*UrlLauncher.launch(
+                            "mailto:primar@primariaradauti.ro");*/
+                        UrlLauncher.launch("tel://0752336791");
+                      },
                     ),
                   ),
                 ],
