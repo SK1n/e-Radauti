@@ -18,7 +18,8 @@ class SendEmailMailer {
       Position position,
       String email,
       String number,
-      List<Attachment> attachments) async {
+      List<Attachment> attachments,
+      BuildContext context) async {
     message = Message()
       ..from = Address(username, name)
       ..recipients.add(destination)
@@ -47,7 +48,8 @@ class SendEmailMailer {
       String body,
       String email,
       String number,
-      List<Attachment> attachments) async {
+      List<Attachment> attachments,
+      BuildContext context) async {
     message = Message()
       ..from = Address(username, name)
       ..recipients.add(destination)
@@ -66,7 +68,7 @@ class SendEmailMailer {
     tryToSendEmail(message);
   }
 
-  void tryToSendEmail(var message) async {
+  Future<bool> tryToSendEmail(var message) async {
     final smtpServer = gmail(username, password);
     try {
       final sendReport = await send(message, smtpServer);

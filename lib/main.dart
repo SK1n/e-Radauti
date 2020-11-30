@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
 import 'package:flutterapperadauti/services/push_notifications_service.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
@@ -157,7 +158,7 @@ class AndroidMobile1 extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HomePageNoticeProblem()),
+                              builder: (context) => LayoutNoticeProblem()),
                         );
                       },
                       child: Card(
