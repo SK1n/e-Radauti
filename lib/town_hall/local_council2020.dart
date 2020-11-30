@@ -11,9 +11,31 @@ class LocalCouncil extends StatefulWidget {
 }
 
 class _LocalCouncilState extends State<LocalCouncil> {
-  String dropdownValue = "Platforma de contact";
-  String _recipientController;
-  bool _validateDropDown = false;
+  //1
+  String dropdownValue1 = "Platforma de contact";
+  String _recipientController1;
+  bool _validateDropDown1 = false;
+  //3
+  String dropdownValue3 = "Platforma de contact";
+  String _recipientController3;
+  bool _validateDropDown3 = false;
+  //5
+  String dropdownValue5 = "Platforma de contact";
+  String _recipientController5;
+  bool _validateDropDown5 = false;
+  //13
+  String dropdownValue13 = "Platforma de contact";
+  String _recipientController13;
+  bool _validateDropDown13 = false;
+  //16
+  String dropdownValue16 = "Platforma de contact";
+  String _recipientController16;
+  bool _validateDropDown16 = false;
+  //17
+  String dropdownValue17 = "Platforma de contact";
+  String _recipientController17;
+  bool _validateDropDown17 = false;
+
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   Widget addLeadingIcon(){
     return new Container(
@@ -339,7 +361,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       bottom: 0,
                     ),
                     child: new DropdownButton<String>(
-                      value: dropdownValue,
+                      value: dropdownValue1,
                       elevation: 16,
                       style: TextStyle(color: Colors.black),
                       items: <String>[
@@ -356,8 +378,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       }).toList(),
                       onChanged: (String value) {
                         setState(() {
-                          dropdownValue = value;
-                          dropDownValueIdentifier(value);
+                          dropdownValue1 = value;
+                          dropDownValueIdentifier1(value);
                         });
                       },
                     ),
@@ -379,12 +401,12 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
-                        if (_validateDropDown == true) {
+                        if (_validateDropDown1 == true) {
                           _scaffoldKey.currentState.showSnackBar(SnackBar(
                             content: Text("Nu ați selectat o categorie!"),
                           ));
                         } else {
-                          UrlLauncher.launch(_recipientController);
+                          UrlLauncher.launch(_recipientController1);
                         };
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
@@ -662,12 +684,44 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
+                    margin: EdgeInsets.only(
+                      top: 10,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                    ),
+                    child: new DropdownButton<String>(
+                      value: dropdownValue3,
+                      elevation: 16,
+                      style: TextStyle(color: Colors.black),
+                      items: <String>[
+                        'Platforma de contact',
+                        'Email',
+                        'Telefon',
+                      ].map((String value) {
+                        return new DropdownMenuItem<String>(
+                          value: value,
+                          child: Center(
+                            child: new Text(value),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String value) {
+                        setState(() {
+                          dropdownValue3 = value;
+                          dropDownValueIdentifier3(value);
+                        });
+                      },
+                    ),
+                  ),
+                  Container(
                     padding: EdgeInsets.only(top: 10,),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
                         "Contactează",
                         style: TextStyle(
+                          fontWeight: FontWeight.bold,
                           fontSize: 15,
                         ),
                       ),
@@ -677,9 +731,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
+                        if (_validateDropDown3 == true) {
+                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                            content: Text("Nu ați selectat o categorie!"),
+                          ));
+                        } else {
+                          UrlLauncher.launch(_recipientController3);
+                        };
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
-                        UrlLauncher.launch("tel://0744848138");
+                        //UrlLauncher.launch("tel://0722458858");
                       },
                     ),
                   ),
@@ -952,14 +1013,45 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
+                    margin: EdgeInsets.only(
+                      top: 10,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                    ),
+                    child: new DropdownButton<String>(
+                      value: dropdownValue5,
+                      elevation: 16,
+                      style: TextStyle(color: Colors.black),
+                      items: <String>[
+                        'Platforma de contact',
+                        'Email',
+                        'Telefon',
+                      ].map((String value) {
+                        return new DropdownMenuItem<String>(
+                          value: value,
+                          child: Center(
+                            child: new Text(value),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String value) {
+                        setState(() {
+                          dropdownValue5 = value;
+                          dropDownValueIdentifier5(value);
+                        });
+                      },
+                    ),
+                  ),
+                  Container(
                     padding: EdgeInsets.only(top: 10,),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
                         "Contactează",
                         style: TextStyle(
-                          fontSize: 15,
                           fontWeight: FontWeight.bold,
+                          fontSize: 15,
                         ),
                       ),
                       color: Color(0xFF38A49C),
@@ -968,9 +1060,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
+                        if (_validateDropDown5 == true) {
+                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                            content: Text("Nu ați selectat o categorie!"),
+                          ));
+                        } else {
+                          UrlLauncher.launch(_recipientController5);
+                        };
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
-                        UrlLauncher.launch("tel://0744508199");
+                        //UrlLauncher.launch("tel://0722458858");
                       },
                     ),
                   ),
@@ -1284,7 +1383,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: null, //AssetImage("assets/images/MehedinMaria.png"),
+                              backgroundImage: AssetImage("assets/images/council/NanuLucian.jpg"),
                             ),
                           ),
                           Container(
@@ -1575,7 +1674,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: null, //AssetImage("assets/images/PopescuAngelica.png"),
+                              backgroundImage: AssetImage("assets/images/council/NicolauBogdan.jpg"),
                             ),
                           ),
                           Container(
@@ -1720,7 +1819,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: null, //AssetImage("assets/images/MutrescuDan.jpg"),
+                              backgroundImage: AssetImage("assets/images/council/OlareanAurel.jpg"),
                             ),
                           ),
                           Container(
@@ -2114,14 +2213,46 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
+                    margin: EdgeInsets.only(
+                      top: 10,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                    ),
+                    child: new DropdownButton<String>(
+                      value: dropdownValue13,
+                      elevation: 16,
+                      style: TextStyle(color: Colors.black),
+                      items: <String>[
+                        'Platforma de contact',
+                        'Email',
+                        'Facebook',
+                        'Telefon',
+                      ].map((String value) {
+                        return new DropdownMenuItem<String>(
+                          value: value,
+                          child: Center(
+                            child: new Text(value),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String value) {
+                        setState(() {
+                          dropdownValue13 = value;
+                          dropDownValueIdentifier13(value);
+                        });
+                      },
+                    ),
+                  ),
+                  Container(
                     padding: EdgeInsets.only(top: 10,),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
                         "Contactează",
                         style: TextStyle(
-                          fontSize: 15,
                           fontWeight: FontWeight.bold,
+                          fontSize: 15,
                         ),
                       ),
                       color: Color(0xFF38A49C),
@@ -2130,9 +2261,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
+                        if (_validateDropDown13 == true) {
+                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                            content: Text("Nu ați selectat o categorie!"),
+                          ));
+                        } else {
+                          UrlLauncher.launch(_recipientController13);
+                        };
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
-                        UrlLauncher.launch("tel://0787886725");
+                        //UrlLauncher.launch("tel://0722458858");
                       },
                     ),
                   ),
@@ -2450,7 +2588,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: null, //AssetImage("assets/images/RobuSorin.jpg"),
+                              backgroundImage: AssetImage("assets/images/council/TibeicaSilviu.jpg"),
                             ),
                           ),
                           Container(
@@ -2553,14 +2691,46 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
+                    margin: EdgeInsets.only(
+                      top: 10,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                    ),
+                    child: new DropdownButton<String>(
+                      value: dropdownValue16,
+                      elevation: 16,
+                      style: TextStyle(color: Colors.black),
+                      items: <String>[
+                        'Platforma de contact',
+                        'Email',
+                        'Facebook',
+                        'Telefon',
+                      ].map((String value) {
+                        return new DropdownMenuItem<String>(
+                          value: value,
+                          child: Center(
+                            child: new Text(value),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String value) {
+                        setState(() {
+                          dropdownValue16 = value;
+                          dropDownValueIdentifier16(value);
+                        });
+                      },
+                    ),
+                  ),
+                  Container(
                     padding: EdgeInsets.only(top: 10,),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
                         "Contactează",
                         style: TextStyle(
-                          fontSize: 15,
                           fontWeight: FontWeight.bold,
+                          fontSize: 15,
                         ),
                       ),
                       color: Color(0xFF38A49C),
@@ -2569,9 +2739,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
+                        if (_validateDropDown16 == true) {
+                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                            content: Text("Nu ați selectat o categorie!"),
+                          ));
+                        } else {
+                          UrlLauncher.launch(_recipientController16);
+                        };
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
-                        UrlLauncher.launch("tel://0736655521");
+                        //UrlLauncher.launch("tel://0722458858");
                       },
                     ),
                   ),
@@ -2701,14 +2878,45 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
+                    margin: EdgeInsets.only(
+                      top: 10,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                    ),
+                    child: new DropdownButton<String>(
+                      value: dropdownValue17,
+                      elevation: 16,
+                      style: TextStyle(color: Colors.black),
+                      items: <String>[
+                        'Platforma de contact',
+                        'Email',
+                        'Telefon',
+                      ].map((String value) {
+                        return new DropdownMenuItem<String>(
+                          value: value,
+                          child: Center(
+                            child: new Text(value),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String value) {
+                        setState(() {
+                          dropdownValue17 = value;
+                          dropDownValueIdentifier17(value);
+                        });
+                      },
+                    ),
+                  ),
+                  Container(
                     padding: EdgeInsets.only(top: 10,),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
                         "Contactează",
                         style: TextStyle(
-                          fontSize: 15,
                           fontWeight: FontWeight.bold,
+                          fontSize: 15,
                         ),
                       ),
                       color: Color(0xFF38A49C),
@@ -2717,9 +2925,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
+                        if (_validateDropDown17 == true) {
+                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                            content: Text("Nu ați selectat o categorie!"),
+                          ));
+                        } else {
+                          UrlLauncher.launch(_recipientController17);
+                        };
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
-                        UrlLauncher.launch("tel://0742766042");
+                        //UrlLauncher.launch("tel://0722458858");
                       },
                     ),
                   ),
@@ -3032,29 +3247,175 @@ class _LocalCouncilState extends State<LocalCouncil> {
   // _validateDropDown is true if selected values is 'Destinatar' and the
 // user will get a message saying that he has to select a delivery location
 // else _validateDropDown is false and _recipientController gets the address to delivery location
-  void dropDownValueIdentifier(value) {
+  void dropDownValueIdentifier1(value) {
     switch (value) {
       case "Platforma de contact":
         {
-          _recipientController = null;
-          _validateDropDown = true;
-          debugPrint('valoare email: $_recipientController');
+          _recipientController1 = null;
+          _validateDropDown1 = true;
+          debugPrint('valoare email: $_recipientController1');
         }
         break;
       case "Facebook":
         {
-          _recipientController = "https://www.facebook.com/airinei.cristina.7";
-          _validateDropDown = false;
-          debugPrint('valoare email: $_recipientController');
+          _recipientController1 = "https://www.facebook.com/airinei.cristina.7";
+          _validateDropDown1 = false;
+          debugPrint('valoare email: $_recipientController1');
         }
         break;
       case "Telefon":
         {
-          _recipientController = "tel://0722458858";
-          _validateDropDown = false;
-          debugPrint('valoare email: $_recipientController');
+          _recipientController1 = "tel://0722458858";
+          _validateDropDown1 = false;
+          debugPrint('valoare email: $_recipientController1');
         }
         break;
     }
   }
+
+  //3
+  void dropDownValueIdentifier3(value) {
+    switch (value) {
+      case "Platforma de contact":
+        {
+          _recipientController3 = null;
+          _validateDropDown3 = true;
+          debugPrint('valoare email: $_recipientController3');
+        }
+        break;
+      case "Email":
+        {
+          _recipientController3 = "mailto:fdoroscan@gmail.com";
+          _validateDropDown3 = false;
+          debugPrint('valoare email: $_recipientController3');
+        }
+        break;
+      case "Telefon":
+        {
+          _recipientController3 = "tel://0744848138";
+          _validateDropDown3 = false;
+          debugPrint('valoare email: $_recipientController3');
+        }
+        break;
+    }
+  }
+  //5
+  void dropDownValueIdentifier5(value) {
+    switch (value) {
+      case "Platforma de contact":
+        {
+          _recipientController5 = null;
+          _validateDropDown5 = true;
+          debugPrint('valoare email: $_recipientController5');
+        }
+        break;
+      case "Email":
+        {
+          _recipientController5 = "mailto:luchianct@gmail.com";
+          _validateDropDown5 = false;
+          debugPrint('valoare email: $_recipientController5');
+        }
+        break;
+      case "Telefon":
+        {
+          _recipientController5 = "tel://0744508199";
+          _validateDropDown5 = false;
+          debugPrint('valoare email: $_recipientController5');
+        }
+        break;
+    }
+  }
+  //13
+  void dropDownValueIdentifier13(value) {
+    switch (value) {
+      case "Platforma de contact":
+        {
+          _recipientController13 = null;
+          _validateDropDown13 = true;
+          debugPrint('valoare email: $_recipientController13');
+        }
+        break;
+      case "Email":
+        {
+          _recipientController13 = "mailto:eu.consulting17@gmail.com";
+          _validateDropDown13 = false;
+          debugPrint('valoare email: $_recipientController13');
+        }
+        break;
+      case "Facebook":
+        {
+          _recipientController13 = "https://www.facebook.com/preda.florin.mirel";
+          _validateDropDown13 = false;
+          debugPrint('valoare email: $_recipientController13');
+        }
+        break;
+      case "Telefon":
+        {
+          _recipientController13 = "tel://0787886725";
+          _validateDropDown13 = false;
+          debugPrint('valoare email: $_recipientController13');
+        }
+        break;
+    }
+  }
+  //16
+  void dropDownValueIdentifier16(value) {
+    switch (value) {
+      case "Platforma de contact":
+        {
+          _recipientController16 = null;
+          _validateDropDown16 = true;
+          debugPrint('valoare email: $_recipientController16');
+        }
+        break;
+      case "Email":
+        {
+          _recipientController16 = "mailto:tibeica.silviu.catalin@protonmail.com";
+          _validateDropDown16 = false;
+          debugPrint('valoare email: $_recipientController16');
+        }
+        break;
+      case "Facebook":
+        {
+          _recipientController16 = "https://www.facebook.com/tibeicasilviucatalin";
+          _validateDropDown16 = false;
+          debugPrint('valoare email: $_recipientController16');
+        }
+        break;
+      case "Telefon":
+        {
+          _recipientController16 = "tel://0736655521";
+          _validateDropDown16 = false;
+          debugPrint('valoare email: $_recipientController16');
+        }
+        break;
+    }
+  }
+  //17
+  void dropDownValueIdentifier17(value) {
+    switch (value) {
+      case "Platforma de contact":
+        {
+          _recipientController17 = null;
+          _validateDropDown17 = true;
+          debugPrint('valoare email: $_recipientController17');
+        }
+        break;
+      case "Email":
+        {
+          _recipientController17 = "mailto:wernertiron@yahoo.com";
+          _validateDropDown17 = false;
+          debugPrint('valoare email: $_recipientController17');
+        }
+        break;
+      case "Telefon":
+        {
+          _recipientController17 = "tel://0742766042";
+          _validateDropDown17 = false;
+          debugPrint('valoare email: $_recipientController17');
+        }
+        break;
+    }
+  }
+
 }
