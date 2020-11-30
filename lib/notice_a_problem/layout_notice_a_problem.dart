@@ -12,7 +12,7 @@ class LayoutNoticeProblem extends StatefulWidget {
 }
 
 class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
-  final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormBuilderState>();
   String _name;
   String _subject;
   String _description;
@@ -99,29 +99,19 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                         Text('Adăugați locația dvs. la email'),
                       ],
                     ),
-                    attribute: 'positionCheckBox',
+                    attribute: 'positionSwitch',
                     onChanged: (value) {
                       if (value == true) {
                         getPosition();
                       } else {
                         _position = null;
                       }
-                      debugPrint('name value: $value');
+                      debugPrint('position value: $value');
                     },
                     validators: [],
                   ),
                   FormBuilderDropdown(
                     initialValue: 'Destinatar',
-                    decoration: new InputDecoration(
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.blueAccent, width: 1.0),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.blueAccent, width: 1.0),
-                        ),
-                        hintText: 'Selectati destinatarul'),
                     attribute: 'destinationEmail',
                     onChanged: (value) {
                       _destination = IdentifyDestination().identify(value);
@@ -143,35 +133,48 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                             ))
                         .toList(),
                   ),
-                  FlatButton(
-                      onPressed: () {
-                        if (_position != null) {
-                          SendEmailMailer().sendEmailWithLocation(
-                              _name,
-                              _destination,
-                              _subject,
-                              _description,
-                              _position,
-                              _email,
-                              _number,
-                              _attachments,
-                              context);
-                        } else {
-                          SendEmailMailer().sendEmailWithoutPosition(
-                              _name,
-                              _destination,
-                              _subject,
-                              _description,
-                              _email,
-                              _number,
-                              _attachments,
-                              context);
-                        }
-                      },
-                      child: Text('Send')),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: FlatButton(
+                        onPressed: () {
+                          if (_formKey.currentState.validate()) {
+                            if (_position != null) {
+                              SendEmailMailer().sendEmailWithLocation(
+                                  _name,
+                                  _destination,
+                                  _subject,
+                                  _description,
+                                  _position,
+                                  _email,
+                                  _number,
+                                  _attachments,
+                                  context);
+                            } else {
+                              SendEmailMailer().sendEmailWithoutPosition(
+                                  _name,
+                                  _destination,
+                                  _subject,
+                                  _description,
+                                  _email,
+                                  _number,
+                                  _attachments,
+                                  context);
+                            }
+                          }
+                        },
+                        color: Colors.blueAccent,
+                        textColor: Colors.white,
+                        child: Text('Send')),
+                  ),
                 ],
               )),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(SimpleLineIcons.refresh),
+        onPressed: () {
+          _formKey.currentState.reset();
+        },
       ),
     );
   }

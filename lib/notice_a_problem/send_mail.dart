@@ -6,8 +6,8 @@ import 'package:mailer/smtp_server.dart';
 var sendEmailMailer = SendEmailMailer;
 
 class SendEmailMailer {
-  String username = 'radautiulcivic@gmail.com';
-  String password = 'pass123.CIVIC';
+  String username = ''; //TODO add email address
+  String password = ''; //TODO add email password
 
   var message;
   void sendEmailWithLocation(
@@ -21,7 +21,7 @@ class SendEmailMailer {
       List<Attachment> attachments,
       BuildContext context) async {
     message = Message()
-      ..from = Address(username, name)
+      ..from = Address(username, 'Radautiul Civic')
       ..recipients.add(destination)
       ..subject = ' Petiție $subject - aplicația e-Rădăuți'
       ..html = 'Către, $destination <br><br> Stimată doamnă/ Stimate domn,'
@@ -36,8 +36,8 @@ class SendEmailMailer {
           ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>'
           'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa $email'
           '.<br><br>Cu stimă,<br><br>'
-          '     $name<br><br>     Tel: $number/$email'
-      ..attachments = attachments;
+          '     $name<br><br>     Tel: $number/$email';
+    //..attachments = attachments;
     tryToSendEmail(message);
   }
 
@@ -45,7 +45,7 @@ class SendEmailMailer {
       String name,
       String destination,
       String subject,
-      String body,
+      String description,
       String email,
       String number,
       List<Attachment> attachments,
@@ -53,18 +53,18 @@ class SendEmailMailer {
     message = Message()
       ..from = Address(username, name)
       ..recipients.add(destination)
-      ..subject = ' Petiție $subject - aplicația e-Rădăuți'
-      ..html = 'Către, $destination <br><br> Stimată doamnă/ Stimate domn,'
-          '<br><br>Subsemnatul $name, vă supun atenției următoarea problemă:<br><br>'
-          '$body<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați'
+      ..subject = ' Petiție ${subject.toString()} - aplicația e-Rădăuți'
+      ..html = 'Către, ${destination.toString()} <br><br> Stimată doamnă/ Stimate domn,'
+          '<br><br>Subsemnatul ${name.toString()}, vă supun atenției următoarea problemă:<br><br>'
+          '$description<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați'
           ' măsurile ce se impun.<br><br>'
           'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și '
           'a fost transmisă prin intermediul aplicației mobile e-Rădăuți, dezvoltată'
           ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>'
           'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa $email'
           '.<br><br>Cu stimă,<br><br>'
-          '     $name<br><br>     Tel: $number/$email'
-      ..attachments = attachments;
+          '     $name<br><br>     Tel: $number/$email';
+    //..attachments = attachments;
     tryToSendEmail(message);
   }
 
@@ -74,7 +74,10 @@ class SendEmailMailer {
       final sendReport = await send(message, smtpServer);
       debugPrint('Mesaj trimis: ' + sendReport.toString());
     } on MailerException catch (e) {
-      debugPrint('mailerException: ${e.message}');
+      print('Message not sent.');
+      for (var p in e.problems) {
+        print('Problem: ${p.code}: ${p.msg}');
+      }
     }
   }
 }
