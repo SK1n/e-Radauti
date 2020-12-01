@@ -1,3 +1,7 @@
+import 'dart:ffi';
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:mailer/mailer.dart';
@@ -6,9 +10,13 @@ import 'package:mailer/smtp_server.dart';
 var sendEmailMailer = SendEmailMailer;
 
 class SendEmailMailer {
-  String username = ''; //TODO add email address
-  String password = ''; //TODO add email password
-
+  String username = 'luys50734@gmail.com'; //TODO add email address
+  String password = 'An1meL1fe'; //TODO add email password
+  List<Attachment> listAttachment;
+  FileAttachment file1;
+  FileAttachment file2;
+  FileAttachment file3;
+  CupertinoAlertDialog cupertinoAlertDialog;
   var message;
   void sendEmailWithLocation(
       String name,
@@ -18,8 +26,9 @@ class SendEmailMailer {
       Position position,
       String email,
       String number,
-      List<Attachment> attachments,
+      List<dynamic> attachments,
       BuildContext context) async {
+    changeListType(attachments);
     message = Message()
       ..from = Address(username, 'Radautiul Civic')
       ..recipients.add(destination)
@@ -36,9 +45,9 @@ class SendEmailMailer {
           ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>'
           'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa $email'
           '.<br><br>Cu stimă,<br><br>'
-          '     $name<br><br>     Tel: $number/$email';
-    //..attachments = attachments;
-    tryToSendEmail(message);
+          '     $name<br><br>     Tel: $number/$email'
+      ..attachments = listAttachment;
+    tryToSendEmail(message, context);
   }
 
   void sendEmailWithoutPosition(
@@ -48,8 +57,9 @@ class SendEmailMailer {
       String description,
       String email,
       String number,
-      List<Attachment> attachments,
+      List<dynamic> attachments,
       BuildContext context) async {
+    changeListType(attachments);
     message = Message()
       ..from = Address(username, name)
       ..recipients.add(destination)
@@ -63,16 +73,32 @@ class SendEmailMailer {
           ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>'
           'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa $email'
           '.<br><br>Cu stimă,<br><br>'
-          '     $name<br><br>     Tel: $number/$email';
-    //..attachments = attachments;
-    tryToSendEmail(message);
+          '     $name<br><br>     Tel: $number/$email'
+      ..attachments = listAttachment;
+    tryToSendEmail(message, context);
   }
 
-  Future<bool> tryToSendEmail(var message) async {
+  void changeListType(initialList) {
+    if (initialList.length == 3) {
+      file1 = FileAttachment(initialList[0]);
+      file2 = FileAttachment(initialList[1]);
+      file3 = FileAttachment(initialList[2]);
+      listAttachment = [file1, file2, file3];
+    } else if (initialList.length == 2) {
+      file1 = FileAttachment(initialList[0]);
+      file2 = FileAttachment(initialList[1]);
+      listAttachment = [file1, file2];
+    } else {
+      file1 = FileAttachment(initialList[0]);
+      listAttachment = [file1];
+    }
+  }
+
+  void tryToSendEmail(var message, BuildContext context) async {
     final smtpServer = gmail(username, password);
     try {
       final sendReport = await send(message, smtpServer);
-      debugPrint('Mesaj trimis: ' + sendReport.toString());
+      debugPrint('Message sent: ' + sendReport.toString());
     } on MailerException catch (e) {
       print('Message not sent.');
       for (var p in e.problems) {

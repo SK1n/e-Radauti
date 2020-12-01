@@ -1,10 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/notice_a_problem/identify_destination.dart';
 import 'package:flutterapperadauti/notice_a_problem/send_mail.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:mailer/mailer.dart';
 
 class LayoutNoticeProblem extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
   String _email;
   Position _position;
   String _destination;
-  List<Attachment> _attachments;
+  List<dynamic> _attachments;
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -108,7 +109,6 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                       }
                       debugPrint('position value: $value');
                     },
-                    validators: [],
                   ),
                   FormBuilderDropdown(
                     initialValue: 'Destinatar',
@@ -132,6 +132,24 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                               child: Text('$emailDestination'),
                             ))
                         .toList(),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 5),
+                    child: Text(
+                        'Pentru a putea verifica mai repede problema semnalizata avem nevoie de cel putin o imagine!'),
+                  ),
+                  FormBuilderImagePicker(
+                    attribute: 'image',
+                    onChanged: (value) {
+                      _attachments = value;
+                      debugPrint('attachments: $_attachments');
+                    },
+                    maxImages: 3,
+                    defaultImage:
+                        AssetImage('assets/images/icons8-plus-64.png'),
+                    validators: [
+                      FormBuilderValidators.required(),
+                    ],
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
@@ -178,6 +196,10 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
       ),
     );
   }
-}
 
-void getPosition() {}
+  Future<void> getPosition() async {
+    _position = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print(_position);
+  }
+}

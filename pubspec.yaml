@@ -22,7 +22,6 @@ environment:
 
 dependencies:
   flutter_svg: ^0.18.1
-  permission_handler: ^5.0.1
   flutter:
     sdk: flutter
   camera: ^0.5.8+2
@@ -72,6 +71,9 @@ dependencies:
 
   #Form buidler 3.0.2
   flutter_form_builder: ^3.0.2
+
+  #Permissions plugin
+  permission_handler: ^5.0.1+1
 
 dev_dependencies:
   flutter_test:
