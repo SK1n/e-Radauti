@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
@@ -83,7 +84,7 @@ class NavDrawer2 extends StatelessWidget {
             child: addDrawerHeaderIcon(),
           ),
           generateListTile(context, Icons.photo_filter, 'Sesizează o problemă',
-              HomePageNoticeProblem()),
+              LayoutNoticeProblem()),
           generateListTile(context, Icons.location_city, 'Administrație locală',
               TownHallMain()),
           generateListTile(
