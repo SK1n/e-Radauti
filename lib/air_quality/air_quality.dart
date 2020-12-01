@@ -6,6 +6,7 @@ import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutterapperadauti/air_quality/value_adapter.dart';
 import 'package:flutterapperadauti/air_quality/legend.dart';
+import 'package:intl/intl.dart';
 
 import '../menu_page.dart';
 
@@ -146,6 +147,12 @@ class _AirQualityPageState extends State<AirQualityPage> {
                           } else {
                             isLoading = true;
                             var date = snapshot.data.airTS.toString();
+                            var inputFormat = DateFormat('yyyy-MM-dd HH:mm');
+                            var inputDate = inputFormat.parse(
+                                '${date.replaceAll('T', ' ').replaceAll('Z', ' ').replaceRange(17, null, '')}');
+                            inputDate = inputDate.add(Duration(hours: 2));
+                            var outputFormat = DateFormat('dd/MM/yyyy HH:mm');
+                            var outputDate = outputFormat.format(inputDate);
                             return Container(
                               padding: EdgeInsets.all(10),
                               child: Column(
@@ -159,7 +166,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                     ),
                                   ),
                                   Text(
-                                    '${date.replaceAll('T', '  ').replaceAll('Z', '  ').replaceRange(17, null, '')}',
+                                    '${outputDate.toString()}',
                                     style: TextStyle(
                                         fontSize: 34,
                                         fontWeight: FontWeight.bold),

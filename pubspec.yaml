@@ -75,6 +75,9 @@ dependencies:
   #Permissions plugin
   permission_handler: ^5.0.1+1
 
+  #DateTime format plugin
+  intl: ^0.16.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
