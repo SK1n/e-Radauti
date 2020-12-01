@@ -50,7 +50,7 @@ class IdentifyDestination {
       case "Rădăuțiul Civic":
         {
           debugPrint('identify_destination: radautiulcivic@gmail.com');
-          return "luys2007@outlook.com";
+          return "radautiulcivic@gmail.com";
         }
         break;
       default:

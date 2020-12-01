@@ -10,8 +10,8 @@ import 'package:mailer/smtp_server.dart';
 var sendEmailMailer = SendEmailMailer;
 
 class SendEmailMailer {
-  String username = 'luys50734@gmail.com'; //TODO add email address
-  String password = 'An1meL1fe'; //TODO add email password
+  String username = 'radautiulcivic@gmail.com'; //TODO add email address
+  String password = 'pass123.CIVIC'; //TODO add email password
   List<Attachment> listAttachment;
   FileAttachment file1;
   FileAttachment file2;
