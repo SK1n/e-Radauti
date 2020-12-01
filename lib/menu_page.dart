@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
-import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/transport/transport_main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
@@ -97,8 +96,8 @@ class NavDrawer2 extends StatelessWidget {
               AirQualityPage()),
           generateListTile(
               context, Icons.train, 'Transport', HomePageTransport()),
-          generateListTile(
-              context, FontAwesome5.hand_holding_heart, 'Voluntariat', VolunteerPage()),
+          generateListTile(context, FontAwesome5.hand_holding_heart,
+              'Voluntariat', VolunteerPage()),
         ],
       ),
     );

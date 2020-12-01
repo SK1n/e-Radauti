@@ -4,7 +4,6 @@ import 'package:flutterapperadauti/services/push_notifications_service.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
-import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/events/main.dart';
 import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
