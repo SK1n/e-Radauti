@@ -47,10 +47,10 @@ class SendEmailMailer {
           '.<br><br>Cu stimă,<br><br>'
           '     $name<br><br>     Tel: $number/$email'
       ..attachments = listAttachment;
-    tryToSendEmail(message, context);
+    voidshowDialogAfterTringToSendEmail(context);
   }
 
-  void sendEmailWithoutPosition(
+  Future<bool> sendEmailWithoutPosition(
       String name,
       String destination,
       String subject,
@@ -75,7 +75,7 @@ class SendEmailMailer {
           '.<br><br>Cu stimă,<br><br>'
           '     $name<br><br>     Tel: $number/$email'
       ..attachments = listAttachment;
-    tryToSendEmail(message, context);
+    voidshowDialogAfterTringToSendEmail(context);
   }
 
   void changeListType(initialList) {
@@ -90,11 +90,48 @@ class SendEmailMailer {
       listAttachment = [file1, file2];
     } else {
       file1 = FileAttachment(initialList[0]);
-      listAttachment = [file1];
+      listAttachment = [file1, null];
     }
   }
 
-  void tryToSendEmail(var message, BuildContext context) async {
+  void voidshowDialogAfterTringToSendEmail(BuildContext context) async {
+    if (await tryToSendEmail(context) == true) {
+      showDialog(
+          context: context,
+          child: CupertinoAlertDialog(
+            title: Text('Trimis!'),
+            content: Text('Email-ul a fost trimis cu succes!'),
+            actions: [
+              CupertinoDialogAction(
+                child: Text('Okay'),
+                isDefaultAction: true,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          ));
+    } else {
+      showDialog(
+          context: context,
+          child: CupertinoAlertDialog(
+            title: Text('Eroare'),
+            content: Text(
+                'Ne pare rau a intervenit o eroare \nVa rugam sa incercati din nou!'),
+            actions: [
+              CupertinoDialogAction(
+                child: Text('Okay'),
+                isDefaultAction: true,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          ));
+    }
+  }
+
+  Future<bool> tryToSendEmail(BuildContext context) async {
     final smtpServer = gmail(username, password);
     try {
       final sendReport = await send(message, smtpServer);
@@ -104,6 +141,8 @@ class SendEmailMailer {
       for (var p in e.problems) {
         print('Problem: ${p.code}: ${p.msg}');
       }
+      return false;
     }
+    return true;
   }
 }

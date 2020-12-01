@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -154,7 +155,23 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     child: FlatButton(
-                        onPressed: () {
+                        onPressed: () async {
+                          showDialog(
+                              context: context,
+                              child: CupertinoAlertDialog(
+                                title:
+                                    Text('Email-ul este in curs de trimitere'),
+                                content: Text('Va rugam sa asteptati'),
+                                actions: [
+                                  CupertinoDialogAction(
+                                    child: Text('Okay'),
+                                    isDefaultAction: true,
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  )
+                                ],
+                              ));
                           if (_formKey.currentState.validate()) {
                             if (_position != null) {
                               SendEmailMailer().sendEmailWithLocation(
