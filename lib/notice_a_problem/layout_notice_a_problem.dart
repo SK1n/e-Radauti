@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutterapperadauti/menu_page.dart';
 import 'package:flutterapperadauti/notice_a_problem/identify_destination.dart';
 import 'package:flutterapperadauti/notice_a_problem/send_mail.dart';
 import 'package:geolocator/geolocator.dart';
@@ -15,6 +16,7 @@ class LayoutNoticeProblem extends StatefulWidget {
 
 class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
   final _formKey = GlobalKey<FormBuilderState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String _name;
   String _subject;
   String _description;
@@ -27,7 +29,44 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      key: _scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Icon(
+            Icons.camera,
+            color: Color(0x55FB6340),
+            size: 30,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 10),
+          ),
+          Text('Sesizeaza o problema'),
+        ]),
+        leading: Container(
+          child: FlatButton(
+            child: Icon(Ionicons.ios_arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+        actions: <Widget>[
+          Container(
+            alignment: Alignment.topRight,
+            margin: EdgeInsets.only(top: 0.0, right: 0.0),
+            child: IconButton(
+              icon: Icon(
+                Icons.menu,
+                size: 24,
+                color: Colors.black,
+              ),
+              onPressed: () => _scaffoldKey.currentState.openDrawer(),
+            ),
+          ),
+        ],
+      ),
+      drawer: NavDrawer2(),
       body: Container(
         padding: EdgeInsets.all(10),
         child: SingleChildScrollView(

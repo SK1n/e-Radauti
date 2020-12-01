@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
@@ -99,6 +100,7 @@ class NavDrawer2 extends StatelessWidget {
               context, Icons.train, 'Transport', HomePageTransport()),
           generateListTile(context, FontAwesome5.hand_holding_heart,
               'Voluntariat', VolunteerPage()),
+          generateListTile(context, Icons.info, 'Despre aplicatie', null),
         ],
       ),
     );
@@ -112,11 +114,24 @@ class NavDrawer2 extends StatelessWidget {
       ),
       title: Text(title),
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => following,
-            ));
+        if (following != null) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => following,
+              ));
+        } else {
+          showAboutDialog(
+              context: context,
+              applicationName: 'e-Radauti',
+              applicationVersion:
+                  'Version: 1.0.0', //TODO after every update ypu should update the version number
+              applicationIcon: Image.asset(
+                'assets/logo_images/app_logo_final.png',
+                width: 24,
+                height: 24,
+              ));
+        }
       },
     );
   }
