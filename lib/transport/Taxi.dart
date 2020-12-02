@@ -173,6 +173,50 @@ class Taxi extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
+                        UrlLauncher.launch("tel://0745683668");
+                      },
+                      child: Card(
+                        margin: const EdgeInsets.symmetric(vertical: 0),
+                        elevation: 4,
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(0),
+                          child: Column(
+                            children: <Widget>[
+                              Align(
+                                child: new Column(
+                                  children: <Widget>[
+                                    new Image.asset(
+                                      "assets/images/Taxi/SV65LEV_png.png", //"assets/logo_images/app_logo_final2.jpg", //Constant.iconNotification,
+                                      width: 80.0, //50.0, //25.0,
+                                      height: 80.0, //50.0, //25.0,
+                                    ),
+                                    new Container(
+                                      padding: new EdgeInsets.only(top: 5),
+                                      child: new Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          new Text('BĂNCESCU CRISTI',
+                                            style: new TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,),)],),),
+                                    new Text('SEAT IBIZA',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                    new Text('0774 507 799',style: new TextStyle(fontSize: 14, color: Colors.grey[800]),),
+                                    new Text('SV-65LEV'),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
                         UrlLauncher.launch("tel://0740348225");
                       },
                       child: Card(
@@ -703,6 +747,7 @@ class Taxi extends StatelessWidget {
 
                       ),
                     ),
+
                     //
                   ],
                 ),

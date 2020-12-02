@@ -22,7 +22,6 @@ environment:
 
 dependencies:
   flutter_svg: ^0.18.1
-  permission_handler: ^5.0.1
   flutter:
     sdk: flutter
   camera: ^0.5.8+2
@@ -70,6 +69,16 @@ dependencies:
   #WebView 1.0.0
   webview_flutter: ^0.3.22+1
 
+  #Form buidler 3.0.2
+  #flutter_form_builder: ^3.0.2
+  flutter_form_builder: ^3.14.1
+
+  #Permissions plugin
+  permission_handler: ^5.0.1+1
+
+  #DateTime format plugin
+  intl: ^0.16.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -88,6 +97,7 @@ flutter:
     - assets/logo_images/
     - assets/images/Taxi/
     - assets/images/volunteer/
+    - assets/images/council/
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -1,6 +1,4 @@
-import 'dart:async';
-import 'dart:math' show max;
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/menu_page.dart';
@@ -76,7 +74,7 @@ class _AnnouncementWebViewState extends State<AnnouncementWebView> {
               },
             ),
           ),
-          Container(child: Center(child: CircularProgressIndicator())),
+          Container(child: Center(child: CupertinoActivityIndicator())),
         ],
       ),
     );

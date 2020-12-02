@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
-import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/transport/transport_main_page.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
@@ -84,7 +85,7 @@ class NavDrawer2 extends StatelessWidget {
             child: addDrawerHeaderIcon(),
           ),
           generateListTile(context, Icons.photo_filter, 'Sesizează o problemă',
-              HomePageNoticeProblem()),
+              LayoutNoticeProblem()),
           generateListTile(context, Icons.location_city, 'Administrație locală',
               TownHallMain()),
           generateListTile(
@@ -97,8 +98,9 @@ class NavDrawer2 extends StatelessWidget {
               AirQualityPage()),
           generateListTile(
               context, Icons.train, 'Transport', HomePageTransport()),
-          generateListTile(
-              context, FontAwesome5.hand_holding_heart, 'Voluntariat', VolunteerPage()),
+          generateListTile(context, FontAwesome5.hand_holding_heart,
+              'Voluntariat', VolunteerPage()),
+          generateListTile(context, Icons.info, 'Despre aplicatie', null),
         ],
       ),
     );
@@ -112,11 +114,24 @@ class NavDrawer2 extends StatelessWidget {
       ),
       title: Text(title),
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => following,
-            ));
+        if (following != null) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => following,
+              ));
+        } else {
+          showAboutDialog(
+              context: context,
+              applicationName: 'e-Radauti',
+              applicationVersion:
+              'Version: 1.0.6', //TODO after every update ypu should update the version number
+              applicationIcon: Image.asset(
+                'assets/logo_images/app_logo_final.png',
+                width: 24,
+                height: 24,
+              ));
+        }
       },
     );
   }
