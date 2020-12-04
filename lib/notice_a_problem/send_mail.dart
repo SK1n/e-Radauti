@@ -90,7 +90,7 @@ class SendEmailMailer {
       listAttachment = [file1, file2];
     } else {
       file1 = FileAttachment(initialList[0]);
-      listAttachment = [file1, null];
+      listAttachment = [file1];
     }
   }
 

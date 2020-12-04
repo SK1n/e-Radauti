@@ -18,7 +18,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.7.0 <4.0.0"
 
 dependencies:
   flutter_svg: ^0.18.1
@@ -70,7 +70,7 @@ dependencies:
   webview_flutter: ^0.3.22+1
 
   #Form buidler 3.0.2
-  flutter_form_builder: ^3.0.2
+  flutter_form_builder: ^3.14.0-alpha.1
 
   #Permissions plugin
   permission_handler: ^5.0.1+1

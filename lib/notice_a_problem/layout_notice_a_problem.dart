@@ -195,45 +195,47 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                     width: MediaQuery.of(context).size.width,
                     child: FlatButton(
                         onPressed: () async {
-                          showDialog(
-                              context: context,
-                              child: CupertinoAlertDialog(
-                                title:
-                                    Text('Email-ul este in curs de trimitere'),
-                                content: Text('Va rugam sa asteptati'),
-                                actions: [
-                                  CupertinoDialogAction(
-                                    child: Text('Okay'),
-                                    isDefaultAction: true,
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                  )
-                                ],
-                              ));
                           if (_formKey.currentState.validate()) {
-                            if (_position != null) {
-                              SendEmailMailer().sendEmailWithLocation(
-                                  _name,
-                                  _destination,
-                                  _subject,
-                                  _description,
-                                  _position,
-                                  _email,
-                                  _number,
-                                  _attachments,
-                                  context);
-                            } else {
-                              SendEmailMailer().sendEmailWithoutPosition(
-                                  _name,
-                                  _destination,
-                                  _subject,
-                                  _description,
-                                  _email,
-                                  _number,
-                                  _attachments,
-                                  context);
-                            }
+                            showDialog(
+                                context: context,
+                                child: CupertinoAlertDialog(
+                                  title: Text(
+                                      'Email-ul este in curs de trimitere'),
+                                  content: Text('Va rugam sa asteptati'),
+                                  actions: [
+                                    CupertinoDialogAction(
+                                      child: Text('Okay'),
+                                      isDefaultAction: true,
+                                      onPressed: () {
+                                        if (_position != null) {
+                                          SendEmailMailer()
+                                              .sendEmailWithLocation(
+                                                  _name,
+                                                  _destination,
+                                                  _subject,
+                                                  _description,
+                                                  _position,
+                                                  _email,
+                                                  _number,
+                                                  _attachments,
+                                                  context);
+                                        } else {
+                                          SendEmailMailer()
+                                              .sendEmailWithoutPosition(
+                                                  _name,
+                                                  _destination,
+                                                  _subject,
+                                                  _description,
+                                                  _email,
+                                                  _number,
+                                                  _attachments,
+                                                  context);
+                                        }
+                                        Navigator.pop(context);
+                                      },
+                                    )
+                                  ],
+                                ));
                           }
                         },
                         color: Colors.blueAccent,
