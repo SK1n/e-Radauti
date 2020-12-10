@@ -2,25 +2,32 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
-class PushNotificationsService {
-  final FirebaseMessaging _fcm = FirebaseMessaging();
+class PushNotificationService {
+  final FirebaseMessaging _fcm;
+
+  PushNotificationService(this._fcm);
 
   Future initialise() async {
     if (Platform.isIOS) {
-      // request permissions if we're on android
-      _fcm.configure(
-        //Called when the app is in the foreground and we recieve a push notification
-        onMessage: (Map<String, dynamic> message) async {
-          debugPrint('onMessage: $message');
-        },
-        //Called when the app has been closed and it's opened from the push notifications
-        onLaunch: (Map<String, dynamic> message) async {
-          debugPrint('onMessage: $message');
-        },
-        onResume: (Map<String, dynamic> message) async {
-          debugPrint('onMessage: $message');
-        },
-      );
+      _fcm.requestNotificationPermissions(IosNotificationSettings());
     }
+
+    // If you want to test the push notification locally,
+    // you need to get the token and input to the Firebase console
+    // https://console.firebase.google.com/project/YOUR_PROJECT_ID/notification/compose
+    String token = await _fcm.getToken();
+    debugPrint("FirebaseMessaging token: $token");
+
+    _fcm.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print("onMessage: $message");
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print("onLaunch: $message");
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print("onResume: $message");
+      },
+    );
   }
 }
