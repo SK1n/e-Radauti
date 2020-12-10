@@ -57,7 +57,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
             Padding(
               padding: EdgeInsets.only(left: 10),
             ),
-            Text('Calitatea aerului' ),
+            Text('Calitatea aerului'),
           ]),
           leading: Container(
             child: FlatButton(
@@ -124,11 +124,11 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                   children: [
                                     Container(
                                       padding:
-                                      EdgeInsets.only(top: 10, bottom: 10),
+                                          EdgeInsets.only(top: 10, bottom: 10),
                                       width:
-                                      (MediaQuery.of(context).size.width -
-                                          40) /
-                                          2.8,
+                                          (MediaQuery.of(context).size.width -
+                                                  40) /
+                                              2.8,
                                       child: Column(
                                         children: [
                                           changeColorInstance.changeTextQuality(
@@ -142,11 +142,11 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                     ),
                                     Container(
                                       padding:
-                                      EdgeInsets.only(top: 10, bottom: 10),
+                                          EdgeInsets.only(top: 10, bottom: 10),
                                       width:
-                                      (MediaQuery.of(context).size.width -
-                                          40) /
-                                          3.3,
+                                          (MediaQuery.of(context).size.width -
+                                                  40) /
+                                              3.3,
                                       child: Column(
                                         children: [
                                           Text(
@@ -166,11 +166,11 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                     ),
                                     Container(
                                       padding:
-                                      EdgeInsets.only(top: 10, bottom: 10),
+                                          EdgeInsets.only(top: 10, bottom: 10),
                                       width:
-                                      (MediaQuery.of(context).size.width -
-                                          40) /
-                                          3.3,
+                                          (MediaQuery.of(context).size.width -
+                                                  40) /
+                                              3.3,
                                       child: Column(
                                         children: [
                                           Text('CO2',

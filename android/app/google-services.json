@@ -8,18 +8,30 @@
   "client": [
     {
       "client_info": {
+<<<<<<< HEAD
         "mobilesdk_app_id": "1:893520358233:android:7fb27658086a2268",
+=======
+        "mobilesdk_app_id": "1:893520358233:android:a2eaf672e65ddad5ea7a48",
+>>>>>>> Luis
         "android_client_info": {
           "package_name": "radautiul_civic.e_radauti"
         }
       },
       "oauth_client": [
         {
+<<<<<<< HEAD
           "client_id": "893520358233-478080f4h23h7cjqlosqjm32uprh3ss8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "radautiul_civic.e_radauti",
             "certificate_hash": "8b865929f71b7034db309a0d82301b871b27d650"
+=======
+          "client_id": "893520358233-0hnjqdp4jthgq2lqqgo6s0rf6qcjd8lb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "radautiul_civic.e_radauti",
+            "certificate_hash": "5426a7970e06e92b9d145b04c056345b320ea4bd"
+>>>>>>> Luis
           }
         },
         {
@@ -29,7 +41,11 @@
       ],
       "api_key": [
         {
+<<<<<<< HEAD
           "current_key": "AIzaSyDrMP7JeleVn6RQkP5w5hfzbl5fhbB6j1w"
+=======
+          "current_key": "AIzaSyBzDIvjd1VUmpaKteTi28uZSSMd0FjlpPI"
+>>>>>>> Luis
         }
       ],
       "services": {

@@ -106,7 +106,7 @@ class _FurniturePageState extends State<FurniturePage> {
                                       MaterialPageRoute(
                                           builder: (context) => AnnouncementWebView(
                                               slug:
-                                              'https://www.eradauti.ro/anunturi/imobiliare-19/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
+                                                  'https://www.eradauti.ro/anunturi/imobiliare-19/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
                                 },
                               ),
                             )

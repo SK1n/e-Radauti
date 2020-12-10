@@ -108,7 +108,7 @@ class _JobPageState extends State<JobPage> {
                                     MaterialPageRoute(
                                         builder: (context) => AnnouncementWebView(
                                             slug:
-                                            'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
+                                                'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
                               },
                             ),
                           )

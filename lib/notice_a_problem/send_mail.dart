@@ -1,6 +1,3 @@
-import 'dart:ffi';
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -10,8 +7,8 @@ import 'package:mailer/smtp_server.dart';
 var sendEmailMailer = SendEmailMailer;
 
 class SendEmailMailer {
-  String username = 'radautiulcivic@gmail.com';
-  String password = 'pass123.CIVIC'; 
+  String username = 'radautiulcivic@gmail.com'; //TODO add email address
+  String password = 'pass123.CIVIC'; //TODO add email password
   List<Attachment> listAttachment;
   FileAttachment file1;
   FileAttachment file2;
@@ -90,7 +87,7 @@ class SendEmailMailer {
       listAttachment = [file1, file2];
     } else {
       file1 = FileAttachment(initialList[0]);
-      listAttachment = [file1, null];
+      listAttachment = [file1];
     }
   }
 

@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
 import 'package:flutterapperadauti/services/push_notifications_service.dart';
@@ -15,16 +16,16 @@ import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/transport/transport_main_page.dart';
 import 'package:flutterapperadauti/volunteer/volunteer.dart';
 
-import 'locator.dart';
-
 void main() {
-  setupLocator();
   runApp(MyAppRC());
 }
 
 class MyAppRC extends StatelessWidget {
+  static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   @override
   Widget build(BuildContext context) {
+    final pushNotificationService = PushNotificationService(_firebaseMessaging);
+    pushNotificationService.initialise();
     return MaterialApp(
       title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,
@@ -32,7 +33,7 @@ class MyAppRC extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
         primaryColor: Color(0xFFFFFFFF),
       ),
-      home: AndroidMobile1(),
+      home: MyApp(),
     );
   }
 }
@@ -43,39 +44,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return new SplashScreen(
-      seconds: 10,
-      navigateAfterSeconds: new AndroidMobile1(),
-      title: new Text(
-        'Aplicația e-Rădăuți',
-        style: new TextStyle(
-          //fontWeight: FontWeight.bold,
-          fontSize: 20.0,
-          color: Colors.black,
-        ),
-      ),
-      image: Image.asset("assets/logo_images/app_logo.png"),
-      backgroundColor: Colors.white,
-      photoSize: 80.0,
-    );
-  }
-}
-
-class AndroidMobile1 extends StatelessWidget {
-  AndroidMobile1({
-    Key key,
-  }) : super(key: key);
-
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
-  final PushNotificationsService _pushNotificationsService =
-  locator<PushNotificationsService>();
-
-  Future handleStartUpLogic() async {
-    await _pushNotificationsService.initialise();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -149,8 +118,8 @@ class AndroidMobile1 extends StatelessWidget {
                   mainAxisSpacing: 15,
                   crossAxisCount: 2,
                   childAspectRatio:
-                  (MediaQuery.of(context).size.width / 2 - 22.5) /
-                      (MediaQuery.of(context).size.height / 5 - 60),
+                      (MediaQuery.of(context).size.width / 2 - 22.5) /
+                          (MediaQuery.of(context).size.height / 5 - 60),
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
@@ -658,4 +627,3 @@ class AndroidMobile1 extends StatelessWidget {
     );
   }
 }
-//c:\flutter\flutter\bin\flutter build apk --release --build-name=1.0.5 --build-number=6
