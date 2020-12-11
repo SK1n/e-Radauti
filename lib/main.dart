@@ -2,7 +2,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
 import 'package:flutterapperadauti/services/push_notifications_service.dart';
-import 'package:splashscreen/splashscreen.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
@@ -16,16 +15,17 @@ import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/transport/transport_main_page.dart';
 import 'package:flutterapperadauti/volunteer/volunteer.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  final pushNotificationService = PushNotificationService(_firebaseMessaging);
+  await pushNotificationService.initialise();
   runApp(MyAppRC());
 }
 
 class MyAppRC extends StatelessWidget {
-  static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   @override
   Widget build(BuildContext context) {
-    final pushNotificationService = PushNotificationService(_firebaseMessaging);
-    pushNotificationService.initialise();
     return MaterialApp(
       title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,
