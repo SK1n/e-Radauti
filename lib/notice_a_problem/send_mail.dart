@@ -14,6 +14,7 @@ class SendEmailMailer {
   FileAttachment file2;
   FileAttachment file3;
   CupertinoAlertDialog cupertinoAlertDialog;
+  String _emailError;
   var message;
   void sendEmailWithLocation(
       String name,
@@ -114,7 +115,7 @@ class SendEmailMailer {
           child: CupertinoAlertDialog(
             title: Text('Eroare'),
             content: Text(
-                'Ne pare rau a intervenit o eroare \nVa rugam sa incercati din nou!'),
+                'Ne pare rau a intervenit o eroare \nVa rugam sa incercati din nou!\n $_emailError'),
             actions: [
               CupertinoDialogAction(
                 child: Text('Okay'),
@@ -129,14 +130,18 @@ class SendEmailMailer {
   }
 
   Future<bool> tryToSendEmail(BuildContext context) async {
-    final smtpServer = gmail(username, password);
+    final smtpServerB = SmtpServer('mail.radautiulcivic.ro',
+        password: 'Android.2018',
+        port: 26,
+        username: 'eradauti@radautiulcivic.ro');
     try {
-      final sendReport = await send(message, smtpServer);
+      final sendReport = await send(message, smtpServerB);
       debugPrint('Message sent: ' + sendReport.toString());
     } on MailerException catch (e) {
       print('Message not sent.');
       for (var p in e.problems) {
         print('Problem: ${p.code}: ${p.msg}');
+        _emailError = 'Problem: ${p.code}: ${p.msg}';
       }
       return false;
     }
