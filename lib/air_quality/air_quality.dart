@@ -50,14 +50,14 @@ class _AirQualityPageState extends State<AirQualityPage> {
           backgroundColor: Color.fromARGB(255, 255, 255, 255),
           title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(
-              Icons.camera,
+              Icons.bubble_chart,
               color: Color(0x55FB6340),
               size: 30,
             ),
             Padding(
               padding: EdgeInsets.only(left: 10),
             ),
-            Text('Sesizeaza o problema'),
+            Text('Calitatea aerului'),
           ]),
           leading: Container(
             child: FlatButton(
