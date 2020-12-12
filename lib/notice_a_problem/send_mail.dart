@@ -48,7 +48,7 @@ class SendEmailMailer {
     voidshowDialogAfterTringToSendEmail(context);
   }
 
-  Future<bool> sendEmailWithoutPosition(
+  void sendEmailWithoutPosition(
       String name,
       String destination,
       String subject,
@@ -101,7 +101,7 @@ class SendEmailMailer {
             content: Text('Email-ul a fost trimis cu succes!'),
             actions: [
               CupertinoDialogAction(
-                child: Text('Okay'),
+                child: Text('Ok'),
                 isDefaultAction: true,
                 onPressed: () {
                   Navigator.pop(context);
@@ -118,7 +118,7 @@ class SendEmailMailer {
                 'Ne pare rau a intervenit o eroare \nVa rugam sa incercati din nou!\n $_emailError'),
             actions: [
               CupertinoDialogAction(
-                child: Text('Okay'),
+                child: Text('Ok'),
                 isDefaultAction: true,
                 onPressed: () {
                   Navigator.pop(context);
