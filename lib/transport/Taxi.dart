@@ -79,10 +79,10 @@ class Taxi extends StatelessWidget {
                   crossAxisCount: 2,
                   childAspectRatio: 1.1,
                   children: <Widget>[
-                    listItem('0774507799', 'assets/images/Taxi/SV65LEV_png.png',
-                        'BĂNCESCU CRISTI', 'SV-65LEV', 'SEAT IBIZA'),
                     listItem('0752436011', 'assets/images/Taxi/SV14PLS_png.png',
                         'ASURDOAIEI IONUȚ', 'SV-14PLS', 'DACIA LOGAN'),
+                    listItem('0774507799', 'assets/images/Taxi/SV65LEV_png.png',
+                        'BĂNCESCU CRISTI', 'SV-65LEV', 'SEAT IBIZA'),
                     listItem('0740348225', 'assets/images/Taxi/SV12NLJ.png',
                         'BOICU COSTICĂ', 'SV-12NLJ', 'DACIA LOGAN'),
                     listItem('0720217728', 'assets/images/Taxi/SV51LIE_png.png',
