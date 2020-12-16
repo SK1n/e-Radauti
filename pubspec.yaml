@@ -51,6 +51,7 @@ dependencies:
   #Firebase plugins
   firebase_messaging: "^7.0.3"
   firebase_core: "^0.5.0+1"
+  firebase_database: ^4.4.0
 
   #Dio plugins for json fetch
   dio: ^3.0.10
