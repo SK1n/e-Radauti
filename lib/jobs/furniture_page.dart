@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/jobs/announcements_web_view.dart';
 import 'package:flutterapperadauti/jobs/job_model.dart';
 import 'dart:convert';
@@ -18,18 +20,22 @@ class _FurniturePageState extends State<FurniturePage> {
   num _stackToView = 1;
 
   Future<List<JobModel>> _getJobs() async {
-    var response = await http.get(
-        "https://www.eradauti.ro/api/context?pathname=/anunturi/imobiliare-19");
-    this.setState(() {
-      jsonResponse = json.decode(response.body);
-      _stackToView = 0;
-    });
-    jobList = List<JobModel>();
-    jsonResponse.forEach((key, value) {
-      jobList = (jsonResponse['context']['posts']['records'] as List)
-          .map<JobModel>((j) => JobModel.fromJson(j))
-          .toList();
-    });
+    try {
+      var response = await http.get(
+          "https://www.eradauti.ro/api/context?pathname=/anunturi/imobiliare-19");
+      this.setState(() {
+        jsonResponse = json.decode(response.body);
+        _stackToView = 0;
+      });
+      jobList = List<JobModel>();
+      jsonResponse.forEach((key, value) {
+        jobList = (jsonResponse['context']['posts']['records'] as List)
+            .map<JobModel>((j) => JobModel.fromJson(j))
+            .toList();
+      });
+    } catch (e) {
+      debugPrint('error: $e');
+    }
     return jobList;
   }
 
@@ -39,148 +45,80 @@ class _FurniturePageState extends State<FurniturePage> {
         key: _scaffoldKey,
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 255, 255, 255),
-          automaticallyImplyLeading: false,
+          title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Icon(
+              Icons.announcement,
+              color: Color(0x55FB6340),
+              size: 30,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 10),
+            ),
+            Text('Anunturi'),
+          ]),
           leading: Container(
-            padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-            margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
-            child: Image.asset("assets/logo_images/app_logo.png"),
+            child: FlatButton(
+              child: Icon(Ionicons.ios_arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
           ),
           actions: <Widget>[
             Container(
               alignment: Alignment.topRight,
               margin: EdgeInsets.only(top: 0.0, right: 0.0),
-              // EdgeInsets.only(top: 20.0, right: 10.0),
               child: IconButton(
                 icon: Icon(
                   Icons.menu,
                   size: 24,
                   color: Colors.black,
-                ), //Colors.white
+                ),
                 onPressed: () => _scaffoldKey.currentState.openDrawer(),
               ),
             ),
           ],
         ),
         drawer: NavDrawer2(),
-        body: Column(
-          children: [
-            //Header
-            Container(
-              padding: EdgeInsets.only(bottom: 15, top: 20),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.keyboard_arrow_left,
-                        color: Color(0xFF979797),
-                      ),
-                      //_left Icons.arrow_back
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width - 80,
-                    child: new Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: <Widget>[
-                        Stack(
-                          children: <Widget>[
+        body: FutureBuilder(
+          future: _getJobs(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              return new ListView.builder(
+                  itemCount: jobList == null ? 0 : jobList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Column(
+                          children: [
                             Container(
-                              child: Padding(
-                                padding: EdgeInsets.fromLTRB(
-                                    0.0, 0.0, 0.0, 0.0), //10.0 //25.0
-                                child: Icon(
-                                  Icons.announcement,
-                                  color: Color(0x55FB6340),
-                                  size: 30,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              child: Padding(
-                                padding: EdgeInsets.fromLTRB(
-                                    35.0, 0.0, 0.0, 0.0), //10.0 //25.0
+                              width: MediaQuery.of(context).size.width,
+                              margin: EdgeInsets.only(
+                                  left: 10, right: 10, bottom: 10),
+                              child: FlatButton(
+                                color: Colors.blue[300],
+                                padding: EdgeInsets.all(10),
                                 child: Text(
-                                  'Anunturi',
-                                  style: TextStyle(
-                                    color:
-                                    Color(0xFF000000), //Color(0xFFFFFFFF),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 19,
-                                  ),
-                                ),
+                                    '${jobList[index].title.toString().toUpperCase()}'),
+                                onPressed: () => {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => AnnouncementWebView(
+                                              slug:
+                                                  'https://www.eradauti.ro/anunturi/imobiliare-19/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
+                                },
                               ),
-                            ),
+                            )
                           ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            //Body
-            IndexedStack(
-              index: _stackToView,
-              children: [
-                SingleChildScrollView(
-                  child: Container(
-                    height: MediaQuery.of(context).size.height - 163,
-                    child: FutureBuilder(
-                      future: _getJobs(),
-                      builder: (BuildContext context, AsyncSnapshot snapshot) {
-                        if (snapshot.data == null) {
-                          return Center(
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                  Color(0xFF38A49C)),
-                            ),
-                          );
-                        } else {
-                          return new ListView.builder(
-                              itemCount: jobList == null ? 0 : jobList.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Container(
-                                    padding: EdgeInsets.only(top: 10),
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          width:
-                                          MediaQuery.of(context).size.width,
-                                          margin: EdgeInsets.only(
-                                              left: 10, right: 10, bottom: 10),
-                                          child: FlatButton(
-                                            color: Colors.blue[300],
-                                            padding: EdgeInsets.all(10),
-                                            child: Text(
-                                                '${jobList[index].title.toString().toUpperCase()}'),
-                                            onPressed: () => {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          AnnouncementWebView(
-                                                              slug:
-                                                              'https://www.eradauti.ro/anunturi/imobiliare-19/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
-                                            },
-                                          ),
-                                        )
-                                      ],
-                                    ));
-                              });
-                        }
-                      },
-                    ),
-                  ),
-                ),
-                Container(child: Center(child: CircularProgressIndicator())),
-              ],
-            )
-          ],
+                        ));
+                  });
+            } else {
+              return Center(
+                child: CupertinoActivityIndicator(),
+              );
+            }
+          },
         ));
   }
 }

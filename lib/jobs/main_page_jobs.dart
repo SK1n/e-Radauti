@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/menu_page.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/jobs/furniture_page.dart';
@@ -14,26 +15,36 @@ class HomePageJobs extends StatelessWidget {
       key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        automaticallyImplyLeading: false,
+        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Icon(
+            Icons.announcement,
+            color: Color(0x55FB6340),
+            size: 30,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 10),
+          ),
+          Text('Anunturi'),
+        ]),
         leading: Container(
-          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-          margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
-          child: Image.asset("assets/logo_images/app_logo.png"),
+          child: FlatButton(
+            child: Icon(Ionicons.ios_arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
         actions: <Widget>[
           Container(
             alignment: Alignment.topRight,
-            margin: EdgeInsets.only(
-                top: 0.0,
-                right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
+            margin: EdgeInsets.only(top: 0.0, right: 0.0),
             child: IconButton(
               icon: Icon(
                 Icons.menu,
                 size: 24,
                 color: Colors.black,
-              ), //Colors.white
-              onPressed: () => _scaffoldKey.currentState
-                  .openDrawer(), //_scaffoldKey.currentState.openDrawer(),
+              ),
+              onPressed: () => _scaffoldKey.currentState.openDrawer(),
             ),
           ),
         ],
@@ -42,64 +53,6 @@ class HomePageJobs extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(
-                top: 20,
-                bottom: 15,
-              ),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.keyboard_arrow_left,
-                        color: Color(0xFF979797),
-                      ), //_left Icons.arrow_back
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width - 80,
-                    child: new Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: <Widget>[
-                        Stack(
-                          children: <Widget>[
-                            Icon(
-                              Icons.announcement,
-                              color: Color(0x55FB6340),
-                              size: 30,
-                            ),
-                            Container(
-                              child: Padding(
-                                padding: EdgeInsets.fromLTRB(
-                                  35.0,
-                                  6.0,
-                                  0.0,
-                                  0.0,
-                                ), //10.0 //25.0
-                                child: Text(
-                                  'Anunțuri',
-                                  style: TextStyle(
-                                    color:
-                                    Color(0xFF000000), //Color(0xFFFFFFFF),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 19,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Container(
               padding: EdgeInsets.only(
                 left: 25,
@@ -289,7 +242,7 @@ class HomePageJobs extends StatelessWidget {
             ),
           ),
         ],
-      ),
+      ),f
       drawer: NavDrawer2(),
       body: RemoteJson(),
     );
