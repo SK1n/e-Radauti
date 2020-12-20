@@ -118,7 +118,7 @@ class _MyAppState extends State<MyApp> {
                         HomePageNumbers()),
                     itemMenu(context, 'Anunțuri', Icons.announcement,
                         HomePageJobs()),
-                    itemMenu(context, 'Calitatea Aerului', Icons.bubble_chart,
+                    itemMenu(context, 'Calitatea \nAerului', Icons.bubble_chart,
                         AirQualityPage()),
                     itemMenu(
                         context, 'Transport', Icons.train, HomePageTransport()),

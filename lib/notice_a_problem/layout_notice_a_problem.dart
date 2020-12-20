@@ -41,7 +41,7 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
           Padding(
             padding: EdgeInsets.only(left: 10),
           ),
-          Text('Sesizeaza o problema'),
+          Text('Sesizează o\nproblema'),
         ]),
         leading: Container(
           child: FlatButton(
@@ -75,7 +75,7 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
               child: Column(
                 children: [
                   FormBuilderTextField(
-                    decoration: InputDecoration(hintText: 'Nume si prenume'),
+                    decoration: InputDecoration(hintText: 'Nume și prenume'),
                     attribute: 'name',
                     onChanged: (value) {
                       _name = value;
@@ -109,7 +109,7 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                     ],
                   ),
                   FormBuilderTextField(
-                    decoration: InputDecoration(hintText: 'Numar de telefon'),
+                    decoration: InputDecoration(hintText: 'Număr de telefon'),
                     attribute: 'number',
                     onChanged: (value) {
                       _number = value;
