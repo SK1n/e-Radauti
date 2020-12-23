@@ -37,12 +37,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
   bool _validateDropDown17 = false;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  Widget addLeadingIcon(){
+  Widget addLeadingIcon() {
     return new Container(
       //height: 110.0, //50.0, //25.0,
       //width: 110.0, //50.0, //25.0,
-      padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0), //EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 10.0), //EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-      margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0), //const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+      padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0,
+          0.0), //EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 10.0), //EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+      margin: const EdgeInsets.fromLTRB(
+          15.0, 5.0, 0.0, 5.0), //const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
       child: new Stack(
         alignment: AlignmentDirectional.center,
         children: <Widget>[
@@ -77,12 +79,17 @@ class _LocalCouncilState extends State<LocalCouncil> {
         actions: <Widget>[
           Container(
             alignment: Alignment.topRight,
-            margin: EdgeInsets.only(top: 0.0, right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
+            margin: EdgeInsets.only(
+                top: 0.0,
+                right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
             child: IconButton(
-              icon: Icon(Icons.menu,
+              icon: Icon(
+                Icons.menu,
                 size: 24,
-                color: Colors.black, ), //Colors.white
-              onPressed: () => _scaffoldKey.currentState.openDrawer(), //_scaffoldKey.currentState.openDrawer(),
+                color: Colors.black,
+              ), //Colors.white
+              onPressed: () => _scaffoldKey.currentState
+                  .openDrawer(), //_scaffoldKey.currentState.openDrawer(),
             ),
           ),
         ],
@@ -100,8 +107,11 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     children: <Widget>[
                       //YourScrollViewWidget(),
                       IconButton(
-                        icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
-                        onPressed: (){
+                        icon: Icon(
+                          Icons.keyboard_arrow_left,
+                          color: Color(0xFF979797),
+                        ), //_left Icons.arrow_back
+                        onPressed: () {
                           Navigator.pop(context);
                         },
                       ),
@@ -114,14 +124,20 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       children: <Widget>[
                         Stack(
                           children: <Widget>[
-                            Icon(Icons.location_city, color: Color(0x55FB6340), size: 30,),
+                            Icon(
+                              Icons.location_city,
+                              color: Color(0x55FB6340),
+                              size: 30,
+                            ),
                             Container(
                               child: Padding(
-                                padding: EdgeInsets.fromLTRB(35.0, 6.0, 0.0, 0.0), //10.0 //25.0
+                                padding: EdgeInsets.fromLTRB(
+                                    35.0, 6.0, 0.0, 0.0), //10.0 //25.0
                                 child: Text(
                                   'Administrație locală',
                                   style: TextStyle(
-                                    color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                                    color:
+                                        Color(0xFF000000), //Color(0xFFFFFFFF),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 19,
                                   ),
@@ -137,7 +153,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 15 ),
+              padding:
+                  EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 15),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -145,11 +162,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       Container(
                         height: 30,
                         width: 30,
-                        child: SvgPicture.asset("assets/images/circle_194C80.svg"),
+                        child:
+                            SvgPicture.asset("assets/images/circle_194C80.svg"),
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width - 90,
-                        padding: EdgeInsets.only(left: 10,),
+                        padding: EdgeInsets.only(
+                          left: 10,
+                        ),
                         child: Text(
                           "Consiliul Local",
                           style: TextStyle(
@@ -177,12 +197,15 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -195,7 +218,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/AirineiCristina.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/AirineiCristina.jpg"),
                             ),
                           ),
                           Container(
@@ -217,8 +241,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 style: TextStyle(
                                     color: Color(0xFF38A49C),
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 21
-                                ),
+                                    fontSize: 21),
                               ),
                             ),
                             Container(
@@ -265,19 +288,20 @@ class _LocalCouncilState extends State<LocalCouncil> {
                               ),
                             ),
                             Container(
-                              width: MediaQuery.of(context).size.width -136,
+                              width: MediaQuery.of(context).size.width - 136,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Covaliu-Tiberiu.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Covaliu-Tiberiu.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -287,7 +311,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Covaliu-Tiberiu-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Covaliu-Tiberiu-1.pdf')
                                   ),
                                 ],
                               ),
@@ -385,7 +410,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -407,7 +434,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                           ));
                         } else {
                           UrlLauncher.launch(_recipientController1);
-                        };
+                        }
+                        ;
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
                         //UrlLauncher.launch("tel://0722458858");
@@ -418,12 +446,15 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -436,7 +467,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/CalenciucAnca.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/CalenciucAnca.jpg"),
                             ),
                           ),
                           Container(
@@ -512,13 +544,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Chitruc-Ilie.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Chitruc-Ilie.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -528,7 +561,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Chitriuc-Ilie.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Chitriuc-Ilie.pdf')
                                   ),
                                 ],
                               ),
@@ -539,7 +573,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -562,13 +598,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             //2
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -581,7 +620,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/DoroscanFlorin.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/DoroscanFlorin.jpg"),
                             ),
                           ),
                           Container(
@@ -657,13 +697,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Carcalete-Petru.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Carcalete-Petru.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -673,7 +714,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Carcalete-Petru-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Carcalete-Petru-1.pdf')
                                   ),
                                 ],
                               ),
@@ -715,7 +757,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -737,7 +781,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                           ));
                         } else {
                           UrlLauncher.launch(_recipientController3);
-                        };
+                        }
+                        ;
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
                         //UrlLauncher.launch("tel://0722458858");
@@ -748,12 +793,15 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -766,7 +814,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/JecaloAdi.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/JecaloAdi.jpg"),
                             ),
                           ),
                           Container(
@@ -841,13 +890,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Cojocar-Vasile-Codrutu.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Cojocar-Vasile-Codrutu.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -857,7 +907,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Cojocar-Vasile-Codrutu-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Cojocar-Vasile-Codrutu-1.pdf')
                                   ),
                                 ],
                               ),
@@ -868,7 +919,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -882,7 +935,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
-                      onPressed: null, /*() {
+                      onPressed:
+                          null, /*() {
                         //UrlLauncher.launch("mailto:registratura@primarie.ro");
                       },*/
                     ),
@@ -891,13 +945,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             //3
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -910,7 +967,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/LuchianConstantin.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/LuchianConstantin.jpg"),
                             ),
                           ),
                           Container(
@@ -986,13 +1044,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Grijincu-Marius-Costel.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Grijincu-Marius-Costel.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -1002,7 +1061,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Grijincu-Marius.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Grijincu-Marius.pdf')
                                   ),
                                 ],
                               ),
@@ -1044,7 +1104,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -1066,7 +1128,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                           ));
                         } else {
                           UrlLauncher.launch(_recipientController5);
-                        };
+                        }
+                        ;
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
                         //UrlLauncher.launch("tel://0722458858");
@@ -1077,12 +1140,15 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -1095,7 +1161,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/MartinescuPaul.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/MartinescuPaul.jpg"),
                             ),
                           ),
                           Container(
@@ -1171,13 +1238,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Jecalo-Gheorghita.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Jecalo-Gheorghita.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -1187,7 +1255,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Jecalo-Gheorghita-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Jecalo-Gheorghita-1.pdf')
                                   ),
                                 ],
                               ),
@@ -1198,7 +1267,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -1221,13 +1292,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             //4
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -1240,7 +1314,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/MitrofanIonel.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/MitrofanIonel.jpg"),
                             ),
                           ),
                           Container(
@@ -1315,13 +1390,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Hacman-Mircea.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Hacman-Mircea.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -1331,7 +1407,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Hacman-Mircea-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Hacman-Mircea-1.pdf')
                                   ),
                                 ],
                               ),
@@ -1342,7 +1419,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -1365,12 +1444,15 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -1383,7 +1465,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/NanuLucian.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/NanuLucian.jpg"),
                             ),
                           ),
                           Container(
@@ -1459,13 +1542,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Mehedin-Maria.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Mehedin-Maria.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -1475,7 +1559,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Mehedin-Maria-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Mehedin-Maria-1.pdf')
                                   ),
                                 ],
                               ),
@@ -1486,7 +1571,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -1502,8 +1589,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
-                        UrlLauncher.launch(
-                            "mailto:luciannanu@yahoo.com");
+                        UrlLauncher.launch("mailto:luciannanu@yahoo.com");
                       },
                     ),
                   ),
@@ -1511,13 +1597,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             //5
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -1530,7 +1619,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/NichiforiucCristina.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/NichiforiucCristina.jpg"),
                             ),
                           ),
                           Container(
@@ -1606,13 +1696,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Miron-Catalin.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Miron-Catalin.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -1622,7 +1713,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Miron-Catalin-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Miron-Catalin-1.pdf')
                                   ),
                                 ],
                               ),
@@ -1633,7 +1725,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -1656,12 +1750,15 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -1674,7 +1771,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/NicolauBogdan.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/NicolauBogdan.jpg"),
                             ),
                           ),
                           Container(
@@ -1744,19 +1842,20 @@ class _LocalCouncilState extends State<LocalCouncil> {
                               ),
                             ),
                             Container(
-                              width: MediaQuery.of(context).size.width -136,
+                              width: MediaQuery.of(context).size.width - 136,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Popescu-Angelica.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Popescu-Angelica.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -1766,7 +1865,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Popescu-Angelica-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Popescu-Angelica-1.pdf')
                                   ),
                                 ],
                               ),
@@ -1777,7 +1877,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -1800,13 +1902,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             //6
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -1819,7 +1924,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/OlareanAurel.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/OlareanAurel.jpg"),
                             ),
                           ),
                           Container(
@@ -1889,19 +1995,20 @@ class _LocalCouncilState extends State<LocalCouncil> {
                               ),
                             ),
                             Container(
-                              width: MediaQuery.of(context).size.width -136,
+                              width: MediaQuery.of(context).size.width - 136,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Mutrescu-Dan.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Mutrescu-Dan.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -1911,7 +2018,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Mutrescu-Dan-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Mutrescu-Dan-1.pdf')
                                   ),
                                 ],
                               ),
@@ -1922,7 +2030,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -1945,12 +2055,15 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -1963,7 +2076,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/OnicaMarius.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/OnicaMarius.jpg"),
                             ),
                           ),
                           Container(
@@ -2039,13 +2153,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Negrut-Catalin-Romeo.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Negrut-Catalin-Romeo.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -2055,7 +2170,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Negrut-Romeo.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Negrut-Romeo.pdf')
                                   ),
                                 ],
                               ),
@@ -2066,7 +2182,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -2082,8 +2200,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
-                        UrlLauncher.launch(
-                            "mailto:onica.marius@gmail.com");
+                        UrlLauncher.launch("mailto:onica.marius@gmail.com");
                       },
                     ),
                   ),
@@ -2091,13 +2208,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             //7
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2110,7 +2230,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/PredaFlorin.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/PredaFlorin.jpg"),
                             ),
                           ),
                           Container(
@@ -2186,13 +2307,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Nicolau-Bogdan.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Nicolau-Bogdan.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -2202,7 +2324,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Nicolau-Bogdan-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Nicolau-Bogdan-1.pdf')
                                   ),
                                 ],
                               ),
@@ -2245,7 +2368,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -2267,7 +2392,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                           ));
                         } else {
                           UrlLauncher.launch(_recipientController13);
-                        };
+                        }
+                        ;
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
                         //UrlLauncher.launch("tel://0722458858");
@@ -2278,12 +2404,15 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2296,7 +2425,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/SimotaGheorghe.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/SimotaGheorghe.jpg"),
                             ),
                           ),
                           Container(
@@ -2372,13 +2502,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Preda-Florin.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Preda-Florin.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -2388,7 +2519,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Preda-Florin-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Preda-Florin-1.pdf')
                                   ),
                                 ],
                               ),
@@ -2399,7 +2531,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -2414,7 +2548,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       splashColor: Color(0x8838A49C),
-                      onPressed: null, /*() {
+                      onPressed:
+                          null, /*() {
                         //UrlLauncher.launch("mailto:registratura@primarie.ro");
                       },*/
                     ),
@@ -2423,13 +2558,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             //8
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2442,7 +2580,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/TatarNistor.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/TatarNistor.jpg"),
                             ),
                           ),
                           Container(
@@ -2515,14 +2654,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                     ),
                                     //onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Covaliu-Tiberiu.pdf')
-                                    onTap: null,//() {}
+                                    onTap: null, //() {}
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -2533,7 +2672,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C),),
                                     ),
                                     //onTap: () => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Covaliu-Tiberiu-1.pdf')
-                                    onTap: null,//() {}
+                                    onTap: null, //() {}
                                   ),
                                 ],
                               ),
@@ -2544,7 +2683,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -2570,12 +2711,15 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2588,7 +2732,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/TibeicaSilviu.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/TibeicaSilviu.jpg"),
                             ),
                           ),
                           Container(
@@ -2664,13 +2809,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Robu-Sorin.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Robu-Sorin.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -2680,7 +2826,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Robu-Sorin-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Robu-Sorin-1.pdf')
                                   ),
                                 ],
                               ),
@@ -2723,7 +2870,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -2745,7 +2894,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                           ));
                         } else {
                           UrlLauncher.launch(_recipientController16);
-                        };
+                        }
+                        ;
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
                         //UrlLauncher.launch("tel://0722458858");
@@ -2756,13 +2906,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             //9
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2775,7 +2928,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/TironWerner.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/TironWerner.jpg"),
                             ),
                           ),
                           Container(
@@ -2851,13 +3005,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Simota-Gheorghe.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Simota-Gheorghe.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -2867,7 +3022,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Simota-Gheorghe-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Simota-Gheorghe-1.pdf')
                                   ),
                                 ],
                               ),
@@ -2909,7 +3065,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -2931,7 +3089,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                           ));
                         } else {
                           UrlLauncher.launch(_recipientController17);
-                        };
+                        }
+                        ;
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
                         //UrlLauncher.launch("tel://0722458858");
@@ -2942,12 +3101,15 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -2960,7 +3122,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/TareviciCezar.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/TareviciCezar.jpg"),
                             ),
                           ),
                           Container(
@@ -3036,13 +3199,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Tarevici-Cezar-Ciprian.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Tarevici-Cezar-Ciprian.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -3052,7 +3216,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Tarevici-Ciprian.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Tarevici-Ciprian.pdf')
                                   ),
                                 ],
                               ),
@@ -3063,7 +3228,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -3086,13 +3253,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
             //10
             Container(
-              padding: EdgeInsets.only(left: 17, right: 17,top: 20, bottom: 30),
+              padding:
+                  EdgeInsets.only(left: 17, right: 17, top: 20, bottom: 30),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -3105,7 +3275,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                             width: 91,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage("assets/images/council/VasiloschiIulian.jpg"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/council/VasiloschiIulian.jpg"),
                             ),
                           ),
                           Container(
@@ -3181,13 +3352,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                 children: <Widget>[
                                   new InkWell(
                                     child: new Text(
-                                      'Declariație de avere',
+                                      'Declarație de avere',
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Dan-Vatra.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Dan-Vatra.pdf')
                                   ),
                                   new InkWell(
                                     child: new Text(
@@ -3197,7 +3369,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
                                       ),
                                       //style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
                                     ),
-                                    onTap: null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Dan-Vatra-1.pdf')
+                                    onTap:
+                                        null, //() => UrlLauncher.launch('https://primariaradauti.ro/wp-content/uploads/2020/07/Dan-Vatra-1.pdf')
                                   ),
                                 ],
                               ),
@@ -3208,7 +3381,9 @@ class _LocalCouncilState extends State<LocalCouncil> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 10,),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     width: MediaQuery.of(context).size.width - 35,
                     child: FlatButton(
                       child: Text(
@@ -3299,6 +3474,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
         break;
     }
   }
+
   //5
   void dropDownValueIdentifier5(value) {
     switch (value) {
@@ -3325,6 +3501,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
         break;
     }
   }
+
   //13
   void dropDownValueIdentifier13(value) {
     switch (value) {
@@ -3344,7 +3521,8 @@ class _LocalCouncilState extends State<LocalCouncil> {
         break;
       case "Facebook":
         {
-          _recipientController13 = "https://www.facebook.com/preda.florin.mirel";
+          _recipientController13 =
+              "https://www.facebook.com/preda.florin.mirel";
           _validateDropDown13 = false;
           debugPrint('valoare email: $_recipientController13');
         }
@@ -3358,6 +3536,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
         break;
     }
   }
+
   //16
   void dropDownValueIdentifier16(value) {
     switch (value) {
@@ -3370,14 +3549,16 @@ class _LocalCouncilState extends State<LocalCouncil> {
         break;
       case "Email":
         {
-          _recipientController16 = "mailto:tibeica.silviu.catalin@protonmail.com";
+          _recipientController16 =
+              "mailto:tibeica.silviu.catalin@protonmail.com";
           _validateDropDown16 = false;
           debugPrint('valoare email: $_recipientController16');
         }
         break;
       case "Facebook":
         {
-          _recipientController16 = "https://www.facebook.com/tibeicasilviucatalin";
+          _recipientController16 =
+              "https://www.facebook.com/tibeicasilviucatalin";
           _validateDropDown16 = false;
           debugPrint('valoare email: $_recipientController16');
         }
@@ -3391,6 +3572,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
         break;
     }
   }
+
   //17
   void dropDownValueIdentifier17(value) {
     switch (value) {
@@ -3417,5 +3599,4 @@ class _LocalCouncilState extends State<LocalCouncil> {
         break;
     }
   }
-
 }

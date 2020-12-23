@@ -118,7 +118,7 @@ class _MyAppState extends State<MyApp> {
                         HomePageNumbers()),
                     itemMenu(context, 'Anunțuri', Icons.announcement,
                         HomePageJobs()),
-                    itemMenu(context, 'Calitatea Aerului', Icons.bubble_chart,
+                    itemMenu(context, 'Calitatea \nAerului', Icons.bubble_chart,
                         AirQualityPage()),
                     itemMenu(
                         context, 'Transport', Icons.train, HomePageTransport()),
@@ -288,3 +288,4 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+//c:\flutter\flutter\bin\flutter build apk --release --build-name=2.1 --build-number=39
