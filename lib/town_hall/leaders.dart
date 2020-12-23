@@ -165,7 +165,7 @@ class Leaders extends StatelessWidget {
                                 children: <Widget>[
                                   new InkWell(
                                       child: new Text(
-                                        'Declariație de avere',
+                                        'Declarație de avere',
                                         style: TextStyle(
                                           decoration: TextDecoration.underline,
                                           color: Color(0xFF38A49C),
@@ -284,7 +284,7 @@ class Leaders extends StatelessWidget {
                                 children: <Widget>[
                                   new InkWell(
                                       child: new Text(
-                                        'Declariație de avere',
+                                        'Declarație de avere',
                                         style: TextStyle(
                                           decoration: TextDecoration.underline,
                                           color: Color(0xFF38A49C),
@@ -418,7 +418,7 @@ class Leaders extends StatelessWidget {
                                 children: <Widget>[
                                   new InkWell(
                                       child: new Text(
-                                        'Declariație de avere',
+                                        'Declarație de avere',
                                         style: TextStyle(
                                           decoration: TextDecoration.underline,
                                           color: Color(0xFF38A49C),
