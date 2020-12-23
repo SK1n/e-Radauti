@@ -2978,13 +2978,11 @@ class LocalCouncil extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: Container(
-                height: 1.0,
-                color: Color.fromRGBO(0, 0, 0, 0.1),
-              ),
-            ),
+            /*Padding(
+              padding:EdgeInsets.symmetric(horizontal:15.0),
+              child:Container(
+                height:1.0,
+                color:Color.fromRGBO(0, 0, 0, 0.1),),),*/
           ],
         ),
       ),

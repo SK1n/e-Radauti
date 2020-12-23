@@ -22,9 +22,9 @@ class NewEventWidget extends StatelessWidget {
       location: event.location,
       startDate:
       DateTime.utc(
-          event.yearT,
-          event.monthT,
-          event.dayT, event.hourT, event.minuteT).add(Duration(
+        event.yearT,
+        event.monthT,
+        event.dayT, event.hourT, event.minuteT).add(Duration(
         hours: -2,
       )),
       endDate:
@@ -297,6 +297,7 @@ class NewEventWidget extends StatelessWidget {
                                                         ? 'Success'
                                                         : 'Error')));
                                               });
+                                              updateDataFirebase(event);
                                             },
                                             child: const Text(
                                               'Particip!',

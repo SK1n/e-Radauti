@@ -7,6 +7,7 @@ import 'package:expandable/expandable.dart';
 class LastEventWidget extends StatelessWidget {
   final EventApp event;
   const LastEventWidget({Key key, this.event}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ExpandableNotifier(
@@ -150,6 +151,7 @@ class LastEventWidget extends StatelessWidget {
                                       padding: EdgeInsets.fromLTRB(
                                           0.0, 5.0, 0.0, 0.0), //10.0 //25.0
                                       //child: Text('Evenimente'),
+                                      //1
                                       child: Text(
                                         'Categoria: ' + event.categoryName,
                                         overflow: TextOverflow.ellipsis,

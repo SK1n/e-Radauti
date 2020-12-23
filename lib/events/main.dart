@@ -19,7 +19,7 @@ class EventsMain extends StatelessWidget {
           iconColor: Color(0xAA38A49C), //Colors.blue
           useInkWell: true,
         ),
-        child: TabDemo(),
+        child: TabDemo(scaffoldState: _scaffoldKey,),
       ),
     );
   }
