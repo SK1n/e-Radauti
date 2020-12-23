@@ -37,7 +37,7 @@ class Taxi extends StatelessWidget {
         slivers: <Widget>[
           SliverToBoxAdapter(
             child: SizedBox(
-              height: (MediaQuery.of(context).size.height - 250),
+              height: (MediaQuery.of(context).size.height - 1),
               child: Container(
                 child: GridView.count(
                   primary: false,
