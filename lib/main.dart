@@ -16,17 +16,16 @@ import 'package:flutterapperadauti/transport/Transport.dart';
 import 'package:flutterapperadauti/volunteer/volunteer.dart';
 import 'package:flutterapperadauti/menu_page.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-  final pushNotificationService = PushNotificationService(_firebaseMessaging);
-  await pushNotificationService.initialise();
+void main() {
   runApp(MyAppRC());
 }
 
 class MyAppRC extends StatelessWidget {
+  static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   @override
   Widget build(BuildContext context) {
+    final pushNotificationService = PushNotificationService(_firebaseMessaging);
+    pushNotificationService.initialise();
     return MaterialApp(
       title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,
@@ -118,7 +117,7 @@ class _MyAppState extends State<MyApp> {
                         HomePageNumbers()),
                     itemMenu(context, 'Anunțuri', Icons.announcement,
                         HomePageJobs()),
-                    itemMenu(context, 'Calitatea \nAerului', Icons.bubble_chart,
+                    itemMenu(context, 'Calitatea Aerului', Icons.bubble_chart,
                         AirQualityPage()),
                     itemMenu(
                         context, 'Transport', Icons.train, HomePageTransport()),
@@ -220,6 +219,7 @@ class _MyAppState extends State<MyApp> {
                             'Parteneri',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline,
                               color: Color(0xFF32325D),
                               fontSize: 15,
                             ),
@@ -288,4 +288,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-//c:\flutter\flutter\bin\flutter build apk --release --build-name=2.1 --build-number=39
