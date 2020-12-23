@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutterapperadauti/appBarModel.dart';
+import 'package:flutterapperadauti/menu_page.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class Taxi2 extends StatelessWidget {
@@ -29,47 +31,13 @@ class Taxi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Icon(
-            Icons.local_taxi,
-            color: Color(0x55FB6340),
-            size: 30,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10),
-          ),
-          Text('Taximetriști'),
-        ]),
-        leading: Container(
-          child: FlatButton(
-            child: Icon(Ionicons.ios_arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        actions: <Widget>[
-          Container(
-            alignment: Alignment.topRight,
-            margin: EdgeInsets.only(top: 0.0, right: 0.0),
-            child: IconButton(
-              icon: Icon(
-                Icons.menu,
-                size: 24,
-                color: Colors.black,
-              ),
-              onPressed: () => _scaffoldKey.currentState.openDrawer(),
-            ),
-          ),
-        ],
-      ),
+      appBar: AppBarModel()
+          .loadAppBar(context, 'Taximetriști', Icons.local_taxi, _scaffoldKey),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(
             child: SizedBox(
-              height: (MediaQuery.of(context).size.height - 250),
+              height: (MediaQuery.of(context).size.height - 1),
               child: Container(
                 child: GridView.count(
                   primary: false,

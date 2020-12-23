@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterapperadauti/appBarModel.dart';
 import 'package:flutterapperadauti/menu_page.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
@@ -10,97 +11,13 @@ class PublicInstitutions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         key: _scaffoldKey,
-        appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 255, 255, 255),
-          automaticallyImplyLeading: false,
-          leading: Container(
-            padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-            margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
-            child: Image.asset("assets/logo_images/app_logo.png"),
-          ),
-          actions: <Widget>[
-            Container(
-              alignment: Alignment.topRight,
-              margin: EdgeInsets.only(
-                  top: 0.0,
-                  right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
-              child: IconButton(
-                icon: Icon(
-                  Icons.menu,
-                  size: 24,
-                  color: Colors.black,
-                ), //Colors.white
-                onPressed: () => _scaffoldKey.currentState.openDrawer(),
-              ),
-            ),
-          ],
-        ),
+        appBar: AppBarModel().loadAppBar(
+            context, 'Instituții publice', Icons.perm_phone_msg, _scaffoldKey),
         drawer: NavDrawer2(),
         body: SingleChildScrollView(
           padding: EdgeInsets.only(),
           child: Column(
             children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(
-                  top: 20,
-                  bottom: 15,
-                ),
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.keyboard_arrow_left,
-                          color: Color(0xFF979797),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width - 80,
-                      child: new Stack(
-                        alignment: AlignmentDirectional.center,
-                        children: <Widget>[
-                          Stack(
-                            children: <Widget>[
-                              Icon(
-                                Icons.perm_phone_msg,
-                                color: Color(0x55FB6340),
-                                size: 30,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                    35.0,
-                                    6.0,
-                                    0.0,
-                                    0.0,
-                                  ), //10.0 //25.0
-                                  child: Text(
-                                    'Instituții publice',
-                                    style: TextStyle(
-                                      color: Color(
-                                          0xFF000000), //Color(0xFFFFFFFF),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 19,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               //1
               Container(
                 padding: EdgeInsets.only(
