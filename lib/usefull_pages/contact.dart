@@ -39,9 +39,9 @@ class _ContactState extends State<Contact> {
       ..recipients.add(_recipientController)
       ..subject = ' Formularul de contact - aplicația e-Rădăuți'
       ..html = 'Către,     Rădăuțul civic<br><br>Stimată doamnă/ Stimate domn,<br><br>'
-          'Subsemnatul ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>'
+          'Subsemnatul/Subsemnata ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>'
           '${_bodyController.text}<br><br>Prezentul e-mail reprezintă un mesaj transmis '
-          'prin intermediul aplicației mobile e-Rădăuți, dezvoltată de Ascociația Rădăuțiul Civic'
+          'prin intermediul aplicației mobile e-Rădăuți, dezvoltată de Asociația Rădăuțiul Civic'
           ', prin funcționalitatea „Contact”.<br><br>Vă rog să îmi transmiteți răspunsul în termenul legal la adresa '
           '${_emailController.text}.<br><br>Cu stimă,<br><br>     ${_nameController.text}<br><br>'
           '     Email: ${_emailController.text}';

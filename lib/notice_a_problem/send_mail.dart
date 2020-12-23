@@ -48,7 +48,7 @@ class SendEmailMailer {
     voidshowDialogAfterTringToSendEmail(context);
   }
 
-  Future<bool> sendEmailWithoutPosition(
+  void sendEmailWithoutPosition(
       String name,
       String destination,
       String subject,

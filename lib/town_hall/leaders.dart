@@ -217,7 +217,7 @@ class Leaders extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 50,
                           backgroundImage:
-                              AssetImage("assets/images/circle_69E781.svg"),
+                              AssetImage("assets/images/TereviciCezar.jpg"),
                         ),
                       ),
                       Container(
@@ -227,7 +227,7 @@ class Leaders extends StatelessWidget {
                             Container(
                               width: MediaQuery.of(context).size.width - 136,
                               child: Text(
-                                "ÎN CURÂND",
+                                "Țarevici Cezar-Ciprian",
                                 style: TextStyle(
                                   color: Color(0xFF38A49C),
                                   fontWeight: FontWeight.bold,
@@ -255,7 +255,8 @@ class Leaders extends StatelessWidget {
                                     size: 40,
                                   ),
                                   onPressed: () {
-                                    _launchURL("facebook.com");
+                                    _launchURL(
+                                        "https://www.facebook.com/ciprian.tarevici");
                                   },
                                 ),
 /*                                FlatButton(
@@ -272,24 +273,9 @@ class Leaders extends StatelessWidget {
                                     color: Colors.orangeAccent,
                                     size: 40,
                                   ),
-                                  onPressed: () {
-                                    UrlLauncher.launch(
-                                        "mailto:email1@gmail.com");
-                                  },
+                                  onPressed: null,
                                 ),
                               ],
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(top: 10),
-                              width: MediaQuery.of(context).size.width - 136,
-                              child: Text(
-                                "Informații adiționale",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  decoration: TextDecoration.underline,
-                                  fontSize: 15,
-                                ),
-                              ),
                             ),
                             Container(
                               width: MediaQuery.of(context).size.width - 136,
@@ -305,7 +291,8 @@ class Leaders extends StatelessWidget {
                                           fontSize: 15,
                                         ),
                                       ),
-                                      onTap: null),
+                                      onTap: () => UrlLauncher.launch(
+                                          'https://primariaradauti.ro/wp-content/uploads/2020/07/Tarevici-Cezar-Ciprian.pdf')),
                                   new InkWell(
                                       child: new Text(
                                         'Declarație de interese',
@@ -315,7 +302,8 @@ class Leaders extends StatelessWidget {
                                           fontSize: 15,
                                         ),
                                       ),
-                                      onTap: null),
+                                      onTap: () => UrlLauncher.launch(
+                                          'https://primariaradauti.ro/wp-content/uploads/2020/07/Tarevici-Ciprian.pdf')),
                                 ],
                               ),
                             ),

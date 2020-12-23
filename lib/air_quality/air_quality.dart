@@ -35,7 +35,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
               .interceptor);
       dioResponse = await dio.get(
           "https://www.airvisual.com/api/v2/node/5ded3e13994dfe107f7013a0",
-          options: buildCacheOptions(Duration(hours: 1)));
+          options: buildCacheOptions(Duration(minutes: 10)));
       debugPrint('dioResponse:' + dioResponse.data.toString());
     } catch (e) {
       print('catch error: $e');

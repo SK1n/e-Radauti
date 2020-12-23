@@ -208,7 +208,7 @@ class HomePageJobs extends StatelessWidget {
             ),
           ),
         ],
-      ),
+      ),f
       drawer: NavDrawer2(),
       body: RemoteJson(),
     );
