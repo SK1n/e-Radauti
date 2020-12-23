@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:async';
+import 'package:firebase_database/firebase_database.dart';
 
 class EventApp {
   //final String imagePath, title, description, location, duration, punchLine1, punchLine2;
@@ -13,7 +14,8 @@ class EventApp {
       hour,
       organization,
       categoryName,
-      nrParticipants;
+      nrParticipants,
+      eventKey;
   final int dayT, monthT, yearT, hourT, minuteT;
   final List categoryIds, galleryImages;
 
@@ -34,7 +36,9 @@ class EventApp {
         this.categoryName,
         this.nrParticipants,
         this.categoryIds,
-        this.galleryImages});
+        this.galleryImages,
+        this.eventKey,
+      });
 }
 
 //2
@@ -87,6 +91,7 @@ Future<List> fetchListEvent() async {
         nrParticipants: value['nrPeople'].toString(),
         categoryIds: [0, 1],
         galleryImages: [],
+        eventKey: key.toString(),
       ),
     );
   });
@@ -151,9 +156,19 @@ Future<List> fetchListNewEvent() async {
         nrParticipants: value['nrPeople'].toString(),
         categoryIds: [0, 1],
         galleryImages: [],
+        eventKey: key.toString(),
       ),
     );
   });
 
   return children;
+}
+
+var databaseReference = FirebaseDatabase.instance.reference();
+void updateDataFirebase(EventApp eventApp){
+  databaseReference.child('-Events').child(eventApp.eventKey).once().then((DataSnapshot snapshot) {
+    databaseReference.child('-Events').child(eventApp.eventKey).update({
+      'nrPeople': snapshot.value['nrPeople'] + 1
+    });
+  });
 }

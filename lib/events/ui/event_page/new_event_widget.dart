@@ -4,7 +4,6 @@ import 'package:flutter/painting.dart';
 import '../../model/event.dart';
 import 'package:expandable/expandable.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
-//import 'package:firebase_database/firebase_database.dart';
 
 class NewEventWidget extends StatelessWidget {
   final EventApp event;
@@ -298,6 +297,7 @@ class NewEventWidget extends StatelessWidget {
                                                         ? 'Success'
                                                         : 'Error')));
                                               });
+                                              updateDataFirebase(event);
                                             },
                                             child: const Text(
                                               'Particip!',

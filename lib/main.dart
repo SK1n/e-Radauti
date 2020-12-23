@@ -24,7 +24,7 @@ Future<void> main() async {
   runApp(MyAppRC());
 }
 
-class MyAppRC extends StatelessWidget {
+class MyAppRC extends StatelessWidget {  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

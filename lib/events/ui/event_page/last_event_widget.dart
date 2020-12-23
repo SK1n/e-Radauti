@@ -3,32 +3,13 @@ import 'package:flutter/painting.dart';
 //import 'package:flutterapp/styleguide.dart';
 import '../../model/event.dart';
 import 'package:expandable/expandable.dart';
-import 'package:firebase_database/firebase_database.dart';
-
-/*var st = 'string test';
-var databaseReference = FirebaseDatabase.instance.reference().
-child('-Events').child('20201209_1800').
-once().then((value) {
-  var M ; M = value; st = M['categoria'];});*/
 
 class LastEventWidget extends StatelessWidget {
   final EventApp event;
   const LastEventWidget({Key key, this.event}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    var st = 'string test';
-    /*var databaseReference = FirebaseDatabase.instance.reference().
-    child('-Events').child('20201209_1800').
-    once().then((value) {
-      var M ; M = value; st = M['categoria'];});*/
-    var databaseReference = FirebaseDatabase.instance.reference();
-
-    void readData(){
-      databaseReference.once().then((DataSnapshot snapshot) {
-        print('Data : ${snapshot.value}');
-      });
-    }
-    readData();
     return ExpandableNotifier(
         child: Padding(
       padding: const EdgeInsets.all(0),
@@ -170,9 +151,9 @@ class LastEventWidget extends StatelessWidget {
                                       padding: EdgeInsets.fromLTRB(
                                           0.0, 5.0, 0.0, 0.0), //10.0 //25.0
                                       //child: Text('Evenimente'),
+                                      //1
                                       child: Text(
-                                        //'Categoria: ' + event.categoryName,
-                                        'Categoria: ' + event.categoryName + ' ' + st + '',
+                                        'Categoria: ' + event.categoryName,
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 5,
                                         textAlign: TextAlign.left,
