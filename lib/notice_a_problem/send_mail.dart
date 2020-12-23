@@ -32,7 +32,7 @@ class SendEmailMailer {
       ..recipients.add(destination)
       ..subject = ' Petiție $subject - aplicația e-Rădăuți'
       ..html = 'Către, $destination <br><br> Stimată doamnă/ Stimate domn,'
-          '<br><br>Subsemnatul $name, vă supun atenției următoarea problemă:<br><br>'
+          '<br><br>Subsemnatul(a) $name, vă supun atenției următoarea problemă:<br><br>'
           '$body<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați'
           ' măsurile ce se impun.<br><br> Cele sesizate sunt la următoarea adresă '
           ' Lat:${position.latitude.toString()} Long:${position.longitude.toString()}'
@@ -63,7 +63,7 @@ class SendEmailMailer {
       ..recipients.add(destination)
       ..subject = ' Petiție ${subject.toString()} - aplicația e-Rădăuți'
       ..html = 'Către, ${destination.toString()} <br><br> Stimată doamnă/ Stimate domn,'
-          '<br><br>Subsemnatul ${name.toString()}, vă supun atenției următoarea problemă:<br><br>'
+          '<br><br>Subsemnatul(a) ${name.toString()}, vă supun atenției următoarea problemă:<br><br>'
           '$description<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați'
           ' măsurile ce se impun.<br><br>'
           'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și '
