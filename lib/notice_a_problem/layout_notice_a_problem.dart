@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutterapperadauti/appBarModel.dart';
 import 'package:flutterapperadauti/menu_page.dart';
 import 'package:flutterapperadauti/notice_a_problem/identify_destination.dart';
 import 'package:flutterapperadauti/notice_a_problem/send_mail.dart';
@@ -30,42 +31,8 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Icon(
-            Icons.camera,
-            color: Color(0x55FB6340),
-            size: 30,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10),
-          ),
-          Text('Sesizeaza o problema'),
-        ]),
-        leading: Container(
-          child: FlatButton(
-            child: Icon(Ionicons.ios_arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        actions: <Widget>[
-          Container(
-            alignment: Alignment.topRight,
-            margin: EdgeInsets.only(top: 0.0, right: 0.0),
-            child: IconButton(
-              icon: Icon(
-                Icons.menu,
-                size: 24,
-                color: Colors.black,
-              ),
-              onPressed: () => _scaffoldKey.currentState.openDrawer(),
-            ),
-          ),
-        ],
-      ),
+      appBar: AppBarModel().loadAppBar(
+          context, 'Sesizează o\nproblemă', Icons.announcement, _scaffoldKey),
       drawer: NavDrawer2(),
       body: Container(
         padding: EdgeInsets.all(10),
