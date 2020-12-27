@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
 class LocalCouncil extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -40,7 +40,7 @@ class LocalCouncil extends StatelessWidget {
       key: _scaffoldKey,
       appBar: AppBarModel().loadAppBar(
           context, 'Administrație locală', Icons.location_city, _scaffoldKey),
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

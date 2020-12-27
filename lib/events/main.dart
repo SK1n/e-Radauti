@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 
 import 'package:flutterapperadauti/events/ui/tabView/tabPage.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:expandable/expandable.dart';
 
 class EventsMain extends StatelessWidget {
@@ -11,7 +11,7 @@ class EventsMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       appBar: AppBarModel().loadAppBar(
           context, 'Evenimente', Icons.calendar_today, _scaffoldKey),
       body: ExpandableTheme(
@@ -19,7 +19,9 @@ class EventsMain extends StatelessWidget {
           iconColor: Color(0xAA38A49C), //Colors.blue
           useInkWell: true,
         ),
-        child: TabDemo(scaffoldState: _scaffoldKey,),
+        child: TabDemo(
+          scaffoldState: _scaffoldKey,
+        ),
       ),
     );
   }

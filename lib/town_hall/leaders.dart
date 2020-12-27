@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class Leaders extends StatelessWidget {
@@ -22,7 +22,7 @@ class Leaders extends StatelessWidget {
       key: _scaffoldKey,
       appBar: AppBarModel().loadAppBar(
           context, 'Administrație locală', Icons.location_city, _scaffoldKey),
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

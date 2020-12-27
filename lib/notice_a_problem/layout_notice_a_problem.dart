@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutterapperadauti/notice_a_problem/identify_destination.dart';
 import 'package:flutterapperadauti/notice_a_problem/send_mail.dart';
 import 'package:geolocator/geolocator.dart';
@@ -33,7 +33,7 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
       key: _scaffoldKey,
       appBar: AppBarModel().loadAppBar(
           context, 'Sesizează o\nproblemă', Icons.announcement, _scaffoldKey),
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       body: Container(
         padding: EdgeInsets.all(10),
         child: SingleChildScrollView(

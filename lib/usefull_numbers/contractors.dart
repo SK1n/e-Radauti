@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class Contractors extends StatelessWidget {
@@ -13,7 +13,7 @@ class Contractors extends StatelessWidget {
         key: _scaffoldKey,
         appBar: AppBarModel().loadAppBar(context, 'Tehnicieni și\nspecialiști',
             Icons.perm_phone_msg, _scaffoldKey),
-        drawer: NavDrawer2(),
+        drawer: NavDrawer(),
         body: SingleChildScrollView(
           padding: EdgeInsets.only(),
           child: Column(

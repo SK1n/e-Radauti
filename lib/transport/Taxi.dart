@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class Taxi2 extends StatelessWidget {

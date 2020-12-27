@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutterapperadauti/usefull_numbers/local_authorities.dart';
 import 'package:flutterapperadauti/usefull_numbers/miscellaneous.dart';
 import 'package:flutterapperadauti/usefull_numbers/public_institutions.dart';
@@ -15,7 +15,7 @@ class HomePageNumbers extends StatelessWidget {
       key: _scaffoldKey,
       appBar: AppBarModel().loadAppBar(
           context, 'Numere utile', Icons.perm_phone_msg, _scaffoldKey),
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

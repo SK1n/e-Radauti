@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:http/http.dart' as http;
 import 'package:expandable/expandable.dart';
@@ -156,7 +156,7 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
       key: _scaffoldKey,
       appBar: AppBarModel().loadAppBar(
           context, 'Administrație locală', Icons.location_city, _scaffoldKey),
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       body: ExpandableTheme(
         data: const ExpandableThemeData(
           iconColor: Color(0xAA38A49C), //Colors.blue

@@ -9,7 +9,7 @@ import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/volunteer/volunteer.dart';
 import 'package:flutterapperadauti/events/main.dart';
 
-class NavDrawer2 extends StatelessWidget {
+class NavDrawer extends StatelessWidget {
   Widget addDrawerHeaderIcon() {
     return new Container(
       padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),

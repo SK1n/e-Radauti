@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/town_hall/leaders.dart';
 //import 'package:flutterapperadauti/town_hall/local_council.dart';
 import 'package:flutterapperadauti/town_hall/council_meetings.dart';
 import 'package:flutterapperadauti/town_hall/local_legislation.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutterapperadauti/town_hall/local_council2020.dart';
 
 class TownHallMain extends StatelessWidget {
@@ -17,7 +17,7 @@ class TownHallMain extends StatelessWidget {
       key: _scaffoldKey,
       appBar: AppBarModel().loadAppBar(
           context, 'Administrație locală', Icons.location_city, _scaffoldKey),
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

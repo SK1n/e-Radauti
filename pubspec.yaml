@@ -79,6 +79,8 @@ dependencies:
   #DateTime format plugin
   intl: ^0.16.1
 
+  #test
+
 dev_dependencies:
   flutter_launcher_icons: "^0.8.0"
   flutter_test:
@@ -90,7 +92,7 @@ flutter_email_sender:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 flutter_icons:
-#  image_path: "assets/images/icon-128x128.png"
+  #  image_path: "assets/images/icon-128x128.png"
   image_path_android: "assets/logo_images/app_logo_final.png"
   image_path_ios: "assets/logo_images/app_logo_final.png"
   android: true # can specify file name here e.g. "ic_launcher"

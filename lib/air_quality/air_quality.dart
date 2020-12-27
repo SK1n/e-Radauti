@@ -7,10 +7,10 @@ import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutterapperadauti/air_quality/value_adapter.dart';
 import 'package:flutterapperadauti/air_quality/legend.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:intl/intl.dart';
 
-import '../menu_page.dart';
+import '../widgets/src/nav_drawer.dart';
 
 class AirQualityPage extends StatefulWidget {
   @override

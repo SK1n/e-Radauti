@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/jobs/announcements_web_view.dart';
 import 'package:flutterapperadauti/jobs/job_model.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import '../menu_page.dart';
+import '../widgets/src/nav_drawer.dart';
 
 class FurniturePage extends StatefulWidget {
   @override
@@ -18,7 +17,6 @@ class _FurniturePageState extends State<FurniturePage> {
   List<JobModel> jobList;
   Map<String, dynamic> jsonResponse;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  num _stackToView = 1;
 
   Future<List<JobModel>> _getJobs() async {
     try {
@@ -26,7 +24,6 @@ class _FurniturePageState extends State<FurniturePage> {
           "https://www.eradauti.ro/api/context?pathname=/anunturi/imobiliare-19");
       this.setState(() {
         jsonResponse = json.decode(response.body);
-        _stackToView = 0;
       });
       jobList = List<JobModel>();
       jsonResponse.forEach((key, value) {
@@ -46,7 +43,7 @@ class _FurniturePageState extends State<FurniturePage> {
         key: _scaffoldKey,
         appBar: AppBarModel()
             .loadAppBar(context, 'Anunțuri', Icons.announcement, _scaffoldKey),
-        drawer: NavDrawer2(),
+        drawer: NavDrawer(),
         body: FutureBuilder(
           future: _getJobs(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {

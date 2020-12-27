@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class AnnouncementWebView extends StatefulWidget {
@@ -23,7 +23,7 @@ class _AnnouncementWebViewState extends State<AnnouncementWebView> {
       key: _scaffoldKey,
       appBar: AppBarModel()
           .loadAppBar(context, 'Anunțuri', Icons.announcement, _scaffoldKey),
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       body: IndexedStack(
         index: _stackToView,
         children: [

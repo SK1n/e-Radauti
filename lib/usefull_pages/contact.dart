@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
 class Contact extends StatefulWidget {
   @override
@@ -73,7 +73,7 @@ class _ContactState extends State<Contact> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       appBar: AppBarModel()
           .loadAppBar(context, 'Contact', Icons.add_box_outlined, _scaffoldKey),
       body: isLoading

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutterapperadauti/menu_page.dart';
-import 'package:flutterapperadauti/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_app.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_content.dart';
 import 'package:flutterapperadauti/usefull_pages/contact.dart';
@@ -15,7 +15,7 @@ class AboutUsMain extends StatelessWidget {
       length: 2,
       child: Scaffold(
         key: _scaffoldKey,
-        drawer: NavDrawer2(),
+        drawer: NavDrawer(),
         appBar: AppBarModel().loadAppBar(
             context, 'Despre noi', Icons.add_box_outlined, _scaffoldKey),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

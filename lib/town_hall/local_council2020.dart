@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
 class LocalCouncil extends StatefulWidget {
   @override
@@ -94,7 +94,7 @@ class _LocalCouncilState extends State<LocalCouncil> {
           ),
         ],
       ),
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

@@ -14,7 +14,9 @@ import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/transport/Transport.dart';
 import 'package:flutterapperadauti/volunteer/volunteer.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
+
+import 'jobs/furniture_page.dart';
 
 void main() {
   runApp(MyAppRC());
@@ -29,6 +31,11 @@ class MyAppRC extends StatelessWidget {
     return MaterialApp(
       title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/main': (_) => MyAppRC(),
+        '/mainJobs': (_) => HomePageJobs(),
+        '/jobsWebView': (_) => FurniturePage(),
+      },
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
         primaryColor: Color(0xFFFFFFFF),
@@ -90,7 +97,7 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
       ),
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(

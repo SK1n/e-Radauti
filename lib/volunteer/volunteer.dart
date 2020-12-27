@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
-import 'package:flutterapperadauti/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 
 class VolunteerPage extends StatelessWidget {
   VolunteerPage({
@@ -17,7 +17,7 @@ class VolunteerPage extends StatelessWidget {
       key: _scaffoldKey,
       appBar: AppBarModel().loadAppBar(context, 'Voluntariat',
           FontAwesome5.hand_holding_heart, _scaffoldKey),
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(
