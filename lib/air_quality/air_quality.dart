@@ -49,7 +49,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
         key: _scaffoldKey,
         appBar: AppBarModel().loadAppBar(
             context, 'Calitatea \nAerului', Icons.bubble_chart, _scaffoldKey),
-        drawer: NavDrawer2(),
+        drawer: NavDrawer(),
         body: SingleChildScrollView(
           child: FutureBuilder(
             future: _getAirQuality(),
