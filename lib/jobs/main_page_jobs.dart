@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapperadauti/jobs/furniture_page.dart';
-import 'package:flutterapperadauti/jobs/job_page.dart';
 
 class HomePageJobs extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -80,10 +78,7 @@ class HomePageJobs extends StatelessWidget {
                   ],
                 ),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => JobPage()),
-                  );
+                  Navigator.pushNamed(context, '/job');
                 },
               ),
             ),
@@ -155,9 +150,9 @@ class HomePageJobs extends StatelessWidget {
                   ],
                 ),
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(builder: (context) => FurniturePage()),
+                    '/furniture',
                   );
                 },
               ),

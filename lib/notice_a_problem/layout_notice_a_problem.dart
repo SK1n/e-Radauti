@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -165,44 +163,44 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                           if (_formKey.currentState.validate()) {
                             showDialog(
                                 context: context,
-                                child: CupertinoAlertDialog(
-                                  title: Text(
-                                      'Email-ul este in curs de trimitere'),
-                                  content: Text('Va rugam sa asteptati'),
-                                  actions: [
-                                    CupertinoDialogAction(
-                                      child: Text('Okay'),
-                                      isDefaultAction: true,
-                                      onPressed: () {
-                                        if (_position != null) {
-                                          SendEmailMailer()
-                                              .sendEmailWithLocation(
-                                                  _name,
-                                                  _destination,
-                                                  _subject,
-                                                  _description,
-                                                  _position,
-                                                  _email,
-                                                  _number,
-                                                  _attachments,
-                                                  context);
-                                        } else {
-                                          SendEmailMailer()
-                                              .sendEmailWithoutPosition(
-                                                  _name,
-                                                  _destination,
-                                                  _subject,
-                                                  _description,
-                                                  _email,
-                                                  _number,
-                                                  _attachments,
-                                                  context);
-                                        }
-                                        Navigator.pop(context);
-                                      },
-                                    )
-                                  ],
-                                ));
+                                builder: (_) => CupertinoAlertDialog(
+                                      title: Text(
+                                          'Email-ul este in curs de trimitere'),
+                                      content: Text('Va rugam sa asteptati'),
+                                      actions: [
+                                        CupertinoDialogAction(
+                                          child: Text('Okay'),
+                                          isDefaultAction: true,
+                                          onPressed: () {
+                                            if (_position != null) {
+                                              SendEmailMailer()
+                                                  .sendEmailWithLocation(
+                                                      _name,
+                                                      _destination,
+                                                      _subject,
+                                                      _description,
+                                                      _position,
+                                                      _email,
+                                                      _number,
+                                                      _attachments,
+                                                      context);
+                                            } else {
+                                              SendEmailMailer()
+                                                  .sendEmailWithoutPosition(
+                                                      _name,
+                                                      _destination,
+                                                      _subject,
+                                                      _description,
+                                                      _email,
+                                                      _number,
+                                                      _attachments,
+                                                      context);
+                                            }
+                                            Navigator.pop(context);
+                                          },
+                                        )
+                                      ],
+                                    ));
                           }
                         },
                         color: Colors.blueAccent,

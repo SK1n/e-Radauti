@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:flutterapperadauti/transport/Taxi.dart';
 
 class HomePageTransport extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -78,10 +77,7 @@ class HomePageTransport extends StatelessWidget {
                   ],
                 ),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Taxi()),
-                  );
+                  Navigator.pushNamed(context, '/taxi');
                 },
               ),
             ),

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
@@ -429,13 +428,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
                         if (_validateDropDown1 == true) {
+                          // ignore: deprecated_member_use
                           _scaffoldKey.currentState.showSnackBar(SnackBar(
                             content: Text("Nu ați selectat o categorie!"),
                           ));
                         } else {
                           UrlLauncher.launch(_recipientController1);
                         }
-                        ;
+
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
                         //UrlLauncher.launch("tel://0722458858");
@@ -776,13 +776,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
                         if (_validateDropDown3 == true) {
+                          // ignore: deprecated_member_use
                           _scaffoldKey.currentState.showSnackBar(SnackBar(
                             content: Text("Nu ați selectat o categorie!"),
                           ));
                         } else {
                           UrlLauncher.launch(_recipientController3);
                         }
-                        ;
+
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
                         //UrlLauncher.launch("tel://0722458858");
@@ -1123,13 +1124,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
                         if (_validateDropDown5 == true) {
+                          // ignore: deprecated_member_use
                           _scaffoldKey.currentState.showSnackBar(SnackBar(
                             content: Text("Nu ați selectat o categorie!"),
                           ));
                         } else {
                           UrlLauncher.launch(_recipientController5);
                         }
-                        ;
+
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
                         //UrlLauncher.launch("tel://0722458858");
@@ -2387,13 +2389,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
                         if (_validateDropDown13 == true) {
+                          // ignore: deprecated_member_use
                           _scaffoldKey.currentState.showSnackBar(SnackBar(
                             content: Text("Nu ați selectat o categorie!"),
                           ));
                         } else {
                           UrlLauncher.launch(_recipientController13);
                         }
-                        ;
+
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
                         //UrlLauncher.launch("tel://0722458858");
@@ -2889,13 +2892,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
                         if (_validateDropDown16 == true) {
+                          // ignore: deprecated_member_use
                           _scaffoldKey.currentState.showSnackBar(SnackBar(
                             content: Text("Nu ați selectat o categorie!"),
                           ));
                         } else {
                           UrlLauncher.launch(_recipientController16);
                         }
-                        ;
+
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
                         //UrlLauncher.launch("tel://0722458858");
@@ -3084,13 +3088,14 @@ class _LocalCouncilState extends State<LocalCouncil> {
                       splashColor: Color(0x8838A49C),
                       onPressed: () {
                         if (_validateDropDown17 == true) {
+                          // ignore: deprecated_member_use
                           _scaffoldKey.currentState.showSnackBar(SnackBar(
                             content: Text("Nu ați selectat o categorie!"),
                           ));
                         } else {
                           UrlLauncher.launch(_recipientController17);
                         }
-                        ;
+
                         /*UrlLauncher.launch(
                             "mailto:primar@primariaradauti.ro");*/
                         //UrlLauncher.launch("tel://0722458858");

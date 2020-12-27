@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
-import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/transport/Transport.dart';
-import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
-import 'package:flutterapperadauti/volunteer/volunteer.dart';
-import 'package:flutterapperadauti/events/main.dart';
 
 class NavDrawer extends StatelessWidget {
   Widget addDrawerHeaderIcon() {
@@ -35,21 +29,21 @@ class NavDrawer extends StatelessWidget {
             child: addDrawerHeaderIcon(),
           ),
           generateListTile(context, Icons.photo_filter, 'Sesizează o problemă',
-              LayoutNoticeProblem()),
+              '/noticeProblem'),
           generateListTile(context, Icons.location_city, 'Administrație locală',
-              TownHallMain()),
+              '/townHall'),
           generateListTile(
-              context, Icons.calendar_today, 'Evenimente', EventsMain()),
+              context, Icons.calendar_today, 'Evenimente', '/events'),
           generateListTile(
-              context, Icons.perm_phone_msg, 'Numere utile', HomePageNumbers()),
+              context, Icons.perm_phone_msg, 'Numere utile', '/numbers'),
           generateListTile(
               context, Icons.announcement, 'Anunțuri', HomePageJobs()),
-          generateListTile(context, Icons.bubble_chart, 'Calitatea aerului',
-              AirQualityPage()),
+          generateListTile(
+              context, Icons.bubble_chart, 'Calitatea aerului', '/air'),
           generateListTile(
               context, Icons.train, 'Transport', HomePageTransport()),
           generateListTile(context, FontAwesome5.hand_holding_heart,
-              'Voluntariat', VolunteerPage()),
+              'Voluntariat', '/volunteer'),
           generateListTile(context, Icons.info, 'Despre aplicatie', null),
         ],
       ),
@@ -75,7 +69,7 @@ class NavDrawer extends StatelessWidget {
               context: context,
               applicationName: 'e-Radauti',
               applicationVersion:
-                  'Version: 2.1', //TODO after every update ypu should update the version number
+                  'Version: 2.1', //TODO after every update you should update the version number
               applicationIcon: Image.asset(
                 'assets/logo_images/app_logo_final.png',
                 width: 24,

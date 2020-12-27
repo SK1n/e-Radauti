@@ -2,12 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
-import 'package:flutterapperadauti/town_hall/leaders.dart';
-//import 'package:flutterapperadauti/town_hall/local_council.dart';
-import 'package:flutterapperadauti/town_hall/council_meetings.dart';
-import 'package:flutterapperadauti/town_hall/local_legislation.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:flutterapperadauti/town_hall/local_council2020.dart';
 
 class TownHallMain extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -93,10 +88,7 @@ class TownHallMain extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Leaders()),
-                );
+                Navigator.pushNamed(context, '/leaders');
               },
             ),
 
@@ -170,10 +162,7 @@ class TownHallMain extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LocalCouncil()),
-                );
+                Navigator.pushNamed(context, '/localCouncil');
               },
             ),
 
@@ -247,10 +236,7 @@ class TownHallMain extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CouncilMeetings()),
-                );
+                Navigator.pushNamed(context, '/councilMeetings');
               },
             ),
 
@@ -324,10 +310,7 @@ class TownHallMain extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LocalLegislation()),
-                );
+                Navigator.pushNamed(context, '/localLegislation');
               }, //null,
             ),
 

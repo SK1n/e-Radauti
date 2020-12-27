@@ -5,7 +5,7 @@ import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
-class Miscellaneous extends StatelessWidget {
+class LocalInconvenience extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {

@@ -30,49 +30,43 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
   Widget build(BuildContext context) {
     //luni video 2020
     //1
-    String link1;
-    link1 =
-        'https://www.facebook.com/watch/?v=195642925014310&extid=L8LJHdVM1GdJpBfY';
-    String html1 =
-        '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
-            link1 +
-            '''"></iframe>''';
     //2_a
+    // ignore: non_constant_identifier_names
     String link2_a;
     link2_a = 'https://www.facebook.com/watch/?v=527048061526536';
+    // ignore: non_constant_identifier_names
     String html2_a =
         '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
             link2_a +
             '''"></iframe>''';
     //2_b
+    // ignore: non_constant_identifier_names
     String link2_b;
     link2_b = 'https://www.facebook.com/watch/?v=195642925014310';
+    // ignore: non_constant_identifier_names
     String html2_b =
         '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
             link2_b +
             '''"></iframe>''';
     //2_c
+    // ignore: non_constant_identifier_names
     String link2_c;
     link2_c = 'https://www.facebook.com/watch/?v=881982478897029';
+    // ignore: non_constant_identifier_names
     String html2_c =
         '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
             link2_c +
             '''"></iframe>''';
     //2_d
+    // ignore: non_constant_identifier_names
     String link2_d;
     link2_d = 'https://www.facebook.com/watch/?v=145901219860706';
+    // ignore: non_constant_identifier_names
     String html2_d =
         '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
             link2_d +
             '''"></iframe>''';
     //3
-    String link3;
-    link3 =
-        'https://www.facebook.com/watch/?v=195642925014310&extid=L8LJHdVM1GdJpBfY';
-    String html3 =
-        '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
-            link3 +
-            '''"></iframe>''';
     //4_1
     String link4_1;
     link4_1 = 'https://www.youtube.com/embed/16IXjXzZOdg';
@@ -80,22 +74,28 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
         link4_1 +
         '''" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>''';
     //4_2_a
+    // ignore: non_constant_identifier_names
     String link4_2_a;
     link4_2_a = 'https://www.facebook.com/watch/?v=258508995290327';
+    // ignore: non_constant_identifier_names
     String html4_2_a =
         '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
             link4_2_a +
             '''"></iframe>''';
     //4_2_b
+    // ignore: non_constant_identifier_names
     String link4_2_b;
     link4_2_b = 'https://www.facebook.com/watch/?v=251744472688298';
+    // ignore: non_constant_identifier_names
     String html4_2_b =
         '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
             link4_2_b +
             '''"></iframe>''';
     //4_2_c
+    // ignore: non_constant_identifier_names
     String link4_2_c;
     link4_2_c = 'https://www.facebook.com/watch/?v=3176855102364744';
+    // ignore: non_constant_identifier_names
     String html4_2_c =
         '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
             link4_2_c +
@@ -401,6 +401,7 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
                                   children: <Widget>[
                                     Text(
                                       "31 August 2020",
+                                      // ignore: deprecated_member_use
                                       style: Theme.of(context).textTheme.body2,
                                     ),
                                   ],

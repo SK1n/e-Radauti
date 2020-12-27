@@ -5,7 +5,6 @@ import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_app.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_content.dart';
-import 'package:flutterapperadauti/usefull_pages/contact.dart';
 
 class AboutUsMain extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -26,10 +25,7 @@ class AboutUsMain extends StatelessWidget {
             size: 35,
           ),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Contact()),
-            );
+            Navigator.pushNamed(context, '/contact');
           },
         ),
         body: TabDemo(),

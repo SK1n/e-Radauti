@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:flutterapperadauti/usefull_numbers/local_authorities.dart';
-import 'package:flutterapperadauti/usefull_numbers/miscellaneous.dart';
-import 'package:flutterapperadauti/usefull_numbers/public_institutions.dart';
 
 class HomePageNumbers extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -81,11 +78,7 @@ class HomePageNumbers extends StatelessWidget {
                   ],
                 ),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PublicInstitutions()),
-                  );
+                  Navigator.pushNamed(context, '/publicInstitutions');
                 },
               ),
             ),
@@ -158,10 +151,7 @@ class HomePageNumbers extends StatelessWidget {
                   ],
                 ),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Miscellaneous()),
-                  );
+                  Navigator.pushNamed(context, '/miscellaneous');
                 },
               ),
             ),
@@ -234,10 +224,7 @@ class HomePageNumbers extends StatelessWidget {
                   ],
                 ),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LocalAuthorities()),
-                  );
+                  Navigator.pushNamed(context, '/localAuthorities');
                 },
               ),
             ),

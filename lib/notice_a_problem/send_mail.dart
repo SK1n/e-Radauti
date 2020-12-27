@@ -7,8 +7,8 @@ import 'package:mailer/smtp_server.dart';
 var sendEmailMailer = SendEmailMailer;
 
 class SendEmailMailer {
-  String username = 'radautiulcivic@gmail.com'; //TODO add email address
-  String password = 'pass123.CIVIC'; //TODO add email password
+  String username = 'radautiulcivic@gmail.com';
+  String password = 'pass123.CIVIC';
   List<Attachment> listAttachment;
   FileAttachment file1;
   FileAttachment file2;
@@ -96,36 +96,36 @@ class SendEmailMailer {
     if (await tryToSendEmail(context) == true) {
       showDialog(
           context: context,
-          child: CupertinoAlertDialog(
-            title: Text('Trimis!'),
-            content: Text('Email-ul a fost trimis cu succes!'),
-            actions: [
-              CupertinoDialogAction(
-                child: Text('Ok'),
-                isDefaultAction: true,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              )
-            ],
-          ));
+          builder: (_) => CupertinoAlertDialog(
+                title: Text('Trimis!'),
+                content: Text('Email-ul a fost trimis cu succes!'),
+                actions: [
+                  CupertinoDialogAction(
+                    child: Text('Ok'),
+                    isDefaultAction: true,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              ));
     } else {
       showDialog(
           context: context,
-          child: CupertinoAlertDialog(
-            title: Text('Eroare'),
-            content: Text(
-                'Ne pare rau a intervenit o eroare \nVa rugam sa incercati din nou!\n $_emailError'),
-            actions: [
-              CupertinoDialogAction(
-                child: Text('Ok'),
-                isDefaultAction: true,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              )
-            ],
-          ));
+          builder: (_) => CupertinoAlertDialog(
+                title: Text('Eroare'),
+                content: Text(
+                    'Ne pare rau a intervenit o eroare \nVa rugam sa incercati din nou!\n $_emailError'),
+                actions: [
+                  CupertinoDialogAction(
+                    child: Text('Ok'),
+                    isDefaultAction: true,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              ));
     }
   }
 

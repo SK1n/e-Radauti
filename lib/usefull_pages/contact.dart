@@ -33,6 +33,7 @@ class _ContactState extends State<Contact> {
   void _mailer() async {
     String username = 'radautiulcivic@gmail.com';
     String password = 'pass123.CIVIC';
+    // ignore: deprecated_member_use
     final smtpServer = gmail(username, password);
     final message = Message()
       ..from = Address(username, _nameController.text)
@@ -48,6 +49,7 @@ class _ContactState extends State<Contact> {
     try {
       final sendReport = await send(message, smtpServer);
       print('Message sent: ' + sendReport.toString());
+      // ignore: deprecated_member_use
       _scaffoldKey.currentState.showSnackBar(SnackBar(
         content: Text("Mesaj trimis!"),
       ));
@@ -59,6 +61,7 @@ class _ContactState extends State<Contact> {
       });
     } on MailerException catch (e) {
       debugPrint('Message not sent.');
+      // ignore: deprecated_member_use
       _scaffoldKey.currentState.showSnackBar(SnackBar(
         content: Text("Mesaj netrimis!"),
       ));
