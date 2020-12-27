@@ -37,11 +37,10 @@ class NavDrawer extends StatelessWidget {
           generateListTile(
               context, Icons.perm_phone_msg, 'Numere utile', '/numbers'),
           generateListTile(
-              context, Icons.announcement, 'Anunțuri', HomePageJobs()),
+              context, Icons.announcement, 'Anunțuri', '/announcement'),
           generateListTile(
               context, Icons.bubble_chart, 'Calitatea aerului', '/air'),
-          generateListTile(
-              context, Icons.train, 'Transport', HomePageTransport()),
+          generateListTile(context, Icons.train, 'Transport', '/transport'),
           generateListTile(context, FontAwesome5.hand_holding_heart,
               'Voluntariat', '/volunteer'),
           generateListTile(context, Icons.info, 'Despre aplicatie', null),
@@ -59,11 +58,7 @@ class NavDrawer extends StatelessWidget {
       title: Text(title),
       onTap: () {
         if (following != null) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => following,
-              ));
+          Navigator.pushNamed(context, following);
         } else {
           showAboutDialog(
               context: context,

@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
-
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'widgets/src/nav_drawer.dart';
+import 'package:flutterapperadauti/services/push_notifications_service.dart';
 
-class MyApp extends StatefulWidget {
+class MenuScreen extends StatefulWidget {
   @override
   _MyAppState createState() => new _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MenuScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
+  static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   @override
   Widget build(BuildContext context) {
+    final pushNotificationService = PushNotificationService(_firebaseMessaging);
+    pushNotificationService.initialise();
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -80,7 +83,7 @@ class _MyAppState extends State<MyApp> {
                         context, 'Evenimente', Icons.calendar_today, '/events'),
                     itemMenu(context, 'Numere utile', Icons.perm_phone_msg,
                         '/numbers'),
-                    itemMenu(context, 'Anunțuri', Icons.announcement, '/jobs'),
+                    itemMenu(context, 'Anunțuri', Icons.announcement, '/job'),
                     itemMenu(context, 'Calitatea Aerului', Icons.bubble_chart,
                         '/air'),
                     itemMenu(context, 'Transport', Icons.train, '/transport'),

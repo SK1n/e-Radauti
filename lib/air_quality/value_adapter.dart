@@ -67,8 +67,8 @@ class ChangeColor {
     }
   }
 
-//TODO:  if you change any of this values, please also change it in legend.dart
-//otherwise the colors won't match
+//TODO:  if you change any of this values, please also change it in legend.dart. Otherwise the colors won't match
+//? If you can find a better solotion for this please notice me!
   Color changeColorQuality(value) {
     if (value > 0 && value <= 12) {
       return Colors.green;
