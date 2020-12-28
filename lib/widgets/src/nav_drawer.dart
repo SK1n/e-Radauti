@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
-import 'package:flutterapperadauti/transport/Transport.dart';
 
 class NavDrawer extends StatelessWidget {
   Widget addDrawerHeaderIcon() {
