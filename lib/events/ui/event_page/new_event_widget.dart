@@ -4,6 +4,9 @@ import 'package:flutter/painting.dart';
 import '../../model/event.dart';
 import 'package:expandable/expandable.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:async';
 
 class NewEventWidget extends StatelessWidget {
   final EventApp event;
@@ -13,6 +16,13 @@ class NewEventWidget extends StatelessWidget {
     this.event,
     this.scaffoldState,
   }) : super(key: key);
+  Future<void> _onOpen(LinkableElement link) async {
+    if (await canLaunch(link.url)) {
+      await launch(link.url);
+    } else {
+      throw 'Could not launch $link';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -373,10 +383,9 @@ class NewEventWidget extends StatelessWidget {
                       children: <Widget>[
                         Padding(
                           padding: EdgeInsets.only(bottom: 10),
-                          child: Text(
-                            event.description, //
-                            softWrap: true,
-                            overflow: TextOverflow.fade,
+                          child: Linkify(
+                            onOpen: _onOpen,
+                            text: event.description,
                           ),
                         ),
                       ],

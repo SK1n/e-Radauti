@@ -44,6 +44,9 @@ dependencies:
   flick_video_player: ^0.1.1
   video_player: ^0.10.12+2
 
+  #Linkify plugin
+  flutter_linkify: ^4.0.2
+
   #GetIT plugin
   get_it: ^5.0.1
 

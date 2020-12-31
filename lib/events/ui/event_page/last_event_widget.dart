@@ -3,10 +3,20 @@ import 'package:flutter/painting.dart';
 //import 'package:flutterapp/styleguide.dart';
 import '../../model/event.dart';
 import 'package:expandable/expandable.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:async';
 
 class LastEventWidget extends StatelessWidget {
   final EventApp event;
   const LastEventWidget({Key key, this.event}) : super(key: key);
+  Future<void> _onOpen(LinkableElement link) async {
+    if (await canLaunch(link.url)) {
+      await launch(link.url);
+    } else {
+      throw 'Could not launch $link';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -283,10 +293,9 @@ class LastEventWidget extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(bottom: 10),
-                      child: Text(
-                        event.description, //
-                        softWrap: true,
-                        overflow: TextOverflow.fade,
+                      child: Linkify(
+                        onOpen: _onOpen,
+                        text: event.description,
                       ),
                     ),
                   ],
