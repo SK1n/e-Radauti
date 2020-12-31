@@ -67,17 +67,17 @@ class _MyAppState extends State<MenuScreen> {
               child: Container(
                 child: GridView.count(
                   primary: false,
-                  padding: const EdgeInsets.all(15),
-                  crossAxisSpacing: 15,
-                  mainAxisSpacing: 15,
+                  padding: const EdgeInsets.all(10),
+                  crossAxisSpacing: 5,
+                  mainAxisSpacing: 5,
                   crossAxisCount: 2,
                   childAspectRatio:
                       (MediaQuery.of(context).size.width / 2 - 22.5) /
                           (MediaQuery.of(context).size.height / 5 - 60),
                   children: <Widget>[
-                    itemMenu(context, 'Sesizează o\nproblemă',
+                    itemMenu(context, 'Sesizează o problemă',
                         Icons.photo_filter, '/noticeProblem'),
-                    itemMenu(context, 'Administrație \nlocală',
+                    itemMenu(context, 'Administrație locală',
                         Icons.location_city, '/townHall'),
                     itemMenu(
                         context, 'Evenimente', Icons.calendar_today, '/events'),
@@ -206,36 +206,36 @@ class _MyAppState extends State<MenuScreen> {
         );
       },
       child: Card(
-        margin: const EdgeInsets.symmetric(vertical: 0),
         elevation: 4,
         color: Colors.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(2)),
+          borderRadius: BorderRadius.all(Radius.circular(4)),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(left: 10),
+              child: Icon(
                 icon,
                 color: Color(0x55FB6340),
               ),
-              SizedBox(
-                width: 5,
-              ),
-              Text(
-                title,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 3,
-                style: TextStyle(
-                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+            ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(left: 10),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
