@@ -22,6 +22,10 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITS APP</key>
+	<string></string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
@@ -42,12 +46,8 @@
 	<string>Deși aplicația nu are nicăieri senzorii de mișcare, unele pachete ar putea cere această permisiune.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Când se face o sesizare, există posibilitatea de a trimite fotografii, drept urmare, aplicația are nevoie de accesarea fotografiilor din telefon.</string>
-	<key>ITS APP</key>
-	<string></string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Deși aplicația nu are nicăieri opțiunea de a înregistra vocea, unele pachete ar putea cere această permisiune.</string>
-    <key>ITSAppUsesNonExemptEncryption</key>
-        <false/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
