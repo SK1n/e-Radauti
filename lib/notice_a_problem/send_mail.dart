@@ -7,8 +7,8 @@ import 'package:mailer/smtp_server.dart';
 var sendEmailMailer = SendEmailMailer;
 
 class SendEmailMailer {
-  String username = 'radautiulcivic@gmail.com';
-  String password = 'pass123.CIVIC';
+  String username = 'eradauti@radautiulcivic.ro';
+  String password = 'Android.2018';
   List<Attachment> listAttachment;
   FileAttachment file1;
   FileAttachment file2;
@@ -16,7 +16,8 @@ class SendEmailMailer {
   CupertinoAlertDialog cupertinoAlertDialog;
   String _emailError;
   var message;
-  void sendEmailWithLocation(
+  // ignore: missing_return
+  Future<bool> sendEmailWithLocation(
       String name,
       String destination,
       String subject,
@@ -45,10 +46,13 @@ class SendEmailMailer {
           '.<br><br>Cu stimă,<br><br>'
           '     $name<br><br>     Tel: $number/$email'
       ..attachments = listAttachment;
-    voidshowDialogAfterTringToSendEmail(context);
+    if (await showDialogAfterTringToSendEmail(context) == false) {
+      return false;
+    }
   }
 
-  void sendEmailWithoutPosition(
+  // ignore: missing_return
+  Future<bool> sendEmailWithoutPosition(
       String name,
       String destination,
       String subject,
@@ -59,7 +63,7 @@ class SendEmailMailer {
       BuildContext context) async {
     changeListType(attachments);
     message = Message()
-      ..from = Address(username, name)
+      ..from = Address(username)
       ..recipients.add(destination)
       ..subject = ' Petiție ${subject.toString()} - aplicația e-Rădăuți'
       ..html = 'Către, ${destination.toString()} <br><br> Stimată doamnă/ Stimate domn,'
@@ -73,7 +77,9 @@ class SendEmailMailer {
           '.<br><br>Cu stimă,<br><br>'
           '     $name<br><br>     Tel: $number/$email'
       ..attachments = listAttachment;
-    voidshowDialogAfterTringToSendEmail(context);
+    if (await showDialogAfterTringToSendEmail(context) == false) {
+      return false;
+    }
   }
 
   void changeListType(initialList) {
@@ -92,7 +98,7 @@ class SendEmailMailer {
     }
   }
 
-  void voidshowDialogAfterTringToSendEmail(BuildContext context) async {
+  Future<bool> showDialogAfterTringToSendEmail(BuildContext context) async {
     if (await tryToSendEmail(context) == true) {
       showDialog(
           context: context,
@@ -127,13 +133,12 @@ class SendEmailMailer {
                 ],
               ));
     }
+    return false;
   }
 
   Future<bool> tryToSendEmail(BuildContext context) async {
     final smtpServerB = SmtpServer('mail.radautiulcivic.ro',
-        password: 'Android.2018',
-        port: 26,
-        username: 'eradauti@radautiulcivic.ro');
+        password: '$password', port: 26, username: '$username');
     try {
       final sendReport = await send(message, smtpServerB);
       debugPrint('Message sent: ' + sendReport.toString());
