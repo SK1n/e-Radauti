@@ -16,7 +16,12 @@ class AppBarModel {
         Padding(
           padding: EdgeInsets.only(left: 10),
         ),
-        Text(title),
+        Expanded(
+          child: Text(
+            title,
+            maxLines: 2,
+          ),
+        ),
       ]),
       leading: Container(
         child: FlatButton(

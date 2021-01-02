@@ -30,7 +30,7 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBarModel().loadAppBar(
-          context, 'Sesizează o\nproblemă', Icons.announcement, _scaffoldKey),
+          context, 'Sesizează o problemă', Icons.announcement, _scaffoldKey),
       drawer: NavDrawer(),
       body: isLoading
           ? Container(

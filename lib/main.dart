@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         '/announcement': (BuildContext context) => HomePageJobs(),
         '/furniture': (BuildContext context) => FurniturePage(),
         '/job': (BuildContext context) => JobPage(),
-        '/aboutUs': (BuildContext context) => AboutUsMain(),
+        '/about': (BuildContext context) => AboutUsMain(),
         '/confidential': (BuildContext context) => Confidential(),
         '/contact': (BuildContext context) => Contact(),
         '/partner': (BuildContext context) => Partner(),
