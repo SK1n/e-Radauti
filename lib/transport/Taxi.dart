@@ -3,7 +3,6 @@ import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class Taxi2 extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
