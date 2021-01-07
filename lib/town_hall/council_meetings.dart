@@ -18,11 +18,13 @@ class CouncilMeetings extends StatefulWidget {
 class _CouncilMeetingsState extends State<CouncilMeetings> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   Future<String> futureString;
+  Future<List> futureList;
 
   @override
   void initState() {
     super.initState();
     futureString = fetchFacebookVideoLink();
+    futureList = fetchListVideoLink();
   }
 
   @override
@@ -293,7 +295,7 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
                 height: 20,
               ),
               //video
-              SizedBox(
+              /*SizedBox(
                 width: MediaQuery.of(context).size.width - 30,
                 child: Container(
                   child: FutureBuilder<String>(
@@ -330,1261 +332,36 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
               ),
               SizedBox(
                 height: 20,
-              ),
-
-              //luna 9
-              ExpandableNotifier(
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    margin:
-                        const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(
-                              5), //const EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[],
-                              ),
-                              Column(
-                                children: <Widget>[],
-                              ),
-                            ],
-                          ),
-                        ),
-                        ScrollOnExpand(
-                          scrollOnExpand: true,
-                          scrollOnCollapse: false,
-                          child: ExpandablePanel(
-                            theme: const ExpandableThemeData(
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              tapBodyToCollapse: true,
-                            ),
-                            header: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "17 Septembrie 2020",
-                                      // ignore: deprecated_member_use
-                                      style: Theme.of(context).textTheme.body2,
-                                    ),
-                                  ],
-                                )),
-                            collapsed: Text(
-                              '',
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            expanded: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                //1
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      height: 200,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html9,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            builder: (_, collapsed, expanded) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 0),
-                                child: Expandable(
-                                  //collapsed: collapsed,
-                                  expanded: expanded,
-                                  theme: const ExpandableThemeData(
-                                      crossFadePoint: 0),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              //luna 8_2
-              ExpandableNotifier(
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    margin:
-                        const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(
-                              5), //const EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[],
-                              ),
-                              Column(
-                                children: <Widget>[],
-                              ),
-                            ],
-                          ),
-                        ),
-                        ScrollOnExpand(
-                          scrollOnExpand: true,
-                          scrollOnCollapse: false,
-                          child: ExpandablePanel(
-                            theme: const ExpandableThemeData(
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              tapBodyToCollapse: true,
-                            ),
-                            header: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "31 August 2020",
-                                      // ignore: deprecated_member_use
-                                      style: Theme.of(context).textTheme.body2,
-                                    ),
-                                  ],
-                                )),
-                            collapsed: Text(
-                              '',
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            expanded: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                //1
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html8_2,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            builder: (_, collapsed, expanded) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 0),
-                                child: Expandable(
-                                  //collapsed: collapsed,
-                                  expanded: expanded,
-                                  theme: const ExpandableThemeData(
-                                      crossFadePoint: 0),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              //luna 8_1
-              ExpandableNotifier(
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    margin:
-                        const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(
-                              5), //const EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[],
-                              ),
-                              Column(
-                                children: <Widget>[],
-                              ),
-                            ],
-                          ),
-                        ),
-                        ScrollOnExpand(
-                          scrollOnExpand: true,
-                          scrollOnCollapse: false,
-                          child: ExpandablePanel(
-                            theme: const ExpandableThemeData(
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              tapBodyToCollapse: true,
-                            ),
-                            header: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "27 August 2020",
-                                      // ignore: deprecated_member_use
-                                      style: Theme.of(context).textTheme.body2,
-                                    ),
-                                  ],
-                                )),
-                            collapsed: Text(
-                              '',
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            expanded: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                //1
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      height: 200,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html8_1,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            builder: (_, collapsed, expanded) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 0),
-                                child: Expandable(
-                                  //collapsed: collapsed,
-                                  expanded: expanded,
-                                  theme: const ExpandableThemeData(
-                                      crossFadePoint: 0),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              //luna 7
-              ExpandableNotifier(
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    margin:
-                        const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(
-                              5), //const EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[],
-                              ),
-                              Column(
-                                children: <Widget>[],
-                              ),
-                            ],
-                          ),
-                        ),
-                        ScrollOnExpand(
-                          scrollOnExpand: true,
-                          scrollOnCollapse: false,
-                          child: ExpandablePanel(
-                            theme: const ExpandableThemeData(
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              tapBodyToCollapse: true,
-                            ),
-                            header: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "30 Iulie 2020",
-                                      // ignore: deprecated_member_use
-                                      style: Theme.of(context).textTheme.body2,
-                                    ),
-                                  ],
-                                )),
-                            collapsed: Text(
-                              '',
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            expanded: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                //1
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html7,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            builder: (_, collapsed, expanded) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 0),
-                                child: Expandable(
-                                  //collapsed: collapsed,
-                                  expanded: expanded,
-                                  theme: const ExpandableThemeData(
-                                      crossFadePoint: 0),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              //luna 6_2
-              ExpandableNotifier(
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    margin:
-                        const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(
-                              5), //const EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[],
-                              ),
-                              Column(
-                                children: <Widget>[],
-                              ),
-                            ],
-                          ),
-                        ),
-                        ScrollOnExpand(
-                          scrollOnExpand: true,
-                          scrollOnCollapse: false,
-                          child: ExpandablePanel(
-                            theme: const ExpandableThemeData(
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              tapBodyToCollapse: true,
-                            ),
-                            header: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "23 Iunie 2020",
-                                      // ignore: deprecated_member_use
-                                      style: Theme.of(context).textTheme.body2,
-                                    ),
-                                  ],
-                                )),
-                            collapsed: Text(
-                              '',
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            expanded: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                //1
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      height: 200,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html6_2,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            builder: (_, collapsed, expanded) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 0),
-                                child: Expandable(
-                                  //collapsed: collapsed,
-                                  expanded: expanded,
-                                  theme: const ExpandableThemeData(
-                                      crossFadePoint: 0),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              //luna 6_1
-              ExpandableNotifier(
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    margin:
-                        const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(
-                              5), //const EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[],
-                              ),
-                              Column(
-                                children: <Widget>[],
-                              ),
-                            ],
-                          ),
-                        ),
-                        ScrollOnExpand(
-                          scrollOnExpand: true,
-                          scrollOnCollapse: false,
-                          child: ExpandablePanel(
-                            theme: const ExpandableThemeData(
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              tapBodyToCollapse: true,
-                            ),
-                            header: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "17 Iunie 2020",
-                                      // ignore: deprecated_member_use
-                                      style: Theme.of(context).textTheme.body2,
-                                    ),
-                                  ],
-                                )),
-                            collapsed: Text(
-                              '',
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            expanded: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                //1
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html6_1,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            builder: (_, collapsed, expanded) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 0),
-                                child: Expandable(
-                                  //collapsed: collapsed,
-                                  expanded: expanded,
-                                  theme: const ExpandableThemeData(
-                                      crossFadePoint: 0),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              //luna 5_2
-              ExpandableNotifier(
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    margin:
-                        const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(
-                              5), //const EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[],
-                              ),
-                              Column(
-                                children: <Widget>[],
-                              ),
-                            ],
-                          ),
-                        ),
-                        ScrollOnExpand(
-                          scrollOnExpand: true,
-                          scrollOnCollapse: false,
-                          child: ExpandablePanel(
-                            theme: const ExpandableThemeData(
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              tapBodyToCollapse: true,
-                            ),
-                            header: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "27 Mai 2020",
-                                      // ignore: deprecated_member_use
-                                      style: Theme.of(context).textTheme.body2,
-                                    ),
-                                  ],
-                                )),
-                            collapsed: Text(
-                              '',
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            expanded: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                //1
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      height: 200,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html5_2,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            builder: (_, collapsed, expanded) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 0),
-                                child: Expandable(
-                                  //collapsed: collapsed,
-                                  expanded: expanded,
-                                  theme: const ExpandableThemeData(
-                                      crossFadePoint: 0),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              //luna 5_1
-              ExpandableNotifier(
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    margin:
-                        const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(
-                              5), //const EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[],
-                              ),
-                              Column(
-                                children: <Widget>[],
-                              ),
-                            ],
-                          ),
-                        ),
-                        ScrollOnExpand(
-                          scrollOnExpand: true,
-                          scrollOnCollapse: false,
-                          child: ExpandablePanel(
-                            theme: const ExpandableThemeData(
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              tapBodyToCollapse: true,
-                            ),
-                            header: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "13 Mai 2020",
-                                      // ignore: deprecated_member_use
-                                      style: Theme.of(context).textTheme.body2,
-                                    ),
-                                  ],
-                                )),
-                            collapsed: Text(
-                              '',
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            expanded: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                //1
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      height: 200,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html5_1,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            builder: (_, collapsed, expanded) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 0),
-                                child: Expandable(
-                                  //collapsed: collapsed,
-                                  expanded: expanded,
-                                  theme: const ExpandableThemeData(
-                                      crossFadePoint: 0),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              //luna 4_2
-              ExpandableNotifier(
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    margin:
-                        const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(
-                              5), //const EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[],
-                              ),
-                              Column(
-                                children: <Widget>[],
-                              ),
-                            ],
-                          ),
-                        ),
-                        ScrollOnExpand(
-                          scrollOnExpand: true,
-                          scrollOnCollapse: false,
-                          child: ExpandablePanel(
-                            theme: const ExpandableThemeData(
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              tapBodyToCollapse: true,
-                            ),
-                            header: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "30 Aprilie 2020",
-                                      // ignore: deprecated_member_use
-                                      style: Theme.of(context).textTheme.body2,
-                                    ),
-                                  ],
-                                )),
-                            collapsed: Text(
-                              '',
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            expanded: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                //3
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html4_2_c,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                //2
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html4_2_b,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                //1
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html4_2_a,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            builder: (_, collapsed, expanded) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 0),
-                                child: Expandable(
-                                  //collapsed: collapsed,
-                                  expanded: expanded,
-                                  theme: const ExpandableThemeData(
-                                      crossFadePoint: 0),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              //luna 4_1
-              ExpandableNotifier(
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    margin:
-                        const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(
-                              5), //const EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[],
-                              ),
-                              Column(
-                                children: <Widget>[],
-                              ),
-                            ],
-                          ),
-                        ),
-                        ScrollOnExpand(
-                          scrollOnExpand: true,
-                          scrollOnCollapse: false,
-                          child: ExpandablePanel(
-                            theme: const ExpandableThemeData(
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              tapBodyToCollapse: true,
-                            ),
-                            header: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "1 Aprilie 2020",
-                                      // ignore: deprecated_member_use
-                                      style: Theme.of(context).textTheme.body2,
-                                    ),
-                                  ],
-                                )),
-                            collapsed: Text(
-                              '',
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            expanded: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                //1
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      height: 200,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html4_1,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            builder: (_, collapsed, expanded) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 0),
-                                child: Expandable(
-                                  //collapsed: collapsed,
-                                  expanded: expanded,
-                                  theme: const ExpandableThemeData(
-                                      crossFadePoint: 0),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              //luna 3
-              /*ExpandableNotifier(
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    margin:
-                    const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(
-                              5), //const EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[],
-                              ),
-                              Column(
-                                children: <Widget>[],
-                              ),
-                            ],
-                          ),
-                        ),
-                        ScrollOnExpand(
-                          scrollOnExpand: true,
-                          scrollOnCollapse: false,
-                          child: ExpandablePanel(
-                            theme: const ExpandableThemeData(
-                              headerAlignment:
-                              ExpandablePanelHeaderAlignment.center,
-                              tapBodyToCollapse: true,
-                            ),
-                            header: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "26 Martie 2020",
-                                      style: Theme.of(context).textTheme.body2,
-                                    ),
-                                  ],
-                                )),
-                            collapsed: Text(
-                              '',
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            expanded: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                //1
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width-30,
-                                      child:
-                                      Container(
-                                        child: HtmlWidget(
-                                          html3,
-                                          webView: true,
-                                        ),
-                                      ),
-
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            builder: (_, collapsed, expanded) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 0),
-                                child: Expandable(
-                                  //collapsed: collapsed,
-                                  expanded: expanded,
-                                  theme: const ExpandableThemeData(
-                                      crossFadePoint: 0),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-
-                      ],
-                    ),
-                  ),
-                ),
               ),*/
 
-              //luna 2
-              ExpandableNotifier(
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    margin:
-                        const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(
-                              5), //const EdgeInsets.all(20),
-                          child: Row(
+              //2
+              Container(
+                child: FutureBuilder<List>(
+                  future: futureList,
+                  builder: (context, snapshot){
+                    if(snapshot.hasData){
+                      return Container(
+                        child: SingleChildScrollView(
+                          child: Column(
                             children: <Widget>[
-                              Column(
-                                children: <Widget>[],
-                              ),
-                              Column(
-                                children: <Widget>[],
-                              ),
+                              for(final video in snapshot.data)fw(video,context),
                             ],
                           ),
                         ),
-                        ScrollOnExpand(
-                          scrollOnExpand: true,
-                          scrollOnCollapse: false,
-                          child: ExpandablePanel(
-                            theme: const ExpandableThemeData(
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              tapBodyToCollapse: true,
-                            ),
-                            header: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "20 Februarie 2020",
-                                      // ignore: deprecated_member_use
-                                      style: Theme.of(context).textTheme.body2,
-                                    ),
-                                  ],
-                                )),
-                            collapsed: Text(
-                              '',
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            expanded: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                //4
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html2_d,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                //3
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html2_c,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                //2
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html2_b,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                //1
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    child: //video
-                                        SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          30,
-                                      child: Container(
-                                        child: HtmlWidget(
-                                          html2_a,
-                                          webView: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            builder: (_, collapsed, expanded) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 0),
-                                child: Expandable(
-                                  //collapsed: collapsed,
-                                  expanded: expanded,
-                                  theme: const ExpandableThemeData(
-                                      crossFadePoint: 0),
-                                ),
-                              );
-                            },
-                          ),
+                      );
+                    }else if(snapshot.hasError){
+                      return Container(
+                        child: Center(
+                          child: Text('Eroare! ${snapshot.error}'),
                         ),
-                      ],
-                    ),
-                  ),
+                      );
+                    }
+                    return Container(
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  },
                 ),
               ),
 
@@ -1709,4 +486,136 @@ Future<String> fetchFacebookVideoLink() async {
 
   print(html);
   return html;
+}
+
+//2
+Future<List> fetchListVideoLink() async {
+  //
+  List<dynamic> fd;
+  http.Response r =
+  await http.get('https://e-radauti-80139.firebaseio.com/-SedinteArhiva.json');
+  fd = json.decode(r.body);
+
+  final List<String> children = <String>[];
+
+  /*fd.forEach(
+          (key, value) {
+            children.add(
+                '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
+                    value['an'].toString() +
+                    '''"></iframe>''',
+            );
+            print(value['an'].toString());
+          }
+  );*/
+  fd.forEach(
+        (element) {
+          children.add(
+            '',
+          );
+          print(element.toString());
+        },
+  );
+
+  return children;
+}
+
+//3
+Widget fw(String s1, BuildContext bC){
+  return ExpandableNotifier(
+    child: Container(
+      padding: const EdgeInsets.only(
+        left: 15,
+        right: 15,
+      ),
+      width: MediaQuery.of(bC).size.width,
+      child: Card(
+        margin:
+        const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(
+                  5), //const EdgeInsets.all(20),
+              child: Row(
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[],
+                  ),
+                  Column(
+                    children: <Widget>[],
+                  ),
+                ],
+              ),
+            ),
+            ScrollOnExpand(
+              scrollOnExpand: true,
+              scrollOnCollapse: false,
+              child: ExpandablePanel(
+                theme: const ExpandableThemeData(
+                  headerAlignment:
+                  ExpandablePanelHeaderAlignment.center,
+                  tapBodyToCollapse: true,
+                ),
+                header: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "30 Ianuarie 2020",
+                          style: Theme.of(bC).textTheme.body2,
+                        ),
+                      ],
+                    )),
+                collapsed: Text(
+                  '',
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                expanded: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    //1
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 10),
+                      child: Container(
+                        child: //video
+                        SizedBox(
+                          width: MediaQuery.of(bC).size.width-30,
+                          child:
+                          Container(
+                            child: HtmlWidget(
+                              s1,
+                              webView: true,
+                            ),
+                          ),
+
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                builder: (_, collapsed, expanded) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                        left: 10, right: 10, bottom: 0),
+                    child: Expandable(
+                      //collapsed: collapsed,
+                      expanded: expanded,
+                      theme: const ExpandableThemeData(
+                          crossFadePoint: 0),
+                    ),
+                  );
+                },
+              ),
+            ),
+
+          ],
+        ),
+      ),
+    ),
+  );
 }
