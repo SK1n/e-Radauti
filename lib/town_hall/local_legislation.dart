@@ -93,9 +93,13 @@ class _MyHomePageState extends State<MyHomePage> {
     List<Widget> lWidgetCard = [];
     Widget rWidget;
     var vIndex = 1;
-    var vAn = 2012;
+    var vAn = 0;
+    var test = 0;
+    var contor = 0;
     for(final item in lGive)
-      if(item['an'] == vAn){
+      if((item['an'] == vAn)&&(test == 0)){
+        vIndex += 1;
+        contor += 1;
         lWidgetLink.add(
             Container(
               child: InkWell(
@@ -109,44 +113,104 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             )
         );
-        vIndex += 1;
-      }else{
-        lWidgetCard.add(
-            ExpandableNotifier(
-              child: Card(
-                child: ScrollOnExpand(
-                  scrollOnExpand: true,
-                  scrollOnCollapse: false,
-                  child: ExpandablePanel(
-                    theme: ExpandableThemeData(),
-                    header: Container(child: Text(''+vAn.toString()),),
-                    expanded: Column(children: <Widget>[for(final item in lWidgetLink)item,],),
-                    collapsed: Container(),
-                    builder: (_,colapsed,expanded){
-                      return Expandable(
-                        expanded: expanded,
-                        theme: ExpandableThemeData(),
-                      );
-                    },
+        if(contor == (lGive.length - 1)) test = 1;
+      }else if((item['an'] != vAn)||((item['an'] == vAn)&&(test == 1))){
+        if(lGive.length == 1){
+          lWidgetLink.add(
+              Container(
+                child: InkWell(
+                  child: Text(
+                    '1. ' + item['titlu'],
+                    style: TextStyle(
+                      color: Colors.indigo
+                    ),
+                  ),
+                  onTap: ()=>{UrlLauncher.launch(item['link'])},
+                ),
+              ),
+          );
+          lWidgetCard.add(
+              ExpandableNotifier(
+                child: Card(
+                  child: ScrollOnExpand(
+                    scrollOnExpand: true,
+                    scrollOnCollapse: false,
+                    child: ExpandablePanel(
+                      theme: ExpandableThemeData(),
+                      header: Container(child: Text(''+item['an'].toString()),),
+                      expanded: Container(child: lWidgetLink[0],),
+                      collapsed: Container(),
+                      builder: (_,colapsed,expanded){
+                        return Expandable(
+                          expanded: expanded,
+                          theme: ExpandableThemeData(),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              )
+          );
+        }else{
+          if(contor == (lGive.length - 1) ){
+            lWidgetLink.add(
+                Container(
+                  child: InkWell(
+                    child: Text(
+                      (vIndex).toString() +'. ' + item['titlu'],
+                      style: TextStyle(
+                          color: Colors.indigo
+                      ),
+                    ),
+                    onTap: ()=>{UrlLauncher.launch(item['link'])},
+                  ),
+                )
+            );
+          };
+          if(vAn != 0){
+            lWidgetCard.add(
+              ExpandableNotifier(
+                child: Card(
+                  child: ScrollOnExpand(
+                    scrollOnExpand: true,
+                    scrollOnCollapse: false,
+                    child: ExpandablePanel(
+                      theme: ExpandableThemeData(),
+                      header: Container(child: Text(''+vAn.toString()),),
+                      expanded: Column(children: <Widget>[for(final item in lWidgetLink)item,],),
+                      collapsed: Container(),
+                      builder: (_,colapsed,expanded){
+                        return Expandable(
+                          expanded: expanded,
+                          theme: ExpandableThemeData(),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
-            ),
-        );
-        vAn=item['an'];
-        vIndex = 1;
-        lWidgetLink.clear();
-        lWidgetLink.add(
-            Container(
-              child: InkWell(
-                child: Text(
-                  vIndex.toString()+'. '+item['titlu'],
-                  style: TextStyle(color: Colors.indigo),
+            );
+          };
+          vAn=item['an'];
+          vIndex = 1;
+          lWidgetLink.clear();
+          lWidgetLink.add(
+              Container(
+                child: InkWell(
+                  child: Text(
+                    vIndex.toString()+'. '+item['titlu'],
+                    style: TextStyle(color: Colors.indigo),
+                  ),
+                  onTap: ()=>{UrlLauncher.launch(item['link'])},
                 ),
-                onTap: ()=>{UrlLauncher.launch(item['link'])},
-              ),
-            )
-        );
+              )
+          );
+          if(contor<(lGive.length - 1)){
+            contor += 1;
+          }else{
+            contor = 0;
+          };
+        };
       };
       rWidget = Column(
         children: <Widget>[
