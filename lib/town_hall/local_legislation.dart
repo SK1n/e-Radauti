@@ -26,7 +26,7 @@ class LocalLegislation extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 10),
           ),
-          Text('Administrație\nlocală'),
+          Text('Hotărâri\nLocale'),
         ]),
         leading: Container(
           child: FlatButton(
@@ -68,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
     http.Response r = await http.get('https://e-radauti-80139.firebaseio.com/-HotarariArhiva.json');
     fd = json.decode(r.body);
     final List<dynamic> children = List<dynamic>();
+    final List<dynamic> children2 = [];
     fd.forEach(
             (key, value) {
               List<dynamic> varList = value;
@@ -79,7 +80,10 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             }
     );
-    return children;
+    for(int i = children.length - 1; i >= 0; i--){
+      children2.add(children[i]);
+    };
+    return children2;
   }
   loadItems() async{
     List<dynamic> v = await loadJsonList();
