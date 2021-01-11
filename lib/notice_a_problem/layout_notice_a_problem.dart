@@ -21,10 +21,29 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
   String _description;
   String _number;
   String _email;
+  String _institution;
+  bool hasToggledPosition = false;
   Position _position;
   String _destination;
   List<dynamic> _attachments;
   bool isLoading = false;
+  FocusNode focusNode;
+  String errorRequired = 'Acest camp este obligatoriu!';
+  String errorPhonePattern = '''Numarul introdus nu este formatat corect
+      \nFormate acceptate:
+      \n+40213-564-864
+      \n+40213.564.864
+      \n+40213 564 864
+      \n0213-564-864
+      \n0712456789''';
+  String errorEmail =
+      'Email-ul nu este intr-un format acceptat (abcdef@abc.abc)';
+  @override
+  void initState() {
+    super.initState();
+    focusNode = FocusNode();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,8 +72,36 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                             debugPrint('name value: $value');
                           },
                           validators: [
-                            FormBuilderValidators.required(),
+                            FormBuilderValidators.required(
+                                errorText: errorRequired),
                           ],
+                        ),
+                        FormBuilderDropdown(
+                          focusNode: focusNode,
+                          initialValue: 'Institutia',
+                          attribute: 'destinationEmail',
+                          onChanged: (value) {
+                            _institution = value;
+                            _destination =
+                                IdentifyDestination().identify(value);
+                            debugPrint('destination value: $_destination');
+                            focusNode.requestFocus();
+                          },
+                          items: <String>[
+                            'Institutia',
+                            'Primăria Rădăuți',
+                            'Servicii Comunale',
+                            'ACET Rădăuți',
+                            'Consiliul Județean Suceava',
+                            'Garda De Mediu Suceava',
+                            'Garda Forestieră Suceava',
+                            'Asociația Rădăuțiul Civic'
+                          ]
+                              .map((emailDestination) => DropdownMenuItem(
+                                    value: emailDestination,
+                                    child: Text('$emailDestination'),
+                                  ))
+                              .toList(),
                         ),
                         FormBuilderTextField(
                           decoration: InputDecoration(hintText: 'Subiect'),
@@ -64,7 +111,8 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                             debugPrint('subject value: $value');
                           },
                           validators: [
-                            FormBuilderValidators.required(),
+                            FormBuilderValidators.required(
+                                errorText: errorRequired),
                           ],
                         ),
                         FormBuilderTextField(
@@ -76,7 +124,8 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                             debugPrint('description value: $value');
                           },
                           validators: [
-                            FormBuilderValidators.required(),
+                            FormBuilderValidators.required(
+                                errorText: errorRequired),
                           ],
                         ),
                         FormBuilderTextField(
@@ -89,8 +138,14 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                           },
                           keyboardType: TextInputType.number,
                           validators: [
-                            FormBuilderValidators.required(),
-                            FormBuilderValidators.numeric()
+                            FormBuilderValidators.required(
+                                errorText: errorRequired),
+                            FormBuilderValidators.numeric(
+                                errorText:
+                                    'Acest camp trebuie sa contina numai numere!'),
+                            FormBuilderValidators.pattern(
+                                r'^(\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\s|\.|\-)?([0-9]{3}(\s|\.|\-|)){2}$',
+                                errorText: errorPhonePattern)
                           ],
                         ),
                         FormBuilderTextField(
@@ -101,8 +156,9 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                             debugPrint('email value: $value');
                           },
                           validators: [
-                            FormBuilderValidators.required(),
-                            FormBuilderValidators.email(),
+                            FormBuilderValidators.required(
+                                errorText: errorRequired),
+                            FormBuilderValidators.email(errorText: errorEmail),
                           ],
                         ),
                         FormBuilderSwitch(
@@ -113,38 +169,10 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                             ],
                           ),
                           attribute: 'positionSwitch',
-                          onChanged: (value) {
-                            if (value == true) {
-                              getPosition();
-                            } else {
-                              _position = null;
-                            }
-                            debugPrint('position value: $value');
+                          onChanged: (value) async {
+                            hasToggledPosition = value;
+                            value = hasToggledPosition;
                           },
-                        ),
-                        FormBuilderDropdown(
-                          initialValue: 'Destinatar',
-                          attribute: 'destinationEmail',
-                          onChanged: (value) {
-                            _destination =
-                                IdentifyDestination().identify(value);
-                            debugPrint('destination value: $_destination');
-                          },
-                          items: <String>[
-                            'Destinatar',
-                            'Primăria Rădăuți',
-                            'Servicii Comunale',
-                            'ACET Rădăuți',
-                            'Consiliul Județean Suceava',
-                            'Garda De Mediu Suceava',
-                            'Garda Forestieră Suceava',
-                            'Rădăuțiul Civic'
-                          ]
-                              .map((emailDestination) => DropdownMenuItem(
-                                    value: emailDestination,
-                                    child: Text('$emailDestination'),
-                                  ))
-                              .toList(),
                         ),
                         Container(
                           padding: EdgeInsets.only(top: 5),
@@ -161,7 +189,8 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                           defaultImage:
                               AssetImage('assets/images/icons8-plus-64.png'),
                           validators: [
-                            FormBuilderValidators.required(),
+                            FormBuilderValidators.required(
+                                errorText: errorRequired),
                           ],
                         ),
                         Container(
@@ -172,11 +201,13 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                                   this.setState(() {
                                     isLoading = true;
                                   });
-                                  if (_position != null) {
-                                    if (await SendEmailMailer()
+                                  if (hasToggledPosition == true) {
+                                    if (await getPosition() ==
+                                        true) if (await SendEmailMailer()
                                             .sendEmailWithLocation(
                                                 _name,
                                                 _destination,
+                                                _institution,
                                                 _subject,
                                                 _description,
                                                 _position,
@@ -189,20 +220,23 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                                         isLoading = false;
                                       });
                                     }
-                                  } else if (await SendEmailMailer()
-                                          .sendEmailWithoutPosition(
-                                              _name,
-                                              _destination,
-                                              _subject,
-                                              _description,
-                                              _email,
-                                              _number,
-                                              _attachments,
-                                              context) ==
-                                      false) {
-                                    this.setState(() {
-                                      isLoading = false;
-                                    });
+                                  } else {
+                                    if (await SendEmailMailer()
+                                            .sendEmailWithoutPosition(
+                                                _name,
+                                                _destination,
+                                                _institution,
+                                                _subject,
+                                                _description,
+                                                _email,
+                                                _number,
+                                                _attachments,
+                                                context) ==
+                                        false) {
+                                      this.setState(() {
+                                        isLoading = false;
+                                      });
+                                    }
                                   }
                                 }
                               },
@@ -217,15 +251,41 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
       floatingActionButton: FloatingActionButton(
         child: Icon(SimpleLineIcons.refresh),
         onPressed: () {
+          hasToggledPosition = false;
           _formKey.currentState.reset();
         },
       ),
     );
   }
 
-  Future<void> getPosition() async {
-    _position = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    print(_position);
+  Future<bool> getPosition() async {
+    try {
+      _position = await Geolocator()
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
+      return true;
+    } on Exception catch (e) {
+      showDialog(
+          context: context,
+          builder: (_) => CupertinoAlertDialog(
+                title: Text('Eroare'),
+                content: Text(
+                    'Ne pare rau dar nu putem sa luam locatia dvs.\n Eroare:\n ${e.toString()}'),
+                actions: [
+                  CupertinoDialogAction(
+                    child: Text('Ok'),
+                    isDefaultAction: true,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              ));
+      this.setState(() {
+        hasToggledPosition = false;
+        isLoading = false;
+      });
+      return false;
+    }
   }
 }

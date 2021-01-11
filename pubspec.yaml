@@ -21,70 +21,47 @@ environment:
   sdk: ">=2.7.0 <4.0.0"
 
 dependencies:
-  flutter_svg: ^0.18.1
   flutter:
     sdk: flutter
-  camera: ^0.5.8+2
-  image_picker: ^0.6.2+3
-  path_provider: ^1.6.11
-  flutter_email_sender: ^3.0.1
-  url_launcher: ^5.5.0
-  flutter_icons: ^1.1.0
-  fluttericon: ^1.0.7
-  geolocator: ^4.0.3
-  provider: ^4.0.5
-  http: ^0.12.0+2
-  flutter_paginator: ^0.0.6
-  mailer: ^3.0.4
-  gallery_saver: ^2.0.1
-  splashscreen: ^1.2.0
-  device_calendar: ^3.1.0
   add_2_calendar: ^1.4.0
-  flutter_widget_from_html: ^0.5.0+3
-  flick_video_player: ^0.1.1
-  video_player: ^0.10.12+2
-
-  #GetIT plugin
-  get_it: ^5.0.1
-
-  #Firebase plugins
-  firebase_messaging: ^7.0.3
-  firebase_core: "^0.5.3"
-  firebase_database: ^4.4.0
-
-  #Dio plugins for json fetch
+  camera: ^0.5.8+2
+  charts_flutter: ^0.9.0
+  cupertino_icons: ^0.1.3
+  device_calendar: ^3.1.0
   dio: ^3.0.10
   dio_http_cache: ^0.2.9
-
-  #Chart plugins
-  charts_flutter: ^0.9.0
-  fl_chart: ^0.11.1
-
-  #For expanding and collapsing plugin
   expandable: ^4.1.4
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.3
-
-  #WebView 1.0.0
+  firebase_core: "^0.5.3"
+  firebase_database: ^4.4.0
+  firebase_messaging: ^7.0.3
+  fl_chart: ^0.11.1
+  flick_video_player: ^0.1.1
+  flutter_email_sender: ^3.0.1
+  flutter_form_builder: ^3.14.0-alpha.1
+  flutter_icons: ^1.1.0
+  flutter_paginator: ^0.0.6
+  flutter_svg: ^0.18.1
+  flutter_widget_from_html: ^0.5.0+3
+  fluttericon: ^1.0.7
+  gallery_saver: ^2.0.1
+  geolocator: ^4.0.3
+  get_it: ^5.0.1
+  http: ^0.12.0+2
+  image_picker: ^0.6.2+3
+  intl: ^0.16.1
+  mailer: ^3.0.4
+  path_provider: ^1.6.11
+  permission_handler: ^5.0.1+1
+  provider: ^4.0.5
+  splashscreen: ^1.2.0
+  url_launcher: ^5.5.0
+  video_player: ^0.10.12+2
   webview_flutter: ^0.3.22+1
 
-  #Form buidler 3.0.2
-  flutter_form_builder: ^3.14.0-alpha.1
-
-  #Permissions plugin
-  permission_handler: ^5.0.1+1
-
-  #DateTime format plugin
-  intl: ^0.16.1
-
-  #test
-
 dev_dependencies:
-  flutter_launcher_icons: "^0.8.0"
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.8.0"
 
 flutter_email_sender:
   path: ../

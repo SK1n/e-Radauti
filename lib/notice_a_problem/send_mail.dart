@@ -20,6 +20,7 @@ class SendEmailMailer {
   Future<bool> sendEmailWithLocation(
       String name,
       String destination,
+      String institution,
       String subject,
       String body,
       Position position,
@@ -31,22 +32,24 @@ class SendEmailMailer {
     message = Message()
       ..from = Address(username, 'Radautiul Civic')
       ..recipients.add(destination)
+      ..ccRecipients.add(email)
       ..subject = ' Petiție $subject - aplicația e-Rădăuți'
-      ..html = 'Către, $destination <br><br> Stimată doamnă/ Stimate domn,'
-          '<br><br>Subsemnatul(a) $name, vă supun atenției următoarea problemă:<br><br>'
+      ..html = 'Către, $institution($destination) <br><br> Stimată doamnă/ Stimate domn,'
+          '<br><br><i>Subsemnatul(a) $name, vă supun atenției următoarea problemă:<br><br>'
           '$body<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați'
-          ' măsurile ce se impun.<br><br> Cele sesizate sunt la următoarea adresă '
+          ' măsurile ce se impun. Cele sesizate sunt la următoarea adresă '
           ' Lat:${position.latitude.toString()} Long:${position.longitude.toString()}'
           "( <a href ='https://www.google.com/maps/place/${position.latitude.toString()}+${position.longitude.toString()}"
-          "'>Adresa</a> )<br><br>"
+          "'>Adresa Google Maps</a> )<br><br></i>"
           'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și '
           'a fost transmisă prin intermediul aplicației mobile e-Rădăuți, dezvoltată'
-          ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>'
+          ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”'
+          'iar în cazul în care e-mail-ul nu conține numele și adresa de e-mail a petentului, aceasta poate fi clasată, potrivit O.G. 27/2002.'
           'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa $email'
           '.<br><br>Cu stimă,<br><br>'
-          '     $name<br><br>     Tel: $number/$email'
+          '     $name<br><br>     Tel: $number / $email'
       ..attachments = listAttachment;
-    if (await showDialogAfterTringToSendEmail(context) == false) {
+    if (await showDialogAfterTringToSendEmail(context, email) == false) {
       return false;
     }
   }
@@ -55,6 +58,7 @@ class SendEmailMailer {
   Future<bool> sendEmailWithoutPosition(
       String name,
       String destination,
+      String institution,
       String subject,
       String description,
       String email,
@@ -66,7 +70,7 @@ class SendEmailMailer {
       ..from = Address(username)
       ..recipients.add(destination)
       ..subject = ' Petiție ${subject.toString()} - aplicația e-Rădăuți'
-      ..html = 'Către, ${destination.toString()} <br><br> Stimată doamnă/ Stimate domn,'
+      ..html = 'Către, $institution(${destination.toString()}) <br><br> Stimată doamnă/ Stimate domn,'
           '<br><br>Subsemnatul(a) ${name.toString()}, vă supun atenției următoarea problemă:<br><br>'
           '$description<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați'
           ' măsurile ce se impun.<br><br>'
@@ -77,7 +81,7 @@ class SendEmailMailer {
           '.<br><br>Cu stimă,<br><br>'
           '     $name<br><br>     Tel: $number/$email'
       ..attachments = listAttachment;
-    if (await showDialogAfterTringToSendEmail(context) == false) {
+    if (await showDialogAfterTringToSendEmail(context, email) == false) {
       return false;
     }
   }
@@ -98,13 +102,15 @@ class SendEmailMailer {
     }
   }
 
-  Future<bool> showDialogAfterTringToSendEmail(BuildContext context) async {
+  Future<bool> showDialogAfterTringToSendEmail(
+      BuildContext context, email) async {
     if (await tryToSendEmail(context) == true) {
       showDialog(
           context: context,
           builder: (_) => CupertinoAlertDialog(
-                title: Text('Trimis!'),
-                content: Text('Email-ul a fost trimis cu succes!'),
+                title: Text('Email-ul a fost trimis cu succes!'),
+                content: Text(
+                    'Urmatorul pas este sa asteptati un email pe adresa $email'),
                 actions: [
                   CupertinoDialogAction(
                     child: Text('Ok'),
@@ -143,7 +149,7 @@ class SendEmailMailer {
       final sendReport = await send(message, smtpServerB);
       debugPrint('Message sent: ' + sendReport.toString());
     } on MailerException catch (e) {
-      print('Message not sent.');
+      debugPrint('Message not sent.');
       for (var p in e.problems) {
         print('Problem: ${p.code}: ${p.msg}');
         _emailError = 'Problem: ${p.code}: ${p.msg}';
