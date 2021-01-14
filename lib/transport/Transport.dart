@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapperadauti/menu_page.dart';
-import 'package:flutterapperadauti/transport/Taxi.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
 class HomePageTransport extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -10,94 +9,12 @@ class HomePageTransport extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        automaticallyImplyLeading: false,
-        leading: Container(
-          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-          margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
-          child: Image.asset("assets/logo_images/app_logo.png"),
-        ),
-        actions: <Widget>[
-          Container(
-            alignment: Alignment.topRight,
-            margin: EdgeInsets.only(
-                top: 0.0,
-                right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
-            child: IconButton(
-              icon: Icon(
-                Icons.menu,
-                size: 24,
-                color: Colors.black,
-              ), //Colors.white
-              onPressed: () => _scaffoldKey.currentState
-                  .openDrawer(), //_scaffoldKey.currentState.openDrawer(),
-            ),
-          ),
-        ],
-      ),
-      drawer: NavDrawer2(),
+      appBar: AppBarModel()
+          .loadAppBar(context, 'Transport', Icons.train, _scaffoldKey),
+      drawer: NavDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(
-                top: 20,
-                bottom: 15,
-              ),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.keyboard_arrow_left,
-                        color: Color(0xFF979797),
-                      ), //_left Icons.arrow_back
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width - 80,
-                    child: new Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: <Widget>[
-                        Stack(
-                          children: <Widget>[
-                            Icon(
-                              Icons.train,
-                              color: Color(0x55FB6340),
-                              size: 30,
-                            ),
-                            Container(
-                              child: Padding(
-                                padding: EdgeInsets.fromLTRB(
-                                  35.0,
-                                  6.0,
-                                  0.0,
-                                  0.0,
-                                ), //10.0 //25.0
-                                child: Text(
-                                  'Transport',
-                                  style: TextStyle(
-                                    color:
-                                    Color(0xFF000000), //Color(0xFFFFFFFF),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 19,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Container(
               padding: EdgeInsets.only(
                 left: 25,
@@ -160,10 +77,7 @@ class HomePageTransport extends StatelessWidget {
                   ],
                 ),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Taxi()),
-                  );
+                  Navigator.pushNamed(context, '/taxi');
                 },
               ),
             ),

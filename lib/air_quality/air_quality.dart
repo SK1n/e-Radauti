@@ -7,9 +7,10 @@ import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutterapperadauti/air_quality/value_adapter.dart';
 import 'package:flutterapperadauti/air_quality/legend.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:intl/intl.dart';
 
-import '../menu_page.dart';
+import '../widgets/src/nav_drawer.dart';
 
 class AirQualityPage extends StatefulWidget {
   @override
@@ -46,43 +47,9 @@ class _AirQualityPageState extends State<AirQualityPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: _scaffoldKey,
-        appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 255, 255, 255),
-          title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Icon(
-              Icons.bubble_chart,
-              color: Color(0x55FB6340),
-              size: 30,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 10),
-            ),
-            Text('Calitatea aerului'),
-          ]),
-          leading: Container(
-            child: FlatButton(
-              child: Icon(Ionicons.ios_arrow_back),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-          actions: <Widget>[
-            Container(
-              alignment: Alignment.topRight,
-              margin: EdgeInsets.only(top: 0.0, right: 0.0),
-              child: IconButton(
-                icon: Icon(
-                  Icons.menu,
-                  size: 24,
-                  color: Colors.black,
-                ),
-                onPressed: () => _scaffoldKey.currentState.openDrawer(),
-              ),
-            ),
-          ],
-        ),
-        drawer: NavDrawer2(),
+        appBar: AppBarModel().loadAppBar(
+            context, 'Calitatea \nAerului', Icons.bubble_chart, _scaffoldKey),
+        drawer: NavDrawer(),
         body: SingleChildScrollView(
           child: FutureBuilder(
             future: _getAirQuality(),

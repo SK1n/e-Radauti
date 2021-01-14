@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapperadauti/jobs/furniture_page.dart';
-import 'package:flutterapperadauti/jobs/job_page.dart';
 
 class HomePageJobs extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -13,43 +11,9 @@ class HomePageJobs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Icon(
-            Icons.announcement,
-            color: Color(0x55FB6340),
-            size: 30,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10),
-          ),
-          Text('Anunturi'),
-        ]),
-        leading: Container(
-          child: FlatButton(
-            child: Icon(Ionicons.ios_arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        actions: <Widget>[
-          Container(
-            alignment: Alignment.topRight,
-            margin: EdgeInsets.only(top: 0.0, right: 0.0),
-            child: IconButton(
-              icon: Icon(
-                Icons.menu,
-                size: 24,
-                color: Colors.black,
-              ),
-              onPressed: () => _scaffoldKey.currentState.openDrawer(),
-            ),
-          ),
-        ],
-      ),
-      drawer: NavDrawer2(),
+      appBar: AppBarModel()
+          .loadAppBar(context, 'Anunțuri', Icons.announcement, _scaffoldKey),
+      drawer: NavDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -114,10 +78,7 @@ class HomePageJobs extends StatelessWidget {
                   ],
                 ),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => JobPage()),
-                  );
+                  Navigator.pushNamed(context, '/job');
                 },
               ),
             ),
@@ -189,9 +150,9 @@ class HomePageJobs extends StatelessWidget {
                   ],
                 ),
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(builder: (context) => FurniturePage()),
+                    '/furniture',
                   );
                 },
               ),
@@ -243,7 +204,7 @@ class HomePageJobs extends StatelessWidget {
           ),
         ],
       ),f
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       body: RemoteJson(),
     );
   }*/

@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/jobs/announcements_web_view.dart';
 import 'package:flutterapperadauti/jobs/job_model.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import '../menu_page.dart';
+import '../widgets/src/nav_drawer.dart';
 
 class FurniturePage extends StatefulWidget {
   @override
@@ -17,7 +17,6 @@ class _FurniturePageState extends State<FurniturePage> {
   List<JobModel> jobList;
   Map<String, dynamic> jsonResponse;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  num _stackToView = 1;
 
   Future<List<JobModel>> _getJobs() async {
     try {
@@ -25,7 +24,6 @@ class _FurniturePageState extends State<FurniturePage> {
           "https://www.eradauti.ro/api/context?pathname=/anunturi/imobiliare-19");
       this.setState(() {
         jsonResponse = json.decode(response.body);
-        _stackToView = 0;
       });
       jobList = List<JobModel>();
       jsonResponse.forEach((key, value) {
@@ -43,43 +41,9 @@ class _FurniturePageState extends State<FurniturePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: _scaffoldKey,
-        appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 255, 255, 255),
-          title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Icon(
-              Icons.announcement,
-              color: Color(0x55FB6340),
-              size: 30,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 10),
-            ),
-            Text('Anunturi'),
-          ]),
-          leading: Container(
-            child: FlatButton(
-              child: Icon(Ionicons.ios_arrow_back),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-          actions: <Widget>[
-            Container(
-              alignment: Alignment.topRight,
-              margin: EdgeInsets.only(top: 0.0, right: 0.0),
-              child: IconButton(
-                icon: Icon(
-                  Icons.menu,
-                  size: 24,
-                  color: Colors.black,
-                ),
-                onPressed: () => _scaffoldKey.currentState.openDrawer(),
-              ),
-            ),
-          ],
-        ),
-        drawer: NavDrawer2(),
+        appBar: AppBarModel()
+            .loadAppBar(context, 'Anunțuri', Icons.announcement, _scaffoldKey),
+        drawer: NavDrawer(),
         body: FutureBuilder(
           future: _getJobs(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {

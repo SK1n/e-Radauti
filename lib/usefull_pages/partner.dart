@@ -1,86 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
 class Partner extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        automaticallyImplyLeading: false,
-        leading: Container(
-          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-          margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
-          child: Image.asset("assets/logo_images/app_logo.png"),
-        ),
-      ),
+      key: _scaffoldKey,
+      drawer: NavDrawer(),
+      appBar: AppBarModel().loadAppBar(
+          context, 'Parteneri', Icons.add_box_outlined, _scaffoldKey),
       body: SingleChildScrollView(
+        padding: EdgeInsets.only(top: 10),
         child: Column(
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(
-                top: 20,
-                bottom: 10,
-              ),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.keyboard_arrow_left,
-                        color: Color(0xFF979797),
-                      ), //_left Icons.arrow_back
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width - 80,
-                    child: new Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: <Widget>[
-                        Stack(
-                          children: <Widget>[
-                            //Icon(Icons.location_city, color: Color(0x55FB6340), size: 30,),
-                            Container(
-                              child: Text(
-                                'Parteneri',
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 19,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
             // 1 FONDUL PENTRU DEMOCRATIE
             Container(
               padding: EdgeInsets.only(
                 bottom: 10,
               ),
-              width: MediaQuery.of(context).size.width - 30,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image.asset(
                     "assets/images/fondul_pentru_democratie.png",
-                    width: MediaQuery.of(context).size.width - 50,
                     height: 100,
                   ),
                 ],
               ),
             ),
             Container(
-              width: MediaQuery.of(context).size.width - 30,
               padding: EdgeInsets.only(
                 bottom: 20,
               ),
@@ -98,9 +49,8 @@ class Partner extends StatelessWidget {
               padding: EdgeInsets.only(
                 bottom: 10,
               ),
-              width: MediaQuery.of(context).size.width - 30,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image.asset(
                     "assets/images/code_4_romania.png",
@@ -111,7 +61,6 @@ class Partner extends StatelessWidget {
               ),
             ),
             Container(
-              width: MediaQuery.of(context).size.width - 30,
               padding: EdgeInsets.only(
                 bottom: 20,
               ),
@@ -129,9 +78,8 @@ class Partner extends StatelessWidget {
               padding: EdgeInsets.only(
                 bottom: 10,
               ),
-              width: MediaQuery.of(context).size.width - 30,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image.asset(
                     "assets/images/hard_power_radauti.png",
@@ -140,7 +88,6 @@ class Partner extends StatelessWidget {
               ),
             ),
             Container(
-              width: MediaQuery.of(context).size.width - 30,
               padding: EdgeInsets.only(
                 bottom: 20,
               ),

@@ -1,29 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_app.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_content.dart';
-import 'package:flutterapperadauti/usefull_pages/contact.dart';
 
 class AboutUsMain extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 255, 255, 255),
-          automaticallyImplyLeading: false,
-          leading: Container(
-            padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-            margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
-            child: Image.asset("assets/logo_images/app_logo.png"),
-          ),
-        ),
+        key: _scaffoldKey,
+        drawer: NavDrawer(),
+        appBar: AppBarModel().loadAppBar(
+            context, 'Despre noi', Icons.add_box_outlined, _scaffoldKey),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FloatingActionButton(
-          child:  Icon(Ionicons.ios_mail, color: Colors.white, size: 35,),
-          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Contact()),);},
+          child: Icon(
+            Ionicons.ios_mail,
+            color: Colors.white,
+            size: 35,
+          ),
+          onPressed: () {
+            Navigator.pushNamed(context, '/contact');
+          },
         ),
         body: TabDemo(),
       ),
@@ -37,7 +40,6 @@ class TabDemo extends StatefulWidget {
 }
 
 class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
-
   TabController _tabController;
 
   int _selectedTab = 0;
@@ -48,8 +50,8 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
 
     _tabController = TabController(vsync: this, length: 2);
 
-    _tabController.addListener((){
-      if (!_tabController.indexIsChanging){
+    _tabController.addListener(() {
+      if (!_tabController.indexIsChanging) {
         setState(() {
           _selectedTab = _tabController.index;
         });
@@ -61,28 +63,13 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Container(
-          padding: EdgeInsets.only(top: 10),
-          child: Row(
-            children: <Widget>[
-              Container(
-                alignment: Alignment.centerLeft,
-                child: IconButton(
-                  icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
-                  onPressed: (){
-                    Navigator.pop(context);
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
         Material(
           //color: Colors.grey.shade300,
           child: TabBar(
-            unselectedLabelColor: Colors.grey,//unselectedLabelColor: Colors.blue,
+            unselectedLabelColor:
+                Colors.grey, //unselectedLabelColor: Colors.blue,
             //labelColor: Colors.blue,
-            indicatorColor: Colors.white,//indicatorColor: Color(0xAA38A49C),
+            indicatorColor: Colors.white, //indicatorColor: Color(0xAA38A49C),
             controller: _tabController,
             labelPadding: const EdgeInsets.all(0.0),
             tabs: [
@@ -92,7 +79,7 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
                   child: Text(
                     'DESPRE NOI',
                     style: TextStyle(
-                      fontSize: 15.0,//12.0 //16.0 //14.0
+                      fontSize: 15.0, //12.0 //16.0 //14.0
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -104,7 +91,7 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
                   child: Text(
                     'DESPRE APLICAȚIE',
                     style: TextStyle(
-                      fontSize: 15.0,//12.0 //16.0 //14.0
+                      fontSize: 15.0, //12.0 //16.0 //14.0
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -129,15 +116,13 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
     );
   }
 
-
   _getTab(index, child) {
     return Tab(
       child: SizedBox.expand(
         child: Container(
           child: child,
           decoration: BoxDecoration(
-              color:
-              (_selectedTab == index ? Colors.white : Colors.white),
+              color: (_selectedTab == index ? Colors.white : Colors.white),
               borderRadius: _generateBorderRadius(index)),
         ),
       ),

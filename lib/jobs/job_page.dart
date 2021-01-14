@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,7 @@ import 'package:flutterapperadauti/jobs/job_model.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import '../menu_page.dart';
+import '../widgets/src/nav_drawer.dart';
 import 'announcements_web_view.dart';
 
 class JobPage extends StatefulWidget {
@@ -81,7 +80,7 @@ class _JobPageState extends State<JobPage> {
           ),
         ],
       ),
-      drawer: NavDrawer2(),
+      drawer: NavDrawer(),
       body: FutureBuilder(
         future: _getJobs(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {

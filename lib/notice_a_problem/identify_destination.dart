@@ -5,7 +5,7 @@ var identifyDestiantion = IdentifyDestination();
 class IdentifyDestination {
   String identify(value) {
     switch (value) {
-      case "Destinatar":
+      case "Institutia":
         {
           debugPrint('identify_destination: No value selected!');
           return null;
@@ -47,7 +47,7 @@ class IdentifyDestination {
           return "gardaforestiera.suceava@gmail.com";
         }
         break;
-      case "Rădăuțiul Civic":
+      case "Asociația Rădăuțiul Civic":
         {
           debugPrint('identify_destination: radautiulcivic@gmail.com');
           return "radautiulcivic@gmail.com";

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class Taxi2 extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,55 +28,14 @@ class Taxi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Icon(
-            Icons.local_taxi,
-            color: Color(0x55FB6340),
-            size: 30,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10),
-          ),
-          Text('Taximetriști'),
-        ]),
-        leading: Container(
-          child: FlatButton(
-            child: Icon(Ionicons.ios_arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        actions: <Widget>[
-          Container(
-            alignment: Alignment.topRight,
-            margin: EdgeInsets.only(top: 0.0, right: 0.0),
-            child: IconButton(
-              icon: Icon(
-                Icons.menu,
-                size: 24,
-                color: Colors.black,
-              ),
-              onPressed: () => _scaffoldKey.currentState.openDrawer(),
-            ),
-          ),
-        ],
-      ),
+      appBar: AppBarModel()
+          .loadAppBar(context, 'Taximetriști', Icons.local_taxi, _scaffoldKey),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(
             child: SizedBox(
-              height: (MediaQuery.of(context).size.height - 250),
               child: Container(
-                child: GridView.count(
-                  primary: false,
-                  padding: const EdgeInsets.all(15),
-                  crossAxisSpacing: 15,
-                  mainAxisSpacing: 20,
-                  crossAxisCount: 2,
-                  childAspectRatio: 1.1,
+                child: Column(
                   children: <Widget>[
                     listItem('0752436011', 'assets/images/Taxi/SV14PLS_png.png',
                         'ASURDOAIEI IONUȚ', 'SV-14PLS', 'DACIA LOGAN'),
@@ -123,52 +81,31 @@ class Taxi extends StatelessWidget {
         UrlLauncher.launch("tel://$phoneNumber");
       },
       child: Card(
-        margin: const EdgeInsets.symmetric(vertical: 0),
-        elevation: 4,
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(0)),
-        ),
+        elevation: 10,
         child: Padding(
-          padding: const EdgeInsets.all(0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: <Widget>[
-              Align(
-                child: Column(
-                  children: <Widget>[
-                    Image.asset(
-                      '$path',
-                      width: 80.0,
-                      height: 80.0,
+              Row(
+                children: [
+                  Container(
+                      height: 100, width: 100, child: Image.asset('$path')),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Column(
+                      children: [
+                        Text(
+                          '$name',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text('$carType'),
+                        Text('$plateNumber'),
+                        Text('$phoneNumber')
+                      ],
                     ),
-                    Container(
-                      padding: EdgeInsets.only(top: 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            '$name',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Text(
-                      '$carType',
-                      style: TextStyle(fontSize: 14, color: Colors.grey[800]),
-                    ),
-                    Text(
-                      '$phoneNumber',
-                      style: TextStyle(fontSize: 14, color: Colors.grey[800]),
-                    ),
-                    Text('$plateNumber'),
-                  ],
-                ),
-              ),
+                  )
+                ],
+              )
             ],
           ),
         ),

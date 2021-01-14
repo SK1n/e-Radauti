@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
 class Contact extends StatefulWidget {
   @override
@@ -31,6 +33,7 @@ class _ContactState extends State<Contact> {
   void _mailer() async {
     String username = 'radautiulcivic@gmail.com';
     String password = 'pass123.CIVIC';
+    // ignore: deprecated_member_use
     final smtpServer = gmail(username, password);
     final message = Message()
       ..from = Address(username, _nameController.text)
@@ -46,6 +49,7 @@ class _ContactState extends State<Contact> {
     try {
       final sendReport = await send(message, smtpServer);
       print('Message sent: ' + sendReport.toString());
+      // ignore: deprecated_member_use
       _scaffoldKey.currentState.showSnackBar(SnackBar(
         content: Text("Mesaj trimis!"),
       ));
@@ -56,12 +60,13 @@ class _ContactState extends State<Contact> {
         isLoading = false;
       });
     } on MailerException catch (e) {
-      print('Message not sent.');
+      debugPrint('Message not sent.');
+      // ignore: deprecated_member_use
       _scaffoldKey.currentState.showSnackBar(SnackBar(
         content: Text("Mesaj netrimis!"),
       ));
       for (var p in e.problems) {
-        print('Problem: ${p.code}: ${p.msg}');
+        debugPrint('Problem: ${p.code}: ${p.msg}');
       }
       isLoading = false;
     }
@@ -71,212 +76,162 @@ class _ContactState extends State<Contact> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        automaticallyImplyLeading: false,
-        leading: Container(
-          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-          margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
-          child: Image.asset("assets/logo_images/app_logo.png"),
-        ),
-      ),
+      drawer: NavDrawer(),
+      appBar: AppBarModel()
+          .loadAppBar(context, 'Contact', Icons.add_box_outlined, _scaffoldKey),
       body: isLoading
           ? Center(
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
-        ),
-      )
-          : SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.only(
-                top: 20,
-                bottom: 10,
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
               ),
-              child: Row(
-                children: <Widget>[
+            )
+          : SingleChildScrollView(
+              child: Column(
+                children: [
                   Container(
-                    alignment: Alignment.centerLeft,
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.keyboard_arrow_left,
-                        color: Color(0xFF979797),
-                      ), //_left Icons.arrow_back
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                    margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                    child: TextField(
+                      textCapitalization: TextCapitalization.sentences,
+                      controller: _nameController,
+                      enabled: true,
+                      decoration: new InputDecoration(
+                        border: new OutlineInputBorder(
+                          borderSide: new BorderSide(color: Color(0xFF38A49C)),
+                        ),
+                        prefixIcon: Icon(
+                          Icons.person,
+                          color: Color(0x55FB6340),
+                          size: 20,
+                        ),
+                        labelText: 'Nume și prenume:',
+                        prefixText: '',
+                        errorText: _validateName
+                            ? 'Nu ați introdus numele dvs.!'
+                            : null,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Color(0xFF38A49C)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Color(0xFF38A49C)),
+                        ),
+                        labelStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width - 80,
-                    child: new Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: <Widget>[
-                        Stack(
-                          children: <Widget>[
-                            Container(
-                              child: Text(
-                                'Contact',
-                                style: TextStyle(
-                                  color: Color(0xFF000000),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 19,
-                                ),
-                              ),
-                            ),
-                          ],
+                    margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                    child: TextField(
+                      textCapitalization: TextCapitalization.sentences,
+                      controller: _emailController,
+                      enabled: true,
+                      decoration: new InputDecoration(
+                        border: new OutlineInputBorder(
+                          borderSide: new BorderSide(
+                              color: Color.fromRGBO(56, 164, 156, 10)),
                         ),
-                      ],
+                        prefixIcon: Icon(
+                          Ionicons.ios_mail,
+                          color: Color(0x55FB6340),
+                          size: 20,
+                        ),
+                        labelText: 'Email:',
+                        prefixText: '',
+                        errorText:
+                            _validateEmail ? 'Nu ați introdus email!' : null,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 1,
+                              color: Color.fromRGBO(56, 164, 156, 10)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 1,
+                              color: Color.fromRGBO(56, 164, 156, 10)),
+                        ),
+                        labelStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(
+                      top: 20,
+                      left: 20,
+                      right: 20,
+                      bottom: 0,
+                    ),
+                    child: TextField(
+                      textCapitalization: TextCapitalization.sentences,
+                      controller: _bodyController,
+                      keyboardType: TextInputType.multiline,
+                      maxLines: null,
+                      enabled: true,
+                      decoration: new InputDecoration(
+                        border: new OutlineInputBorder(
+                          borderSide: new BorderSide(
+                              color: Color.fromRGBO(56, 164, 156, 10)),
+                        ),
+                        labelText: 'Mesaj:',
+                        labelStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
+                        prefixText: '',
+                        errorText: _validateDescription
+                            ? 'Nu ați introdus un mesaj!'
+                            : null,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 1,
+                              color: Color.fromRGBO(56, 164, 156, 10)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 1,
+                              color: Color.fromRGBO(56, 164, 156, 10)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                    width: MediaQuery.of(context).size.width,
+                    child: FlatButton(
+                      color: Color.fromRGBO(56, 164, 156, 10),
+                      textColor: Colors.white,
+                      onPressed: () {
+                        setState(() {
+                          _nameController.text.isEmpty
+                              ? _validateName = true
+                              : _validateName = false;
+                          _bodyController.text.isEmpty
+                              ? _validateDescription = true
+                              : _validateDescription = false;
+                          _emailController.text.isEmpty
+                              ? _validateEmail = true
+                              : _validateEmail = false;
+                          if (_validateName == false) {
+                            if (_validateDescription == false) {
+                              if (_validateEmail == false) {
+                                setState(() {
+                                  isLoading = true;
+                                });
+                                _mailer();
+                              }
+                            }
+                          }
+                        });
+                      },
+                      child: Text("Trimite"),
                     ),
                   ),
                 ],
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-              child: TextField(
-                textCapitalization: TextCapitalization.sentences,
-                controller: _nameController,
-                enabled: true,
-                decoration: new InputDecoration(
-                  border: new OutlineInputBorder(
-                    borderSide: new BorderSide(color: Color(0xFF38A49C)),
-                  ),
-                  prefixIcon: Icon(
-                    Icons.person,
-                    color: Color(0x55FB6340),
-                    size: 20,
-                  ),
-                  labelText: 'Nume și prenume:',
-                  prefixText: '',
-                  errorText: _validateName
-                      ? 'Nu ați introdus numele dvs.!'
-                      : null,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                    BorderSide(width: 1, color: Color(0xFF38A49C)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                    BorderSide(width: 1, color: Color(0xFF38A49C)),
-                  ),
-                  labelStyle: TextStyle(
-                    color: Colors.grey,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
-              child: TextField(
-                textCapitalization: TextCapitalization.sentences,
-                controller: _emailController,
-                enabled: true,
-                decoration: new InputDecoration(
-                  border: new OutlineInputBorder(
-                    borderSide: new BorderSide(
-                        color: Color.fromRGBO(56, 164, 156, 10)),
-                  ),
-                  prefixIcon: Icon(
-                    Ionicons.ios_mail,
-                    color: Color(0x55FB6340),
-                    size: 20,
-                  ),
-                  labelText: 'Email:',
-                  prefixText: '',
-                  errorText:
-                  _validateEmail ? 'Nu ați introdus email!' : null,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        width: 1,
-                        color: Color.fromRGBO(56, 164, 156, 10)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        width: 1,
-                        color: Color.fromRGBO(56, 164, 156, 10)),
-                  ),
-                  labelStyle: TextStyle(
-                    color: Colors.grey,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                top: 20,
-                left: 20,
-                right: 20,
-                bottom: 0,
-              ),
-              child: TextField(
-                textCapitalization: TextCapitalization.sentences,
-                controller: _bodyController,
-                keyboardType: TextInputType.multiline,
-                maxLines: null,
-                enabled: true,
-                decoration: new InputDecoration(
-                  border: new OutlineInputBorder(
-                    borderSide: new BorderSide(
-                        color: Color.fromRGBO(56, 164, 156, 10)),
-                  ),
-                  labelText: 'Mesaj:',
-                  labelStyle: TextStyle(
-                    color: Colors.grey,
-                  ),
-                  prefixText: '',
-                  errorText: _validateDescription
-                      ? 'Nu ați introdus un mesaj!'
-                      : null,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        width: 1,
-                        color: Color.fromRGBO(56, 164, 156, 10)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        width: 1,
-                        color: Color.fromRGBO(56, 164, 156, 10)),
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-              width: MediaQuery.of(context).size.width,
-              child: FlatButton(
-                color: Color.fromRGBO(56, 164, 156, 10),
-                textColor: Colors.white,
-                onPressed: () {
-                  setState(() {
-                    _nameController.text.isEmpty
-                        ? _validateName = true
-                        : _validateName = false;
-                    _bodyController.text.isEmpty
-                        ? _validateDescription = true
-                        : _validateDescription = false;
-                    _emailController.text.isEmpty
-                        ? _validateEmail = true
-                        : _validateEmail = false;
-                    if (_validateName == false) {
-                      if (_validateDescription == false) {
-                        if (_validateEmail == false) {
-                          setState(() {
-                            isLoading = true;
-                          });
-                          _mailer();
-                        }
-                      }
-                    }
-                  });
-                },
-                child: Text("Trimite"),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 
