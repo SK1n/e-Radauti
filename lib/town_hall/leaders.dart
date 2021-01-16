@@ -278,6 +278,18 @@ class Leaders extends StatelessWidget {
                               ],
                             ),
                             Container(
+                              padding: EdgeInsets.only(top: 10),
+                              width: MediaQuery.of(context).size.width - 136,
+                              child: Text(
+                                "Informații adiționale",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                            Container(
                               width: MediaQuery.of(context).size.width - 136,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,

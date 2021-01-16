@@ -66,10 +66,10 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
                     child: ExpandablePanel(
                       theme: const ExpandableThemeData(),
                       header: Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Text(
-                            lGive[i]['zi'].toString() + '.' + lGive[i]['luna'].toString() + '.' + lGive[i]['an'].toString(),
-                          ),
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          lGive[i]['zi'].toString() + '.' + lGive[i]['luna'].toString() + '.' + lGive[i]['an'].toString(),
+                        ),
                       ),
                       expanded: Container(
                         child: Column(
@@ -117,7 +117,7 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBarModel().loadAppBar(
-          context, 'Ședințe de\Consiliu local', Icons.location_city, _scaffoldKey),
+          context, 'Ședințe de Consiliu local', Icons.location_city, _scaffoldKey),
       drawer: NavDrawer(),
       body: ExpandableTheme(
         data: const ExpandableThemeData(
@@ -188,7 +188,7 @@ Future<List> fetchDataList() async{
 Future<String> fetchFacebookVideoLink() async {
   Map<String, dynamic> fd;
   http.Response r =
-      await http.get('https://e-radauti-80139.firebaseio.com/--Sedinte.json');
+  await http.get('https://e-radauti-80139.firebaseio.com/--Sedinte.json');
   fd = json.decode(r.body);
 
   String link = fd['link'];
@@ -208,9 +208,9 @@ Future<List> fetchListVideoLink() async {
   final List<dynamic> children = [];
   fd.forEach(
         (element) {
-          if(element != null)
-            children.add(element);
-        },
+      if(element != null)
+        children.add(element);
+    },
   );
   return children;
 }

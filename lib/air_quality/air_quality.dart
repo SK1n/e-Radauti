@@ -48,7 +48,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBarModel().loadAppBar(
-            context, 'Calitatea \nAerului', Icons.bubble_chart, _scaffoldKey),
+            context, 'Calitatea aerului', Icons.bubble_chart, _scaffoldKey),
         drawer: NavDrawer(),
         body: SingleChildScrollView(
           child: FutureBuilder(
@@ -66,6 +66,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                   padding: EdgeInsets.all(10),
                   child: Column(
                     children: [
+
                       Text(
                         'CENTRU RĂDĂUȚI',
                         style: TextStyle(
@@ -179,6 +180,13 @@ class _AirQualityPageState extends State<AirQualityPage> {
                               )
                             ],
                           ),
+                        ),
+                      ),
+                      Text(
+                        'Valorile sunt afișate prin intermediul Aplicației e-Rădăuți',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF000000),
                         ),
                       ),
                       AirQualityLegend(),

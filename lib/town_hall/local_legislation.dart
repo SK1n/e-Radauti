@@ -17,9 +17,9 @@ class LocalLegislation extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBarModel().loadAppBar(
-          context, 'Hotărâri\nLocale', Icons.location_city, _scaffoldKey),
+          context, 'Hotărâri Locale', Icons.location_city, _scaffoldKey),
       drawer: NavDrawer(),
-       body: MyHomePage(),
+      body: MyHomePage(),
     );
   }
 }
@@ -38,14 +38,14 @@ class _MyHomePageState extends State<MyHomePage> {
     final List<dynamic> children2 = [];
     fd.forEach(
             (key, value) {
-              List<dynamic> varList = value;
-              varList.forEach(
-                      (element) {
-                        if(element != null)
-                          children.add(element);
-                      }
-              );
-            }
+          List<dynamic> varList = value;
+          varList.forEach(
+                  (element) {
+                if(element != null)
+                  children.add(element);
+              }
+          );
+        }
     );
     for(int i = children.length - 1; i >= 0; i--){
       children2.add(children[i]);
@@ -88,17 +88,17 @@ class _MyHomePageState extends State<MyHomePage> {
       }else if((item['an'] != vAn)||((item['an'] == vAn)&&(test == 1))){
         if(lGive.length == 1){
           lWidgetLink.add(
-              Container(
-                child: InkWell(
-                  child: Text(
-                    '1. ' + item['titlu'],
-                    style: TextStyle(
+            Container(
+              child: InkWell(
+                child: Text(
+                  '1. ' + item['titlu'],
+                  style: TextStyle(
                       color: Colors.indigo
-                    ),
                   ),
-                  onTap: ()=>{UrlLauncher.launch(item['link'])},
                 ),
+                onTap: ()=>{UrlLauncher.launch(item['link'])},
               ),
+            ),
           );
           lWidgetCard.add(
               ExpandableNotifier(
@@ -183,12 +183,12 @@ class _MyHomePageState extends State<MyHomePage> {
           };
         };
       };
-      rWidget = Column(
-        children: <Widget>[
-          for(final item in lWidgetCard)item,
-        ],
-      );
-      return rWidget;
+    rWidget = Column(
+      children: <Widget>[
+        for(final item in lWidgetCard)item,
+      ],
+    );
+    return rWidget;
   }
   TextEditingController editingController = TextEditingController();
   List<dynamic> duplicateItems = [];

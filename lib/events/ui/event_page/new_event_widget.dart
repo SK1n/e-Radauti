@@ -32,9 +32,9 @@ class NewEventWidget extends StatelessWidget {
       location: event.location,
       startDate:
       DateTime.utc(
-        event.yearT,
-        event.monthT,
-        event.dayT, event.hourT, event.minuteT).add(Duration(
+          event.yearT,
+          event.monthT,
+          event.dayT, event.hourT, event.minuteT).add(Duration(
         hours: -2,
       )),
       endDate:
@@ -73,8 +73,9 @@ class NewEventWidget extends StatelessWidget {
                                     .month, //'27\nAPR', //'data',//event.duration.toUpperCase(),
                             textAlign: TextAlign.center, //TextAlign.right,
                             style: TextStyle(
-                              fontSize: 18, //40,//13 //16
-                              color: Colors.grey[600], //[300]
+                              fontSize: 30, //40,//13 //16
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[800], //[300]
                             ),
                           ),
                           Text(
@@ -82,12 +83,12 @@ class NewEventWidget extends StatelessWidget {
                             textAlign: TextAlign.center, //TextAlign.right,
                             style: TextStyle(
                               fontSize: 18, //40,//16
-                              color: Colors.grey[600], //[300]
+                              color: Colors.grey[800], //[300]
                             ),
                           ),
                           new DecoratedBox(
                             decoration: new BoxDecoration(
-                              color: Colors.grey, //blue
+                              color: Colors.grey[700], //blue
                               borderRadius: BorderRadius.circular(2.0), //20.0
                             ),
                             child: new Padding(
@@ -108,6 +109,7 @@ class NewEventWidget extends StatelessWidget {
                           ),
                         ],
                       ),
+
                       Column(
                         children: <Widget>[
                           Row(
@@ -116,9 +118,18 @@ class NewEventWidget extends StatelessWidget {
                               Column(
                                 children: <Widget>[
                                   Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 5,
-                                        right: 5), //const EdgeInsets.all(5)
+                                    padding: const EdgeInsets.only(right: 0, left: 10,),
+                                  child:Container(
+                            /*        padding: const EdgeInsets.only(
+                                        left: 0,
+                                        right: 0),*/
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        color: Colors.black,
+                                        width: 1,
+                                      ),
+                                    ),//const EdgeInsets.all(5)
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(10),
@@ -132,7 +143,7 @@ class NewEventWidget extends StatelessWidget {
                                             4, //150,//50,
                                       ), //Image.asset(event.imagePath, height: 150, fit: BoxFit.fitWidth,),
                                     ),
-                                  ),
+                                  ),),
                                 ],
                               ),
                               Column(
@@ -160,6 +171,7 @@ class NewEventWidget extends StatelessWidget {
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
                                               fontSize: 16,
+                                              fontWeight: FontWeight.bold,
                                               color: Color(
                                                   0xAA38A49C), //Color(0xAAFB6340), //Colors.orange[300],
                                             ),
@@ -174,9 +186,9 @@ class NewEventWidget extends StatelessWidget {
                                       //Icon(Icons.location_on),
                                       Padding(
                                         padding:
-                                        EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 0.0),
                                         child: Container(
-                                          child: Icon(Icons.category),
+                                          child: Icon(Icons.category, size:16),
                                         ),
                                       ),
                                       SizedBox(
@@ -200,7 +212,7 @@ class NewEventWidget extends StatelessWidget {
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
                                               fontSize: 13, //40,
-                                              color: Colors.grey[600], //[300]
+                                              color: Colors.grey[800], //[300]
                                             ),
                                           ),
                                         ),
@@ -213,9 +225,9 @@ class NewEventWidget extends StatelessWidget {
                                       //Icon(Icons.location_on),
                                       Padding(
                                         padding:
-                                        EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 0.0),
                                         child: Container(
-                                          child: Icon(Icons.account_circle),
+                                          child: Icon(Icons.account_circle, size:16),
                                         ),
                                       ),
                                       SizedBox(
@@ -239,7 +251,7 @@ class NewEventWidget extends StatelessWidget {
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
                                               fontSize: 13, //40,
-                                              color: Colors.grey[600], //[300]
+                                              color: Colors.grey[800], //[300]
                                             ),
                                           ),
                                         ),
@@ -254,9 +266,9 @@ class NewEventWidget extends StatelessWidget {
                                     children: <Widget>[
                                       Padding(
                                         padding:
-                                        EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
+                                        EdgeInsets.fromLTRB(5, 5.0, 0.0, 5),
                                         child: Container(
-                                          child: Icon(Icons.location_on),
+                                          child: Icon(Icons.location_on, size:16),
                                         ),
                                       ),
                                       Container(
@@ -270,7 +282,7 @@ class NewEventWidget extends StatelessWidget {
                                           children: <Widget>[
                                             Container(
                                               child: Padding(
-                                                padding: EdgeInsets.fromLTRB(0.0,
+                                                padding: EdgeInsets.fromLTRB(5.0,
                                                     5.0, 0.0, 5.0), //10.0 //25.0
                                                 //child: Text('Evenimente'),
                                                 child: Text(
@@ -279,7 +291,7 @@ class NewEventWidget extends StatelessWidget {
                                                   maxLines: 3,
                                                   style: TextStyle(
                                                     fontSize: 13, //40,
-                                                    color: Colors.grey[600], //[300]
+                                                    color: Colors.grey[800], //[300]
                                                   ),
                                                 ),
                                               ),
@@ -310,7 +322,7 @@ class NewEventWidget extends StatelessWidget {
                                               updateDataFirebase(event);
                                             },
                                             child: const Text(
-                                              'Particip!',
+                                              'Adaugă în \nCalendar',
                                               style: TextStyle(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
