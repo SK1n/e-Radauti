@@ -4,32 +4,23 @@ import 'package:flutterapperadauti/events/ui/event_page/last_event_page.dart';
 
 class TabDemo extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldState;
-  TabDemo({
-    Key key,
-    this.scaffoldState,
-  }) : super(key: key);
+  TabDemo({Key key, this.scaffoldState,}) : super(key: key);
 
   @override
-  _TabDemoState createState() => _TabDemoState(
-        scaffoldState,
-      );
+  _TabDemoState createState() => _TabDemoState(scaffoldState,);
 }
 
 class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
   TabController _tabController;
-
   int _selectedTab = 0;
   final GlobalKey<ScaffoldState> scaffoldState;
-  _TabDemoState(
-    this.scaffoldState,
-  );
+
+  _TabDemoState(this.scaffoldState,);
 
   @override
   void initState() {
     super.initState();
-
     _tabController = TabController(vsync: this, length: 2);
-
     _tabController.addListener(() {
       if (!_tabController.indexIsChanging) {
         setState(() {
@@ -43,41 +34,19 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Material(
-          //color: Colors.grey.shade300,
-          child: TabBar(
-            unselectedLabelColor:
-                Colors.grey, //unselectedLabelColor: Colors.blue,
-            //labelColor: Colors.blue,
-            indicatorColor: Colors.white, //indicatorColor: Color(0xAA38A49C),
-            controller: _tabController,
-            labelPadding: const EdgeInsets.all(0.0),
-            tabs: [
-              _getTab(
-                0,
-                Center(
-                  child: Text(
-                    'EVENIMENTE NOI',
-                    style: TextStyle(
-                      fontSize: 15.0, //12.0 //16.0 //14.0
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-              _getTab(
-                1,
-                Center(
-                  child: Text(
-                    'EVENIMENTE TRECUTE',
-                    style: TextStyle(
-                      fontSize: 15.0, //12.0 //16.0 //14.0
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+        Container(
+          padding: EdgeInsets.only(top: 5.0),
+          child: Material(
+            child: TabBar(
+              unselectedLabelColor: Colors.grey,
+              indicatorColor: Colors.white,
+              controller: _tabController,
+              labelPadding: const EdgeInsets.all(0.0),
+              tabs: [
+                _getTab(0, 'EVENIMENTE NOI',),
+                _getTab(1, 'EVENIMENTE TRECUTE',),
+              ],
+            ),
           ),
         ),
         Expanded(
@@ -94,11 +63,19 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
     );
   }
 
-  _getTab(index, child) {
+  _getTab(index, childString) {
     return Tab(
       child: SizedBox.expand(
         child: Container(
-          child: child,
+          child: Center(
+            child: Text(
+              childString,
+              style: TextStyle(
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           decoration: BoxDecoration(
               color: (_selectedTab == index ? Colors.white : Colors.white),
               borderRadius: _generateBorderRadius(index)),
