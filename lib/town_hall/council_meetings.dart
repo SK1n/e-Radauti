@@ -7,7 +7,6 @@ import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:http/http.dart' as http;
 import 'package:expandable/expandable.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 
 class CouncilMeetings extends StatefulWidget {
   CouncilMeetings({Key key}) : super(key: key);

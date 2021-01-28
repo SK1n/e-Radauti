@@ -59,7 +59,7 @@ class WidgetChildPageModel{
                   disabledColor: Colors.grey,
                   disabledTextColor: Colors.black,
                   splashColor: Color(0x8838A49C),
-                  child: itemText('Sună acum', FontWeight.bold, TextDecoration.none, 15.0, Colors.black),
+                  child: itemText('Sună acum', FontWeight.bold, TextDecoration.none, 15.0, Colors.white),
                   onPressed: () { UrlLauncher.launch(childUrl1);},
                 ),
               ),
