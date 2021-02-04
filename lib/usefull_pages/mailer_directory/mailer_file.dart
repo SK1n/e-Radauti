@@ -3,39 +3,31 @@ import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 
 class LoadMailer{
-  void functionMailer(childName, childRecipient, childBody, childEmail, childScaffoldKey, childFunction, childIsLoading) async {
+  Future<bool> tryLoadMailer(_nameController,_recipientController,_bodyController,_emailController) async{
     String username = 'radautiulcivic@gmail.com';
     String password = 'pass123.CIVIC';
-    // ignore: deprecated_member_use
-    final smtpServer = gmail(username, password);
+    final smtpServer = gmail(username,password);
     final message = Message()
-      ..from = Address(username, childName.text)
-      ..recipients.add(childRecipient)
+      ..from = Address(username, _nameController.text)
+      ..recipients.add(_recipientController)
       ..subject = ' Formularul de contact - aplicația e-Rădăuți'
       ..html = 'Către,     Rădăuțul civic<br><br>Stimată doamnă/ Stimate domn,<br><br>'
-          'Subsemnatul/Subsemnata ${childName.text}, vă supun atenției următoarea problemă:<br><br>'
-          '${childBody.text}<br><br>Prezentul e-mail reprezintă un mesaj transmis '
+          'Subsemnatul/Subsemnata ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>'
+          '${_bodyController.text}<br><br>Prezentul e-mail reprezintă un mesaj transmis '
           'prin intermediul aplicației mobile e-Rădăuți, dezvoltată de Asociația Rădăuțiul Civic'
           ', prin funcționalitatea „Contact”.<br><br>Vă rog să îmi transmiteți răspunsul în termenul legal la adresa '
-          '${childEmail.text}.<br><br>Cu stimă,<br><br>     ${childName.text}<br><br>'
-          '     Email: ${childEmail.text}';
-    try {
-      final sendReport = await send(message, smtpServer);
-      print('Mesaj trimis: ' + sendReport.toString());
-      childScaffoldKey.currentState.showSnackBar(SnackBar(
-        content: Text("Mesaj trimis!"),
-      ));
-      childFunction;
+          '${_emailController.text}.<br><br>Cu stimă,<br><br>     ${_nameController.text}<br><br>'
+          '     Email: ${_emailController.text}';
+    try{
+      final sendReport = await send(message,smtpServer);
+      debugPrint('Mesaj trimis: ' + sendReport.toString());
     } on MailerException catch (e) {
       debugPrint('Mesajul nu a fost trimis.');
-      // ignore: deprecated_member_use
-      childScaffoldKey.currentState.showSnackBar(SnackBar(
-        content: Text("Mesaj netrimis!"),
-      ));
-      for (var p in e.problems) {
-        debugPrint('Problem: ${p.code}: ${p.msg}');
+      for(final p in e.problems){
+        debugPrint ('Problema: ${p.code}: ${p.msg}');
       }
-      childIsLoading = false;
+      return false;
     }
+    return true;
   }
 }
