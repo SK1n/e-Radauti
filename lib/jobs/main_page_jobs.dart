@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/jobs/local_announcements.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -154,6 +155,78 @@ class HomePageJobs extends StatelessWidget {
                     context,
                     '/furniture',
                   );
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 1.0,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(
+                left: 25,
+                right: 25,
+                bottom: 10,
+                top: 10,
+              ),
+              child: GestureDetector(
+                child: Row(
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              height: 30,
+                              width: 30,
+                              child: SvgPicture.asset(
+                                  'assets/images/circle_194C80.svg'),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width - 120,
+                              padding: EdgeInsets.only(
+                                left: 10,
+                              ),
+                              child: Text(
+                                'Anunțuri locale',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(
+                            top: 10,
+                          ),
+                          width: MediaQuery.of(context).size.width - 80,
+                          child: Text(
+                            'Anunțuri de la principalele instituții/servicii locale',
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 5,
+                            style: TextStyle(
+                              color: Color(0xFF38A49C),
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      child: Icon(
+                        Icons.keyboard_arrow_right,
+                        color: Color(0xFF979797),
+                      ),
+                    ),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => LocalAnounnouncements()));
                 },
               ),
             ),
