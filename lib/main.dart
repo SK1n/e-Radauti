@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutterapperadauti/locator.dart';
 import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
@@ -27,7 +29,10 @@ import 'usefull_numbers/miscellaneous.dart';
 import 'usefull_numbers/public_institutions.dart';
 import 'main_page_model.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  setUpLocator();
   runApp(MyApp());
 }
 

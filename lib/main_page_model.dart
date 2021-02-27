@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'widgets/src/nav_drawer.dart';
-import 'package:flutterapperadauti/services/push_notifications_service.dart';
+import 'package:flutterapperadauti/push_notifications_service.dart';
 
 class MenuScreen extends StatefulWidget {
   @override
@@ -11,11 +11,8 @@ class MenuScreen extends StatefulWidget {
 
 class _MyAppState extends State<MenuScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   @override
   Widget build(BuildContext context) {
-    final pushNotificationService = PushNotificationService(_firebaseMessaging);
-    pushNotificationService.initialise();
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
