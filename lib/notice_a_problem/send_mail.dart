@@ -34,20 +34,20 @@ class SendEmailMailer {
       ..recipients.add(destination)
       ..ccRecipients.add(email)
       ..subject = ' Petiție $subject - aplicația e-Rădăuți'
-      ..html = 'Către, <b>$institution</b> ($destination) <br><br> Stimată doamnă/ Stimate domn,'
-          '<br><br>Subsemnatul(a) $name, vă supun atenției următoarea problemă:<br><br>'
-          '<i>$body</i><br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați'
+      ..html = 'Către, $institution($destination) <br><br> Stimată doamnă/ Stimate domn,'
+          '<br><br><i>Subsemnatul(a) $name, vă supun atenției următoarea problemă:<br><br>'
+          '$body<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați'
           ' măsurile ce se impun. Cele sesizate sunt la următoarea adresă '
-          ' Lat: ${position.latitude.toString()} Long: ${position.longitude.toString()}'
-          " (<a href ='https://www.google.com/maps/place/${position.latitude.toString()}+${position.longitude.toString()}"
-          "'>Adresa Google Maps</a>)<br><br></i>"
+          ' Lat:${position.latitude.toString()} Long:${position.longitude.toString()}'
+          "( <a href ='https://www.google.com/maps/place/${position.latitude.toString()}+${position.longitude.toString()}"
+          "'>Adresa Google Maps</a> )<br><br></i>"
           'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și '
-          'a fost transmisă <b>prin intermediul aplicației mobile e-Rădăuți</b>, dezvoltată'
-          ' de Asociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”, '
+          'a fost transmisă prin intermediul aplicației mobile e-Rădăuți, dezvoltată'
+          ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”'
           'iar în cazul în care e-mail-ul nu conține numele și adresa de e-mail a petentului, aceasta poate fi clasată, potrivit O.G. 27/2002.'
-          '<br><br>Vă rog să îmi transmiteți răspunsul în termenul legal la adresa $email'
+          'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa $email'
           '.<br><br>Cu stimă,<br><br>'
-          '     <b>$name</b><br><br>     Tel: $number / $email'
+          '     $name<br><br>     Tel: $number / $email'
       ..attachments = listAttachment;
     if (await showDialogAfterTringToSendEmail(context, email) == false) {
       return false;
@@ -67,20 +67,19 @@ class SendEmailMailer {
       BuildContext context) async {
     changeListType(attachments);
     message = Message()
-      ..from = Address(username, 'Radautiul Civic')
+      ..from = Address(username)
       ..recipients.add(destination)
-      ..ccRecipients.add(email)
-      ..subject = ' Petiție $subject - aplicația e-Rădăuți'
-      ..html = 'Către, <b>$institution</b> (${destination.toString()}) <br><br> Stimată doamnă/ Stimate domn,'
+      ..subject = ' Petiție ${subject.toString()} - aplicația e-Rădăuți'
+      ..html = 'Către, $institution(${destination.toString()}) <br><br> Stimată doamnă/ Stimate domn,'
           '<br><br>Subsemnatul(a) ${name.toString()}, vă supun atenției următoarea problemă:<br><br>'
-          '<i>$description</i><br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați'
+          '$description<br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați'
           ' măsurile ce se impun.<br><br>'
           'Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și '
-          'a fost transmisă <b>prin intermediul aplicației mobile e-Rădăuți</b>, dezvoltată'
-          ' de Asociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>'
+          'a fost transmisă prin intermediul aplicației mobile e-Rădăuți, dezvoltată'
+          ' de Ascociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”.<br><br>'
           'Vă rog să îmi transmiteți răspunsul în termenul legal la adresa $email'
           '.<br><br>Cu stimă,<br><br>'
-          '     <b>$name</b><br><br>     Tel: $number/$email'
+          '     $name<br><br>     Tel: $number/$email'
       ..attachments = listAttachment;
     if (await showDialogAfterTringToSendEmail(context, email) == false) {
       return false;
@@ -109,36 +108,36 @@ class SendEmailMailer {
       showDialog(
           context: context,
           builder: (_) => CupertinoAlertDialog(
-            title: Text('Email-ul a fost trimis cu succes!'),
-            content: Text(
-                'Ți-am trimis o copie pe adresa de email trecută în această sesizare.\n\n Instituția trebuie să răspundă în cel mult 30 de zile la adresa $email'),
-            actions: [
-              CupertinoDialogAction(
-                child: Text('Ok'),
-                isDefaultAction: true,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              )
-            ],
-          ));
+                title: Text('Email-ul a fost trimis cu succes!'),
+                content: Text(
+                    'Urmatorul pas este sa asteptati un email pe adresa $email'),
+                actions: [
+                  CupertinoDialogAction(
+                    child: Text('Ok'),
+                    isDefaultAction: true,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              ));
     } else {
       showDialog(
           context: context,
           builder: (_) => CupertinoAlertDialog(
-            title: Text('Eroare'),
-            content: Text(
-                'Ne pare rau a intervenit o eroare \nVa rugam sa incercati din nou!\n $_emailError'),
-            actions: [
-              CupertinoDialogAction(
-                child: Text('Ok'),
-                isDefaultAction: true,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              )
-            ],
-          ));
+                title: Text('Eroare'),
+                content: Text(
+                    'Ne pare rau a intervenit o eroare \nVa rugam sa incercati din nou!\n $_emailError'),
+                actions: [
+                  CupertinoDialogAction(
+                    child: Text('Ok'),
+                    isDefaultAction: true,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              ));
     }
     return false;
   }

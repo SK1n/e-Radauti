@@ -57,7 +57,7 @@ class HomePageTransport extends StatelessWidget {
                           ),
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
-                            'Lista taximetriștilor autorizați din Rădăuți',
+                            'Aici puteți găsi numele taximetriștilor din Rădăuți, numărul lor de telefon, tipul mașinii și numărul de înmatriculare',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(

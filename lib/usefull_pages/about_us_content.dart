@@ -20,7 +20,7 @@ class AboutUsContent extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 30,
             //padding: EdgeInsets.only(left: 10,),
             child: Text(
-              "Rădăuțiul Civic",
+              "Rdăuțiul Civic",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,

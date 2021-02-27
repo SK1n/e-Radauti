@@ -58,7 +58,7 @@ class HomePageNumbers extends StatelessWidget {
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
                             'Date de contact pentru principalele instituții de protecție civilă '
-                            '(a consumatorului, copilului, animalelor, mediului etc.)',
+                            '(a consumatorilui, copilului, animalelor, mediului, etc.)',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(

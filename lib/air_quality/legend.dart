@@ -100,7 +100,7 @@ class AirQualityLegend extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width - 20,
                             child: Text(
-                              'Particulele PM2.5 sunt particule cu diametrul de sub 2.5 micrometri (aproximativ 100 de ori mai mici decât firul de păr uman) produse de către procesul de ardere a diferiților combustibili (Diesel, biomasă, cărbune, deșeuri etc.) sau de către elemente naturale precum erupții vulcanice etc.\n\nParticulele PM2.5 sunt cele mai periculoase pentru sănătate, în special în mediul urban. Se estimează că anual, în Uniunea Europeană, peste 400.000 de oameni mor prematur din cauza expunerii la o concentrație mare de particule PM2.5.\n\nÎn România, numărul estimativ ajunge la aproximativ 25.000. Aceste particule sunt atât de mici încât pătrund cu ușurință în sistemul respirator și în sistemul circulator, cauzând probleme cardiace sau pulmonare precum astm bronșitic.\n\nLimita maximă medie anuală stabilită de către Uniunea Europeană este de 25 μg/m3 iar în SUA de 12 μg/m3. Valori de peste 25 μg/m3 vor fi observate din când în când pe aparat, ceea ce ar putea însemna un incendiu în zonă, trafic intens, sărbători în care se generază fum sau pur și simplu efecte meteorologice uzuale în care presiunea atmosferă este mare iar particulele rămân la nivelul solului.\n\n Este foarte important ca valorile să nu crească foarte mult iar expunerea să nu fie de lungă durată.',
+                              'Particulele PM2.5 sunt particule cu diametrul de sub 2.5 micrometri (aproximativ 100 de ori mai mici decât firul de păr uman) produse de către procesul de ardere a diferiților combustibili (în special Diesel la mașini sau cărbune la firmele de utilități) sau de către elemente naturale precum erupții vulcanice etc.\n\nParticulele PM2.5 sunt cele mai periculoase pentru sănătate, în special în mediul urban. Se estimează că anual, în Uniunea Europeană, peste 400.000 de oameni mor prematur din cauza expunerii la o concentrație mare de particule PM2.5.\n\nÎn România, numărul estimativ ajunge la aproximativ 25.000. Aceste particule sunt atât de mici încât pătrund cu ușurință în sistemul respirator și în sistemul circulator, cauzând probleme cardiace sau pulmonare precum astm bronșitic.\n\nLimita maximă medie anuală stabilită de către Uniunea Europeană este de 25 μg/m3 iar în SUA de 12 μg/m3. Valori de peste 25 μg/m3 vor fi observate din când în când pe aparat, ceea ce ar putea însemna un incendiu în zonă, trafic intens, sărbători în care se generază fum sau pur și simplu efecte meteorologice uzuale în care presiunea atmosferă este mare iar particulele rămân la nivelul solului.\n\n Este foarte important ca valorile să nu crească foarte mult iar expunerea să nu fie de lungă durată.',
                               textAlign: TextAlign.start,
                               softWrap: true,
                               maxLines: 20,
@@ -253,60 +253,6 @@ class AirQualityLegend extends StatelessWidget {
                               ),
                             ],
                           )
-                        ],
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-          child: ExpandableNotifier(
-            child: Column(
-              children: [
-                ScrollOnExpand(
-                  child: Expandable(
-                    collapsed: ExpandableButton(
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        // ignore: missing_required_param
-                        child: FlatButton.icon(
-                          disabledTextColor: Colors.black,
-                          icon: Icon(Ionicons.ios_arrow_down),
-                          label: Container(
-                              width: MediaQuery.of(context).size.width - 100,
-                              child: Text("Unde găsesc mai multe informații?")),
-                        ),
-                      ),
-                    ),
-                    expanded: ExpandableButton(
-                      child: Column(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            // ignore: missing_required_param
-                            child: FlatButton.icon(
-                              disabledColor: Colors.grey[200],
-                              disabledTextColor: Colors.black,
-                              icon: Icon(Ionicons.ios_arrow_up),
-                              label: Container(
-                                  width:
-                                  MediaQuery.of(context).size.width - 100,
-                                  child: Text("Unde găsesc mai multe informații?")),
-                            ),
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width - 20,
-                            child: Text(
-                              'Echipa Rădăuțiul Civic a construit o pagină specială pentru o descriere în detaliu a parametrilor de calitatea aerului. Pagina conține grafice care arată cum evoluează în timp concentrația de PM2.5, CO2, Umiditatea Relativă, Viteza și Direcția Vântului, Temperatura și Presiunea Atmosferică. Pagina poate fi accesată pe www.radautiulcivic.ro/calitatea-aerului',
-                              textAlign: TextAlign.start,
-                              softWrap: true,
-                              maxLines: 20,
-                            ),
-                          ),
                         ],
                       ),
                     ),

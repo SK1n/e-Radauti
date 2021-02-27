@@ -391,6 +391,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.8.1"
+<<<<<<< HEAD
   flutter_linkify:
     dependency: "direct main"
     description:
@@ -398,6 +399,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.2"
+=======
+  flutter_layout_grid:
+    dependency: transitive
+    description:
+      name: flutter_layout_grid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.10.2"
+>>>>>>> parent of b460c32 (Actualizat Master)
   flutter_paginator:
     dependency: "direct main"
     description:
@@ -576,13 +586,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.5.1"
-  linkify:
-    dependency: transitive
-    description:
-      name: linkify
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
   location_permissions:
     dependency: transitive
     description:

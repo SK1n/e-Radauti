@@ -48,7 +48,7 @@ class _ContactState extends State<Contact> {
           '     Email: ${_emailController.text}';
     try {
       final sendReport = await send(message, smtpServer);
-      print('Mesaj trimis: ' + sendReport.toString());
+      print('Message sent: ' + sendReport.toString());
       // ignore: deprecated_member_use
       _scaffoldKey.currentState.showSnackBar(SnackBar(
         content: Text("Mesaj trimis!"),
@@ -60,7 +60,7 @@ class _ContactState extends State<Contact> {
         isLoading = false;
       });
     } on MailerException catch (e) {
-      debugPrint('Mesajul nu a fost trimis.');
+      debugPrint('Message not sent.');
       // ignore: deprecated_member_use
       _scaffoldKey.currentState.showSnackBar(SnackBar(
         content: Text("Mesaj netrimis!"),

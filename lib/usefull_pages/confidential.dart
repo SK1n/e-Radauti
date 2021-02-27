@@ -35,7 +35,7 @@ class Confidential extends StatelessWidget {
               ),
               width: MediaQuery.of(context).size.width - 30,
               child: Text(
-                'Grupul independent „Rădăuțiul civic” a construit voluntar ' +
+                'Grupul independent „Rădăuțiul civic” a construit gratuit și voluntar ' +
                     'aplicația „e-Rădăuți”. Aplicația este oferită gratuit și trebuie să fie folosită așa.',
                 overflow: TextOverflow.ellipsis,
                 maxLines: 5,
@@ -55,7 +55,7 @@ class Confidential extends StatelessWidget {
                 text: TextSpan(
                   text: 'Aplicația este un instrument mobil de facilitare a comunicării dintre localnici, instituțiile locale și ' +
                       'grupul „Rădăuțiul Civic”. Rolul comunicării este de implicare civică sau de raportare a diferitelor probleme ' +
-                      'întâlnite în societate. În funcție de opțiunea accesată, informațiile pe care utilizatorul le va introduce în ' +
+                      'întâlnite în societate. În funcție de opțiunea accesată, informațiile pe care utilizatorul la va introduce în ' +
                       'diferitele formulare vor fi direcționate către adresa noastră de e-mail oferită de serviciul Google Mail: ' +
                       'radautiulcivic@gmail.com sau către instituțiile locale precum Primăria Rădăuți, Servicii Comunale, ACET ' +
                       'Rădăuți, Consiliul Județean Suceava, Garda de Mediu Suceava, Garda Forestieră Suceava etc. Când datele ' +
@@ -87,7 +87,29 @@ class Confidential extends StatelessWidget {
             ),
 
             //1.2
-
+            Container(
+              padding: EdgeInsets.only(
+                top: 10,
+              ),
+              width: MediaQuery.of(context).size.width - 30,
+              child: Text(
+                'Aplicația este un instrument mobil de facilitare a comunicării dintre localnici, instituțiile locale și ' +
+                    'grupul „Rădăuțiul Civic”. Rolul comunicării este de implicare civică sau de raportare a diferitelor probleme ' +
+                    'întâlnite în societate. În funcție de opțiunea accesată, informațiile pe care utilizatorul la va introduce în ' +
+                    'diferitele formulare vor fi direcționate către adresa noastră de e-mail oferită de serviciul Google Mail: ' +
+                    'radautiulcivic@gmail.com sau către instituțiile locale precum Primăria Rădăuți, Servicii Comunale, ACET ' +
+                    'Rădăuți, Consiliul Județean Suceava, Garda de Mediu Suceava, Garda Forestieră Suceava etc. Când datele ' +
+                    'sunt trimise către „Rădăuțiul Civic”, ele vor fi stocate pe serverul adresei de e-mail, de aceea recomandăm ' +
+                    'vizitarea politicii de confidențialitate a Google Inc (https://policies.google.com/privacy). ' +
+                    'Când sunt trimise către instituțiile publice, ele vor fi stocate pe serverele dedicate, fără a fi procesate ' +
+                    'sau stocate de către „Rădăuțiul Civic”. Recomandăm contactarea agențiilor în legătură cu stocarea datelor.',
+                //overflow: TextOverflow.ellipsis,
+                //maxLines: 9,
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+            ),
 
             //
             Container(

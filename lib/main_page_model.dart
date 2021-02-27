@@ -60,39 +60,8 @@ class _MyAppState extends State<MenuScreen> {
         slivers: <Widget>[
           SliverToBoxAdapter(
             child: SizedBox(
-              height: (MediaQuery.of(context).size.height/5 - 45),
-              child: Container(
-                //padding: EdgeInsets.only(left: 10,top: 10, bottom: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      height: 30,
-                      width: 30,
-                      child: Image.asset("assets/images/birthday.png"),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(left: 10),
-                      //width: MediaQuery.of(context).size.width - 101,
-                      child: Text(
-                        "Bun venit!",
-                        style: TextStyle(
-                            color: Color(0xFF000000),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
               height: (MediaQuery.of(context).size.height - 250),
               child: Container(
-
                 child: GridView.count(
                   primary: false,
                   padding: const EdgeInsets.all(10),
@@ -111,8 +80,8 @@ class _MyAppState extends State<MenuScreen> {
                         context, 'Evenimente', Icons.calendar_today, '/events'),
                     itemMenu(context, 'Numere utile', Icons.perm_phone_msg,
                         '/numbers'),
-                    itemMenu(context, 'Anunțuri', Icons.announcement, '/announcement'),
-                    itemMenu(context, 'Calitatea aerului', Icons.bubble_chart,
+                    itemMenu(context, 'Anunțuri', Icons.announcement, '/job'),
+                    itemMenu(context, 'Calitatea Aerului', Icons.bubble_chart,
                         '/air'),
                     itemMenu(context, 'Transport', Icons.train, '/transport'),
                     itemMenu(context, 'Voluntariat',

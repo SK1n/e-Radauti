@@ -20,7 +20,6 @@ class VolunteerPage extends StatelessWidget {
       drawer: NavDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
-
           SliverToBoxAdapter(
             child: SizedBox(
               height: 1250,
