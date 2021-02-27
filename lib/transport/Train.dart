@@ -23,40 +23,45 @@ class _TrainState extends State<Train> {
         child: Container(
           child: Column(
             children: [
-              ExpandableNotifier(
-                child: Column(
-                  children: [
-                    ScrollOnExpand(
-                      child: Expandable(
-                        collapsed: ExpandableButton(
-                          child: Container(
-                            width: MediaQuery.of(context).size.width - 20,
-                            child: Text('R5620'),
-                          ),
-                        ),
-                        expanded: ExpandableButton(
-                          child: Container(
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: MediaQuery.of(context).size.width - 20,
-                                  child: Text('R5620'),
-                                ),
-                                Container(
-                                  child: Text(R5620),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              )
+              listItem('R5620', R5620),
+              listItem('R5621', R5621),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  ExpandableNotifier listItem(routeName, route) {
+    return ExpandableNotifier(
+      child: Column(
+        children: [
+          ScrollOnExpand(
+            child: Expandable(
+              collapsed: ExpandableButton(
+                child: Container(
+                  width: MediaQuery.of(context).size.width - 20,
+                  child: Text('$routeName'),
+                ),
+              ),
+              expanded: ExpandableButton(
+                child: Container(
+                  child: Column(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width - 20,
+                        child: Text('$routeName'),
+                      ),
+                      Container(
+                        child: Text(route),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
