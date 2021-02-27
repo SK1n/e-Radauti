@@ -41,7 +41,7 @@ class NavDrawer extends StatelessWidget {
           generateListTile(context, Icons.train, 'Transport', '/transport'),
           generateListTile(context, FontAwesome5.hand_holding_heart,
               'Voluntariat', '/volunteer'),
-          generateListTile(context, Icons.info, 'Despre aplicatie', null),
+          generateListTile(context, Icons.info, 'Despre aplicație', null),
         ],
       ),
     );

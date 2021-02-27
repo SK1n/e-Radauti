@@ -67,7 +67,7 @@ class TownHallMain extends StatelessWidget {
                           ),
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
-                            "Informații despre primar, viceprimar și atribuțiile fiecăruia.",
+                            "Informații despre primar, viceprimar și secretar.",
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -141,7 +141,7 @@ class TownHallMain extends StatelessWidget {
                           ),
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
-                            "Consilierii locali și atribuțiile lor. \nContactează-ți reprezentantul.",
+                            "Consilierii locali. Contactează-ți reprezentantul!",
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(
@@ -289,7 +289,7 @@ class TownHallMain extends StatelessWidget {
                           ),
                           width: MediaQuery.of(context).size.width - 80,
                           child: Text(
-                            "Descoperă hotărârile de consiliu local adoptate și proiectele acestora.",
+                            "Descoperă hotărârile de consiliu local.",
                             overflow: TextOverflow.ellipsis,
                             maxLines: 5,
                             style: TextStyle(

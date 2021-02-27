@@ -38,8 +38,7 @@ class AboutUsApp extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
               'Aplicația „e-Rădăuți” este un proiect voluntar născut în 2017 din dorința de a duce orașul ' +
-                  'mai aproape de era digitală, de a facilita accesul localnicilor și a turiștilor la ' +
-                  'resurselor culturale ale orașului și de implicare în acțiunile locale.',
+                  'mai aproape de era digitală, de a facilita implicare localnicilor în acțiunile locale.',
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -53,7 +52,7 @@ class AboutUsApp extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
               'Aplicația s-a născut în urma unui concurs în premieră în ' +
-                  'oraș intitulat „Hai să digitalizăm orașul” în care au participat optsprezece ' +
+                  'oraș intitulat „Hai să digitalizăm orașul” la care au participat optsprezece ' +
                   'elevi din două licee din Rădăuți.',
               style: TextStyle(
                 fontSize: 15,
@@ -69,7 +68,7 @@ class AboutUsApp extends StatelessWidget {
             child: Text(
               'Aplicațiile dezvoltate în timpul concursului au fost evaluate de un juriu internațional ' +
                   'de profesioniști în domeniul IT și Design iar resursele financiare pentru premii ' +
-                  'au fost provenite din donații ale membrilor „Rădăuțiul Civic”, ale juriului și ale ' +
+                  'au venit din donații ale membrilor „Rădăuțiul Civic”, ale juriului și ale ' +
                   'firmei locale „Hard Power Services”.',
               style: TextStyle(
                 fontSize: 15,
@@ -94,9 +93,8 @@ class AboutUsApp extends StatelessWidget {
             padding: EdgeInsets.only(top: 10),
             width: MediaQuery.of(context).size.width - 30,
             child: Text(
-              'De asemenea această versiunea se bazează și pe sprijinul oferit de Code4Romania, în cadrul ' +
-                  'ședințelor tehnice Civic Tech 911, în care ne-au oferit sprijin cum să organizăm layout și alte ' +
-                  'aspecte tehnice.',
+              'De asemenea această versiune a fost actualizată cu sprijinul oferit de Code4Romania, în cadrul ' +
+                  'ședințelor tehnice Civic Tech 911',
               style: TextStyle(
                 fontSize: 15,
               ),
