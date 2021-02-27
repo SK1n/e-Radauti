@@ -156,7 +156,7 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
                       );
                     };
                     return Container(
-                      height: 250,
+                      //height: 250,
                       child: Center(
                         child: CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
@@ -192,24 +192,26 @@ Future<String> fetchFacebookVideoLink() async {
 
   String link = fd['link'];
   //link = 'https://www.facebook.com/watch/?v=195642925014310&extid=L8LJHdVM1GdJpBfY';
-  String html =
-      '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
-          link +
-          '''"></iframe>''';
+  String html;
+  if((link.toString().contains('www.facebook.com'))||(link.toString().contains('fb.watch'))){
+    html = '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
+        link +
+        '''"></iframe>''';
+  }else if(link.toString().contains('www.youtube.com')){
+    html = '''<iframe width="200" height="200" src="''' +
+        link +
+        '''" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>''';
+  }
+
   return html;
 }
 
 //2
 Future<List> fetchListVideoLink() async {
-  List<dynamic> fd;
+  Map<String, dynamic> fd;
   http.Response r = await http.get('https://e-radauti-80139.firebaseio.com/-SedinteArhiva.json');
   fd = json.decode(r.body);
   final List<dynamic> children = [];
-  fd.forEach(
-        (element) {
-      if(element != null)
-        children.add(element);
-    },
-  );
+  fd.forEach((key, value) {children.add(value);});
   return children;
 }
