@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LocalAnounnouncements extends StatefulWidget {
   LocalAnounnouncements({Key key}):super(key: key);
@@ -36,32 +38,32 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
             if(snapshot.hasData){
               return Column(
                 children: [
-                  for(final item in snapshot.data) listItem(context, 'Airinei Cristina', 'AirineiCristina.jpg',
-                      'psd.png', '', null),
-                  Text('Nota introductiva:'),
+                  for(final item in snapshot.data) listItem(context, item['imageUrl'], item['data'],
+                      item['organizator'], item['titlul'], item['continut']),
+                  Text('Tipruri de importanță:'),
                   Row(
                     children: [
                       Container(
                         padding: EdgeInsets.only(top: 10),
                         height: 50,
                         width: 50,
-                        child: Image.asset("assets/images/psd.png"),
+                        child: Image.network("gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignBlue.png"),
                       ),
-                      Text('titlu imagine'),
+                      Text('Anunț general'),
                       Container(
                         padding: EdgeInsets.only(top: 10),
                         height: 50,
                         width: 50,
-                        child: Image.asset("assets/images/psd.png"),
+                        child: Image.network("gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignYellow.png"),
                       ),
-                      Text('titlu imagine'),
+                      Text('Anunț mediu'),
                       Container(
                         padding: EdgeInsets.only(top: 10),
                         height: 50,
                         width: 50,
-                        child: Image.asset("assets/images/psd.png"),
+                        child: Image.network("gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignRed.png"),
                       ),
-                      Text('titlu imagine'),
+                      Text('Anunț critic'),
                     ],
                   ),
                 ],
@@ -84,36 +86,52 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
     );
   }
 
+  Future<void> _onOpen(LinkableElement link) async {
+    if (await canLaunch(link.url)) {
+      await launch(link.url);
+    } else {
+      throw 'Nu pot încărca $link';
+    }
+  }
   Future<List> fetchListAnnouncements() async {
-    List<dynamic> fd;
-    http.Response r = await http.get('https://e-radauti-80139.firebaseio.com/-SedinteArhiva.json');
+    Map<String, dynamic> fd;
+    http.Response r = await http.get('https://e-radauti-80139.firebaseio.com/--Anunturi.json');
     fd = json.decode(r.body);
     final List<dynamic> children = [];
-    fd.forEach((value) {children.add(value);});
+    fd.forEach((key, value) {children.add(value);});
     return children;
   }
-  Card listItem(context, name, avatar, squareImg, phone, email) {
+  Card listItem(context, image, date, institution, title, content) {
     return Card(
       elevation: 5,
       child: Container(
-        padding: const EdgeInsets.only(top: 20, bottom: 20),
+        padding: const EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10,),
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('------------'),
                 Container(
                   padding: EdgeInsets.only(top: 10),
                   height: 50,
                   width: 50,
-                  child: Image.asset("assets/images/$squareImg"),
+                  child: Image.network("$image"),
                 ),
                 Text('------------'),
               ],
             ),
             Container(
               child: Text(
-                "Data",
+                "$date",
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+            ),
+            Container(
+              child: Text(
+                "$institution",
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
@@ -122,29 +140,16 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
             ),
             Container(
               child: Text(
-                "Autoritate",
+                "$title",
                 style: TextStyle(
                   fontSize: 15,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             Container(
-              child: Text(
-                "Titlu",
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Container(
-              child: Text(
-                "Continut",
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
+              child: Linkify(
+                onOpen: _onOpen,
+                text: "$content",
               ),
             ),
           ],
