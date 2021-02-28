@@ -89,69 +89,56 @@ class HomePageTransport extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(
-                left: 25,
-                right: 25,
-                bottom: 10,
-                top: 15,
-              ),
-              child: GestureDetector(
-                  child: Row(
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                child: Icon(
-                                  Icons.directions_railway,
-                                  color: Color(0xFF979797),
-                                ),
-                              ),
-                              //),
-                              Container(
-                                width: MediaQuery.of(context).size.width - 120,
-                                padding: EdgeInsets.only(
-                                  left: 10,
-                                ),
-                                child: Text(
-                                  'Tren',
-                                  style: TextStyle(
+                padding: EdgeInsets.only(
+                  left: 25,
+                  right: 25,
+                  bottom: 10,
+                  top: 15,
+                ),
+                child: GestureDetector(
+                    child: Row(
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  child: Icon(
+                                    Icons.directions_railway,
                                     color: Color(0xFF979797),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(
-                              top: 10,
+                                //),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width - 120,
+                                  padding: EdgeInsets.only(
+                                    left: 10,
+                                  ),
+                                  child: Text(
+                                    'Tren',
+                                    style: TextStyle(
+                                      color: Color(0xFF979797),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            width: MediaQuery.of(context).size.width - 80,
-                            child: Text(
-                              'În curând',
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 5,
-                              style: TextStyle(
-                                color: Color(0xFF979797),
-                                fontSize: 15,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      Container(
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          color: Color(0xFF979797),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                  onTap: null),
-            ),
+                        Container(
+                          child: Icon(
+                            Icons.keyboard_arrow_right,
+                            color: Color(0xFF979797),
+                          ),
+                        ),
+                      ],
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/train');
+                    })),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: Container(

@@ -15,3 +15,23 @@ Darmanesti 06:55\n
 Suceava Nord 07:06\n
 Suceava 07:12\n
 ''';
+const String R5621 = '''
+Suceava 07:26\n
+Suceava Nord 07:31\n
+Darmanesti 07:42\n
+Milisauti 07:52\n
+Tibeni hc. 8:00\n
+Dornesti 08:09\n
+Radauti Gara Mica h. 08:26\n
+Radauti 08:29\n
+Horodnic hc. 08:38\n
+Galanesti 08:49\n
+Vicov h. 08:55\n
+Vicovu de Jos hc. 09:02\n
+Vicovu de Sus hc. 09:08\n
+Bivolaria hc. 09:14\n
+Gura Putnei 09:21\n
+Putna Troita h. 09:25\n
+Putna Centru h. 09:30\n
+Putna 09:35\n
+''';
