@@ -40,31 +40,37 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
                 children: [
                   for(final item in snapshot.data) listItem(context, item['imageUrl'], item['data'],
                       item['organizator'], item['titlul'], item['continut']),
-                  Text('Tipruri de importanță:'),
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(top: 10),
-                        height: 50,
-                        width: 50,
-                        child: Image.network("gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignBlue.png"),
+                  Container(
+                    padding: EdgeInsets.only(top: 20),
+                    child: Text('Tipruri de importanță:'),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(top: 10),
+                            height: 50,
+                            width: 50,
+                            child: Image.network(linkImage('gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignBl')),
+                          ),
+                          Text('Anunț general'),
+                          Container(
+                            padding: EdgeInsets.only(top: 10),
+                            height: 50,
+                            width: 50,
+                            child: Image.network(linkImage("gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignYellow.png")),
+                          ),
+                          Text('Anunț mediu'),
+                          Container(
+                            padding: EdgeInsets.only(top: 10),
+                            height: 50,
+                            width: 50,
+                            child: Image.network(linkImage("gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignRed.png")),
+                          ),
+                          Text('Anunț critic'),
+                        ],
                       ),
-                      Text('Anunț general'),
-                      Container(
-                        padding: EdgeInsets.only(top: 10),
-                        height: 50,
-                        width: 50,
-                        child: Image.network("gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignYellow.png"),
-                      ),
-                      Text('Anunț mediu'),
-                      Container(
-                        padding: EdgeInsets.only(top: 10),
-                        height: 50,
-                        width: 50,
-                        child: Image.network("gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignRed.png"),
-                      ),
-                      Text('Anunț critic'),
-                    ],
                   ),
                 ],
               );
@@ -86,6 +92,21 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
     );
   }
 
+  String linkImage(image){
+    String imageLink1;
+    imageLink1 =
+    'https://firebasestorage.googleapis.com/v0/b/e-radauti-80139.appspot.com/o/Anunturi_logo%2F';
+    String imageLink2;
+    imageLink2 = '?alt=media&token=1a429f07-6cef-4de2-940f-0f839b2db3ff';
+
+    final regExp = RegExp(r'gs://e-radauti-80139.appspot.com/Anunturi_logo/');
+
+    String imageReturn;
+    imageReturn = imageLink1 +
+        image.replaceAll(regExp, '') +
+        imageLink2;
+    return imageReturn;
+  }
   Future<void> _onOpen(LinkableElement link) async {
     if (await canLaunch(link.url)) {
       await launch(link.url);
@@ -116,7 +137,7 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
                   padding: EdgeInsets.only(top: 10),
                   height: 50,
                   width: 50,
-                  child: Image.network("$image"),
+                  child: Image.network(linkImage("$image")),
                 ),
                 Text('------------'),
               ],
@@ -139,10 +160,12 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
               ),
             ),
             Container(
+              width: 150,
               child: Text(
                 "$title",
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
