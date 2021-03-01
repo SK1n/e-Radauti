@@ -25,6 +25,13 @@ class _TrainState extends State<Train> {
             children: [
               listItem('R5620', R5620),
               listItem('R5621', R5621),
+              listItem('R5626',R5626),
+              listItem('R5627',R5627),
+              listItem('R5622',R5622),
+              listItem('R5623',R5623),
+              listItem('R5624',R5624),
+              listItem('R5625',R5625),
+              listItem('R5628',R5628),
             ],
           ),
         ),
@@ -41,7 +48,7 @@ class _TrainState extends State<Train> {
               collapsed: ExpandableButton(
                 child: Container(
                   width: MediaQuery.of(context).size.width - 20,
-                  child: Text('$routeName'),
+                  child: Text('$routeName',style: TextStyle(fontSize: 40),),
                 ),
               ),
               expanded: ExpandableButton(
@@ -50,7 +57,7 @@ class _TrainState extends State<Train> {
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width - 20,
-                        child: Text('$routeName'),
+                        child: Text('$routeName',style:TextStyle(fontSize: 40)),
                       ),
                       Container(
                         child: Text(route),
@@ -59,8 +66,16 @@ class _TrainState extends State<Train> {
                   ),
                 ),
               ),
+
             ),
-          )
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15.0),
+            child: Container(
+              height: 1.0,
+              color: Color.fromRGBO(0, 0, 0, 0.1),
+            ),
+          ),
         ],
       ),
     );
