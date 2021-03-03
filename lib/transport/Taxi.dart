@@ -43,6 +43,8 @@ class Taxi extends StatelessWidget {
                         'BĂNCESCU CRISTI', 'SV-65LEV', 'SEAT IBIZA'),
                     listItem('0740348225', 'assets/images/Taxi/SV12NLJ.png',
                         'BOICU COSTICĂ', 'SV-12NLJ', 'DACIA LOGAN'),
+                    listItem('0745629388', 'assets/images/Taxi/SV05JFR.png',
+                        'BOȘTIOG ADRIAN', 'SV-05JFR', 'DACIA LOGAN'),
                     listItem('0720217728', 'assets/images/Taxi/SV51LIE_png.png',
                         'BUCEVSCHI ILIE', 'SV-51LIE', 'VOLKSWAGEN'),
                     listItem('0742041403', 'assets/images/Taxi/SV27COV.png',
