@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/events/ui/event_page/new_event_page.dart';
-import 'package:flutterapperadauti/events/ui/event_page/last_event_page.dart';
+import 'package:flutterapperadauti/usefull_pages/about_us_app.dart';
+import 'package:flutterapperadauti/usefull_pages/about_us_content.dart';
 
 class TabDemo extends StatefulWidget {
-  final GlobalKey<ScaffoldState> scaffoldState;
-  TabDemo({Key key, this.scaffoldState,}) : super(key: key);
-
   @override
-  _TabDemoState createState() => _TabDemoState(scaffoldState,);
+  _TabDemoState createState() => _TabDemoState();
 }
 
 class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
   TabController _tabController;
   int _selectedTab = 0;
-  final GlobalKey<ScaffoldState> scaffoldState;
-
-  _TabDemoState(this.scaffoldState,);
-
   @override
   void initState() {
     super.initState();
@@ -43,8 +36,8 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
               controller: _tabController,
               labelPadding: const EdgeInsets.all(0.0),
               tabs: [
-                _getTab(0, 'EVENIMENTE NOI',),
-                _getTab(1, 'EVENIMENTE TRECUTE',),
+                _getTab(0, 'DESPRE NOI',),
+                _getTab(1, 'DESPRE APLICAȚIE',),
               ],
             ),
           ),
@@ -54,8 +47,8 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
             physics: NeverScrollableScrollPhysics(),
             controller: _tabController,
             children: [
-              NewEvents(),
-              LastEvents(),
+              AboutUsContent(),
+              AboutUsApp(),
             ],
           ),
         ),
@@ -70,10 +63,7 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
           child: Center(
             child: Text(
               childString,
-              style: TextStyle(
-                fontSize: 15.0,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold,),
             ),
           ),
           decoration: BoxDecoration(

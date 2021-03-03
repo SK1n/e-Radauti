@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/usefull_pages/usefull_pages_widget/widget_partner_model.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
@@ -13,93 +14,12 @@ class Partner extends StatelessWidget {
       appBar: AppBarModel().loadAppBar(
           context, 'Parteneri', Icons.add_box_outlined, _scaffoldKey),
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(top: 10),
+        padding: EdgeInsets.only(top: 20),
         child: Column(
           children: <Widget>[
-            // 1 FONDUL PENTRU DEMOCRATIE
-            Container(
-              padding: EdgeInsets.only(
-                bottom: 10,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset(
-                    "assets/images/fondul_pentru_democratie.png",
-                    height: 100,
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                bottom: 20,
-              ),
-              child: Text(
-                "Fondul pentru Democrație",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-            //2 CODE4ROMANIA
-            Container(
-              padding: EdgeInsets.only(
-                bottom: 10,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset(
-                    "assets/images/code_4_romania.png",
-                    width: MediaQuery.of(context).size.width - 50,
-                    height: 100,
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                bottom: 20,
-              ),
-              child: Text(
-                "Code4Romania",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-            //3 HARD POWER RADAUTI
-            Container(
-              padding: EdgeInsets.only(
-                bottom: 10,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset(
-                    "assets/images/hard_power_radauti.png",
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                bottom: 20,
-              ),
-              child: Text(
-                "Hard Power Services Rădăuți",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
+            WidgetPartnerModel().widgetItem("assets/images/fondul_pentru_democratie.png", "Fondul pentru Democrație", context),
+            WidgetPartnerModel().widgetItem("assets/images/code_4_romania.png", "Code4Romania", context),
+            WidgetPartnerModel().widgetItem("assets/images/hard_power_radauti.png", "Hard Power Services Rădăuți", context),
           ],
         ),
       ),

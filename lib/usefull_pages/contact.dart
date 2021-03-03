@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
+import 'package:flutterapperadauti/usefull_pages/mailer_directory/mailer_file.dart';
+import 'package:flutterapperadauti/usefull_pages/usefull_pages_widget/widget_contact_model.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
@@ -19,55 +18,49 @@ class _ContactState extends State<Contact> {
   bool isLoading = false;
   String _recipientController = 'radautiulcivic@gmail.com';
 
-  final _bodyController = TextEditingController(
-    text: '',
-  );
-  final _nameController = TextEditingController(
-    text: '',
-  );
-  final _emailController = TextEditingController(
-    text: '',
-  );
+  final _bodyController = TextEditingController(text: '',);
+  final _nameController = TextEditingController(text: '',);
+  final _emailController = TextEditingController(text: '',);
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  void _mailer() async {
-    String username = 'radautiulcivic@gmail.com';
-    String password = 'pass123.CIVIC';
-    // ignore: deprecated_member_use
-    final smtpServer = gmail(username, password);
-    final message = Message()
-      ..from = Address(username, _nameController.text)
-      ..recipients.add(_recipientController)
-      ..subject = ' Formularul de contact - aplicația e-Rădăuți'
-      ..html = 'Către,     Rădăuțul civic<br><br>Stimată doamnă/ Stimate domn,<br><br>'
-          'Subsemnatul/Subsemnata ${_nameController.text}, vă supun atenției următoarea problemă:<br><br>'
-          '${_bodyController.text}<br><br>Prezentul e-mail reprezintă un mesaj transmis '
-          'prin intermediul aplicației mobile e-Rădăuți, dezvoltată de Asociația Rădăuțiul Civic'
-          ', prin funcționalitatea „Contact”.<br><br>Vă rog să îmi transmiteți răspunsul în termenul legal la adresa '
-          '${_emailController.text}.<br><br>Cu stimă,<br><br>     ${_nameController.text}<br><br>'
-          '     Email: ${_emailController.text}';
-    try {
-      final sendReport = await send(message, smtpServer);
-      print('Mesaj trimis: ' + sendReport.toString());
-      // ignore: deprecated_member_use
-      _scaffoldKey.currentState.showSnackBar(SnackBar(
-        content: Text("Mesaj trimis!"),
-      ));
-      setState(() {
-        _bodyController.text = '';
-        _nameController.text = '';
-        _emailController.text = '';
-        isLoading = false;
-      });
-    } on MailerException catch (e) {
-      debugPrint('Mesajul nu a fost trimis.');
-      // ignore: deprecated_member_use
-      _scaffoldKey.currentState.showSnackBar(SnackBar(
-        content: Text("Mesaj netrimis!"),
-      ));
-      for (var p in e.problems) {
-        debugPrint('Problem: ${p.code}: ${p.msg}');
-      }
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Widget widgetButton(_context){
+    return Container(
+      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+      width: MediaQuery.of(_context).size.width,
+      child: FlatButton(
+        color: Color.fromRGBO(56, 164, 156, 10),
+        textColor: Colors.white,
+        onPressed: () {
+          setState(() {
+            _nameController.text.isEmpty ? _validateName = true : _validateName = false;
+            _bodyController.text.isEmpty ? _validateDescription = true : _validateDescription = false;
+            _emailController.text.isEmpty ? _validateEmail = true : _validateEmail = false;
+            if (_validateName == false) {
+              if (_validateDescription == false) {
+                if (_validateEmail == false) {
+                  setState(() {isLoading = true;});
+                  sendMail();
+                }
+              }
+            }
+          });
+        },
+        child: Text("Trimite"),
+      ),
+    );
+  }
+  void sendMail() async {
+    var validate = await LoadMailer().tryLoadMailer(_nameController,_recipientController,_bodyController,_emailController);
+    if(validate){
+      _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text('"Mesaj trimis!"'),));
+      setState(() {_nameController.text = ''; _emailController.text = ''; _bodyController.text = ''; isLoading = false;});
+    }else{
+      _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text("Mesaj netrimis!"),));
       isLoading = false;
     }
   }
@@ -81,161 +74,18 @@ class _ContactState extends State<Contact> {
           .loadAppBar(context, 'Contact', Icons.add_box_outlined, _scaffoldKey),
       body: isLoading
           ? Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
-              ),
+              child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),),
             )
           : SingleChildScrollView(
               child: Column(
                 children: [
-                  Container(
-                    margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-                    child: TextField(
-                      textCapitalization: TextCapitalization.sentences,
-                      controller: _nameController,
-                      enabled: true,
-                      decoration: new InputDecoration(
-                        border: new OutlineInputBorder(
-                          borderSide: new BorderSide(color: Color(0xFF38A49C)),
-                        ),
-                        prefixIcon: Icon(
-                          Icons.person,
-                          color: Color(0x55FB6340),
-                          size: 20,
-                        ),
-                        labelText: 'Nume și prenume:',
-                        prefixText: '',
-                        errorText: _validateName
-                            ? 'Nu ați introdus numele dvs.!'
-                            : null,
-                        enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 1, color: Color(0xFF38A49C)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 1, color: Color(0xFF38A49C)),
-                        ),
-                        labelStyle: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
-                    child: TextField(
-                      textCapitalization: TextCapitalization.sentences,
-                      controller: _emailController,
-                      enabled: true,
-                      decoration: new InputDecoration(
-                        border: new OutlineInputBorder(
-                          borderSide: new BorderSide(
-                              color: Color.fromRGBO(56, 164, 156, 10)),
-                        ),
-                        prefixIcon: Icon(
-                          Ionicons.ios_mail,
-                          color: Color(0x55FB6340),
-                          size: 20,
-                        ),
-                        labelText: 'Email:',
-                        prefixText: '',
-                        errorText:
-                            _validateEmail ? 'Nu ați introdus email!' : null,
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1,
-                              color: Color.fromRGBO(56, 164, 156, 10)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1,
-                              color: Color.fromRGBO(56, 164, 156, 10)),
-                        ),
-                        labelStyle: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      top: 20,
-                      left: 20,
-                      right: 20,
-                      bottom: 0,
-                    ),
-                    child: TextField(
-                      textCapitalization: TextCapitalization.sentences,
-                      controller: _bodyController,
-                      keyboardType: TextInputType.multiline,
-                      maxLines: null,
-                      enabled: true,
-                      decoration: new InputDecoration(
-                        border: new OutlineInputBorder(
-                          borderSide: new BorderSide(
-                              color: Color.fromRGBO(56, 164, 156, 10)),
-                        ),
-                        labelText: 'Mesaj:',
-                        labelStyle: TextStyle(
-                          color: Colors.grey,
-                        ),
-                        prefixText: '',
-                        errorText: _validateDescription
-                            ? 'Nu ați introdus un mesaj!'
-                            : null,
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1,
-                              color: Color.fromRGBO(56, 164, 156, 10)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1,
-                              color: Color.fromRGBO(56, 164, 156, 10)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-                    width: MediaQuery.of(context).size.width,
-                    child: FlatButton(
-                      color: Color.fromRGBO(56, 164, 156, 10),
-                      textColor: Colors.white,
-                      onPressed: () {
-                        setState(() {
-                          _nameController.text.isEmpty
-                              ? _validateName = true
-                              : _validateName = false;
-                          _bodyController.text.isEmpty
-                              ? _validateDescription = true
-                              : _validateDescription = false;
-                          _emailController.text.isEmpty
-                              ? _validateEmail = true
-                              : _validateEmail = false;
-                          if (_validateName == false) {
-                            if (_validateDescription == false) {
-                              if (_validateEmail == false) {
-                                setState(() {
-                                  isLoading = true;
-                                });
-                                _mailer();
-                              }
-                            }
-                          }
-                        });
-                      },
-                      child: Text("Trimite"),
-                    ),
-                  ),
+                  WidgetContactModel().widgetTextFieldIcon(_nameController,_validateName,Icon(Icons.person, color: Color(0x55FB6340), size: 20,),'Nume și prenume:','Nu ați introdus numele dvs.!'),
+                  WidgetContactModel().widgetTextFieldIcon(_emailController, _validateEmail, Icon(Ionicons.ios_mail, color: Color(0x55FB6340), size: 20,), 'Email:', 'Nu ați introdus emailul dvs.!'),
+                  WidgetContactModel().widgetTextField(_bodyController,_validateDescription),
+                  widgetButton(context),
                 ],
               ),
             ),
     );
-  }
-
-  void initState() {
-    super.initState();
   }
 }

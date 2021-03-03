@@ -16,7 +16,7 @@ class EventsMain extends StatelessWidget {
           context, 'Evenimente', Icons.calendar_today, _scaffoldKey),
       body: ExpandableTheme(
         data: const ExpandableThemeData(
-          iconColor: Color(0xAA38A49C), //Colors.blue
+          iconColor: Color(0xAA38A49C),
           useInkWell: true,
         ),
         child: TabDemo(

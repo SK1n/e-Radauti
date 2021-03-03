@@ -4,11 +4,9 @@ import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:expandable/expandable.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'dart:async';
 
 class LocalLegislation extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -17,7 +15,7 @@ class LocalLegislation extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBarModel().loadAppBar(
-          context, 'Hotărâri Locale', Icons.location_city, _scaffoldKey),
+          context, "Hotărâri de Consiliu Local", Icons.location_city, _scaffoldKey),
       drawer: NavDrawer(),
       body: MyHomePage(),
     );
