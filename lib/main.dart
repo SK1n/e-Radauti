@@ -1,7 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
+import 'package:flutterapperadauti/push_notification.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
+import 'package:flutterapperadauti/transport/Train.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/events/main.dart';
 import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
@@ -32,8 +36,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
   @override
   Widget build(BuildContext context) {
+    final pushNotificationService = PushNotificationService(_firebaseMessaging);
+    pushNotificationService.initialise();
     return MaterialApp(
       title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,
@@ -55,6 +63,7 @@ class MyApp extends StatelessWidget {
         '/bus': (BuildContext context) => Bus(),
         '/localInconvenience': (BuildContext context) => LocalInconvenience(),
         '/taxi': (BuildContext context) => Taxi(),
+        '/train': (BuildContext context) => Train(),
         '/transport': (BuildContext context) => HomePageTransport(),
         '/councilMeetings': (BuildContext context) => CouncilMeetings(),
         '/leaders': (BuildContext context) => Leaders(),

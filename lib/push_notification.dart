@@ -1,6 +1,9 @@
 import 'dart:io';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutterapperadauti/pushNotificationMessage.dart';
+import 'package:overlay_support/overlay_support.dart';
 
 class PushNotificationService {
   final FirebaseMessaging _fcm;
@@ -16,11 +19,19 @@ class PushNotificationService {
     // you need to get the token and input to the Firebase console
     // https://console.firebase.google.com/project/YOUR_PROJECT_ID/notification/compose
     String token = await _fcm.getToken();
-    debugPrint("FirebaseMessaging token: $token");
+    print("FirebaseMessaging token: $token");
 
     _fcm.configure(
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
+        PushNotificationMessage notification = PushNotificationMessage(
+          title: message['aps']['alert']['title'],
+          body: message['aps']['alert']['body'],
+        );
+        showSimpleNotification(
+          Container(child: Text(notification.body)),
+          position: NotificationPosition.top,
+        );
       },
       onLaunch: (Map<String, dynamic> message) async {
         print("onLaunch: $message");
