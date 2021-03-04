@@ -24,7 +24,7 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
   Widget fw(List lGive, BuildContext bC){
     List<Widget> lWidgetCard = [];
     Widget response;
-    for(int i = 0; i < lGive.length; i++){
+    for(int i = lGive.length-1; i >= 0; i--){
       String sLink;
       if((lGive[i]['link'].toString().contains('www.facebook.com'))||(lGive[i]['link'].toString().contains('fb.watch'))){
         sLink = '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
@@ -149,18 +149,14 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
                       );
                     }else if(snapshot.hasError){
                       return Container(
-                        //height: 250,
-                        child: Center(
-                          child: Text("${snapshot.error}"),
-                        ),
+                        height: MediaQuery.of(context).size.height,
+                        child: Center(child: Text("${snapshot.error}"),),
                       );
                     };
                     return Container(
-                      //height: 250,
+                      height: MediaQuery.of(context).size.height,
                       child: Center(
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
-                        ),
+                        child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),),
                       ),
                     );
                   },
