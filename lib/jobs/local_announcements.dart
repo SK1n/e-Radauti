@@ -38,8 +38,8 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
             if(snapshot.hasData){
               return Column(
                 children: [
-                  for(final item in snapshot.data) listItem(context, item['imageUrl'], item['data'],
-                      item['organizator'], item['titlul'], item['continut']),
+                  for(int i = snapshot.data.length-1; i >= 0; i--) listItem(context, snapshot.data[i]['imageUrl'], snapshot.data[i]['data'],
+                      snapshot.data[i]['organizator'], snapshot.data[i]['titlul'], snapshot.data[i]['continut']),
                   Container(
                     padding: EdgeInsets.only(top: 20),
                     child: Text('Tipruri de importanță:'),
@@ -52,7 +52,7 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
                             padding: EdgeInsets.only(top: 10),
                             height: 50,
                             width: 50,
-                            child: Image.network(linkImage('gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignBl')),
+                            child: Image.network(linkImage('gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignBlue.png')),
                           ),
                           Text('Anunț general'),
                           Container(
@@ -61,14 +61,14 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
                             width: 50,
                             child: Image.network(linkImage("gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignYellow.png")),
                           ),
-                          Text('Anunț mediu'),
+                          Text('Mediu'),
                           Container(
                             padding: EdgeInsets.only(top: 10),
                             height: 50,
                             width: 50,
                             child: Image.network(linkImage("gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignRed.png")),
                           ),
-                          Text('Anunț critic'),
+                          Text('Critic'),
                         ],
                       ),
                   ),
@@ -76,12 +76,14 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
               );
             }else if(snapshot.hasError){
               return Container(
+                height: MediaQuery.of(context).size.height,
                 child: Center(
                   child: Text("Este o problemă cu încărcarea anunțurilor locale."),
                 ),
               );
             };
             return Container(
+              height: MediaQuery.of(context).size.height,
               child: Center(
                 child: CircularProgressIndicator( valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)), ),
               ),
@@ -160,7 +162,7 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
               ),
             ),
             Container(
-              width: 150,
+              width: MediaQuery.of(context).size.width - 90,
               child: Text(
                 "$title",
                 style: TextStyle(
