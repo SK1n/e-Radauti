@@ -1,5 +1,5 @@
-const String Announcements = "/announcement";
-const String LocalAuthoritie = "/localAuthorities";
-const String CouncilMeetings = "/councilMeetings";
-const String Events = "/events";
-const String AirQuality = "/air";
+const String AnnouncementsRoute = "Announcement";
+const String LocalAuthoritieRoute = "LocalAuthorities";
+const String CouncilMeetingsRoute = "CouncilMeeting";
+const String EventsRoute = "Events";
+const String AirQualityRoute = "AirQuality";

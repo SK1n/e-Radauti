@@ -2,12 +2,15 @@ import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutterapperadauti/constants/route_names.dart';
 import 'package:flutterapperadauti/pushNotificationMessage.dart';
+import 'package:flutterapperadauti/services/locator.dart';
+import 'package:flutterapperadauti/services/navigator.dart';
 import 'package:overlay_support/overlay_support.dart';
 
 class PushNotificationService {
   final FirebaseMessaging _fcm;
-
+  final NavigationService _navigationService = locator<NavigationService>();
   PushNotificationService(this._fcm);
 
   Future initialise() async {
@@ -23,7 +26,7 @@ class PushNotificationService {
 
     _fcm.configure(
       onMessage: (Map<String, dynamic> message) async {
-        print("onMessage: $message");
+        debugPrint("onMessage: $message");
         PushNotificationMessage notification = PushNotificationMessage(
           title: message['aps']['alert']['title'],
           body: message['aps']['alert']['body'],
@@ -34,11 +37,35 @@ class PushNotificationService {
         );
       },
       onLaunch: (Map<String, dynamic> message) async {
-        print("onLaunch: $message");
+        debugPrint("onLaunch: $message");
+        _serialiseAndNavigate(message);
       },
       onResume: (Map<String, dynamic> message) async {
-        print("onResume: $message");
+        debugPrint("onResume: $message");
+        _serialiseAndNavigate(message);
       },
     );
+  }
+
+  void _serialiseAndNavigate(Map<String, dynamic> message) {
+    var notificationData = message['data'];
+    var view = notificationData['view'];
+    if (view != null) {
+      if (view == "air_quality") {
+        _navigationService.navigateTo(AirQualityRoute);
+      }
+      if (view == "announcement") {
+        _navigationService.navigateTo(AnnouncementsRoute);
+      }
+      if (view == "council_meetings") {
+        _navigationService.navigateTo(CouncilMeetingsRoute);
+      }
+      if (view == "local_authorities") {
+        _navigationService.navigateTo(LocalAuthoritieRoute);
+      }
+      if (view == "events") {
+        _navigationService.navigateTo(EventsRoute);
+      }
+    }
   }
 }
