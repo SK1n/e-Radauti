@@ -26,64 +26,72 @@ class _TrainState extends State<Train> {
         child: Container(
           child: Column(
             children: [
-              listTileDesign(
-                  context, 'R5621', Icons.train, 'R5620', 'SubTitle'),
-              listItem('R5621', R5621),
-              listItem('R5626', R5626),
-              listItem('R5627', R5627),
-              listItem('R5622', R5622),
-              listItem('R5623', R5623),
-              listItem('R5624', R5624),
-              listItem('R5625', R5625),
-              listItem('R5628', R5628),
+              ListTileRoute(
+                timeArray: R5620TimeTable,
+                title: 'Putna - Suceava',
+                trainRoute: R5620Station,
+                leadinIcon: Icons.train,
+                subTitle: 'R5620 ( 05:04 - 07:12 )',
+              ),
+              ListTileRoute(
+                timeArray: R5626TimeTable,
+                title: 'Putna - Suceava',
+                trainRoute: R5626Station,
+                leadinIcon: Icons.train,
+                subTitle: 'R5626 ( 13:45 - 15:54 )',
+              ),
+              ListTileRoute(
+                timeArray: R5622TimeTable,
+                title: 'Putna - Suceava',
+                trainRoute: R5622Station,
+                leadinIcon: Icons.train,
+                subTitle: 'R5622 ( 05:56 - 08:04 )',
+              ),
+              ListTileRoute(
+                timeArray: R5624TimeTable,
+                title: 'Putna - Suceava',
+                trainRoute: R5624Station,
+                leadinIcon: Icons.train,
+                subTitle: 'R5624  ( 10:32 - 12:40 )',
+              ),
+              ListTileRoute(
+                timeArray: R5628TimeTable,
+                title: 'Putna - Suceava',
+                trainRoute: R5628Station,
+                leadinIcon: Icons.train,
+                subTitle: 'R5628  ( 16:28 - 18:37 )',
+              ),
+              ListTileRoute(
+                timeArray: R5621TimeTable,
+                title: 'Suceava - Putna',
+                trainRoute: R5621Station,
+                leadinIcon: Icons.train,
+                subTitle: 'R5621 ( 07:26 - 09:35 )',
+              ),
+              ListTileRoute(
+                timeArray: R5627TimeTable,
+                title: 'Suceava - Putna',
+                trainRoute: R5627Station,
+                leadinIcon: Icons.train,
+                subTitle: 'R5627 ( 18:45 - 20:54 )',
+              ),
+              ListTileRoute(
+                timeArray: R5623TimeTable,
+                title: 'Suceava - Putna',
+                trainRoute: R5623Station,
+                leadinIcon: Icons.train,
+                subTitle: 'R5623 ( 08:15 - 10:25 )',
+              ),
+              ListTileRoute(
+                timeArray: R5625TimeTable,
+                title: 'Suceava - Putna',
+                trainRoute: R5625Station,
+                leadinIcon: Icons.train,
+                subTitle: 'R5625 ( 14:10 - 16:20 )',
+              ),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  ExpandableNotifier listItem(routeName, route) {
-    return ExpandableNotifier(
-      child: Column(
-        children: [
-          ScrollOnExpand(
-            child: Expandable(
-              collapsed: ExpandableButton(
-                child: Container(
-                  width: MediaQuery.of(context).size.width - 20,
-                  child: Text(
-                    '$routeName',
-                    style: TextStyle(fontSize: 40),
-                  ),
-                ),
-              ),
-              expanded: ExpandableButton(
-                child: Container(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width - 20,
-                        child:
-                            Text('$routeName', style: TextStyle(fontSize: 40)),
-                      ),
-                      Container(
-                        child: Text(route),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.0),
-            child: Container(
-              height: 1.0,
-              color: Color.fromRGBO(0, 0, 0, 0.1),
-            ),
-          ),
-        ],
       ),
     );
   }
