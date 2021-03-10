@@ -7,6 +7,8 @@ import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
 import '../widgets/src/appBarModel.dart';
 
+// ! If u want to change the ListTile design go to lib/widgets/src/listTile
+
 class Train extends StatefulWidget {
   @override
   _TrainState createState() => _TrainState();
