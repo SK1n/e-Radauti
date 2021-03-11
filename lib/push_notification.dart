@@ -44,6 +44,9 @@ class PushNotificationService {
       if (view == "announcement") {
         MyApp.navigatorKey.currentState.pushNamed(AnnouncementsRoute);
       }
+      if (view == "sesizeaza") {
+        _navigationService.navigateTo(SesizeazaRoute);
+      }
       if (view == "council_meetings") {
         MyApp.navigatorKey.currentState.pushNamed(CouncilMeetingsRoute);
       }

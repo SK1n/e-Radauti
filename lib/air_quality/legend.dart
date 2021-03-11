@@ -294,14 +294,15 @@ class AirQualityLegend extends StatelessWidget {
                               icon: Icon(Ionicons.ios_arrow_up),
                               label: Container(
                                   width:
-                                  MediaQuery.of(context).size.width - 100,
-                                  child: Text("Unde găsesc mai multe informații?")),
+                                      MediaQuery.of(context).size.width - 100,
+                                  child: Text(
+                                      "Unde găsesc mai multe informații?")),
                             ),
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width - 20,
                             child: Text(
-                              'Echipa Rădăuțiul Civic a construit o pagină specială pentru o descriere în detaliu a parametrilor de calitatea aerului. Pagina conține grafice care arată cum evoluează în timp concentrația de PM2.5, CO2, Umiditatea Relativă, Viteza și Direcția Vântului, Temperatura și Presiunea Atmosferică. Pagina poate fi accesată pe www.radautiulcivic.ro/calitatea-aerului',
+                              'Echipa Rădăuțiul Civic a construit o pagină specială pentru o descriere în detaliu a parametrilor de calitatea aerului (http://calitateaer.radautiulcivic.ro). Pagina conține grafice care arată cum evoluează în timp concentrația de PM2.5, CO2, Umiditatea Relativă, Viteza și Direcția Vântului, Temperatura și Presiunea Atmosferică. Pagina poate fi accesată pe www.radautiulcivic.ro/calitatea-aerului',
                               textAlign: TextAlign.start,
                               softWrap: true,
                               maxLines: 20,
