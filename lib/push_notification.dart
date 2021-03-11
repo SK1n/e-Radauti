@@ -47,6 +47,15 @@ class PushNotificationService {
     );
   }
 
+  // ! If you didn't do the first steps go to lib/services/router.dart
+  //  Now that you've done the first steps finnaly this is the last step .
+  //  Add one more if inside if(view != null)
+  //  Inside the if(view == ....) there should be the value that we will get from firebase
+  //  to open a specific route .
+  //  Then inside _navigationService.navigateTo
+  //  ( here should be one of the const we added in lib/constants/route_names.dart ) .
+  //  Now you can go to firebase and test the push notification using the token from console .
+
   void _serialiseAndNavigate(Map<String, dynamic> message) {
     var notificationData = message['data'];
     var view = notificationData['view'];
@@ -65,6 +74,9 @@ class PushNotificationService {
       }
       if (view == "events") {
         _navigationService.navigateTo(EventsRoute);
+      }
+      if (view == "notice_problem") {
+        _navigationService.navigateTo(NoticeProblemRoute);
       }
     }
   }
