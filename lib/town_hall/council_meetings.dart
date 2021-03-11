@@ -24,7 +24,7 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
   Widget fw(List lGive, BuildContext bC){
     List<Widget> lWidgetCard = [];
     Widget response;
-    for(int i = lGive.length-1; i >= 0; i--){
+    for(int i = 0; i < lGive.length; i++){
       String sLink;
       if((lGive[i]['link'].toString().contains('www.facebook.com'))||(lGive[i]['link'].toString().contains('fb.watch'))){
         sLink = '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
@@ -208,6 +208,8 @@ Future<List> fetchListVideoLink() async {
   http.Response r = await http.get('https://e-radauti-80139.firebaseio.com/-SedinteArhiva.json');
   fd = json.decode(r.body);
   final List<dynamic> children = [];
+  final List<dynamic> response = [];
   fd.forEach((key, value) {children.add(value);});
-  return children;
+  for(int i = children.length - 1; i >= 0; i--) response.add(children[i]);
+  return response;
 }
