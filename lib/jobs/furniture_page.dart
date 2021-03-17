@@ -5,6 +5,7 @@ import 'package:flutterapperadauti/jobs/announcements_web_view.dart';
 import 'package:flutterapperadauti/jobs/job_model.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/src/nav_drawer.dart';
 
@@ -40,11 +41,14 @@ class _FurniturePageState extends State<FurniturePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBarModel()
-            .loadAppBar(context, 'Anunțuri', Icons.announcement, _scaffoldKey),
-        drawer: NavDrawer(),
-        body: FutureBuilder(
+      key: _scaffoldKey,
+      appBar: AppBarModel()
+          .loadAppBar(context, 'Anunțuri', Icons.announcement, _scaffoldKey),
+      drawer: NavDrawer(),
+      body: Card(
+        elevation: 10.0,
+        margin: EdgeInsets.all(10),
+        child: FutureBuilder(
           future: _getJobs(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
@@ -83,6 +87,62 @@ class _FurniturePageState extends State<FurniturePage> {
               );
             }
           },
-        ));
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 10,
+        child: Container(
+          child: Icon(Icons.add_rounded),
+        ),
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (_) => CupertinoAlertDialog(
+                    title: Text('Adaugati un anunt'),
+                    content: Container(
+                      child: Text('''
+            Vizualizati pagina web apasand pe 'DA' sau 
+            deschideti in browser facand click pe iconita
+            '''),
+                    ),
+                    actions: [
+                      CupertinoDialogAction(
+                        isDefaultAction: true,
+                        child: Text('DA'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AnnouncementWebView(
+                                        slug:
+                                            'https://www.eradauti.ro/publica-anunt-gratuit',
+                                      )));
+                        },
+                      ),
+                      CupertinoDialogAction(
+                        child: Text('NU'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      CupertinoDialogAction(
+                        child: Icon(Icons.open_in_browser_outlined),
+                        onPressed: () async {
+                          Navigator.pop(context);
+                          if (await canLaunch(
+                              'https://www.eradauti.ro/publica-anunt-gratuit')) {
+                            await launch(
+                                'https://www.eradauti.ro/publica-anunt-gratuit');
+                          } else {
+                            throw 'Could not launch https://www.eradauti.ro/publica-anunt-gratuit';
+                          }
+                        },
+                      ),
+                    ],
+                  ));
+        },
+      ),
+    );
   }
 }

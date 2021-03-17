@@ -4,8 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/jobs/job_model.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/src/nav_drawer.dart';
 import 'announcements_web_view.dart';
@@ -44,81 +46,105 @@ class _JobPageState extends State<JobPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Icon(
-            Icons.announcement,
-            color: Color(0x55FB6340),
-            size: 30,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10),
-          ),
-          Text('Anunturi'),
-        ]),
-        leading: Container(
-          child: FlatButton(
-            child: Icon(Ionicons.ios_arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        actions: <Widget>[
-          Container(
-            alignment: Alignment.topRight,
-            margin: EdgeInsets.only(top: 0.0, right: 0.0),
-            child: IconButton(
-              icon: Icon(
-                Icons.menu,
-                size: 24,
-                color: Colors.black,
-              ),
-              onPressed: () => _scaffoldKey.currentState.openDrawer(),
-            ),
-          ),
-        ],
-      ),
+      appBar: AppBarModel()
+          .loadAppBar(context, 'Anunțuri', Icons.announcement, _scaffoldKey),
       drawer: NavDrawer(),
-      body: FutureBuilder(
-        future: _getJobs(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            return new ListView.builder(
-                itemCount: jobList == null ? 0 : jobList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                      padding: EdgeInsets.only(top: 10),
-                      child: Column(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            margin: EdgeInsets.only(
-                                left: 10, right: 10, bottom: 10),
-                            child: FlatButton(
-                              color: Colors.blue[300],
-                              padding: EdgeInsets.all(10),
-                              child: Text(
-                                  '${jobList[index].title.toString().toUpperCase()}'),
-                              onPressed: () => {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => AnnouncementWebView(
-                                            slug:
-                                                'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
-                              },
-                            ),
-                          )
-                        ],
-                      ));
-                });
-          } else {
-            return Center(
-              child: CupertinoActivityIndicator(),
-            );
-          }
+      body: Card(
+        elevation: 10.0,
+        margin: EdgeInsets.all(10.0),
+        child: FutureBuilder(
+          future: _getJobs(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              return new ListView.builder(
+                  itemCount: jobList == null ? 0 : jobList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              margin: EdgeInsets.only(
+                                  left: 10, right: 10, bottom: 10),
+                              child: FlatButton(
+                                color: Colors.blue[300],
+                                padding: EdgeInsets.all(10),
+                                child: Text(
+                                    '${jobList[index].title.toString().toUpperCase()}'),
+                                onPressed: () => {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => AnnouncementWebView(
+                                              slug:
+                                                  'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
+                                },
+                              ),
+                            )
+                          ],
+                        ));
+                  });
+            } else {
+              return Center(
+                child: CupertinoActivityIndicator(),
+              );
+            }
+          },
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 10,
+        child: Container(
+          child: Icon(Icons.add_rounded),
+        ),
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (_) => CupertinoAlertDialog(
+                    title: Text('Adaugati un anunt'),
+                    content: Container(
+                      child: Text('''
+            Vizualizati pagina web apasand pe 'DA' sau 
+            deschideti in browser facand click pe iconita
+            '''),
+                    ),
+                    actions: [
+                      CupertinoDialogAction(
+                        isDefaultAction: true,
+                        child: Text('DA'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AnnouncementWebView(
+                                        slug:
+                                            'https://www.eradauti.ro/publica-anunt-gratuit',
+                                      )));
+                        },
+                      ),
+                      CupertinoDialogAction(
+                        child: Text('NU'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      CupertinoDialogAction(
+                        child: Icon(Icons.open_in_browser_outlined),
+                        onPressed: () async {
+                          Navigator.pop(context);
+                          if (await canLaunch(
+                              'https://www.eradauti.ro/publica-anunt-gratuit')) {
+                            await launch(
+                                'https://www.eradauti.ro/publica-anunt-gratuit');
+                          } else {
+                            throw 'Could not launch https://www.eradauti.ro/publica-anunt-gratuit';
+                          }
+                        },
+                      ),
+                    ],
+                  ));
         },
       ),
     );
