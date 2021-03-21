@@ -1,11 +1,8 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
 import 'package:flutterapperadauti/push_notification.dart';
-import 'package:flutterapperadauti/services/locator.dart';
-import 'package:flutterapperadauti/services/navigator.dart';
 import 'package:flutterapperadauti/services/router.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/transport/Train.dart';
@@ -35,11 +32,12 @@ import 'usefull_numbers/public_institutions.dart';
 import 'main_page_model.dart';
 
 void main() {
-  setupLocator(); //Register the navigation service before app starts
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  static final navigatorKey = GlobalKey<NavigatorState>();
   static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
   @override
@@ -83,7 +81,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
         primaryColor: Color(0xFFFFFFFF),
       ),
-      navigatorKey: locator<NavigationService>().navigationKey,
+      navigatorKey: navigatorKey,
       onGenerateRoute: generateRoute,
     );
   }
