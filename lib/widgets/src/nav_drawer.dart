@@ -62,7 +62,7 @@ class NavDrawer extends StatelessWidget {
               context: context,
               applicationName: 'e-Radauti',
               applicationVersion:
-                  'Version: 2.2', //TODO after every update you should update the version number
+                  'Version: 2.4', //TODO after every update you should update the version number
               applicationIcon: Image.asset(
                 'assets/logo_images/app_logo_final.png',
                 width: 24,
