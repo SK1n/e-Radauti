@@ -63,10 +63,10 @@ class _AirQualityPageState extends State<AirQualityPage> {
                 var outputFormat = DateFormat('dd/MM/yyyy HH:mm');
                 var outputDate = outputFormat.format(inputDate);
                 return Container(
-                  padding: EdgeInsets.all(10),
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.only(bottom: 10, top: 10),
                   child: Column(
                     children: [
-
                       Text(
                         'CENTRU RĂDĂUȚI',
                         style: TextStyle(
@@ -81,7 +81,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                             fontSize: 34, fontWeight: FontWeight.bold),
                       ),
                       Container(
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.only(top: 10, bottom: 10),
                         child: Card(
                           child: Column(
                             children: [
