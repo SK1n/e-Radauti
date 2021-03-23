@@ -109,36 +109,37 @@ class SendEmailMailer {
       showDialog(
           context: context,
           builder: (_) => CupertinoAlertDialog(
-            title: Text('Email-ul a fost trimis cu succes!'),
-            content: Text(
-                'Ți-am trimis o copie pe adresa de email trecută în această sesizare.\n\n Instituția trebuie să răspundă în cel mult 30 de zile la adresa $email'),
-            actions: [
-              CupertinoDialogAction(
-                child: Text('Ok'),
-                isDefaultAction: true,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              )
-            ],
-          ));
+                title: Text('Email-ul a fost trimis cu succes!'),
+                content: Text(
+                    'Ți-am trimis o copie pe adresa de email trecută în această sesizare.\n\n Instituția trebuie să răspundă în cel mult 30 de zile la adresa $email'),
+                actions: [
+                  CupertinoDialogAction(
+                    child: Text('Ok'),
+                    isDefaultAction: true,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              ));
     } else {
       showDialog(
           context: context,
           builder: (_) => CupertinoAlertDialog(
-            title: Text('Eroare'),
-            content: Text(
-                'Ne pare rau a intervenit o eroare \nVa rugam sa incercati din nou!\n $_emailError'),
-            actions: [
-              CupertinoDialogAction(
-                child: Text('Ok'),
-                isDefaultAction: true,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              )
-            ],
-          ));
+                title: Text('Eroare'),
+                content: Text(
+                    '''Ne pare rau a intervenit o eroare \nVa rugam sa incercati din nou!\n $_emailError
+                     \n Ne puteti trimite un screenshot la adresa radautiulcivic@gmail.com cu aceasta eroare! '''),
+                actions: [
+                  CupertinoDialogAction(
+                    child: Text('Ok'),
+                    isDefaultAction: true,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              ));
     }
     return false;
   }
@@ -155,6 +156,10 @@ class SendEmailMailer {
         print('Problem: ${p.code}: ${p.msg}');
         _emailError = 'Problem: ${p.code}: ${p.msg}';
       }
+      return false;
+    } on Exception catch (e) {
+      debugPrint('Problem: ${e.toString()}');
+      _emailError = 'Problem: ${e.toString()}';
       return false;
     }
     return true;
