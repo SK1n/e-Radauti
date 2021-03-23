@@ -115,7 +115,7 @@ class HomePageTransport extends StatelessWidget {
                                 left: 10,
                               ),
                               child: Text(
-                                'Tren',
+                                'Trenuri',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
