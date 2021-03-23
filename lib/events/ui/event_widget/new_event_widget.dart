@@ -44,7 +44,7 @@ class NewEventWidget extends StatelessWidget {
     Widget row4 = Row(
       children: <Widget>[
         Container(
-          width: MediaQuery.of(context).size.width/4 + 10,
+          width: MediaQuery.of(context).size.width / 5,
           child: RaisedButton(
             color: Color(0xAA38A49C),
             onPressed: () {
@@ -59,7 +59,7 @@ class NewEventWidget extends StatelessWidget {
                       );
               updateDataFirebase(event);
             },
-            child: textRow4('Adaugă în \nCalendar', 15.0, FontWeight.bold, Colors.white)
+            child: textRow4('Adaugă în \nCalendar', 13.0, FontWeight.bold, Colors.white)
           ),
         ),
         SizedBox(width: 5,),
