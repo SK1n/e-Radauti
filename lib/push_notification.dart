@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutterapperadauti/air_quality/air_quality.dart';
 import 'package:flutterapperadauti/constants/route_names.dart';
 import 'package:flutterapperadauti/main.dart';
 
@@ -12,6 +11,7 @@ class PushNotificationService {
   PushNotificationService(this._fcm);
 
   Future initialise() async {
+    await _fcm.subscribeToTopic('all');
     if (Platform.isIOS) {
       _fcm.requestNotificationPermissions(IosNotificationSettings());
     }

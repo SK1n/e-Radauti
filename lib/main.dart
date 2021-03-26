@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pushNotificationService = PushNotificationService(_firebaseMessaging);
+
     pushNotificationService.initialise();
     return MaterialApp(
       title: 'e-Rădăuți',
