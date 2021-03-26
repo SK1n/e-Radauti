@@ -17,6 +17,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="e-Rădăuți"
+         android:usesCleartextTraffic="true"
         android:icon="@mipmap/app_logo">
         <activity
             android:name=".MainActivity"
