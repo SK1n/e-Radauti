@@ -321,7 +321,6 @@ class _AirQualityPageState extends State<AirQualityPage> {
                           }
                         },
                       ),
-                      AirQualityLegend(),
                     ],
                   ),
                 ),
