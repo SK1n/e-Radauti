@@ -64,7 +64,7 @@ class WidgetEventModel{
         ),
         SizedBox(width: 5.0,),
         Container(
-          width: MediaQuery.of(childContext).size.width / 2 - ((MediaQuery.of(childContext).size.width / 4) / 4 + 30.0),
+          width: (MediaQuery.of(childContext).size.width / 5) * 2,
           child: Padding(
             padding: EdgeInsets.fromLTRB(childPaddingTextLeft, 5.0, 0.0, 0.0),
             child: Text(
@@ -85,8 +85,8 @@ class WidgetEventModel{
   Widget column1(child, childContext){
     return Column(
       children: <Widget>[
-        textColumn1(child.day + '\n' + child.month, 30.0, FontWeight.bold, Colors.grey[800]),
-        textColumn1('----------', 18.0, FontWeight.normal, Colors.grey[800]),
+        textColumn1(child.day + '\n' + child.month, 26.0, FontWeight.bold, Colors.grey[800]),
+        textColumn1('----------', 12.0, FontWeight.normal, Colors.grey[800]),
         new DecoratedBox(
           decoration: new BoxDecoration(
             color: Colors.grey[700],
@@ -94,7 +94,7 @@ class WidgetEventModel{
           ),
           child: new Padding(
             padding: const EdgeInsets.only(left: 5, right: 5),
-            child: textColumn1(child.hour, 18.0, FontWeight.normal, Colors.white)
+            child: textColumn1(child.hour, 16.0, FontWeight.normal, Colors.white)
           ),
         ),
       ],
@@ -119,9 +119,9 @@ class WidgetEventModel{
               ),
               child: Image.network(
                 child.imagePath,
-                height: MediaQuery.of(childContext).size.height / 4,
+                height: MediaQuery.of(childContext).size.height / 5,
                 fit: BoxFit.fitHeight,
-                width: MediaQuery.of(childContext).size.width / 4,
+                width: MediaQuery.of(childContext).size.width / 5,
               ),
             ),
           ),),
@@ -134,7 +134,7 @@ class WidgetEventModel{
         Row(
           children: <Widget>[
             Container(
-              width: MediaQuery.of(childContext).size.width / 2 - ((MediaQuery.of(childContext).size.width / 4) / 4 + 30),
+              width: (MediaQuery.of(childContext).size.width / 5) * 2,
               child: Padding(
                 padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
                 child: Text(
