@@ -7,8 +7,8 @@ class AirQualityLegend extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+        SingleChildScrollView(
+         // margin: const EdgeInsets.only(left: 10.0, right: 10.0),
           child: ExpandableNotifier(
             child: Column(
               children: [
