@@ -42,7 +42,7 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
                       snapshot.data[i]['organizator'], snapshot.data[i]['titlul'], snapshot.data[i]['continut']),
                   Container(
                     padding: EdgeInsets.only(top: 20),
-                    child: Text('Tipruri de importanță:'),
+                    child: Text('Tipuri de importanță:'),
                   ),
                   Container(
                     padding: EdgeInsets.only(bottom: 10),
