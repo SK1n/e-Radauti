@@ -171,7 +171,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este bun (0 - 10 ug/m3)',
+                                  'Nivelul de PM2.5 este bun (0 - 10 \u03BCg/m\u00B3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -196,7 +196,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este acceptabil (10 - 20 ug/m3)',
+                                  'Nivelul de PM2.5 este acceptabil (10 - 20 \u03BCg/m\u00B3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -221,7 +221,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este moderat (20 - 25 ug/m3)',
+                                  'Nivelul de PM2.5 este moderat (20 - 25 \u03BCg/m\u00B3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -246,7 +246,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este rău (25 - 50 ug/m3)',
+                                  'Nivelul de PM2.5 este rău (25 - 50 \u03BCg/m\u00B3)',
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
                                 ),
@@ -270,7 +270,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este foarte rău (50 - 75 ug/m3)',
+                                  'Nivelul de PM2.5 este foarte rău (50 - 75 \u03BCg/m\u00B3)',
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
                                 ),
@@ -294,7 +294,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este extrem de rău (75 - 800 ug/m3)',
+                                  'Nivelul de PM2.5 este extrem de rău (75 - 800 \u03BCg/m\u00B3)',
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
                                 ),

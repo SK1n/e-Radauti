@@ -300,7 +300,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                       windSplit[1],
                                                     ),
                                                     label: Text(
-                                                      'Direcția: \n ${windSplit[1]}',
+                                                      'Direcția: \n${windSplit[1]}',
                                                       maxLines: 2,
                                                       style: const TextStyle(
                                                           fontSize: 16.0),
@@ -324,12 +324,13 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                     ),
                                                   ),
                                                   trailing: FlatButton.icon(
+                                                    onPressed: () {},
                                                     icon: Icon(WeatherIcons
                                                         .wi_small_craft_advisory),
                                                     label: windDirectionLocation(
                                                       windSplit[1],
                                                     ),
-                                                    onPressed: () {},
+
                                                   ),
                                                 ),
 

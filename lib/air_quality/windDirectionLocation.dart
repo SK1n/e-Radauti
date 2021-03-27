@@ -8,7 +8,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction nne');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nIaz"),
+          child: Text("Dinspre\nIaz", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'NE':
@@ -16,7 +17,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction nne');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nVicșani"),
+          child: Text("Dinspre\nVicșani", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'N':
@@ -24,7 +26,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction n');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nMăneuți"),
+          child: Text("Dinspre\nMăneuți", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'NNV':
@@ -32,7 +35,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction nnv');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nFrătăuți"),
+          child: Text("Dinspre\nFrătăuți", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'NV':
@@ -40,7 +44,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction nv');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nGălănești"),
+          child: Text("Dinspre\nGălănești", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'VNV':
@@ -48,7 +53,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction vnv');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nVoitinel"),
+          child: Text("Dinspre\nVoitinel", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'V':
@@ -56,7 +62,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction v');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nHorodnic"),
+          child: Text("Dinspre\nHorodnic", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'VSV':
@@ -64,7 +71,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction vsv');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nMarginea"),
+          child: Text("Dinspre\nMarginea", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'SV':
@@ -72,7 +80,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction sv');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nClit"),
+          child: Text("Dinspre\nClit", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'SSV':
@@ -80,7 +89,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction ssv');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nVolovăț"),
+          child: Text("Dinspre\nVolovăț", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'S':
@@ -88,7 +98,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction s');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nBurla"),
+          child: Text("Dinspre\nBurla", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'SSE':
@@ -96,7 +107,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction sse');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nIaslovăț"),
+          child: Text("Dinspre\nIaslovăț", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'SE':
@@ -104,7 +116,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction se');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nMilișăuți"),
+          child: Text("Dinspre\nMilișăuți", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'ESE':
@@ -112,7 +125,8 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction ese');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nSatu Mare"),
+          child: Text("Dinspre\nSatu Mare", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'E':
@@ -120,20 +134,23 @@ Transform windDirectionLocation(String direction) {
         debugPrint('wind direction e');
         return Transform.rotate(
           angle: 0,
-          child: Text("Dinspre\nCalafindești"),
+          child: Text("Dinspre\nCalafindești", style: const TextStyle(
+              fontSize: 16.0),),
         );
       }
     case 'ENE':
       debugPrint('wind direction ene');
       return Transform.rotate(
         angle: 0,
-        child: Text("Dinspre\nDornești"),
+        child: Text("Dinspre\nDornești", style: const TextStyle(
+            fontSize: 16.0),),
       );
     default:
       debugPrint('wind direction default');
       return Transform.rotate(
         angle: 0,
-        child: Text("Dinspre\nMăneuți"),
+        child: Text("Dinspre\nMăneuți", style: const TextStyle(
+            fontSize: 16.0),),
       );
   }
 }
