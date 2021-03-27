@@ -160,7 +160,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                             fontSize: 24),
                                                       ),
                                                       Text(
-                                                        'ug/m3',
+                                                        '\u03BCg/m\u00B3',
                                                         style: TextStyle(
                                                             fontSize: 18),
                                                       ),

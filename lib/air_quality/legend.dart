@@ -171,7 +171,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este bun (0 - 12 ug/m3)',
+                                  'Nivelul de PM2.5 este bun (0 - 12 \u03BCg/m\u00B3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -196,7 +196,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este moderat (12 - 35 ug/m3)',
+                                  'Nivelul de PM2.5 este moderat (12 - 35 \u03BCg/m\u00B3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -221,7 +221,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este daunator pentru persoanele sensibile (35 - 55 ug/m3)',
+                                  'Nivelul de PM2.5 este daunator pentru persoanele sensibile (35 - 55 \u03BCg/m\u00B3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -246,7 +246,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este daunator pentru toate persoanele (55 - 150 ug/m3)',
+                                  'Nivelul de PM2.5 este daunator pentru toate persoanele (55 - 150 \u03BCg/m\u00B3)',
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
                                 ),
