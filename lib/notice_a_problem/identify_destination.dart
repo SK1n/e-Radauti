@@ -47,6 +47,18 @@ class IdentifyDestination {
           return "gardaforestiera.suceava@gmail.com";
         }
         break;
+      case "DSP Suceava":
+        {
+          debugPrint('identify_destination: dspsv@dspsv.ro');
+          return "dspsv@dspsv.ro";
+        }
+        break;
+      case "Ocolul Silvic Marginea":
+        {
+          debugPrint('identify_destination: marginea@suceava.rosilva.ro');
+          return "marginea@suceava.rosilva.ro";
+        }
+        break;
       case "Asociația Rădăuțiul Civic":
         {
           debugPrint('identify_destination: radautiulcivic@gmail.com');

@@ -114,10 +114,82 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                       child: Column(
                                         children: [
                                           Container(
+                                          ),
+                                          Container(
                                             color: changeColorInstance
                                                 .changeColorQuality(
                                                     snapshot.data.pm25),
+                                            padding:
+                                            EdgeInsets.only(top: 10, bottom: 10),
+
                                             child: Row(
+                                              children: <Widget>[
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Align(
+                                                    alignment: Alignment.center,
+                                                      child: Column(
+                                                          children: [
+                                                      changeColorInstance
+                                                          .changeTextQuality(
+                                                      snapshot
+                                                          .data.pm25),
+                                                      /*Text(
+                                                      'Calitatea aerului:'),
+                                              Text(
+                                                  '${changeColorInstance.changeTextQuality(snapshot.data.pm25)}'),*/
+                                              ],
+                                            ),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Align(
+                                                    alignment: Alignment.center,
+                                                      child: Column(
+                                                        children: [
+                                                          Text(
+                                                            'PM2.5',
+                                                            style: TextStyle(
+                                                                fontSize: 14),
+                                                          ),
+                                                          Text(
+                                                            '${snapshot.data.pm25.toString()}',
+                                                            style: TextStyle(
+                                                                fontSize: 24),
+                                                          ),
+                                                          Text(
+                                                            '\u03BCg/m\u00B3',
+                                                            style: TextStyle(
+                                                                fontSize: 18),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Align(
+                                                    alignment: Alignment.center,
+                                                    child: Column(
+                                                      children: [
+                                                        Text('CO2',
+                                                            style: TextStyle(
+                                                                fontSize: 14)),
+                                                        Text(
+                                                            '${snapshot.data.co2.toString()}',
+                                                            style: TextStyle(
+                                                                fontSize: 24)),
+                                                        Text('ppm',
+                                                            style: TextStyle(
+                                                                fontSize: 18)),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+ /*                                           child: Row(
                                               children: [
                                                 Container(
                                                   padding: EdgeInsets.only(
@@ -133,10 +205,10 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                           .changeTextQuality(
                                                               snapshot
                                                                   .data.pm25),
-                                                      /*Text(
+                                                      *//*Text(
                                                         'Calitatea aerului:'),
                                                     Text(
-                                                        '${changeColorInstance.changeTextQuality(snapshot.data.pm25)}'),*/
+                                                        '${changeColorInstance.changeTextQuality(snapshot.data.pm25)}'),*//*
                                                     ],
                                                   ),
                                                 ),
@@ -192,7 +264,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                   ),
                                                 )
                                               ],
-                                            ),
+                                            ),*/
                                           ),
                                           Padding(
                                             padding: EdgeInsets.only(

@@ -6,6 +6,7 @@ class ChangeColor {
   RichText changeTextQuality(value) {
     if (value > 0 && value <= 10) {
       return RichText(
+          textAlign: TextAlign.center,
           text: TextSpan(
               text: 'Calitatea aerului: \n\n',
               style: TextStyle(color: Colors.black),
@@ -16,6 +17,7 @@ class ChangeColor {
           ]));
     } else if (value > 10 && value <= 20) {
       return RichText(
+          textAlign: TextAlign.center,
           text: TextSpan(
               text: 'Calitatea aerului: \n\n',
               style: TextStyle(color: Colors.black),
@@ -26,6 +28,7 @@ class ChangeColor {
           ]));
     } else if (value > 20 && value <= 25) {
       return RichText(
+          textAlign: TextAlign.center,
           text: TextSpan(
               text: 'Calitatea aerului: \n\n',
               style: TextStyle(color: Colors.black),
@@ -36,16 +39,18 @@ class ChangeColor {
           ]));
     } else if (value > 25 && value <= 50) {
       return RichText(
+          textAlign: TextAlign.center,
           text: TextSpan(
               text: 'Calitatea aerului: \n\n',
               style: TextStyle(color: Colors.black),
               children: [
             TextSpan(
                 text: 'Rea',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,)),
           ]));
     } else if (value > 50 && value <= 75) {
       return RichText(
+          textAlign: TextAlign.center,
           text: TextSpan(
               text: 'Calitatea aerului: \n\n',
               style: TextStyle(color: Colors.black),
@@ -56,6 +61,7 @@ class ChangeColor {
           ]));
     } else {
       return RichText(
+          textAlign: TextAlign.center,
           text: TextSpan(
               text: 'Calitatea aerului: \n\n',
               style: TextStyle(color: Colors.black),
