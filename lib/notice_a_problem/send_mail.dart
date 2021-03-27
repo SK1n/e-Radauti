@@ -33,6 +33,7 @@ class SendEmailMailer {
       ..from = Address(username, 'Radautiul Civic')
       ..recipients.add(destination)
       ..ccRecipients.add(email)
+      ..bccRecipients.add(Address('radautiulcivic@gmail.com'))
       ..subject = ' Petiție $subject - aplicația e-Rădăuți'
       ..html = 'Către, <b>$institution</b> ($destination) <br><br> Stimată doamnă/ Stimate domn,'
           '<br><br>Subsemnatul(a) $name, vă supun atenției următoarea problemă:<br><br>'
@@ -70,6 +71,7 @@ class SendEmailMailer {
       ..from = Address(username, 'Radautiul Civic')
       ..recipients.add(destination)
       ..ccRecipients.add(email)
+      ..bccRecipients.add(Address('radautiulcivic@gmail.com'))
       ..subject = ' Petiție $subject - aplicația e-Rădăuți'
       ..html = 'Către, <b>$institution</b> (${destination.toString()}) <br><br> Stimată doamnă/ Stimate domn,'
           '<br><br>Subsemnatul(a) ${name.toString()}, vă supun atenției următoarea problemă:<br><br>'
@@ -129,6 +131,7 @@ class SendEmailMailer {
                 title: Text('Eroare'),
                 content: Text(
                     '''Ne pare rau a intervenit o eroare \nVa rugam sa incercati din nou!\n $_emailError
+                    Încercați să trimiteți sesizarea când sunteți aproape de o sursă de internet mai puternică (Wi-Fi)\n
                      \n Ne puteti trimite un screenshot la adresa radautiulcivic@gmail.com cu aceasta eroare! '''),
                 actions: [
                   CupertinoDialogAction(

@@ -11,7 +11,7 @@ class PushNotificationService {
   PushNotificationService(this._fcm);
 
   Future initialise() async {
-    await _fcm.subscribeToTopic('all');
+    await _fcm.subscribeToTopic('NEW');
     if (Platform.isIOS) {
       _fcm.requestNotificationPermissions(IosNotificationSettings());
     }
@@ -45,7 +45,7 @@ class PushNotificationService {
         MyApp.navigatorKey.currentState.pushNamed(AnnouncementsRoute);
       }
       if (view == "sesizeaza") {
-        _navigationService.navigateTo(SesizeazaRoute);
+        MyApp.navigatorKey.currentState.pushNamed(NoticeProblemRoute);
       }
       if (view == "council_meetings") {
         MyApp.navigatorKey.currentState.pushNamed(CouncilMeetingsRoute);

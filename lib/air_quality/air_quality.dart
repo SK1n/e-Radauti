@@ -7,6 +7,7 @@ import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:flutterapperadauti/air_quality/value_adapter.dart';
 import 'package:flutterapperadauti/air_quality/legend.dart';
 import 'package:flutterapperadauti/air_quality/windDirection.dart';
+import 'package:flutterapperadauti/air_quality/windDirectionLocation.dart';
 import 'package:flutterapperadauti/air_quality/wind_model.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:intl/intl.dart';
@@ -94,7 +95,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                   Text(
                                     'CENTRU RĂDĂUȚI',
                                     style: TextStyle(
-                                      fontSize: 24,
+                                      fontSize: 20,
                                       color: Color(0xFF000000),
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -102,7 +103,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                   Text(
                                     '${outputDate.toString()}',
                                     style: TextStyle(
-                                        fontSize: 34,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Container(
@@ -195,35 +196,52 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                           ),
                                           Padding(
                                             padding: EdgeInsets.only(
-                                                top: 10, bottom: 10),
-                                            child: Row(
-                                              children: [
-                                                Icon(
+                                                top: 0, bottom: 0),
+                                            child: ListTile(
+                                              leading: FlatButton.icon(
+                                                icon: Icon(
                                                   Ionicons.ios_thermometer,
                                                   size: 30,
-                                                  color: Color(0xFF979797),
+                                                  color: Color(0xFF979797),),
+                                                label: Center(
+                                                  child: Text(
+                                                      '${snapshot.data.temperature.toString()}°C',
+                                                      style: TextStyle(
+                                                          fontSize: 24))
                                                 ),
-                                                Text(
-                                                    '${snapshot.data.temperature.toString()}°C',
-                                                    style: TextStyle(
-                                                        fontSize: 24)),
-                                                Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: 50)),
-                                                Icon(
-                                                  Ionicons.ios_water,
-                                                  size: 30,
-                                                  color: Color(0xFF979797),
-                                                ),
-                                                Text(
+                                                onPressed: () {},
+                                              ),
+                                              trailing: FlatButton.icon(
+                                                icon: Icon(Ionicons.ios_water,
+                                                size: 30,
+                                                color: Color(0xFF979797),),
+                                                label: Text(
                                                     '${snapshot.data.humidity.toString()}%',
                                                     style: TextStyle(
                                                         fontSize: 24)),
-                                              ],
+                                                onPressed: () {},
+                                              ),
                                             ),
-                                          )
+                                            ),
+
                                         ],
                                       ),
+                                    ),
+                                  ),
+                                Text(
+                                  'STAȚIA METEO',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Color(0xFF000000),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                  Text(
+                                    'Str. Ștefan cel Mare Nr. 132',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Color(0xFF000000),
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   FutureBuilder(
@@ -258,6 +276,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
 
                                         isLoadingWind = false;
                                         return Card(
+
                                           elevation: 2,
                                           child: Column(
                                             children: [
@@ -267,50 +286,72 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                     icon: Icon(
                                                         WeatherIcons.wi_windy),
                                                     label: Center(
-                                                      child: Text(
-                                                        windSplit[0],
+                                                      child: new Text(
+                                                        "Vânt: \n" + windSplit[0],
                                                         maxLines: 2,
+                                                          style: const TextStyle(
+                                                              fontSize: 16.0),
                                                       ),
                                                     ),
                                                     onPressed: () {},
                                                   ),
-                                                  title: FlatButton.icon(
+                                                  trailing: FlatButton.icon(
                                                     icon: windDirection(
                                                       windSplit[1],
                                                     ),
                                                     label: Text(
-                                                      '${windSplit[1]}',
+                                                      'Direcția: \n ${windSplit[1]}',
                                                       maxLines: 2,
+                                                      style: const TextStyle(
+                                                          fontSize: 16.0),
                                                     ),
                                                     onPressed: () {},
                                                   ),
-                                                  trailing: FlatButton.icon(
+                                                ),
+
+                                              ),
+                                              Container(
+                                                child: ListTile(
+                                                  leading: FlatButton.icon(
                                                     onPressed: () {},
                                                     icon: Icon(WeatherIcons
                                                         .wi_barometer),
                                                     label: Text(
-                                                      '${pression.toString()}',
+                                                      '${pression.toString()}\n mBar',
                                                       maxLines: 2,
+                                                      style: const TextStyle(
+                                                          fontSize: 16.0),
                                                     ),
                                                   ),
+                                                  trailing: FlatButton.icon(
+                                                    icon: Icon(WeatherIcons
+                                                        .wi_small_craft_advisory),
+                                                    label: windDirectionLocation(
+                                                      windSplit[1],
+                                                    ),
+                                                    onPressed: () {},
+                                                  ),
                                                 ),
+
                                               ),
                                             ],
                                           ),
+
                                         );
+
                                       } else {
                                         isLoadingWind = true;
                                         return Container();
                                       }
                                     },
                                   ),
-                                  Text(
-                                    'Valorile sunt afișate prin intermediul Aplicației e-Rădăuți',
+/*                                  Text(
+                                    'Întrebări frecvente:',
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: Color(0xFF000000),
                                     ),
-                                  ),
+                                  ),*/
                                   AirQualityLegend(),
                                 ],
                               ),

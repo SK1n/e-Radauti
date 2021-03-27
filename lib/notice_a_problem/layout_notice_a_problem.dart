@@ -95,7 +95,7 @@ class _LayoutNoticeProblemState extends State<LayoutNoticeProblem> {
                       'Consiliul Județean Suceava',
                       'Garda De Mediu Suceava',
                       'Garda Forestieră Suceava',
-                      'Asociația Rădăuțiul Civic'
+                      'Asociația Rădăuțiul Civic',
                     ]
                         .map((emailDestination) => DropdownMenuItem(
                       value: emailDestination,

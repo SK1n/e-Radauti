@@ -59,7 +59,7 @@ class NewEventWidget extends StatelessWidget {
                       );
               updateDataFirebase(event);
             },
-            child: textRow4('Participă', 13.0, FontWeight.bold, Colors.white)
+            child: textRow4('Particip', 13.0, FontWeight.bold, Colors.white)
           ),
         ),
         SizedBox(width: 5,),

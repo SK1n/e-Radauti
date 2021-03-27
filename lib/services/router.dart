@@ -17,7 +17,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         routeName: settings.name,
         viewToShow: EventsMain(),
       );
-    case SesizeazaRoute:
+    case NoticeProblemRoute:
       return _getPageRoute(
         routeName: settings.name,
         viewToShow: LayoutNoticeProblem(),
