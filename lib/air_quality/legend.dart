@@ -7,8 +7,8 @@ class AirQualityLegend extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+        SingleChildScrollView(
+         // margin: const EdgeInsets.only(left: 10.0, right: 10.0),
           child: ExpandableNotifier(
             child: Column(
               children: [
@@ -46,7 +46,7 @@ class AirQualityLegend extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width - 20,
                             child: Text(
-                              'Aparatul este instalat în centrul Municipiului Rădăuți, în Piața Garoafelor',
+                              'Aparatul de monitorizare a calității aerului este instalat în centrul Municipiului Rădăuți, în Piața Garoafelor și măsoară concentrația de PM2,5, de CO2, temperatura și Umiditatea Relativă. Stația Meteo din Rădăuți este cea oficială instalată de autoritățile română și se află pe Str. Ștefan cel Mare, Nr. 132 și măsoară temperatura, umiditatea relativă, viteza vântului, direcția vântului și presiunea atmosferică.',
                               textAlign: TextAlign.start,
                               softWrap: true,
                               maxLines: 20,
@@ -100,7 +100,7 @@ class AirQualityLegend extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width - 20,
                             child: Text(
-                              'Particulele PM2.5 sunt particule cu diametrul de sub 2.5 micrometri (aproximativ 100 de ori mai mici decât firul de păr uman) produse de către procesul de ardere a diferiților combustibili (Diesel, biomasă, cărbune, deșeuri etc.) sau de către elemente naturale precum erupții vulcanice etc.\n\nParticulele PM2.5 sunt cele mai periculoase pentru sănătate, în special în mediul urban. Se estimează că anual, în Uniunea Europeană, peste 400.000 de oameni mor prematur din cauza expunerii la o concentrație mare de particule PM2.5.\n\nÎn România, numărul estimativ ajunge la aproximativ 25.000. Aceste particule sunt atât de mici încât pătrund cu ușurință în sistemul respirator și în sistemul circulator, cauzând probleme cardiace sau pulmonare precum astm bronșitic.\n\nLimita maximă medie anuală stabilită de către Uniunea Europeană este de 25 μg/m3 iar în SUA de 12 μg/m3. Valori de peste 25 μg/m3 vor fi observate din când în când pe aparat, ceea ce ar putea însemna un incendiu în zonă, trafic intens, sărbători în care se generază fum sau pur și simplu efecte meteorologice uzuale în care presiunea atmosferă este mare iar particulele rămân la nivelul solului.\n\n Este foarte important ca valorile să nu crească foarte mult iar expunerea să nu fie de lungă durată.',
+                              'Particulele PM2.5 sunt particule cu diametrul de sub 2.5 micrometri (aproximativ 100 de ori mai mici decât firul de păr uman) produse de către procesul de ardere a diferiților combustibili precum Diesel, biomasă, cărbune, deșeuri etc.\n\nFiind atât de mici și pătrunzând cu ușurină în plămâni, particulele PM2.5 sunt cele mai periculoase pentru sănătate, în special în mediul urban. Se estimează că anual, în Uniunea Europeană, peste 400.000 de oameni mor prematur din cauza expunerii la o concentrație mare de particule PM2.5.\n\nÎn România, numărul estimativ ajunge la aproximativ 25.000. Aceste particule sunt atât de mici încât pătrund cu ușurință în sistemul respirator și în sistemul circulator, cauzând probleme cardiace sau pulmonare precum astm bronșitic.\n\nLimita maximă medie anuală stabilită de către Uniunea Europeană este de 25 μg/m3 iar în SUA de 12 μg/m3. Valori de peste 25 μg/m3 vor fi observate din când în când pe aparat, ceea ce ar putea însemna un incendiu în zonă, trafic intens, sărbători în care se generază fum sau pur și simplu efecte meteorologice uzuale în care presiunea atmosferă este mare iar particulele rămân la nivelul solului.\n\n Este foarte important ca valorile să nu crească foarte mult iar expunerea să nu fie de lungă durată.',
                               textAlign: TextAlign.start,
                               softWrap: true,
                               maxLines: 20,
@@ -161,7 +161,7 @@ class AirQualityLegend extends StatelessWidget {
                                 child: FlatButton(
                                   child: Icon(
                                     Ionicons.ios_square,
-                                    color: Colors.green,
+                                    color: Color.fromRGBO(80,240,230, 1),
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
                                   ),
@@ -171,7 +171,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este bun (0 - 12 \u03BCg/m\u00B3)',
+                                  'Nivelul de PM2.5 este bun (0 - 10 \u03BCg/m\u00B3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -186,7 +186,7 @@ class AirQualityLegend extends StatelessWidget {
                                 child: FlatButton(
                                   child: Icon(
                                     Ionicons.ios_square,
-                                    color: Colors.yellow,
+                                    color: Color.fromRGBO(80,204,170, 1),
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
                                   ),
@@ -196,7 +196,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este moderat (12 - 35 \u03BCg/m\u00B3)',
+                                  'Nivelul de PM2.5 este acceptabil (10 - 20 \u03BCg/m\u00B3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -211,7 +211,7 @@ class AirQualityLegend extends StatelessWidget {
                                 child: FlatButton(
                                   child: Icon(
                                     Ionicons.ios_square,
-                                    color: Colors.orange,
+                                    color: Color.fromRGBO(240,230,65, 1),
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
                                   ),
@@ -221,7 +221,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este daunator pentru persoanele sensibile (35 - 55 \u03BCg/m\u00B3)',
+                                  'Nivelul de PM2.5 este moderat (20 - 25 \u03BCg/m\u00B3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -237,7 +237,7 @@ class AirQualityLegend extends StatelessWidget {
                                   onPressed: null,
                                   child: Icon(
                                     Ionicons.ios_square,
-                                    color: Colors.red,
+                                    color: Color.fromRGBO(255,80,80, 1),
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
                                   ),
@@ -246,13 +246,116 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este daunator pentru toate persoanele (55 - 150 \u03BCg/m\u00B3)',
+                                  'Nivelul de PM2.5 este rău (25 - 50 \u03BCg/m\u00B3)',
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
                                 ),
                               ),
                             ],
-                          )
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: 40,
+                                child: FlatButton(
+                                  onPressed: null,
+                                  child: Icon(
+                                    Ionicons.ios_square,
+                                    color: Color.fromRGBO(150,0,50, 1),
+                                    //You also have to change the color in value_adapter.dart
+                                    //in case you change the colors
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width - 60,
+                                child: Text(
+                                  'Nivelul de PM2.5 este foarte rău (50 - 75 \u03BCg/m\u00B3)',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 5,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: 40,
+                                child: FlatButton(
+                                  onPressed: null,
+                                  child: Icon(
+                                    Ionicons.ios_square,
+                                    color: Color.fromRGBO(125,33,129, 1),
+                                    //You also have to change the color in value_adapter.dart
+                                    //in case you change the colors
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width - 60,
+                                child: Text(
+                                  'Nivelul de PM2.5 este extrem de rău (75 - 800 \u03BCg/m\u00B3)',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 5,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+          child: ExpandableNotifier(
+            child: Column(
+              children: [
+                ScrollOnExpand(
+                  child: Expandable(
+                    collapsed: ExpandableButton(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        // ignore: missing_required_param
+                        child: FlatButton.icon(
+                          disabledTextColor: Colors.black,
+                          icon: Icon(Ionicons.ios_arrow_down),
+                          label: Container(
+                              width: MediaQuery.of(context).size.width - 100,
+                              child: Text("Ce spune legea legat de calitatea aerului?")),
+                        ),
+                      ),
+                    ),
+                    expanded: ExpandableButton(
+                      child: Column(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            // ignore: missing_required_param
+                            child: FlatButton.icon(
+                              disabledColor: Colors.grey[200],
+                              disabledTextColor: Colors.black,
+                              icon: Icon(Ionicons.ios_arrow_up),
+                              label: Container(
+                                  width:
+                                  MediaQuery.of(context).size.width - 100,
+                                  child: Text(
+                                      "Ce spune legea legat de calitatea aerului?")),
+                            ),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 20,
+                            child: Text(
+                              'În România, legea principală care oferă informații substanțiale despre subiectul calitatea aerului este Legea Nr. 104 din 2011. Culorile și scara de concentrații din această aplicație sunt aliniate cu Ordinul nr. 1.818 din 2 octombrie 2020 și ia în considerare prevederile art. 87 alin. (2) din Legea nr. 104/2011 privind calitatea aerului înconjurător, cu modificările ulterioare în temeiul art. 57 alin. (1), (4) și (5) din Ordonanța de urgență a Guvernului nr. 57/2019 privind Codul administrativ, cu modificările și completările ulterioare, și al art. 13 alin. (4) din Hotărârea Guvernului nr. 43/2020 privind organizarea și funcționarea Ministerului Mediului, Apelor și Pădurilor',
+                              textAlign: TextAlign.start,
+                              softWrap: true,
+                              maxLines: 20,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -294,14 +397,15 @@ class AirQualityLegend extends StatelessWidget {
                               icon: Icon(Ionicons.ios_arrow_up),
                               label: Container(
                                   width:
-                                  MediaQuery.of(context).size.width - 100,
-                                  child: Text("Unde găsesc mai multe informații?")),
+                                      MediaQuery.of(context).size.width - 100,
+                                  child: Text(
+                                      "Unde găsesc mai multe informații?")),
                             ),
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width - 20,
                             child: Text(
-                              'Echipa Rădăuțiul Civic a construit o pagină specială pentru o descriere în detaliu a parametrilor de calitatea aerului. Pagina conține grafice care arată cum evoluează în timp concentrația de PM2.5, CO2, Umiditatea Relativă, Viteza și Direcția Vântului, Temperatura și Presiunea Atmosferică. Pagina poate fi accesată pe www.radautiulcivic.ro/calitatea-aerului',
+                              'Echipa Rădăuțiul Civic a construit o pagină specială pentru o descriere în detaliu a parametrilor de calitatea aerului (http://calitateaer.radautiulcivic.ro). Pagina conține grafice care arată cum evoluează în timp concentrația de PM2.5, CO2, Umiditatea Relativă, Viteza și Direcția Vântului, Temperatura și Presiunea Atmosferică. Pagina poate fi accesată pe www.radautiulcivic.ro/calitatea-aerului',
                               textAlign: TextAlign.start,
                               softWrap: true,
                               maxLines: 20,
@@ -320,3 +424,4 @@ class AirQualityLegend extends StatelessWidget {
     );
   }
 }
+//

@@ -44,7 +44,7 @@ class NewEventWidget extends StatelessWidget {
     Widget row4 = Row(
       children: <Widget>[
         Container(
-          width: MediaQuery.of(context).size.width / 5,
+          width: MediaQuery.of(context).size.width /3,
           child: RaisedButton(
             color: Color(0xAA38A49C),
             onPressed: () {
@@ -59,17 +59,17 @@ class NewEventWidget extends StatelessWidget {
                       );
               updateDataFirebase(event);
             },
-            child: textRow4('Participă', 13.0, FontWeight.bold, Colors.white)
+            child: textRow4('Adaugă în calendar', 13.0, FontWeight.bold, Colors.white)
           ),
         ),
         SizedBox(width: 5,),
-        Row(
+        /*Row(
           children: <Widget>[
             textRow4(event.nrParticipants, 13.0, FontWeight.normal, Colors.grey[600]),
             SizedBox(width: 5,),
             Icon(Icons.people),
           ],
-        ),
+        ),*/
       ],
     );
     Widget rowTimeLength = Row(

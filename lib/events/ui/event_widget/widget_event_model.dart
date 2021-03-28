@@ -85,7 +85,7 @@ class WidgetEventModel{
   Widget column1(child, childContext){
     return Column(
       children: <Widget>[
-        textColumn1(child.day + '\n' + child.month, 26.0, FontWeight.bold, Colors.grey[800]),
+        textColumn1(child.day + '\n' + child.month, 20.0, FontWeight.bold, Colors.grey[800]),
         textColumn1('----------', 12.0, FontWeight.normal, Colors.grey[800]),
         new DecoratedBox(
           decoration: new BoxDecoration(

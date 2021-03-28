@@ -8,6 +8,7 @@ import 'package:flutterapperadauti/main_page_model.dart';
 import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
 import 'package:flutterapperadauti/town_hall/council_meetings.dart';
 import 'package:flutterapperadauti/usefull_numbers/local_authorities.dart';
+import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -15,6 +16,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(
         routeName: settings.name,
         viewToShow: EventsMain(),
+      );
+    case NoticeProblemRoute:
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: LayoutNoticeProblem(),
       );
     case AnnouncementsRoute:
       return _getPageRoute(
