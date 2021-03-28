@@ -409,7 +409,6 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                               ),
                                             ],
                                           ),
-
                                         );
 
                                       } else {
