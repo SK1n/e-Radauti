@@ -14,7 +14,7 @@ class NewEventWidget extends StatelessWidget {
       returnList.add(DateTime.tryParse(event.startDate));
       returnList.add(DateTime.tryParse(event.endDate));
     }else{
-      returnList.add(DateTime.utc(event.yearT, event.monthT, event.dayT, event.hourT, event.minuteT).add(Duration(hours: -2,)));
+      returnList.add(DateTime.utc(event.yearT, event.monthT, event.dayT, event.hourT, event.minuteT).add(Duration(hours: -3,)));
       returnList.add(DateTime.utc(event.yearT, event.monthT, event.dayT, event.hourT, event.minuteT));
     }
     return returnList;
