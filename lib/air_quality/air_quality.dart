@@ -80,9 +80,9 @@ class _AirQualityPageState extends State<AirQualityPage> {
                         isLoadingAir = false;
                         var date = snapshot.data.airTS.toString();
                         var inputFormat = DateFormat('yyyy-MM-dd HH:mm');
-                        var inputDate = inputFormat.parse(
-                            '${date.replaceAll('T', ' ').replaceAll('Z', ' ').replaceRange(17, null, '')}');
-                        inputDate = inputDate.add(Duration(hours: 2));
+                        var inputDate = inputFormat.parseUTC(
+                            '${date.replaceAll('T', ' ').replaceAll('Z', ' ').replaceRange(17, null, '')}').toLocal();
+                        //inputDate = inputDate.add(Duration(hours: 2));
                         var outputFormat = DateFormat('dd/MM/yyyy HH:mm');
                         var outputDate = outputFormat.format(inputDate);
                         return Container(
@@ -147,7 +147,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                 child: Column(
                                                   children: [
                                                     Text(
-                                                      'PM2.5',
+                                                      'PM2,5',
                                                       style: TextStyle(
                                                           fontSize: 14),
                                                     ),
@@ -221,7 +221,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                   child: Column(
                                                     children: [
                                                       Text(
-                                                        'PM2.5',
+                                                        'PM2,5',
                                                         style: TextStyle(
                                                             fontSize: 14),
                                                       ),

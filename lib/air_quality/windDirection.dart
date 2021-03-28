@@ -23,7 +23,7 @@ Transform windDirection(String direction) {
       {
         debugPrint('wind direction nnv');
         return Transform.rotate(
-          angle: 313 * math.pi / 180,
+          angle: 292 * math.pi / 180,
           child: Icon(Icons.arrow_circle_down_outlined),
         );
       }
@@ -31,7 +31,7 @@ Transform windDirection(String direction) {
       {
         debugPrint('wind direction nv');
         return Transform.rotate(
-          angle: 313 * math.pi / 180,
+          angle: 315 * math.pi / 180,
           child: Icon(Icons.arrow_circle_down_outlined),
         );
       }
