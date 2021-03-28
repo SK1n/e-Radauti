@@ -105,6 +105,12 @@ Transform windDirection(String direction) {
         angle: 68 * math.pi / 180,
         child: Icon(Icons.arrow_circle_down_outlined),
       );
+    case 'NE':
+      debugPrint('wind direction ne');
+      return Transform.rotate(
+        angle: 45 * math.pi / 180,
+        child: Icon(Icons.arrow_circle_down_outlined),
+      );
     default:
       debugPrint('wind direction default');
       return Transform.rotate(

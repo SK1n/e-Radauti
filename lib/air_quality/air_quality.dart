@@ -389,7 +389,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                     icon: Icon(WeatherIcons
                                                         .wi_barometer),
                                                     label: Text(
-                                                      '${pression.toString()}\n mBar',
+                                                      '${pression.toString()}\nmBar',
                                                       maxLines: 2,
                                                       style: const TextStyle(
                                                           fontSize: 16.0),
