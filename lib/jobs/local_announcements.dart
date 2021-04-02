@@ -100,8 +100,6 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
       returnWidget = Container(
         child: Image.network(linkContentImage(image)),
         padding: EdgeInsets.only(top: 2.0, bottom: 2.0,),
-        //width: MediaQuery.of(context).size.width - 20,
-        //height: MediaQuery.of(context).size.height - 20,
       );
     }else{
       returnWidget = Container();

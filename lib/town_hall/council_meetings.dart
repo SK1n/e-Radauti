@@ -24,7 +24,7 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
   //2
   Widget fwButton(String child){
     Widget returnWidget;
-    returnWidget = Expanded(
+    returnWidget = Container(
       child: FlatButton(
         onPressed: () => UrlLauncher.launch(child),
         child: Text('Ordinea de zi', style: TextStyle(fontWeight: FontWeight.bold),),
