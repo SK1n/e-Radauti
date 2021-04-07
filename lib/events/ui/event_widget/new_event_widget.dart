@@ -42,14 +42,14 @@ class NewEventWidget extends StatelessWidget {
     double fontSizeTextRow4Column3;
     double fontSizeRowTimeLength;
     double sizeIconRowTimeLength;
-    if(widthObject <= 500){
-      fontSizeTextRow4Column3 = 10.0;
-      fontSizeRowTimeLength = 16.0;
-      sizeIconRowTimeLength = 16.0;
-    }else if(widthObject <= 1500){
-      fontSizeTextRow4Column3 = 13.0;
-      fontSizeRowTimeLength = 19.0;
-      sizeIconRowTimeLength = 19.0;
+    if(widthObject <= 50){
+      fontSizeTextRow4Column3 = 8.0;
+      fontSizeRowTimeLength = 14.0;
+      sizeIconRowTimeLength = 14.0;
+    }else if(widthObject <= 80){
+      fontSizeTextRow4Column3 = 11.0;
+      fontSizeRowTimeLength = 17.0;
+      sizeIconRowTimeLength = 17.0;
     }else{
       fontSizeTextRow4Column3 = 14.0;
       fontSizeRowTimeLength = 20.0;

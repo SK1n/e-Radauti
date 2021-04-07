@@ -40,20 +40,20 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
     double fontSizeTextTitleRowColumn3;
     double widthObject;
     widthObject = MediaQuery.of(context).size.width;
-    if(widthObject <= 500){
-      fontSizeTextRow1Column1 = 17.0;
-      fontSizeTextRow2Column1 = 11.0;
+    if(widthObject <= 50){
+      fontSizeTextRow1Column1 = 15.0;
+      fontSizeTextRow2Column1 = 10.0;
       fontSizeTextRow3Column1 = 12.0;
-      sizeIconRowIconColumn3 = 13.0;
-      fontSizeTextRowIconColumn3 = 10.0;
-      fontSizeTextTitleRowColumn3 = 13.0;
-    }else if(widthObject <= 1500){
-      fontSizeTextRow1Column1 = 20.0;
+      sizeIconRowIconColumn3 = 11.0;
+      fontSizeTextRowIconColumn3 = 8.0;
+      fontSizeTextTitleRowColumn3 = 11.0;
+    }else if(widthObject <= 80){
+      fontSizeTextRow1Column1 = 19.0;
       fontSizeTextRow2Column1 = 12.0;
-      fontSizeTextRow3Column1 = 16.0;
-      sizeIconRowIconColumn3 = 16.0;
-      fontSizeTextRowIconColumn3 = 13.0;
-      fontSizeTextTitleRowColumn3 = 16.0;
+      fontSizeTextRow3Column1 = 14.0;
+      sizeIconRowIconColumn3 = 14.0;
+      fontSizeTextRowIconColumn3 = 11.0;
+      fontSizeTextTitleRowColumn3 = 14.0;
     }else{
       fontSizeTextRow1Column1 = 21.0;
       fontSizeTextRow2Column1 = 13.0;
