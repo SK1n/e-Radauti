@@ -32,6 +32,36 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    double fontSizeTextRow1Column1;
+    double fontSizeTextRow2Column1;
+    double fontSizeTextRow3Column1;
+    double sizeIconRowIconColumn3;
+    double fontSizeTextRowIconColumn3;
+    double fontSizeTextTitleRowColumn3;
+    double widthObject;
+    widthObject = MediaQuery.of(context).size.width;
+    if(widthObject <= 500){
+      fontSizeTextRow1Column1 = 17.0;
+      fontSizeTextRow2Column1 = 11.0;
+      fontSizeTextRow3Column1 = 12.0;
+      sizeIconRowIconColumn3 = 13.0;
+      fontSizeTextRowIconColumn3 = 10.0;
+      fontSizeTextTitleRowColumn3 = 13.0;
+    }else if(widthObject <= 1500){
+      fontSizeTextRow1Column1 = 20.0;
+      fontSizeTextRow2Column1 = 12.0;
+      fontSizeTextRow3Column1 = 16.0;
+      sizeIconRowIconColumn3 = 16.0;
+      fontSizeTextRowIconColumn3 = 13.0;
+      fontSizeTextTitleRowColumn3 = 16.0;
+    }else{
+      fontSizeTextRow1Column1 = 21.0;
+      fontSizeTextRow2Column1 = 13.0;
+      fontSizeTextRow3Column1 = 17.0;
+      sizeIconRowIconColumn3 = 17.0;
+      fontSizeTextRowIconColumn3 = 14.0;
+      fontSizeTextTitleRowColumn3 = 17.0;
+    };
     return Column(
       children: <Widget>[
         Container(
@@ -54,8 +84,8 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
             physics: NeverScrollableScrollPhysics(),
             controller: _tabController,
             children: [
-              NewEvents(),
-              LastEvents(),
+              NewEvents(fontSizeTextRow1Column1: fontSizeTextRow1Column1, fontSizeTextRow2Column1: fontSizeTextRow2Column1, fontSizeTextRow3Column1: fontSizeTextRow3Column1, fontSizeTextRowIconColumn3: fontSizeTextRowIconColumn3, sizeIconRowIconColumn3: sizeIconRowIconColumn3, fontSizeTextTitleRowColumn3: fontSizeTextTitleRowColumn3, widthObject: widthObject,),
+              LastEvents(fontSizeTextRow1Column1: fontSizeTextRow1Column1, fontSizeTextRow2Column1: fontSizeTextRow2Column1, fontSizeTextRow3Column1: fontSizeTextRow3Column1, fontSizeTextRowIconColumn3: fontSizeTextRowIconColumn3, sizeIconRowIconColumn3: sizeIconRowIconColumn3, fontSizeTextTitleRowColumn3: fontSizeTextTitleRowColumn3, widthObject: widthObject,),
             ],
           ),
         ),

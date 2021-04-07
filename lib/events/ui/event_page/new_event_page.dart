@@ -5,16 +5,30 @@ import 'package:flutterapperadauti/events/ui/event_widget/new_event_widget.dart'
 
 class NewEvents extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldState;
-  NewEvents({Key key, this.scaffoldState,}) : super(key: key);
+  final double fontSizeTextRow1Column1;
+  final double fontSizeTextRow2Column1;
+  final double fontSizeTextRow3Column1;
+  final double sizeIconRowIconColumn3;
+  final double fontSizeTextRowIconColumn3;
+  final double fontSizeTextTitleRowColumn3;
+  final double widthObject;
+  NewEvents({Key key, this.scaffoldState, this.fontSizeTextRow1Column1, this.fontSizeTextRow2Column1, this.fontSizeTextRow3Column1, this.fontSizeTextRowIconColumn3, this.sizeIconRowIconColumn3, this.fontSizeTextTitleRowColumn3, this.widthObject,}) : super(key: key);
 
   @override
-  _NewEventsState createState() => _NewEventsState(scaffoldState);
+  _NewEventsState createState() => _NewEventsState(scaffoldState, fontSizeTextRow1Column1, fontSizeTextRow2Column1, fontSizeTextRow3Column1, fontSizeTextRowIconColumn3, sizeIconRowIconColumn3, fontSizeTextTitleRowColumn3, widthObject,);
 }
 
 class _NewEventsState extends State<NewEvents> {
   Future<List> futureList;
   final GlobalKey<ScaffoldState> scaffoldState;
-  _NewEventsState(this.scaffoldState,);
+  final double fontSizeTextRow1Column1;
+  final double fontSizeTextRow2Column1;
+  final double fontSizeTextRow3Column1;
+  final double sizeIconRowIconColumn3;
+  final double fontSizeTextRowIconColumn3;
+  final double fontSizeTextTitleRowColumn3;
+  final double widthObject;
+  _NewEventsState(this.scaffoldState, this.fontSizeTextRow1Column1, this.fontSizeTextRow2Column1, this.fontSizeTextRow3Column1, this.fontSizeTextRowIconColumn3, this.sizeIconRowIconColumn3, this.fontSizeTextTitleRowColumn3, this.widthObject,);
 
   @override
   void initState() {
@@ -43,7 +57,7 @@ class _NewEventsState extends State<NewEvents> {
                           )
                       )
                     )
-                      NewEventWidget(event: event, scaffoldState: scaffoldState,),
+                      NewEventWidget(event: event, scaffoldState: scaffoldState, fontSizeTextRow1Column1: fontSizeTextRow1Column1, fontSizeTextRow2Column1: fontSizeTextRow2Column1, fontSizeTextRow3Column1: fontSizeTextRow3Column1, fontSizeTextRowIconColumn3: fontSizeTextRowIconColumn3, sizeIconRowIconColumn3: sizeIconRowIconColumn3, fontSizeTextTitleRowColumn3: fontSizeTextTitleRowColumn3, widthObject: widthObject,),
                   ],
                 ),
               ),

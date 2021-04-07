@@ -7,7 +7,14 @@ import 'package:flutterapperadauti/events/ui/event_widget/widget_event_model.dar
 class NewEventWidget extends StatelessWidget {
   final EventApp event;
   final GlobalKey<ScaffoldState> scaffoldState;
-  const NewEventWidget({Key key, this.event, this.scaffoldState,}) : super(key: key);
+  final double fontSizeTextRow1Column1;
+  final double fontSizeTextRow2Column1;
+  final double fontSizeTextRow3Column1;
+  final double sizeIconRowIconColumn3;
+  final double fontSizeTextRowIconColumn3;
+  final double fontSizeTextTitleRowColumn3;
+  final double widthObject;
+  const NewEventWidget({Key key, this.event, this.scaffoldState, this.fontSizeTextRow1Column1, this.fontSizeTextRow2Column1, this.fontSizeTextRow3Column1, this.fontSizeTextRowIconColumn3, this.sizeIconRowIconColumn3, this.fontSizeTextTitleRowColumn3, this.widthObject,}) : super(key: key);
   List<DateTime> listTimeResponse(){
     List<DateTime> returnList = [];
     if(event.startDate != event.endDate){
@@ -32,6 +39,22 @@ class NewEventWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double fontSizeTextRow4Column3;
+    double fontSizeRowTimeLength;
+    double sizeIconRowTimeLength;
+    if(widthObject <= 500){
+      fontSizeTextRow4Column3 = 10.0;
+      fontSizeRowTimeLength = 16.0;
+      sizeIconRowTimeLength = 16.0;
+    }else if(widthObject <= 1500){
+      fontSizeTextRow4Column3 = 13.0;
+      fontSizeRowTimeLength = 19.0;
+      sizeIconRowTimeLength = 19.0;
+    }else{
+      fontSizeTextRow4Column3 = 14.0;
+      fontSizeRowTimeLength = 20.0;
+      sizeIconRowTimeLength = 20.0;
+    };
     List<DateTime> timeResponse = listTimeResponse();
     Event eventCalendar = Event(
       title: event.title,
@@ -59,7 +82,7 @@ class NewEventWidget extends StatelessWidget {
                       );
               updateDataFirebase(event);
             },
-            child: textRow4('Adaugă în calendar', 13.0, FontWeight.bold, Colors.white)
+            child: textRow4('Adaugă în calendar', fontSizeTextRow4Column3, FontWeight.bold, Colors.white)
           ),
         ),
         SizedBox(width: 5,),
@@ -75,13 +98,13 @@ class NewEventWidget extends StatelessWidget {
     Widget rowTimeLength = Row(
       children: <Widget>[
         SizedBox(width: 10.0,),
-        Icon(Icons.calendar_today_sharp, size: 19.0,),
+        Icon(Icons.calendar_today_sharp, size: sizeIconRowTimeLength,),
         SizedBox(width: 5.0,),
         Text(
           timeResponse[0].day.toString() + '.' + timeResponse[0].month.toString() + '.' + timeResponse[0].year.toString()
               + '  -  ' +
               timeResponse[1].day.toString() + '.' + timeResponse[1].month.toString() + '.' + timeResponse[1].year.toString(),
-          style: TextStyle(fontSize: 19.0, fontWeight: FontWeight.bold,),
+          style: TextStyle(fontSize: fontSizeRowTimeLength, fontWeight: FontWeight.bold,),
         ),
       ],
     );
@@ -96,9 +119,9 @@ class NewEventWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(5),
                   child: Row(
                     children: <Widget>[
-                      WidgetEventModel().column1(event, context),
+                      WidgetEventModel().column1(event, context, fontSizeTextRow1Column1, fontSizeTextRow2Column1, fontSizeTextRow3Column1),
                       WidgetEventModel().column2(event, context),
-                      WidgetEventModel().column3(event, context, row4),
+                      WidgetEventModel().column3(event, context, row4, fontSizeTextTitleRowColumn3, sizeIconRowIconColumn3, fontSizeTextRowIconColumn3),
                     ],
                   ),
                 ),
