@@ -13,6 +13,7 @@ class TabDemo extends StatefulWidget {
 class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
   TabController _tabController;
   int _selectedTab = 0;
+  double fontSizeGetTab;
   final GlobalKey<ScaffoldState> scaffoldState;
 
   _TabDemoState(this.scaffoldState,);
@@ -40,24 +41,27 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
     double fontSizeTextTitleRowColumn3;
     double widthObject;
     widthObject = MediaQuery.of(context).size.width;
-    if(widthObject <= 50){
+    if(widthObject <= 250){
+      fontSizeGetTab = 11.0;
       fontSizeTextRow1Column1 = 15.0;
-      fontSizeTextRow2Column1 = 10.0;
+      fontSizeTextRow2Column1 = 12.0;
       fontSizeTextRow3Column1 = 12.0;
       sizeIconRowIconColumn3 = 11.0;
       fontSizeTextRowIconColumn3 = 8.0;
       fontSizeTextTitleRowColumn3 = 11.0;
-    }else if(widthObject <= 80){
+    }else if(widthObject <= 500){
+      fontSizeGetTab = 14.0;
       fontSizeTextRow1Column1 = 19.0;
-      fontSizeTextRow2Column1 = 12.0;
+      fontSizeTextRow2Column1 = 14.0;
       fontSizeTextRow3Column1 = 14.0;
       sizeIconRowIconColumn3 = 14.0;
       fontSizeTextRowIconColumn3 = 11.0;
       fontSizeTextTitleRowColumn3 = 14.0;
     }else{
+      fontSizeGetTab = 15.0;
       fontSizeTextRow1Column1 = 21.0;
-      fontSizeTextRow2Column1 = 13.0;
-      fontSizeTextRow3Column1 = 17.0;
+      fontSizeTextRow2Column1 = 15.0;
+      fontSizeTextRow3Column1 = 15.0;
       sizeIconRowIconColumn3 = 17.0;
       fontSizeTextRowIconColumn3 = 14.0;
       fontSizeTextTitleRowColumn3 = 17.0;
@@ -101,7 +105,7 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
             child: Text(
               childString,
               style: TextStyle(
-                fontSize: 15.0,
+                fontSize: fontSizeGetTab,
                 fontWeight: FontWeight.bold,
               ),
             ),
