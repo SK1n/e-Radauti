@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 
-class LoadMailer{
-  Future<bool> tryLoadMailer(_nameController,_recipientController,_bodyController,_emailController) async{
+class LoadMailer {
+  Future<bool> tryLoadMailer(_nameController, _recipientController,
+      _bodyController, _emailController) async {
     String username = 'radautiulcivic@gmail.com';
     String password = 'pass123.CIVIC';
-    final smtpServer = gmail(username,password);
+    // ignore: deprecated_member_use
+    final smtpServer = gmail(username, password);
     final message = Message()
       ..from = Address(username, _nameController.text)
       ..recipients.add(_recipientController)
@@ -18,13 +20,13 @@ class LoadMailer{
           ', prin funcționalitatea „Contact”.<br><br>Vă rog să îmi transmiteți răspunsul în termenul legal la adresa '
           '${_emailController.text}.<br><br>Cu stimă,<br><br>     ${_nameController.text}<br><br>'
           '     Email: ${_emailController.text}';
-    try{
-      final sendReport = await send(message,smtpServer);
+    try {
+      final sendReport = await send(message, smtpServer);
       debugPrint('Mesaj trimis: ' + sendReport.toString());
     } on MailerException catch (e) {
       debugPrint('Mesajul nu a fost trimis.');
-      for(final p in e.problems){
-        debugPrint ('Problema: ${p.code}: ${p.msg}');
+      for (final p in e.problems) {
+        debugPrint('Problema: ${p.code}: ${p.msg}');
       }
       return false;
     }

@@ -74,14 +74,15 @@ class _AirQualityPageState extends State<AirQualityPage> {
                 children: <Widget>[
                   FutureBuilder(
                     future: _getAirQuality(),
-                    builder:
-                        (BuildContext context, AsyncSnapshot snapshot) {
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.hasData) {
                         isLoadingAir = false;
                         var date = snapshot.data.airTS.toString();
                         var inputFormat = DateFormat('yyyy-MM-dd HH:mm');
-                        var inputDate = inputFormat.parseUTC(
-                            '${date.replaceAll('T', ' ').replaceAll('Z', ' ').replaceRange(17, null, '')}').toLocal();
+                        var inputDate = inputFormat
+                            .parseUTC(
+                                '${date.replaceAll('T', ' ').replaceAll('Z', ' ').replaceRange(17, null, '')}')
+                            .toLocal();
                         //inputDate = inputDate.add(Duration(hours: 2));
                         var outputFormat = DateFormat('dd/MM/yyyy HH:mm');
                         var outputDate = outputFormat.format(inputDate);
@@ -101,25 +102,21 @@ class _AirQualityPageState extends State<AirQualityPage> {
                               Text(
                                 '${outputDate.toString()}',
                                 style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                                    fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               Container(
-                                padding:
-                                EdgeInsets.only(top: 10, bottom: 10),
+                                padding: EdgeInsets.only(top: 10, bottom: 10),
                                 child: Card(
                                   elevation: 3,
                                   child: Column(
                                     children: [
-                                      Container(
-                                      ),
+                                      Container(),
                                       Container(
                                         color: changeColorInstance
                                             .changeColorQuality(
-                                            snapshot.data.pm25),
-                                        padding:
-                                        EdgeInsets.only(top: 10, bottom: 10),
-
+                                                snapshot.data.pm25),
+                                        padding: EdgeInsets.only(
+                                            top: 10, bottom: 10),
                                         child: Row(
                                           children: <Widget>[
                                             Expanded(
@@ -130,8 +127,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                   children: [
                                                     changeColorInstance
                                                         .changeTextQuality(
-                                                        snapshot
-                                                            .data.pm25),
+                                                            snapshot.data.pm25),
                                                     /*Text(
                                                       'Calitatea aerului:'),
                                               Text(
@@ -187,113 +183,37 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                             ),
                                           ],
                                         ),
-                                        /*                                           child: Row(
-                                              children: [
-                                                Container(
-                                                  padding: EdgeInsets.only(
-                                                      top: 10, bottom: 10),
-                                                  width: (MediaQuery.of(context)
-                                                              .size
-                                                              .width -
-                                                          40) /
-                                                      2.8,
-                                                  child: Column(
-                                                    children: [
-                                                      changeColorInstance
-                                                          .changeTextQuality(
-                                                              snapshot
-                                                                  .data.pm25),
-                                                      *//*Text(
-                                                        'Calitatea aerului:'),
-                                                    Text(
-                                                        '${changeColorInstance.changeTextQuality(snapshot.data.pm25)}'),*//*
-                                                    ],
-                                                  ),
-                                                ),
-                                                Container(
-                                                  padding: EdgeInsets.only(
-                                                      top: 10, bottom: 10),
-                                                  width: (MediaQuery.of(context)
-                                                              .size
-                                                              .width -
-                                                          40) /
-                                                      3.3,
-                                                  child: Column(
-                                                    children: [
-                                                      Text(
-                                                        'PM2,5',
-                                                        style: TextStyle(
-                                                            fontSize: 14),
-                                                      ),
-                                                      Text(
-                                                        '${snapshot.data.pm25.toString()}',
-                                                        style: TextStyle(
-                                                            fontSize: 24),
-                                                      ),
-                                                      Text(
-                                                        '\u03BCg/m\u00B3',
-                                                        style: TextStyle(
-                                                            fontSize: 18),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Container(
-                                                  padding: EdgeInsets.only(
-                                                      top: 10, bottom: 10),
-                                                  width: (MediaQuery.of(context)
-                                                              .size
-                                                              .width -
-                                                          40) /
-                                                      3.3,
-                                                  child: Column(
-                                                    children: [
-                                                      Text('CO2',
-                                                          style: TextStyle(
-                                                              fontSize: 14)),
-                                                      Text(
-                                                          '${snapshot.data.co2.toString()}',
-                                                          style: TextStyle(
-                                                              fontSize: 24)),
-                                                      Text('ppm',
-                                                          style: TextStyle(
-                                                              fontSize: 18)),
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),*/
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.only(
-                                            top: 0, bottom: 0),
+                                        padding:
+                                            EdgeInsets.only(top: 0, bottom: 0),
                                         child: ListTile(
-                                          leading: FlatButton.icon(
+                                          leading: TextButton.icon(
                                             icon: Icon(
                                               Ionicons.ios_thermometer,
                                               size: 30,
-                                              color: Color(0xFF979797),),
+                                              color: Color(0xFF979797),
+                                            ),
                                             label: Center(
                                                 child: Text(
                                                     '${snapshot.data.temperature.toString()}°C',
                                                     style: TextStyle(
-                                                        fontSize: 24))
-                                            ),
+                                                        fontSize: 24))),
                                             onPressed: () {},
                                           ),
-                                          trailing: FlatButton.icon(
-                                            icon: Icon(Ionicons.ios_water,
+                                          trailing: TextButton.icon(
+                                            icon: Icon(
+                                              Ionicons.ios_water,
                                               size: 30,
-                                              color: Color(0xFF979797),),
+                                              color: Color(0xFF979797),
+                                            ),
                                             label: Text(
                                                 '${snapshot.data.humidity.toString()}%',
-                                                style: TextStyle(
-                                                    fontSize: 24)),
+                                                style: TextStyle(fontSize: 24)),
                                             onPressed: () {},
                                           ),
                                         ),
                                       ),
-
                                     ],
                                   ),
                                 ),
@@ -346,15 +266,14 @@ class _AirQualityPageState extends State<AirQualityPage> {
 
                                     isLoadingWind = false;
                                     return Card(
-
                                       elevation: 2,
                                       child: Column(
                                         children: [
                                           Container(
                                             child: ListTile(
-                                              leading: FlatButton.icon(
-                                                icon: Icon(
-                                                    WeatherIcons.wi_windy),
+                                              leading: TextButton.icon(
+                                                icon:
+                                                    Icon(WeatherIcons.wi_windy),
                                                 label: Center(
                                                   child: new Text(
                                                     "Vânt: \n" + windSplit[0],
@@ -365,7 +284,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                 ),
                                                 onPressed: () {},
                                               ),
-                                              trailing: FlatButton.icon(
+                                              trailing: TextButton.icon(
                                                 icon: windDirection(
                                                   windSplit[1],
                                                 ),
@@ -378,14 +297,13 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                 onPressed: () {},
                                               ),
                                             ),
-
                                           ),
                                           Container(
                                             child: ListTile(
-                                              leading: FlatButton.icon(
+                                              leading: TextButton.icon(
                                                 onPressed: () {},
-                                                icon: Icon(WeatherIcons
-                                                    .wi_barometer),
+                                                icon: Icon(
+                                                    WeatherIcons.wi_barometer),
                                                 label: Text(
                                                   '${pression.toString()}\nmBar',
                                                   maxLines: 2,
@@ -393,22 +311,19 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                       fontSize: 16.0),
                                                 ),
                                               ),
-                                              trailing: FlatButton.icon(
+                                              trailing: TextButton.icon(
                                                 onPressed: () {},
                                                 icon: Icon(WeatherIcons
                                                     .wi_small_craft_advisory),
                                                 label: windDirectionLocation(
                                                   windSplit[1],
                                                 ),
-
                                               ),
                                             ),
-
                                           ),
                                         ],
                                       ),
                                     );
-
                                   } else {
                                     isLoadingWind = true;
                                     return Container();

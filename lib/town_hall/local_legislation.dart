@@ -14,8 +14,8 @@ class LocalLegislation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBarModel().loadAppBar(
-          context, "Hotărâri de Consiliu Local", Icons.location_city, _scaffoldKey),
+      appBar: AppBarModel().loadAppBar(context, "Hotărâri de Consiliu Local",
+          Icons.location_city, _scaffoldKey),
       drawer: NavDrawer(),
       body: MyHomePage(),
     );
@@ -23,41 +23,42 @@ class LocalLegislation extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key,}) : super(key: key);
+  MyHomePage({
+    Key key,
+  }) : super(key: key);
   @override
   _MyHomePageState createState() => new _MyHomePageState();
 }
+
 class _MyHomePageState extends State<MyHomePage> {
-  loadJsonList() async{
+  loadJsonList() async {
     Map<String, dynamic> fd;
-    http.Response r = await http.get('https://e-radauti-80139.firebaseio.com/-HotarariArhiva.json');
+    http.Response r = await http
+        .get('https://e-radauti-80139.firebaseio.com/-HotarariArhiva.json');
     fd = json.decode(r.body);
     final List<dynamic> children = List<dynamic>();
     final List<dynamic> children2 = [];
-    fd.forEach(
-            (key, value) {
-          List<dynamic> varList = value;
-          varList.forEach(
-                  (element) {
-                if(element != null)
-                  children.add(element);
-              }
-          );
-        }
-    );
-    for(int i = children.length - 1; i >= 0; i--){
+    fd.forEach((key, value) {
+      List<dynamic> varList = value;
+      varList.forEach((element) {
+        if (element != null) children.add(element);
+      });
+    });
+    for (int i = children.length - 1; i >= 0; i--) {
       children2.add(children[i]);
-    };
+    }
     return children2;
   }
-  loadItems() async{
+
+  loadItems() async {
     List<dynamic> v = await loadJsonList();
     setState(() {
       duplicateItems = v;
       items.addAll(duplicateItems);
     });
   }
-  Widget fw(List lGive){
+
+  Widget fw(List lGive) {
     List<Widget> lWidgetLink = List<Widget>();
     List<Widget> lWidgetCard = [];
     Widget rWidget;
@@ -65,78 +66,70 @@ class _MyHomePageState extends State<MyHomePage> {
     var vAn = 0;
     var test = 0;
     var contor = 0;
-    for(final item in lGive)
-      if((item['an'] == vAn)&&(test == 0)){
+    for (final item in lGive)
+      if ((item['an'] == vAn) && (test == 0)) {
         vIndex += 1;
         contor += 1;
-        lWidgetLink.add(
-            Container(
-              child: InkWell(
-                child: Text(
-                  vIndex.toString()+'. '+item['titlu'],
-                  style: TextStyle(
-                      color: Colors.indigo
-                  ),
-                ),
-                onTap: () => {UrlLauncher.launch(item['link'])},
-              ),
-            )
-        );
-        if(contor == (lGive.length - 1)) test = 1;
-      }else if((item['an'] != vAn)||((item['an'] == vAn)&&(test == 1))){
-        if(lGive.length == 1){
+        lWidgetLink.add(Container(
+          child: InkWell(
+            child: Text(
+              vIndex.toString() + '. ' + item['titlu'],
+              style: TextStyle(color: Colors.indigo),
+            ),
+            onTap: () => {UrlLauncher.launch(item['link'])},
+          ),
+        ));
+        if (contor == (lGive.length - 1)) test = 1;
+      } else if ((item['an'] != vAn) || ((item['an'] == vAn) && (test == 1))) {
+        if (lGive.length == 1) {
           lWidgetLink.add(
             Container(
               child: InkWell(
                 child: Text(
                   '1. ' + item['titlu'],
-                  style: TextStyle(
-                      color: Colors.indigo
-                  ),
+                  style: TextStyle(color: Colors.indigo),
                 ),
-                onTap: ()=>{UrlLauncher.launch(item['link'])},
+                onTap: () => {UrlLauncher.launch(item['link'])},
               ),
             ),
           );
-          lWidgetCard.add(
-              ExpandableNotifier(
-                child: Card(
-                  child: ScrollOnExpand(
-                    scrollOnExpand: true,
-                    scrollOnCollapse: false,
-                    child: ExpandablePanel(
+          lWidgetCard.add(ExpandableNotifier(
+            child: Card(
+              child: ScrollOnExpand(
+                scrollOnExpand: true,
+                scrollOnCollapse: false,
+                child: ExpandablePanel(
+                  theme: ExpandableThemeData(),
+                  header: Container(
+                    child: Text('' + item['an'].toString()),
+                  ),
+                  expanded: Container(
+                    child: lWidgetLink[0],
+                  ),
+                  collapsed: Container(),
+                  builder: (_, colapsed, expanded) {
+                    return Expandable(
+                      expanded: expanded,
                       theme: ExpandableThemeData(),
-                      header: Container(child: Text(''+item['an'].toString()),),
-                      expanded: Container(child: lWidgetLink[0],),
-                      collapsed: Container(),
-                      builder: (_,colapsed,expanded){
-                        return Expandable(
-                          expanded: expanded,
-                          theme: ExpandableThemeData(),
-                        );
-                      },
-                    ),
-                  ),
+                    );
+                  },
                 ),
-              )
-          );
-        }else{
-          if(contor == (lGive.length - 1) ){
-            lWidgetLink.add(
-                Container(
-                  child: InkWell(
-                    child: Text(
-                      (vIndex).toString() +'. ' + item['titlu'],
-                      style: TextStyle(
-                          color: Colors.indigo
-                      ),
-                    ),
-                    onTap: ()=>{UrlLauncher.launch(item['link'])},
-                  ),
-                )
-            );
-          };
-          if(vAn != 0){
+              ),
+            ),
+          ));
+        } else {
+          if (contor == (lGive.length - 1)) {
+            lWidgetLink.add(Container(
+              child: InkWell(
+                child: Text(
+                  (vIndex).toString() + '. ' + item['titlu'],
+                  style: TextStyle(color: Colors.indigo),
+                ),
+                onTap: () => {UrlLauncher.launch(item['link'])},
+              ),
+            ));
+          }
+          if (vAn != 0) {
             lWidgetCard.add(
               ExpandableNotifier(
                 child: Card(
@@ -145,10 +138,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     scrollOnCollapse: false,
                     child: ExpandablePanel(
                       theme: ExpandableThemeData(),
-                      header: Container(child: Text(''+vAn.toString()),),
-                      expanded: Column(children: <Widget>[for(final item in lWidgetLink)item,],),
+                      header: Container(
+                        child: Text('' + vAn.toString()),
+                      ),
+                      expanded: Column(
+                        children: <Widget>[
+                          for (final item in lWidgetLink) item,
+                        ],
+                      ),
                       collapsed: Container(),
-                      builder: (_,colapsed,expanded){
+                      builder: (_, colapsed, expanded) {
                         return Expandable(
                           expanded: expanded,
                           theme: ExpandableThemeData(),
@@ -159,35 +158,34 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             );
-          };
-          vAn=item['an'];
+          }
+          vAn = item['an'];
           vIndex = 1;
           lWidgetLink.clear();
-          lWidgetLink.add(
-              Container(
-                child: InkWell(
-                  child: Text(
-                    vIndex.toString()+'. '+item['titlu'],
-                    style: TextStyle(color: Colors.indigo),
-                  ),
-                  onTap: ()=>{UrlLauncher.launch(item['link'])},
-                ),
-              )
-          );
-          if(contor<(lGive.length - 1)){
+          lWidgetLink.add(Container(
+            child: InkWell(
+              child: Text(
+                vIndex.toString() + '. ' + item['titlu'],
+                style: TextStyle(color: Colors.indigo),
+              ),
+              onTap: () => {UrlLauncher.launch(item['link'])},
+            ),
+          ));
+          if (contor < (lGive.length - 1)) {
             contor += 1;
-          }else{
+          } else {
             contor = 0;
-          };
-        };
-      };
+          }
+        }
+      }
     rWidget = Column(
       children: <Widget>[
-        for(final item in lWidgetCard)item,
+        for (final item in lWidgetCard) item,
       ],
     );
     return rWidget;
   }
+
   TextEditingController editingController = TextEditingController();
   List<dynamic> duplicateItems = [];
   List<dynamic> items = [];
@@ -197,13 +195,14 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     loadItems();
   }
+
   void filterSearchResults(String query) {
     List<dynamic> dummySearchList = List<dynamic>();
     dummySearchList.addAll(duplicateItems);
-    if(query.isNotEmpty) {
+    if (query.isNotEmpty) {
       List<dynamic> dummyListData = List<dynamic>();
       dummySearchList.forEach((item) {
-        if(item['titlu'].contains(query)) {
+        if (item['titlu'].contains(query)) {
           dummyListData.add(item);
         }
       });
@@ -219,6 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return new Container(

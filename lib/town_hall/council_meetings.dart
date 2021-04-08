@@ -21,28 +21,32 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
   List<Widget> lWidget = [];
 
   //3
-  Widget fw(List lGive, BuildContext bC){
+  Widget fw(List lGive, BuildContext bC) {
     List<Widget> lWidgetCard = [];
     Widget response;
-    for(int i = 0; i < lGive.length; i++){
+    for (int i = 0; i < lGive.length; i++) {
       String sLink;
-      if((lGive[i]['link'].toString().contains('www.facebook.com'))||(lGive[i]['link'].toString().contains('fb.watch'))){
-        sLink = '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
-            lGive[i]['link'] +
-            '''"></iframe>''';
-      }else if(lGive[i]['link'].toString().contains('www.youtube.com')){
+      if ((lGive[i]['link'].toString().contains('www.facebook.com')) ||
+          (lGive[i]['link'].toString().contains('fb.watch'))) {
+        sLink =
+            '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
+                lGive[i]['link'] +
+                '''"></iframe>''';
+      } else if (lGive[i]['link'].toString().contains('www.youtube.com')) {
         sLink = '''<iframe width="200" height="200" src="''' +
             lGive[i]['link'] +
             '''" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>''';
-      };
+      }
       lWidget.add(
         IconButton(
-          icon: Icon(Icons.play_circle_outline,color: Colors.red),
-          onPressed: (){
-            setState((){
-              lWidget[i] = HtmlWidget(sLink, webView: true,);
-            }
-            );
+          icon: Icon(Icons.play_circle_outline, color: Colors.red),
+          onPressed: () {
+            setState(() {
+              lWidget[i] = HtmlWidget(
+                sLink,
+                webView: true,
+              );
+            });
           },
         ),
       );
@@ -67,19 +71,26 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
                       header: Padding(
                         padding: EdgeInsets.all(10),
                         child: Text(
-                          lGive[i]['zi'].toString() + '.' + lGive[i]['luna'].toString() + '.' + lGive[i]['an'].toString(),
+                          lGive[i]['zi'].toString() +
+                              '.' +
+                              lGive[i]['luna'].toString() +
+                              '.' +
+                              lGive[i]['an'].toString(),
                         ),
                       ),
                       expanded: Container(
                         child: Column(
                           children: <Widget>[
-                            Center(child: lWidget[i],),
+                            Center(
+                              child: lWidget[i],
+                            ),
                           ],
                         ),
                       ),
                       builder: (_, collapsed, expanded) {
                         return Padding(
-                          padding: EdgeInsets.only(left: 10, right: 10, bottom: 0),
+                          padding:
+                              EdgeInsets.only(left: 10, right: 10, bottom: 0),
                           child: Expandable(
                             expanded: expanded,
                             theme: const ExpandableThemeData(),
@@ -88,17 +99,16 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
                       },
                     ),
                   ),
-
                 ],
               ),
             ),
           ),
         ),
       );
-    };
+    }
     response = Column(
       children: <Widget>[
-        for(final card in lWidgetCard) card,
+        for (final card in lWidgetCard) card,
       ],
     );
     return response;
@@ -112,11 +122,10 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBarModel().loadAppBar(
-          context, 'Ședințe de Consiliu local', Icons.location_city, _scaffoldKey),
+      appBar: AppBarModel().loadAppBar(context, 'Ședințe de Consiliu local',
+          Icons.location_city, _scaffoldKey),
       drawer: NavDrawer(),
       body: ExpandableTheme(
         data: const ExpandableThemeData(
@@ -129,12 +138,14 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
               Container(
                 child: FutureBuilder<List>(
                   future: futureL,
-                  builder: (context, snapshot){
-                    if(snapshot.hasData){
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
                       return SingleChildScrollView(
                         child: Column(
                           children: <Widget>[
-                            SizedBox(height: 20,),
+                            SizedBox(
+                              height: 20,
+                            ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width - 30,
                               child: HtmlWidget(
@@ -142,27 +153,33 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
                                 webView: true,
                               ),
                             ),
-                            SizedBox(height: 20,),
+                            SizedBox(
+                              height: 20,
+                            ),
                             fw(snapshot.data[1], context),
                           ],
                         ),
                       );
-                    }else if(snapshot.hasError){
+                    } else if (snapshot.hasError) {
                       return Container(
                         height: MediaQuery.of(context).size.height,
-                        child: Center(child: Text("${snapshot.error}"),),
+                        child: Center(
+                          child: Text("${snapshot.error}"),
+                        ),
                       );
-                    };
+                    }
                     return Container(
                       height: MediaQuery.of(context).size.height,
                       child: Center(
-                        child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),),
+                        child: CircularProgressIndicator(
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
+                        ),
                       ),
                     );
                   },
                 ),
               ),
-
             ],
           ),
         ),
@@ -171,7 +188,7 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
   }
 }
 
-Future<List> fetchDataList() async{
+Future<List> fetchDataList() async {
   String html = await fetchFacebookVideoLink();
   List<dynamic> children = await fetchListVideoLink();
   List<dynamic> returnList = [];
@@ -183,17 +200,19 @@ Future<List> fetchDataList() async{
 Future<String> fetchFacebookVideoLink() async {
   Map<String, dynamic> fd;
   http.Response r =
-  await http.get('https://e-radauti-80139.firebaseio.com/--Sedinte.json');
+      await http.get('https://e-radauti-80139.firebaseio.com/--Sedinte.json');
   fd = json.decode(r.body);
 
   String link = fd['link'];
   //link = 'https://www.facebook.com/watch/?v=195642925014310&extid=L8LJHdVM1GdJpBfY';
   String html;
-  if((link.toString().contains('www.facebook.com'))||(link.toString().contains('fb.watch'))){
-    html = '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
-        link +
-        '''"></iframe>''';
-  }else if(link.toString().contains('www.youtube.com')){
+  if ((link.toString().contains('www.facebook.com')) ||
+      (link.toString().contains('fb.watch'))) {
+    html =
+        '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
+            link +
+            '''"></iframe>''';
+  } else if (link.toString().contains('www.youtube.com')) {
     html = '''<iframe width="200" height="200" src="''' +
         link +
         '''" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>''';
@@ -205,11 +224,14 @@ Future<String> fetchFacebookVideoLink() async {
 //2
 Future<List> fetchListVideoLink() async {
   Map<String, dynamic> fd;
-  http.Response r = await http.get('https://e-radauti-80139.firebaseio.com/-SedinteArhiva.json');
+  http.Response r = await http
+      .get('https://e-radauti-80139.firebaseio.com/-SedinteArhiva.json');
   fd = json.decode(r.body);
   final List<dynamic> children = [];
   final List<dynamic> response = [];
-  fd.forEach((key, value) {children.add(value);});
-  for(int i = children.length - 1; i >= 0; i--) response.add(children[i]);
+  fd.forEach((key, value) {
+    children.add(value);
+  });
+  for (int i = children.length - 1; i >= 0; i--) response.add(children[i]);
   return response;
 }

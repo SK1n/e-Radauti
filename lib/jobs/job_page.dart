@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/jobs/job_model.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'dart:convert';
@@ -67,9 +66,12 @@ class _JobPageState extends State<JobPage> {
                               width: MediaQuery.of(context).size.width,
                               margin: EdgeInsets.only(
                                   left: 10, right: 10, bottom: 10),
-                              child: FlatButton(
-                                color: Colors.blue[300],
-                                padding: EdgeInsets.all(10),
+                              child: TextButton(
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Colors.blue[300]),
+                                    padding: MaterialStateProperty.all(
+                                        EdgeInsets.all(10))),
                                 child: Text(
                                     '${jobList[index].title.toString().toUpperCase()}'),
                                 onPressed: () => {
