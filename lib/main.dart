@@ -150,7 +150,7 @@ class _MyAppState extends State<MenuScreen> {
             ));
       }
     });
-    FirebaseMessaging.instance.subscribeToTopic('fcm_test');
+    FirebaseMessaging.instance.subscribeToTopic('all');
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       debugPrint('A new onMessageOpenedApp event was published!');
 
