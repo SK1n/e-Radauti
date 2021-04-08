@@ -36,7 +36,6 @@ import 'package:fluttericon/font_awesome5_icons.dart';
 import 'widgets/src/nav_drawer.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-//import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   print('Handling a background message ${message.messageId}');
@@ -74,7 +73,6 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -127,6 +125,7 @@ class MenuScreen extends StatefulWidget {
 
 class _MyAppState extends State<MenuScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     super.initState();
@@ -137,8 +136,8 @@ class _MyAppState extends State<MenuScreen> {
         .getInitialMessage()
         .then((RemoteMessage message) {
       if (message != null) {
-        Navigator.pushNamed(context, '/');
-      }
+        navigate(context, message.data['view']);
+      } else {}
     });
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification notification = message.notification;
@@ -161,27 +160,49 @@ class _MyAppState extends State<MenuScreen> {
     FirebaseMessaging.instance.subscribeToTopic('all');
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       debugPrint('A new onMessageOpenedApp event was published!');
-
-      if (message.data['view'] == 'air_quality') {
-        Navigator.pushNamed(context, '/air');
-      }
-      if (message.data['view'] == 'events') {
-        Navigator.pushNamed(context, '/events');
-      }
-      if (message.data['view'] == 'notice_problem') {
-        Navigator.pushNamed(context, '/noticeProblem');
-      }
-      if (message.data['view'] == 'announcement') {
-        Navigator.pushNamed(context, '/localAnnouncements');
-      }
-      if (message.data['view'] == 'council') {
-        Navigator.pushNamed(context, '/councilMeetings');
-      }
-      if (message.data['view'] == 'local_authorities') {
-        Navigator.pushNamed(context, '/localAuthorities');
-      }
+      navigate(context, message.data['view']);
     });
     getToken();
+  }
+
+  void navigate(BuildContext context, String view) {
+    switch (view) {
+      case 'air_qulity':
+        {
+          Navigator.pushNamed(context, '/air');
+        }
+        break;
+      case 'events':
+        {
+          Navigator.pushNamed(context, '/events');
+        }
+        break;
+      case 'notice_problem':
+        {
+          Navigator.pushNamed(context, '/noticeProblem');
+        }
+        break;
+      case 'announcement':
+        {
+          Navigator.pushNamed(context, '/localAnnouncements');
+        }
+        break;
+      case 'council':
+        {
+          Navigator.pushNamed(context, '/councilMeetings');
+        }
+        break;
+      case 'local_authorities':
+        {
+          Navigator.pushNamed(context, '/localAuthorities');
+        }
+        break;
+      default:
+        {
+          Navigator.pushNamed(context, '/');
+        }
+        break;
+    }
   }
 
   @override
