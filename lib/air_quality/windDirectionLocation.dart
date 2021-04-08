@@ -9,7 +9,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nIaz",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -20,7 +23,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nVicșani",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -31,7 +37,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nMăneuți",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -42,7 +51,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nFrătăuți",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -53,7 +65,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nGălănești",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -64,7 +79,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nVoitinel",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -75,7 +93,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nHorodnic",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -86,7 +107,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nMarginea",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -97,7 +121,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nClit",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -108,7 +135,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nVolovăț",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -119,7 +149,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nBurla",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -130,7 +163,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nIaslovăț",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -141,7 +177,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nMilișăuți",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -152,7 +191,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nSatu Mare",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -163,7 +205,10 @@ Transform windDirectionLocation(String direction) {
           angle: 0,
           child: Text(
             "Dinspre\nCalafindești",
-            style: const TextStyle(fontSize: 16.0),
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
           ),
         );
       }
@@ -173,7 +218,10 @@ Transform windDirectionLocation(String direction) {
         angle: 0,
         child: Text(
           "Dinspre\nDornești",
-          style: const TextStyle(fontSize: 16.0),
+          style: const TextStyle(
+            fontSize: 16.0,
+            color: Colors.black,
+          ),
         ),
       );
     default:
@@ -182,7 +230,10 @@ Transform windDirectionLocation(String direction) {
         angle: 0,
         child: Text(
           "Dinspre\nMăneuți",
-          style: const TextStyle(fontSize: 16.0),
+          style: const TextStyle(
+            fontSize: 16.0,
+            color: Colors.black,
+          ),
         ),
       );
   }

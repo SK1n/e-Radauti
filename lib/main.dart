@@ -20,6 +20,7 @@ import 'package:flutterapperadauti/transport/Transport.dart';
 import 'package:flutterapperadauti/volunteer/volunteer.dart';
 import 'jobs/furniture_page.dart';
 import 'jobs/job_page.dart';
+import 'jobs/local_announcements.dart';
 import 'town_hall/council_meetings.dart';
 import 'town_hall/leaders.dart';
 import 'town_hall/local_council.dart';
@@ -91,6 +92,8 @@ class MyApp extends StatelessWidget {
         '/partner': (BuildContext context) => Partner(),
         '/contractors': (BuildContext context) => Contractors(),
         '/localAuthorities': (BuildContext context) => LocalAuthorities(),
+        '/localAnnouncements': (BuildContext context) =>
+            LocalAnounnouncements(),
         '/numbers': (BuildContext context) => HomePageNumbers(),
         '/miscellaneous': (BuildContext context) => Miscellaneous(),
         '/publicInstitutions': (BuildContext context) => PublicInstitutions(),
@@ -169,7 +172,7 @@ class _MyAppState extends State<MenuScreen> {
         Navigator.pushNamed(context, '/noticeProblem');
       }
       if (message.data['view'] == 'announcement') {
-        Navigator.pushNamed(context, '/announcement');
+        Navigator.pushNamed(context, '/localAnnouncements');
       }
       if (message.data['view'] == 'council') {
         Navigator.pushNamed(context, '/councilMeetings');

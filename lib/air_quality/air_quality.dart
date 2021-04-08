@@ -192,24 +192,29 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                             icon: Icon(
                                               Ionicons.ios_thermometer,
                                               size: 30,
-                                              color: Color(0xFF979797),
+                                              color: Colors.black,
                                             ),
                                             label: Center(
                                                 child: Text(
                                                     '${snapshot.data.temperature.toString()}°C',
                                                     style: TextStyle(
-                                                        fontSize: 24))),
+                                                      fontSize: 24,
+                                                      color: Colors.black,
+                                                    ))),
                                             onPressed: () {},
                                           ),
                                           trailing: TextButton.icon(
                                             icon: Icon(
                                               Ionicons.ios_water,
                                               size: 30,
-                                              color: Color(0xFF979797),
+                                              color: Colors.black,
                                             ),
                                             label: Text(
                                                 '${snapshot.data.humidity.toString()}%',
-                                                style: TextStyle(fontSize: 24)),
+                                                style: TextStyle(
+                                                  fontSize: 24,
+                                                  color: Colors.black,
+                                                )),
                                             onPressed: () {},
                                           ),
                                         ),
@@ -272,13 +277,16 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                           Container(
                                             child: ListTile(
                                               leading: TextButton.icon(
-                                                icon:
-                                                    Icon(WeatherIcons.wi_windy),
+                                                icon: Icon(
+                                                  WeatherIcons.wi_windy,
+                                                  color: Colors.black,
+                                                ),
                                                 label: Center(
                                                   child: new Text(
                                                     "Vânt: \n" + windSplit[0],
                                                     maxLines: 2,
                                                     style: const TextStyle(
+                                                        color: Colors.black,
                                                         fontSize: 16.0),
                                                   ),
                                                 ),
@@ -292,6 +300,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                                   'Direcția: \n${windSplit[1]}',
                                                   maxLines: 2,
                                                   style: const TextStyle(
+                                                      color: Colors.black,
                                                       fontSize: 16.0),
                                                 ),
                                                 onPressed: () {},
@@ -303,18 +312,24 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                               leading: TextButton.icon(
                                                 onPressed: () {},
                                                 icon: Icon(
-                                                    WeatherIcons.wi_barometer),
+                                                  WeatherIcons.wi_barometer,
+                                                  color: Colors.black,
+                                                ),
                                                 label: Text(
                                                   '${pression.toString()}\nmBar',
                                                   maxLines: 2,
                                                   style: const TextStyle(
+                                                      color: Colors.black,
                                                       fontSize: 16.0),
                                                 ),
                                               ),
                                               trailing: TextButton.icon(
                                                 onPressed: () {},
-                                                icon: Icon(WeatherIcons
-                                                    .wi_small_craft_advisory),
+                                                icon: Icon(
+                                                  WeatherIcons
+                                                      .wi_small_craft_advisory,
+                                                  color: Colors.black,
+                                                ),
                                                 label: windDirectionLocation(
                                                   windSplit[1],
                                                 ),
