@@ -4,18 +4,26 @@ import 'package:flutterapperadauti/events/ui/event_page/last_event_page.dart';
 
 class TabDemo extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldState;
-  TabDemo({Key key, this.scaffoldState,}) : super(key: key);
+  TabDemo({
+    Key key,
+    this.scaffoldState,
+  }) : super(key: key);
 
   @override
-  _TabDemoState createState() => _TabDemoState(scaffoldState,);
+  _TabDemoState createState() => _TabDemoState(
+        scaffoldState,
+      );
 }
 
 class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
   TabController _tabController;
   int _selectedTab = 0;
+  double fontSizeGetTab;
   final GlobalKey<ScaffoldState> scaffoldState;
 
-  _TabDemoState(this.scaffoldState,);
+  _TabDemoState(
+    this.scaffoldState,
+  );
 
   @override
   void initState() {
@@ -32,6 +40,39 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    double fontSizeTextRow1Column1;
+    double fontSizeTextRow2Column1;
+    double fontSizeTextRow3Column1;
+    double sizeIconRowIconColumn3;
+    double fontSizeTextRowIconColumn3;
+    double fontSizeTextTitleRowColumn3;
+    double widthObject;
+    widthObject = MediaQuery.of(context).size.width;
+    if (widthObject <= 250) {
+      fontSizeGetTab = 11.0;
+      fontSizeTextRow1Column1 = 15.0;
+      fontSizeTextRow2Column1 = 12.0;
+      fontSizeTextRow3Column1 = 12.0;
+      sizeIconRowIconColumn3 = 11.0;
+      fontSizeTextRowIconColumn3 = 8.0;
+      fontSizeTextTitleRowColumn3 = 11.0;
+    } else if (widthObject <= 500) {
+      fontSizeGetTab = 14.0;
+      fontSizeTextRow1Column1 = 19.0;
+      fontSizeTextRow2Column1 = 14.0;
+      fontSizeTextRow3Column1 = 14.0;
+      sizeIconRowIconColumn3 = 14.0;
+      fontSizeTextRowIconColumn3 = 11.0;
+      fontSizeTextTitleRowColumn3 = 14.0;
+    } else {
+      fontSizeGetTab = 15.0;
+      fontSizeTextRow1Column1 = 21.0;
+      fontSizeTextRow2Column1 = 15.0;
+      fontSizeTextRow3Column1 = 15.0;
+      sizeIconRowIconColumn3 = 17.0;
+      fontSizeTextRowIconColumn3 = 14.0;
+      fontSizeTextTitleRowColumn3 = 17.0;
+    }
     return Column(
       children: <Widget>[
         Container(
@@ -43,8 +84,14 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
               controller: _tabController,
               labelPadding: const EdgeInsets.all(0.0),
               tabs: [
-                _getTab(0, 'EVENIMENTE NOI',),
-                _getTab(1, 'EVENIMENTE TRECUTE',),
+                _getTab(
+                  0,
+                  'EVENIMENTE NOI',
+                ),
+                _getTab(
+                  1,
+                  'EVENIMENTE TRECUTE',
+                ),
               ],
             ),
           ),
@@ -54,8 +101,24 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
             physics: NeverScrollableScrollPhysics(),
             controller: _tabController,
             children: [
-              NewEvents(),
-              LastEvents(),
+              NewEvents(
+                fontSizeTextRow1Column1: fontSizeTextRow1Column1,
+                fontSizeTextRow2Column1: fontSizeTextRow2Column1,
+                fontSizeTextRow3Column1: fontSizeTextRow3Column1,
+                fontSizeTextRowIconColumn3: fontSizeTextRowIconColumn3,
+                sizeIconRowIconColumn3: sizeIconRowIconColumn3,
+                fontSizeTextTitleRowColumn3: fontSizeTextTitleRowColumn3,
+                widthObject: widthObject,
+              ),
+              LastEvents(
+                fontSizeTextRow1Column1: fontSizeTextRow1Column1,
+                fontSizeTextRow2Column1: fontSizeTextRow2Column1,
+                fontSizeTextRow3Column1: fontSizeTextRow3Column1,
+                fontSizeTextRowIconColumn3: fontSizeTextRowIconColumn3,
+                sizeIconRowIconColumn3: sizeIconRowIconColumn3,
+                fontSizeTextTitleRowColumn3: fontSizeTextTitleRowColumn3,
+                widthObject: widthObject,
+              ),
             ],
           ),
         ),
@@ -71,7 +134,7 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
             child: Text(
               childString,
               style: TextStyle(
-                fontSize: 15.0,
+                fontSize: fontSizeGetTab,
                 fontWeight: FontWeight.bold,
               ),
             ),

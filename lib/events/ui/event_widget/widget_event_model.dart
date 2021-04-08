@@ -53,13 +53,13 @@ class WidgetEventModel{
       ),
     );
   }
-  Widget rowIconColumn3(childText, childIcon, childContext, childPaddingIconLeft, childPaddingTextLeft){
+  Widget rowIconColumn3(childText, childIcon, childContext, childPaddingIconLeft, childPaddingTextLeft, childSize1, childSize2){
     return Row(
       children: <Widget>[
         Padding(
           padding: EdgeInsets.fromLTRB(childPaddingIconLeft, 5.0, 0.0, 0.0),
           child: Container(
-            child: Icon(childIcon, size: 16.0),
+            child: Icon(childIcon, size: childSize1),
           ),
         ),
         SizedBox(width: 5.0,),
@@ -73,7 +73,7 @@ class WidgetEventModel{
               maxLines: 5,
               textAlign: TextAlign.left,
               style: TextStyle(
-                fontSize: 13.0,
+                fontSize: childSize2,
                 color: Colors.grey[800],
               ),
             ),
@@ -82,11 +82,11 @@ class WidgetEventModel{
       ],
     );
   }
-  Widget column1(child, childContext){
+  Widget column1(child, childContext, childSize1, childSize2, childSize3){
     return Column(
       children: <Widget>[
-        textColumn1(child.day + '\n' + child.month, 20.0, FontWeight.bold, Colors.grey[800]),
-        textColumn1('----------', 12.0, FontWeight.normal, Colors.grey[800]),
+        textColumn1(child.day + '\n' + child.month, childSize1, FontWeight.bold, Colors.grey[800]),
+        textColumn1('----------', childSize2, FontWeight.normal, Colors.grey[800]),
         new DecoratedBox(
           decoration: new BoxDecoration(
             color: Colors.grey[700],
@@ -94,7 +94,7 @@ class WidgetEventModel{
           ),
           child: new Padding(
             padding: const EdgeInsets.only(left: 5, right: 5),
-            child: textColumn1(child.hour, 16.0, FontWeight.normal, Colors.white)
+            child: textColumn1(child.hour, childSize3, FontWeight.normal, Colors.white)
           ),
         ),
       ],
@@ -128,7 +128,7 @@ class WidgetEventModel{
       ],
     );
   }
-  Widget column3(child, childContext, childRow4){
+  Widget column3(child, childContext, childRow4, childSize1, childSize2, childSize3){
     return Column(
       children: <Widget>[
         Row(
@@ -143,7 +143,7 @@ class WidgetEventModel{
                   maxLines: 5,
                   textAlign: TextAlign.left,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: childSize1,
                     fontWeight: FontWeight.bold,
                     color: Color(0xAA38A49C),
                   ),
@@ -152,9 +152,9 @@ class WidgetEventModel{
             ),
           ],
         ),
-        rowIconColumn3('Categoria: ' + child.categoryName, Icons.category, childContext, 10.0, 0.0),
-        rowIconColumn3('Organizator: ' + child.organization, Icons.account_circle, childContext, 10.0, 0.0),
-        rowIconColumn3(child.location, Icons.location_on, childContext, 5.0, 5.0),
+        rowIconColumn3('Categoria: ' + child.categoryName, Icons.category, childContext, 10.0, 0.0, childSize2, childSize3),
+        rowIconColumn3('Organizator: ' + child.organization, Icons.account_circle, childContext, 10.0, 0.0, childSize2, childSize3),
+        rowIconColumn3(child.location, Icons.location_on, childContext, 5.0, 5.0, childSize2, childSize3),
         childRow4,
       ],
     );

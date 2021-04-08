@@ -44,6 +44,7 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
                         snapshot.data[i]['data'],
                         snapshot.data[i]['organizator'],
                         snapshot.data[i]['titlul'],
+                        snapshot.data[i]['contentImage'],
                         snapshot.data[i]['continut']),
                   Container(
                     padding: EdgeInsets.only(top: 20),
@@ -105,6 +106,34 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
     );
   }
 
+  Widget imageWidget(image) {
+    Widget returnWidget;
+    if (image != null) {
+      returnWidget = Container(
+        child: Image.network(linkContentImage(image)),
+        padding: EdgeInsets.only(
+          top: 2.0,
+          bottom: 2.0,
+        ),
+      );
+    } else {
+      returnWidget = Container();
+    }
+    return returnWidget;
+  }
+
+  String linkContentImage(image) {
+    String imageLink1;
+    imageLink1 =
+        'https://firebasestorage.googleapis.com/v0/b/e-radauti-80139.appspot.com/o/';
+    String imageLink2;
+    imageLink2 = '?alt=media&token=1a429f07-6cef-4de2-940f-0f839b2db3ff';
+    final regExp = RegExp(r'gs://e-radauti-80139.appspot.com/');
+    String imageReturn;
+    imageReturn = imageLink1 + image.replaceAll(regExp, '') + imageLink2;
+    return imageReturn;
+  }
+
   String linkImage(image) {
     String imageLink1;
     imageLink1 =
@@ -139,7 +168,8 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
     return children;
   }
 
-  Card listItem(context, image, date, institution, title, content) {
+  Card listItem(
+      context, image, date, institution, title, contentImage, content) {
     return Card(
       elevation: 5,
       child: Container(
@@ -191,6 +221,7 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
                 ),
               ),
             ),
+            imageWidget(contentImage),
             Container(
               child: Linkify(
                 onOpen: _onOpen,

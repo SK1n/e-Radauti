@@ -7,6 +7,7 @@ import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:http/http.dart' as http;
 import 'package:expandable/expandable.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class CouncilMeetings extends StatefulWidget {
   CouncilMeetings({Key key}) : super(key: key);
@@ -19,6 +20,26 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   Future<List<dynamic>> futureL;
   List<Widget> lWidget = [];
+
+  //2
+  Widget fwButton(String child) {
+    Widget returnWidget;
+    returnWidget = Container(
+      child: FlatButton(
+        onPressed: () => UrlLauncher.launch(child),
+        child: Text(
+          'Ordinea de zi',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        color: Color(0xFF38A49C),
+        textColor: Colors.white,
+        splashColor: Color(0x8838A49C),
+        disabledColor: Colors.grey,
+        disabledTextColor: Colors.black,
+      ),
+    );
+    return returnWidget;
+  }
 
   //3
   Widget fw(List lGive, BuildContext bC) {
@@ -149,10 +170,14 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
                             SizedBox(
                               width: MediaQuery.of(context).size.width - 30,
                               child: HtmlWidget(
-                                snapshot.data[0],
+                                snapshot.data[0]['linkVideo'],
                                 webView: true,
                               ),
                             ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            fwButton(snapshot.data[0]['linkPDF']),
                             SizedBox(
                               height: 20,
                             ),
@@ -189,22 +214,21 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
 }
 
 Future<List> fetchDataList() async {
-  String html = await fetchFacebookVideoLink();
+  Map<String, dynamic> child = await fetchLiveMeetingLinks();
   List<dynamic> children = await fetchListVideoLink();
   List<dynamic> returnList = [];
 
-  returnList = [html, children];
+  returnList = [child, children];
   return returnList;
 }
 
-Future<String> fetchFacebookVideoLink() async {
+Future<Map<String, dynamic>> fetchLiveMeetingLinks() async {
   Map<String, dynamic> fd;
   http.Response r =
       await http.get('https://e-radauti-80139.firebaseio.com/--Sedinte.json');
   fd = json.decode(r.body);
-
+  Map<String, dynamic> returnMap = {};
   String link = fd['link'];
-  //link = 'https://www.facebook.com/watch/?v=195642925014310&extid=L8LJHdVM1GdJpBfY';
   String html;
   if ((link.toString().contains('www.facebook.com')) ||
       (link.toString().contains('fb.watch'))) {
@@ -217,8 +241,8 @@ Future<String> fetchFacebookVideoLink() async {
         link +
         '''" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>''';
   }
-
-  return html;
+  returnMap = {'linkVideo': html, 'linkPDF': fd['ordineadezi']};
+  return returnMap;
 }
 
 //2
