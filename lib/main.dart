@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -125,6 +127,9 @@ class _MyAppState extends State<MenuScreen> {
   @override
   void initState() {
     super.initState();
+    if (Platform.isIOS) {
+      FirebaseMessaging.instance.requestPermission();
+    }
     FirebaseMessaging.instance
         .getInitialMessage()
         .then((RemoteMessage message) {
@@ -173,6 +178,7 @@ class _MyAppState extends State<MenuScreen> {
         Navigator.pushNamed(context, '/localAuthorities');
       }
     });
+    getToken();
   }
 
   @override
@@ -430,5 +436,11 @@ class _MyAppState extends State<MenuScreen> {
         ),
       ),
     );
+  }
+
+  void getToken() {
+    FirebaseMessaging.instance.getToken.call().then((token) {
+      debugPrint('Token: $token');
+    });
   }
 }
