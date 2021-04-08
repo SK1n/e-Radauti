@@ -64,7 +64,7 @@ class NavDrawer extends StatelessWidget {
             showAboutDialog(
                 context: context,
                 applicationName: 'e-Radauti',
-                applicationVersion: 'Version: 2.1.0 (3)',
+                applicationVersion: 'Version: 2.1.0 (4)',
                 applicationIcon: Image.asset(
                   'assets/logo_images/app_logo_final.png',
                   width: 24,
