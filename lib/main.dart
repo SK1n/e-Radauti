@@ -169,7 +169,7 @@ class _MyAppState extends State<MenuScreen> {
         Navigator.pushNamed(context, '/noticeProblem');
       }
       if (message.data['view'] == 'announcement') {
-        Navigator.pushNamed(context, '/job');
+        Navigator.pushNamed(context, '/announcement');
       }
       if (message.data['view'] == 'council') {
         Navigator.pushNamed(context, '/councilMeetings');
