@@ -63,6 +63,10 @@ class _JobPageState extends State<JobPage> {
                         child: Column(
                           children: [
                             Container(
+                              constraints: BoxConstraints(
+                                minHeight: 50,
+                                maxHeight: 60,
+                              ),
                               width: MediaQuery.of(context).size.width,
                               margin: EdgeInsets.only(
                                   left: 10, right: 10, bottom: 10),
@@ -73,7 +77,12 @@ class _JobPageState extends State<JobPage> {
                                     padding: MaterialStateProperty.all(
                                         EdgeInsets.all(10))),
                                 child: Text(
-                                    '${jobList[index].title.toString().toUpperCase()}'),
+                                  '${jobList[index].title.toString().toUpperCase()}',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                                 onPressed: () => {
                                   Navigator.push(
                                       context,
@@ -104,28 +113,12 @@ class _JobPageState extends State<JobPage> {
           showDialog(
               context: context,
               builder: (_) => CupertinoAlertDialog(
-                    title: Text('Adaugati un anunt'),
                     content: Container(
                       child: Text('''
-            Vizualizati pagina web apasand pe 'DA' sau 
-            deschideti in browser facand click pe iconita
+            Doriti sa deschideti pagina web?
             '''),
                     ),
                     actions: [
-                      CupertinoDialogAction(
-                        isDefaultAction: true,
-                        child: Text('DA'),
-                        onPressed: () {
-                          Navigator.pop(context);
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AnnouncementWebView(
-                                        slug:
-                                            'https://www.eradauti.ro/publica-anunt-gratuit',
-                                      )));
-                        },
-                      ),
                       CupertinoDialogAction(
                         child: Text('NU'),
                         onPressed: () {
@@ -133,7 +126,8 @@ class _JobPageState extends State<JobPage> {
                         },
                       ),
                       CupertinoDialogAction(
-                        child: Icon(Icons.open_in_browser_outlined),
+                        isDefaultAction: true,
+                        child: Text('DA'),
                         onPressed: () async {
                           Navigator.pop(context);
                           if (await canLaunch(
