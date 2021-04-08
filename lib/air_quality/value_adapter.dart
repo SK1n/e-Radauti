@@ -24,7 +24,7 @@ class ChangeColor {
               style: TextStyle(color: Colors.black),
               children: [
                 TextSpan(
-                    text: 'Acceptabilă',
+                    text: 'Acceptabil',
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
               ]));
