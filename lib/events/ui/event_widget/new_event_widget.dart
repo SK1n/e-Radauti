@@ -84,7 +84,7 @@ class NewEventWidget extends StatelessWidget {
     Widget row4 = Row(
       children: <Widget>[
         Container(
-          width: MediaQuery.of(context).size.width / 3,
+          width: (MediaQuery.of(context).size.width / 5) * 2,
           child: RaisedButton(
               color: Color(0xAA38A49C),
               onPressed: () {
