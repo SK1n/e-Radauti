@@ -15,7 +15,7 @@ import 'package:flutterapperadauti/usefull_pages/partner.dart';
 import 'package:flutterapperadauti/usefull_pages/contact.dart';
 import 'package:flutterapperadauti/usefull_pages/confidential.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
-import 'package:flutterapperadauti/air_quality/air_quality.dart';
+import 'package:flutterapperadauti/air_quality/air_quality_main.dart';
 import 'package:flutterapperadauti/transport/Transport.dart';
 import 'package:flutterapperadauti/volunteer/volunteer.dart';
 import 'jobs/furniture_page.dart';
@@ -106,7 +106,7 @@ class MyApp extends StatelessWidget {
         '/townHall': (BuildContext context) => TownHallMain(),
         '/noticeProblem': (BuildContext context) => LayoutNoticeProblem(),
         '/events': (BuildContext context) => EventsMain(),
-        '/air': (BuildContext context) => AirQualityPage(),
+        '/air': (BuildContext context) => AirQualityMain(),
         '/volunteer': (BuildContext context) => VolunteerPage(),
       },
       theme: ThemeData(
