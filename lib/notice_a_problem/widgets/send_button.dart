@@ -14,9 +14,9 @@ class SendButton extends StatelessWidget {
       child: Text('Trimite'),
       onPressed: () async {
         {
-          // if (formKey.currentState.validate()) {
-          await createMessage(context, formKey);
-          // }
+          if (formKey.currentState.validate()) {
+            await createMessage(context, formKey);
+          }
         }
       },
     );

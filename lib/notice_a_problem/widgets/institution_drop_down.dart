@@ -25,7 +25,9 @@ class InstitutionDropDown extends StatelessWidget {
       initialValue: 'Institutia',
       name: 'destinationEmail',
       onChanged: (value) {
-        noticeFormState.upInstitution(emailDestination(value));
+        noticeFormState.upInstitution(value);
+        debugPrint('${noticeFormState.institution}');
+        noticeFormState.upInstitutionEmail(emailDestination(value));
       },
       items: list
           .map((emailDestination) => DropdownMenuItem(
@@ -66,7 +68,7 @@ class InstitutionDropDown extends StatelessWidget {
         return "marginea@suceava.rosilva.ro";
         break;
       case "Asociația Rădăuțiul Civic":
-        return "luys2007@outlook.com";
+        return "radautiulcivic@gmail.com";
         break;
       default:
         return null;

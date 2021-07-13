@@ -6,7 +6,6 @@ import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
-import 'package:mailer/smtp_server/mailgun.dart';
 import 'package:provider/provider.dart';
 
 final databaseRef =
@@ -16,7 +15,7 @@ Future<void> createMessage(BuildContext context, dynamic formKey) async {
   NoticeFormState noticeFormState =
       Provider.of<NoticeFormState>(context, listen: false);
   IsLoading isLoading = Provider.of<IsLoading>(context, listen: false);
-  String institution = noticeFormState.institution;
+  String institution = noticeFormState.institutionEmail;
   String name = noticeFormState.name;
   String body = noticeFormState.description;
   String number = noticeFormState.phoneNumber;
@@ -68,12 +67,12 @@ Future<void> sendMessage(
   // Create our message.
   final message = Message()
     ..from = Address(username, 'Radautiul Civic - @no-reply')
-    ..recipients.add(noticeFormState.institution)
-    //..bccRecipients.add(Address('radautiulcivic@gmail.com'))
+    ..recipients.add(noticeFormState.institutionEmail)
+    ..bccRecipients.add(Address('radautiulcivic@gmail.com'))
     ..subject = 'Petiție ${noticeFormState.subject} - aplicația e-Rădăuți'
     ..html = textDescription;
-  // formKey.currentState.fields['image'].value
-  //     .forEach((value) => message.attachments.add(FileAttachment(value)));
+  formKey.currentState.fields['image'].value
+      .forEach((value) => message.attachments.add(FileAttachment(value)));
 
   try {
     isLoading.changeLoadingState();
@@ -98,7 +97,9 @@ void addToFirebase(NoticeFormState noticeFormState) {
     'title': noticeFormState.description.toString(),
     'lat': noticeFormState.position.latitude,
     'long': noticeFormState.position.longitude,
-    'status': 'În lucru'
+    'status': 'În lucru',
+    'Institutia': noticeFormState.institution,
+    'Categoria': noticeFormState.typeNmae,
   };
   databaseRef.push().set(fbMap);
 }
