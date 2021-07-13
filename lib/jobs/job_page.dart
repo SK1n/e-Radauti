@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/jobs/job_model.dart';
-import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
+import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
@@ -45,13 +46,17 @@ class _JobPageState extends State<JobPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBarModel()
-          .loadAppBar(context, 'Anunțuri', Icons.announcement, _scaffoldKey),
       drawer: NavDrawer(),
-      body: Card(
-        elevation: 10.0,
-        margin: EdgeInsets.all(10.0),
-        child: FutureBuilder(
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            AppBarUi(
+                content: 'Anunțuri',
+                leading: Icons.announcement,
+                scaffoldKey: _scaffoldKey)
+          ];
+        },
+        body: FutureBuilder(
           future: _getJobs(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
@@ -65,11 +70,10 @@ class _JobPageState extends State<JobPage> {
                             Container(
                               constraints: BoxConstraints(
                                 minHeight: 50,
-                                maxHeight: 60,
+                                maxHeight: 70,
                               ),
                               width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.only(
-                                  left: 10, right: 10, bottom: 10),
+                              margin: EdgeInsets.only(left: 10, right: 10),
                               child: TextButton(
                                 style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all(
@@ -97,9 +101,7 @@ class _JobPageState extends State<JobPage> {
                         ));
                   });
             } else {
-              return Center(
-                child: CupertinoActivityIndicator(),
-              );
+              return LoadingScreen();
             }
           },
         ),

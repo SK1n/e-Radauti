@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:expandable/expandable.dart';
 
@@ -14,10 +14,18 @@ class LocalLegislation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBarModel().loadAppBar(context, "Hotărâri de Consiliu Local",
-          Icons.location_city, _scaffoldKey),
       drawer: NavDrawer(),
-      body: MyHomePage(),
+      body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              AppBarUi(
+                content: 'Hotărâri de Consiliu Local',
+                leading: Icons.location_city,
+                scaffoldKey: _scaffoldKey,
+              )
+            ];
+          },
+          body: MyHomePage()),
     );
   }
 }

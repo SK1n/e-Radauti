@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
+import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_linkify/flutter_linkify.dart';
@@ -27,80 +28,82 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBarModel().loadAppBar(
-          context, 'Anunțuri locale', Icons.announcement, _scaffoldKey),
       drawer: NavDrawer(),
-      body: SingleChildScrollView(
-        child: FutureBuilder<List>(
-          future: futureL,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Column(
-                children: [
-                  for (int i = snapshot.data.length - 1; i >= 0; i--)
-                    listItem(
-                        context,
-                        snapshot.data[i]['imageUrl'],
-                        snapshot.data[i]['data'],
-                        snapshot.data[i]['organizator'],
-                        snapshot.data[i]['titlul'],
-                        snapshot.data[i]['contentImage'],
-                        snapshot.data[i]['continut']),
-                  Container(
-                    padding: EdgeInsets.only(top: 20),
-                    child: Text('Tipuri de importanță:'),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(bottom: 10),
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(top: 10),
-                          height: 50,
-                          width: 50,
-                          child: Image.network(linkImage(
-                              'gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignBlue.png')),
-                        ),
-                        Text('Anunț general'),
-                        Container(
-                          padding: EdgeInsets.only(top: 10),
-                          height: 50,
-                          width: 50,
-                          child: Image.network(linkImage(
-                              "gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignYellow.png")),
-                        ),
-                        Text('Mediu'),
-                        Container(
-                          padding: EdgeInsets.only(top: 10),
-                          height: 50,
-                          width: 50,
-                          child: Image.network(linkImage(
-                              "gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignRed.png")),
-                        ),
-                        Text('Critic'),
-                      ],
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            AppBarUi(
+              content: 'Anunțuri locale',
+              leading: Icons.announcement,
+              scaffoldKey: _scaffoldKey,
+            )
+          ];
+        },
+        body: SingleChildScrollView(
+          child: FutureBuilder<List>(
+            future: futureL,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Column(
+                  children: [
+                    for (int i = snapshot.data.length - 1; i >= 0; i--)
+                      listItem(
+                          context,
+                          snapshot.data[i]['imageUrl'],
+                          snapshot.data[i]['data'],
+                          snapshot.data[i]['organizator'],
+                          snapshot.data[i]['titlul'],
+                          snapshot.data[i]['contentImage'],
+                          snapshot.data[i]['continut']),
+                    Container(
+                      padding: EdgeInsets.only(top: 20),
+                      child: Text('Tipuri de importanță:'),
                     ),
+                    Container(
+                      padding: EdgeInsets.only(bottom: 10),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(top: 10),
+                            height: 50,
+                            width: 50,
+                            child: Image.network(linkImage(
+                                'gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignBlue.png')),
+                          ),
+                          Text('Anunț general'),
+                          Container(
+                            padding: EdgeInsets.only(top: 10),
+                            height: 50,
+                            width: 50,
+                            child: Image.network(linkImage(
+                                "gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignYellow.png")),
+                          ),
+                          Text('Mediu'),
+                          Container(
+                            padding: EdgeInsets.only(top: 10),
+                            height: 50,
+                            width: 50,
+                            child: Image.network(linkImage(
+                                "gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignRed.png")),
+                          ),
+                          Text('Critic'),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              } else if (snapshot.hasError) {
+                return Container(
+                  height: MediaQuery.of(context).size.height,
+                  child: Center(
+                    child: Text(
+                        "Este o problemă cu încărcarea anunțurilor locale."),
                   ),
-                ],
-              );
-            } else if (snapshot.hasError) {
-              return Container(
-                height: MediaQuery.of(context).size.height,
-                child: Center(
-                  child:
-                      Text("Este o problemă cu încărcarea anunțurilor locale."),
-                ),
-              );
-            }
-            return Container(
-              height: MediaQuery.of(context).size.height,
-              child: Center(
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
-                ),
-              ),
-            );
-          },
+                );
+              }
+              return LoadingScreen();
+            },
+          ),
         ),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class Taxi2 extends StatelessWidget {
@@ -28,51 +28,88 @@ class Taxi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBarModel()
-          .loadAppBar(context, 'Taximetriști', Icons.local_taxi, _scaffoldKey),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverToBoxAdapter(
-            child: SizedBox(
-              child: Container(
-                child: Column(
-                  children: <Widget>[
-                    listItem('0752436011', 'assets/images/Taxi/SV14PLS_png.png',
-                        'ASURDOAIEI IONUȚ', 'SV-14PLS', 'DACIA LOGAN'),
-                    listItem('0774507799', 'assets/images/Taxi/SV65LEV_png.png',
-                        'BĂNCESCU CRISTI', 'SV-65LEV', 'SEAT IBIZA'),
-                    listItem('0740348225', 'assets/images/Taxi/SV12NLJ.png',
-                        'BOICU COSTICĂ', 'SV-12NLJ', 'DACIA LOGAN'),
-                    listItem('0745629388', 'assets/images/Taxi/SV05JFR.png',
-                        'BOȘTIOG ADRIAN', 'SV-05JFR', 'DACIA LOGAN'),
-                    listItem('0720217728', 'assets/images/Taxi/SV51LIE_png.png',
-                        'BUCEVSCHI ILIE', 'SV-51LIE', 'VOLKSWAGEN'),
-                    listItem('0742041403', 'assets/images/Taxi/SV27COV.png',
-                        'COVAȘĂ SORIN', 'SV-27COV', 'DACIA LOGAN'),
-                    listItem('0766210240', 'assets/images/Taxi/SV13NOC.png',
-                        'DIACONESCU FLORIN', 'SV-13NOC', 'VW TOURAN (CREM)'),
-                    listItem('0740593510', 'assets/images/Taxi/SV11NEL_png.png',
-                        'GRAB IOAN', 'SV-11NEL', 'MERCEDES-BENZ E-CLASS'),
-                    listItem('0741283879', 'assets/images/Taxi/SV62LAZ_png.png',
-                        'LAZĂR GHEORGHE', 'SV-62LAZ', 'DACIA SANDERO'),
-                    listItem('0742161708', 'assets/images/Taxi/SV12TWL_png.png',
-                        'MIHALESCU TONI', 'SV-12TWL', 'DACIA LOGAN'),
-                    listItem('0744622405', 'assets/images/Taxi/SV74MSV.png',
-                        'PASLARIU MIHAI', 'SV-74MSV', 'VOLKSWAGEN'),
-                    listItem('0741697725', 'assets/images/Taxi/SV21PCR.png',
-                        'PESCLEVEI RADU', 'SV-21PCR', 'DACIA DOKKER'),
-                    listItem('0754554488', 'assets/images/Taxi/SV01LMM.png',
-                        'ROSE TAXI', 'SV-01LMM', 'DACIA LOGAN'),
-                    listItem('0745536280', 'assets/images/Taxi/SV04PNZ.png',
-                        'TIPERCIUC VASILE', 'SV-04PNZ', 'DACIA LOGAN'),
-                    listItem('0745683668', 'assets/images/Taxi/SV16TOD_png.png',
-                        'TODERAȘ VIOREL', 'SV-16TOD', 'VOLSKWAGEN PASSAT'),
-                  ],
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            AppBarUi(
+              content: 'Taximetriști',
+              leading: Icons.local_taxi,
+              scaffoldKey: _scaffoldKey,
+            )
+          ];
+        },
+        body: CustomScrollView(
+          slivers: <Widget>[
+            SliverToBoxAdapter(
+              child: SizedBox(
+                child: Container(
+                  child: Column(
+                    children: <Widget>[
+                      listItem(
+                          '0752436011',
+                          'assets/images/Taxi/SV14PLS_png.png',
+                          'ASURDOAIEI IONUȚ',
+                          'SV-14PLS',
+                          'DACIA LOGAN'),
+                      listItem(
+                          '0774507799',
+                          'assets/images/Taxi/SV65LEV_png.png',
+                          'BĂNCESCU CRISTI',
+                          'SV-65LEV',
+                          'SEAT IBIZA'),
+                      listItem('0740348225', 'assets/images/Taxi/SV12NLJ.png',
+                          'BOICU COSTICĂ', 'SV-12NLJ', 'DACIA LOGAN'),
+                      listItem('0745629388', 'assets/images/Taxi/SV05JFR.png',
+                          'BOȘTIOG ADRIAN', 'SV-05JFR', 'DACIA LOGAN'),
+                      listItem(
+                          '0720217728',
+                          'assets/images/Taxi/SV51LIE_png.png',
+                          'BUCEVSCHI ILIE',
+                          'SV-51LIE',
+                          'VOLKSWAGEN'),
+                      listItem('0742041403', 'assets/images/Taxi/SV27COV.png',
+                          'COVAȘĂ SORIN', 'SV-27COV', 'DACIA LOGAN'),
+                      listItem('0766210240', 'assets/images/Taxi/SV13NOC.png',
+                          'DIACONESCU FLORIN', 'SV-13NOC', 'VW TOURAN (CREM)'),
+                      listItem(
+                          '0740593510',
+                          'assets/images/Taxi/SV11NEL_png.png',
+                          'GRAB IOAN',
+                          'SV-11NEL',
+                          'MERCEDES-BENZ E-CLASS'),
+                      listItem(
+                          '0741283879',
+                          'assets/images/Taxi/SV62LAZ_png.png',
+                          'LAZĂR GHEORGHE',
+                          'SV-62LAZ',
+                          'DACIA SANDERO'),
+                      listItem(
+                          '0742161708',
+                          'assets/images/Taxi/SV12TWL_png.png',
+                          'MIHALESCU TONI',
+                          'SV-12TWL',
+                          'DACIA LOGAN'),
+                      listItem('0744622405', 'assets/images/Taxi/SV74MSV.png',
+                          'PASLARIU MIHAI', 'SV-74MSV', 'VOLKSWAGEN'),
+                      listItem('0741697725', 'assets/images/Taxi/SV21PCR.png',
+                          'PESCLEVEI RADU', 'SV-21PCR', 'DACIA DOKKER'),
+                      listItem('0754554488', 'assets/images/Taxi/SV01LMM.png',
+                          'ROSE TAXI', 'SV-01LMM', 'DACIA LOGAN'),
+                      listItem('0745536280', 'assets/images/Taxi/SV04PNZ.png',
+                          'TIPERCIUC VASILE', 'SV-04PNZ', 'DACIA LOGAN'),
+                      listItem(
+                          '0745683668',
+                          'assets/images/Taxi/SV16TOD_png.png',
+                          'TODERAȘ VIOREL',
+                          'SV-16TOD',
+                          'VOLSKWAGEN PASSAT'),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

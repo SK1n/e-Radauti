@@ -5,7 +5,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
+import 'package:flutterapperadauti/notice_a_problem/screens/notice_map_ui.dart';
+import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
+import 'package:flutterapperadauti/notice_a_problem/screens/main_notice_ui.dart';
+import 'package:flutterapperadauti/state/loading_notifier.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/transport/Train.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
@@ -35,11 +38,17 @@ import 'usefull_numbers/public_institutions.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'widgets/src/nav_drawer.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:provider/provider.dart';
+import 'package:flutterapperadauti/widgets/src/checkGeolocatorPermission.dart';
+import 'package:flutterapperadauti/notice_a_problem/location_switch.dart';
+import 'package:flutterapperadauti/state/marker_notifier.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   print('Handling a background message ${message.messageId}');
 }
+
+final GlobalKey<NavigatorState> _navigator = new GlobalKey<NavigatorState>();
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   'high_importance_channel', // id
@@ -54,6 +63,27 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('app_logo_final');
+
+  /// Note: permissions aren't requested here just to demonstrate that can be
+  /// done later
+  final IOSInitializationSettings initializationSettingsIOS =
+      IOSInitializationSettings(
+    requestAlertPermission: false,
+    requestBadgePermission: false,
+    requestSoundPermission: false,
+  );
+  final InitializationSettings initializationSettings = InitializationSettings(
+    android: initializationSettingsAndroid,
+    iOS: initializationSettingsIOS,
+  );
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+      onSelectNotification: (String payload) async {
+    debugPrint('payload: $payload');
+
+    _navigator.currentState.pushNamed('/events');
+  });
 
   /// Create an Android Notification Channel.
   ///
@@ -68,7 +98,22 @@ Future<void> main() async {
     badge: true,
     sound: true,
   );
-  runApp(MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<IsLoading>(
+        create: (_) => IsLoading(),
+      ),
+      ChangeNotifierProvider<NoticeFormState>(
+        create: (_) => NoticeFormState(),
+      ),
+      ChangeNotifierProvider<LocationSwitchState>(
+          create: (_) => LocationSwitchState()),
+      ChangeNotifierProvider<MarkerNotifier>(
+        create: (_) => MarkerNotifier(),
+      ),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -105,11 +150,13 @@ class MyApp extends StatelessWidget {
         '/localCouncil': (BuildContext context) => LocalCouncil(),
         '/localLegislation': (BuildContext context) => LocalLegislation(),
         '/townHall': (BuildContext context) => TownHallMain(),
-        '/noticeProblem': (BuildContext context) => LayoutNoticeProblem(),
+        '/noticeProblem': (BuildContext context) => MainNoticeUi(),
+        '/noticeMap': (BuildContext context) => NoticeMapUi(),
         '/events': (BuildContext context) => EventsMain(),
         '/air': (BuildContext context) => AirQualityPage(),
         '/volunteer': (BuildContext context) => VolunteerPage(),
       },
+      navigatorKey: _navigator,
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
         primaryColor: Color(0xFFFFFFFF),
@@ -137,7 +184,7 @@ class _MyAppState extends State<MenuScreen> {
         .then((RemoteMessage message) {
       if (message != null) {
         navigate(context, message.data['view']);
-      } else {}
+      }
     });
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification notification = message.notification;
@@ -152,17 +199,19 @@ class _MyAppState extends State<MenuScreen> {
                 channel.id,
                 channel.name,
                 channel.description,
-                icon: 'launch_background',
+                icon: 'app_logo_final',
               ),
-            ));
+            ),
+            payload: message.data["view"]);
       }
     });
-    FirebaseMessaging.instance.subscribeToTopic('all');
+    FirebaseMessaging.instance.subscribeToTopic('test');
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       debugPrint('A new onMessageOpenedApp event was published!');
       navigate(context, message.data['view']);
     });
     getToken();
+    checkPermissions(context);
   }
 
   void navigate(BuildContext context, String view) {
@@ -252,35 +301,6 @@ class _MyAppState extends State<MenuScreen> {
       drawer: NavDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: (MediaQuery.of(context).size.height / 5 - 45),
-              child: Container(
-                //padding: EdgeInsets.only(left: 10,top: 10, bottom: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      height: 30,
-                      width: 30,
-                      child: Image.asset("assets/images/birthday.png"),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(left: 10),
-                      //width: MediaQuery.of(context).size.width - 101,
-                      child: Text(
-                        "Bun venit!",
-                        style: TextStyle(
-                            color: Color(0xFF000000),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
           SliverToBoxAdapter(
             child: SizedBox(
               height: (MediaQuery.of(context).size.height - 250),
