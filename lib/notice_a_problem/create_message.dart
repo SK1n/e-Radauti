@@ -1,12 +1,10 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
-//import 'package:flutterapperadauti/notice_a_problem/smpt_server.dart';
 import 'package:flutterapperadauti/state/loading_notifier.dart';
 import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
-import 'package:mailer/smtp_server/mailgun.dart';
 import 'package:provider/provider.dart';
 
 final databaseRef =
@@ -69,11 +67,11 @@ Future<void> sendMessage(
   final message = Message()
     ..from = Address(username, 'Radautiul Civic - @no-reply')
     ..recipients.add(noticeFormState.institution)
-    //..bccRecipients.add(Address('radautiulcivic@gmail.com'))
+    ..bccRecipients.add(Address('radautiulcivic@gmail.com'))
     ..subject = 'Petiție ${noticeFormState.subject} - aplicația e-Rădăuți'
     ..html = textDescription;
-  // formKey.currentState.fields['image'].value
-  //     .forEach((value) => message.attachments.add(FileAttachment(value)));
+  formKey.currentState.fields['image'].value
+      .forEach((value) => message.attachments.add(FileAttachment(value)));
 
   try {
     isLoading.changeLoadingState();
