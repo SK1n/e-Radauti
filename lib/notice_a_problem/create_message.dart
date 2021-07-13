@@ -1,6 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
-//import 'package:flutterapperadauti/notice_a_problem/smpt_server.dart';
 import 'package:flutterapperadauti/state/loading_notifier.dart';
 import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
 import 'package:geolocator/geolocator.dart';
