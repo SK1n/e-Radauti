@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key></key>
 	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -46,6 +48,8 @@
 	<string>Deși aplicația cere această permisiune, aplicația nu folosește aceasta permisiune, unele pachete ar putea cere această permisiune.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>La sesizează o problemă, utilizatorul poate selecta să fie folosită locația de pe GPS. Din acest motiv, aplicația are nevoie să acceseze locația.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>La sesizează o problemă, utilizatorul poate selecta să fie folosită locația de pe GPS. Din acest motiv, aplicația are nevoie să acceseze locația.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Deși aplicația nu are nicăieri senzorii de mișcare, unele pachete ar putea cere această permisiune.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
