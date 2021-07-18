@@ -59,6 +59,8 @@ class TypeDropDown extends StatelessWidget {
         );
       }).toList(),
       onChanged: (value) {
+        noticeFormState.upTypeName(value.name);
+        debugPrint('${noticeFormState.typeNmae}');
         noticeFormState.upType(value.index);
       },
     );

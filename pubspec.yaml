@@ -68,6 +68,7 @@ dependencies:
   video_player: ^0.10.12+2
   weather_icons: ^2.0.2
   webview_flutter: ^1.0.7
+  custom_info_window: ^0.0.4
 
 dev_dependencies:
   flutter_test:
@@ -94,6 +95,7 @@ flutter:
     - assets/images/Taxi/
     - assets/images/volunteer/
     - assets/images/council/
+    - assets/images/mapIcons/
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

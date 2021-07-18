@@ -14,7 +14,7 @@ Future<void> createMessage(BuildContext context, dynamic formKey) async {
   NoticeFormState noticeFormState =
       Provider.of<NoticeFormState>(context, listen: false);
   IsLoading isLoading = Provider.of<IsLoading>(context, listen: false);
-  String institution = noticeFormState.institution;
+  String institution = noticeFormState.institutionEmail;
   String name = noticeFormState.name;
   String body = noticeFormState.description;
   String number = noticeFormState.phoneNumber;
@@ -66,7 +66,7 @@ Future<void> sendMessage(
   // Create our message.
   final message = Message()
     ..from = Address(username, 'Radautiul Civic - @no-reply')
-    ..recipients.add(noticeFormState.institution)
+    ..recipients.add(noticeFormState.institutionEmail)
     ..bccRecipients.add(Address('radautiulcivic@gmail.com'))
     ..subject = 'Petiție ${noticeFormState.subject} - aplicația e-Rădăuți'
     ..html = textDescription;
@@ -93,10 +93,14 @@ Future<void> sendMessage(
 
 void addToFirebase(NoticeFormState noticeFormState) {
   Map<dynamic, dynamic> fbMap = {
-    'title': noticeFormState.description.toString(),
+    'description': noticeFormState.description.toString(),
     'lat': noticeFormState.position.latitude,
     'long': noticeFormState.position.longitude,
-    'status': 'În lucru'
+    'status': 'În lucru',
+    'institutia': noticeFormState.institution,
+    'categoria': noticeFormState.typeNmae,
+    'subject': noticeFormState.subject,
+    'iconIndex': noticeFormState.typeIndex,
   };
   databaseRef.push().set(fbMap);
 }

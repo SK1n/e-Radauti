@@ -30,11 +30,11 @@ class NoticeFormUi extends StatelessWidget {
               children: [
                 NameTextField(),
                 InstitutionDropDown(),
-                // Padding(
-                //   child: Text('Alegeti o categorie de sesizare'),
-                //   padding: EdgeInsets.only(top: 20),
-                // ),
-                // TypeDropDown(),
+                Padding(
+                  child: Text('Alegeti o categorie de sesizare'),
+                  padding: EdgeInsets.only(top: 20),
+                ),
+                TypeDropDown(),
                 SubjectTextField(),
                 DescriptionTextField(),
                 PhoneNumberTextField(),

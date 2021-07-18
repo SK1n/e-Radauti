@@ -17,9 +17,7 @@ class AppBarUi extends StatelessWidget {
         );
 
   Widget build(BuildContext context) {
-    return SliverOverlapAbsorber(
-      handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-      sliver: SliverAppBar(
+    return SliverAppBar(
         pinned: pinned,
         floating: true,
         elevation: 10,
@@ -55,8 +53,6 @@ class AppBarUi extends StatelessWidget {
               ),
             )
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
