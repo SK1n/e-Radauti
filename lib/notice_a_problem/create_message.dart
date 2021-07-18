@@ -93,12 +93,14 @@ Future<void> sendMessage(
 
 void addToFirebase(NoticeFormState noticeFormState) {
   Map<dynamic, dynamic> fbMap = {
-    'title': noticeFormState.description.toString(),
+    'description': noticeFormState.description.toString(),
     'lat': noticeFormState.position.latitude,
     'long': noticeFormState.position.longitude,
     'status': 'În lucru',
-    'Institutia': noticeFormState.institution,
-    'Categoria': noticeFormState.typeNmae,
+    'institutia': noticeFormState.institution,
+    'categoria': noticeFormState.typeNmae,
+    'subject': noticeFormState.subject,
+    'iconIndex': noticeFormState.typeIndex,
   };
   databaseRef.push().set(fbMap);
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class NoticeFormState extends ChangeNotifier {
   String _name;
@@ -21,6 +22,7 @@ class NoticeFormState extends ChangeNotifier {
   String get email => _email;
   String get typeNmae => _typeName;
   String get institution => _institution;
+
   int get typeIndex => _typeIndex;
   Position get position => _position;
 
