@@ -1,6 +1,10 @@
+import 'dart:typed_data';
+import 'dart:ui' as ui;
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutterapperadauti/notice_a_problem/widgets/map_legend.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
@@ -26,19 +30,19 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
   CustomInfoWindowController _customInfoWindowController =
       CustomInfoWindowController();
 
-  Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
-  BitmapDescriptor iconIllegalConstructions;
-  BitmapDescriptor iconBin;
-  BitmapDescriptor iconCarAbandonned;
-  BitmapDescriptor iconPublicDisturbance;
-  BitmapDescriptor iconPublicLight;
-  BitmapDescriptor iconSpecialPeople;
-  BitmapDescriptor iconNoSign;
-  BitmapDescriptor iconPolution;
-  BitmapDescriptor iconUtilityProblems;
-  BitmapDescriptor iconHealth;
-  BitmapDescriptor iconPolice;
-  BitmapDescriptor iconPitfall;
+  Uint8List iconIllegalConstructions;
+  Uint8List iconBin;
+  Uint8List iconCarAbandonned;
+  Uint8List iconPublicDisturbance;
+  Uint8List iconPublicLight;
+  Uint8List iconSpecialPeople;
+  Uint8List iconNoSign;
+  Uint8List iconPolution;
+  Uint8List iconUtilityProblems;
+  Uint8List iconHealth;
+  Uint8List iconPolice;
+  Uint8List iconPitfall;
+  Uint8List iconDefaultMarker;
 
   @override
   void initState() {
@@ -73,66 +77,70 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
           slivers: [
             SliverToBoxAdapter(
               child: Stack(children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 400,
-                  child: GoogleMap(
-                    gestureRecognizers: Set()
-                      ..add(Factory<EagerGestureRecognizer>(
-                          () => EagerGestureRecognizer())),
-                    //scrollGesturesEnabled: true,
-                    mapType: MapType.normal,
-
-                    initialCameraPosition: NoticeMapUi._cameraPosition,
-                    onTap: (position) {
-                      _customInfoWindowController.hideInfoWindow();
-                    },
-                    onCameraMove: (position) {
-                      _customInfoWindowController.onCameraMove();
-                    },
-                    onMapCreated: (controller) {
-                      _customInfoWindowController.googleMapController =
-                          controller;
-                      databaseRef.once().then((snapshot) {
-                        Map<dynamic, dynamic> values = snapshot.value;
-                        values.forEach((key, value) {
-                          debugPrint('data: ${value['title']}');
-                          debugPrint('key: ${key.toString()}');
-                          markerNotifier.markerMap(
-                            MarkerId(key),
-                            Marker(
-                              icon: switchIcon(value["iconIndex"]),
-                              onTap: () {
-                                _customInfoWindowController.addInfoWindow(
-                                  Container(
-                                    decoration:
-                                        BoxDecoration(color: Colors.white),
-                                    child: Column(
-                                      children: [
-                                        Text('${value["title"]}'),
-                                        Text('status: ${value["status"]}'),
-                                        Text(
-                                            'Lat: ${value["lat"]}, Long: ${value["long"]}'),
-                                      ],
-                                    ),
+                Card(
+                  margin: EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 400,
+                      child: GoogleMap(
+                        gestureRecognizers: Set()
+                          ..add(Factory<EagerGestureRecognizer>(
+                              () => EagerGestureRecognizer())),
+                        //scrollGesturesEnabled: true,
+                        mapType: MapType.normal,
+                        initialCameraPosition: NoticeMapUi._cameraPosition,
+                        onTap: (position) {
+                          _customInfoWindowController.hideInfoWindow();
+                        },
+                        onCameraMove: (position) {
+                          _customInfoWindowController.onCameraMove();
+                        },
+                        onMapCreated: (controller) {
+                          _customInfoWindowController.googleMapController =
+                              controller;
+                          databaseRef.once().then((snapshot) {
+                            Map<dynamic, dynamic> values = snapshot.value;
+                            values.forEach((key, value) {
+                              markerNotifier.markerMap(
+                                MarkerId(key),
+                                Marker(
+                                  icon: BitmapDescriptor.fromBytes(
+                                      switchIcon(value["iconIndex"])),
+                                  onTap: () {
+                                    _customInfoWindowController.addInfoWindow(
+                                      Container(
+                                        decoration:
+                                            BoxDecoration(color: Colors.white),
+                                        child: Column(
+                                          children: [
+                                            Text('${value["title"]}'),
+                                            Text('status: ${value["status"]}'),
+                                            Text(
+                                                'Lat: ${value["lat"]}, Long: ${value["long"]}'),
+                                          ],
+                                        ),
+                                      ),
+                                      LatLng(value['lat'], value['long']),
+                                    );
+                                  },
+                                  markerId: MarkerId(key),
+                                  position: LatLng(
+                                    value['lat'],
+                                    value['long'],
                                   ),
-                                  LatLng(value['lat'], value['long']),
-                                );
-                              },
-                              markerId: MarkerId(key),
-                              position: LatLng(
-                                value['lat'],
-                                value['long'],
-                              ),
-                            ),
-                          );
-                        });
-                      });
-                    },
-                    markers: Set<Marker>.of(markerNotifier.marker.values),
+                                ),
+                              );
+                            });
+                          });
+                        },
+                        markers: Set<Marker>.of(markerNotifier.marker.values),
+                      ),
+                    ),
                   ),
                 ),
                 CustomInfoWindow(
+                  offset: 25,
                   controller: _customInfoWindowController,
                   width: 300,
                 ),
@@ -154,6 +162,7 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
   }
 
   switchIcon(int icon) {
+    debugPrint('iconIndex: $icon');
     switch (icon) {
       case 1:
         return iconCarAbandonned;
@@ -191,71 +200,37 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
         return iconNoSign;
         break;
       default:
-        return BitmapDescriptor.defaultMarker;
+        return iconDefaultMarker;
     }
   }
 
   getIcon() async {
-    var iconIllegalConstructions = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(
-          devicePixelRatio: 3.0,
-        ),
-        "assets/images/mapIcons/ilegal_constructions.png");
-    var iconBin = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(
-          devicePixelRatio: 3.0,
-        ),
-        "assets/images/mapIcons/bin.png");
-    var iconCarAbandonned = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(
-          devicePixelRatio: 3.0,
-        ),
-        "assets/images/mapIcons/car_abandonned.png");
-    var iconPublicDisturbance = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(
-          devicePixelRatio: 3.0,
-        ),
-        "assets/images/mapIcons/deranj_ordinea_publica.png");
-    var iconPublicLight = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(
-          devicePixelRatio: 3.0,
-        ),
-        "assets/images/mapIcons/iluminat_public.png");
-    var iconSpecialPeople = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(
-          devicePixelRatio: 3.0,
-        ),
-        "assets/images/mapIcons/lipsa_loc_handicap.png");
-    var iconNoSign = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(
-          devicePixelRatio: 3.0,
-        ),
-        "assets/images/mapIcons/lipsa_semn_circulatie.png");
-    var iconPolution = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(
-          devicePixelRatio: 3.0,
-        ),
-        "assets/images/mapIcons/poluare.png");
-    var iconUtilityProblems = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(
-          devicePixelRatio: 3.0,
-        ),
-        "assets/images/mapIcons/probleme_utilitati.png");
-    var iconHealth = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(
-          devicePixelRatio: 3.0,
-        ),
-        "assets/images/mapIcons/sanatate.png");
-    var iconPolice = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(
-          devicePixelRatio: 3.0,
-        ),
-        "assets/images/mapIcons/siguranta.png");
-    var iconPitfall = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(
-          devicePixelRatio: 3.0,
-        ),
-        "assets/images/mapIcons/pitfall.png");
+    final Uint8List iconIllegalConstructions = await getBytesFromAsset(
+        'assets/images/mapIcons/ilegal_constructions.png', 50);
+    final Uint8List iconBin =
+        await getBytesFromAsset('assets/images/mapIcons/bin.png', 50);
+    final Uint8List iconCarAbandonned = await getBytesFromAsset(
+        'assets/images/mapIcons/car_abandonned.png', 50);
+    final Uint8List iconPublicDisturbance = await getBytesFromAsset(
+        'assets/images/mapIcons/deranj_ordinea_publica.png', 50);
+    final Uint8List iconPublicLight = await getBytesFromAsset(
+        'assets/images/mapIcons/iluminat_public.png', 50);
+    final Uint8List iconSpecialPeople = await getBytesFromAsset(
+        'assets/images/mapIcons/lipsa_loc_handicap.png', 50);
+    final Uint8List iconNoSign = await getBytesFromAsset(
+        'assets/images/mapIcons/lipsa_semn_circulatie.png', 50);
+    final Uint8List iconPolution =
+        await getBytesFromAsset('assets/images/mapIcons/poluare.png', 50);
+    final Uint8List iconUtilityProblems = await getBytesFromAsset(
+        'assets/images/mapIcons/probleme_utilitati.png', 50);
+    final Uint8List iconHealth =
+        await getBytesFromAsset('assets/images/mapIcons/sanatate.png', 50);
+    final Uint8List iconPolice =
+        await getBytesFromAsset('assets/images/mapIcons/siguranta.png', 50);
+    final Uint8List iconPitfall =
+        await getBytesFromAsset('assets/images/mapIcons/pitfall.png', 50);
+    final Uint8List iconDefaultMarker = await getBytesFromAsset(
+        'assets/images/mapIcons/default_marker.png', 50);
     setState(() {
       this.iconIllegalConstructions = iconIllegalConstructions;
       this.iconBin = iconBin;
@@ -269,6 +244,17 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
       this.iconHealth = iconHealth;
       this.iconPolice = iconPolice;
       this.iconPitfall = iconPitfall;
+      this.iconDefaultMarker = iconDefaultMarker;
     });
+  }
+
+  Future<Uint8List> getBytesFromAsset(String path, int width) async {
+    ByteData data = await rootBundle.load(path);
+    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
+        targetWidth: width);
+    ui.FrameInfo fi = await codec.getNextFrame();
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))
+        .buffer
+        .asUint8List();
   }
 }
