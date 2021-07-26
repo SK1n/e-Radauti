@@ -7,11 +7,13 @@ class MapLegend extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        height: MediaQuery.of(context).size.height - 500,
+        margin: EdgeInsets.all(8.0),
+        //height: MediaQuery.of(context).size.height - 500,
         child: GridView.count(
+          shrinkWrap: true,
           crossAxisCount: 2,
           primary: true,
-          physics: ScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          physics: ScrollPhysics(parent: NeverScrollableScrollPhysics()),
           childAspectRatio: 2.0,
           children: [
             ListTileLegendMap(icon: 'bin', title: 'Gunoi neridicat'),
