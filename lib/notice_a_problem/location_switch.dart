@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
 import 'package:flutterapperadauti/widgets/src/checkGeolocatorPermission.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,9 @@ class LocationSwitch extends StatelessWidget {
         context.read<LocationSwitchState>().updateState(value);
         value = context.read<LocationSwitchState>().value;
         // ignore: unnecessary_statements
-        value ? checkPermissions(context) : null;
+        value
+            ? checkPermissions(context)
+            : context.read<NoticeFormState>().getPosition(null);
       },
     );
   }
