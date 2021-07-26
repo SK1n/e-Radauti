@@ -14,6 +14,7 @@ import 'package:flutterapperadauti/notice_a_problem/widgets/type_drop_down.dart'
 import 'package:flutterapperadauti/state/loading_notifier.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:provider/provider.dart';
+import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
 
 class NoticeFormUi extends StatelessWidget {
   final _formKey = GlobalKey<FormBuilderState>();
@@ -41,9 +42,15 @@ class NoticeFormUi extends StatelessWidget {
                 EmailTextField(),
                 LocationSwitch(),
                 ImagePickerField(),
-                SendButton(
-                  formKey: _formKey,
-                ),
+                context.watch<LocationSwitchState>().value &&
+                        context.watch<NoticeFormState>().position == null
+                    ? SendButton(
+                        disabled: true,
+                        formKey: _formKey,
+                      )
+                    : SendButton(
+                        formKey: _formKey,
+                      )
               ],
             ),
     );
