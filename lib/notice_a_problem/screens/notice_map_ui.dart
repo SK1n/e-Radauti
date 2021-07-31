@@ -18,7 +18,7 @@ class NoticeMapUi extends StatefulWidget {
   const NoticeMapUi({Key key}) : super(key: key);
 
   static final CameraPosition _cameraPosition = CameraPosition(
-      target: LatLng(47.845102094508654, 25.91661650843215), zoom: 15.0);
+      target: LatLng(47.845102094508654, 25.91661650843215), zoom: 11.0);
 
   @override
   _NoticeMapUiState createState() => _NoticeMapUiState();
@@ -113,11 +113,20 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
                                         decoration:
                                             BoxDecoration(color: Colors.white),
                                         child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
-                                            Text('${value["title"]}'),
-                                            Text('status: ${value["status"]}'),
                                             Text(
-                                                'Lat: ${value["lat"]}, Long: ${value["long"]}'),
+                                                'Categorie: ${value["categoria"]}'),
+                                            Text(
+                                                'Descriere: ${value["description"]}'),
+                                            Text('Status: ${value["status"]}'),
+                                            Text(
+                                                'Institutia: ${value["institutia"]}'),
+                                            Text(
+                                                'Subject: ${value["subject"]}'),
+                                            Text(
+                                                'Lat: ${value["lat"].toString().substring(0, 7)}, Long: ${value["long"].toString().substring(0, 7)}'),
                                           ],
                                         ),
                                       ),
@@ -140,9 +149,10 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
                   ),
                 ),
                 CustomInfoWindow(
-                  offset: 25,
+                  offset: 30,
                   controller: _customInfoWindowController,
                   width: 300,
+                  height: 100,
                 ),
               ]),
             ),
