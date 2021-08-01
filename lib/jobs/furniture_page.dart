@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/jobs/announcements_web_view.dart';
 import 'package:flutterapperadauti/jobs/job_model.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
@@ -42,13 +42,18 @@ class _FurniturePageState extends State<FurniturePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBarModel()
-          .loadAppBar(context, 'Anunțuri', Icons.announcement, _scaffoldKey),
       drawer: NavDrawer(),
-      body: Card(
-        elevation: 10.0,
-        margin: EdgeInsets.all(10),
-        child: FutureBuilder(
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            AppBarUi(
+              content: 'Anunțuri',
+              leading: Icons.announcement,
+              scaffoldKey: _scaffoldKey,
+            )
+          ];
+        },
+        body: FutureBuilder(
           future: _getJobs(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
@@ -61,12 +66,11 @@ class _FurniturePageState extends State<FurniturePage> {
                           children: [
                             Container(
                               constraints: BoxConstraints(
-                                maxHeight: 60,
+                                maxHeight: 70,
                                 minHeight: 50,
                               ),
                               width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.only(
-                                  left: 10, right: 10, bottom: 10),
+                              margin: EdgeInsets.only(left: 10, right: 10),
                               child: TextButton(
                                 style: ButtonStyle(
                                     backgroundColor:

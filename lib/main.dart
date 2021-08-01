@@ -5,7 +5,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutterapperadauti/notice_a_problem/layout_notice_a_problem.dart';
+import 'package:flutterapperadauti/notice_a_problem/screens/notice_map_ui.dart';
+import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
+import 'package:flutterapperadauti/notice_a_problem/screens/main_notice_ui.dart';
+import 'package:flutterapperadauti/state/loading_notifier.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/transport/Train.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
@@ -20,6 +23,7 @@ import 'package:flutterapperadauti/transport/Transport.dart';
 import 'package:flutterapperadauti/volunteer/volunteer.dart';
 import 'jobs/furniture_page.dart';
 import 'jobs/job_page.dart';
+import 'jobs/local_announcements.dart';
 import 'town_hall/council_meetings.dart';
 import 'town_hall/leaders.dart';
 import 'town_hall/local_council.dart';
@@ -34,12 +38,17 @@ import 'usefull_numbers/public_institutions.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'widgets/src/nav_drawer.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:provider/provider.dart';
+import 'package:flutterapperadauti/widgets/src/checkGeolocatorPermission.dart';
+import 'package:flutterapperadauti/notice_a_problem/location_switch.dart';
+import 'package:flutterapperadauti/state/marker_notifier.dart';
 
-//import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   print('Handling a background message ${message.messageId}');
 }
+
+final GlobalKey<NavigatorState> _navigator = new GlobalKey<NavigatorState>();
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   'high_importance_channel', // id
@@ -54,6 +63,27 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('app_logo_final');
+
+  /// Note: permissions aren't requested here just to demonstrate that can be
+  /// done later
+  final IOSInitializationSettings initializationSettingsIOS =
+      IOSInitializationSettings(
+    requestAlertPermission: false,
+    requestBadgePermission: false,
+    requestSoundPermission: false,
+  );
+  final InitializationSettings initializationSettings = InitializationSettings(
+    android: initializationSettingsAndroid,
+    iOS: initializationSettingsIOS,
+  );
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+      onSelectNotification: (String payload) async {
+    debugPrint('payload: $payload');
+
+    _navigator.currentState.pushNamed('/events');
+  });
 
   /// Create an Android Notification Channel.
   ///
@@ -68,12 +98,26 @@ Future<void> main() async {
     badge: true,
     sound: true,
   );
-  runApp(MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<IsLoading>(
+        create: (_) => IsLoading(),
+      ),
+      ChangeNotifierProvider<NoticeFormState>(
+        create: (_) => NoticeFormState(),
+      ),
+      ChangeNotifierProvider<LocationSwitchState>(
+          create: (_) => LocationSwitchState()),
+      ChangeNotifierProvider<MarkerNotifier>(
+        create: (_) => MarkerNotifier(),
+      ),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -91,6 +135,8 @@ class MyApp extends StatelessWidget {
         '/partner': (BuildContext context) => Partner(),
         '/contractors': (BuildContext context) => Contractors(),
         '/localAuthorities': (BuildContext context) => LocalAuthorities(),
+        '/localAnnouncements': (BuildContext context) =>
+            LocalAnounnouncements(),
         '/numbers': (BuildContext context) => HomePageNumbers(),
         '/miscellaneous': (BuildContext context) => Miscellaneous(),
         '/publicInstitutions': (BuildContext context) => PublicInstitutions(),
@@ -104,11 +150,13 @@ class MyApp extends StatelessWidget {
         '/localCouncil': (BuildContext context) => LocalCouncil(),
         '/localLegislation': (BuildContext context) => LocalLegislation(),
         '/townHall': (BuildContext context) => TownHallMain(),
-        '/noticeProblem': (BuildContext context) => LayoutNoticeProblem(),
+        '/noticeProblem': (BuildContext context) => MainNoticeUi(),
+        '/noticeMap': (BuildContext context) => NoticeMapUi(),
         '/events': (BuildContext context) => EventsMain(),
         '/air': (BuildContext context) => AirQualityMain(),
         '/volunteer': (BuildContext context) => VolunteerPage(),
       },
+      navigatorKey: _navigator,
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
         primaryColor: Color(0xFFFFFFFF),
@@ -124,6 +172,7 @@ class MenuScreen extends StatefulWidget {
 
 class _MyAppState extends State<MenuScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     super.initState();
@@ -134,7 +183,7 @@ class _MyAppState extends State<MenuScreen> {
         .getInitialMessage()
         .then((RemoteMessage message) {
       if (message != null) {
-        Navigator.pushNamed(context, '/');
+        navigate(context, message.data['view']);
       }
     });
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
@@ -150,35 +199,59 @@ class _MyAppState extends State<MenuScreen> {
                 channel.id,
                 channel.name,
                 channel.description,
-                icon: 'launch_background',
+                icon: 'app_logo_final',
               ),
-            ));
+            ),
+            payload: message.data["view"]);
       }
     });
-    FirebaseMessaging.instance.subscribeToTopic('all');
+    FirebaseMessaging.instance.subscribeToTopic('test');
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       debugPrint('A new onMessageOpenedApp event was published!');
-
-      if (message.data['view'] == 'air_quality') {
-        Navigator.pushNamed(context, '/air');
-      }
-      if (message.data['view'] == 'events') {
-        Navigator.pushNamed(context, '/events');
-      }
-      if (message.data['view'] == 'notice_problem') {
-        Navigator.pushNamed(context, '/noticeProblem');
-      }
-      if (message.data['view'] == 'announcement') {
-        Navigator.pushNamed(context, '/announcement');
-      }
-      if (message.data['view'] == 'council') {
-        Navigator.pushNamed(context, '/councilMeetings');
-      }
-      if (message.data['view'] == 'local_authorities') {
-        Navigator.pushNamed(context, '/localAuthorities');
-      }
+      navigate(context, message.data['view']);
     });
     getToken();
+    //checkPermissions(context);
+  }
+
+  void navigate(BuildContext context, String view) {
+    switch (view) {
+      case 'air_qulity':
+        {
+          Navigator.pushNamed(context, '/air');
+        }
+        break;
+      case 'events':
+        {
+          Navigator.pushNamed(context, '/events');
+        }
+        break;
+      case 'notice_problem':
+        {
+          Navigator.pushNamed(context, '/noticeProblem');
+        }
+        break;
+      case 'announcement':
+        {
+          Navigator.pushNamed(context, '/localAnnouncements');
+        }
+        break;
+      case 'council':
+        {
+          Navigator.pushNamed(context, '/councilMeetings');
+        }
+        break;
+      case 'local_authorities':
+        {
+          Navigator.pushNamed(context, '/localAuthorities');
+        }
+        break;
+      default:
+        {
+          Navigator.pushNamed(context, '/');
+        }
+        break;
+    }
   }
 
   @override

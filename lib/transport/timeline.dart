@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
@@ -25,14 +25,18 @@ class _TimelineRouteState extends State<TimelineRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: _scaffoldKey,
-        appBar: AppBarModel()
-            .loadAppBar(context, '${widget.title}', Icons.train, _scaffoldKey),
         drawer: NavDrawer(),
-        body: Card(
-          margin: EdgeInsets.all(10),
-          shadowColor: Colors.grey,
-          elevation: 5,
-          child: ListView.builder(
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              AppBarUi(
+                content: '${widget.title}',
+                leading: Icons.train,
+                scaffoldKey: _scaffoldKey,
+              )
+            ];
+          },
+          body: ListView.builder(
             itemCount: widget.trainRoute.length,
             itemBuilder: (BuildContext context, int index) {
               if (index == 0) {

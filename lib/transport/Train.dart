@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/constants/trainRoutes.dart';
-import 'package:flutterapperadauti/widgets/src/listTile.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
+import 'package:flutterapperadauti/widgets/src/train_list_tile.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-
-import '../widgets/src/appBarModel.dart';
 
 // ! If u want to change the ListTile design go to lib/widgets/src/listTile
 
@@ -20,11 +19,18 @@ class _TrainState extends State<Train> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBarModel()
-          .loadAppBar(context, 'Trenuri', Icons.train, _scaffoldKey),
       drawer: NavDrawer(),
-      body: SingleChildScrollView(
-        child: Container(
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            AppBarUi(
+              content: 'Trenuri',
+              leading: Icons.train,
+              scaffoldKey: _scaffoldKey,
+            )
+          ];
+        },
+        body: SingleChildScrollView(
           child: Column(
             children: [
               ListTileRoute(

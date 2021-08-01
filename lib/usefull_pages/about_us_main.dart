@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/usefull_pages/tab_bar_view/tab_bar.dart';
 import 'package:flutterapperadauti/usefull_pages/usefull_pages_widget/widget_about_model.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 
 class AboutUsMain extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -14,11 +14,20 @@ class AboutUsMain extends StatelessWidget {
       child: Scaffold(
         key: _scaffoldKey,
         drawer: NavDrawer(),
-        appBar: AppBarModel().loadAppBar(
-            context, 'Despre noi', Icons.add_box_outlined, _scaffoldKey),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        floatingActionButton: WidgetAboutModel().widgetFloatingActionButton(context),
-        body: TabDemo(),
+        floatingActionButton:
+            WidgetAboutModel().widgetFloatingActionButton(context),
+        body: NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return [
+                AppBarUi(
+                  content: 'Despre Noi',
+                  leading: Icons.add_box_outlined,
+                  scaffoldKey: _scaffoldKey,
+                )
+              ];
+            },
+            body: TabDemo()),
       ),
     );
   }

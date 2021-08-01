@@ -22,10 +22,16 @@ class AirQualityLegend extends StatelessWidget {
                             //disabledColor: Colors.grey[100],
                             //onPressed: () {},
                             //onPressed: null ,
-                            icon: Icon(Ionicons.ios_arrow_down, color: Colors.blue,),
+                            icon: Icon(
+                              Ionicons.ios_arrow_down,
+                              color: Colors.black,
+                            ),
                             label: Container(
                                 width: MediaQuery.of(context).size.width - 100,
-                                child: Text("Unde este instalat aparatul?", style: TextStyle(color: Colors.blue),))),
+                                child: Text(
+                                  "Unde este instalat aparatul?",
+                                  style: TextStyle(color: Colors.black),
+                                ))),
                       ),
                     ),
                     expanded: ExpandableButton(
@@ -72,10 +78,16 @@ class AirQualityLegend extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         // ignore: missing_required_param
                         child: TextButton.icon(
-                          icon: Icon(Ionicons.ios_arrow_down, color: Colors.blue,),
+                          icon: Icon(
+                            Ionicons.ios_arrow_down,
+                            color: Colors.black,
+                          ),
                           label: Container(
                               width: MediaQuery.of(context).size.width - 100,
-                              child: Text("Ce sunt particulele PM2,5?", style: TextStyle(color: Colors.blue),)),
+                              child: Text(
+                                "Ce sunt particulele PM2,5?",
+                                style: TextStyle(color: Colors.black),
+                              )),
                         ),
                       ),
                     ),
@@ -122,10 +134,16 @@ class AirQualityLegend extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         // ignore: missing_required_param
                         child: TextButton.icon(
-                          icon: Icon(Ionicons.ios_arrow_down, color: Colors.blue,),
+                          icon: Icon(
+                            Ionicons.ios_arrow_down,
+                            color: Colors.black,
+                          ),
                           label: Container(
                               width: MediaQuery.of(context).size.width - 100,
-                              child: Text("Ce înseamnă culoarea fundalului?", style: TextStyle(color: Colors.blue),)),
+                              child: Text(
+                                "Ce înseamnă culoarea fundalului?",
+                                style: TextStyle(color: Colors.black),
+                              )),
                         ),
                       ),
                     ),
@@ -314,11 +332,16 @@ class AirQualityLegend extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         // ignore: missing_required_param
                         child: TextButton.icon(
-                          icon: Icon(Ionicons.ios_arrow_down, color: Colors.blue,),
+                          icon: Icon(
+                            Ionicons.ios_arrow_down,
+                            color: Colors.black,
+                          ),
                           label: Container(
                               width: MediaQuery.of(context).size.width - 100,
                               child: Text(
-                                  "Ce spune legea legat de calitatea aerului?", style: TextStyle(color: Colors.blue),)),
+                                "Ce spune legea legat de calitatea aerului?",
+                                style: TextStyle(color: Colors.black),
+                              )),
                         ),
                       ),
                     ),
@@ -367,10 +390,16 @@ class AirQualityLegend extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         // ignore: missing_required_param
                         child: TextButton.icon(
-                          icon: Icon(Ionicons.ios_arrow_down, color: Colors.blue,),
+                          icon: Icon(
+                            Ionicons.ios_arrow_down,
+                            color: Colors.black,
+                          ),
                           label: Container(
                               width: MediaQuery.of(context).size.width - 100,
-                              child: Text("Unde găsesc mai multe informații?", style: TextStyle(color: Colors.blue),)),
+                              child: Text(
+                                "Unde găsesc mai multe informații?",
+                                style: TextStyle(color: Colors.black),
+                              )),
                         ),
                       ),
                     ),

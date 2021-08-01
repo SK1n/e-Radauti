@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/events/model/event.dart';
 
 import 'package:flutterapperadauti/events/ui/event_widget/new_event_widget.dart';
+import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 
 class NewEvents extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldState;
@@ -111,14 +112,7 @@ class _NewEventsState extends State<NewEvents> {
               ),
             );
           }
-          return Container(
-            height: MediaQuery.of(context).size.height,
-            child: Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
-              ),
-            ),
-          );
+          return LoadingScreen();
         },
       ),
     );

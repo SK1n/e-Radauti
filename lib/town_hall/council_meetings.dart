@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:http/http.dart' as http;
 import 'package:expandable/expandable.dart';
@@ -144,72 +144,67 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBarModel().loadAppBar(context, 'Ședințe de Consiliu local',
-          Icons.location_city, _scaffoldKey),
-      drawer: NavDrawer(),
-      body: ExpandableTheme(
-        data: const ExpandableThemeData(
-          iconColor: Color(0xAA38A49C), //Colors.blue
-          useInkWell: true,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Container(
-                child: FutureBuilder<List>(
-                  future: futureL,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return SingleChildScrollView(
-                        child: Column(
-                          children: <Widget>[
-                            SizedBox(
-                              height: 20,
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width - 30,
-                              child: HtmlWidget(
-                                snapshot.data[0]['linkVideo'],
-                                webView: true,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            fwButton(snapshot.data[0]['linkPDF']),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            fw(snapshot.data[1], context),
-                          ],
-                        ),
-                      );
-                    } else if (snapshot.hasError) {
-                      return Container(
-                        height: MediaQuery.of(context).size.height,
-                        child: Center(
-                          child: Text("${snapshot.error}"),
-                        ),
-                      );
-                    }
-                    return Container(
-                      height: MediaQuery.of(context).size.height,
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
+        key: _scaffoldKey,
+        drawer: NavDrawer(),
+        body: NestedScrollView(
+          headerSliverBuilder:
+              (BuildContext context, bool innerBoxIsScrollable) {
+            return [
+              AppBarUi(
+                content: 'Ședințe de Consiliu local',
+                leading: Icons.location_city,
+                scaffoldKey: _scaffoldKey,
+              )
+            ];
+          },
+          body: FutureBuilder<List>(
+            future: futureL,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 20,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width - 30,
+                        child: HtmlWidget(
+                          snapshot.data[0]['linkVideo'],
+                          webView: true,
                         ),
                       ),
-                    );
-                  },
+                      SizedBox(
+                        height: 20,
+                      ),
+                      fwButton(snapshot.data[0]['linkPDF']),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      fw(snapshot.data[1], context),
+                    ],
+                  ),
+                );
+              } else if (snapshot.hasError) {
+                return Container(
+                  height: MediaQuery.of(context).size.height,
+                  child: Center(
+                    child: Text("${snapshot.error}"),
+                  ),
+                );
+              }
+              return Container(
+                height: MediaQuery.of(context).size.height,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
+                  ),
                 ),
-              ),
-            ],
+              );
+            },
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
 

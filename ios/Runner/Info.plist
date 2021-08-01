@@ -30,6 +30,8 @@
 	<string></string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
@@ -42,6 +44,8 @@
 	<string>Accesarea aplicației la agendă se face atunci când utilizatorul apelează un număr de telefon direct din aplicație sau pentru adăugarea unui număr noi din aplicație în telefon.</string>
 	<key>NSFileProviderDomainUsageDescription</key>
 	<string></string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>La sesizează o problemă, utilizatorul poate selecta să fie folosită locația de pe GPS. Din acest motiv, aplicația are nevoie să acceseze locația.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Deși aplicația cere această permisiune, aplicația nu folosește aceasta permisiune, unele pachete ar putea cere această permisiune.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

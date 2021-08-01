@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 
@@ -58,15 +60,27 @@ class NavDrawer extends StatelessWidget {
         if (following != null) {
           Navigator.pushNamed(context, following);
         } else {
-          showAboutDialog(
-              context: context,
-              applicationName: 'e-Radauti',
-              applicationVersion: 'Version: 2.4',
-              applicationIcon: Image.asset(
-                'assets/logo_images/app_logo_final.png',
-                width: 24,
-                height: 24,
-              ));
+          if (Platform.isIOS) {
+            showAboutDialog(
+                context: context,
+                applicationName: 'e-Radauti',
+                applicationVersion: 'Version: 2.1.2 (1)',
+                applicationIcon: Image.asset(
+                  'assets/logo_images/app_logo_final.png',
+                  width: 24,
+                  height: 24,
+                ));
+          } else if (Platform.isAndroid) {
+            showAboutDialog(
+                context: context,
+                applicationName: 'e-Radauti',
+                applicationVersion: 'Version: 2.5.0 (45)',
+                applicationIcon: Image.asset(
+                  'assets/logo_images/app_logo_final.png',
+                  width: 24,
+                  height: 24,
+                ));
+          }
         }
       },
     );

@@ -5,12 +5,12 @@ import 'package:mailer/smtp_server.dart';
 class LoadMailer {
   Future<bool> tryLoadMailer(_nameController, _recipientController,
       _bodyController, _emailController) async {
-    String username = 'radautiulcivic@gmail.com';
-    String password = 'pass123.CIVIC';
+    String username = 'eradautiapp@gmail.com';
+    String password = 'e-Radauti123';
     // ignore: deprecated_member_use
     final smtpServer = gmail(username, password);
     final message = Message()
-      ..from = Address(username, _nameController.text)
+      ..from = Address(username, 'Radautiul Civic - @no-reply')
       ..recipients.add(_recipientController)
       ..subject = ' Formularul de contact - aplicația e-Rădăuți'
       ..html = 'Către,     Rădăuțul civic<br><br>Stimată doamnă/ Stimate domn,<br><br>'

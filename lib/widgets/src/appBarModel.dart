@@ -3,8 +3,9 @@ import 'package:flutter_icons/flutter_icons.dart';
 
 var appBarModel = AppBarModel();
 
+@deprecated
 class AppBarModel {
-  AppBar loadAppBar(context, title, icon, scaffoldKey) {
+  AppBar loadAppBar(context, title, icon, scaffoldKey, {TabBar tabBar}) {
     return AppBar(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -45,6 +46,7 @@ class AppBarModel {
           ),
         ),
       ],
+      bottom: tabBar != null ? tabBar : null,
     );
   }
 }

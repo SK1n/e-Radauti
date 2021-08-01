@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/jobs/local_announcements.dart';
-import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
+import 'package:flutterapperadauti/widgets/src/custom_list_tile.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePageJobs extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -12,240 +11,43 @@ class HomePageJobs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBarModel()
-          .loadAppBar(context, 'Anunțuri', Icons.announcement, _scaffoldKey),
       drawer: NavDrawer(),
-      body: SingleChildScrollView(
-        child: Column(
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            AppBarUi(
+              content: 'Anunțuri',
+              leading: Icons.announcement,
+              scaffoldKey: _scaffoldKey,
+            )
+          ];
+        },
+        body: ListView(
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(
-                left: 25,
-                right: 25,
-                bottom: 10,
-                top: 10,
-              ),
-              child: GestureDetector(
-                child: Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              height: 30,
-                              width: 30,
-                              child: SvgPicture.asset(
-                                  'assets/images/circle_194C80.svg'),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width - 120,
-                              padding: EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Text(
-                                'Anunțuri locale',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            top: 10,
-                          ),
-                          width: MediaQuery.of(context).size.width - 80,
-                          child: Text(
-                            'Anunțuri de la principalele instituții/servicii locale',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 5,
-                            style: TextStyle(
-                              color: Color(0xFF38A49C),
-                              fontSize: 15,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Color(0xFF979797),
-                      ),
-                    ),
-                  ],
-                ),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => LocalAnounnouncements()));
-                },
-              ),
+            CustomListTile(
+              content: 'Anunțuri locale',
+              subTitle:
+                  'Anunțuri de la principalele instituții\nAnunțuri de la servicii locale',
+              leadingIcon: Icons.circle,
+              leadingColor: Colors.blue,
+              route: '/localAnnouncements',
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: Container(
-                height: 1.0,
-                color: Color.fromRGBO(0, 0, 0, 0.1),
-              ),
+            CustomListTile(
+              content: 'Locuri de Muncă',
+              subTitle:
+                  'Locuri de muncă preluate de pe portalul www.eradauti.ro',
+              leadingIcon: Icons.circle,
+              leadingColor: Colors.amberAccent[100],
+              route: '/job',
             ),
-            Container(
-              padding: EdgeInsets.only(
-                left: 25,
-                right: 25,
-                bottom: 10,
-                top: 15,
-              ),
-              child: GestureDetector(
-                child: Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              height: 30,
-                              width: 30,
-                              child: SvgPicture.asset(
-                                  'assets/images/circle_FFDECC.svg'),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width - 120,
-                              padding: EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Text(
-                                'Locuri de Muncă',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            top: 10,
-                          ),
-                          width: MediaQuery.of(context).size.width - 80,
-                          child: Text(
-                            'Locuri de muncă preluate de pe portalul www.eradauti.ro',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 5,
-                            style: TextStyle(
-                              color: Color(0xFF38A49C),
-                              fontSize: 15,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Color(0xFF979797),
-                      ),
-                    ),
-                  ],
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, '/job');
-                },
-              ),
+            CustomListTile(
+              content: 'Imobiliare',
+              subTitle:
+                  'Anunțuri de imobiliare preluate de pe portalul www.eradauti.ro',
+              leadingIcon: Icons.circle,
+              leadingColor: Colors.brown[200],
+              route: '/furniture',
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: Container(
-                height: 1.0,
-                color: Color.fromRGBO(0, 0, 0, 0.1),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                left: 25,
-                right: 25,
-                bottom: 10,
-                top: 10,
-              ),
-              child: GestureDetector(
-                child: Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              height: 30,
-                              width: 30,
-                              child: SvgPicture.asset(
-                                  'assets/images/circle_69E781.svg'),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width - 120,
-                              padding: EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Text(
-                                'Imobiliare',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            top: 10,
-                          ),
-                          width: MediaQuery.of(context).size.width - 80,
-                          child: Text(
-                            'Anunțuri de imobiliare preluate de pe portalul www.eradauti.ro',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 5,
-                            style: TextStyle(
-                              color: Color(0xFF38A49C),
-                              fontSize: 15,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Color(0xFF979797),
-                      ),
-                    ),
-                  ],
-                ),
-                onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/furniture',
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: Container(
-                height: 1.0,
-                color: Color.fromRGBO(0, 0, 0, 0.1),
-              ),
-            ),
-
-            /*Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),*/
           ],
         ),
       ),
