@@ -178,7 +178,7 @@ class HomePageTransport extends StatelessWidget {
                               Container(
                                 child: Icon(
                                   Icons.directions_bus,
-                                  color: Color(0xFF979797),
+                                  color: Color(0x55FB6340),
                                 ),
                               ),
                               //),
@@ -190,7 +190,6 @@ class HomePageTransport extends StatelessWidget {
                                 child: Text(
                                   'Autobuz',
                                   style: TextStyle(
-                                    color: Color(0xFF979797),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
                                   ),
@@ -204,11 +203,11 @@ class HomePageTransport extends StatelessWidget {
                             ),
                             width: MediaQuery.of(context).size.width - 80,
                             child: Text(
-                              'În curând',
+                              'Lista autobuzelor Rădăuți - alte localtăți din  județul Suceava',
                               overflow: TextOverflow.ellipsis,
                               maxLines: 5,
                               style: TextStyle(
-                                color: Color(0xFF979797),
+                                color: Color(0xFF38A49C),
                                 fontSize: 15,
                               ),
                             ),
@@ -223,7 +222,10 @@ class HomePageTransport extends StatelessWidget {
                       ),
                     ],
                   ),
-                  onTap: null),
+                  onTap: (){
+                    Navigator.pushNamed(context, '/bus');
+                  },
+              ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
@@ -232,12 +234,6 @@ class HomePageTransport extends StatelessWidget {
                 color: Color.fromRGBO(0, 0, 0, 0.1),
               ),
             ),
-
-            /*Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),*/
           ],
         ),
       ),

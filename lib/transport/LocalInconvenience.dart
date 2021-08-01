@@ -1,293 +1,385 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:convert';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
+import 'package:http/http.dart' as http;
+import 'package:expandable/expandable.dart';
 
+Future<List> fetchBusList(String route) async{
+  Map<String, dynamic> fd;
+  http.Response r = await http.get('https://e-radauti-80139.firebaseio.com/Transport_Autobuz.json');
+  fd = json.decode(r.body);
+  final List<dynamic> response = [];
+
+  fd.forEach((key, value) {
+    if(route == key){
+      Map<String, dynamic> mapValue = {};
+      mapValue = value;
+      mapValue.forEach((key, value) {
+        response.add(value);
+      });
+    }
+  });
+  return response;
+}
+
+//2
+Widget fWidget(child, BuildContext context) {
+  Widget rWidget;
+  rWidget = Column(
+    children: <Widget>[
+      Row(
+        children: <Widget>[
+          Container(
+            width: 50.0,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 55.0,
+                  child: TimelineTile(
+                    indicatorStyle: IndicatorStyle(
+                      width: 8.0,
+                      color: Colors.white,
+                      iconStyle: IconStyle(
+                        iconData: Icons.trip_origin_rounded,
+                        fontSize: 15.0,
+                        color: Color(0xFFFB6340),
+                      ),
+                    ),
+                    alignment: TimelineAlign.manual,
+                    lineXY: 0.3,
+                    isFirst: true,
+                    beforeLineStyle: LineStyle(color: Color(0xFFFB6340),),
+                  ),
+                ),
+                Container(
+                  height: 55.0,
+                  child: TimelineTile(
+                    indicatorStyle: IndicatorStyle(
+                      width: 8.0,
+                      color: Colors.white,
+                      iconStyle: IconStyle(
+                        iconData: Icons.trip_origin_rounded,
+                        color: Color(0xFF38A49C),
+                        fontSize: 15.0,
+                      ),
+                    ),
+                    alignment: TimelineAlign.manual,
+                    lineXY: 0.3,
+                    isLast: true,
+                    beforeLineStyle: LineStyle(color: Color(0xFF38A49C),),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Column(
+            children: <Widget>[
+              Container(
+                width: MediaQuery.of(context).size.width - 90.0,
+                child: Text(
+                  child['statie plecare'],
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  //style: TextStyle(fontSize: ,),
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width - 90.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Card(
+                      color: Color(0xFFFB6340),
+                      child: Container(
+                        height: 28.0,
+                        child: Container(
+                          height: 22.0,
+                          child: FlatButton(
+                            color: Colors.deepOrange.shade200,
+                            textColor: Colors.white,
+                            disabledColor: Colors.deepOrange.shade200,
+                            disabledTextColor: Colors.white,
+                            splashColor: Colors.black26,
+                            onPressed: null,
+                            child: Text(
+                              child['durata'],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width - 90.0,
+                child: Text(
+                  child['statie sosire'],
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  //style: TextStyle(fontSize: ,),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+      Container(
+        width: MediaQuery.of(context).size.width - 35.0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Card(
+              child: Container(
+                height: 24.0,
+                child: FlatButton(
+                  color: Color(0xFF38A49C),
+                  textColor: Colors.white,
+                  disabledColor: Colors.grey,
+                  disabledTextColor: Colors.black,
+                  splashColor: Color(0x8838A49C),
+                  onPressed: child['telefon'] == null
+                      ? null
+                      : () {
+                    UrlLauncher.launch('tel://${child['telefon']}');
+                  },
+                  child: Row(
+                    children: <Widget>[
+                      Icon(Icons.phone),
+                      SizedBox(width: 5.0,),
+                      Text(
+                        child['telefon'] == null ? '-':child['telefon'],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              color: Color(0xFFFB6340),
+              child: Container(
+                height: 25.0,
+                child: Container(
+                  height: 24.0,
+                  child: FlatButton(
+                    color: Colors.deepOrange.shade200,
+                    textColor: Colors.white,
+                    disabledColor: Colors.deepOrange.shade200,
+                    disabledTextColor: Colors.white,
+                    splashColor: Colors.black26,
+                    onPressed: null,
+                    child: Text(
+                      'Zile de circulație: ' +
+                          child['zile de circulatie'],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      SizedBox(height: 5.0,),
+      Container(
+        width: MediaQuery.of(context).size.width - 45.0,
+        child: Text('Tip mijloc de transport - traseu: ' + child['tip auto - traseu']),
+      ),
+      SizedBox(height: 5.0,),
+      (child['dotari'] == null|| child['dotari'] == '-') ? Container() : Column(
+        children: <Widget>[
+          SizedBox(height: 5.0,),
+          Container(
+            width: MediaQuery.of(context).size.width - 45.0,
+            child: Text(
+              'Dotări: ' + child['dotari'],
+              //overflow: TextOverflow.ellipsis,
+              //maxLines: 5,
+            ),
+          ),
+          SizedBox(height: 5.0,),
+        ],
+      ),
+      Container(
+        width: MediaQuery.of(context).size.width - 35.0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Card(
+              color: Color(0xFFFB6340),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 5.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "Transportator",
+                          style: TextStyle(color: Colors.blue.shade100,),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width - 90.0,
+                          child: Center(
+                            child: Text(
+                              child['companie'],
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 3,
+                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12.0,),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ],
+  );
+
+  return rWidget;
+}
+
+//3
+Widget expandableWidget(child, childString, childWidget, BuildContext bC){
+  Widget result;
+  result = Column(
+    children: <Widget>[
+      ExpandableNotifier(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          width: MediaQuery.of(bC).size.width,
+          child: Card(
+            clipBehavior: Clip.antiAlias,
+            elevation: 1,
+            child: Container(
+              child: ScrollOnExpand(
+                scrollOnExpand: true,
+                scrollOnCollapse: false,
+                child: ExpandablePanel(
+                  theme: ExpandableThemeData(),
+                  header: Column(
+                    children: <Widget>[
+                      SizedBox(height: 5.0,),
+                      Text(
+                        '${childString}',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0, color: Colors.grey),
+                      ),
+                      SizedBox(height: 5.0,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Text('${child['ora plecare']}', style: TextStyle(color: Color(0xFF38A49C)),),
+                          Icon(Icons.directions_bus, color: Color(0x55FB6340),),
+                          Text('${child['ora sosire']}', style: TextStyle(color: Color(0xFF38A49C)),)
+                        ],
+                      ),
+                      //SizedBox(height: 5.0,),
+                    ],
+                  ),
+                  expanded: Container(child: childWidget,),
+                  builder: (_, collapsed, expanded){
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+                      child: Expandable(
+                        expanded: expanded,
+                        theme: ExpandableThemeData(),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+      SizedBox(height: 10.0,)
+    ],
+  );
+  return result;
+}
+
+//2
 class LocalInconvenience extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final String giveString;
+  LocalInconvenience({Key key, this.giveString,}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBarModel().loadAppBar(
-            context, 'Deranjamente', Icons.perm_phone_msg, _scaffoldKey),
-        drawer: NavDrawer(),
-        body: SingleChildScrollView(
-          padding: EdgeInsets.only(),
+      key: _scaffoldKey,
+      appBar: AppBarModel().loadAppBar(
+          context, 'Autobuz', Icons.directions_bus, _scaffoldKey),
+      drawer: NavDrawer(),
+      body: ExpandableTheme(
+        data: ExpandableThemeData(
+          iconColor: Color(0xAA38A49C),
+          useInkWell: true,
+        ),
+        child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              //1
               Container(
-                padding: EdgeInsets.only(
-                  left: 25,
-                  right: 25,
-                  bottom: 10,
-                  top: 15,
-                ),
-                child: Column(
-                  children: <Widget>[
-                    //1,2
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Column(
-                          children: <Widget>[
-                            Container(
-                              height: 30,
-                              width: 30,
-                              child: SvgPicture.asset(
-                                  'assets/images/circle_69E781.svg'),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            left: 10,
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                padding: EdgeInsets.only(
-                                  bottom: 10,
-                                  top: 5,
-                                ),
-                                width: MediaQuery.of(context).size.width - 90,
-                                child: Text(
-                                  'Servicii Comunale',
-                                  style: TextStyle(
-                                    color:
-                                        Color(0xFF32325D), //Color(0xFFFFFFFF),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width - 90,
-                                child: Text(
-                                  'Contact',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    decoration: TextDecoration.underline,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ),
-                              //2.2-1
-                              Container(
-                                width: MediaQuery.of(context).size.width - 90,
-                                child: Text(
-                                  '0230 563 495',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ),
-                              //2.2-2
-                              Container(
-                                width: MediaQuery.of(context).size.width - 90,
-                                child: Text(
-                                  'office@serviciicomunale.ro',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    //3
-                    Container(
-                      padding: EdgeInsets.only(
-                        top: 10,
-                      ),
-                      width: MediaQuery.of(context).size.width - 35,
-                      child: FlatButton(
-                        color: Color(0xFF38A49C),
-                        textColor: Colors.white,
-                        disabledColor: Colors.grey,
-                        disabledTextColor: Colors.black,
-                        splashColor: Color(0x8838A49C),
-                        child: Text(
-                          'Sună acum',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                        ),
-                        onPressed: () {
-                          UrlLauncher.launch("tel://0230563495");
-                        },
-                      ),
-                    ),
-                    //4
-                    Container(
-                      //width: MediaQuery.of(context).size.width - 80,
-                      padding: EdgeInsets.only(top: 10),
-                      child: new InkWell(
-                        child: new Text(
-                          'Trimite unui prieten',
-                          style: TextStyle(
-                            fontSize: 15,
-                            decoration: TextDecoration.underline,
-                            color: Color(0xFF38A49C),
-                          ),
-                        ),
-                        onTap: () => UrlLauncher.launch("mailto:"),
-                        //onTap: () => UrlLauncher.launch("tel://0230520172"),
-                        //onTap: () => UrlLauncher.launch("mailto:registratura@primarie.ro"),
-                      ),
-                    ),
-                  ],
-                ),
+                padding: EdgeInsets.only(top: 10.0),
+                height: MediaQuery.of(context).size.height / 4,
+                width: MediaQuery.of(context).size.width - 10.0,
+                child: Image.asset("assets/images/bus/autocar.jpg", fit: BoxFit.cover,),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.0),
-                child: Container(
-                  height: 1.0,
-                  color: Color.fromRGBO(0, 0, 0, 0.1),
-                ),
-              ),
+
+              SizedBox(height: 20.0,),
+
               //2
               Container(
-                padding: EdgeInsets.only(
-                  left: 25,
-                  right: 25,
-                  bottom: 30,
-                  top: 10,
-                ),
-                child: Column(
-                  children: <Widget>[
-                    //1,2
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Column(
-                          children: <Widget>[
-                            Container(
-                              height: 30,
-                              width: 30,
-                              child: SvgPicture.asset(
-                                  'assets/images/circle_69E781.svg'),
+                child: FutureBuilder(
+                  future: fetchBusList(giveString),
+                  builder: (context, snapshot){
+                    if(snapshot.hasData){
+                      return Column(
+                        children: <Widget>[
+                          for(final item in snapshot.data)
+                            expandableWidget(
+                                item,
+                                giveString,
+                                fWidget(item , context),
+                                context
                             ),
-                          ],
+                        ],
+                      );
+                    }else if(snapshot.hasError){
+                      return Container(
+                        height: MediaQuery.of(context).size.height/2,
+                        child: Center(
+                          child: Text('Eroare de încarcare'),
                         ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            left: 10,
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                padding: EdgeInsets.only(
-                                  bottom: 10,
-                                  top: 5,
-                                ),
-                                width: MediaQuery.of(context).size.width - 90,
-                                child: Text(
-                                  'ACET',
-                                  style: TextStyle(
-                                    color:
-                                        Color(0xFF32325D), //Color(0xFFFFFFFF),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width - 90,
-                                child: Text(
-                                  'Contact',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    decoration: TextDecoration.underline,
-                                    fontSize: 15.0,
-                                  ),
-                                ),
-                              ),
-                              //2.2-1
-                              Container(
-                                width: MediaQuery.of(context).size.width - 90,
-                                child: Text(
-                                  '0230 560 530',
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                  ),
-                                ),
-                              ),
-                              //2.2-2
-                              //2.2-3
-                              Container(
-                                width: MediaQuery.of(context).size.width - 90,
-                                child: Text(
-                                  'agentia.radauti@acetsv.ro',
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                      );
+                    }
+                    return Container(
+                      height: MediaQuery.of(context).size.height/2,
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
                         ),
-                      ],
-                    ),
-                    //3
-                    Container(
-                      padding: EdgeInsets.only(
-                        top: 10,
                       ),
-                      width: MediaQuery.of(context).size.width - 35,
-                      child: FlatButton(
-                        color: Color(0xFF38A49C),
-                        textColor: Colors.white,
-                        disabledColor: Colors.grey,
-                        disabledTextColor: Colors.black,
-                        splashColor: Color(0x8838A49C),
-                        child: Text(
-                          'Sună acum',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15.0,
-                          ),
-                        ),
-                        onPressed: () {
-                          UrlLauncher.launch("tel://0230560530");
-                        },
-                      ),
-                    ),
-                    //4
-                    Container(
-                      padding: EdgeInsets.only(
-                        top: 10,
-                      ),
-                      child: new InkWell(
-                        child: new Text(
-                          'Trimite unui prieten',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            decoration: TextDecoration.underline,
-                            color: Color(0xFF38A49C),
-                          ),
-                        ),
-                        onTap: () => UrlLauncher.launch("mailto:"),
-                        //onTap: () => UrlLauncher.launch("tel://0230520172"),
-                        //onTap: () => UrlLauncher.launch("mailto:registratura@primarie.ro"),
-                      ),
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ),
-              /*Padding(
-                padding:EdgeInsets.symmetric(horizontal:15.0),
-                child:Container(
-                  height:1.0,
-                  color:Color.fromRGBO(0, 0, 0, 0.1),),),*/
+
+              SizedBox(height: 10.0,),
+
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
