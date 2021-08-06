@@ -1,35 +1,78 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/events/app_state.dart';
 import 'package:flutterapperadauti/events/model/event.dart';
 
-import 'package:flutterapperadauti/events/ui/event_page/last_event_widget.dart';
-import 'package:provider/provider.dart';
-import 'home_page_background.dart';
+import 'package:flutterapperadauti/events/ui/event_widget/last_event_widget.dart';
+import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 
 class LastEvents extends StatefulWidget {
-  LastEvents({Key key}) : super(key: key);
+  final double fontSizeTextRow1Column1;
+  final double fontSizeTextRow2Column1;
+  final double fontSizeTextRow3Column1;
+  final double sizeIconRowIconColumn3;
+  final double fontSizeTextRowIconColumn3;
+  final double fontSizeTextTitleRowColumn3;
+  final double widthObject;
+
+  LastEvents({
+    Key key,
+    this.fontSizeTextRow1Column1,
+    this.fontSizeTextRow2Column1,
+    this.fontSizeTextRow3Column1,
+    this.fontSizeTextRowIconColumn3,
+    this.sizeIconRowIconColumn3,
+    this.fontSizeTextTitleRowColumn3,
+    this.widthObject,
+  }) : super(key: key);
 
   @override
-  _LastEventsState createState() => _LastEventsState();
+  _LastEventsState createState() => _LastEventsState(
+        fontSizeTextRow1Column1,
+        fontSizeTextRow2Column1,
+        fontSizeTextRow3Column1,
+        fontSizeTextRowIconColumn3,
+        sizeIconRowIconColumn3,
+        fontSizeTextTitleRowColumn3,
+        widthObject,
+      );
 }
 
 class _LastEventsState extends State<LastEvents> {
+  final double fontSizeTextRow1Column1;
+  final double fontSizeTextRow2Column1;
+  final double fontSizeTextRow3Column1;
+  final double sizeIconRowIconColumn3;
+  final double fontSizeTextRowIconColumn3;
+  final double fontSizeTextTitleRowColumn3;
+  final double widthObject;
+
+  _LastEventsState(
+    this.fontSizeTextRow1Column1,
+    this.fontSizeTextRow2Column1,
+    this.fontSizeTextRow3Column1,
+    this.fontSizeTextRowIconColumn3,
+    this.sizeIconRowIconColumn3,
+    this.fontSizeTextTitleRowColumn3,
+    this.widthObject,
+  );
+
   Future<List> futureList;
   int contor = 1;
-  Function function;
-  Widget function2(EventApp event){
-    if (contor <= 10){
+  Widget function(EventApp event) {
+    if (contor <= 10) {
       contor = contor + 1;
-      //print('contor = $contor');
-      return GestureDetector(
-        child: LastEventWidget(
-          event: event,
-        ),
+      return LastEventWidget(
+        event: event,
+        fontSizeTextRow1Column1: fontSizeTextRow1Column1,
+        fontSizeTextRow2Column1: fontSizeTextRow2Column1,
+        fontSizeTextRow3Column1: fontSizeTextRow3Column1,
+        fontSizeTextRowIconColumn3: fontSizeTextRowIconColumn3,
+        sizeIconRowIconColumn3: sizeIconRowIconColumn3,
+        fontSizeTextTitleRowColumn3: fontSizeTextTitleRowColumn3,
+        widthObject: widthObject,
       );
-    }else{
+    } else {
       return Container();
     }
-
   }
 
   @override
@@ -37,83 +80,45 @@ class _LastEventsState extends State<LastEvents> {
     super.initState();
     futureList = fetchListEvent();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: CustomScrollView(
-          slivers: <Widget>[
-            SliverToBoxAdapter(
+      child: FutureBuilder<List>(
+        future: futureList,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return SingleChildScrollView(
               child: Container(
-                //height: (MediaQuery.of(context).size.height/5-45)*5,
-                padding: EdgeInsets.only(top: 20.0,),
-                child: Container(
-                  child: FutureBuilder<List>( //FutureBuilder<Album>
-                    future: futureList,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        //return Text(snapshot.data.title);
-                        return ChangeNotifierProvider<AppState>(
-                            create: (_) => AppState(),
-                            child: Stack(
-                                children: <Widget>[
-                                  HomePageBackground(screenHeight: MediaQuery.of(context).size.height,),
-                                  Padding(
-                                    padding: EdgeInsets.only( top: 5.0, bottom: 5.0 ),
-                                    child: SingleChildScrollView(
-                                      child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                                              child: Consumer<AppState>(
-                                                builder: (context, appState, _) => Column(
-                                                  children: <Widget>[
-                                                    //for(final event in events.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
-                                                    //for(final event in snapshot.data.where((e) => e.categoryIds.contains(appState.selectedCategoryId) ))
-                                                    //for(final event in snapshot.data.where((e) => DateTime.utc(2020, e.monthT, e.dayT).isBefore(DateTime.now())  )) //DateTime.utc(2020, 3, 14)
-                                                    for(final event in snapshot.data.where((e) => DateTime.utc(e.yearT, e.monthT, e.dayT).isBefore(DateTime.now())  ))
-                                                      function2(event)
-                                                      /*GestureDetector(
-                                                        child: LastEventWidget(
-                                                          event: event,
-                                                        ),
-                                                      ),*/
-                                                    //Text(event.title)
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ]
-                                      ),
-                                    ),
-                                  ),
-                                ]
-                            )
-                        );
-                      } else if (snapshot.hasError) {
-                        return Container(
-                          height: (MediaQuery.of(context).size.height - 55),
-                          child: Center(
-                            child: Text("${snapshot.error}"),
-                          ),
-                        );
-                      }
-                      return Container(
-                        height: (MediaQuery.of(context).size.height - 55),
-                        child: Center(
-                          child:
-                          CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation <Color> (Color(0xFF38A49C)),
-                          ),
-                          //CircularProgressIndicator(),
-                        ),
-                      );
-                    },
-                  ),
+                padding: EdgeInsets.only(
+                  left: 16.0,
+                  top: 20.0,
+                  right: 16.0,
+                ),
+                child: Column(
+                  children: <Widget>[
+                    for (final event in snapshot.data.where((e) => DateTime.utc(
+                          e.yearT,
+                          e.monthT,
+                          e.dayT,
+                        ).isBefore(DateTime.now().add(Duration(
+                          hours: -(DateTime.now().hour + 1),
+                        )))))
+                      function(event),
+                  ],
                 ),
               ),
-            ),
-          ]
+            );
+          } else if (snapshot.hasError) {
+            return Container(
+              height: MediaQuery.of(context).size.height,
+              child: Center(
+                child: Text('A apărut o eroare de conexiune la internet!'),
+              ),
+            );
+          }
+          return LoadingScreen();
+        },
       ),
     );
   }

@@ -3,7 +3,7 @@ description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -18,62 +18,74 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.7.0 <4.0.0"
 
 dependencies:
-  flutter_svg: ^0.18.1
-  permission_handler: ^5.0.1
   flutter:
     sdk: flutter
-  camera: ^0.5.8+2
-  image_picker: ^0.6.2+3
-  path_provider: ^1.6.11
-  flutter_email_sender: ^3.0.1
-  url_launcher: ^5.5.0
-  flutter_icons: ^1.1.0
-  fluttericon: ^1.0.7
-  geolocator: ^4.0.3
-  provider: ^4.0.5
-  http: ^0.12.0+2
-  flutter_paginator: ^0.0.6
-  mailer: ^3.0.4
-  gallery_saver: ^2.0.1
-  splashscreen: ^1.2.0
-  device_calendar: ^3.1.0
   add_2_calendar: ^1.4.0
-  flutter_widget_from_html: ^0.5.0+3
-  webview_flutter: ^0.3.22+1
-  flick_video_player: ^0.1.1
-  video_player: ^0.10.12+2
-
-  #Dio plugins for json fetch
+  ai_awesome_message: ^2.0.0
+  camera: ^0.7.0+2
+  charts_flutter: ^0.10.0
+  cupertino_icons: ^1.0.0
+  device_calendar: ^3.1.0
   dio: ^3.0.10
   dio_http_cache: ^0.2.9
-
-  #Chart plugins
-  charts_flutter: ^0.9.0
-  fl_chart: ^0.11.1
-
-  #For expanding and collapsing plugin
   expandable: ^4.1.4
-
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.3
+  firebase_core: ^0.7.0
+  firebase_database: ^6.0.0
+  firebase_messaging: ^8.0.0-dev.15
+  fl_chart: ^0.12.3
+  flash: ^1.3.2
+  flick_video_player: ^0.1.1
+  flutter_absolute_path: ^1.0.6
+  flutter_form_builder: ^4.2.0
+  flutter_icons: ^1.1.0
+  flutter_linkify: ^4.1.0
+  flutter_local_notifications: ^4.0.1+2
+  flutter_mailer: ^1.0.1
+  flutter_paginator: ^0.0.6
+  flutter_svg: ^0.18.1
+  flutter_widget_from_html: ^0.5.0+3
+  fluttericon: ^1.0.7
+  form_builder_image_picker: ^0.1.2
+  gallery_saver: ^2.0.1
+  geolocator: ^6.2.1
+  get_it: ^5.0.6
+  google_maps_flutter: ^1.2.0
+  http: ^0.12.0+2
+  image_picker: ^0.6.2+3
+  infinite_scroll_pagination: ^2.3.0
+  intl: ^0.16.1
+  mailer: ^3.3.0
+  overlay_support: ^1.0.5
+  path_provider: ^1.6.11
+  permission_handler: ^5.1.0+2
+  provider: ^4.0.5
+  splashscreen: ^1.2.0
+  timeline_tile: ^1.0.0
+  url_launcher: ^5.5.0
+  video_player: ^0.10.12+2
+  weather_icons: ^2.0.2
+  webview_flutter: ^1.0.7
+  custom_info_window: ^0.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.8.0"
 
 flutter_email_sender:
   path: ../
 
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
+flutter_icons:
+  #  image_path: "assets/images/icon-128x128.png"
+  image_path_android: "assets/logo_images/app_logo_final.png"
+  image_path_ios: "assets/logo_images/app_logo_final.png"
+  android: true # can specify file name here e.g. "ic_launcher"
+  ios: true # can specify file name here e.g. "My-Launcher-Icon"
 # The following section is specific to Flutter.
 flutter:
   assets:
@@ -81,7 +93,9 @@ flutter:
     - assets/images/
     - assets/logo_images/
     - assets/images/Taxi/
-
+    - assets/images/volunteer/
+    - assets/images/council/
+    - assets/images/mapIcons/
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -90,13 +104,10 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

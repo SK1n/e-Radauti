@@ -1,141 +1,42 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/usefull_pages/usefull_pages_widget/widget_partner_model.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
 class Partner extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        automaticallyImplyLeading: false,
-        leading: Container(
-          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-          margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
-          child: Image.asset("assets/logo_images/app_logo.png"),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(top: 20, bottom: 10,),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: IconButton(
-                      icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
-                      onPressed: (){
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width - 80,
-                    child: new Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: <Widget>[
-                        Stack(
-                          children: <Widget>[
-                            //Icon(Icons.location_city, color: Color(0x55FB6340), size: 30,),
-                            Container(
-                              child: Text(
-                                'Parteneri',
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 19,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            //1
-            Container(
-              padding: EdgeInsets.only(bottom: 10,),
-              width: MediaQuery.of(context).size.width - 30,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Image.asset(
-                    "assets/images/hard_power_radauti.png",
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width - 30,
-              padding: EdgeInsets.only(bottom: 20,),
-              child: Text(
-                "Hard Power Services Rădăuți",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-            //2
-            Container(
-              padding: EdgeInsets.only(bottom: 10,),
-              width: MediaQuery.of(context).size.width - 30,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Image.asset(
-                    "assets/images/fondul_pentru_democratie.png",
-                    width: MediaQuery.of(context).size.width - 50,
-                    height: 100,
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width - 30,
-              padding: EdgeInsets.only(bottom: 20,),
-              child: Text(
-                "Fondul pentru Democrație",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-            //3
-            Container(
-              padding: EdgeInsets.only(bottom: 10,),
-              width: MediaQuery.of(context).size.width - 30,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Image.asset(
-                    "assets/images/code_4_romania.png",
-                    width: MediaQuery.of(context).size.width - 50,
-                    height: 100,
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width - 30,
-              padding: EdgeInsets.only(bottom: 20,),
-              child: Text(
-                "Code4Romania",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-          ],
+      key: _scaffoldKey,
+      drawer: NavDrawer(),
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            AppBarUi(
+              content: 'Parteneri',
+              leading: Icons.add_box_outlined,
+              scaffoldKey: _scaffoldKey,
+            )
+          ];
+        },
+        body: SingleChildScrollView(
+          padding: EdgeInsets.only(top: 20),
+          child: Column(
+            children: <Widget>[
+              WidgetPartnerModel().widgetItem(
+                  "assets/images/fondul_pentru_democratie.png",
+                  "Fondul pentru Democrație",
+                  context),
+              WidgetPartnerModel().widgetItem(
+                  "assets/images/code_4_romania.png", "Code4Romania", context),
+              WidgetPartnerModel().widgetItem(
+                  "assets/images/hard_power_radauti.png",
+                  "Hard Power Services Rădăuți",
+                  context),
+            ],
+          ),
         ),
       ),
     );

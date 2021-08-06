@@ -2,10 +2,12 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapperadauti/menu_page.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:http/http.dart' as http;
+import 'package:expandable/expandable.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class CouncilMeetings extends StatefulWidget {
   CouncilMeetings({Key key}) : super(key: key);
@@ -16,191 +18,239 @@ class CouncilMeetings extends StatefulWidget {
 
 class _CouncilMeetingsState extends State<CouncilMeetings> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  Future<String> futureString;
+  Future<List<dynamic>> futureL;
+  List<Widget> lWidget = [];
+
+  //2
+  Widget fwButton(String child) {
+    Widget returnWidget;
+    returnWidget = Container(
+      child: FlatButton(
+        onPressed: () => UrlLauncher.launch(child),
+        child: Text(
+          'Ordinea de zi',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        color: Color(0xFF38A49C),
+        textColor: Colors.white,
+        splashColor: Color(0x8838A49C),
+        disabledColor: Colors.grey,
+        disabledTextColor: Colors.black,
+      ),
+    );
+    return returnWidget;
+  }
+
+  //3
+  Widget fw(List lGive, BuildContext bC) {
+    List<Widget> lWidgetCard = [];
+    Widget response;
+    for (int i = 0; i < lGive.length; i++) {
+      String sLink;
+      if ((lGive[i]['link'].toString().contains('www.facebook.com')) ||
+          (lGive[i]['link'].toString().contains('fb.watch'))) {
+        sLink =
+            '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
+                lGive[i]['link'] +
+                '''"></iframe>''';
+      } else if (lGive[i]['link'].toString().contains('www.youtube.com')) {
+        sLink = '''<iframe width="200" height="200" src="''' +
+            lGive[i]['link'] +
+            '''" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>''';
+      }
+      lWidget.add(
+        IconButton(
+          icon: Icon(Icons.play_circle_outline, color: Colors.red),
+          onPressed: () {
+            setState(() {
+              lWidget[i] = HtmlWidget(
+                sLink,
+                webView: true,
+              );
+            });
+          },
+        ),
+      );
+      lWidgetCard.add(
+        ExpandableNotifier(
+          child: Container(
+            padding: const EdgeInsets.only(
+              left: 15,
+              right: 15,
+            ),
+            width: MediaQuery.of(bC).size.width,
+            child: Card(
+              margin: const EdgeInsets.only(right: 0, left: 0, bottom: 15.0),
+              clipBehavior: Clip.antiAlias,
+              child: Column(
+                children: <Widget>[
+                  ScrollOnExpand(
+                    scrollOnExpand: true,
+                    scrollOnCollapse: false,
+                    child: ExpandablePanel(
+                      theme: const ExpandableThemeData(),
+                      header: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          lGive[i]['zi'].toString() +
+                              '.' +
+                              lGive[i]['luna'].toString() +
+                              '.' +
+                              lGive[i]['an'].toString(),
+                        ),
+                      ),
+                      expanded: Container(
+                        child: Column(
+                          children: <Widget>[
+                            Center(
+                              child: lWidget[i],
+                            ),
+                          ],
+                        ),
+                      ),
+                      builder: (_, collapsed, expanded) {
+                        return Padding(
+                          padding:
+                              EdgeInsets.only(left: 10, right: 10, bottom: 0),
+                          child: Expandable(
+                            expanded: expanded,
+                            theme: const ExpandableThemeData(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    response = Column(
+      children: <Widget>[
+        for (final card in lWidgetCard) card,
+      ],
+    );
+    return response;
+  }
 
   @override
   void initState() {
     super.initState();
-    futureString = fetchFacebookVideoLink();
+    futureL = fetchDataList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        leading: Container(
-          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-          margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
-          child: Image.asset("assets/logo_images/app_logo.png"),
-        ),
-        actions: <Widget>[
-          Container(
-            alignment: Alignment.topRight,
-            margin: EdgeInsets.only(top: 0.0, right: 0.0), // EdgeInsets.only(top: 20.0, right: 10.0),
-            child: IconButton(
-              icon: Icon(Icons.menu,
-                size: 24,
-                color: Colors.black, ), //Colors.white
-              onPressed: () => _scaffoldKey.currentState.openDrawer(), //_scaffoldKey.currentState.openDrawer(),
-            ),
-          ),
-        ],
-      ),
-      drawer: NavDrawer2(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(bottom: 15, top: 20),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: IconButton(
-                      icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
-                      onPressed: (){
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width-80,
-                    child: new Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: <Widget>[
-                        Stack(
-                          children: <Widget>[
-                            Icon(Icons.location_city, color: Color(0x55FB6340), size: 30,),
-                            Container(
-                              child: Padding(
-                                padding: EdgeInsets.fromLTRB(35.0, 6.0, 0.0, 0.0), //10.0 //25.0
-                                child: Text(
-                                  'Administrație locală',
-                                  style: TextStyle(
-                                    color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 19,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(left: 25, right: 25, bottom: 10, top: 15 ),
-              child: Column(
-                children: <Widget>[
-                  Row(
+        key: _scaffoldKey,
+        drawer: NavDrawer(),
+        body: NestedScrollView(
+          headerSliverBuilder:
+              (BuildContext context, bool innerBoxIsScrollable) {
+            return [
+              AppBarUi(
+                content: 'Ședințe de Consiliu local',
+                leading: Icons.location_city,
+                scaffoldKey: _scaffoldKey,
+              )
+            ];
+          },
+          body: FutureBuilder<List>(
+            future: futureL,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return SingleChildScrollView(
+                  child: Column(
                     children: <Widget>[
-                      Container(
-                        height: 30,
-                        width: 30,
-                        child: SvgPicture.asset("assets/images/circle_FFDECC.svg"),
+                      SizedBox(
+                        height: 20,
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width - 90,
-                        padding: EdgeInsets.only(left: 10,),
-                        child: Text(
-                          "Ședințe de Consiliu local",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width - 30,
+                        child: HtmlWidget(
+                          snapshot.data[0]['linkVideo'],
+                          webView: true,
                         ),
                       ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      fwButton(snapshot.data[0]['linkPDF']),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      fw(snapshot.data[1], context),
                     ],
                   ),
-                  Container(
-                    padding: EdgeInsets.only(top: 10),
-                    width: MediaQuery.of(context).size.width - 50,
-                    child: Text(
-                      "Vizualizează live ședințele de consiliu local.",
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 5,
-                      style: TextStyle(
-                        color: Color(0xFF38A49C),
-                        fontSize: 15,
-                      ),
-                    ),
+                );
+              } else if (snapshot.hasError) {
+                return Container(
+                  height: MediaQuery.of(context).size.height,
+                  child: Center(
+                    child: Text("${snapshot.error}"),
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding:EdgeInsets.symmetric(horizontal:15.0),
-              child:Container(
-                height:1.0,
-                color:Color.fromRGBO(0, 0, 0, 0.1),),),
-            SizedBox(
-              height: 20,
-            ),
-            //video
-            SizedBox(
-              width: MediaQuery.of(context).size.width-30,
-              child:
-              Container(
-                child: FutureBuilder<String>( //FutureBuilder<Album>
-                  future: futureString,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      //return Text(snapshot.data.title);
-                      return HtmlWidget(
-                        snapshot.data,
-                        webView: true,
-                      );
-                    } else if (snapshot.hasError) {
-                      return Container(
-                        height: (MediaQuery.of(context).size.height/2),
-                        child: Center(
-                          child: Text("${snapshot.error}"),
-                        ),
-                      );
-                    }
-                    return Container(
-                      height: (MediaQuery.of(context).size.height/2),
-                      child: Center(
-                        child:
-                        CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation <Color> (Color(0xFF38A49C)),
-                        ),
-                        //CircularProgressIndicator(),
-                      ),
-                    );
-                  },
+                );
+              }
+              return Container(
+                height: MediaQuery.of(context).size.height,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
+                  ),
                 ),
-              ),
-
-            ),
-            SizedBox(
-              height: 20,
-            ),
-          ],
-        ),
-      ),
-    );
+              );
+            },
+          ),
+        ));
   }
 }
 
-Future<String> fetchFacebookVideoLink() async {
-  //
+Future<List> fetchDataList() async {
+  Map<String, dynamic> child = await fetchLiveMeetingLinks();
+  List<dynamic> children = await fetchListVideoLink();
+  List<dynamic> returnList = [];
+
+  returnList = [child, children];
+  return returnList;
+}
+
+Future<Map<String, dynamic>> fetchLiveMeetingLinks() async {
   Map<String, dynamic> fd;
-  http.Response r = await http.get('https://e-radauti-80139.firebaseio.com/--Sedinte.json');
+  http.Response r =
+      await http.get('https://e-radauti-80139.firebaseio.com/--Sedinte.json');
   fd = json.decode(r.body);
-
+  Map<String, dynamic> returnMap = {};
   String link = fd['link'];
-  //link = 'https://www.facebook.com/watch/?v=195642925014310&extid=L8LJHdVM1GdJpBfY';
-  String html = '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
-      link
-      + '''"></iframe>''';
+  String html;
+  if ((link.toString().contains('www.facebook.com')) ||
+      (link.toString().contains('fb.watch'))) {
+    html =
+        '''<iframe src="https://www.facebook.com/v2.3/plugins/video.php?allowfullscreen=true&autoplay=true&href=''' +
+            link +
+            '''"></iframe>''';
+  } else if (link.toString().contains('www.youtube.com')) {
+    html = '''<iframe width="200" height="200" src="''' +
+        link +
+        '''" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>''';
+  }
+  returnMap = {'linkVideo': html, 'linkPDF': fd['ordineadezi']};
+  return returnMap;
+}
 
-  print(html);
-  return html;
+//2
+Future<List> fetchListVideoLink() async {
+  Map<String, dynamic> fd;
+  http.Response r = await http
+      .get('https://e-radauti-80139.firebaseio.com/-SedinteArhiva.json');
+  fd = json.decode(r.body);
+  final List<dynamic> children = [];
+  final List<dynamic> response = [];
+  fd.forEach((key, value) {
+    children.add(value);
+  });
+  for (int i = children.length - 1; i >= 0; i--) response.add(children[i]);
+  return response;
 }

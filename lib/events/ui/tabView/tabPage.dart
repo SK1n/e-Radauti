@@ -2,31 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/events/ui/event_page/new_event_page.dart';
 import 'package:flutterapperadauti/events/ui/event_page/last_event_page.dart';
 
-
 class TabDemo extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldState;
-  TabDemo({Key key, this.scaffoldState,}) : super(key: key);
+  TabDemo({
+    Key key,
+    this.scaffoldState,
+  }) : super(key: key);
 
   @override
-  _TabDemoState createState() => _TabDemoState(scaffoldState,);
+  _TabDemoState createState() => _TabDemoState(
+        scaffoldState,
+      );
 }
 
 class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
-
   TabController _tabController;
-
   int _selectedTab = 0;
+  double fontSizeGetTab;
   final GlobalKey<ScaffoldState> scaffoldState;
-  _TabDemoState(this.scaffoldState,);
+
+  _TabDemoState(
+    this.scaffoldState,
+  );
 
   @override
   void initState() {
     super.initState();
-
     _tabController = TabController(vsync: this, length: 2);
-
-    _tabController.addListener((){
-      if (!_tabController.indexIsChanging){
+    _tabController.addListener(() {
+      if (!_tabController.indexIsChanging) {
         setState(() {
           _selectedTab = _tabController.index;
         });
@@ -36,84 +40,60 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    double fontSizeTextRow1Column1;
+    double fontSizeTextRow2Column1;
+    double fontSizeTextRow3Column1;
+    double sizeIconRowIconColumn3;
+    double fontSizeTextRowIconColumn3;
+    double fontSizeTextTitleRowColumn3;
+    double widthObject;
+    widthObject = MediaQuery.of(context).size.width;
+    if (widthObject <= 250) {
+      fontSizeGetTab = 11.0;
+      fontSizeTextRow1Column1 = 15.0;
+      fontSizeTextRow2Column1 = 12.0;
+      fontSizeTextRow3Column1 = 12.0;
+      sizeIconRowIconColumn3 = 11.0;
+      fontSizeTextRowIconColumn3 = 8.0;
+      fontSizeTextTitleRowColumn3 = 11.0;
+    } else if (widthObject <= 500) {
+      fontSizeGetTab = 14.0;
+      fontSizeTextRow1Column1 = 19.0;
+      fontSizeTextRow2Column1 = 14.0;
+      fontSizeTextRow3Column1 = 14.0;
+      sizeIconRowIconColumn3 = 14.0;
+      fontSizeTextRowIconColumn3 = 11.0;
+      fontSizeTextTitleRowColumn3 = 14.0;
+    } else {
+      fontSizeGetTab = 15.0;
+      fontSizeTextRow1Column1 = 21.0;
+      fontSizeTextRow2Column1 = 15.0;
+      fontSizeTextRow3Column1 = 15.0;
+      sizeIconRowIconColumn3 = 17.0;
+      fontSizeTextRowIconColumn3 = 14.0;
+      fontSizeTextTitleRowColumn3 = 17.0;
+    }
     return Column(
       children: <Widget>[
         Container(
-          padding: EdgeInsets.only(bottom: 15, top: 20),
-          child: Row(
-            children: <Widget>[
-              Container(
-                alignment: Alignment.centerLeft,
-                child: IconButton(
-                  icon: Icon(Icons.keyboard_arrow_left, color: Color(0xFF979797),), //_left Icons.arrow_back
-                  onPressed: (){
-                    Navigator.pop(context);
-                  },
+          padding: EdgeInsets.only(top: 5.0),
+          child: Material(
+            child: TabBar(
+              unselectedLabelColor: Colors.grey,
+              indicatorColor: Colors.white,
+              controller: _tabController,
+              labelPadding: const EdgeInsets.all(0.0),
+              tabs: [
+                _getTab(
+                  0,
+                  'EVENIMENTE NOI',
                 ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width-80,
-                child: new Stack(
-                  alignment: AlignmentDirectional.center,
-                  children: <Widget>[
-                    Stack(
-                      children: <Widget>[
-                        Icon(Icons.calendar_today, color: Color(0x55FB6340), size: 30,),
-                        Container(
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(35.0, 6.0, 0.0, 0.0), //10.0 //25.0
-                            child: Text(
-                              'Evenimente',
-                              style: TextStyle(
-                                color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 19,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                _getTab(
+                  1,
+                  'EVENIMENTE TRECUTE',
                 ),
-              ),
-            ],
-          ),
-        ),
-        Material(
-          //color: Colors.grey.shade300,
-          child: TabBar(
-            unselectedLabelColor: Colors.grey,//unselectedLabelColor: Colors.blue,
-            //labelColor: Colors.blue,
-            indicatorColor: Colors.white,//indicatorColor: Color(0xAA38A49C),
-            controller: _tabController,
-            labelPadding: const EdgeInsets.all(0.0),
-            tabs: [
-              _getTab(
-                0,
-                Center(
-                  child: Text(
-                    'EVENIMENTE NOI',
-                    style: TextStyle(
-                      fontSize: 15.0,//12.0 //16.0 //14.0
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-              _getTab(
-                1,
-                Center(
-                  child: Text(
-                    'EVENIMENTE TRECUTE',
-                    style: TextStyle(
-                      fontSize: 15.0,//12.0 //16.0 //14.0
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         Expanded(
@@ -121,8 +101,24 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
             physics: NeverScrollableScrollPhysics(),
             controller: _tabController,
             children: [
-              NewEvents(),
-              LastEvents(),
+              NewEvents(
+                fontSizeTextRow1Column1: fontSizeTextRow1Column1,
+                fontSizeTextRow2Column1: fontSizeTextRow2Column1,
+                fontSizeTextRow3Column1: fontSizeTextRow3Column1,
+                fontSizeTextRowIconColumn3: fontSizeTextRowIconColumn3,
+                sizeIconRowIconColumn3: sizeIconRowIconColumn3,
+                fontSizeTextTitleRowColumn3: fontSizeTextTitleRowColumn3,
+                widthObject: widthObject,
+              ),
+              LastEvents(
+                fontSizeTextRow1Column1: fontSizeTextRow1Column1,
+                fontSizeTextRow2Column1: fontSizeTextRow2Column1,
+                fontSizeTextRow3Column1: fontSizeTextRow3Column1,
+                fontSizeTextRowIconColumn3: fontSizeTextRowIconColumn3,
+                sizeIconRowIconColumn3: sizeIconRowIconColumn3,
+                fontSizeTextTitleRowColumn3: fontSizeTextTitleRowColumn3,
+                widthObject: widthObject,
+              ),
             ],
           ),
         ),
@@ -130,15 +126,21 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
     );
   }
 
-
-  _getTab(index, child) {
+  _getTab(index, childString) {
     return Tab(
       child: SizedBox.expand(
         child: Container(
-          child: child,
+          child: Center(
+            child: Text(
+              childString,
+              style: TextStyle(
+                fontSize: fontSizeGetTab,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           decoration: BoxDecoration(
-              color:
-              (_selectedTab == index ? Colors.white : Colors.white),
+              color: (_selectedTab == index ? Colors.white : Colors.white),
               borderRadius: _generateBorderRadius(index)),
         ),
       ),

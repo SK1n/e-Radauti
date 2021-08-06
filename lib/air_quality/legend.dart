@@ -7,286 +7,8 @@ class AirQualityLegend extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        //
-        // CO2 Expandable container
-        //
-        /*Container(
-          child: ExpandableNotifier(
-            child: Column(
-              children: [
-                ScrollOnExpand(
-                  child: Expandable(
-                    collapsed: ExpandableButton(
-                      child: Container(
-                        width: MediaQuery.of(context).size.width - 30,
-                        // ignore: missing_required_param
-                        child: FlatButton.icon(
-                          disabledColor: Colors.orange[200],
-                          disabledTextColor: Colors.black,
-                          icon: Icon(Ionicons.ios_arrow_down),
-                          label: Text(
-                            'Legenda de culori pentru nivelul de CO2',
-                          ),
-                        ),
-                      ),
-                    ),
-                    expanded: ExpandableButton(
-                      child: Column(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width - 30,
-                            // ignore: missing_required_param
-                            child: FlatButton.icon(
-                              disabledColor: Colors.orange[200],
-                              disabledTextColor: Colors.black,
-                              icon: Icon(Ionicons.ios_arrow_up),
-                              label: Text(
-                                'Legenda de culori pentru nivelul de CO2',
-                              ),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              FlatButton(
-                                child: Icon(
-                                  Ionicons.ios_square,
-                                  color: Colors.green[300],
-                                ),
-                                onPressed: null,
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width - 100,
-                                child: Text(
-                                  'Concentrație normală în aerul exterior',
-                                  textAlign: TextAlign.start,
-                                  softWrap: true,
-                                  maxLines: 20,
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              FlatButton(
-                                child: Icon(
-                                  Ionicons.ios_square,
-                                  color: Colors.green[200],
-                                ),
-                                onPressed: null,
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width - 100,
-                                child: Text(
-                                  'Concentrații tipice spațiilor interioare ocupate',
-                                  textAlign: TextAlign.start,
-                                  softWrap: true,
-                                  maxLines: 20,
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              FlatButton(
-                                child: Icon(
-                                  Ionicons.ios_square,
-                                  color: Colors.yellow[200],
-                                ),
-                                onPressed: null,
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width - 100,
-                                child: Text(
-                                  'Simptome de somnolenta si aer slab',
-                                  textAlign: TextAlign.start,
-                                  softWrap: true,
-                                  maxLines: 20,
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              FlatButton(
-                                child: Icon(
-                                  Ionicons.ios_square,
-                                  color: Colors.red[200],
-                                ),
-                                onPressed: null,
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width - 100,
-                                child: Text(
-                                  'Dureri de cap, somnolență și aer stagnant, învechit, înfundat. Poate fi prezentă și o concentrație slabă, pierderea atenției, ritm cardiac crescut și ușoară greață.',
-                                  textAlign: TextAlign.start,
-                                  softWrap: true,
-                                  maxLines: 20,
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              FlatButton(
-                                child: Icon(
-                                  Ionicons.ios_square,
-                                  color: Colors.red[300],
-                                ),
-                                onPressed: null,
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width - 100,
-                                child: Text(
-                                  'Limita de expunere la locul de muncă (8 ore) în majoritatea jurisdicțiilor.',
-                                  textAlign: TextAlign.start,
-                                  softWrap: true,
-                                  maxLines: 20,
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              FlatButton(
-                                child: Icon(
-                                  Ionicons.ios_square,
-                                  color: Colors.red[500],
-                                ),
-                                onPressed: null,
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width - 100,
-                                child: Text(
-                                  'Expunerea poate duce la lipsa gravă de oxigen, rezultând leziuni permanente ale creierului, comă, chiar moarte.',
-                                  textAlign: TextAlign.start,
-                                  softWrap: true,
-                                  maxLines: 20,
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),*/
-        //
-        // Humidity Expandable container
-        //
-        /*Container(
-          child: ExpandableNotifier(
-            child: Column(
-              children: [
-                ScrollOnExpand(
-                  child: Expandable(
-                    collapsed: ExpandableButton(
-                      child: Container(
-                        width: MediaQuery.of(context).size.width - 30,
-                        // ignore: missing_required_param
-                        child: FlatButton.icon(
-                          disabledColor: Colors.orange[200],
-                          disabledTextColor: Colors.black,
-                          icon: Icon(Ionicons.ios_arrow_down),
-                          label: Text(
-                            'Legenda de culori pentru nivelul de Umiditate',
-                          ),
-                        ),
-                      ),
-                    ),
-                    expanded: ExpandableButton(
-                      child: Column(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width - 30,
-                            // ignore: missing_required_param
-                            child: FlatButton.icon(
-                              disabledColor: Colors.orange[200],
-                              disabledTextColor: Colors.black,
-                              icon: Icon(Ionicons.ios_arrow_up),
-                              label: Text(
-                                'Legenda de culori pentru nivelul de Umiditate',
-                              ),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              FlatButton(
-                                child: Icon(
-                                  Ionicons.ios_square,
-                                  color: Colors.blue[100],
-                                ),
-                                onPressed: null,
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width - 100,
-                                child: Text(
-                                  'Umiditatea din aer este scazuta',
-                                  textAlign: TextAlign.start,
-                                  softWrap: true,
-                                  maxLines: 20,
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              FlatButton(
-                                child: Icon(
-                                  Ionicons.ios_square,
-                                  color: Colors.blue[200],
-                                ),
-                                onPressed: null,
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width - 100,
-                                child: Text(
-                                  'Umiditatea aerului e normala',
-                                  textAlign: TextAlign.start,
-                                  softWrap: true,
-                                  maxLines: 20,
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              FlatButton(
-                                child: Icon(
-                                  Ionicons.ios_square,
-                                  color: Colors.blue[300],
-                                ),
-                                onPressed: null,
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width - 100,
-                                child: Text(
-                                  'Umiditatea aerului este ridicata',
-                                  textAlign: TextAlign.start,
-                                  softWrap: true,
-                                  maxLines: 20,
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),*/
-        //
-        // PM2.5 Expandable container
-        //
-
         Container(
-          margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+          // margin: const EdgeInsets.only(left: 10.0, right: 10.0),
           child: ExpandableNotifier(
             child: Column(
               children: [
@@ -296,17 +18,20 @@ class AirQualityLegend extends StatelessWidget {
                       child: Container(
                         width: MediaQuery.of(context).size.width,
                         // ignore: missing_required_param
-                        child: FlatButton.icon(
-                          //disabledColor: Colors.grey[100],
-                          disabledTextColor: Colors.black,
-                          icon: Icon(Ionicons.ios_arrow_down),
-                          label: Container(
-                          width: MediaQuery.of(context).size.width-100,
-                          child: Text("Unde este instalat aparatul?"))
-                        /*  Text(
-                            'Unde este instalat aparatul?',
-                          ),*/
-                        ),
+                        child: TextButton.icon(
+                            //disabledColor: Colors.grey[100],
+                            //onPressed: () {},
+                            //onPressed: null ,
+                            icon: Icon(
+                              Ionicons.ios_arrow_down,
+                              color: Colors.black,
+                            ),
+                            label: Container(
+                                width: MediaQuery.of(context).size.width - 100,
+                                child: Text(
+                                  "Unde este instalat aparatul?",
+                                  style: TextStyle(color: Colors.black),
+                                ))),
                       ),
                     ),
                     expanded: ExpandableButton(
@@ -315,19 +40,18 @@ class AirQualityLegend extends StatelessWidget {
                           Container(
                             width: MediaQuery.of(context).size.width,
                             // ignore: missing_required_param
-                            child: FlatButton.icon(
-                              disabledColor: Colors.grey[200],
-                              disabledTextColor: Colors.black,
+                            child: TextButton.icon(
                               icon: Icon(Ionicons.ios_arrow_up),
-                              label:  Container(
-                                  width: MediaQuery.of(context).size.width-100,
+                              label: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width - 100,
                                   child: Text("Unde este instalat aparatul?")),
                             ),
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width - 20,
                             child: Text(
-                              'Aparatul este instalat în centrul Municipiului Rădăuți, în Piața Garoafelor',
+                              'Aparatul de monitorizare a calității aerului este instalat în centrul Municipiului Rădăuți, în Piața Garoafelor și măsoară concentrația de PM2,5, de CO2, temperatura și Umiditatea Relativă. Stația Meteo din Rădăuți este cea oficială instalată de autoritățile române. Stația se află pe Str. Ștefan cel Mare, Nr. 132 și măsoară temperatura, umiditatea relativă, viteza vântului, direcția vântului și presiunea atmosferică.',
                               textAlign: TextAlign.start,
                               softWrap: true,
                               maxLines: 20,
@@ -353,13 +77,17 @@ class AirQualityLegend extends StatelessWidget {
                       child: Container(
                         width: MediaQuery.of(context).size.width,
                         // ignore: missing_required_param
-                        child: FlatButton.icon(
-                          //disabledColor: Colors.grey[100],
-                          disabledTextColor: Colors.black,
-                          icon: Icon(Ionicons.ios_arrow_down),
-                          label:  Container(
-                              width: MediaQuery.of(context).size.width-100,
-                              child: Text("Ce sunt particulele PM2.5?")),
+                        child: TextButton.icon(
+                          icon: Icon(
+                            Ionicons.ios_arrow_down,
+                            color: Colors.black,
+                          ),
+                          label: Container(
+                              width: MediaQuery.of(context).size.width - 100,
+                              child: Text(
+                                "Ce sunt particulele PM2,5?",
+                                style: TextStyle(color: Colors.black),
+                              )),
                         ),
                       ),
                     ),
@@ -369,22 +97,21 @@ class AirQualityLegend extends StatelessWidget {
                           Container(
                             width: MediaQuery.of(context).size.width,
                             // ignore: missing_required_param
-                            child: FlatButton.icon(
-                              disabledColor: Colors.grey[200],
-                              disabledTextColor: Colors.black,
+                            child: TextButton.icon(
                               icon: Icon(Ionicons.ios_arrow_up),
-                              label:  Container(
-                                  width: MediaQuery.of(context).size.width-100,
-                                  child: Text("Ce sunt particulele PM2.5?")),
+                              label: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width - 100,
+                                  child: Text("Ce sunt particulele PM2,5?")),
                             ),
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width - 20,
                             child: Text(
-                              'Particulele PM2.5 sunt particule cu diametrul de sub 2.5 micrometri (aproximativ 100 de ori mai mici decât firul de păr uman) produse de către procesul de ardere a diferiților combustibili (în special Diesel la mașini sau cărbune la firmele de utilități) sau de către elemente naturale precum erupții vulcanice etc.\n\nParticulele PM2.5 sunt cele mai periculoase pentru sănătate, în special în mediul urban. Se estimează că anual, în Uniunea Europeană, peste 400.000 de oameni mor prematur din cauza expunerii la o concentrație mare de particule PM2.5.\n\nÎn România, numărul estimativ ajunge la aproximativ 25.000. Aceste particule sunt atât de mici încât pătrund cu ușurință în sistemul respirator și în sistemul circulator, cauzând probleme cardiace sau pulmonare precum astm bronșitic.\n\nLimita maximă medie anuală stabilită de către Uniunea Europeană este de 25 μg/m3 iar în SUA de 12 μg/m3. Valori de peste 25 μg/m3 vor fi observate din când în când pe aparat, ceea ce ar putea însemna un incendiu în zonă, trafic intens, sărbători în care se generază fum sau pur și simplu efecte meteorologice uzuale în care presiunea atmosferă este mare iar particulele rămân la nivelul solului.\n\n Este foarte important ca valorile să nu crească foarte mult iar expunerea să nu fie de lungă durată.',
+                              'Particulele PM2,5 sunt particule cu diametrul de sub 2.5 micrometri (aproximativ 100 de ori mai mici decât firul de păr uman) produse de către procesul de ardere a diferiților combustibili precum Diesel, biomasă, cărbune, deșeuri etc.\n\nFiind atât de mici și pătrunzând cu ușurină în plămâni, particulele PM2,5 sunt cele mai periculoase pentru sănătate, în special în mediul urban. Se estimează că anual, în Uniunea Europeană, peste 400.000 de oameni mor prematur din cauza expunerii la o concentrație mare de particule PM2,5.\n\nÎn România, numărul estimativ ajunge la aproximativ 25.000. Aceste particule sunt atât de mici încât pătrund cu ușurință în sistemul respirator și în sistemul circulator, cauzând probleme cardiace sau pulmonare precum astm bronșitic.\n\nLimita maximă medie anuală stabilită de către Uniunea Europeană este de 25 μg/m\u00B3 iar în SUA de 12 μg/m\u00B3. Valori de peste 25 μg/m\u00B3 vor fi observate mereu pe aparat, în special atunci când sunt inversiuni termice.\n\n Este foarte important ca valorile să nu crească foarte mult iar expunerea să nu fie de lungă durată.',
                               textAlign: TextAlign.start,
                               softWrap: true,
-                              maxLines: 20,
+                              maxLines: 50,
                             ),
                           ),
                         ],
@@ -406,13 +133,17 @@ class AirQualityLegend extends StatelessWidget {
                       child: Container(
                         width: MediaQuery.of(context).size.width,
                         // ignore: missing_required_param
-                        child: FlatButton.icon(
-                          //disabledColor: Colors.grey[100],
-                          disabledTextColor: Colors.black,
-                          icon: Icon(Ionicons.ios_arrow_down),
-                          label:  Container(
-                              width: MediaQuery.of(context).size.width-100,
-                              child: Text("Ce înseamnă culoarea fundalului?")),
+                        child: TextButton.icon(
+                          icon: Icon(
+                            Ionicons.ios_arrow_down,
+                            color: Colors.black,
+                          ),
+                          label: Container(
+                              width: MediaQuery.of(context).size.width - 100,
+                              child: Text(
+                                "Ce înseamnă culoarea fundalului?",
+                                style: TextStyle(color: Colors.black),
+                              )),
                         ),
                       ),
                     ),
@@ -424,23 +155,25 @@ class AirQualityLegend extends StatelessWidget {
                                 const EdgeInsets.only(left: 10.0, right: 10.0),
                             width: MediaQuery.of(context).size.width,
                             // ignore: missing_required_param
-                            child: FlatButton.icon(
-                              disabledColor: Colors.grey[200],
-                              disabledTextColor: Colors.black,
+                            child: TextButton.icon(
                               icon: Icon(Ionicons.ios_arrow_up),
-                              label:  Container(
-                                  width: MediaQuery.of(context).size.width-100,
-                                  child: Text("Ce înseamnă culoarea fundalului?")),
+                              label: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width - 100,
+                                  child:
+                                      Text("Ce înseamnă culoarea fundalului?")),
                             ),
                           ),
                           Row(
                             children: [
                               Container(
                                 width: 40,
-                                child: FlatButton(
+                                child: TextButton(
                                   child: Icon(
                                     Ionicons.ios_square,
-                                    color: Colors.green, //[50],
+                                    color: Color.fromRGBO(80, 240, 230, 1),
+                                    //You also have to change the color in value_adapter.dart
+                                    //in case you change the colors
                                   ),
                                   onPressed: null,
                                 ),
@@ -448,7 +181,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este bun',
+                                  'Nivelul de PM2,5 este bun (0 - 10 \u03BCg/m\u00B3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -460,10 +193,12 @@ class AirQualityLegend extends StatelessWidget {
                             children: [
                               Container(
                                 width: 40,
-                                child: FlatButton(
+                                child: TextButton(
                                   child: Icon(
                                     Ionicons.ios_square,
-                                    color: Colors.yellow, //[100],
+                                    color: Color.fromRGBO(80, 204, 170, 1),
+                                    //You also have to change the color in value_adapter.dart
+                                    //in case you change the colors
                                   ),
                                   onPressed: null,
                                 ),
@@ -471,7 +206,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este moderat',
+                                  'Nivelul de PM2,5 este acceptabil (10 - 20 \u03BCg/m\u00B3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -483,10 +218,12 @@ class AirQualityLegend extends StatelessWidget {
                             children: [
                               Container(
                                 width: 40,
-                                child: FlatButton(
+                                child: TextButton(
                                   child: Icon(
                                     Ionicons.ios_square,
-                                    color: Colors.orange, //[200],
+                                    color: Color.fromRGBO(240, 230, 65, 1),
+                                    //You also have to change the color in value_adapter.dart
+                                    //in case you change the colors
                                   ),
                                   onPressed: null,
                                 ),
@@ -494,7 +231,7 @@ class AirQualityLegend extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este daunator pentru persoanele sensibile',
+                                  'Nivelul de PM2,5 este moderat (20 - 25 \u03BCg/m\u00B3)',
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
@@ -506,45 +243,190 @@ class AirQualityLegend extends StatelessWidget {
                             children: [
                               Container(
                                 width: 40,
-                                child: FlatButton(
+                                child: TextButton(
                                   onPressed: null,
                                   child: Icon(
                                     Ionicons.ios_square,
-                                    color: Colors.pink[300],
+                                    color: Color.fromRGBO(255, 80, 80, 1),
+                                    //You also have to change the color in value_adapter.dart
+                                    //in case you change the colors
                                   ),
                                 ),
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este daunator pentru toate persoanele',
+                                  'Nivelul de PM2,5 este rău (25 - 50 \u03BCg/m\u00B3)',
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 5,
                                 ),
                               ),
                             ],
-                          )
-                          /*
+                          ),
                           Row(
                             children: [
-                              FlatButton(
-                                child: Icon(
-                                  Ionicons.ios_square,
-                                  color: Colors.pink[300],
+                              Container(
+                                width: 40,
+                                child: TextButton(
+                                  onPressed: null,
+                                  child: Icon(
+                                    Ionicons.ios_square,
+                                    color: Color.fromRGBO(150, 0, 50, 1),
+                                    //You also have to change the color in value_adapter.dart
+                                    //in case you change the colors
+                                  ),
                                 ),
-                                onPressed: null,
                               ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width - 20,
+                              Container(
+                                width: MediaQuery.of(context).size.width - 60,
                                 child: Text(
-                                  'Nivelul de PM2.5 este daunator pentru toate persoanele',
-                                  textAlign: TextAlign.start,
-                                  softWrap: true,
-                                  maxLines: 20,
+                                  'Nivelul de PM2,5 este foarte rău (50 - 75 \u03BCg/m\u00B3)',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 5,
                                 ),
-                              )
+                              ),
                             ],
-                          ),*/
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: 40,
+                                child: TextButton(
+                                  onPressed: null,
+                                  child: Icon(
+                                    Ionicons.ios_square,
+                                    color: Color.fromRGBO(125, 33, 129, 1),
+                                    //You also have to change the color in value_adapter.dart
+                                    //in case you change the colors
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width - 60,
+                                child: Text(
+                                  'Nivelul de PM2,5 este extrem de rău (75 - 800 \u03BCg/m\u00B3)',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 5,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+          child: ExpandableNotifier(
+            child: Column(
+              children: [
+                ScrollOnExpand(
+                  child: Expandable(
+                    collapsed: ExpandableButton(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        // ignore: missing_required_param
+                        child: TextButton.icon(
+                          icon: Icon(
+                            Ionicons.ios_arrow_down,
+                            color: Colors.black,
+                          ),
+                          label: Container(
+                              width: MediaQuery.of(context).size.width - 100,
+                              child: Text(
+                                "Ce spune legea legat de calitatea aerului?",
+                                style: TextStyle(color: Colors.black),
+                              )),
+                        ),
+                      ),
+                    ),
+                    expanded: ExpandableButton(
+                      child: Column(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            // ignore: missing_required_param
+                            child: TextButton.icon(
+                              icon: Icon(Ionicons.ios_arrow_up),
+                              label: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width - 100,
+                                  child: Text(
+                                      "Ce spune legea legat de calitatea aerului?")),
+                            ),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 20,
+                            child: Text(
+                              'În România, legea principală care oferă informații substanțiale despre subiectul calitatea aerului este Legea Nr. 104 din 2011. Culorile și scara de concentrații din această aplicație sunt aliniate cu Ordinul nr. 1.818 din 2 octombrie 2020 și ia în considerare prevederile art. 87 alin. (2) din Legea nr. 104/2011 privind calitatea aerului înconjurător, cu modificările ulterioare în temeiul art. 57 alin. (1), (4) și (5) din Ordonanța de urgență a Guvernului nr. 57/2019 privind Codul administrativ, cu modificările și completările ulterioare, și al art. 13 alin. (4) din Hotărârea Guvernului nr. 43/2020 privind organizarea și funcționarea Ministerului Mediului, Apelor și Pădurilor',
+                              textAlign: TextAlign.start,
+                              softWrap: true,
+                              maxLines: 20,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+          child: ExpandableNotifier(
+            child: Column(
+              children: [
+                ScrollOnExpand(
+                  child: Expandable(
+                    collapsed: ExpandableButton(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        // ignore: missing_required_param
+                        child: TextButton.icon(
+                          icon: Icon(
+                            Ionicons.ios_arrow_down,
+                            color: Colors.black,
+                          ),
+                          label: Container(
+                              width: MediaQuery.of(context).size.width - 100,
+                              child: Text(
+                                "Unde găsesc mai multe informații?",
+                                style: TextStyle(color: Colors.black),
+                              )),
+                        ),
+                      ),
+                    ),
+                    expanded: ExpandableButton(
+                      child: Column(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            // ignore: missing_required_param
+                            child: TextButton.icon(
+                              icon: Icon(Ionicons.ios_arrow_up),
+                              label: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width - 100,
+                                  child: Text(
+                                      "Unde găsesc mai multe informații?")),
+                            ),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 20,
+                            child: Text(
+                              'Echipa Rădăuțiul Civic a construit o pagină specială pentru o descriere în detaliu a parametrilor de calitatea aerului (http://calitateaer.radautiulcivic.ro). Pagina conține grafice care arată cum evoluează în timp concentrația de PM2,5, CO2, Umiditatea Relativă, Viteza și Direcția Vântului, Temperatura și Presiunea Atmosferică. Pagina poate fi accesată pe www.radautiulcivic.ro/calitatea-aerului',
+                              textAlign: TextAlign.start,
+                              softWrap: true,
+                              maxLines: 20,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -558,3 +440,4 @@ class AirQualityLegend extends StatelessWidget {
     );
   }
 }
+//

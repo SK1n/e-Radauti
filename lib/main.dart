@@ -1,7 +1,16 @@
+import 'dart:io';
+
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:splashscreen/splashscreen.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutterapperadauti/notice_a_problem/screens/notice_map_ui.dart';
+import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
+import 'package:flutterapperadauti/notice_a_problem/screens/main_notice_ui.dart';
+import 'package:flutterapperadauti/state/loading_notifier.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
-import 'package:flutterapperadauti/notice_a_problem/main_page.dart';
+import 'package:flutterapperadauti/transport/Train.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/events/main.dart';
 import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
@@ -10,60 +19,240 @@ import 'package:flutterapperadauti/usefull_pages/contact.dart';
 import 'package:flutterapperadauti/usefull_pages/confidential.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
-import 'package:flutterapperadauti/transport/transport_main_page.dart';
+import 'package:flutterapperadauti/transport/Transport.dart';
+import 'package:flutterapperadauti/volunteer/volunteer.dart';
+import 'jobs/furniture_page.dart';
+import 'jobs/job_page.dart';
+import 'jobs/local_announcements.dart';
+import 'town_hall/council_meetings.dart';
+import 'town_hall/leaders.dart';
+import 'town_hall/local_council.dart';
+import 'town_hall/local_legislation.dart';
+import 'transport/Bus.dart';
+import 'transport/LocalInconvenience.dart';
+import 'transport/Taxi.dart';
+import 'usefull_numbers/contractors.dart';
+import 'usefull_numbers/local_authorities.dart';
+import 'usefull_numbers/miscellaneous.dart';
+import 'usefull_numbers/public_institutions.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
+import 'widgets/src/nav_drawer.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:provider/provider.dart';
+import 'package:flutterapperadauti/widgets/src/checkGeolocatorPermission.dart';
+import 'package:flutterapperadauti/notice_a_problem/location_switch.dart';
+import 'package:flutterapperadauti/state/marker_notifier.dart';
 
-void main() {
-  runApp(MyAppRC());
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print('Handling a background message ${message.messageId}');
 }
 
-class MyAppRC extends StatelessWidget {
-  // This widget is the root of your application.
+final GlobalKey<NavigatorState> _navigator = new GlobalKey<NavigatorState>();
+
+const AndroidNotificationChannel channel = AndroidNotificationChannel(
+  'high_importance_channel', // id
+  'High Importance Notifications', // title
+  'This channel is used for important notifications.', // description
+  importance: Importance.high,
+);
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('app_logo_final');
+
+  /// Note: permissions aren't requested here just to demonstrate that can be
+  /// done later
+  final IOSInitializationSettings initializationSettingsIOS =
+      IOSInitializationSettings(
+    requestAlertPermission: false,
+    requestBadgePermission: false,
+    requestSoundPermission: false,
+  );
+  final InitializationSettings initializationSettings = InitializationSettings(
+    android: initializationSettingsAndroid,
+    iOS: initializationSettingsIOS,
+  );
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+      onSelectNotification: (String payload) async {
+    debugPrint('payload: $payload');
+
+    _navigator.currentState.pushNamed('/events');
+  });
+
+  /// Create an Android Notification Channel.
+  ///
+  /// We use this channel in the `AndroidManifest.xml` file to override the
+  /// default FCM channel to enable heads up notifications.
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<IsLoading>(
+        create: (_) => IsLoading(),
+      ),
+      ChangeNotifierProvider<NoticeFormState>(
+        create: (_) => NoticeFormState(),
+      ),
+      ChangeNotifierProvider<LocationSwitchState>(
+          create: (_) => LocationSwitchState()),
+      ChangeNotifierProvider<MarkerNotifier>(
+        create: (_) => MarkerNotifier(),
+      ),
+    ],
+    child: MyApp(),
+  ));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'e-RÄƒdÄƒuÈ›i',
+      title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (_) => MenuScreen(),
+        '/announcement': (BuildContext context) => HomePageJobs(),
+        '/furniture': (BuildContext context) => FurniturePage(),
+        '/job': (BuildContext context) => JobPage(),
+        '/about': (BuildContext context) => AboutUsMain(),
+        '/confidential': (BuildContext context) => Confidential(),
+        '/contact': (BuildContext context) => Contact(),
+        '/partner': (BuildContext context) => Partner(),
+        '/contractors': (BuildContext context) => Contractors(),
+        '/localAuthorities': (BuildContext context) => LocalAuthorities(),
+        '/localAnnouncements': (BuildContext context) =>
+            LocalAnounnouncements(),
+        '/numbers': (BuildContext context) => HomePageNumbers(),
+        '/miscellaneous': (BuildContext context) => Miscellaneous(),
+        '/publicInstitutions': (BuildContext context) => PublicInstitutions(),
+        '/bus': (BuildContext context) => Bus(),
+        '/localInconvenience': (BuildContext context) => LocalInconvenience(),
+        '/taxi': (BuildContext context) => Taxi(),
+        '/train': (BuildContext context) => Train(),
+        '/transport': (BuildContext context) => HomePageTransport(),
+        '/councilMeetings': (BuildContext context) => CouncilMeetings(),
+        '/leaders': (BuildContext context) => Leaders(),
+        '/localCouncil': (BuildContext context) => LocalCouncil(),
+        '/localLegislation': (BuildContext context) => LocalLegislation(),
+        '/townHall': (BuildContext context) => TownHallMain(),
+        '/noticeProblem': (BuildContext context) => MainNoticeUi(),
+        '/noticeMap': (BuildContext context) => NoticeMapUi(),
+        '/events': (BuildContext context) => EventsMain(),
+        '/air': (BuildContext context) => AirQualityPage(),
+        '/volunteer': (BuildContext context) => VolunteerPage(),
+      },
+      navigatorKey: _navigator,
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
         primaryColor: Color(0xFFFFFFFF),
       ),
-      home: AndroidMobile1(),
     );
   }
 }
 
-class MyApp extends StatefulWidget {
+class MenuScreen extends StatefulWidget {
   @override
   _MyAppState createState() => new _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return new SplashScreen(
-      seconds: 10,
-      navigateAfterSeconds: new AndroidMobile1(),
-      title: new Text(
-        'Aplicația e-Rădăuți',
-        style: new TextStyle(
-          //fontWeight: FontWeight.bold,
-          fontSize: 20.0,
-          color: Colors.black,
-        ),
-      ),
-      image: Image.asset("assets/logo_images/app_logo.png"),
-      backgroundColor: Colors.white,
-      photoSize: 80.0,
-    );
-  }
-}
-
-class AndroidMobile1 extends StatelessWidget {
-  AndroidMobile1({
-    Key key,
-  }) : super(key: key);
-
+class _MyAppState extends State<MenuScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    if (Platform.isIOS) {
+      FirebaseMessaging.instance.requestPermission();
+    }
+    FirebaseMessaging.instance
+        .getInitialMessage()
+        .then((RemoteMessage message) {
+      if (message != null) {
+        navigate(context, message.data['view']);
+      }
+    });
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      RemoteNotification notification = message.notification;
+      AndroidNotification android = message.notification?.android;
+      if (notification != null && android != null) {
+        flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              android: AndroidNotificationDetails(
+                channel.id,
+                channel.name,
+                channel.description,
+                icon: 'app_logo_final',
+              ),
+            ),
+            payload: message.data["view"]);
+      }
+    });
+    FirebaseMessaging.instance.subscribeToTopic('test');
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      debugPrint('A new onMessageOpenedApp event was published!');
+      navigate(context, message.data['view']);
+    });
+    getToken();
+    //checkPermissions(context);
+  }
+
+  void navigate(BuildContext context, String view) {
+    switch (view) {
+      case 'air_qulity':
+        {
+          Navigator.pushNamed(context, '/air');
+        }
+        break;
+      case 'events':
+        {
+          Navigator.pushNamed(context, '/events');
+        }
+        break;
+      case 'notice_problem':
+        {
+          Navigator.pushNamed(context, '/noticeProblem');
+        }
+        break;
+      case 'announcement':
+        {
+          Navigator.pushNamed(context, '/localAnnouncements');
+        }
+        break;
+      case 'council':
+        {
+          Navigator.pushNamed(context, '/councilMeetings');
+        }
+        break;
+      case 'local_authorities':
+        {
+          Navigator.pushNamed(context, '/localAuthorities');
+        }
+        break;
+      default:
+        {
+          Navigator.pushNamed(context, '/');
+        }
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +260,31 @@ class AndroidMobile1 extends StatelessWidget {
       key: _scaffoldKey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        title: Container(
+          alignment: Alignment.center,
+          child: Text(
+            'e-Rădăuți',
+            style: TextStyle(
+              color: Color(0xFF000000), //Color(0xFFFFFFFF),
+              fontWeight: FontWeight.bold,
+              fontSize: 19,
+            ),
+          ),
+        ),
+        actions: <Widget>[
+          Container(
+            alignment: Alignment.topRight,
+            margin: EdgeInsets.only(top: 0.0, right: 0.0),
+            child: IconButton(
+              icon: Icon(
+                Icons.menu,
+                size: 24,
+                color: Colors.black,
+              ),
+              onPressed: () => _scaffoldKey.currentState.openDrawer(),
+            ),
+          ),
+        ],
         leading: Container(
           padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
@@ -84,19 +298,20 @@ class AndroidMobile1 extends StatelessWidget {
           ),
         ),
       ),
+      drawer: NavDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 90, //(MediaQuery.of(context).size.height/5 - 45),
+              height: (MediaQuery.of(context).size.height / 5 - 45),
               child: Container(
-                //padding: EdgeInsets.only(top: 12.5, bottom: 0),
+                //padding: EdgeInsets.only(left: 10,top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      height: 50,
-                      width: 50,
+                      height: 30,
+                      width: 30,
                       child: Image.asset("assets/images/birthday.png"),
                     ),
                     Container(
@@ -107,7 +322,7 @@ class AndroidMobile1 extends StatelessWidget {
                         style: TextStyle(
                             color: Color(0xFF000000),
                             fontWeight: FontWeight.bold,
-                            fontSize: 20),
+                            fontSize: 18),
                       ),
                     ),
                   ],
@@ -121,402 +336,29 @@ class AndroidMobile1 extends StatelessWidget {
               child: Container(
                 child: GridView.count(
                   primary: false,
-                  padding: const EdgeInsets.all(15),
-                  crossAxisSpacing: 15,
-                  mainAxisSpacing: 15,
+                  padding: const EdgeInsets.all(10),
+                  crossAxisSpacing: 5,
+                  mainAxisSpacing: 5,
                   crossAxisCount: 2,
                   childAspectRatio:
                       (MediaQuery.of(context).size.width / 2 - 22.5) /
                           (MediaQuery.of(context).size.height / 5 - 60),
                   children: <Widget>[
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageNoticeProblem()),
-                        );
-                      },
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          //borderRadius: BorderRadius.all(Radius.circular(24)),
-                          borderRadius: BorderRadius.all(Radius.circular(2)),
-                        ),
-                        child: Padding(
-                          //padding: const EdgeInsets.symmetric(horizontal: 20),
-                          padding: const EdgeInsets.all(
-                              0), //const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                Icons.photo_filter,
-                                color: Color(0x55FB6340),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width / 2 -
-                                    97, //150,
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                      0.0, 0.0, 0.0, 0.0), //10.0 //25.0
-                                  child: Text(
-                                    'Sesizează o problemă',
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 3,
-                                    style: TextStyle(
-                                      color: Color(
-                                          0xFF000000), //Color(0xFFFFFFFF),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => TownHallMain()),
-                        );
-                      },
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          //borderRadius: BorderRadius.all(Radius.circular(24)),
-                          borderRadius: BorderRadius.all(Radius.circular(2)),
-                        ),
-                        child: Padding(
-                          //padding: const EdgeInsets.symmetric(horizontal: 20),
-                          padding: const EdgeInsets.all(
-                              0), //const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                Icons.location_city,
-                                color: Color(0x55FB6340),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                'Administrație \nlocală',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    //2
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => EventsMain()),
-                        );
-                      },
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          //borderRadius: BorderRadius.all(Radius.circular(24)),
-                          borderRadius: BorderRadius.all(Radius.circular(2)),
-                        ),
-                        child: Padding(
-                          //padding: const EdgeInsets.symmetric(horizontal: 20),
-                          padding: const EdgeInsets.all(
-                              0), //const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                Icons.calendar_today,
-                                color: Color(0x55FB6340),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                'Evenimente',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageNumbers()),
-                        );
-                      },
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          //borderRadius: BorderRadius.all(Radius.circular(24)),
-                          borderRadius: BorderRadius.all(Radius.circular(2)),
-                        ),
-                        child: Padding(
-                          //padding: const EdgeInsets.symmetric(horizontal: 20),
-                          padding: const EdgeInsets.all(
-                              0), //const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                Icons.perm_phone_msg,
-                                color: Color(0x55FB6340),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                'Numere utile',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    //3
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageJobs()),
-                        );
-                      },
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          //borderRadius: BorderRadius.all(Radius.circular(24)),
-                          borderRadius: BorderRadius.all(Radius.circular(2)),
-                        ),
-                        child: Padding(
-                          //padding: const EdgeInsets.symmetric(horizontal: 20),
-                          padding: const EdgeInsets.all(
-                              0), //const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                Icons.announcement,
-                                color: Color(0x55FB6340),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                'Anunțuri',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AirQualityPage()),
-                        );
-                      },
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          //borderRadius: BorderRadius.all(Radius.circular(24)),
-                          borderRadius: BorderRadius.all(Radius.circular(2)),
-                        ),
-                        child: Padding(
-                          //padding: const EdgeInsets.symmetric(horizontal: 20),
-                          padding: const EdgeInsets.all(
-                              0), //const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                Icons.bubble_chart,
-                                color: Color(0x55FB6340),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                'Calitatea Aerului',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    //4
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageTransport()),
-                        );
-                      },
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          //borderRadius: BorderRadius.all(Radius.circular(24)),
-                          borderRadius: BorderRadius.all(Radius.circular(2)),
-                        ),
-                        child: Padding(
-                          //padding: const EdgeInsets.symmetric(horizontal: 20),
-                          padding: const EdgeInsets.all(
-                              0), //const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                Icons.train,
-                                color: Color(0x55FB6340),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                'Transport',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                                style: TextStyle(
-                                  color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: null,
-                      child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 0),
-                        elevation: 4,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          //borderRadius: BorderRadius.all(Radius.circular(24)),
-                          borderRadius: BorderRadius.all(Radius.circular(2)),
-                        ),
-                        child: Padding(
-                          //padding: const EdgeInsets.symmetric(horizontal: 20),
-                          padding: const EdgeInsets.all(
-                              0), //const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                Icons.access_time,
-                                color: Color(0xAAC4C4C4),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width / 2 -
-                                    77, //150,
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                      0.0, 0.0, 0.0, 0.0), //10.0 //25.0
-                                  child: new RichText(
-                                    text: new TextSpan(
-                                      children: [
-                                        new TextSpan(
-                                          text: 'Voluntariat\n',
-                                          style: TextStyle(
-                                            color: Color(
-                                                0xFF979797), //Color(0xFFFFFFFF),
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        new TextSpan(
-                                          text: 'Coming soon',
-                                          style: TextStyle(
-                                            color: Color(
-                                                0xFFC4C4C4), //Color(0xFFFFFFFF),
-                                            //fontWeight: FontWeight.bold,
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    //
+                    itemMenu(context, 'Sesizează o problemă',
+                        Icons.photo_filter, '/noticeProblem'),
+                    itemMenu(context, 'Administrație locală',
+                        Icons.location_city, '/townHall'),
+                    itemMenu(
+                        context, 'Evenimente', Icons.calendar_today, '/events'),
+                    itemMenu(context, 'Numere utile', Icons.perm_phone_msg,
+                        '/numbers'),
+                    itemMenu(context, 'Anunțuri', Icons.announcement,
+                        '/announcement'),
+                    itemMenu(context, 'Calitatea aerului', Icons.bubble_chart,
+                        '/air'),
+                    itemMenu(context, 'Transport', Icons.train, '/transport'),
+                    itemMenu(context, 'Voluntariat',
+                        FontAwesome5.hand_holding_heart, '/volunteer'),
                   ],
                 ),
               ),
@@ -526,18 +368,13 @@ class AndroidMobile1 extends StatelessWidget {
             child: SizedBox(
               height: 50,
               child: Column(
-                //mainAxisAlignment: MainAxisAlignment.center,
-                //direction: Axis.horizontal,
                 children: <Widget>[
                   Container(
-                    height: 15,
+                    height: 17,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        //1
                         Container(
-                          //padding: EdgeInsets.only(left: 0, right: 5,),
-                          //width: MediaQuery.of(context).size.width/4 - 10,
                           child: new InkWell(
                             child: new Text(
                               'Despre noi',
@@ -549,22 +386,14 @@ class AndroidMobile1 extends StatelessWidget {
                               ),
                             ),
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AboutUsMain()),
-                              );
+                              Navigator.pushNamed(context, '/about');
                             },
                           ),
                         ),
                         VerticalDivider(
                           color: Colors.black,
-                          //width: 20,
                         ),
-                        //2
                         Container(
-                          //padding: EdgeInsets.only(left: 0, right: 5,),
-                          //width: MediaQuery.of(context).size.width/4 + 25 ,
                           child: new InkWell(
                             child: new Text(
                               'Confidențialitate',
@@ -576,22 +405,17 @@ class AndroidMobile1 extends StatelessWidget {
                               ),
                             ),
                             onTap: () {
-                              Navigator.push(
+                              Navigator.pushNamed(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => Confidential()),
+                                '/confidential',
                               );
                             },
                           ),
                         ),
                         VerticalDivider(
                           color: Colors.black,
-                          //width: 20,
                         ),
-                        //3
                         Container(
-                          //padding: EdgeInsets.only(left: 5, right: 5,),
-                          //width: MediaQuery.of(context).size.width/4 -15,
                           child: new InkWell(
                             child: new Text(
                               'Contact',
@@ -600,14 +424,10 @@ class AndroidMobile1 extends StatelessWidget {
                                 decoration: TextDecoration.underline,
                                 color: Color(0xFF32325D),
                                 fontSize: 15,
-                              ), //Color(0xFFFFFFFF),
+                              ),
                             ),
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Contact()),
-                              );
+                              Navigator.pushNamed(context, '/contact');
                             },
                           ),
                         ),
@@ -620,51 +440,19 @@ class AndroidMobile1 extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      //4
-                      /*Container(
-                      //padding: EdgeInsets.only(left: 0, right: 0,),
-                      width: MediaQuery.of(context).size.width/5 - 15,
-                      child: new InkWell(
-                          child: new Text(
-                            'Credits',
-                            style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
-                          ),
-                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Credits()),);},
-                      ),
-                    ),*/
-                      /*Container(
-                      //padding: EdgeInsets.only(left: 0, right: 0,),
-                      width: MediaQuery.of(context).size.width/5 - 15,
-                      child: new InkWell(
-                        child: new Text(
-                          'Calendar',
-                          style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
-                        ),
-                        onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Add2CalendarEvent()),);},
-                      ),
-                    ),*/
-
-                      //5
-
                       Container(
-                        //padding: EdgeInsets.only(left: 5, right: 5,),
-                        //width: MediaQuery.of(context).size.width/4 - 15,
                         child: new InkWell(
                           child: new Text(
                             'Parteneri',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              //decoration: TextDecoration.underline,
+                              decoration: TextDecoration.underline,
                               color: Color(0xFF32325D),
                               fontSize: 15,
                             ),
                           ),
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Partner()),
-                            );
+                            Navigator.pushNamed(context, '/partner');
                           },
                         ),
                       ),
@@ -678,6 +466,54 @@ class AndroidMobile1 extends StatelessWidget {
       ),
     );
   }
-}
 
-//c:\flutter\flutter\bin\flutter build apk --release --build-name=1.0.5 --build-number=6
+  GestureDetector itemMenu(context, title, icon, nextScreen) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          nextScreen,
+        );
+      },
+      child: Card(
+        elevation: 4,
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(4)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(left: 10),
+              child: Icon(
+                icon,
+                color: Color(0x55FB6340),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(left: 10),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: Color(0xFF000000), //Color(0xFFFFFFFF),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void getToken() {
+    FirebaseMessaging.instance.getToken.call().then((token) {
+      debugPrint('Token: $token');
+    });
+  }
+}

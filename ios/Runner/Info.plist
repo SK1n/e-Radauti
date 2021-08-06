@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key></key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>e-Radauti</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,13 +19,48 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>$(FLUTTER_BUILD_NAME)</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>ITS APP</key>
+	<string></string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Aplicația nu acceseaza direct Apple Music dar unele pachete din ea cer o astfel de permisiune.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Evenimentele din aplicație pot fi salvate direct în calendarul telefonului. Din acest motiv, aplicația are nevoie de acces la el.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Când se face o sesizare, există posibilitatea de a trimite fotografii, drept urmare, în cazul în care utilizatorul dorește să facă fotografia la fața locului, aplicația are nevoie de accesarea camerei.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Accesarea aplicației la agendă se face atunci când utilizatorul apelează un număr de telefon direct din aplicație sau pentru adăugarea unui număr noi din aplicație în telefon.</string>
+	<key>NSFileProviderDomainUsageDescription</key>
+	<string></string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>La sesizează o problemă, utilizatorul poate selecta să fie folosită locația de pe GPS. Din acest motiv, aplicația are nevoie să acceseze locația.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Deși aplicația cere această permisiune, aplicația nu folosește aceasta permisiune, unele pachete ar putea cere această permisiune.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>La sesizează o problemă, utilizatorul poate selecta să fie folosită locația de pe GPS. Din acest motiv, aplicația are nevoie să acceseze locația.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Deși aplicația nu are nicăieri senzorii de mișcare, unele pachete ar putea cere această permisiune.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Când se face o sesizare, există posibilitatea de a trimite fotografii, drept urmare, aplicația are nevoie de accesarea fotografiilor din telefon.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Deși aplicația nu are nicăieri opțiunea de a înregistra vocea, unele pachete ar putea cere această permisiune.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -39,11 +78,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-    <string>We need to acces your camera so that you can take a picture when you are using 'Sesizeaza o problema'</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>kTCCServiceMediaLibrary</key>
+	<string>Aplicația nu acceseaza direct Apple Music dar unele pachete din ea cer o astfel de permisiune.</string>
 </dict>
-<key>NSLocationWhenInUseUsageDescription</key>
-<string>This app needs access to location so that we can know exactly where the problem is. We need this permission when you are using 'Sesizeaza o problema'</string>
 </plist>

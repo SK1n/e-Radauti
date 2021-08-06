@@ -1,9 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/jobs/announcements_web_view.dart';
 import 'package:flutterapperadauti/jobs/job_model.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
-import '../menu_page.dart';
+import '../widgets/src/nav_drawer.dart';
 
 class FurniturePage extends StatefulWidget {
   @override
@@ -16,129 +20,131 @@ class _FurniturePageState extends State<FurniturePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   Future<List<JobModel>> _getJobs() async {
-    var response = await http.get(
-        "https://www.eradauti.ro/api/context?pathname=/anunturi/imobiliare-19");
-    this.setState(() {
-      jsonResponse = json.decode(response.body);
-    });
-    jobList = List<JobModel>();
-    jsonResponse.forEach((key, value) {
-      jobList = (jsonResponse['context']['posts']['records'] as List)
-          .map<JobModel>((j) => JobModel.fromJson(j))
-          .toList();
-    });
-
-    // print(jobList);
+    try {
+      var response = await http.get(
+          "https://www.eradauti.ro/api/context?pathname=/anunturi/imobiliare-19");
+      this.setState(() {
+        jsonResponse = json.decode(response.body);
+      });
+      jobList = List<JobModel>();
+      jsonResponse.forEach((key, value) {
+        jobList = (jsonResponse['context']['posts']['records'] as List)
+            .map<JobModel>((j) => JobModel.fromJson(j))
+            .toList();
+      });
+    } catch (e) {
+      debugPrint('error: $e');
+    }
     return jobList;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 255, 255, 255),
-          automaticallyImplyLeading: false,
-          leading: Container(
-            padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-            margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
-            child: Image.asset("assets/logo_images/app_logo.png"),
-          ),
-          actions: <Widget>[
-            Container(
-              alignment: Alignment.topRight,
-              margin: EdgeInsets.only(top: 0.0, right: 0.0),
-              // EdgeInsets.only(top: 20.0, right: 10.0),
-              child: IconButton(
-                icon: Icon(
-                  Icons.menu,
-                  size: 24,
-                  color: Colors.black,
-                ), //Colors.white
-                onPressed: () => _scaffoldKey.currentState.openDrawer(),
-              ),
-            ),
-          ],
+      key: _scaffoldKey,
+      drawer: NavDrawer(),
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            AppBarUi(
+              content: 'Anunțuri',
+              leading: Icons.announcement,
+              scaffoldKey: _scaffoldKey,
+            )
+          ];
+        },
+        body: FutureBuilder(
+          future: _getJobs(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              return new ListView.builder(
+                  itemCount: jobList == null ? 0 : jobList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Column(
+                          children: [
+                            Container(
+                              constraints: BoxConstraints(
+                                maxHeight: 70,
+                                minHeight: 50,
+                              ),
+                              width: MediaQuery.of(context).size.width,
+                              margin: EdgeInsets.only(left: 10, right: 10),
+                              child: TextButton(
+                                style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.blue[300]),
+                                    padding:
+                                        MaterialStateProperty.all<EdgeInsets>(
+                                            EdgeInsets.all(10))),
+                                child: Text(
+                                  '${jobList[index].title.toString().toUpperCase()}',
+                                  style: TextStyle(color: Colors.white),
+                                  textAlign: TextAlign.start,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                onPressed: () => {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => AnnouncementWebView(
+                                              slug:
+                                                  'https://www.eradauti.ro/anunturi/imobiliare-19/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
+                                },
+                              ),
+                            )
+                          ],
+                        ));
+                  });
+            } else {
+              return Center(
+                child: CupertinoActivityIndicator(),
+              );
+            }
+          },
         ),
-        drawer: NavDrawer2(),
-        body: Container(
-          child: FutureBuilder(
-            future: _getJobs(),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.data == null) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    valueColor:
-                        AlwaysStoppedAnimation<Color>(Color(0xFF38A49C)),
-                  ),
-                );
-              } else {
-                return new ListView.builder(
-                    itemCount: jobList == null ? 0 : jobList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                          padding: EdgeInsets.only(top: 10),
-                          child: Column(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      jobList[index].title.toString(),
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    jobList[index].price.toString() == 'null'
-                                        ? Text('')
-                                        : Row(children: [
-                                            Text(
-                                              'Pret: ',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            Text(
-                                                jobList[index].price.toString(),
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            Text(
-                                                jobList[index]
-                                                    .currency
-                                                    .toString(),
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                          ]),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.only(bottom: 10),
-                                child: ListTile(
-                                  onTap: () {},
-                                  title: Text(jobList[index].title.toString()),
-                                  subtitle: Text(
-                                    jobList[index].rawContent.toString(),
-                                    maxLines: 4,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 15.0),
-                                child: Container(
-                                  height: 1.0,
-                                  color: Color.fromRGBO(0, 0, 0, 1),
-                                ),
-                              ),
-                            ],
-                          ));
-                    });
-              }
-            },
-          ),
-        ));
+      ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 10,
+        child: Container(
+          child: Icon(Icons.add_rounded),
+        ),
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (_) => CupertinoAlertDialog(
+                    content: Container(
+                      child: Text('''
+            Doriti sa deschideti pagina web?
+            '''),
+                    ),
+                    actions: [
+                      CupertinoDialogAction(
+                        child: Text('NU'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      CupertinoDialogAction(
+                        isDefaultAction: true,
+                        child: Text('DA'),
+                        onPressed: () async {
+                          Navigator.pop(context);
+                          if (await canLaunch(
+                              'https://www.eradauti.ro/publica-anunt-gratuit')) {
+                            await launch(
+                                'https://www.eradauti.ro/publica-anunt-gratuit');
+                          } else {
+                            throw 'Could not launch https://www.eradauti.ro/publica-anunt-gratuit';
+                          }
+                        },
+                      ),
+                    ],
+                  ));
+        },
+      ),
+    );
   }
 }

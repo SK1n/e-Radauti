@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "lutter_app_e_radauti",
+            "name": "e-radauti",
             "request": "launch",
             "type": "dart"
         }
