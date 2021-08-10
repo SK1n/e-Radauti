@@ -70,6 +70,18 @@ class NavDrawer extends StatelessWidget {
           if (Platform.isIOS) {
             showAboutDialog(
                 context: context,
+                children: [
+                  InkWell(
+                      child: Text('Tap to copy: FCM token'),
+                      onTap: () => {
+                            snackBar = SnackBar(
+                              content: Text('Copiat in clipboard!'),
+                            ),
+                            Clipboard.setData(
+                                ClipboardData(text: provider.fcm)),
+                            showSnackBar(context, snackBar),
+                          }),
+                ],
                 applicationName: 'e-Radauti',
                 applicationVersion: 'Version: 2.1.2 (1)',
                 applicationIcon: Image.asset(
