@@ -68,7 +68,8 @@ Future<void> sendMessage(
   final message = Message()
     ..from = Address(username, 'Radautiul Civic - @no-reply')
     ..recipients.add(noticeFormState.institutionEmail)
-    ..bccRecipients.add(Address('radautiulcivic@gmail.com', '$email'))
+    ..bccRecipients
+        .addAll([Address('radautiulcivic@gmail.com'), Address('$email')])
     ..subject = 'Petiție ${noticeFormState.subject} - aplicația e-Rădăuți'
     ..html = textDescription;
   formKey.currentState.fields['image'].value
