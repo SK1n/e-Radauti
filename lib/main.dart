@@ -39,7 +39,6 @@ import 'package:fluttericon/font_awesome5_icons.dart';
 import 'widgets/src/nav_drawer.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
-import 'package:flutterapperadauti/widgets/src/checkGeolocatorPermission.dart';
 import 'package:flutterapperadauti/notice_a_problem/location_switch.dart';
 import 'package:flutterapperadauti/state/marker_notifier.dart';
 import 'package:flutterapperadauti/state/fcm_state.dart';

@@ -37,7 +37,7 @@ class _InfoWindowState extends State<InfoWindow> {
               ),
             ),
             const Padding(padding: EdgeInsets.symmetric(vertical: 4.0)),
-            Text('${_marker.category}'),
+            Text('${_marker.description}'),
             Text('categoria: ${_marker.category}'),
             Text('status: ${_marker.status}'),
           ],
