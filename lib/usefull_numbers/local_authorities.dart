@@ -14,7 +14,7 @@ class LocalAuthorities extends StatelessWidget {
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
-              AppBarUi(
+              AppBarUiSliver(
                 content: 'Autorități locale',
                 leading: Icons.perm_phone_msg,
                 scaffoldKey: _scaffoldKey,

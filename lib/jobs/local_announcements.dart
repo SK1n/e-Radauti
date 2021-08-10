@@ -32,7 +32,7 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Anunțuri locale',
               leading: Icons.announcement,
               scaffoldKey: _scaffoldKey,

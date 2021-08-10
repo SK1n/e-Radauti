@@ -18,7 +18,7 @@ class LocalLegislation extends StatelessWidget {
       body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
-              AppBarUi(
+              AppBarUiSliver(
                 content: 'Hotărâri de Consiliu Local',
                 leading: Icons.location_city,
                 scaffoldKey: _scaffoldKey,

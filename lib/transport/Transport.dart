@@ -14,7 +14,7 @@ class HomePageTransport extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Transport',
               leading: Icons.train,
               scaffoldKey: _scaffoldKey,

@@ -14,7 +14,7 @@ class Leaders extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Administrație locală',
               leading: Icons.location_city,
               scaffoldKey: _scaffoldKey,

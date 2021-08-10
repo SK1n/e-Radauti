@@ -27,7 +27,7 @@ class _AnnouncementWebViewState extends State<AnnouncementWebView> {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Anunțuri',
               scaffoldKey: _scaffoldKey,
               leading: Icons.announcement,

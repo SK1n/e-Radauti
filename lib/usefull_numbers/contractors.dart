@@ -15,7 +15,7 @@ class Contractors extends StatelessWidget {
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
-              AppBarUi(
+              AppBarUiSliver(
                 content: 'Tehnicieni și specialiști',
                 leading: Icons.perm_phone_msg,
                 scaffoldKey: _scaffoldKey,

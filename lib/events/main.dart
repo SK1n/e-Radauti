@@ -15,7 +15,7 @@ class EventsMain extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Evenimente',
               leading: Icons.calendar_today,
               scaffoldKey: _scaffoldKey,

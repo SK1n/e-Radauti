@@ -17,7 +17,7 @@ class VolunteerPage extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Voluntariat',
               leading: FontAwesome5.hand_holding_heart,
               scaffoldKey: _scaffoldKey,

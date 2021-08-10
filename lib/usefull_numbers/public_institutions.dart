@@ -14,7 +14,7 @@ class PublicInstitutions extends StatelessWidget {
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
-              AppBarUi(
+              AppBarUiSliver(
                 content: 'Instituții publice',
                 leading: Icons.perm_phone_msg,
                 scaffoldKey: _scaffoldKey,
