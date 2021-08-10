@@ -46,7 +46,7 @@ class _FurniturePageState extends State<FurniturePage> {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Anunțuri',
               leading: Icons.announcement,
               scaffoldKey: _scaffoldKey,

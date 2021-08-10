@@ -67,7 +67,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Calitatea aertului',
               leading: Icons.bubble_chart,
               scaffoldKey: _scaffoldKey,

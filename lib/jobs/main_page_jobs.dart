@@ -15,7 +15,7 @@ class HomePageJobs extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Anunțuri',
               leading: Icons.announcement,
               scaffoldKey: _scaffoldKey,

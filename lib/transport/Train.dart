@@ -23,7 +23,7 @@ class _TrainState extends State<Train> {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Trenuri',
               leading: Icons.train,
               scaffoldKey: _scaffoldKey,

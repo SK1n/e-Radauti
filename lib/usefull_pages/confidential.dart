@@ -14,7 +14,7 @@ class Confidential extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Confidențialitate',
               leading: Icons.add_box_outlined,
               scaffoldKey: _scaffoldKey,

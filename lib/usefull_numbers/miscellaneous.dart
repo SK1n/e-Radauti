@@ -14,7 +14,7 @@ class Miscellaneous extends StatelessWidget {
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
-              AppBarUi(
+              AppBarUiSliver(
                 content: 'Deranjamente',
                 leading: Icons.perm_phone_msg,
                 scaffoldKey: _scaffoldKey,

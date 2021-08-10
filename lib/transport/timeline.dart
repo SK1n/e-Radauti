@@ -29,7 +29,7 @@ class _TimelineRouteState extends State<TimelineRoute> {
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
-              AppBarUi(
+              AppBarUiSliver(
                 content: '${widget.title}',
                 leading: Icons.train,
                 scaffoldKey: _scaffoldKey,
