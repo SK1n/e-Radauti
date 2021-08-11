@@ -14,6 +14,7 @@ class EmailTextField extends StatelessWidget {
     return FormBuilderTextField(
         decoration: InputDecoration(hintText: 'Email'),
         name: 'email',
+        initialValue: noticeFormState.email,
         onChanged: (value) {
           noticeFormState.upEmail(value);
         },

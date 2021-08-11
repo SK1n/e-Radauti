@@ -14,7 +14,7 @@ class HomePageNumbers extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Numere utille',
               leading: Icons.perm_phone_msg,
               scaffoldKey: _scaffoldKey,

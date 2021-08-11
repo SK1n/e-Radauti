@@ -16,7 +16,7 @@ class MainNoticeUi extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               scaffoldKey: _scaffoldKey,
               leading: Icons.camera,
               content: 'Sesizează o problemă',

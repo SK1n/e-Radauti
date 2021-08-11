@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
+import 'package:flutterapperadauti/widgets/src/custom_list_tile.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
 class HomePageTransport extends StatelessWidget {
@@ -9,232 +10,44 @@ class HomePageTransport extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBarModel()
-          .loadAppBar(context, 'Transport', Icons.train, _scaffoldKey),
       drawer: NavDrawer(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(
-                left: 25,
-                right: 25,
-                bottom: 10,
-                top: 15,
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            AppBarUi(
+              content: 'Transport',
+              leading: Icons.train,
+              scaffoldKey: _scaffoldKey,
+            )
+          ];
+        },
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              CustomListTile(
+                content: 'Taximetriști',
+                leadingIcon: Icons.local_taxi,
+                leadingColor: Color(0x55FB6340),
+                route: '/taxi',
+                subTitle: 'Lista taximetriștilor autorizați din Rădăuți',
               ),
-              child: GestureDetector(
-                child: Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              child: Icon(
-                                Icons.local_taxi,
-                                color: Color(0x55FB6340),
-                              ),
-                            ),
-                            //),
-                            Container(
-                              width: MediaQuery.of(context).size.width - 120,
-                              padding: EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Text(
-                                'Taximetriști',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            top: 10,
-                          ),
-                          width: MediaQuery.of(context).size.width - 80,
-                          child: Text(
-                            'Lista taximetriștilor autorizați din Rădăuți',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 5,
-                            style: TextStyle(
-                              color: Color(0xFF38A49C),
-                              fontSize: 15,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Color(0xFF979797),
-                      ),
-                    ),
-                  ],
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, '/taxi');
-                },
+              CustomListTile(
+                content: 'Trenuri',
+                leadingIcon: Icons.train,
+                leadingColor: Color(0x55FB6340),
+                route: '/train',
+                subTitle: 'Lista trenurilor din Rădăuți',
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: Container(
-                height: 1.0,
-                color: Color.fromRGBO(0, 0, 0, 0.1),
+              CustomListTile(
+                content: 'Autobuz',
+                leadingIcon: Icons.directions_bus,
+                leadingColor: Color(0x55FB6340),
+                route: '/bus',
+                subTitle: 'Lista autobuzelor Rădăuți - alte localtăți din  județul Suceava',
               ),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                left: 25,
-                right: 25,
-                bottom: 10,
-                top: 15,
-              ),
-              child: GestureDetector(
-                child: Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              child: Icon(
-                                Icons.train,
-                                color: Color(0x55FB6340),
-                              ),
-                            ),
-                            //),
-                            Container(
-                              width: MediaQuery.of(context).size.width - 120,
-                              padding: EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Text(
-                                'Trenuri',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            top: 10,
-                          ),
-                          width: MediaQuery.of(context).size.width - 80,
-                          child: Text(
-                            'Lista trenurilor din Rădăuți',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 5,
-                            style: TextStyle(
-                              color: Color(0xFF38A49C),
-                              fontSize: 15,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Color(0xFF979797),
-                      ),
-                    ),
-                  ],
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, '/train');
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: Container(
-                height: 1.0,
-                color: Color.fromRGBO(0, 0, 0, 0.1),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                left: 25,
-                right: 25,
-                bottom: 10,
-                top: 15,
-              ),
-              child: GestureDetector(
-                  child: Row(
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                child: Icon(
-                                  Icons.directions_bus,
-                                  color: Color(0x55FB6340),
-                                ),
-                              ),
-                              //),
-                              Container(
-                                width: MediaQuery.of(context).size.width - 120,
-                                padding: EdgeInsets.only(
-                                  left: 10,
-                                ),
-                                child: Text(
-                                  'Autobuz',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(
-                              top: 10,
-                            ),
-                            width: MediaQuery.of(context).size.width - 80,
-                            child: Text(
-                              'Lista autobuzelor Rădăuți - alte localtăți din  județul Suceava',
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 5,
-                              style: TextStyle(
-                                color: Color(0xFF38A49C),
-                                fontSize: 15,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      Container(
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          color: Color(0xFF979797),
-                        ),
-                      ),
-                    ],
-                  ),
-                  onTap: (){
-                    Navigator.pushNamed(context, '/bus');
-                  },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: Container(
-                height: 1.0,
-                color: Color.fromRGBO(0, 0, 0, 0.1),
-              ),
-            ),
-          ],
+
+            ],
+          ),
         ),
       ),
     );

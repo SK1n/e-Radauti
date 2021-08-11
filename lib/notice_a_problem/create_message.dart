@@ -50,14 +50,15 @@ Future<void> createMessage(BuildContext context, dynamic formKey) async {
         .<br><br>Cu stimă,<br><br>
              <b>$name</b><br><br>     Tel: $number / $email
         ''';
-  sendMessage(textDescription, noticeFormState, isLoading, formKey);
+  sendMessage(textDescription, noticeFormState, isLoading, formKey, email);
 }
 
 Future<void> sendMessage(
     String textDescription,
     NoticeFormState noticeFormState,
     IsLoading isLoading,
-    dynamic formKey) async {
+    dynamic formKey,
+    String email) async {
   String username = 'eradautiapp@gmail.com';
   String password = 'e-Radauti123';
 
@@ -67,7 +68,8 @@ Future<void> sendMessage(
   final message = Message()
     ..from = Address(username, 'Radautiul Civic - @no-reply')
     ..recipients.add(noticeFormState.institutionEmail)
-    ..bccRecipients.add(Address('radautiulcivic@gmail.com'))
+    ..bccRecipients
+        .addAll([Address('radautiulcivic@gmail.com'), Address('$email')])
     ..subject = 'Petiție ${noticeFormState.subject} - aplicația e-Rădăuți'
     ..html = textDescription;
   formKey.currentState.fields['image'].value

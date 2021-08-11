@@ -31,7 +31,7 @@ class Taxi extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Taximetriști',
               leading: Icons.local_taxi,
               scaffoldKey: _scaffoldKey,

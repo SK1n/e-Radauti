@@ -150,7 +150,7 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
           headerSliverBuilder:
               (BuildContext context, bool innerBoxIsScrollable) {
             return [
-              AppBarUi(
+              AppBarUiSliver(
                 content: 'Ședințe de Consiliu local',
                 leading: Icons.location_city,
                 scaffoldKey: _scaffoldKey,

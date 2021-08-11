@@ -14,6 +14,7 @@ class DescriptionTextField extends StatelessWidget {
     return FormBuilderTextField(
         decoration: InputDecoration(hintText: 'Descriere'),
         maxLines: 5,
+        initialValue: noticeFormState.description,
         name: 'description',
         onChanged: (value) {
           noticeFormState.upDescription(value);

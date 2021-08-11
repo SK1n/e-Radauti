@@ -39,9 +39,9 @@ import 'package:fluttericon/font_awesome5_icons.dart';
 import 'widgets/src/nav_drawer.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
-import 'package:flutterapperadauti/widgets/src/checkGeolocatorPermission.dart';
 import 'package:flutterapperadauti/notice_a_problem/location_switch.dart';
 import 'package:flutterapperadauti/state/marker_notifier.dart';
+import 'package:flutterapperadauti/state/fcm_state.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -70,9 +70,9 @@ Future<void> main() async {
   /// done later
   final IOSInitializationSettings initializationSettingsIOS =
       IOSInitializationSettings(
-    requestAlertPermission: false,
-    requestBadgePermission: false,
-    requestSoundPermission: false,
+    requestAlertPermission: true,
+    requestBadgePermission: true,
+    requestSoundPermission: true,
   );
   final InitializationSettings initializationSettings = InitializationSettings(
     android: initializationSettingsAndroid,
@@ -82,7 +82,7 @@ Future<void> main() async {
       onSelectNotification: (String payload) async {
     debugPrint('payload: $payload');
 
-    _navigator.currentState.pushNamed('/events');
+    _navigator.currentState.pushNamed('/$payload');
   });
 
   /// Create an Android Notification Channel.
@@ -110,6 +110,9 @@ Future<void> main() async {
           create: (_) => LocationSwitchState()),
       ChangeNotifierProvider<MarkerNotifier>(
         create: (_) => MarkerNotifier(),
+      ),
+      ChangeNotifierProvider<FCMState>(
+        create: (_) => FCMState(),
       ),
     ],
     child: MyApp(),
@@ -205,7 +208,7 @@ class _MyAppState extends State<MenuScreen> {
             payload: message.data["view"]);
       }
     });
-    FirebaseMessaging.instance.subscribeToTopic('test');
+    FirebaseMessaging.instance.subscribeToTopic('all');
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       debugPrint('A new onMessageOpenedApp event was published!');
       navigate(context, message.data['view']);
@@ -514,6 +517,7 @@ class _MyAppState extends State<MenuScreen> {
   void getToken() {
     FirebaseMessaging.instance.getToken.call().then((token) {
       debugPrint('Token: $token');
+      context.read<FCMState>().getFcm(token);
     });
   }
 }

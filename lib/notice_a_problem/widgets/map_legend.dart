@@ -5,43 +5,54 @@ class MapLegend extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        margin: EdgeInsets.all(8.0),
-        //height: MediaQuery.of(context).size.height - 500,
-        child: GridView.count(
-          shrinkWrap: true,
-          crossAxisCount: 2,
-          primary: true,
-          physics: ScrollPhysics(parent: NeverScrollableScrollPhysics()),
-          childAspectRatio: 2.0,
-          children: [
-            ListTileLegendMap(icon: 'bin', title: 'Gunoi neridicat'),
-            ListTileLegendMap(
-                icon: 'car_abandonned', title: 'Masina abandonata'),
-            ListTileLegendMap(
-                icon: 'ilegal_constructions', title: 'Constructii ilegale'),
-            ListTileLegendMap(
-                icon: 'deranj_ordinea_publica',
-                title: 'Deranjarea ordinii publice'),
-            ListTileLegendMap(
-                icon: 'lipsa_semn_circulatie',
-                title: 'Lipsa a unui semn de circulatie'),
-            ListTileLegendMap(
-                icon: 'iluminat_public',
-                title: 'Probleme la iluminatul public'),
-            ListTileLegendMap(
-                icon: 'lipsa_loc_handicap',
-                title: 'Lipsa facilitati persoane cu dizabilitati'),
-            ListTileLegendMap(icon: 'pitfall', title: 'Obstacol pe drum'),
-            ListTileLegendMap(
-                icon: 'poluare', title: 'Calitatea aerului si poluare'),
-            ListTileLegendMap(
-                icon: 'probleme_utilitati', title: 'Probleme la utilitati'),
-            ListTileLegendMap(icon: 'sanatate', title: 'Sanatate'),
-            ListTileLegendMap(icon: 'siguranta', title: 'Siguranta'),
-          ],
-        ),
+    return Container(
+      margin: EdgeInsets.all(0.0),
+      child: Card(
+        elevation: 20.0,
+        child: Stack(children: [
+          Center(
+            heightFactor: 2,
+            child: Text(
+              'Legenda',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 40),
+            child: GridView.count(
+              crossAxisCount: 2,
+              shrinkWrap: false,
+              childAspectRatio: 2.0,
+              children: [
+                ListTileLegendMap(icon: 'bin', title: 'Gunoi neridicat'),
+                ListTileLegendMap(
+                    icon: 'car_abandonned', title: 'Masina abandonata'),
+                ListTileLegendMap(
+                    icon: 'illegal_constructions',
+                    title: 'Constructii ilegale'),
+                ListTileLegendMap(
+                    icon: 'deranj_ordinea_publica',
+                    title: 'Deranjarea ordinii publice'),
+                ListTileLegendMap(
+                    icon: 'lipsa_semn_circulatie',
+                    title: 'Lipsa a unui semn de circulatie'),
+                ListTileLegendMap(
+                    icon: 'iluminat_public',
+                    title: 'Probleme la iluminatul public'),
+                ListTileLegendMap(
+                    icon: 'lipsa_loc_handicap',
+                    title: 'Lipsa facilitati persoane cu dizabilitati'),
+                ListTileLegendMap(icon: 'pitfall', title: 'Obstacol pe drum'),
+                ListTileLegendMap(
+                    icon: 'poluare', title: 'Calitatea aerului si poluare'),
+                ListTileLegendMap(
+                    icon: 'probleme_utilitati', title: 'Probleme la utilitati'),
+                ListTileLegendMap(icon: 'sanatate', title: 'Sanatate'),
+                ListTileLegendMap(icon: 'siguranta', title: 'Siguranta'),
+              ],
+            ),
+          ),
+        ]),
       ),
     );
   }

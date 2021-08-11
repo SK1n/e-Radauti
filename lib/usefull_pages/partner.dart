@@ -14,7 +14,7 @@ class Partner extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Parteneri',
               leading: Icons.add_box_outlined,
               scaffoldKey: _scaffoldKey,

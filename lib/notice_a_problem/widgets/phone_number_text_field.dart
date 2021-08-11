@@ -14,6 +14,7 @@ class PhoneNumberTextField extends StatelessWidget {
     return FormBuilderTextField(
         decoration: InputDecoration(hintText: 'Număr de telefon'),
         name: 'number',
+        initialValue: noticeFormState.phoneNumber,
         onChanged: (value) {
           noticeFormState.upPhoneNumber(value);
         },

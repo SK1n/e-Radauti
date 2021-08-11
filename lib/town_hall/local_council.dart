@@ -18,7 +18,7 @@ class LocalCouncil extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Consiliu Local',
               leading: Icons.location_city,
               scaffoldKey: _scaffoldKey,

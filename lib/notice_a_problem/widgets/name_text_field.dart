@@ -12,6 +12,7 @@ class NameTextField extends StatelessWidget {
     NoticeFormState noticeFormState = Provider.of<NoticeFormState>(context);
     return FormBuilderTextField(
       decoration: InputDecoration(hintText: 'Nume și prenume'),
+      initialValue: noticeFormState.name,
       name: 'name',
       onChanged: (value) => noticeFormState.upName(value),
       validator: FormBuilderValidators.compose(

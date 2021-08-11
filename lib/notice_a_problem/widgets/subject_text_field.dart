@@ -13,6 +13,7 @@ class SubjectTextField extends StatelessWidget {
     return FormBuilderTextField(
         decoration: InputDecoration(hintText: 'Subiect'),
         name: 'subject',
+        initialValue: noticeFormState.subject,
         onChanged: (value) {
           noticeFormState.upSubject(value);
         },

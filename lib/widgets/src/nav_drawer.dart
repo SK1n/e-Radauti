@@ -2,8 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:flutter/services.dart';
+import 'package:flutterapperadauti/state/fcm_state.dart';
+import 'package:provider/provider.dart';
 
 class NavDrawer extends StatelessWidget {
+  SnackBar snackBar;
   Widget addDrawerHeaderIcon() {
     return new Container(
       padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
@@ -21,6 +25,7 @@ class NavDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FCMState provider = Provider.of<FCMState>(context);
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -29,27 +34,29 @@ class NavDrawer extends StatelessWidget {
             child: addDrawerHeaderIcon(),
           ),
           generateListTile(context, Icons.photo_filter, 'Sesizează o problemă',
-              '/noticeProblem'),
+              '/noticeProblem', provider),
           generateListTile(context, Icons.location_city, 'Administrație locală',
-              '/townHall'),
+              '/townHall5', provider),
           generateListTile(
-              context, Icons.calendar_today, 'Evenimente', '/events'),
+              context, Icons.calendar_today, 'Evenimente', '/events', provider),
+          generateListTile(context, Icons.perm_phone_msg, 'Numere utile',
+              '/numbers', provider),
+          generateListTile(context, Icons.announcement, 'Anunțuri',
+              '/announcement', provider),
+          generateListTile(context, Icons.bubble_chart, 'Calitatea aerului',
+              '/air', provider),
           generateListTile(
-              context, Icons.perm_phone_msg, 'Numere utile', '/numbers'),
-          generateListTile(
-              context, Icons.announcement, 'Anunțuri', '/announcement'),
-          generateListTile(
-              context, Icons.bubble_chart, 'Calitatea aerului', '/air'),
-          generateListTile(context, Icons.train, 'Transport', '/transport'),
+              context, Icons.train, 'Transport', '/transport', provider),
           generateListTile(context, FontAwesome5.hand_holding_heart,
-              'Voluntariat', '/volunteer'),
-          generateListTile(context, Icons.info, 'Despre aplicație', null),
+              'Voluntariat', '/volunteer', provider),
+          generateListTile(
+              context, Icons.info, 'Despre aplicație', null, provider),
         ],
       ),
     );
   }
 
-  ListTile generateListTile(context, icon, title, following) {
+  ListTile generateListTile(context, icon, title, following, provider) {
     return ListTile(
       leading: Icon(
         icon,
@@ -63,6 +70,18 @@ class NavDrawer extends StatelessWidget {
           if (Platform.isIOS) {
             showAboutDialog(
                 context: context,
+                children: [
+                  InkWell(
+                      child: Text('Tap to copy: FCM token'),
+                      onTap: () => {
+                            snackBar = SnackBar(
+                              content: Text('Copiat in clipboard!'),
+                            ),
+                            Clipboard.setData(
+                                ClipboardData(text: provider.fcm)),
+                            showSnackBar(context, snackBar),
+                          }),
+                ],
                 applicationName: 'e-Radauti',
                 applicationVersion: 'Version: 2.1.2 (1)',
                 applicationIcon: Image.asset(
@@ -73,6 +92,18 @@ class NavDrawer extends StatelessWidget {
           } else if (Platform.isAndroid) {
             showAboutDialog(
                 context: context,
+                children: [
+                  InkWell(
+                      child: Text('Tap to copy: FCM token'),
+                      onTap: () => {
+                            snackBar = SnackBar(
+                              content: Text('Copiat in clipboard!'),
+                            ),
+                            Clipboard.setData(
+                                ClipboardData(text: provider.fcm)),
+                            showSnackBar(context, snackBar),
+                          }),
+                ],
                 applicationName: 'e-Radauti',
                 applicationVersion: 'Version: 2.5.0 (45)',
                 applicationIcon: Image.asset(
@@ -84,5 +115,9 @@ class NavDrawer extends StatelessWidget {
         }
       },
     );
+  }
+
+  void showSnackBar(BuildContext context, SnackBar snackBar) {
+    Scaffold.of(context).showSnackBar(snackBar);
   }
 }
