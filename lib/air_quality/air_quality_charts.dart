@@ -30,22 +30,6 @@ Future<List<dynamic>> createSampleDataFuture() async{
   List<TimeSeriesSales> dataR_temperetura = [];
 
   for(int i = (dataSales.length - 24); i < dataSales.length; i++ ){
-    dataR_pm25.add(new TimeSeriesSales(DateTime.parse(dataSales[i][0]).toLocal(), dataSales[i][9].toInt()));
-  }
-  for(int i = (dataSales.length - 24); i < dataSales.length; i++ ){
-    dataR_co2.add(new TimeSeriesSales(DateTime.parse(dataSales[i][0]).toLocal(), dataSales[i][10].toInt()));
-  }
-  for(int i = dataSales.length - 24; i < dataSales.length; i++ ){
-    if(dataSales[i][2].runtimeType != String ){
-      dataR_vant.add(new TimeSeriesSales(DateTime.parse(dataSales[i][0]).toLocal(), dataSales[i][2].toInt()));
-    }
-  }
-  for(int i = (dataSales.length - 24); i < dataSales.length; i++ ){
-    dataR_temperetura.add(new TimeSeriesSales(DateTime.parse(dataSales[i][0]).toLocal(), dataSales[i][8].toInt()));
-  }
-  List<charts.Series<TimeSeriesSales, DateTime>> listSeries_pm25= [];
-  //2
-  for(int i = (dataSales.length - 24); i < dataSales.length; i++ ){
     var color_pm25;
     if(dataSales[i][9].toInt() <= 10){
       color_pm25 = charts.ColorUtil.fromDartColor(Color.fromRGBO(80, 240, 230, 1));
@@ -60,15 +44,18 @@ Future<List<dynamic>> createSampleDataFuture() async{
     }else{
       color_pm25 = charts.ColorUtil.fromDartColor(Color.fromRGBO(125, 33, 129, 1));
     }
-    listSeries_pm25.add(new charts.Series<TimeSeriesSales, DateTime>(
-      id: 'Sales',
-      colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
-      domainFn: (TimeSeriesSales sales, _) => sales.time,
-      measureFn: (TimeSeriesSales sales, _) => sales.sales,
-      seriesColor: charts.ColorUtil.fromDartColor(Colors.red.shade700),
-      fillColorFn: (_, __) => color_pm25,
-      data: [TimeSeriesSales(DateTime.parse(dataSales[i][0]).toLocal(), dataSales[i][9].toInt())],
-    ),);
+    dataR_pm25.add(new TimeSeriesSales(DateTime.parse(dataSales[i][0]).toLocal(), dataSales[i][9].toInt(), color_pm25));
+  }
+  for(int i = (dataSales.length - 24); i < dataSales.length; i++ ){
+    dataR_co2.add(new TimeSeriesSales(DateTime.parse(dataSales[i][0]).toLocal(), dataSales[i][10].toInt(), null));
+  }
+  for(int i = dataSales.length - 24; i < dataSales.length; i++ ){
+    if(dataSales[i][2].runtimeType != String ){
+      dataR_vant.add(new TimeSeriesSales(DateTime.parse(dataSales[i][0]).toLocal(), dataSales[i][2].toInt(), null));
+    }
+  }
+  for(int i = (dataSales.length - 24); i < dataSales.length; i++ ){
+    dataR_temperetura.add(new TimeSeriesSales(DateTime.parse(dataSales[i][0]).toLocal(), dataSales[i][8].toInt(), null));
   }
 
   return [
@@ -78,8 +65,7 @@ Future<List<dynamic>> createSampleDataFuture() async{
       domainFn: (TimeSeriesSales sales, _) => sales.time,
       measureFn: (TimeSeriesSales sales, _) => sales.sales,
       seriesColor: charts.ColorUtil.fromDartColor(Colors.red.shade700),
-      fillColorFn: (_, __) =>
-      charts.MaterialPalette.blue.shadeDefault.lighter,
+      fillColorFn: (TimeSeriesSales sales, __) => sales.color,
       data: dataR_pm25,
     ),
     new charts.Series<TimeSeriesSales, DateTime>(
@@ -91,6 +77,8 @@ Future<List<dynamic>> createSampleDataFuture() async{
       fillColorFn: (_, __) =>
       charts.MaterialPalette.blue.shadeDefault.lighter,
       data: dataR_co2,
+      labelAccessorFn: (TimeSeriesSales series, _) => '${series.time} 1',
+      displayName: 'Name',
     ),
     new charts.Series<TimeSeriesSales, DateTime>(
       id: 'Sales',
@@ -99,7 +87,7 @@ Future<List<dynamic>> createSampleDataFuture() async{
       measureFn: (TimeSeriesSales sales, _) => sales.sales,
       seriesColor: charts.ColorUtil.fromDartColor(Colors.red.shade700),
       fillColorFn: (_, __) =>
-      charts.MaterialPalette.blue.shadeDefault.lighter,
+      charts.MaterialPalette.deepOrange.shadeDefault.darker,
       data: dataR_vant,
     ),
     new charts.Series<TimeSeriesSales, DateTime>(
@@ -119,10 +107,9 @@ Future<List<dynamic>> createSampleDataFuture() async{
       measureFn: (TimeSeriesSales sales, _) => sales.sales,
       seriesColor: charts.ColorUtil.fromDartColor(Colors.red.shade700),
       fillColorFn: (_, __) =>
-      charts.MaterialPalette.deepOrange.shadeDefault.darker,
-      data: dataR_vant,
+      charts.MaterialPalette.blue.shadeDefault.darker,
+      data: dataR_pm25,
     ),
-    listSeries_pm25
   ];
 
 }
@@ -146,23 +133,23 @@ class AirQualityChartsPage extends StatelessWidget {
                 if(snapshot.hasData){
 
                   charts.Series<TimeSeriesSales, DateTime> value_pm25 ;
+                  charts.Series<TimeSeriesSales, DateTime> value_pm25_2 ;
                   charts.Series<TimeSeriesSales, DateTime> value_co2 ;
-                  charts.Series<TimeSeriesSales, DateTime> value_vant_2 ;
+                  charts.Series<TimeSeriesSales, DateTime> value_vant ;
                   charts.Series<TimeSeriesSales, DateTime> value_temperatura ;
                   List<charts.Series<TimeSeriesSales, DateTime>> valueList_pm25 = [] ;
                   List<charts.Series<TimeSeriesSales, DateTime>> valueList_co2 = [] ;
                   List<charts.Series<TimeSeriesSales, DateTime>> valueList_pm25_vant = [] ;
                   List<charts.Series<TimeSeriesSales, DateTime>> valueList_temperatura = [] ;
-                  List<charts.Series<TimeSeriesSales, DateTime>> valueList_pm25_2 = [];
                   value_pm25 = snapshot.data[0];
+                  value_pm25_2 = snapshot.data[4];
                   value_co2 = snapshot.data[1];
-                  value_vant_2 = snapshot.data[4];
+                  value_vant = snapshot.data[2];
                   value_temperatura = snapshot.data[3];
                   valueList_pm25 = [value_pm25];
                   valueList_co2 = [value_co2];
-                  valueList_pm25_vant = [value_pm25, value_vant_2..setAttribute(charts.measureAxisIdKey, 'secondaryMeasureAxisId')];
+                  valueList_pm25_vant = [value_pm25_2, value_vant..setAttribute(charts.measureAxisIdKey, 'secondaryMeasureAxisId')];
                   valueList_temperatura = [value_temperatura];
-                  valueList_pm25_2 = snapshot.data[5];
 
                   return Column(
                     children: <Widget>[
@@ -174,19 +161,19 @@ class AirQualityChartsPage extends StatelessWidget {
                         child: Container(
                           height: MediaQuery.of(context).size.height/4,
                           child: charts.TimeSeriesChart(
-                            //valueList_pm25,
-                            valueList_pm25_2,
+                            valueList_pm25,
                             animate: animate,
                             // Set the default renderer to a bar renderer.
                             // This can also be one of the custom renderers of the time series chart.
-                            defaultRenderer: new charts.BarRendererConfig<DateTime>(),
+                            defaultRenderer: new charts.BarRendererConfig<DateTime>(maxBarWidthPx: 30,),
                             // It is recommended that default interactions be turned off if using bar
                             // renderer, because the line point highlighter is the default for time
                             // series chart.
                             defaultInteractions: false,
                             // If default interactions were removed, optionally add select nearest
                             // and the domain highlighter that are typical for bar charts.
-                            behaviors: [new charts.SelectNearest(), new charts.DomainHighlighter(),
+                            behaviors: [
+                              new charts.SelectNearest(), new charts.DomainHighlighter(),
                               new charts.ChartTitle(
                                 'PM2.5',
                                 behaviorPosition: charts.BehaviorPosition.start,
@@ -205,6 +192,8 @@ class AirQualityChartsPage extends StatelessWidget {
                                   endLabel: 'Valoarea limită UE',
                                   color: charts.MaterialPalette.green.shadeDefault.darker,),
                               ]),
+                              //new charts.PanAndZoomBehavior(),
+                              //new charts.SlidingViewport(),
                             ],
                           ),
                         ),
@@ -221,16 +210,22 @@ class AirQualityChartsPage extends StatelessWidget {
                           child: charts.TimeSeriesChart(
                             valueList_co2,
                             animate: animate,
+                            //animate: true,
                             // Set the default renderer to a bar renderer.
                             // This can also be one of the custom renderers of the time series chart.
-                            defaultRenderer: new charts.BarRendererConfig<DateTime>(),
+                            defaultRenderer: new charts.BarRendererConfig<DateTime>(
+                              maxBarWidthPx: 30, cornerStrategy: charts.ConstCornerStrategy(2),
+                            ),
+                            //defaultRenderer: new charts.BarLabelDecorator(''),
                             // It is recommended that default interactions be turned off if using bar
                             // renderer, because the line point highlighter is the default for time
                             // series chart.
                             defaultInteractions: false,
                             // If default interactions were removed, optionally add select nearest
                             // and the domain highlighter that are typical for bar charts.
-                            behaviors: [new charts.SelectNearest(), new charts.DomainHighlighter(),
+                            //animationDuration: Duration.zero,
+                            behaviors: [
+                              new charts.SelectNearest(), new charts.DomainHighlighter(),
                               new charts.ChartTitle(
                                 'CO2',
                                 behaviorPosition: charts.BehaviorPosition.start,
@@ -243,7 +238,29 @@ class AirQualityChartsPage extends StatelessWidget {
                                 titleOutsideJustification: charts.OutsideJustification.middleDrawArea,
                                 titleStyleSpec: charts.TextStyleSpec(fontSize: 12,),
                               ),
+                              //new charts.InitialHintBehavior(maxHintTranslate: 4.0),
+                              new charts.PanAndZoomBehavior(),
+                              new charts.SlidingViewport(),
                             ],
+                            domainAxis: new charts.DateTimeAxisSpec(
+                              //viewport: new charts.DateTimeExtents(start: DateTime.now().toUtc().subtract(Duration(hours: 5)), end: DateTime.now().toUtc()),
+                              //showAxisLine: false,
+                              //renderSpec: new charts.NoneRenderSpec(),
+                              tickFormatterSpec: new charts.AutoDateTimeTickFormatterSpec(
+                                /*day: new charts.TimeFormatterSpec(
+                                  format: 'EEE', transitionFormat: 'EEE',
+                                  noonFormat: 'EEE'
+                                ),*/
+                                /*hour: new charts.TimeFormatterSpec(
+                                  format: 'H', transitionFormat: 'H'
+                                ),*/
+                                /*minute: new charts.TimeFormatterSpec(
+                                  format: 'm', transitionFormat: 'H:m',
+                                ),*/
+                              ),
+                              //tickProviderSpec: charts.AutoDateTimeTickProviderSpec(includeTime: true),
+                              //tickProviderSpec: charts.DayTickProviderSpec(increments: [1]),
+                            ),
                           ),
                         ),
                       ),
@@ -259,7 +276,7 @@ class AirQualityChartsPage extends StatelessWidget {
                           child: charts.TimeSeriesChart(
                             valueList_pm25_vant,
                             animate: animate,
-                            //barGroupingType:,
+                            //barGroupingType: charts.BarGroupingType.grouped,
                             primaryMeasureAxis: new charts.NumericAxisSpec(
                               tickProviderSpec: new charts.BasicNumericTickProviderSpec(desiredTickCount: 3),
                             ),
@@ -312,7 +329,7 @@ class AirQualityChartsPage extends StatelessWidget {
                             animate: animate,
                             // Set the default renderer to a bar renderer.
                             // This can also be one of the custom renderers of the time series chart.
-                            defaultRenderer: new charts.BarRendererConfig<DateTime>(),
+                            defaultRenderer: new charts.BarRendererConfig<DateTime>(maxBarWidthPx: 30,),
                             // It is recommended that default interactions be turned off if using bar
                             // renderer, because the line point highlighter is the default for time
                             // series chart.
@@ -374,6 +391,7 @@ class AirQualityChartsPage extends StatelessWidget {
 class TimeSeriesSales {
   final DateTime time;
   final int sales;
+  final color;
 
-  TimeSeriesSales(this.time, this.sales);
+  TimeSeriesSales(this.time, this.sales, this.color);
 }

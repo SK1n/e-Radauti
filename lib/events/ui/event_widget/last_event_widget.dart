@@ -16,6 +16,12 @@ class LastEventWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<DateTime> timeResponse;
+    timeResponse = WidgetEventModel().listTimeResponse(event);
+    Widget rowTimeLength;
+    if(event.startDate != event.endDate){
+      rowTimeLength = WidgetEventModel().widgetRowTimeLength(timeResponse, widthObject);
+    };
     return ExpandableNotifier(
         child: Padding(
           padding: const EdgeInsets.all(0),
@@ -33,6 +39,7 @@ class LastEventWidget extends StatelessWidget {
                     ],
                   ),
                 ),
+                if(event.startDate != event.endDate) rowTimeLength,
                 WidgetEventModel().widgetScrollOnExpond(event.description),
               ],
             ),
