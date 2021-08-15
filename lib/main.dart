@@ -205,7 +205,7 @@ class _MyAppState extends State<MenuScreen> {
             payload: message.data["view"]);
       }
     });
-    FirebaseMessaging.instance.subscribeToTopic('test');
+    FirebaseMessaging.instance.subscribeToTopic('oaie');
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       debugPrint('A new onMessageOpenedApp event was published!');
       navigate(context, message.data['view']);

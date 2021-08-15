@@ -191,6 +191,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                           child: Text(
                                               '${snapshot.data.temperature.toString()}°C',
                                               style: TextStyle(
+                                                  color: Color(0xFF000000),
                                                   fontSize: 24))),
                                       onPressed: () {},
                                     ),
@@ -202,7 +203,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                       ),
                                       label: Text(
                                           '${snapshot.data.humidity.toString()}%',
-                                          style: TextStyle(fontSize: 24)),
+                                          style: TextStyle(color: Color(0xFF000000),fontSize: 24)),
                                       onPressed: () {},
                                     ),
                                   ),
@@ -266,12 +267,13 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                       child: ListTile(
                                         leading: TextButton.icon(
                                           icon:
-                                          Icon(WeatherIcons.wi_windy),
+                                          Icon(WeatherIcons.wi_windy,color: Color(0xFF000000)),
                                           label: Center(
                                             child: new Text(
                                               "Vânt: \n" + windSplit[0],
                                               maxLines: 2,
                                               style: const TextStyle(
+                                                  color: Color(0xFF000000),
                                                   fontSize: 16.0),
                                             ),
                                           ),
@@ -280,11 +282,13 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                         trailing: TextButton.icon(
                                           icon: windDirection(
                                             windSplit[1],
+
                                           ),
+
                                           label: Text(
                                             'Direcția: \n${windSplit[1]}',
                                             maxLines: 2,
-                                            style: const TextStyle(
+                                            style: const TextStyle(color: Color(0xFF000000),
                                                 fontSize: 16.0),
                                           ),
                                           onPressed: () {},
@@ -296,18 +300,18 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                         leading: TextButton.icon(
                                           onPressed: () {},
                                           icon: Icon(
-                                              WeatherIcons.wi_barometer),
+                                              WeatherIcons.wi_barometer,color: Color(0xFF000000)),
                                           label: Text(
                                             '${pression.toString()}\nmBar',
                                             maxLines: 2,
-                                            style: const TextStyle(
+                                            style: const TextStyle(color: Color(0xFF000000),
                                                 fontSize: 16.0),
                                           ),
                                         ),
                                         trailing: TextButton.icon(
                                           onPressed: () {},
                                           icon: Icon(WeatherIcons
-                                              .wi_small_craft_advisory),
+                                              .wi_small_craft_advisory,color: Color(0xFF000000)),
                                           label: windDirectionLocation(
                                             windSplit[1],
                                           ),

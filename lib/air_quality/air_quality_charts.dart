@@ -194,8 +194,9 @@ class AirQualityChartsPage extends StatelessWidget {
                                 titleStyleSpec: charts.TextStyleSpec(fontSize: 12,),
                               ),
                               new charts.ChartTitle(
-                                'Timp',
+                                'Timp (ora)',
                                 behaviorPosition: charts.BehaviorPosition.bottom,
+
                                 titleOutsideJustification: charts.OutsideJustification.middleDrawArea,
                                 titleStyleSpec: charts.TextStyleSpec(fontSize: 12,),
                               ),
