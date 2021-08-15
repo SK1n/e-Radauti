@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
-var appBarModel = AppBarModel();
+//var appBarModel = AppBarModel();
 
 @deprecated
 class AppBarModel {

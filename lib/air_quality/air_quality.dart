@@ -9,11 +9,8 @@ import 'package:flutterapperadauti/air_quality/legend.dart';
 import 'package:flutterapperadauti/air_quality/windDirection.dart';
 import 'package:flutterapperadauti/air_quality/windDirectionLocation.dart';
 import 'package:flutterapperadauti/air_quality/wind_model.dart';
-import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:intl/intl.dart';
-
-import '../widgets/src/nav_drawer.dart';
 
 class AirQualityPage extends StatefulWidget {
   @override
@@ -21,8 +18,6 @@ class AirQualityPage extends StatefulWidget {
 }
 
 class _AirQualityPageState extends State<AirQualityPage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
   Future<AirQualityModel> _getAirQuality() async {
     var dio = Dio();
     Response dioResponse;
@@ -71,8 +66,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                 return Container(
                   height: MediaQuery.of(context).size.height,
                   child: Center(
-                    child:
-                    Text('A apărut o eroare de conexiune la internet!'),
+                    child: Text('A apărut o eroare de conexiune la internet!'),
                   ),
                 );
               }
@@ -81,7 +75,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                 var inputFormat = DateFormat('yyyy-MM-dd HH:mm');
                 var inputDate = inputFormat
                     .parseUTC(
-                    '${date.replaceAll('T', ' ').replaceAll('Z', ' ').replaceRange(17, null, '')}')
+                        '${date.replaceAll('T', ' ').replaceAll('Z', ' ').replaceRange(17, null, '')}')
                     .toLocal();
                 //inputDate = inputDate.add(Duration(hours: 2));
                 var outputFormat = DateFormat('dd/MM/yyyy HH:mm');
@@ -114,8 +108,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                               Container(
                                 color: changeColorInstance
                                     .changeColorQuality(snapshot.data.pm25),
-                                padding:
-                                EdgeInsets.only(top: 10, bottom: 10),
+                                padding: EdgeInsets.only(top: 10, bottom: 10),
                                 child: Row(
                                   children: <Widget>[
                                     Expanded(
@@ -126,7 +119,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                           children: [
                                             changeColorInstance
                                                 .changeTextQuality(
-                                                snapshot.data.pm25),
+                                                    snapshot.data.pm25),
                                           ],
                                         ),
                                       ),
@@ -139,18 +132,15 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                           children: [
                                             Text(
                                               'PM2,5',
-                                              style:
-                                              TextStyle(fontSize: 14),
+                                              style: TextStyle(fontSize: 14),
                                             ),
                                             Text(
                                               '${snapshot.data.pm25.toString()}',
-                                              style:
-                                              TextStyle(fontSize: 24),
+                                              style: TextStyle(fontSize: 24),
                                             ),
                                             Text(
                                               '\u03BCg/m\u00B3',
-                                              style:
-                                              TextStyle(fontSize: 18),
+                                              style: TextStyle(fontSize: 18),
                                             ),
                                           ],
                                         ),
@@ -163,15 +153,12 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                         child: Column(
                                           children: [
                                             Text('CO2',
-                                                style: TextStyle(
-                                                    fontSize: 14)),
+                                                style: TextStyle(fontSize: 14)),
                                             Text(
                                                 '${snapshot.data.co2.toString()}',
-                                                style: TextStyle(
-                                                    fontSize: 24)),
+                                                style: TextStyle(fontSize: 24)),
                                             Text('ppm',
-                                                style: TextStyle(
-                                                    fontSize: 18)),
+                                                style: TextStyle(fontSize: 18)),
                                           ],
                                         ),
                                       ),
@@ -249,12 +236,11 @@ class _AirQualityPageState extends State<AirQualityPage> {
                           }
                           if (snapshot.hasData) {
                             int index1 =
-                            snapshot.data.wind.toString().indexOf(',');
+                                snapshot.data.wind.toString().indexOf(',');
                             int index2 =
-                            snapshot.data.wind.toString().indexOf(':');
-                            int index3 = snapshot.data.pression
-                                .toString()
-                                .indexOf(' ');
+                                snapshot.data.wind.toString().indexOf(':');
+                            int index3 =
+                                snapshot.data.pression.toString().indexOf(' ');
                             List windSplit = [
                               snapshot.data.wind
                                   .toString()
@@ -325,8 +311,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                       trailing: TextButton.icon(
                                         onPressed: () {},
                                         icon: Icon(
-                                          WeatherIcons
-                                              .wi_small_craft_advisory,
+                                          WeatherIcons.wi_small_craft_advisory,
                                           color: Colors.black,
                                         ),
                                         label: windDirectionLocation(

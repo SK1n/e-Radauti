@@ -76,8 +76,8 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
       body: Stack(children: [
         FlutterMap(
           options: MapOptions(
-              zoom: 5.0,
-              center: latLng.LatLng(47.842151, 25.920137),
+              zoom: 9.0,
+              center: latLng.LatLng(47.4444, 25.897350),
               plugins: [PopupMarkerPlugin()],
               onTap: (latLong) => _popupLayerController.hidePopup()),
           layers: [

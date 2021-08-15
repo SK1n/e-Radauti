@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:flutterapperadauti/widgets/src/appBarModel.dart';
 import 'package:flutterapperadauti/air_quality/air_quality_tab.dart';
 
-class AirQualityMain extends StatelessWidget{
+class AirQualityMain extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,13 @@ class AirQualityMain extends StatelessWidget{
       child: Scaffold(
         key: _scaffoldKey,
         drawer: NavDrawer(),
-        appBar: AppBarModel().loadAppBar(context, 'Calitatea aerului', Icons.bubble_chart, _scaffoldKey),
+        appBar: PreferredSize(
+            child: AppBarUi(
+              scaffoldKey: _scaffoldKey,
+              leading: Icons.bubble_chart,
+              content: 'Calitatea aerului',
+            ),
+            preferredSize: Size(MediaQuery.of(context).size.width, 50)),
         body: TabDemo(),
       ),
     );
