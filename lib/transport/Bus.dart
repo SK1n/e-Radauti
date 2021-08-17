@@ -30,7 +30,7 @@ class Bus extends StatelessWidget {
           child: AppBarUi(
             scaffoldKey: _scaffoldKey,
             leading: Icons.directions_bus,
-            content: 'Calitatea aerului',
+            content: 'Autobuzuri',
           ),
           preferredSize: Size(MediaQuery.of(context).size.width, 50)),
       drawer: NavDrawer(),
