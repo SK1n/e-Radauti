@@ -5,6 +5,75 @@ import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
 
 class WidgetEventModel {
+  List<DateTime> listTimeResponse(child) {
+    DateTime valueDate;
+    DateTime valueDate2;
+    valueDate = DateTime.utc(child.yearT, child.monthT, child.dayT, child.hourT, child.minuteT);
+    valueDate2 = valueDate.subtract(Duration(hours: 3));
+    List<DateTime> returnList = [];
+    if (child.startDate != child.endDate) {
+      returnList.add(valueDate2);
+      returnList.add(valueDate);
+      returnList.add(DateTime.tryParse(child.startDate));
+      returnList.add(DateTime.tryParse(child.endDate));
+    } else {
+      returnList.add(valueDate2);
+      returnList.add(valueDate);
+    }
+    return returnList;
+  }
+
+  Widget widgetRowTimeLength(child, childWidth){
+    double childSizeIcon;
+    double childFontSize;
+    if (childWidth <= 250) {
+      childFontSize = 14.0;
+      childSizeIcon = 14.0;
+    } else if (childWidth <= 500) {
+      childFontSize = 17.0;
+      childSizeIcon = 17.0;
+    } else {
+      childFontSize = 20.0;
+      childSizeIcon = 20.0;
+    }
+    return Column(
+      children: <Widget>[
+        SizedBox(height: 10.0,),
+        Row(
+          children: <Widget>[
+            SizedBox(
+              width: 10.0,
+            ),
+            Icon(
+              Icons.calendar_today_sharp,
+              size: childSizeIcon,
+            ),
+            SizedBox(
+              width: 5.0,
+            ),
+            Text(
+              child[2].day.toString() +
+                  '.' +
+                  child[2].month.toString() +
+                  '.' +
+                  child[2].year.toString() +
+                  '  -  ' +
+                  child[3].day.toString() +
+                  '.' +
+                  child[3].month.toString() +
+                  '.' +
+                  child[3].year.toString(),
+              style: TextStyle(
+                fontSize: childFontSize,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
   Future<void> _onOpen(LinkableElement link) async {
     if (await canLaunch(link.url)) {
       await launch(link.url);

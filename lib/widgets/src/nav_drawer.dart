@@ -7,7 +7,7 @@ import 'package:flutterapperadauti/state/fcm_state.dart';
 import 'package:provider/provider.dart';
 
 class NavDrawer extends StatelessWidget {
-  SnackBar snackBar;
+  final SnackBar snackBar = new SnackBar(content: Text('Copiat in clipboard!'));
   Widget addDrawerHeaderIcon() {
     return new Container(
       padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
@@ -74,9 +74,6 @@ class NavDrawer extends StatelessWidget {
                   InkWell(
                       child: Text('Tap to copy: FCM token'),
                       onTap: () => {
-                            snackBar = SnackBar(
-                              content: Text('Copiat in clipboard!'),
-                            ),
                             Clipboard.setData(
                                 ClipboardData(text: provider.fcm)),
                             showSnackBar(context, snackBar),
@@ -96,9 +93,6 @@ class NavDrawer extends StatelessWidget {
                   InkWell(
                       child: Text('Tap to copy: FCM token'),
                       onTap: () => {
-                            snackBar = SnackBar(
-                              content: Text('Copiat in clipboard!'),
-                            ),
                             Clipboard.setData(
                                 ClipboardData(text: provider.fcm)),
                             showSnackBar(context, snackBar),

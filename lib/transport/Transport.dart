@@ -14,7 +14,7 @@ class HomePageTransport extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUiSliver(
+            AppBarUi(
               content: 'Transport',
               leading: Icons.train,
               scaffoldKey: _scaffoldKey,
@@ -38,12 +38,14 @@ class HomePageTransport extends StatelessWidget {
                 route: '/train',
                 subTitle: 'Lista trenurilor din Rădăuți',
               ),
+              CustomListTile(
+                content: 'Autobuz',
+                leadingIcon: Icons.directions_bus,
+                leadingColor: Color(0x55FB6340),
+                route: '/bus',
+                subTitle: 'Lista autobuzelor Rădăuți - alte localtăți din  județul Suceava',
+              ),
 
-              /*Padding(
-                padding:EdgeInsets.symmetric(horizontal:15.0),
-                child:Container(
-                  height:1.0,
-                  color:Color.fromRGBO(0, 0, 0, 0.1),),),*/
             ],
           ),
         ),

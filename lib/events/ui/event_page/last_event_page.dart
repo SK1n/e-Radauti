@@ -57,21 +57,43 @@ class _LastEventsState extends State<LastEvents> {
 
   Future<List> futureList;
   int contor = 1;
-  Widget function(EventApp event) {
-    if (contor <= 10) {
-      contor = contor + 1;
-      return LastEventWidget(
-        event: event,
-        fontSizeTextRow1Column1: fontSizeTextRow1Column1,
-        fontSizeTextRow2Column1: fontSizeTextRow2Column1,
-        fontSizeTextRow3Column1: fontSizeTextRow3Column1,
-        fontSizeTextRowIconColumn3: fontSizeTextRowIconColumn3,
-        sizeIconRowIconColumn3: sizeIconRowIconColumn3,
-        fontSizeTextTitleRowColumn3: fontSizeTextTitleRowColumn3,
-        widthObject: widthObject,
-      );
-    } else {
-      return Container();
+
+  Widget function(List child) {
+    List<Widget> listWidget = [];
+    for(final event in child.where((element) => boolDate(element)))
+      if (contor <= 10) {
+        contor = contor + 1;
+        listWidget.add(
+            LastEventWidget(
+              event: event,
+              fontSizeTextRow1Column1: fontSizeTextRow1Column1,
+              fontSizeTextRow2Column1: fontSizeTextRow2Column1,
+              fontSizeTextRow3Column1: fontSizeTextRow3Column1,
+              fontSizeTextRowIconColumn3: fontSizeTextRowIconColumn3,
+              sizeIconRowIconColumn3: sizeIconRowIconColumn3,
+              fontSizeTextTitleRowColumn3: fontSizeTextTitleRowColumn3,
+              widthObject: widthObject,
+            )
+        );
+      } else {
+        break;
+      }
+    return Column(
+      children: <Widget>[
+        for(final widget in listWidget) widget,
+      ],
+    );
+  }
+
+  bool boolDate(child){
+    DateTime valueDate;
+    DateTime valueDate2;
+    valueDate = DateTime.now().toUtc().add(Duration(hours: 3,));
+    valueDate2 = valueDate.subtract(Duration(hours: valueDate.hour + 1,));
+    if(child.startDate != child.endDate){
+      return DateTime.tryParse(child.endDate).isBefore(valueDate2);
+    }else{
+      return DateTime.utc(child.yearT, child.monthT, child.dayT).isBefore(valueDate2);
     }
   }
 
@@ -95,18 +117,7 @@ class _LastEventsState extends State<LastEvents> {
                   top: 20.0,
                   right: 16.0,
                 ),
-                child: Column(
-                  children: <Widget>[
-                    for (final event in snapshot.data.where((e) => DateTime.utc(
-                          e.yearT,
-                          e.monthT,
-                          e.dayT,
-                        ).isBefore(DateTime.now().add(Duration(
-                          hours: -(DateTime.now().hour + 1),
-                        )))))
-                      function(event),
-                  ],
-                ),
+                child: function(snapshot.data),
               ),
             );
           } else if (snapshot.hasError) {

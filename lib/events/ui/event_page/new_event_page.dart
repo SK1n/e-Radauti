@@ -59,6 +59,18 @@ class _NewEventsState extends State<NewEvents> {
     this.widthObject,
   );
 
+  bool boolDate(child){
+    DateTime valueDate;
+    DateTime valueDate2;
+    valueDate = DateTime.now().toUtc().add(Duration(hours: 3,));
+    valueDate2 = valueDate.subtract(Duration(hours: valueDate.hour + 1,));
+    if(child.startDate != child.endDate){
+      return DateTime.tryParse(child.endDate).isAfter(valueDate2);
+    }else{
+      return DateTime.utc(child.yearT, child.monthT, child.dayT).isAfter(valueDate2);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -81,13 +93,7 @@ class _NewEventsState extends State<NewEvents> {
                 ),
                 child: Column(
                   children: <Widget>[
-                    for (final event in snapshot.data.where((e) => DateTime.utc(
-                          e.yearT,
-                          e.monthT,
-                          e.dayT,
-                        ).isAfter(DateTime.now().add(Duration(
-                          hours: -(DateTime.now().hour + 1),
-                        )))))
+                    for (final event in snapshot.data.where((e) =>  boolDate(e)))
                       NewEventWidget(
                         event: event,
                         scaffoldState: scaffoldState,
@@ -97,7 +103,7 @@ class _NewEventsState extends State<NewEvents> {
                         fontSizeTextRowIconColumn3: fontSizeTextRowIconColumn3,
                         sizeIconRowIconColumn3: sizeIconRowIconColumn3,
                         fontSizeTextTitleRowColumn3:
-                            fontSizeTextTitleRowColumn3,
+                        fontSizeTextTitleRowColumn3,
                         widthObject: widthObject,
                       ),
                   ],

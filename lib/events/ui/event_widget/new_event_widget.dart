@@ -26,22 +26,6 @@ class NewEventWidget extends StatelessWidget {
     this.fontSizeTextTitleRowColumn3,
     this.widthObject,
   }) : super(key: key);
-  List<DateTime> listTimeResponse() {
-    List<DateTime> returnList = [];
-    if (event.startDate != event.endDate) {
-      returnList.add(DateTime.tryParse(event.startDate));
-      returnList.add(DateTime.tryParse(event.endDate));
-    } else {
-      returnList.add(DateTime.utc(
-              event.yearT, event.monthT, event.dayT, event.hourT, event.minuteT)
-          .add(Duration(
-        hours: -3,
-      )));
-      returnList.add(DateTime.utc(
-          event.yearT, event.monthT, event.dayT, event.hourT, event.minuteT));
-    }
-    return returnList;
-  }
 
   Widget textRow4(child, childSize, childFontWeight, childColor) {
     return Text(
@@ -57,22 +41,15 @@ class NewEventWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double fontSizeTextRow4Column3;
-    double fontSizeRowTimeLength;
-    double sizeIconRowTimeLength;
     if (widthObject <= 250) {
       fontSizeTextRow4Column3 = 7.0;
-      fontSizeRowTimeLength = 14.0;
-      sizeIconRowTimeLength = 14.0;
     } else if (widthObject <= 500) {
       fontSizeTextRow4Column3 = 10.0;
-      fontSizeRowTimeLength = 17.0;
-      sizeIconRowTimeLength = 17.0;
     } else {
       fontSizeTextRow4Column3 = 12.0;
-      fontSizeRowTimeLength = 20.0;
-      sizeIconRowTimeLength = 20.0;
     }
-    List<DateTime> timeResponse = listTimeResponse();
+    List<DateTime> timeResponse;
+    timeResponse = WidgetEventModel().listTimeResponse(event);
     Event eventCalendar = Event(
       title: event.title,
       description: event.description,
@@ -110,73 +87,44 @@ class NewEventWidget extends StatelessWidget {
         ),*/
       ],
     );
-    Widget rowTimeLength = Row(
-      children: <Widget>[
-        SizedBox(
-          width: 10.0,
-        ),
-        Icon(
-          Icons.calendar_today_sharp,
-          size: sizeIconRowTimeLength,
-        ),
-        SizedBox(
-          width: 5.0,
-        ),
-        Text(
-          timeResponse[0].day.toString() +
-              '.' +
-              timeResponse[0].month.toString() +
-              '.' +
-              timeResponse[0].year.toString() +
-              '  -  ' +
-              timeResponse[1].day.toString() +
-              '.' +
-              timeResponse[1].month.toString() +
-              '.' +
-              timeResponse[1].year.toString(),
-          style: TextStyle(
-            fontSize: fontSizeRowTimeLength,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ],
-    );
+    Widget rowTimeLength;
+    if(event.startDate != event.endDate){
+      rowTimeLength = WidgetEventModel().widgetRowTimeLength(timeResponse, widthObject);
+    }
 
     return ExpandableNotifier(
         child: Container(
-      child: Card(
-        margin: const EdgeInsets.only(bottom: 15.0),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(5),
-              child: Row(
-                children: <Widget>[
-                  WidgetEventModel().column1(
-                      event,
-                      context,
-                      fontSizeTextRow1Column1,
-                      fontSizeTextRow2Column1,
-                      fontSizeTextRow3Column1),
-                  WidgetEventModel().column2(event, context),
-                  WidgetEventModel().column3(
-                      event,
-                      context,
-                      row4,
-                      fontSizeTextTitleRowColumn3,
-                      sizeIconRowIconColumn3,
-                      fontSizeTextRowIconColumn3),
-                ],
-              ),
+          child: Card(
+            margin: const EdgeInsets.only(bottom: 15.0),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Row(
+                    children: <Widget>[
+                      WidgetEventModel().column1(
+                          event,
+                          context,
+                          fontSizeTextRow1Column1,
+                          fontSizeTextRow2Column1,
+                          fontSizeTextRow3Column1),
+                      WidgetEventModel().column2(event, context),
+                      WidgetEventModel().column3(
+                          event,
+                          context,
+                          row4,
+                          fontSizeTextTitleRowColumn3,
+                          sizeIconRowIconColumn3,
+                          fontSizeTextRowIconColumn3),
+                    ],
+                  ),
+                ),
+                if (event.startDate != event.endDate) rowTimeLength,
+                WidgetEventModel().widgetScrollOnExpond(event.description),
+              ],
             ),
-            SizedBox(
-              height: 10.0,
-            ),
-            if (event.startDate != event.endDate) rowTimeLength,
-            WidgetEventModel().widgetScrollOnExpond(event.description),
-          ],
+          ),
         ),
-      ),
-    ));
+    );
   }
 }
