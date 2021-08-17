@@ -14,7 +14,7 @@ class HomePageTransport extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            AppBarUi(
+            AppBarUiSliver(
               content: 'Transport',
               leading: Icons.train,
               scaffoldKey: _scaffoldKey,
@@ -43,9 +43,9 @@ class HomePageTransport extends StatelessWidget {
                 leadingIcon: Icons.directions_bus,
                 leadingColor: Color(0x55FB6340),
                 route: '/bus',
-                subTitle: 'Lista autobuzelor Rădăuți - alte localtăți din  județul Suceava',
+                subTitle:
+                    'Lista autobuzelor Rădăuți - alte localtăți din  județul Suceava',
               ),
-
             ],
           ),
         ),

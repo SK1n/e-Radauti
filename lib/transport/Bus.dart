@@ -33,8 +33,6 @@ class Bus extends StatelessWidget {
             content: 'Calitatea aerului',
           ),
           preferredSize: Size(MediaQuery.of(context).size.width, 50)),
-      // appBar: AppBarModel()
-      //     .loadAppBar(context, "Autobuz", Icons.directions_bus, _scaffoldKey),
       drawer: NavDrawer(),
       body: BusMain(),
     );

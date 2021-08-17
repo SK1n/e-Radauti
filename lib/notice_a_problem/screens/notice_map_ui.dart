@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -6,7 +8,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
-import 'package:flutterapperadauti/notice_a_problem/widgets/map_legend.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -19,7 +20,8 @@ class NoticeMapUi extends StatefulWidget {
   _NoticeMapUiState createState() => _NoticeMapUiState();
 }
 
-class _NoticeMapUiState extends State<NoticeMapUi> {
+class _NoticeMapUiState extends State<NoticeMapUi>
+    with TickerProviderStateMixin {
   final db = FirebaseDatabase.instance.reference().child('Notice_Problem_Map');
   List<Marker> _markers = [];
   double size = 300;
@@ -67,6 +69,7 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
       key: _scaffoldKey,
       drawer: NavDrawer(),
       floatingActionButton: SpeedDial(
+        overlayOpacity: 0.3,
         icon: Icons.menu_book_outlined,
         children: [
           speedDialChild(6, 'Calitatea aerului si poluare'),
@@ -89,7 +92,7 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
       body: FlutterMap(
         options: MapOptions(
             interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-            zoom: 10.0,
+            zoom: 11.0,
             center: latLng.LatLng(47.843876, 25.916276),
             plugins: [PopupMarkerPlugin()],
             onTap: (latLong) => _popupLayerController.hidePopup()),
@@ -111,39 +114,65 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
 
   SpeedDialChild speedDialChild(int iconID, String label) {
     return SpeedDialChild(
-      child: iconID != null ? switchIcon(iconID) : null,
-      backgroundColor:
-          iconID != null ? Colors.white : Colors.white.withOpacity(0),
-      elevation: iconID != null ? 5 : 0,
-      label: label,
-    );
+        child: iconID != null ? switchIcon(iconID) : null,
+        backgroundColor:
+            iconID != null ? Colors.white : Colors.white.withOpacity(0),
+        elevation: iconID != null ? 10 : 0,
+        label: label,
+        labelStyle: TextStyle(
+          color: Platform.isIOS ? Colors.white : Colors.black,
+        ));
   }
 
   Icon switchIcon(int icon) {
     switch (icon) {
       case 0:
-        return Icon(MaterialCommunityIcons.dots_horizontal_circle_outline);
+        return Icon(
+          MaterialCommunityIcons.dots_horizontal_circle_outline,
+          color: Colors.black,
+        );
         break;
       case 1:
-        return Icon(MaterialCommunityIcons.trash_can_outline);
+        return Icon(
+          MaterialCommunityIcons.trash_can_outline,
+          color: Colors.black,
+        );
         break;
       case 2:
-        return Icon(MaterialCommunityIcons.road);
+        return Icon(
+          MaterialCommunityIcons.road,
+          color: Colors.black,
+        );
         break;
       case 3:
-        return Icon(MaterialCommunityIcons.electric_switch);
+        return Icon(
+          MaterialCommunityIcons.electric_switch,
+          color: Colors.black,
+        );
         break;
       case 4:
-        return Icon(MaterialCommunityIcons.home_alert);
+        return Icon(
+          MaterialCommunityIcons.home_alert,
+          color: Colors.black,
+        );
         break;
       case 5:
-        return Icon(MaterialCommunityIcons.security);
+        return Icon(
+          MaterialCommunityIcons.security,
+          color: Colors.black,
+        );
         break;
       case 6:
-        return Icon(MaterialCommunityIcons.blur);
+        return Icon(
+          MaterialCommunityIcons.blur,
+          color: Colors.black,
+        );
         break;
       default:
-        return Icon(MaterialCommunityIcons.dots_horizontal_circle_outline);
+        return Icon(
+          MaterialCommunityIcons.dots_horizontal_circle_outline,
+          color: Colors.black,
+        );
     }
   }
 }
