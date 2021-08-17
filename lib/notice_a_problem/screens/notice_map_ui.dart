@@ -8,10 +8,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
+import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:latlong/latlong.dart' as latLng;
+import 'package:provider/provider.dart';
 
 class NoticeMapUi extends StatefulWidget {
   const NoticeMapUi({Key key}) : super(key: key);
@@ -25,6 +27,7 @@ class _NoticeMapUiState extends State<NoticeMapUi>
   final db = FirebaseDatabase.instance.reference().child('Notice_Problem_Map');
   List<Marker> _markers = [];
   double size = 300;
+  var extend = true;
   final PopupController _popupLayerController = PopupController();
 
   @override
@@ -64,6 +67,7 @@ class _NoticeMapUiState extends State<NoticeMapUi>
 
   @override
   Widget build(BuildContext context) {
+    NoticeFormState noticeFormState = Provider.of<NoticeFormState>(context);
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
     return Scaffold(
       key: _scaffoldKey,
@@ -71,6 +75,16 @@ class _NoticeMapUiState extends State<NoticeMapUi>
       floatingActionButton: SpeedDial(
         overlayOpacity: 0.3,
         icon: Icons.menu_book_outlined,
+        onOpen: () => extend = !extend,
+        onClose: () => extend = !extend,
+        curve: Curves.elasticInOut,
+        label: extend ? Text('Legenda') : null,
+        useRotationAnimation: false,
+        activeLabel: extend ? Text('Inchide') : null,
+        //label: extend ? null : Text('Legenda'),
+        labelTransitionBuilder: (widget, animation) =>
+            ScaleTransition(scale: animation, child: widget),
+        //label: Text('Legenda'),
         children: [
           speedDialChild(6, 'Calitatea aerului si poluare'),
           speedDialChild(3, 'Probleme la utilitati'),
@@ -79,7 +93,6 @@ class _NoticeMapUiState extends State<NoticeMapUi>
           speedDialChild(2, 'Infrastructură'),
           speedDialChild(5, 'Siguranta'),
           speedDialChild(0, 'Altele'),
-          speedDialChild(null, 'Legenda')
         ],
       ),
       appBar: PreferredSize(
