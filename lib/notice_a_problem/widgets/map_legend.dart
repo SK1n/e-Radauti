@@ -1,90 +1,105 @@
-import 'package:flutter/material.dart';
+// import 'package:expandable/expandable.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
-class MapLegend extends StatelessWidget {
-  const MapLegend({Key key}) : super(key: key);
+// class MapLegend extends StatelessWidget {
+//   const MapLegend({Key key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(0.0),
-      child: Card(
-        elevation: 20.0,
-        child: Stack(children: [
-          Center(
-            heightFactor: 2,
-            child: Text(
-              'Legenda',
-              style: TextStyle(fontSize: 20),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 40),
-            child: GridView.count(
-              crossAxisCount: 2,
-              shrinkWrap: false,
-              childAspectRatio: 2.0,
-              children: [
-                ListTileLegendMap(icon: 'bin', title: 'Gunoi neridicat'),
-                ListTileLegendMap(
-                    icon: 'car_abandonned', title: 'Masina abandonata'),
-                ListTileLegendMap(
-                    icon: 'illegal_constructions',
-                    title: 'Constructii ilegale'),
-                ListTileLegendMap(
-                    icon: 'deranj_ordinea_publica',
-                    title: 'Deranjarea ordinii publice'),
-                ListTileLegendMap(
-                    icon: 'lipsa_semn_circulatie',
-                    title: 'Lipsa a unui semn de circulatie'),
-                ListTileLegendMap(
-                    icon: 'iluminat_public',
-                    title: 'Probleme la iluminatul public'),
-                ListTileLegendMap(
-                    icon: 'lipsa_loc_handicap',
-                    title: 'Lipsa facilitati persoane cu dizabilitati'),
-                ListTileLegendMap(icon: 'pitfall', title: 'Obstacol pe drum'),
-                ListTileLegendMap(
-                    icon: 'poluare', title: 'Calitatea aerului si poluare'),
-                ListTileLegendMap(
-                    icon: 'probleme_utilitati', title: 'Probleme la utilitati'),
-                ListTileLegendMap(icon: 'sanatate', title: 'Sanatate'),
-                ListTileLegendMap(icon: 'siguranta', title: 'Siguranta'),
-              ],
-            ),
-          ),
-        ]),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return SpeedDialChild();
+//   }
+// }
 
-class ListTileLegendMap extends StatelessWidget {
-  final String title;
-  final String content;
-  final String icon;
-  const ListTileLegendMap({Key key, this.content, this.icon, this.title})
-      : super(key: key);
+// Icon switchIcon(int icon) {
+//   switch (icon) {
+//     case 0:
+//       return Icon(MaterialCommunityIcons.dots_horizontal_circle_outline);
+//       break;
+//     case 1:
+//       return Icon(MaterialCommunityIcons.trash_can_outline);
+//       break;
+//     case 2:
+//       return Icon(MaterialCommunityIcons.road);
+//       break;
+//     case 3:
+//       return Icon(MaterialCommunityIcons.electric_switch);
+//       break;
+//     case 4:
+//       return Icon(MaterialCommunityIcons.home_alert);
+//       break;
+//     case 5:
+//       return Icon(MaterialCommunityIcons.security);
+//       break;
+//     case 7:
+//       return Icon(MaterialCommunityIcons.blur);
+//       break;
+//     default:
+//       return Icon(MaterialCommunityIcons.dots_horizontal_circle_outline);
+//   }
+// }
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: ListTile(
-          visualDensity: VisualDensity.compact,
-          leading: icon != null
-              ? Image.asset(
-                  'assets/images/mapIcons/$icon.png',
-                  width: 40,
-                  height: 40,
-                )
-              : null,
-          title: title != null
-              ? Text(
-                  '$title',
-                  maxLines: 5,
-                  overflow: TextOverflow.ellipsis,
-                )
-              : null,
-          subtitle: content != null ? Text('$content', maxLines: 2) : null),
-    );
-  }
-}
+// String switchTitle(int icon) {
+//   switch (icon) {
+//     case 0:
+//       return 'Masina abandonata';
+//       break;
+//     case 1:
+//       return 'Gunoi neridicat';
+//       break;
+//     case 2:
+//       return 'assets/images/mapIcons/pitfall.png';
+//       break;
+//     case 3:
+//       return 'assets/images/mapIcons/iluminat_public.png';
+//       break;
+//     case 4:
+//       return 'assets/images/mapIcons/probleme_utilitati.png';
+//       break;
+//     case 5:
+//       return 'assets/images/mapIcons/illegal_constructions.png';
+//       break;
+//     case 6:
+//       return 'assets/images/mapIcons/deranj_ordinea_publica.png';
+//       break;
+//     case 7:
+//       return 'assets/images/mapIcons/sanatate.png';
+//       break;
+//     case 8:
+//       return 'assets/images/mapIcons/siguranta.png';
+//       break;
+//     case 9:
+//       return 'assets/images/mapIcons/lipsa_loc_handicap.png';
+//     case 10:
+//       return 'assets/images/mapIcons/poluare.png';
+//       break;
+//     case 11:
+//       return 'assets/images/mapIcons/lipsa_semn_circulatie.png';
+//       break;
+//     default:
+//       return 'assets/images/mapIcons/default_marker.png';
+//   }
+// }
+
+// class ListTileLegendMap extends StatelessWidget {
+//   final String title;
+//   final String content;
+//   final int index;
+//   const ListTileLegendMap({Key key, this.content, this.index, this.title})
+//       : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListTile(
+//         visualDensity: VisualDensity.compact,
+//         leading: Image.asset(
+//           switchIcon(index),
+//         ),
+//         title: Text(
+//           switchTitle(index),
+//           maxLines: 5,
+//           overflow: TextOverflow.ellipsis,
+//         ),
+//         subtitle: content != null ? Text('$content', maxLines: 2) : Text(''));
+//   }
+// }

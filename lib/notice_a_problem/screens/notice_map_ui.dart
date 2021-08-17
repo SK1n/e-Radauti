@@ -1,4 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutterapperadauti/notice_a_problem/widgets/info_window.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +49,9 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
             builder: (_) => Container(
                 width: 40,
                 height: 40,
-                child: Image.asset(switchIcon(value['iconIndex']))),
+                child: CircleAvatar(
+                  child: switchIcon(value['iconIndex']),
+                )),
             anchorPos: AnchorPos.align(AnchorAlign.top),
           ),
         );
@@ -57,15 +61,24 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
     return Scaffold(
+      key: _scaffoldKey,
       drawer: NavDrawer(),
+      floatingActionButton: SpeedDial(
+        icon: Icons.menu_book_outlined,
+        children: [
+          speedDialChild(6, 'Calitatea aerului si poluare'),
+          speedDialChild(3, 'Probleme la utilitati'),
+          speedDialChild(4, 'Constructii ilegale'),
+          speedDialChild(1, 'Gunoi neridicat'),
+          speedDialChild(2, 'Infrastructură'),
+          speedDialChild(5, 'Siguranta'),
+          speedDialChild(0, 'Altele'),
+          speedDialChild(null, 'Legenda')
+        ],
+      ),
       appBar: PreferredSize(
           child: AppBarUi(
             scaffoldKey: _scaffoldKey,
@@ -73,74 +86,64 @@ class _NoticeMapUiState extends State<NoticeMapUi> {
             content: 'Sesizează o problemă',
           ),
           preferredSize: Size(MediaQuery.of(context).size.width, 50)),
-      body: Stack(children: [
-        FlutterMap(
-          options: MapOptions(
-              zoom: 9.0,
-              center: latLng.LatLng(47.4444, 25.897350),
-              plugins: [PopupMarkerPlugin()],
-              onTap: (latLong) => _popupLayerController.hidePopup()),
-          layers: [
-            TileLayerOptions(
-              urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-              subdomains: ['a', 'b', 'c'],
-            ),
-            PopupMarkerLayerOptions(
-              markers: _markers,
-              popupController: _popupLayerController,
-              popupBuilder: (BuildContext _, Marker marker) =>
-                  InfoWindow(marker: marker),
-            ),
-          ],
-        ),
-        Container(
-          decoration: BoxDecoration(color: Colors.transparent),
-          margin: EdgeInsets.only(top: size),
-          child: MapLegend(),
-        ),
-      ]),
+      body: FlutterMap(
+        options: MapOptions(
+            interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+            zoom: 10.0,
+            center: latLng.LatLng(47.843876, 25.916276),
+            plugins: [PopupMarkerPlugin()],
+            onTap: (latLong) => _popupLayerController.hidePopup()),
+        layers: [
+          TileLayerOptions(
+            urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            subdomains: ['a', 'b', 'c'],
+          ),
+          PopupMarkerLayerOptions(
+            markers: _markers,
+            popupController: _popupLayerController,
+            popupBuilder: (BuildContext _, Marker marker) =>
+                InfoWindow(marker: marker),
+          ),
+        ],
+      ),
     );
   }
 
-  String switchIcon(int icon) {
+  SpeedDialChild speedDialChild(int iconID, String label) {
+    return SpeedDialChild(
+      child: iconID != null ? switchIcon(iconID) : null,
+      backgroundColor:
+          iconID != null ? Colors.white : Colors.white.withOpacity(0),
+      elevation: iconID != null ? 5 : 0,
+      label: label,
+    );
+  }
+
+  Icon switchIcon(int icon) {
     switch (icon) {
+      case 0:
+        return Icon(MaterialCommunityIcons.dots_horizontal_circle_outline);
+        break;
       case 1:
-        return 'assets/images/mapIcons/car_abandonned.png';
+        return Icon(MaterialCommunityIcons.trash_can_outline);
         break;
       case 2:
-        return 'assets/images/mapIcons/bin.png';
+        return Icon(MaterialCommunityIcons.road);
         break;
       case 3:
-        return 'assets/images/mapIcons/pitfall.png';
+        return Icon(MaterialCommunityIcons.electric_switch);
         break;
       case 4:
-        return 'assets/images/mapIcons/iluminat_public.png';
+        return Icon(MaterialCommunityIcons.home_alert);
         break;
       case 5:
-        return 'assets/images/mapIcons/probleme_utilitati.png';
+        return Icon(MaterialCommunityIcons.security);
         break;
       case 6:
-        return 'assets/images/mapIcons/illegal_constructions.png';
-        break;
-      case 7:
-        return 'assets/images/mapIcons/deranj_ordinea_publica.png';
-        break;
-      case 8:
-        return 'assets/images/mapIcons/sanatate.png';
-        break;
-      case 9:
-        return 'assets/images/mapIcons/siguranta.png';
-        break;
-      case 10:
-        return 'assets/images/mapIcons/lipsa_loc_handicap.png';
-      case 11:
-        return 'assets/images/mapIcons/poluare.png';
-        break;
-      case 12:
-        return 'assets/images/mapIcons/lipsa_semn_circulatie.png';
+        return Icon(MaterialCommunityIcons.blur);
         break;
       default:
-        return 'assets/images/mapIcons/default_marker.png';
+        return Icon(MaterialCommunityIcons.dots_horizontal_circle_outline);
     }
   }
 }

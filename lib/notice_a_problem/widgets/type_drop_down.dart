@@ -19,25 +19,15 @@ class TypeDropDown extends StatelessWidget {
     List list = [
       Item('Altele',
           Icon(MaterialCommunityIcons.dots_horizontal_circle_outline), 0),
-      Item('Masini Abandonate', Icon(MaterialCommunityIcons.car), 1),
       Item(
-          'Gunoi neridicat', Icon(MaterialCommunityIcons.trash_can_outline), 2),
-      Item('Obstacole pe drum sau trotuar', Icon(MaterialCommunityIcons.road),
-          3),
-      Item('Iluminat Public', Icon(MaterialCommunityIcons.lightbulb), 4),
+          'Gunoi neridicat', Icon(MaterialCommunityIcons.trash_can_outline), 1),
+      Item('Infrastructură', Icon(MaterialCommunityIcons.road), 2),
       Item('Probleme la utilitati',
-          Icon(MaterialCommunityIcons.electric_switch), 5),
-      Item('Constructii ilegale', Icon(MaterialCommunityIcons.home_alert), 6),
-      Item('Deranjarea ordinii publice',
-          Icon(MaterialCommunityIcons.emoticon_angry_outline), 7),
-      Item('Sanatate', Icon(MaterialCommunityIcons.pharmacy), 8),
-      Item('Siguranta', Icon(MaterialCommunityIcons.security), 9),
-      Item('Lipsa facilitati persoane cu dizabilitati',
-          Icon(MaterialCommunityIcons.wheelchair_accessibility), 10),
-      Item('Calitatea aerului si poluare', Icon(MaterialCommunityIcons.blur),
-          11),
-      Item('Lipsa semn de circulatie',
-          Icon(MaterialCommunityIcons.traffic_light), 12),
+          Icon(MaterialCommunityIcons.electric_switch), 3),
+      Item('Constructii ilegale', Icon(MaterialCommunityIcons.home_alert), 4),
+      Item('Siguranta', Icon(MaterialCommunityIcons.security), 5),
+      Item(
+          'Calitatea aerului si poluare', Icon(MaterialCommunityIcons.blur), 6),
     ];
     return DropdownButton(
       itemHeight: 80,

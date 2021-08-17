@@ -12,6 +12,7 @@ class NoticeFormState extends ChangeNotifier {
   String _institution;
   int _typeIndex = 0;
   Position _position;
+  bool _dialOpen = false;
 
   String get name => _name;
   String get institutionEmail => _institutionEmail;
@@ -21,6 +22,7 @@ class NoticeFormState extends ChangeNotifier {
   String get email => _email;
   String get typeNmae => _typeName;
   String get institution => _institution;
+  bool get dialOpen => _dialOpen;
 
   int get typeIndex => _typeIndex;
   Position get position => _position;
@@ -74,5 +76,10 @@ class NoticeFormState extends ChangeNotifier {
     _position = position;
     notifyListeners();
     debugPrint('Position: $_position');
+  }
+
+  void upDialOpen() {
+    _dialOpen = !_dialOpen;
+    notifyListeners();
   }
 }
