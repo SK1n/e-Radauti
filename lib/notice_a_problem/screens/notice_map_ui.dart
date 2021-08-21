@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -8,12 +6,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
-import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:latlong/latlong.dart' as latLng;
-import 'package:provider/provider.dart';
 
 class NoticeMapUi extends StatefulWidget {
   const NoticeMapUi({Key key}) : super(key: key);
@@ -67,7 +63,6 @@ class _NoticeMapUiState extends State<NoticeMapUi>
 
   @override
   Widget build(BuildContext context) {
-    NoticeFormState noticeFormState = Provider.of<NoticeFormState>(context);
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
     return Scaffold(
       key: _scaffoldKey,
@@ -128,12 +123,12 @@ class _NoticeMapUiState extends State<NoticeMapUi>
   SpeedDialChild speedDialChild(int iconID, String label) {
     return SpeedDialChild(
         child: iconID != null ? switchIcon(iconID) : null,
-        backgroundColor:
-            iconID != null ? Colors.white : Colors.white.withOpacity(0),
+        backgroundColor: Colors.white,
+        labelBackgroundColor: Colors.black,
         elevation: iconID != null ? 10 : 0,
         label: label,
         labelStyle: TextStyle(
-          color: Platform.isIOS ? Colors.white : Colors.black,
+          color: Colors.white,
         ));
   }
 
