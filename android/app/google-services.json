@@ -1,52 +1,36 @@
 {
   "project_info": {
-    "project_number": "893520358233",
-    "firebase_url": "https://e-radauti-80139.firebaseio.com",
-    "project_id": "e-radauti-80139",
-    "storage_bucket": "e-radauti-80139.appspot.com"
+    "project_number": "338675190296",
+    "project_id": "eradauti-nativ",
+    "storage_bucket": "eradauti-nativ.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:893520358233:android:a2eaf672e65ddad5ea7a48",
+        "mobilesdk_app_id": "1:338675190296:android:6a72486113be8ddaafd16d",
         "android_client_info": {
           "package_name": "radautiul_civic.e_radauti"
         }
       },
       "oauth_client": [
         {
-          "client_id": "893520358233-0hnjqdp4jthgq2lqqgo6s0rf6qcjd8lb.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "radautiul_civic.e_radauti",
-            "certificate_hash": "5426a7970e06e92b9d145b04c056345b320ea4bd"
-          }
-        },
-        {
-          "client_id": "893520358233-b24hj1477ka787vp7a2g4cb26j4ql54b.apps.googleusercontent.com",
+          "client_id": "338675190296-0nfbj2cmr4o1on0ojgr8apu3q5stalhe.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBzDIvjd1VUmpaKteTi28uZSSMd0FjlpPI"
+          "current_key": "AIzaSyAsG3fH2fIVIzYwdmlZTE5naCYKN8Evqvc"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "893520358233-b24hj1477ka787vp7a2g4cb26j4ql54b.apps.googleusercontent.com",
+              "client_id": "338675190296-0nfbj2cmr4o1on0ojgr8apu3q5stalhe.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

@@ -175,14 +175,15 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                       size: 30,
                                       color: Colors.black,
                                     ),
-                                    label: Center(
-                                        child: Text(
-                                            '${snapshot.data.temperature.toString()}°C',
-                                            style: TextStyle(
-                                              fontSize: 24,
-                                              color: Colors.black,
-                                            ))),
-                                    onPressed: () {},
+                                    label: Text(
+                                        '${snapshot.data.temperature.toString()}°C',
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          color: Colors.black,
+                                        )),
+                                    onPressed: () {
+                                      DoNothingAction();
+                                    },
                                   ),
                                   trailing: TextButton.icon(
                                     icon: Icon(
@@ -266,14 +267,13 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                           WeatherIcons.wi_windy,
                                           color: Colors.black,
                                         ),
-                                        label: Center(
-                                          child: new Text(
-                                            "Vânt: \n" + windSplit[0],
-                                            maxLines: 2,
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 16.0),
-                                          ),
+                                        label: new Text(
+                                          "Vânt: \n" + windSplit[0],
+                                          textAlign: TextAlign.left,
+                                          maxLines: 2,
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16.0),
                                         ),
                                         onPressed: () {},
                                       ),

@@ -21,8 +21,8 @@ class _FurniturePageState extends State<FurniturePage> {
 
   Future<List<JobModel>> _getJobs() async {
     try {
-      var response = await http.get(
-          "https://www.eradauti.ro/api/context?pathname=/anunturi/imobiliare-19");
+      var response = await http.get(Uri.parse(
+          "https://www.eradauti.ro/api/context?pathname=/anunturi/imobiliare-19"));
       this.setState(() {
         jsonResponse = json.decode(response.body);
       });

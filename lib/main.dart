@@ -1,14 +1,18 @@
 import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutterapperadauti/notice_a_problem/screens/notice_map_ui.dart';
+import 'package:flutterapperadauti/settings/app_settings.dart';
+import 'package:flutterapperadauti/settings/notification_settings.dart';
 import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
 import 'package:flutterapperadauti/notice_a_problem/screens/main_notice_ui.dart';
 import 'package:flutterapperadauti/state/loading_notifier.dart';
+import 'package:flutterapperadauti/state/subscribed.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/transport/Train.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
@@ -114,6 +118,9 @@ Future<void> main() async {
       ChangeNotifierProvider<FCMState>(
         create: (_) => FCMState(),
       ),
+      ChangeNotifierProvider<Subscription>(
+        create: (_) => Subscription(),
+      ),
     ],
     child: MyApp(),
   ));
@@ -158,6 +165,9 @@ class MyApp extends StatelessWidget {
         '/events': (BuildContext context) => EventsMain(),
         '/air': (BuildContext context) => AirQualityMain(),
         '/volunteer': (BuildContext context) => VolunteerPage(),
+        '/settings': (BuildContext context) => AppSettings(),
+        '/settings/notifications': (BuildContext context) =>
+            SettingsNotification(),
       },
       navigatorKey: _navigator,
       theme: ThemeData(
@@ -262,6 +272,7 @@ class _MyAppState extends State<MenuScreen> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Container(
           alignment: Alignment.center,
@@ -514,10 +525,26 @@ class _MyAppState extends State<MenuScreen> {
     );
   }
 
+  String token;
   void getToken() {
-    FirebaseMessaging.instance.getToken.call().then((token) {
+    FirebaseMessaging.instance.getToken.call().then((value) {
+      token = value;
       debugPrint('Token: $token');
       context.read<FCMState>().getFcm(token);
     });
+    getTopics();
+  }
+
+  Future<void> getTopics() async {
+    await FirebaseFirestore.instance
+        .collection('topics')
+        .get()
+        .then((value) => value.docs.forEach((element) {
+              if (token == element.id) {
+                element.data().isNotEmpty
+                    ? context.read<Subscription>().changeSubscription(true)
+                    : DoNothingAction();
+              }
+            }));
   }
 }

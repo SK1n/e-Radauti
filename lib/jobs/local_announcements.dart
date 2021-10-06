@@ -161,8 +161,8 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
 
   Future<List> fetchListAnnouncements() async {
     Map<String, dynamic> fd;
-    http.Response r = await http
-        .get('https://e-radauti-80139.firebaseio.com/--Anunturi.json');
+    http.Response r = await http.get(
+        Uri.parse('https://e-radauti-80139.firebaseio.com/--Anunturi.json'));
     fd = json.decode(r.body);
     final List<dynamic> children = [];
     fd.forEach((key, value) {

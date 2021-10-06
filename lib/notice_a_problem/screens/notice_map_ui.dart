@@ -9,7 +9,7 @@ import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:latlong/latlong.dart' as latLng;
+import 'package:latlong2/latlong.dart' as latLng;
 
 class NoticeMapUi extends StatefulWidget {
   const NoticeMapUi({Key key}) : super(key: key);
@@ -98,12 +98,24 @@ class _NoticeMapUiState extends State<NoticeMapUi>
           ),
           preferredSize: Size(MediaQuery.of(context).size.width, 50)),
       body: FlutterMap(
+        children: [
+          PopupMarkerLayerWidget(
+            options: PopupMarkerLayerOptions(
+              popupController: _popupLayerController,
+              markers: _markers,
+              markerRotateAlignment:
+                  PopupMarkerLayerOptions.rotationAlignmentFor(AnchorAlign.top),
+              popupBuilder: (BuildContext context, Marker marker) =>
+                  InfoWindow(marker: marker),
+            ),
+          ),
+        ],
         options: MapOptions(
-            interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-            zoom: 11.0,
-            center: latLng.LatLng(47.843876, 25.916276),
-            plugins: [PopupMarkerPlugin()],
-            onTap: (latLong) => _popupLayerController.hidePopup()),
+          interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+          zoom: 11.0,
+          center: latLng.LatLng(47.843876, 25.916276),
+          onTap: (_, __) => _popupLayerController.hideAllPopups(),
+        ),
         layers: [
           TileLayerOptions(
             urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',

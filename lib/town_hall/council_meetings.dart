@@ -219,8 +219,8 @@ Future<List> fetchDataList() async {
 
 Future<Map<String, dynamic>> fetchLiveMeetingLinks() async {
   Map<String, dynamic> fd;
-  http.Response r =
-      await http.get('https://e-radauti-80139.firebaseio.com/--Sedinte.json');
+  http.Response r = await http
+      .get(Uri.parse('https://e-radauti-80139.firebaseio.com/--Sedinte.json'));
   fd = json.decode(r.body);
   Map<String, dynamic> returnMap = {};
   String link = fd['link'];
@@ -243,8 +243,8 @@ Future<Map<String, dynamic>> fetchLiveMeetingLinks() async {
 //2
 Future<List> fetchListVideoLink() async {
   Map<String, dynamic> fd;
-  http.Response r = await http
-      .get('https://e-radauti-80139.firebaseio.com/-SedinteArhiva.json');
+  http.Response r = await http.get(
+      Uri.parse('https://e-radauti-80139.firebaseio.com/-SedinteArhiva.json'));
   fd = json.decode(r.body);
   final List<dynamic> children = [];
   final List<dynamic> response = [];

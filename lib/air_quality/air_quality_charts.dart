@@ -8,7 +8,7 @@ Future<List> fetchDataList() async {
   List<dynamic> fd;
 
   String url2 = 'https://checkup-7b62e.firebaseio.com/meteo_radauti.json';
-  http.Response r = await http.get(url2);
+  http.Response r = await http.get(Uri.parse(url2));
   fd = json.decode(r.body);
 
   List<dynamic> response = [];

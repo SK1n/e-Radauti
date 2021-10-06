@@ -41,8 +41,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   loadJsonList() async {
     Map<String, dynamic> fd;
-    http.Response r = await http
-        .get('https://e-radauti-80139.firebaseio.com/-HotarariArhiva.json');
+    http.Response r = await http.get(Uri.parse(
+        'https://e-radauti-80139.firebaseio.com/-HotarariArhiva.json'));
     fd = json.decode(r.body);
     final List<dynamic> children = List<dynamic>();
     final List<dynamic> children2 = [];

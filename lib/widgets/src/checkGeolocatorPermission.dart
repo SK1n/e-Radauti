@@ -17,7 +17,7 @@ Future<void> checkPermissions(BuildContext context) async {
           .read<NoticeFormState>()
           .getPosition(await Geolocator.getCurrentPosition());
     }
-  } else if (status.isUndetermined) {
+  } else if (status.isDenied) {
     debugPrint('Geolocator permission isUndetermined!');
     await showDialog(
         barrierDismissible: false,

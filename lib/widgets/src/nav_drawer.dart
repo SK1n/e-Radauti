@@ -26,6 +26,7 @@ class NavDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FCMState provider = Provider.of<FCMState>(context);
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -49,6 +50,8 @@ class NavDrawer extends StatelessWidget {
               context, Icons.train, 'Transport', '/transport', provider),
           generateListTile(context, FontAwesome5.hand_holding_heart,
               'Voluntariat', '/volunteer', provider),
+          generateListTile(
+              context, Icons.settings, 'Setari', '/settings', provider),
           generateListTile(
               context, Icons.info, 'Despre aplicație', null, provider),
         ],

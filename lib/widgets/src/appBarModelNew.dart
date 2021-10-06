@@ -20,6 +20,7 @@ class AppBarUiSliver extends StatelessWidget {
     return SliverAppBar(
         pinned: pinned,
         floating: true,
+        backgroundColor: Colors.white,
         elevation: 10,
         forceElevated: true,
         shadowColor: Colors.black,
@@ -30,7 +31,10 @@ class AppBarUiSliver extends StatelessWidget {
         actions: [
           scaffoldKey != null
               ? IconButton(
-                  icon: Icon(Icons.menu),
+                  icon: Icon(
+                    Icons.menu,
+                    color: Colors.black,
+                  ),
                   onPressed: () => scaffoldKey.currentState.openDrawer(),
                 )
               : null,
@@ -50,6 +54,7 @@ class AppBarUiSliver extends StatelessWidget {
               child: Text(
                 '$content',
                 maxLines: 2,
+                style: TextStyle(color: Colors.black),
               ),
             )
           ],
@@ -75,6 +80,7 @@ class AppBarUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
         elevation: 10,
+        backgroundColor: Colors.white,
         shadowColor: Colors.black,
         leading: FlatButton(
           child: Icon(Ionicons.ios_arrow_back),
@@ -83,7 +89,10 @@ class AppBarUi extends StatelessWidget {
         actions: [
           scaffoldKey != null
               ? IconButton(
-                  icon: Icon(Icons.menu),
+                  icon: Icon(
+                    Icons.menu,
+                    color: Colors.black,
+                  ),
                   onPressed: () => scaffoldKey.currentState.openDrawer(),
                 )
               : null,
@@ -103,6 +112,7 @@ class AppBarUi extends StatelessWidget {
               child: Text(
                 '$content',
                 maxLines: 2,
+                style: TextStyle(color: Colors.black),
               ),
             )
           ],

@@ -10,8 +10,8 @@ import 'package:http/http.dart' as http;
 
 Future<List> fetchRoutes() async {
   Map<String, dynamic> fd;
-  http.Response r = await http
-      .get('https://e-radauti-80139.firebaseio.com/Transport_Autobuz.json');
+  http.Response r = await http.get(Uri.parse(
+      'https://e-radauti-80139.firebaseio.com/Transport_Autobuz.json'));
   fd = json.decode(r.body);
   final List<dynamic> response = [];
   fd.forEach((key, value) {

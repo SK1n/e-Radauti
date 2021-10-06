@@ -6,6 +6,7 @@ class FCMState extends ChangeNotifier {
 
   void getFcm(String fcm) {
     _fcm = fcm;
+    debugPrint('fcm: $fcm');
     notifyListeners();
   }
 }
