@@ -83,7 +83,7 @@ class NavDrawer extends StatelessWidget {
                           }),
                 ],
                 applicationName: 'e-Radauti',
-                applicationVersion: 'Version: 2.1.2 (1)',
+                applicationVersion: 'Version: 2.1.4 (3)',
                 applicationIcon: Image.asset(
                   'assets/logo_images/app_logo_final.png',
                   width: 24,
