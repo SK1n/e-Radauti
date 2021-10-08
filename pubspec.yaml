@@ -72,6 +72,8 @@ dependencies:
   weather_icons: ^2.0.2
   webview_flutter: ^2.1.1
   mailer: ^5.0.2
+  intro_views_flutter: ^3.2.0
+  is_first_run: ^1.0.0
 
 dev_dependencies:
   flutter_launcher_icons: ^0.9.2

@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutterapperadauti/notice_a_problem/screens/notice_map_ui.dart';
 import 'package:flutterapperadauti/settings/app_settings.dart';
+import 'package:flutterapperadauti/settings/debug_settings.dart';
 import 'package:flutterapperadauti/settings/notification_settings.dart';
 import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
 import 'package:flutterapperadauti/notice_a_problem/screens/main_notice_ui.dart';
@@ -25,6 +26,7 @@ import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
 import 'package:flutterapperadauti/air_quality/air_quality_main.dart';
 import 'package:flutterapperadauti/transport/Transport.dart';
 import 'package:flutterapperadauti/volunteer/volunteer.dart';
+import 'package:intro_views_flutter/intro_views_flutter.dart';
 import 'jobs/furniture_page.dart';
 import 'jobs/job_page.dart';
 import 'jobs/local_announcements.dart';
@@ -46,6 +48,7 @@ import 'package:provider/provider.dart';
 import 'package:flutterapperadauti/notice_a_problem/location_switch.dart';
 import 'package:flutterapperadauti/state/marker_notifier.dart';
 import 'package:flutterapperadauti/state/fcm_state.dart';
+import 'package:is_first_run/is_first_run.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -168,6 +171,7 @@ class MyApp extends StatelessWidget {
         '/settings': (BuildContext context) => AppSettings(),
         '/settings/notifications': (BuildContext context) =>
             SettingsNotification(),
+        '/settings/debug': (BuildContext context) => DebugSettings(),
       },
       navigatorKey: _navigator,
       theme: ThemeData(
@@ -185,6 +189,7 @@ class MenuScreen extends StatefulWidget {
 
 class _MyAppState extends State<MenuScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  bool isFirstRun;
 
   @override
   void initState() {
@@ -225,6 +230,11 @@ class _MyAppState extends State<MenuScreen> {
     });
     getToken();
     //checkPermissions(context);
+  }
+
+  Future<bool> checkFirstRun() async {
+    isFirstRun = await IsFirstRun.isFirstRun();
+    return isFirstRun;
   }
 
   void navigate(BuildContext context, String view) {
@@ -269,6 +279,41 @@ class _MyAppState extends State<MenuScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: checkFirstRun(),
+      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+        return snapshot.hasData
+            ? snapshot.data
+                ? introViews()
+                : menuScreen()
+            : menuScreen();
+      },
+    );
+  }
+
+  // TODO: _Solve infinite cycle in intro views(broken done button)
+  // Hide debug section in settings
+  final introPages = [
+    PageViewModel(
+        pageColor: Colors.greenAccent,
+        iconImageAssetPath: 'assets/logo_images/app_logo_final.png',
+        mainImage: Image.asset('assets/logo_images/app_logo_final.png'),
+        body: const Text('Aplicatia e-Radauti!'),
+        textStyle: TextStyle(color: Colors.black),
+        title: Text('Aplicatia e-Radauti'),
+        titleTextStyle: TextStyle(color: Colors.black)),
+    PageViewModel(
+        pageColor: const Color(0xFF03A9F4),
+        textStyle: TextStyle(color: Colors.black),
+        body: Column(
+          children: [
+            Text('Acceptati permisiunea de notificari?'),
+            Text('dadadada')
+          ],
+        ))
+  ];
+
+  menuScreen() {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -477,6 +522,23 @@ class _MyAppState extends State<MenuScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  introViews() {
+    return Builder(
+      builder: (context) => IntroViewsFlutter(
+        introPages,
+        showNextButton: true,
+        showBackButton: true,
+        showSkipButton: false,
+        pageButtonTextStyles: TextStyle(color: Colors.black),
+        pageButtonsColor: Colors.black,
+        background: Colors.black,
+        onTapDoneButton: () {
+          Navigator.pushNamed(context, '/');
+        },
       ),
     );
   }
