@@ -13,6 +13,8 @@ class IntroPages extends StatefulWidget {
   _IntroPagesState createState() => _IntroPagesState();
 }
 
+/// TODO: Add SwitchListTile for notifications and geolocation (make the connection between notifier and switch)
+
 class _IntroPagesState extends State<IntroPages> {
   bool isFirstRun;
 

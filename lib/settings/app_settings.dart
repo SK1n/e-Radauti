@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
@@ -34,24 +35,80 @@ class _AppSettingsState extends State<AppSettings> {
       drawer: NavDrawer(),
       body: Column(
         children: [
-          ListTileSettings(
-            routeName: 'notifications',
-            title: 'Notificari',
-            leadingIcon: Icons.notification_important,
-            onTap: () {
-              Navigator.pushNamed(context, '/settings/notifications');
-            },
-          ),
+          notificationSection(),
           ListTileSettings(
               routeName: 'debug',
               title: 'Debug',
               leadingIcon: Icons.bug_report_outlined,
               onTap: () {
                 debugDialog(context);
-              })
+              }),
         ],
       ),
     );
+  }
+
+  ///Add collapsed to expanded child and add SwitchListTile for permissions notification
+
+  notificationSection() {
+    return ScrollOnExpand(
+      child: Expandable(
+        collapsed: ExpandableButton(
+          child: Card(
+            child: Text(
+              'Permisiuni',
+              style: TextStyle(fontSize: 30),
+            ),
+          ),
+        ),
+        expanded: ExpandableButton(
+          child: Card(
+            child: Column(
+              children: [
+                ListTileSettings(
+                  routeName: 'notifications',
+                  title: 'Notificari',
+                  leadingIcon: Icons.notification_important,
+                  onTap: () {
+                    Navigator.pushNamed(context, '/settings/notifications');
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  geolocatorSection() {
+    return ScrollOnExpand(
+        child: Expandable(
+      collapsed: ExpandableButton(
+        child: ListTile(
+          leading: Icon(Icons.location_on_outlined),
+          title: Text('Permisiune de locatie'),
+          trailing: Icon(Icons.arrow_drop_down_outlined),
+        ),
+      ),
+      expanded: ExpandableButton(
+          child: Column(
+        children: [
+          ListTile(
+            leading: Icon(Icons.location_on_outlined),
+            title: Text('Permisiune de locatie'),
+            trailing: Icon(Icons.arrow_drop_up_outlined),
+          ),
+          SwitchListTile(
+            value: false,
+            onChanged: (value) {
+              ///TODO: add notifier state for geolocation and update the widget with a title
+            },
+            title: Text('placeholder'),
+          )
+        ],
+      )),
+    ));
   }
 
   debugDialog(BuildContext context) {
