@@ -3,8 +3,12 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/main.dart';
+import 'package:flutterapperadauti/state/subscribed.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 import 'package:is_first_run/is_first_run.dart';
+import 'package:list_tile_switch/list_tile_switch.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 
 class IntroPages extends StatefulWidget {
   const IntroPages({Key key}) : super(key: key);
@@ -17,26 +21,7 @@ class IntroPages extends StatefulWidget {
 
 class _IntroPagesState extends State<IntroPages> {
   bool isFirstRun;
-
-  final introPages = [
-    PageViewModel(
-        pageColor: Colors.greenAccent,
-        iconImageAssetPath: 'assets/logo_images/app_logo_final.png',
-        mainImage: Image.asset('assets/logo_images/app_logo_final.png'),
-        body: const Text('Aplicatia e-Radauti!'),
-        textStyle: TextStyle(color: Colors.black),
-        title: Text('Aplicatia e-Radauti'),
-        titleTextStyle: TextStyle(color: Colors.black)),
-    PageViewModel(
-        pageColor: const Color(0xFF03A9F4),
-        textStyle: TextStyle(color: Colors.black),
-        body: Column(
-          children: [
-            Text('Acceptati permisiunea de notificari?'),
-            Text('dadadada')
-          ],
-        ))
-  ];
+  bool notValue;
 
   Future<bool> checkFirstRun() async {
     isFirstRun = await IsFirstRun.isFirstRun();
@@ -45,12 +30,13 @@ class _IntroPagesState extends State<IntroPages> {
 
   @override
   Widget build(BuildContext context) {
+    Subscription subscribed = Provider.of<Subscription>(context);
     return FutureBuilder(
       future: checkFirstRun(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return snapshot.hasData
             ? snapshot.data
-                ? introViews()
+                ? introViews(subscribed)
                 : MenuScreen()
             : snapshot.hasError
                 ? showDialog(
@@ -63,10 +49,38 @@ class _IntroPagesState extends State<IntroPages> {
     );
   }
 
-  introViews() {
+  introViews(Subscription subscription) {
     return Builder(
       builder: (context) => IntroViewsFlutter(
-        introPages,
+        [
+          PageViewModel(
+              pageColor: Colors.greenAccent,
+              iconImageAssetPath: 'assets/logo_images/app_logo_final.png',
+              mainImage: Image.asset('assets/logo_images/app_logo_final.png'),
+              body: const Text('Aplicatia e-Radauti!'),
+              textStyle: TextStyle(color: Colors.black),
+              title: Text('Aplicatia e-Radauti'),
+              titleTextStyle: TextStyle(color: Colors.black)),
+          PageViewModel(
+              pageColor: const Color(0xFF03A9F4),
+              textStyle: TextStyle(color: Colors.black),
+              body: Column(
+                children: [
+                  ListTileSwitch(
+                    value: subscription.topicAll,
+                    leading: Icon(Icons.circle_notifications_rounded),
+                    onChanged: (value) {
+                      subscription.changeSubscription(value);
+                      value
+                          ? Permission.notification.request()
+                          : DoNothingAction();
+                    },
+                    title: Text('Notificari'),
+                  ),
+                  Text('dadadada')
+                ],
+              ))
+        ],
         showNextButton: true,
         showBackButton: true,
         showSkipButton: false,

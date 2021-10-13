@@ -72,8 +72,6 @@ Future<void> main() async {
   const AndroidInitializationSettings initializationSettingsAndroid =
       AndroidInitializationSettings('app_logo_final');
 
-  /// Note: permissions aren't requested here just to demonstrate that can be
-  /// done later
   final IOSInitializationSettings initializationSettingsIOS =
       IOSInitializationSettings(
     requestAlertPermission: true,
@@ -189,7 +187,7 @@ class MenuScreen extends StatefulWidget {
 
 class _MyAppState extends State<MenuScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
+//TODO: Move all firebase to intro Pages
   @override
   void initState() {
     super.initState();

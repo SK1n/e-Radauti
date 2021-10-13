@@ -152,7 +152,7 @@ class _AppSettingsState extends State<AppSettings> {
                             ],
                           ));
           },
-          child: Text('Permisiune de locatie'),
+          child: Text('Verificati Permisiunea de locatie'),
         ),
       ),
     );

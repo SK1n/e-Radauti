@@ -11,7 +11,9 @@ import 'package:list_tile_switch/list_tile_switch.dart';
 import 'package:provider/provider.dart';
 
 class SettingsNotification extends StatelessWidget {
-  const SettingsNotification({Key key}) : super(key: key);
+  SettingsNotification({Key key}) : super(key: key);
+
+  bool topicAll;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,14 @@ class SettingsNotification extends StatelessWidget {
       drawer: NavDrawer(),
       body: Column(
         children: [
+          ListTileSwitch(
+            value: getBooltopics(context),
+            leading: Icon(Icons.circle_notifications_rounded),
+            onChanged: (value) {
+              subscribed.changeSubscription(value);
+            },
+            title: Text('Notificari'),
+          ),
           ListTileSwitch(
             switchType: SwitchType.cupertino,
             visualDensity: VisualDensity.comfortable,
@@ -61,5 +71,13 @@ class SettingsNotification extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  bool getBooltopics(BuildContext context) {
+    topicAll = Provider.of<Subscription>(context, listen: false).topicAll;
+    if (topicAll) {
+      return true;
+    }
+    return false;
   }
 }
