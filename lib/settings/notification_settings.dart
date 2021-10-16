@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutterapperadauti/firestore_subscribe.dart';
 import 'package:flutterapperadauti/state/fcm_state.dart';
 import 'package:flutterapperadauti/state/subscribed.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
@@ -37,6 +38,12 @@ class SettingsNotification extends StatelessWidget {
             leading: Icon(Icons.circle_notifications_rounded),
             onChanged: (value) {
               subscribed.changeSubscription(value);
+              debugPrint('principal switch: $value');
+              if (value != true) {
+                deleteFromFirestoreAndUnsubscribe(context: context);
+              } else {
+                pushTopicToFirestoreAndSubscribe(context: context);
+              }
             },
             title: Text('Notificari'),
           ),
@@ -51,19 +58,11 @@ class SettingsNotification extends StatelessWidget {
             onChanged: (value) async {
               subscribed.changeSubscription(value);
               value = !value;
+              debugPrint('topic switch: $value');
               if (value == true) {
-                await FirebaseMessaging.instance
-                    .unsubscribeFromTopic('default');
-                await FirebaseFirestore.instance
-                    .collection('topics')
-                    .doc(context.read<FCMState>().fcm)
-                    .update({'default': FieldValue.delete()});
+                deleteFromFirestoreAndUnsubscribe(context: context);
               } else {
-                await FirebaseMessaging.instance.subscribeToTopic('default');
-                await FirebaseFirestore.instance
-                    .collection('topics')
-                    .doc(context.read<FCMState>().fcm)
-                    .set({'default': 'subscribe'});
+                pushTopicToFirestoreAndSubscribe(context: context);
               }
             },
             value: context.watch<Subscription>().topicAll,

@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/main.dart';
+import 'package:flutterapperadauti/firestore_subscribe.dart';
+import 'package:flutterapperadauti/menu_screen.dart';
 import 'package:flutterapperadauti/state/subscribed.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 import 'package:is_first_run/is_first_run.dart';
@@ -64,20 +65,53 @@ class _IntroPagesState extends State<IntroPages> {
           PageViewModel(
               pageColor: const Color(0xFF03A9F4),
               textStyle: TextStyle(color: Colors.black),
-              body: Column(
+              mainImage: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ListTileSwitch(
-                    value: subscription.topicAll,
-                    leading: Icon(Icons.circle_notifications_rounded),
-                    onChanged: (value) {
-                      subscription.changeSubscription(value);
-                      value
-                          ? Permission.notification.request()
-                          : DoNothingAction();
-                    },
-                    title: Text('Notificari'),
+                  Text(
+                    'Avem nevoie de urmatoarele permisiuni',
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                    textAlign: TextAlign.center,
                   ),
-                  Text('dadadada')
+                  Card(
+                    child: ListTileSwitch(
+                      value: subscription.topicAll,
+                      leading: Icon(Icons.circle_notifications_rounded),
+                      onChanged: (value) {
+                        subscription.changeSubscription(value);
+                        if (value) {
+                          Permission.notification.request().then((value) =>
+                              value.isGranted
+                                  ? pushTopicToFirestoreAndSubscribe(
+                                      context: context)
+                                  : subscription.changeSubscription(false));
+                        } else {
+                          deleteFromFirestoreAndUnsubscribe(context: context);
+                        }
+                      },
+                      title: Text('Notificari'),
+                    ),
+                  ),
+                  Card(
+                    child: ListTileSwitch(
+                      value: subscription.topicAll,
+                      leading: Icon(Icons.location_on_outlined),
+                      onChanged: (value) {
+                        subscription.changeSubscription(value);
+                        if (value) {
+                          Permission.notification.request().then((value) =>
+                              value.isGranted
+                                  ? pushTopicToFirestoreAndSubscribe(
+                                      context: context)
+                                  : subscription.changeSubscription(false));
+                        } else {
+                          deleteFromFirestoreAndUnsubscribe(context: context);
+                        }
+                      },
+                      title: Text('Locatie'),
+                    ),
+                  ),
                 ],
               ))
         ],

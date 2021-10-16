@@ -192,7 +192,8 @@ class _AppSettingsState extends State<AppSettings> {
                       textAlign: TextAlign.end,
                     ),
                     onPressed: () {
-                      if (debugTextEditingController.text == 'e-radauti2021') {
+                      if (debugTextEditingController.text == '') {
+                        //e-radauti2021
                         debugPrint('corect');
                         Navigator.pop(context);
                         Navigator.pushNamed(context, '/settings/debug');

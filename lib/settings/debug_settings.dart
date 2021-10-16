@@ -11,6 +11,7 @@ class DebugSettings extends StatelessWidget {
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
     return Scaffold(
+      key: _scaffoldKey,
       appBar: PreferredSize(
           child: AppBarUi(
             content: 'Debug',
