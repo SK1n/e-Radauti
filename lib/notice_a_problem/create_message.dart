@@ -1,7 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutterapperadauti/state/loading_notifier.dart';
-import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
+import 'package:flutterapperadauti/state/loading_state.dart';
+import 'package:flutterapperadauti/state/notice_problem_state.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
@@ -22,14 +22,16 @@ Future<void> createMessage(BuildContext context, dynamic formKey) async {
   Position position = noticeFormState.position;
   String textDescription;
 
-  textDescription = ''' 
+  textDescription =
+      ''' 
     Către, <b>$institution</b> ($institution) <br><br> Stimată doamnă/ Stimate domn,
         <br><br>Subsemnatul(a) $name, vă supun atenției următoarea problemă:<br><br>
         <i>$body</i><br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați
          măsurile ce se impun.
     ''';
   position == null
-      ? textDescription += ''' 
+      ? textDescription +=
+          ''' 
         <br><br>Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și 
         a fost transmisă <b>prin intermediul aplicației mobile e-Rădăuți</b>, dezvoltată
          de Asociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”, 
@@ -38,7 +40,8 @@ Future<void> createMessage(BuildContext context, dynamic formKey) async {
         .<br><br>Cu stimă,<br><br>
              <b>$name</b><br><br>     Tel: $number / $email
         '''
-      : textDescription += ''' Cele sesizate sunt la următoarea adresă 
+      : textDescription +=
+          ''' Cele sesizate sunt la următoarea adresă 
          Lat:${position.latitude}  Long:${position.longitude} 
          (<a href ='https://www.google.com/maps/place/${position.latitude.toString()}+${position.longitude.toString()}'>Adresa Google Maps</a>)<br><br></i>
         <br><br>

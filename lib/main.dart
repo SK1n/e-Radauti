@@ -1,19 +1,20 @@
 import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+
 import 'package:flutterapperadauti/intro_pages.dart';
+import 'package:flutterapperadauti/menu_screen.dart';
 import 'package:flutterapperadauti/notice_a_problem/screens/notice_map_ui.dart';
 import 'package:flutterapperadauti/settings/app_settings.dart';
 import 'package:flutterapperadauti/settings/debug_settings.dart';
 import 'package:flutterapperadauti/settings/notification_settings.dart';
-import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
+import 'package:flutterapperadauti/state/notice_problem_state.dart';
 import 'package:flutterapperadauti/notice_a_problem/screens/main_notice_ui.dart';
-import 'package:flutterapperadauti/state/loading_notifier.dart';
+import 'package:flutterapperadauti/state/loading_state.dart';
 import 'package:flutterapperadauti/state/subscribed.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/transport/Train.dart';
@@ -41,12 +42,10 @@ import 'usefull_numbers/contractors.dart';
 import 'usefull_numbers/local_authorities.dart';
 import 'usefull_numbers/miscellaneous.dart';
 import 'usefull_numbers/public_institutions.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
-import 'widgets/src/nav_drawer.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 import 'package:flutterapperadauti/notice_a_problem/location_switch.dart';
-import 'package:flutterapperadauti/state/marker_notifier.dart';
+import 'package:flutterapperadauti/state/marker_state.dart';
 import 'package:flutterapperadauti/state/fcm_state.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -64,6 +63,46 @@ const AndroidNotificationChannel channel = AndroidNotificationChannel(
 );
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
+
+void navigate(BuildContext context, String view) {
+  switch (view) {
+    case 'air_qulity':
+      {
+        Navigator.pushNamed(context, '/air');
+      }
+      break;
+    case 'events':
+      {
+        Navigator.pushNamed(context, '/events');
+      }
+      break;
+    case 'notice_problem':
+      {
+        Navigator.pushNamed(context, '/noticeProblem');
+      }
+      break;
+    case 'announcement':
+      {
+        Navigator.pushNamed(context, '/localAnnouncements');
+      }
+      break;
+    case 'council':
+      {
+        Navigator.pushNamed(context, '/councilMeetings');
+      }
+      break;
+    case 'local_authorities':
+      {
+        Navigator.pushNamed(context, '/localAuthorities');
+      }
+      break;
+    default:
+      {
+        Navigator.pushNamed(context, '/main');
+      }
+      break;
+  }
+}
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -88,11 +127,6 @@ Future<void> main() async {
 
     _navigator.currentState.pushNamed('/$payload');
   });
-
-  /// Create an Android Notification Channel.
-  ///
-  /// We use this channel in the `AndroidManifest.xml` file to override the
-  /// default FCM channel to enable heads up notifications.
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>()
@@ -126,8 +160,52 @@ Future<void> main() async {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    if (Platform.isIOS) {
+      FirebaseMessaging.instance.requestPermission();
+    }
+    FirebaseMessaging.instance
+        .getInitialMessage()
+        .then((RemoteMessage message) {
+      if (message != null) {
+        navigate(context, message.data['view']);
+      }
+    });
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      RemoteNotification notification = message.notification;
+      AndroidNotification android = message.notification?.android;
+      if (notification != null && android != null) {
+        flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              android: AndroidNotificationDetails(
+                channel.id,
+                channel.name,
+                channel.description,
+                icon: 'app_logo_final',
+              ),
+            ),
+            payload: message.data["view"]);
+      }
+    });
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      debugPrint('A new onMessageOpenedApp event was published!');
+      navigate(context, message.data['view']);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -177,382 +255,5 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xFFFFFFFF),
       ),
     );
-  }
-}
-
-class MenuScreen extends StatefulWidget {
-  @override
-  _MyAppState createState() => new _MyAppState();
-}
-
-class _MyAppState extends State<MenuScreen> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-//TODO: Move all firebase to intro Pages
-  @override
-  void initState() {
-    super.initState();
-    if (Platform.isIOS) {
-      FirebaseMessaging.instance.requestPermission();
-    }
-    FirebaseMessaging.instance
-        .getInitialMessage()
-        .then((RemoteMessage message) {
-      if (message != null) {
-        navigate(context, message.data['view']);
-      }
-    });
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      RemoteNotification notification = message.notification;
-      AndroidNotification android = message.notification?.android;
-      if (notification != null && android != null) {
-        flutterLocalNotificationsPlugin.show(
-            notification.hashCode,
-            notification.title,
-            notification.body,
-            NotificationDetails(
-              android: AndroidNotificationDetails(
-                channel.id,
-                channel.name,
-                channel.description,
-                icon: 'app_logo_final',
-              ),
-            ),
-            payload: message.data["view"]);
-      }
-    });
-    //  FirebaseMessaging.instance.subscribeToTopic('all');
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      debugPrint('A new onMessageOpenedApp event was published!');
-      navigate(context, message.data['view']);
-    });
-    getToken();
-  }
-
-  void navigate(BuildContext context, String view) {
-    switch (view) {
-      case 'air_qulity':
-        {
-          Navigator.pushNamed(context, '/air');
-        }
-        break;
-      case 'events':
-        {
-          Navigator.pushNamed(context, '/events');
-        }
-        break;
-      case 'notice_problem':
-        {
-          Navigator.pushNamed(context, '/noticeProblem');
-        }
-        break;
-      case 'announcement':
-        {
-          Navigator.pushNamed(context, '/localAnnouncements');
-        }
-        break;
-      case 'council':
-        {
-          Navigator.pushNamed(context, '/councilMeetings');
-        }
-        break;
-      case 'local_authorities':
-        {
-          Navigator.pushNamed(context, '/localAuthorities');
-        }
-        break;
-      default:
-        {
-          Navigator.pushNamed(context, '/main');
-        }
-        break;
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return menuScreen();
-  }
-
-  // TODO: _Solve infinite cycle in intro views(broken done button)
-  // Hide debug section in settings
-
-  menuScreen() {
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        title: Container(
-          alignment: Alignment.center,
-          child: Text(
-            'e-Rădăuți',
-            style: TextStyle(
-              color: Color(0xFF000000), //Color(0xFFFFFFFF),
-              fontWeight: FontWeight.bold,
-              fontSize: 19,
-            ),
-          ),
-        ),
-        actions: <Widget>[
-          Container(
-            alignment: Alignment.topRight,
-            margin: EdgeInsets.only(top: 0.0, right: 0.0),
-            child: IconButton(
-              icon: Icon(
-                Icons.menu,
-                size: 24,
-                color: Colors.black,
-              ),
-              onPressed: () => _scaffoldKey.currentState.openDrawer(),
-            ),
-          ),
-        ],
-        leading: Container(
-          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-          margin: const EdgeInsets.fromLTRB(15.0, 5.0, 0.0, 5.0),
-          child: new Stack(
-            alignment: AlignmentDirectional.center,
-            children: <Widget>[
-              new Image.asset(
-                "assets/logo_images/app_logo.png", //Constant.iconNotification,
-              ),
-            ],
-          ),
-        ),
-      ),
-      drawer: NavDrawer(),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: (MediaQuery.of(context).size.height / 5 - 45),
-              child: Container(
-                //padding: EdgeInsets.only(left: 10,top: 10, bottom: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      height: 30,
-                      width: 30,
-                      child: Image.asset("assets/images/birthday.png"),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(left: 10),
-                      //width: MediaQuery.of(context).size.width - 101,
-                      child: Text(
-                        "Bun venit!",
-                        style: TextStyle(
-                            color: Color(0xFF000000),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: (MediaQuery.of(context).size.height - 250),
-              child: Container(
-                child: GridView.count(
-                  primary: false,
-                  padding: const EdgeInsets.all(10),
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
-                  crossAxisCount: 2,
-                  childAspectRatio:
-                      (MediaQuery.of(context).size.width / 2 - 22.5) /
-                          (MediaQuery.of(context).size.height / 5 - 60),
-                  children: <Widget>[
-                    itemMenu(context, 'Sesizează o problemă',
-                        Icons.photo_filter, '/noticeProblem'),
-                    itemMenu(context, 'Administrație locală',
-                        Icons.location_city, '/townHall'),
-                    itemMenu(
-                        context, 'Evenimente', Icons.calendar_today, '/events'),
-                    itemMenu(context, 'Numere utile', Icons.perm_phone_msg,
-                        '/numbers'),
-                    itemMenu(context, 'Anunțuri', Icons.announcement,
-                        '/announcement'),
-                    itemMenu(context, 'Calitatea aerului', Icons.bubble_chart,
-                        '/air'),
-                    itemMenu(context, 'Transport', Icons.train, '/transport'),
-                    itemMenu(context, 'Voluntariat',
-                        FontAwesome5.hand_holding_heart, '/volunteer'),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 50,
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    height: 17,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                          child: new InkWell(
-                            child: new Text(
-                              'Despre noi',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline,
-                                color: Color(0xFF32325D),
-                                fontSize: 15,
-                              ),
-                            ),
-                            onTap: () {
-                              Navigator.pushNamed(context, '/about');
-                            },
-                          ),
-                        ),
-                        VerticalDivider(
-                          color: Colors.black,
-                        ),
-                        Container(
-                          child: new InkWell(
-                            child: new Text(
-                              'Confidențialitate',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline,
-                                color: Color(0xFF32325D),
-                                fontSize: 15,
-                              ),
-                            ),
-                            onTap: () {
-                              Navigator.pushNamed(
-                                context,
-                                '/confidential',
-                              );
-                            },
-                          ),
-                        ),
-                        VerticalDivider(
-                          color: Colors.black,
-                        ),
-                        Container(
-                          child: new InkWell(
-                            child: new Text(
-                              'Contact',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline,
-                                color: Color(0xFF32325D),
-                                fontSize: 15,
-                              ),
-                            ),
-                            onTap: () {
-                              Navigator.pushNamed(context, '/contact');
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        child: new InkWell(
-                          child: new Text(
-                            'Parteneri',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.underline,
-                              color: Color(0xFF32325D),
-                              fontSize: 15,
-                            ),
-                          ),
-                          onTap: () {
-                            Navigator.pushNamed(context, '/partner');
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  GestureDetector itemMenu(context, title, icon, nextScreen) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          nextScreen,
-        );
-      },
-      child: Card(
-        elevation: 4,
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(4)),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(left: 10),
-              child: Icon(
-                icon,
-                color: Color(0x55FB6340),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.only(left: 10),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    color: Color(0xFF000000), //Color(0xFFFFFFFF),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  String token;
-  void getToken() {
-    FirebaseMessaging.instance.getToken.call().then((value) {
-      token = value;
-      debugPrint('Token: $token');
-      context.read<FCMState>().getFcm(token);
-    });
-    getTopics();
-  }
-
-  Future<void> getTopics() async {
-    await FirebaseFirestore.instance
-        .collection('topics')
-        .get()
-        .then((value) => value.docs.forEach((element) {
-              if (token == element.id) {
-                element.data().isNotEmpty
-                    ? context.read<Subscription>().changeSubscription(true)
-                    : DoNothingAction();
-              }
-            }));
   }
 }

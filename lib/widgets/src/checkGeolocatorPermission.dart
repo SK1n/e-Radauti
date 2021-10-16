@@ -1,4 +1,4 @@
-import 'package:flutterapperadauti/state/notice_problem_notifier.dart';
+import 'package:flutterapperadauti/state/notice_problem_state.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ Future<void> checkPermissions(BuildContext context) async {
               ? AlertDialog(
                   content: Text('Avem nevoie de locatia dvs.'),
                   actions: [
-                    FlatButton(
+                    TextButton(
                         child: Text('Ok'),
                         onPressed: () async => {
                               Navigator.pop(context),
@@ -39,7 +39,7 @@ Future<void> checkPermissions(BuildContext context) async {
                                       await Geolocator.getCurrentPosition()),
                                 }
                             }),
-                    FlatButton(
+                    TextButton(
                       child: Text('Respinge'),
                       onPressed: () {
                         Navigator.pop(context);

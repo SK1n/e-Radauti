@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/state/loading_notifier.dart';
+import 'package:flutterapperadauti/state/loading_state.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
