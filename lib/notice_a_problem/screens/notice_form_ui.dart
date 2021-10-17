@@ -42,15 +42,9 @@ class NoticeFormUi extends StatelessWidget {
                 EmailTextField(),
                 LocationSwitch(),
                 ImagePickerField(),
-                context.watch<LocationSwitchState>().value &&
-                        context.watch<NoticeFormState>().position == null
-                    ? SendButton(
-                        disabled: true,
-                        formKey: _formKey,
-                      )
-                    : SendButton(
-                        formKey: _formKey,
-                      )
+                SendButton(
+                  formKey: _formKey,
+                )
               ],
             ),
     );

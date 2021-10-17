@@ -18,7 +18,7 @@ class AppBarUiSliver extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return SliverAppBar(
-        pinned: pinned,
+        pinned: true,
         floating: true,
         backgroundColor: Colors.white,
         elevation: 10,

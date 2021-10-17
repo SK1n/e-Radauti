@@ -37,7 +37,7 @@ class NavDrawer extends StatelessWidget {
           generateListTile(context, Icons.photo_filter, 'Sesizează o problemă',
               '/noticeProblem', provider),
           generateListTile(context, Icons.location_city, 'Administrație locală',
-              '/townHall5', provider),
+              '/townHall', provider),
           generateListTile(
               context, Icons.calendar_today, 'Evenimente', '/events', provider),
           generateListTile(context, Icons.perm_phone_msg, 'Numere utile',

@@ -3,9 +3,13 @@ import 'dart:io';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/geolocator.dart';
+import 'package:flutterapperadauti/state/geolocator_state.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:list_tile_switch/list_tile_switch.dart';
+import 'package:provider/provider.dart';
 
 class AppSettings extends StatefulWidget {
   const AppSettings({Key key}) : super(key: key);
@@ -18,23 +22,15 @@ class _AppSettingsState extends State<AppSettings> {
   TextEditingController debugTextEditingController =
       new TextEditingController();
   bool debugPasswordHasError = false;
-  LocationPermission locationPermission;
-  bool locationStatus;
   @override
   void initState() {
     super.initState();
-    getLocationStatus();
-  }
-
-  getLocationStatus() async {
-    locationPermission = await Geolocator.checkPermission();
-    locationStatus =
-        locationPermission == LocationPermission.denied ? false : true;
   }
 
   @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+    GeolocatorState geolocatorState = Provider.of<GeolocatorState>(context);
 
     return Scaffold(
       key: _scaffoldKey,
@@ -50,7 +46,7 @@ class _AppSettingsState extends State<AppSettings> {
       body: Column(
         children: [
           notificationSection(),
-          geolocatorSection(),
+          geolocatorSection(geolocatorState: geolocatorState),
           ListTileSettings(
               routeName: 'debug',
               title: 'Debug',
@@ -78,84 +74,15 @@ class _AppSettingsState extends State<AppSettings> {
 
   //TODO: set up so that when user wants to use "notice a problem" he will be required to switch to true this (below) switch // the user will be redirected to /settings
 
-  geolocatorSection() {
-    return Card(
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        child: TextButton(
-          onPressed: () {
-            showDialog(
-                context: context,
-                builder: (_) => Platform.isIOS
-                    ? locationStatus
-                        ? CupertinoAlertDialog(
-                            title: Text(
-                                'Permisiunile pentru locatie sunt acceptate'),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Navigator.pop(context),
-                                child: Text('OK'),
-                              )
-                            ],
-                          )
-                        : CupertinoAlertDialog(
-                            title: Text(
-                                'Permisiunile pentru locatie nu sunt acceptate'),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Navigator.pop(context),
-                                child: Text('Inchide'),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  Geolocator.openLocationSettings();
-                                },
-                                child: Text('Setari'),
-                              ),
-                            ],
-                          )
-                    : locationStatus
-                        ? AlertDialog(
-                            title: Text(
-                                'Permisiunile pentru locatie sunt acceptate'),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Navigator.pop(context),
-                                child: Text('OK'),
-                              )
-                            ],
-                          )
-                        : AlertDialog(
-                            title: Text(
-                                'Permisiunile pentru locatie nu sunt acceptate'),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Navigator.pop(context),
-                                child: Text('Inchide'),
-                              ),
-                              locationPermission !=
-                                      LocationPermission.deniedForever
-                                  ? TextButton(
-                                      onPressed: () =>
-                                          Geolocator.requestPermission(),
-                                      child: Text('Activeaza permisiunile'),
-                                    )
-                                  : Container(),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  Geolocator.openLocationSettings();
-                                },
-                                child: Text('Setari'),
-                              ),
-                            ],
-                          ));
-          },
-          child: Text('Verificati Permisiunea de locatie'),
-        ),
-      ),
-    );
+  geolocatorSection({@required GeolocatorState geolocatorState}) {
+    return ListTileSwitch(
+        value: geolocatorState.value,
+        onChanged: (value) => geolocationOnChanged(
+              context: context,
+              geolocatorState: geolocatorState,
+              value: value,
+            ),
+        title: Text('Locatie'));
   }
 
   debugDialog(BuildContext context) {
@@ -233,8 +160,4 @@ class ListTileSettings extends StatelessWidget {
       ),
     );
   }
-}
-
-Future<bool> checkGeolocatorStatus() async {
-  return await Geolocator.isLocationServiceEnabled();
 }

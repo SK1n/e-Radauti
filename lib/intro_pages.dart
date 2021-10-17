@@ -3,8 +3,11 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/firestore_subscribe.dart';
+import 'package:flutterapperadauti/geolocator.dart';
 import 'package:flutterapperadauti/menu_screen.dart';
+import 'package:flutterapperadauti/state/geolocator_state.dart';
 import 'package:flutterapperadauti/state/subscribed.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 import 'package:is_first_run/is_first_run.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
@@ -32,12 +35,13 @@ class _IntroPagesState extends State<IntroPages> {
   @override
   Widget build(BuildContext context) {
     Subscription subscribed = Provider.of<Subscription>(context);
+    GeolocatorState geolocatorState = Provider.of<GeolocatorState>(context);
     return FutureBuilder(
       future: checkFirstRun(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return snapshot.hasData
             ? snapshot.data
-                ? introViews(subscribed)
+                ? introViews(subscribed, geolocatorState)
                 : MenuScreen()
             : snapshot.hasError
                 ? showDialog(
@@ -50,7 +54,7 @@ class _IntroPagesState extends State<IntroPages> {
     );
   }
 
-  introViews(Subscription subscription) {
+  introViews(Subscription subscription, GeolocatorState geolocatorState) {
     return Builder(
       builder: (context) => IntroViewsFlutter(
         [
@@ -78,37 +82,19 @@ class _IntroPagesState extends State<IntroPages> {
                     child: ListTileSwitch(
                       value: subscription.topicAll,
                       leading: Icon(Icons.circle_notifications_rounded),
-                      onChanged: (value) {
-                        subscription.changeSubscription(value);
-                        if (value) {
-                          Permission.notification.request().then((value) =>
-                              value.isGranted
-                                  ? pushTopicToFirestoreAndSubscribe(
-                                      context: context)
-                                  : subscription.changeSubscription(false));
-                        } else {
-                          deleteFromFirestoreAndUnsubscribe(context: context);
-                        }
-                      },
+                      onChanged: (value) => notificationOnChanged(
+                          subscription: subscription, value: value),
                       title: Text('Notificari'),
                     ),
                   ),
                   Card(
                     child: ListTileSwitch(
-                      value: subscription.topicAll,
+                      value: geolocatorState.value,
                       leading: Icon(Icons.location_on_outlined),
-                      onChanged: (value) {
-                        subscription.changeSubscription(value);
-                        if (value) {
-                          Permission.notification.request().then((value) =>
-                              value.isGranted
-                                  ? pushTopicToFirestoreAndSubscribe(
-                                      context: context)
-                                  : subscription.changeSubscription(false));
-                        } else {
-                          deleteFromFirestoreAndUnsubscribe(context: context);
-                        }
-                      },
+                      onChanged: (value) => geolocationOnChanged(
+                          context: context,
+                          geolocatorState: geolocatorState,
+                          value: value),
                       title: Text('Locatie'),
                     ),
                   ),
@@ -126,6 +112,20 @@ class _IntroPagesState extends State<IntroPages> {
         },
       ),
     );
+  }
+
+  notificationOnChanged({
+    @required Subscription subscription,
+    @required bool value,
+  }) {
+    subscription.changeSubscription(value);
+    if (value) {
+      Permission.notification.request().then((value) => value.isGranted
+          ? pushTopicToFirestoreAndSubscribe(context: context)
+          : subscription.changeSubscription(false));
+    } else {
+      deleteFromFirestoreAndUnsubscribe(context: context);
+    }
   }
 
   cupertinoIntoPagesError(dynamic error) {

@@ -9,9 +9,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutterapperadauti/intro_pages.dart';
 import 'package:flutterapperadauti/menu_screen.dart';
 import 'package:flutterapperadauti/notice_a_problem/screens/notice_map_ui.dart';
+import 'package:flutterapperadauti/notice_a_problem/widgets/send_button.dart';
 import 'package:flutterapperadauti/settings/app_settings.dart';
 import 'package:flutterapperadauti/settings/debug_settings.dart';
 import 'package:flutterapperadauti/settings/notification_settings.dart';
+import 'package:flutterapperadauti/state/geolocator_state.dart';
 import 'package:flutterapperadauti/state/notice_problem_state.dart';
 import 'package:flutterapperadauti/notice_a_problem/screens/main_notice_ui.dart';
 import 'package:flutterapperadauti/state/loading_state.dart';
@@ -154,6 +156,12 @@ Future<void> main() async {
       ),
       ChangeNotifierProvider<Subscription>(
         create: (_) => Subscription(),
+      ),
+      ChangeNotifierProvider<GeolocatorState>(
+        create: (_) => GeolocatorState(),
+      ),
+      ChangeNotifierProvider<SendButtonLoadingState>(
+        create: (_) => SendButtonLoadingState(),
       ),
     ],
     child: MyApp(),

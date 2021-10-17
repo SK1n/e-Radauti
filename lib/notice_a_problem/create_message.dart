@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutterapperadauti/notice_a_problem/location_switch.dart';
 import 'package:flutterapperadauti/state/loading_state.dart';
 import 'package:flutterapperadauti/state/notice_problem_state.dart';
 import 'package:geolocator/geolocator.dart';
@@ -29,7 +30,7 @@ Future<void> createMessage(BuildContext context, dynamic formKey) async {
         <i>$body</i><br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați
          măsurile ce se impun.
     ''';
-  position == null
+  context.read<LocationSwitchState>().value
       ? textDescription +=
           ''' 
         <br><br>Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și 
@@ -53,15 +54,23 @@ Future<void> createMessage(BuildContext context, dynamic formKey) async {
         .<br><br>Cu stimă,<br><br>
              <b>$name</b><br><br>     Tel: $number / $email
         ''';
-  sendMessage(textDescription, noticeFormState, isLoading, formKey, email);
+  sendMessage(
+    textDescription: textDescription,
+    noticeFormState: noticeFormState,
+    isLoading: isLoading,
+    formKey: formKey,
+    email: email,
+    context: context,
+  );
 }
 
 Future<void> sendMessage(
-    String textDescription,
+    {String textDescription,
     NoticeFormState noticeFormState,
     IsLoading isLoading,
     dynamic formKey,
-    String email) async {
+    BuildContext context,
+    String email}) async {
   String username = 'eradautiapp@gmail.com';
   String password = 'e-Radauti123';
 
@@ -85,8 +94,9 @@ Future<void> sendMessage(
           debugPrint('Message sent: ${value.toString()}')
         });
 
-    // ignore: unnecessary_statements
-    noticeFormState.position != null ? addToFirebase(noticeFormState) : null;
+    context.read<LocationSwitchState>().value
+        ? addToFirebase(noticeFormState)
+        : DoNothingAction();
   } on MailerException catch (e) {
     isLoading.changeLoadingState();
     print('Message not sent.');
