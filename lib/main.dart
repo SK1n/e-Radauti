@@ -5,6 +5,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutterapperadauti/events_new/fetch_data.dart';
+import 'package:flutterapperadauti/events_new/main.dart';
 
 import 'package:flutterapperadauti/intro_pages.dart';
 import 'package:flutterapperadauti/menu_screen.dart';
@@ -163,6 +165,7 @@ Future<void> main() async {
       ChangeNotifierProvider<SendButtonLoadingState>(
         create: (_) => SendButtonLoadingState(),
       ),
+      Provider<FetchData>(create: (_) => FetchData()),
     ],
     child: MyApp(),
   ));
@@ -249,7 +252,7 @@ class _MyAppState extends State<MyApp> {
         '/townHall': (BuildContext context) => TownHallMain(),
         '/noticeProblem': (BuildContext context) => MainNoticeUi(),
         '/noticeMap': (BuildContext context) => NoticeMapUi(),
-        '/events': (BuildContext context) => EventsMain(),
+        '/events': (BuildContext context) => NewEventsScreen(),
         '/air': (BuildContext context) => AirQualityMain(),
         '/volunteer': (BuildContext context) => VolunteerPage(),
         '/settings': (BuildContext context) => AppSettings(),

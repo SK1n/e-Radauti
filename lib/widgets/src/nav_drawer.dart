@@ -7,6 +7,7 @@ import 'package:flutterapperadauti/state/fcm_state.dart';
 import 'package:provider/provider.dart';
 
 class NavDrawer extends StatelessWidget {
+  NavDrawer({key}) : super(key: key);
   final SnackBar snackBar = new SnackBar(content: Text('Copiat in clipboard!'));
   Widget addDrawerHeaderIcon() {
     return new Container(
@@ -68,6 +69,7 @@ class NavDrawer extends StatelessWidget {
       title: Text(title),
       onTap: () {
         if (following != null) {
+          Navigator.of(context).pop();
           Navigator.pushNamed(context, following);
         } else {
           if (Platform.isIOS) {
