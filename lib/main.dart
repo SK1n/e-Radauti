@@ -253,7 +253,7 @@ class _MyAppState extends State<MyApp> {
         '/townHall': (BuildContext context) => TownHallMain(),
         '/noticeProblem': (BuildContext context) => MainNoticeUi(),
         '/noticeMap': (BuildContext context) => NoticeMapUi(),
-        '/events': (BuildContext context) => NewEventsScreen(),
+        '/events': (BuildContext context) => MainEventsScreen(),
         '/air': (BuildContext context) => AirQualityMain(),
         '/volunteer': (BuildContext context) => VolunteerPage(),
         '/settings': (BuildContext context) => AppSettings(),

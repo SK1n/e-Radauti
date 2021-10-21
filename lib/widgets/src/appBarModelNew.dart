@@ -67,12 +67,14 @@ class AppBarUi extends StatelessWidget {
   final IconData leading;
   final String content;
   final bool pinned;
+  final TabBar bottom;
   const AppBarUi({
     Key key,
     this.scaffoldKey,
     this.leading,
     this.pinned = false,
     @required this.content,
+    this.bottom,
   }) : super(
           key: key,
         );
@@ -81,7 +83,11 @@ class AppBarUi extends StatelessWidget {
     return AppBar(
         elevation: 10,
         backgroundColor: Colors.white,
+        // bottom: bottom != null
+        //     ? bottom
+        //     : PreferredSize(child: Container(), preferredSize: Size(0, 0)),
         shadowColor: Colors.black,
+        bottom: bottom != null ? bottom : null,
         leading: FlatButton(
           child: Icon(Ionicons.ios_arrow_back),
           onPressed: () => Navigator.pop(context),

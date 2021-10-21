@@ -1,76 +1,65 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/events_new/widgets/new_event_widget.dart';
-import 'package:flutterapperadauti/events_new/fetch_data.dart';
-import 'package:flutterapperadauti/events_new/models/events.dart';
+import 'package:flutterapperadauti/events_new/events_new.dart';
+import 'package:flutterapperadauti/events_new/events_old.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
-import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:provider/provider.dart';
 
-class NewEventsScreen extends StatefulWidget {
-  const NewEventsScreen({Key key}) : super(key: key);
+class MainEventsScreen extends StatefulWidget {
+  const MainEventsScreen({Key key}) : super(key: key);
 
   @override
-  State<NewEventsScreen> createState() => _NewEventsScreenState();
+  State<MainEventsScreen> createState() => _MainEventsScreenState();
 }
 
-class _NewEventsScreenState extends State<NewEventsScreen> {
+class _MainEventsScreenState extends State<MainEventsScreen> {
   @override
   void initState() {
     super.initState();
+    initializeFB();
   }
 
+  FirebaseApp firebaseApp;
+
   Future<void> initializeFB() async {
-    FirebaseApp app = await Firebase.initializeApp();
+    firebaseApp = await Firebase.initializeApp();
   }
 
   @override
   Widget build(BuildContext context) {
-    FetchData fetchData = Provider.of<FetchData>(context, listen: true);
-    List<Events> events = [];
-
-    Future<List<Events>> getEvents() async {
-      fetchData.getEventsFromFirebase();
-      // events = fetchData.getEvents();
-      return events;
-    }
-
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-    return Scaffold(
-        key: _scaffoldKey,
-        appBar: PreferredSize(
-          child: AppBarUi(
-            pinned: true,
-            content: 'Evenimente',
-            leading: Icons.calendar_today,
-            scaffoldKey: _scaffoldKey,
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+          key: _scaffoldKey,
+          appBar: PreferredSize(
+            child: AppBarUi(
+              pinned: true,
+              content: 'Evenimente',
+              leading: Icons.calendar_today,
+              scaffoldKey: _scaffoldKey,
+              bottom: TabBar(
+                indicatorWeight: 3.0,
+                indicatorColor: Colors.pinkAccent,
+                tabs: [
+                  Tab(
+                    text: 'Noi',
+                  ),
+                  Tab(
+                    text: 'Trecute',
+                  )
+                ],
+              ),
+            ),
+            preferredSize: Size(MediaQuery.of(context).size.width, 100),
           ),
-          preferredSize: Size(MediaQuery.of(context).size.width, 50),
-        ),
-        drawer: NavDrawer(),
-        body: FutureBuilder(
-          future: fetchData.getEventsFromFirebase(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            debugPrint('${snapshot.data.toString()}');
-            return snapshot.hasData
-                ? ListView.builder(
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (BuildContext context, int item) {
-                      return NewEventWidget(
-                        host: snapshot.data[item].host,
-                        category: snapshot.data[item].category,
-                        url: snapshot.data[item].url,
-                        headline: snapshot.data[item].headline,
-                        description: snapshot.data[item].description,
-                        location: snapshot.data[item].location,
-                        street: snapshot.data[item].street,
-                        start: snapshot.data[item].start,
-                        end: snapshot.data[item].end,
-                      );
-                    })
-                : LoadingScreen();
-          },
-        ));
+          drawer: NavDrawer(),
+          body: TabBarView(
+            children: [
+              NewEventsScreen(),
+              OldEventsScreen(),
+            ],
+          )),
+    );
   }
 }
