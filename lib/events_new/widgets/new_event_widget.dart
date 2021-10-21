@@ -7,8 +7,8 @@ class NewEventWidget extends StatelessWidget {
   final String description;
   final String location;
   final String street;
-  final Timestamp start;
-  final Timestamp end;
+  final int start;
+  final int end;
   final String url;
   final String category;
 

@@ -1,15 +1,11 @@
-import 'package:add_2_calendar/add_2_calendar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
 class Events {
   String url;
   String host;
   String street;
   String headline;
   String description;
-  Timestamp start;
-  Timestamp end;
+  int start;
+  int end;
   String category;
   String location;
 

@@ -170,6 +170,7 @@ Future<void> main() async {
     child: MyApp(),
   ));
 }
+//TODO: [wasted] 20:00
 
 class MyApp extends StatefulWidget {
   const MyApp({Key key}) : super(key: key);
