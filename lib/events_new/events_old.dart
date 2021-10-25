@@ -1,11 +1,11 @@
+import 'package:async/async.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/events_new/widgets/new_event_widget.dart';
 import 'package:flutterapperadauti/events_new/fetch_data.dart';
-import 'package:flutterapperadauti/events_new/models/events.dart';
-import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
+import 'package:flutterapperadauti/events_new/widgets/event_widget.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
-import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
+import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:provider/provider.dart';
 
 class OldEventsScreen extends StatefulWidget {
@@ -16,6 +16,7 @@ class OldEventsScreen extends StatefulWidget {
 }
 
 class _OldEventsScreenState extends State<OldEventsScreen> {
+  final AsyncMemoizer dCMemorizer = AsyncMemoizer();
   @override
   void initState() {
     super.initState();
@@ -31,30 +32,38 @@ class _OldEventsScreenState extends State<OldEventsScreen> {
   @override
   Widget build(BuildContext context) {
     FetchData fetchData = Provider.of<FetchData>(context, listen: true);
-    GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-    return FutureBuilder(
-      future: fetchData.getEventsFromFirebase(),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        debugPrint('${snapshot.data.toString()}');
-        return snapshot.hasData
-            ? ListView.builder(
-                itemCount: 3,
-                itemBuilder: (BuildContext context, int item) {
-                  return NewEventWidget(
-                    host: snapshot.data[item].host,
-                    category: snapshot.data[item].category,
-                    url: snapshot.data[item].url,
-                    headline: snapshot.data[item].headline,
-                    description: snapshot.data[item].description,
-                    location: snapshot.data[item].location,
-                    street: snapshot.data[item].street,
-                    start: snapshot.data[item].start,
-                    end: snapshot.data[item].end,
-                    firebaseApp: this.firebaseApp,
-                  );
-                })
-            : LoadingScreen();
-      },
+    return LazyLoadScrollView(
+      onEndOfPage: () {},
+      child: FutureBuilder(
+        future: dCMemorizer.runOnce(() => fetchData.getEventsFromFirebase()),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasError) {
+            return Container(
+              child: Text('A aparut o eroare!'),
+            );
+          }
+          return snapshot.hasData
+              ? ListView.builder(
+                  itemCount: 10,
+                  addAutomaticKeepAlives: true,
+                  itemBuilder: (BuildContext context, int item) {
+                    return NewEventWidget(
+                      host: snapshot.data[item].host,
+                      category: snapshot.data[item].category,
+                      url: snapshot.data[item].url,
+                      headline: snapshot.data[item].headline,
+                      description: snapshot.data[item].description,
+                      location: snapshot.data[item].location,
+                      street: snapshot.data[item].street,
+                      start: snapshot.data[item].start,
+                      end: snapshot.data[item].end,
+                      firebaseApp: this.firebaseApp,
+                      snapshot: snapshot.data[item],
+                    );
+                  })
+              : LoadingScreen();
+        },
+      ),
     );
   }
 }
