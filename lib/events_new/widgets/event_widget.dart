@@ -161,6 +161,10 @@ class _NewEventWidgetState extends State<NewEventWidget>
                               ),
                             ),
                             ListTile(
+                              leading: Icon(Icons.confirmation_number),
+                              title: Text('Participanti'),
+                            ),
+                            ListTile(
                               leading: Icon(
                                 Icons.people,
                                 color: Colors.pinkAccent,
