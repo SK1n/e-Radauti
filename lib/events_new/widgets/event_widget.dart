@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
 import 'package:async/async.dart';
@@ -275,7 +276,63 @@ class _NewEventWidgetState extends State<NewEventWidget>
                               sendNotif =
                                   hasEnabledNotification(widget.snapshot.id);
                             });
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) => Platform.isIOS
+                                  ? CupertinoAlertDialog(
+                                      title: Text('Notificare adaugata'),
+                                      content: Text(
+                                          'Veti fi notificat cand evenimentul incepe!'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          child: Text('OK'),
+                                        )
+                                      ],
+                                    )
+                                  : AlertDialog(
+                                      title: Text('Notificare adaugata'),
+                                      content: Text(
+                                          'Veti fi notificat cand evenimentul incepe!'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          child: Text('OK'),
+                                        )
+                                      ],
+                                    ),
+                            );
                           } else {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) => Platform.isIOS
+                                  ? CupertinoAlertDialog(
+                                      title: Text('Notificare a fost stearsa'),
+                                      content: Text(
+                                          'Nu veti mai fi notificat cand evenimentul incepe!'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          child: Text('OK'),
+                                        )
+                                      ],
+                                    )
+                                  : AlertDialog(
+                                      title: Text('Notificare a fost stearsa'),
+                                      content: Text(
+                                          'Nu veti mai fi notificat cand evenimentul incepe!'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          child: Text('OK'),
+                                        )
+                                      ],
+                                    ),
+                            );
                             flutterLocalNotificationsPlugin
                                 .cancel(widget.snapshot.id);
                             setState(() {
