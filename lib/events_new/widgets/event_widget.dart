@@ -18,6 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NewEventWidget extends StatefulWidget {
   final Events snapshot;
@@ -230,8 +231,9 @@ class _NewEventWidgetState extends State<NewEventWidget>
                                 text: '${widget.snapshot.description}',
                                 textStyle: TextStyle(color: Colors.black),
                                 linkStyle: TextStyle(color: Colors.pinkAccent),
-                                humanize: true,
-                                onWebLinkTap: (link) => debugPrint('$link'),
+                                humanize: false,
+                                onWebLinkTap: (link) =>
+                                    launch(link, forceSafariVC: false),
                               ),
                             )
                           ],

@@ -2,10 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/events_new/events_new.dart';
 import 'package:flutterapperadauti/events_new/events_old.dart';
-import 'package:flutterapperadauti/events_new/fetch_data.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:provider/provider.dart';
 
 class MainEventsScreen extends StatefulWidget {
   const MainEventsScreen({Key key}) : super(key: key);
@@ -30,7 +28,6 @@ class _MainEventsScreenState extends State<MainEventsScreen> {
   @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-    FetchData fetchData = Provider.of<FetchData>(context, listen: true);
     return DefaultTabController(
       length: 2,
       child: Scaffold(
