@@ -31,6 +31,7 @@ class _OldEventsScreenState extends State<OldEventsScreen> {
   @override
   Widget build(BuildContext context) {
     FetchData fetchData = Provider.of<FetchData>(context, listen: true);
+    const itemCount = 20;
     return FutureBuilder(
       future: dCMemorizer.runOnce(() => fetchData.getEventsFromFirebase()),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -41,12 +42,17 @@ class _OldEventsScreenState extends State<OldEventsScreen> {
         }
         return snapshot.hasData
             ? ListView.builder(
-                itemCount: 10,
-                addAutomaticKeepAlives: true,
+                itemCount: itemCount,
                 itemBuilder: (BuildContext context, int item) {
-                  return NewEventWidget(
-                    snapshot: snapshot.data[item],
-                  );
+                  if (DateTime.now().isAfter(
+                      DateTime.fromMillisecondsSinceEpoch(
+                          snapshot.data[item].end * 1000))) {
+                    return NewEventWidget(
+                      snapshot: snapshot.data[item],
+                    );
+                  } else {
+                    return Container();
+                  }
                 })
             : LoadingScreen();
       },
