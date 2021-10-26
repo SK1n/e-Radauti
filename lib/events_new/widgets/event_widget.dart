@@ -1,10 +1,15 @@
+import 'dart:math';
 import 'dart:ui';
 import 'package:async/async.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_autolink_text/flutter_autolink_text.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutterapperadauti/events_new/fetch_data.dart';
 import 'package:flutterapperadauti/events_new/models/events.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
@@ -15,31 +20,13 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class NewEventWidget extends StatefulWidget {
-  final String headline;
-  final String host;
-  final String description;
-  final String location;
-  final String street;
-  final int start;
-  final int end;
-  final String url;
-  final String category;
-  final FirebaseApp firebaseApp;
   final Events snapshot;
+  final bool oldEvent;
 
   const NewEventWidget({
     Key key,
-    this.headline,
-    this.host,
-    this.description,
-    this.location,
-    this.street,
-    this.start,
-    this.end,
-    this.url,
-    this.category,
-    this.firebaseApp,
     this.snapshot,
+    this.oldEvent = false,
   }) : super(key: key);
 
   @override
@@ -48,6 +35,38 @@ class NewEventWidget extends StatefulWidget {
 
 class _NewEventWidgetState extends State<NewEventWidget>
     with AutomaticKeepAliveClientMixin {
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  Future<void> registerNotification(int id) async {
+    tz.initializeTimeZones();
+    tz.setLocalLocation(tz.getLocation('Europe/Bucharest'));
+    AndroidNotificationDetails androidNotificationDetails =
+        AndroidNotificationDetails(
+            'channel ID', 'channel Name', 'channel Description',
+            priority: Priority.high,
+            importance: Importance.max,
+            ticker: 'test');
+    IOSNotificationDetails iosNotificationDetails = IOSNotificationDetails();
+    DateTime currentTime = tz.TZDateTime.now(tz.local).add(
+        DateTime.fromMillisecondsSinceEpoch(widget.snapshot.start * 1000)
+            .difference(tz.TZDateTime.now(tz.local)));
+
+    NotificationDetails notificationDetails = NotificationDetails(
+        android: androidNotificationDetails, iOS: iosNotificationDetails);
+    await flutterLocalNotificationsPlugin.zonedSchedule(
+        id,
+        '${widget.snapshot.headline}',
+        '${widget.snapshot.description}',
+        currentTime,
+        notificationDetails,
+        androidAllowWhileIdle: true,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        payload: 'events');
+    debugPrint(id.toString());
+  }
+
   final AsyncMemoizer dCMemorizer = AsyncMemoizer();
   Future getDownloadUrlFromUrlRef(BuildContext context, String imgURL) async {
     Image image;
@@ -78,16 +97,24 @@ class _NewEventWidgetState extends State<NewEventWidget>
     return date;
   }
 
+  Future<bool> hasEnabledNotification(int id) async {
+    return await flutterLocalNotificationsPlugin
+        .pendingNotificationRequests()
+        .then((value) {
+      return value.any((element) => element.id == id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     FetchData fetchData = Provider.of<FetchData>(context, listen: true);
+    Future<bool> sendNotif = hasEnabledNotification(widget.snapshot.id);
     return ExpandableNotifier(
       child: ScrollOnExpand(
         child: ExpandablePanel(
           collapsed: ExpandableButton(
             child: FutureBuilder(
-              future: dCMemorizer
-                  .runOnce(() => getDownloadUrlFromUrlRef(context, widget.url)),
+              future: getDownloadUrlFromUrlRef(context, widget.snapshot.url),
               builder: (_, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
                   return Card(
@@ -101,17 +128,18 @@ class _NewEventWidgetState extends State<NewEventWidget>
                               child: snapshot.data,
                             ),
                             Container(
-                              color: Colors.white.withOpacity(0.8),
+                              color: Colors.white.withOpacity(0.9),
                               child: ListTile(
                                 leading: Icon(
                                   Icons.circle,
                                   color: fetchData.getEventStatus(
-                                      widget.start, widget.end),
+                                      widget.snapshot.start,
+                                      widget.snapshot.end),
                                 ),
                                 tileColor: Colors.white,
                                 title: Text(
                                   formatDateForImageOverlay(
-                                      widget.start, context),
+                                      widget.snapshot.start, context),
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -120,7 +148,7 @@ class _NewEventWidgetState extends State<NewEventWidget>
                         ),
                         ListTile(
                           title: Text(
-                            '${widget.headline}',
+                            '${widget.snapshot.headline}',
                             softWrap: true,
                             maxLines: 3,
                           ),
@@ -137,8 +165,8 @@ class _NewEventWidgetState extends State<NewEventWidget>
             child: Column(
               children: [
                 FutureBuilder(
-                  future: dCMemorizer.runOnce(
-                      () => getDownloadUrlFromUrlRef(context, widget.url)),
+                  future: dCMemorizer.runOnce(() =>
+                      getDownloadUrlFromUrlRef(context, widget.snapshot.url)),
                   builder: (_, AsyncSnapshot snapshot) {
                     if (snapshot.hasData) {
                       return Card(
@@ -155,21 +183,18 @@ class _NewEventWidgetState extends State<NewEventWidget>
                             ),
                             ListTile(
                               title: Text(
-                                '${widget.headline}',
+                                '${widget.snapshot.headline}',
                                 softWrap: true,
                                 maxLines: 3,
                               ),
                             ),
-                            ListTile(
-                              leading: Icon(Icons.confirmation_number),
-                              title: Text('Participanti'),
-                            ),
+                            sendNotifSwitchListTile(fetchData, sendNotif),
                             ListTile(
                               leading: Icon(
                                 Icons.people,
                                 color: Colors.pinkAccent,
                               ),
-                              title: Text('${widget.host}'),
+                              title: Text('${widget.snapshot.host}'),
                             ),
                             ListTile(
                               leading: Icon(
@@ -177,7 +202,8 @@ class _NewEventWidgetState extends State<NewEventWidget>
                                 color: Colors.blueAccent,
                               ),
                               title: Text('Data inceperii: ' +
-                                  convertTimestampToDate(widget.start)),
+                                  convertTimestampToDate(
+                                      widget.snapshot.start)),
                             ),
                             ListTile(
                               leading: Icon(
@@ -185,15 +211,15 @@ class _NewEventWidgetState extends State<NewEventWidget>
                                 color: Colors.greenAccent,
                               ),
                               title: Text('Data finalizarii: ' +
-                                  convertTimestampToDate(widget.end)),
+                                  convertTimestampToDate(widget.snapshot.end)),
                             ),
                             ListTile(
                               leading: Icon(
                                 Icons.location_pin,
                                 color: Colors.redAccent,
                               ),
-                              title:
-                                  Text('${widget.location} \n${widget.street}'),
+                              title: Text(
+                                  '${widget.snapshot.location} \n${widget.snapshot.street}'),
                             ),
                             ListTile(
                               leading: Icon(
@@ -201,7 +227,7 @@ class _NewEventWidgetState extends State<NewEventWidget>
                                 color: Colors.amberAccent,
                               ),
                               title: AutolinkText(
-                                text: '${widget.description}',
+                                text: '${widget.snapshot.description}',
                                 textStyle: TextStyle(color: Colors.black),
                                 linkStyle: TextStyle(color: Colors.pinkAccent),
                                 humanize: true,
@@ -221,6 +247,49 @@ class _NewEventWidgetState extends State<NewEventWidget>
         ),
       ),
     );
+  }
+
+  FutureBuilder sendNotifSwitchListTile(
+      FetchData fetchData, Future<bool> sendNotif) {
+    return FutureBuilder(
+        future: sendNotif,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            return !widget.oldEvent
+                ? fetchData.getEventStatus(
+                            widget.snapshot.start, widget.snapshot.end) ==
+                        Colors.amberAccent
+                    ? SwitchListTile(
+                        value: snapshot.data,
+                        secondary: Icon(
+                          FontAwesome5.calendar_plus,
+                          color: Colors.limeAccent,
+                        ),
+                        title: Text('Vreau sa primesc notificare'),
+                        onChanged: (value) {
+                          if (value) {
+                            registerNotification(widget.snapshot.id);
+                            setState(() {
+                              sendNotif =
+                                  hasEnabledNotification(widget.snapshot.id);
+                            });
+                          } else {
+                            flutterLocalNotificationsPlugin
+                                .cancel(widget.snapshot.id);
+                            setState(() {
+                              sendNotif =
+                                  hasEnabledNotification(widget.snapshot.id);
+                            });
+                          }
+                          hasEnabledNotification(widget.snapshot.id);
+                        },
+                      )
+                    : Container()
+                : Container();
+          } else {
+            return LoadingScreen();
+          }
+        });
   }
 
   @override

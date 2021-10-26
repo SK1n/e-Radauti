@@ -45,16 +45,6 @@ class _OldEventsScreenState extends State<OldEventsScreen> {
                 addAutomaticKeepAlives: true,
                 itemBuilder: (BuildContext context, int item) {
                   return NewEventWidget(
-                    host: snapshot.data[item].host,
-                    category: snapshot.data[item].category,
-                    url: snapshot.data[item].url,
-                    headline: snapshot.data[item].headline,
-                    description: snapshot.data[item].description,
-                    location: snapshot.data[item].location,
-                    street: snapshot.data[item].street,
-                    start: snapshot.data[item].start,
-                    end: snapshot.data[item].end,
-                    firebaseApp: this.firebaseApp,
                     snapshot: snapshot.data[item],
                   );
                 })

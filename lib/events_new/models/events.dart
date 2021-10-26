@@ -6,6 +6,7 @@ class Events {
   String description;
   int start;
   int end;
+  int id;
   String category;
   String location;
 
@@ -19,6 +20,7 @@ class Events {
     this.start,
     this.street,
     this.url,
+    this.id,
   });
 
   factory Events.fromJson(Map<String, dynamic> json) {
@@ -32,6 +34,7 @@ class Events {
       location: json['location'],
       street: json['street'],
       url: json['URL'],
+      id: json['id'],
     );
   }
 }

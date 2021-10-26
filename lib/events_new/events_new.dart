@@ -6,6 +6,7 @@ import 'package:flutterapperadauti/events_new/widgets/event_widget.dart';
 import 'package:flutterapperadauti/events_new/fetch_data.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:provider/provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class NewEventsScreen extends StatefulWidget {
   const NewEventsScreen({Key key}) : super(key: key);
@@ -52,16 +53,7 @@ class _NewEventsScreenState extends State<NewEventsScreen> {
                       snapshot.data[item].end * 1000))) {
                     thereAreEvents = true;
                     return NewEventWidget(
-                      host: snapshot.data[item].host,
-                      category: snapshot.data[item].category,
-                      url: snapshot.data[item].url,
-                      headline: snapshot.data[item].headline,
-                      description: snapshot.data[item].description,
-                      location: snapshot.data[item].location,
-                      street: snapshot.data[item].street,
-                      start: snapshot.data[item].start,
-                      end: snapshot.data[item].end,
-                      firebaseApp: this.firebaseApp,
+                      snapshot: snapshot.data[item],
                     );
                   }
                   if (!hasDisplayedThatThereAreNoEvents && !thereAreEvents) {
@@ -82,5 +74,10 @@ class _NewEventsScreenState extends State<NewEventsScreen> {
             : LoadingScreen();
       },
     );
+  }
+
+  onRefresh(FetchData fetchData, RefreshController refreshController) {
+    fetchData.getEventsFromFirebase();
+    refreshController.refreshCompleted();
   }
 }

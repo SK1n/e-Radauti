@@ -16,6 +16,7 @@ class FetchData {
     eventsData.forEach((element) {
       _events.add(Events.fromJson(element));
     });
+    debugPrint('data fetched');
     return _events.reversed.toList();
   }
 

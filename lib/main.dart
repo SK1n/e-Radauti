@@ -129,6 +129,7 @@ Future<void> main() async {
 
     _navigator.currentState.pushNamed('/$payload');
   });
+
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>()
@@ -200,6 +201,19 @@ class _MyAppState extends State<MyApp> {
       debugPrint('A new onMessageOpenedApp event was published!');
       navigate(context, message.data['view']);
     });
+    didOpenAppFromNotif();
+  }
+
+  Future<void> didOpenAppFromNotif() async {
+    final NotificationAppLaunchDetails notificationAppLaunchDetails =
+        await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+    debugPrint('${notificationAppLaunchDetails.payload}');
+    if (notificationAppLaunchDetails.didNotificationLaunchApp) {
+      if (notificationAppLaunchDetails.payload != null) {
+        _navigator.currentState
+            .pushNamed('/${notificationAppLaunchDetails.payload}');
+      }
+    }
   }
 
   @override
