@@ -53,7 +53,7 @@ class FetchMarkers {
     _getMarkers = [];
     _marker = [];
     CollectionReference getMarkers = _instance.collection('collection');
-    DocumentSnapshot snapshot = await getMarkers.doc('1').get();
+    DocumentSnapshot snapshot = await getMarkers.doc('Markers').get();
     var data = snapshot.data() as Map;
     var eventsData = data['markers'] as List<dynamic>;
     eventsData.forEach((element) {

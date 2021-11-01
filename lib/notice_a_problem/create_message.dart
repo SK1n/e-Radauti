@@ -123,6 +123,7 @@ void addToFirestore(
   ];
   CollectionReference collectionReference =
       firestoreInstance.collection('collection');
-  DocumentReference documentReference = collectionReference.doc('1');
+  DocumentReference documentReference =
+      collectionReference.doc('Announcements');
   documentReference.update({"markers": FieldValue.arrayUnion(data)});
 }

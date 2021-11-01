@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/events_new/models/events.dart';
+import 'package:flutterapperadauti/events/models/events.dart';
 
 class FetchData {
   FirebaseFirestore _instance;
@@ -10,7 +10,7 @@ class FetchData {
     _instance = FirebaseFirestore.instance;
     _events = [];
     CollectionReference events = _instance.collection('collection');
-    DocumentSnapshot snapshot = await events.doc('0').get();
+    DocumentSnapshot snapshot = await events.doc('Events').get();
     var data = snapshot.data() as Map;
     var eventsData = data['events'] as List<dynamic>;
     eventsData.forEach((element) {

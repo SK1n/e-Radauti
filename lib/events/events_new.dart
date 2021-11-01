@@ -2,8 +2,8 @@ import 'package:async/async.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/events_new/widgets/event_widget.dart';
-import 'package:flutterapperadauti/events_new/fetch_data.dart';
+import 'package:flutterapperadauti/events/widgets/event_widget.dart';
+import 'package:flutterapperadauti/events/fetch_data.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
