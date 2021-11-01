@@ -8,9 +8,9 @@ class NoticeFormState extends ChangeNotifier {
   String _description;
   String _phoneNumber;
   String _email;
-  String _typeName = 'Altele';
+  String _category = 'Altele';
   String _institution;
-  int _typeIndex = 0;
+  int _index = 0;
   Position _position;
   bool _dialOpen = false;
 
@@ -20,11 +20,11 @@ class NoticeFormState extends ChangeNotifier {
   String get description => _description;
   String get phoneNumber => _phoneNumber;
   String get email => _email;
-  String get typeNmae => _typeName;
+  String get category => _category;
   String get institution => _institution;
   bool get dialOpen => _dialOpen;
 
-  int get typeIndex => _typeIndex;
+  int get index => _index;
   Position get position => _position;
 
   void upName(String value) {
@@ -63,12 +63,12 @@ class NoticeFormState extends ChangeNotifier {
   }
 
   void upTypeName(String value) {
-    _typeName = value;
+    _category = value;
     notifyListeners();
   }
 
-  void upType(int index) {
-    _typeIndex = index;
+  void upIndex(int index) {
+    _index = index;
     notifyListeners();
   }
 

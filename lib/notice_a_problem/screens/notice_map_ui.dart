@@ -1,15 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:flutterapperadauti/notice_a_problem/models/get_markers.dart';
 import 'package:flutterapperadauti/notice_a_problem/widgets/info_window.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
+import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:latlong2/latlong.dart' as latLng;
+import 'package:provider/provider.dart';
 
 class NoticeMapUi extends StatefulWidget {
   const NoticeMapUi({Key key}) : super(key: key);
@@ -39,10 +42,10 @@ class _NoticeMapUiState extends State<NoticeMapUi>
         _markers.add(
           Marker(
             subject: value["subject"],
-            category: value['categoria'],
+            category: value['category'],
             description: value['description'],
-            iconIndex: value['iconIndex'],
-            institution: value['institutia'],
+            iconIndex: value['index'],
+            institution: value['institution'],
             status: value['status'],
             point: latLng.LatLng(value["lat"], value["long"]),
             width: 40.0,
@@ -51,19 +54,19 @@ class _NoticeMapUiState extends State<NoticeMapUi>
                 width: 40,
                 height: 40,
                 child: CircleAvatar(
-                  child: switchIcon(value['iconIndex']),
+                  child: switchIcon(value['index']),
                 )),
             anchorPos: AnchorPos.align(AnchorAlign.top),
           ),
         );
       });
     });
-    debugPrint('length: ${_markers.length}');
   }
 
   @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+    FetchMarkers fetchMarkers = Provider.of<FetchMarkers>(context);
     return Scaffold(
       key: _scaffoldKey,
       drawer: NavDrawer(),
@@ -97,37 +100,37 @@ class _NoticeMapUiState extends State<NoticeMapUi>
             content: 'Sesizează o problemă',
           ),
           preferredSize: Size(MediaQuery.of(context).size.width, 50)),
-      body: FlutterMap(
-        children: [
-          PopupMarkerLayerWidget(
-            options: PopupMarkerLayerOptions(
-              popupController: _popupLayerController,
-              markers: _markers,
-              markerRotateAlignment:
-                  PopupMarkerLayerOptions.rotationAlignmentFor(AnchorAlign.top),
-              popupBuilder: (BuildContext context, Marker marker) =>
-                  InfoWindow(marker: marker),
-            ),
-          ),
-        ],
-        options: MapOptions(
-          interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-          zoom: 11.0,
-          center: latLng.LatLng(47.843876, 25.916276),
-          onTap: (_, __) => _popupLayerController.hideAllPopups(),
-        ),
-        layers: [
-          TileLayerOptions(
-            urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            subdomains: ['a', 'b', 'c'],
-          ),
-          PopupMarkerLayerOptions(
-            markers: _markers,
-            popupController: _popupLayerController,
-            popupBuilder: (BuildContext _, Marker marker) =>
-                InfoWindow(marker: marker),
-          ),
-        ],
+      body: FutureBuilder(
+        future: fetchMarkers.getMarkersFromFirebase(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            return FlutterMap(
+              options: MapOptions(
+                interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+                zoom: 11.0,
+                center: latLng.LatLng(47.843876, 25.916276),
+                onTap: (_, __) => _popupLayerController.hideAllPopups(),
+              ),
+              layers: [
+                TileLayerOptions(
+                  urlTemplate:
+                      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                  subdomains: ['a', 'b', 'c'],
+                ),
+                PopupMarkerLayerOptions(
+                  popupController: _popupLayerController,
+                  markers: snapshot.data,
+                  markerRotateAlignment:
+                      PopupMarkerLayerOptions.rotationAlignmentFor(
+                          AnchorAlign.top),
+                  popupBuilder: (BuildContext context, Marker marker) => null,
+                ),
+              ],
+            );
+          } else {
+            return LoadingScreen();
+          }
+        },
       ),
     );
   }

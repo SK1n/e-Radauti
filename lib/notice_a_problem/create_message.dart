@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutterapperadauti/notice_a_problem/location_switch.dart';
@@ -22,17 +23,15 @@ Future<void> createMessage(BuildContext context, dynamic formKey) async {
   String email = noticeFormState.email;
   Position position = noticeFormState.position;
   String textDescription;
-
-  textDescription =
-      ''' 
+  final firestoreInstance = FirebaseFirestore.instance;
+  textDescription = ''' 
     Către, <b>$institution</b> ($institution) <br><br> Stimată doamnă/ Stimate domn,
         <br><br>Subsemnatul(a) $name, vă supun atenției următoarea problemă:<br><br>
         <i>$body</i><br><br>În conformitate cu atribuțiile pe care le aveți, vă rog să luați
          măsurile ce se impun.
     ''';
   context.read<LocationSwitchState>().value
-      ? textDescription +=
-          ''' 
+      ? textDescription += ''' 
         <br><br>Prezenta sesizare reprezintă o petiție în sensul O.G. nr. 27/2002 privind activitatea de soluționare a petițiilor și 
         a fost transmisă <b>prin intermediul aplicației mobile e-Rădăuți</b>, dezvoltată
          de Asociația Rădăuțiul Civic, prin funcționalitatea „Sesizează o problemă”, 
@@ -41,8 +40,7 @@ Future<void> createMessage(BuildContext context, dynamic formKey) async {
         .<br><br>Cu stimă,<br><br>
              <b>$name</b><br><br>     Tel: $number / $email
         '''
-      : textDescription +=
-          ''' Cele sesizate sunt la următoarea adresă 
+      : textDescription += ''' Cele sesizate sunt la următoarea adresă 
          Lat:${position.latitude}  Long:${position.longitude} 
          (<a href ='https://www.google.com/maps/place/${position.latitude.toString()}+${position.longitude.toString()}'>Adresa Google Maps</a>)<br><br></i>
         <br><br>
@@ -55,13 +53,13 @@ Future<void> createMessage(BuildContext context, dynamic formKey) async {
              <b>$name</b><br><br>     Tel: $number / $email
         ''';
   sendMessage(
-    textDescription: textDescription,
-    noticeFormState: noticeFormState,
-    isLoading: isLoading,
-    formKey: formKey,
-    email: email,
-    context: context,
-  );
+      textDescription: textDescription,
+      noticeFormState: noticeFormState,
+      isLoading: isLoading,
+      formKey: formKey,
+      email: email,
+      context: context,
+      firestoreInstance: firestoreInstance);
 }
 
 Future<void> sendMessage(
@@ -70,6 +68,7 @@ Future<void> sendMessage(
     IsLoading isLoading,
     dynamic formKey,
     BuildContext context,
+    FirebaseFirestore firestoreInstance,
     String email}) async {
   String username = 'eradautiapp@gmail.com';
   String password = 'e-Radauti123';
@@ -95,7 +94,7 @@ Future<void> sendMessage(
         });
 
     context.read<LocationSwitchState>().value
-        ? addToFirebase(noticeFormState)
+        ? addToFirestore(noticeFormState, firestoreInstance)
         : DoNothingAction();
   } on MailerException catch (e) {
     isLoading.changeLoadingState();
@@ -106,16 +105,24 @@ Future<void> sendMessage(
   }
 }
 
-void addToFirebase(NoticeFormState noticeFormState) {
-  Map<dynamic, dynamic> fbMap = {
-    'description': noticeFormState.description.toString(),
-    'lat': noticeFormState.position.latitude,
-    'long': noticeFormState.position.longitude,
-    'status': 'În lucru',
-    'institutia': noticeFormState.institution,
-    'categoria': noticeFormState.typeNmae,
-    'subject': noticeFormState.subject,
-    'iconIndex': noticeFormState.typeIndex,
-  };
-  databaseRef.push().set(fbMap);
+void addToFirestore(
+  NoticeFormState noticeFormState,
+  FirebaseFirestore firestoreInstance,
+) {
+  var data = [
+    {
+      "category": noticeFormState.category,
+      "description": noticeFormState.description,
+      "index": noticeFormState.index,
+      "institution": noticeFormState.institution,
+      "lat": noticeFormState.position.latitude,
+      "long": noticeFormState.position.longitude,
+      "status": "În lucru",
+      "subject": noticeFormState.subject,
+    }
+  ];
+  CollectionReference collectionReference =
+      firestoreInstance.collection('collection');
+  DocumentReference documentReference = collectionReference.doc('1');
+  documentReference.update({"markers": FieldValue.arrayUnion(data)});
 }

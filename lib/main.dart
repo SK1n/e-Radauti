@@ -9,6 +9,7 @@ import 'package:flutterapperadauti/events_new/fetch_data.dart';
 import 'package:flutterapperadauti/events_new/main.dart';
 import 'package:flutterapperadauti/intro_pages.dart';
 import 'package:flutterapperadauti/menu_screen.dart';
+import 'package:flutterapperadauti/notice_a_problem/models/get_markers.dart';
 import 'package:flutterapperadauti/notice_a_problem/screens/notice_map_ui.dart';
 import 'package:flutterapperadauti/notice_a_problem/widgets/send_button.dart';
 import 'package:flutterapperadauti/settings/app_settings.dart';
@@ -152,6 +153,7 @@ Future<void> main() async {
       ChangeNotifierProvider<SendButtonLoadingState>(
           create: (_) => SendButtonLoadingState()),
       Provider<FetchData>(create: (_) => FetchData()),
+      Provider<FetchMarkers>(create: (_) => FetchMarkers()),
     ],
     child: MyApp(),
   ));

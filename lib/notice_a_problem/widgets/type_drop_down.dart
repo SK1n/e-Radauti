@@ -31,7 +31,7 @@ class TypeDropDown extends StatelessWidget {
     ];
     return DropdownButton(
       itemHeight: 80,
-      value: list[noticeFormState.typeIndex],
+      value: list[noticeFormState.index],
       items: list.map((item) {
         return DropdownMenuItem(
           value: item,
@@ -50,8 +50,8 @@ class TypeDropDown extends StatelessWidget {
       }).toList(),
       onChanged: (value) {
         noticeFormState.upTypeName(value.name);
-        debugPrint('${noticeFormState.typeNmae}');
-        noticeFormState.upType(value.index);
+        debugPrint('${noticeFormState.category}');
+        noticeFormState.upIndex(value.index);
       },
     );
   }
