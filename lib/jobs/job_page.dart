@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/jobs/job_model.dart';
+import 'package:flutterapperadauti/jobs/models/job_model.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'dart:convert';
