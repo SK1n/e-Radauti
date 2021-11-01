@@ -1,12 +1,16 @@
 import 'dart:convert';
 import 'dart:async';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_autolink_text/flutter_autolink_text.dart';
+import 'package:flutterapperadauti/jobs/models/local_announcement_model.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LocalAnounnouncements extends StatefulWidget {
@@ -17,15 +21,15 @@ class LocalAnounnouncements extends StatefulWidget {
 
 class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  Future<List<dynamic>> futureL;
   @override
   void initState() {
     super.initState();
-    futureL = fetchListAnnouncements();
   }
 
   @override
   Widget build(BuildContext context) {
+    FetchAnnouncementData fetchAnnouncementData =
+        Provider.of<FetchAnnouncementData>(context);
     return Scaffold(
       key: _scaffoldKey,
       drawer: NavDrawer(),
@@ -39,116 +43,65 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
             )
           ];
         },
-        body: SingleChildScrollView(
-          child: FutureBuilder<List>(
-            future: futureL,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Column(
-                  children: [
-                    for (int i = snapshot.data.length - 1; i >= 0; i--)
-                      listItem(
-                          context,
-                          snapshot.data[i]['imageUrl'],
-                          snapshot.data[i]['data'],
-                          snapshot.data[i]['organizator'],
-                          snapshot.data[i]['titlul'],
-                          snapshot.data[i]['contentImage'],
-                          snapshot.data[i]['continut']),
-                    Container(
-                      padding: EdgeInsets.only(top: 20),
-                      child: Text('Tipuri de importanță:'),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(bottom: 10),
-                      child: Row(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.only(top: 10),
-                            height: 50,
-                            width: 50,
-                            child: Image.network(linkImage(
-                                'gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignBlue.png')),
-                          ),
-                          Text('Anunț general'),
-                          Container(
-                            padding: EdgeInsets.only(top: 10),
-                            height: 50,
-                            width: 50,
-                            child: Image.network(linkImage(
-                                "gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignYellow.png")),
-                          ),
-                          Text('Mediu'),
-                          Container(
-                            padding: EdgeInsets.only(top: 10),
-                            height: 50,
-                            width: 50,
-                            child: Image.network(linkImage(
-                                "gs://e-radauti-80139.appspot.com/Anunturi_logo/WarningSignRed.png")),
-                          ),
-                          Text('Critic'),
-                        ],
-                      ),
-                    ),
-                  ],
-                );
-              } else if (snapshot.hasError) {
-                return Container(
-                  height: MediaQuery.of(context).size.height,
-                  child: Center(
-                    child: Text(
-                        "Este o problemă cu încărcarea anunțurilor locale."),
-                  ),
-                );
-              }
-              return LoadingScreen();
-            },
-          ),
+        body: FutureBuilder(
+          future: fetchAnnouncementData.getAnnouncementsFromFirebase(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                  itemCount: fetchAnnouncementData.getLength(),
+                  itemBuilder: (BuildContext context, int item) {
+                    return listItem(
+                        context: context,
+                        url: snapshot.data[item].url,
+                        date: snapshot.data[item].date,
+                        host: snapshot.data[item].host,
+                        title: snapshot.data[item].title,
+                        content: snapshot.data[item].description);
+                  });
+            } else if (snapshot.hasError) {
+              return Container(
+                height: MediaQuery.of(context).size.height,
+                child: Center(
+                  child:
+                      Text("Este o problemă cu încărcarea anunțurilor locale."),
+                ),
+              );
+            }
+            return LoadingScreen();
+          },
         ),
       ),
     );
   }
 
-  Widget imageWidget(image) {
-    Widget returnWidget;
-    if (image != null) {
-      returnWidget = Container(
-        child: Image.network(linkContentImage(image)),
-        padding: EdgeInsets.only(
-          top: 2.0,
-          bottom: 2.0,
-        ),
-      );
-    } else {
-      returnWidget = Container();
-    }
-    return returnWidget;
-  }
+  // Widget imageWidget(image) {
+  //   Widget returnWidget;
+  //   if (image != null) {
+  //     returnWidget = Container(
+  //       child: Image.network(linkContentImage(image)),
+  //       padding: EdgeInsets.only(
+  //         top: 2.0,
+  //         bottom: 2.0,
+  //       ),
+  //     );
+  //   } else {
+  //     returnWidget = Container();
+  //   }
+  //   return returnWidget;
+  // }
 
-  String linkContentImage(image) {
-    String imageLink1;
-    imageLink1 =
-        'https://firebasestorage.googleapis.com/v0/b/e-radauti-80139.appspot.com/o/';
-    String imageLink2;
-    imageLink2 = '?alt=media&token=1a429f07-6cef-4de2-940f-0f839b2db3ff';
-    final regExp = RegExp(r'gs://e-radauti-80139.appspot.com/');
-    String imageReturn;
-    imageReturn = imageLink1 + image.replaceAll(regExp, '') + imageLink2;
-    return imageReturn;
-  }
-
-  String linkImage(image) {
-    String imageLink1;
-    imageLink1 =
-        'https://firebasestorage.googleapis.com/v0/b/e-radauti-80139.appspot.com/o/Anunturi_logo%2F';
-    String imageLink2;
-    imageLink2 = '?alt=media&token=1a429f07-6cef-4de2-940f-0f839b2db3ff';
-
-    final regExp = RegExp(r'gs://e-radauti-80139.appspot.com/Anunturi_logo/');
-
-    String imageReturn;
-    imageReturn = imageLink1 + image.replaceAll(regExp, '') + imageLink2;
-    return imageReturn;
+  Future getDownloadUrlFromUrlRef(BuildContext context, String imgURL) async {
+    Image image;
+    await FirebaseStorage.instance
+        .refFromURL(imgURL)
+        .getDownloadURL()
+        .then((imageUrl) => image = Image.network(
+              imageUrl.toString(),
+              scale: 1.0,
+              fit: BoxFit.fitWidth,
+              height: 200,
+            ));
+    return image;
   }
 
   Future<void> _onOpen(LinkableElement link) async {
@@ -159,20 +112,7 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
     }
   }
 
-  Future<List> fetchListAnnouncements() async {
-    Map<String, dynamic> fd;
-    http.Response r = await http.get(
-        Uri.parse('https://e-radauti-80139.firebaseio.com/--Anunturi.json'));
-    fd = json.decode(r.body);
-    final List<dynamic> children = [];
-    fd.forEach((key, value) {
-      children.add(value);
-    });
-    return children;
-  }
-
-  Card listItem(
-      context, image, date, institution, title, contentImage, content) {
+  Card listItem({context, url, date, host, title, content}) {
     return Card(
       elevation: 5,
       child: Container(
@@ -184,18 +124,20 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
         ),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('------------'),
-                Container(
-                  padding: EdgeInsets.only(top: 10),
-                  height: 50,
-                  width: 50,
-                  child: Image.network(linkImage("$image")),
-                ),
-                Text('------------'),
-              ],
+            FutureBuilder(
+              future: getDownloadUrlFromUrlRef(context, url),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.hasData) {
+                  return Container(
+                    padding: EdgeInsets.only(top: 10),
+                    height: 200,
+                    width: double.infinity,
+                    child: snapshot.data,
+                  );
+                } else {
+                  return LoadingScreen();
+                }
+              },
             ),
             Container(
               child: Text(
@@ -207,7 +149,7 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
             ),
             Container(
               child: Text(
-                "$institution",
+                "$host",
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
@@ -224,11 +166,14 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
                 ),
               ),
             ),
-            imageWidget(contentImage),
+            // imageWidget(contentImage),
             Container(
-              child: Linkify(
-                onOpen: _onOpen,
-                text: "$content",
+              child: AutolinkText(
+                text: '$content',
+                textStyle: TextStyle(color: Colors.black),
+                linkStyle: TextStyle(color: Colors.pinkAccent),
+                humanize: false,
+                onWebLinkTap: (link) => launch(link, forceSafariVC: false),
               ),
             ),
           ],

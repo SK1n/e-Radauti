@@ -8,6 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutterapperadauti/events/fetch_data.dart';
 import 'package:flutterapperadauti/events/main.dart';
 import 'package:flutterapperadauti/intro_pages.dart';
+import 'package:flutterapperadauti/jobs/models/local_announcement_model.dart';
 import 'package:flutterapperadauti/menu_screen.dart';
 import 'package:flutterapperadauti/notice_a_problem/models/get_markers.dart';
 import 'package:flutterapperadauti/notice_a_problem/screens/notice_map_ui.dart';
@@ -154,6 +155,7 @@ Future<void> main() async {
           create: (_) => SendButtonLoadingState()),
       Provider<FetchData>(create: (_) => FetchData()),
       Provider<FetchMarkers>(create: (_) => FetchMarkers()),
+      Provider<FetchAnnouncementData>(create: (_) => FetchAnnouncementData()),
     ],
     child: MyApp(),
   ));
