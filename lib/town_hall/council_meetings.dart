@@ -78,27 +78,68 @@ class CouncilListItemWidget extends StatefulWidget {
 }
 
 class _CouncilListItemWidgetState extends State<CouncilListItemWidget> {
+  ExpandableController expandableController = new ExpandableController();
+  @override
+  void dispose() {
+    super.dispose();
+    expandableController.dispose();
+  }
+
+  @override
+  void initState() {
+    expandableController.value = widget.isFirst;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ExpandableNotifier(
+      controller: expandableController,
       child: Expandable(
-        expanded: Card(
-          child: Column(
-            children: [
-              videoWidget(widget.data.url),
-              TextButton(
-                onPressed: () async {
-                  await UrlLauncher.launch(widget.data.theagend,
-                      forceSafariVC: false);
-                },
-                child: Text("Deschideti ordinea de zi: ${widget.data.date}"),
-              ),
-            ],
+        expanded: InkWell(
+          onTap: () {
+            setState(() {
+              expandableController.value = true;
+              expandableController.toggle();
+            });
+          },
+          child: Card(
+            child: Column(
+              children: [
+                ListTile(
+                  title: Text('Ordinea: ${widget.data.date}'),
+                  trailing: expandableController.expanded
+                      ? Icon(Icons.arrow_upward)
+                      : Icon(Icons.arrow_downward),
+                ),
+                videoWidget(widget.data.url),
+                TextButton(
+                  onPressed: () async {
+                    await UrlLauncher.launch(widget.data.theagend,
+                        forceSafariVC: false);
+                  },
+                  child: Text('Deschideti ordinea de zi'),
+                ),
+              ],
+            ),
           ),
         ),
-        collapsed: Card(child: Text('Ordinea: ${widget.data.date}')),
+        collapsed: InkWell(
+          onTap: () {
+            setState(() {
+              expandableController.value = false;
+              expandableController.toggle();
+            });
+          },
+          child: Card(
+            child: ListTile(
+                title: Text('Ordinea: ${widget.data.date}'),
+                trailing: Icon(expandableController.expanded
+                    ? Icons.arrow_upward
+                    : Icons.arrow_downward)),
+          ),
+        ),
       ),
-      initialExpanded: widget.isFirst,
     );
   }
 
