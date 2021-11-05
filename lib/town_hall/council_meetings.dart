@@ -43,6 +43,9 @@ class _CouncilMeetingsState extends State<CouncilMeetings> {
             body: FutureBuilder(
               future: data.getCouncilMeetingsFromFirebase(),
               builder: (BuildContext context, AsyncSnapshot snap) {
+                if (snap.hasError) {
+                  return Text('A intervenit o eroare');
+                }
                 if (snap.hasData) {
                   return ListView.builder(
                     itemBuilder: (BuildContext context, int item) {
@@ -75,16 +78,6 @@ class CouncilListItemWidget extends StatefulWidget {
 }
 
 class _CouncilListItemWidgetState extends State<CouncilListItemWidget> {
-  VideoPlayerController _controller;
-  @override
-  void initState() {
-    super.initState();
-    _controller = VideoPlayerController.network('${widget.data.url}.mp4')
-      ..initialize().then((_) {
-        setState(() {});
-      });
-  }
-
   @override
   Widget build(BuildContext context) {
     return ExpandableNotifier(
