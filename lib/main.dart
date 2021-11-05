@@ -21,6 +21,8 @@ import 'package:flutterapperadauti/state/notice_problem_state.dart';
 import 'package:flutterapperadauti/notice_a_problem/screens/main_notice_ui.dart';
 import 'package:flutterapperadauti/state/loading_state.dart';
 import 'package:flutterapperadauti/state/subscribed.dart';
+import 'package:flutterapperadauti/town_hall/legislation_list_state.dart';
+import 'package:flutterapperadauti/town_hall/models/legislation_model.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/transport/Train.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
@@ -153,9 +155,12 @@ Future<void> main() async {
       ChangeNotifierProvider<GeolocatorState>(create: (_) => GeolocatorState()),
       ChangeNotifierProvider<SendButtonLoadingState>(
           create: (_) => SendButtonLoadingState()),
+      ChangeNotifierProvider<LegislationListData>(
+          create: (_) => LegislationListData()),
       Provider<FetchData>(create: (_) => FetchData()),
       Provider<FetchMarkers>(create: (_) => FetchMarkers()),
       Provider<FetchAnnouncementData>(create: (_) => FetchAnnouncementData()),
+      Provider<FetchLegislationData>(create: (_) => FetchLegislationData()),
     ],
     child: MyApp(),
   ));

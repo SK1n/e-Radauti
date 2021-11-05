@@ -74,8 +74,8 @@ class _IntroPagesState extends State<IntroPages> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Avem nevoie de urmatoarele permisiuni',
-                    style: TextStyle(fontSize: 30, color: Colors.white),
+                    'Pentru a te putea bucura de toate funcționalitățile e-Rădăuți, aplicația are nevoie de următoarele permisiuni, pe care te rugăm să le activezi:\n\n',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
                   Card(
