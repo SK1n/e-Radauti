@@ -4,7 +4,7 @@ import 'package:flutterapperadauti/town_hall/models/legislation_model.dart';
 class LegislationListData extends ChangeNotifier {
   List<LegislationModel> _list = [];
   List<LegislationModel> get list => _list;
-  String _query;
+  String _query = '';
   String get query => _query;
   bool _foundResults = false;
   bool get foundResults => _foundResults;
