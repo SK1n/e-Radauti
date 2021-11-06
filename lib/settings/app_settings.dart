@@ -72,8 +72,6 @@ class _AppSettingsState extends State<AppSettings> {
     );
   }
 
-  //TODO: set up so that when user wants to use "notice a problem" he will be required to switch to true this (below) switch // the user will be redirected to /settings
-
   geolocatorSection({@required GeolocatorState geolocatorState}) {
     return ListTileSwitch(
         value: geolocatorState.value,
@@ -119,7 +117,7 @@ class _AppSettingsState extends State<AppSettings> {
                       textAlign: TextAlign.end,
                     ),
                     onPressed: () {
-                      if (debugTextEditingController.text == '') {
+                      if (debugTextEditingController.text == 'e-Radauti2021') {
                         //e-radauti2021
                         debugPrint('corect');
                         Navigator.pop(context);
