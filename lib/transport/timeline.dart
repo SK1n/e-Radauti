@@ -6,8 +6,8 @@ import 'package:timeline_tile/timeline_tile.dart';
 
 class TimelineRoute extends StatefulWidget {
   final String title;
-  final List<String> trainRoute;
-  final List<String> timeTable;
+  final List<dynamic> trainRoute;
+  final List<dynamic> timeTable;
   TimelineRoute(
       {Key key,
       @required this.title,

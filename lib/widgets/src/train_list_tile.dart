@@ -14,8 +14,8 @@ class ListTileRoute extends StatelessWidget {
 
   final IconData leadinIcon;
   final String title;
-  final List<String> timeArray;
-  final List<String> trainRoute;
+  final List<dynamic> timeArray;
+  final List<dynamic> trainRoute;
   final String subTitle;
   final IconData trailingIcon;
 
