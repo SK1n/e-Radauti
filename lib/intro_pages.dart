@@ -21,8 +21,6 @@ class IntroPages extends StatefulWidget {
   _IntroPagesState createState() => _IntroPagesState();
 }
 
-/// TODO: Add SwitchListTile for notifications and geolocation (make the connection between notifier and switch)
-
 class _IntroPagesState extends State<IntroPages> {
   bool isFirstRun;
   bool notValue;
@@ -58,58 +56,117 @@ class _IntroPagesState extends State<IntroPages> {
     return Builder(
       builder: (context) => IntroViewsFlutter(
         [
-          PageViewModel(
-              pageColor: Colors.greenAccent,
-              iconImageAssetPath: 'assets/logo_images/app_logo_final.png',
-              mainImage: Image.asset('assets/logo_images/app_logo_final.png'),
-              body: const Text('Aplicatia e-Radauti!'),
-              textStyle: TextStyle(color: Colors.black),
-              title: Text('Aplicatia e-Radauti'),
-              titleTextStyle: TextStyle(color: Colors.black)),
-          PageViewModel(
-              pageColor: const Color(0xFF03A9F4),
-              textStyle: TextStyle(color: Colors.black),
-              mainImage: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'Pentru a te putea bucura de toate funcționalitățile e-Rădăuți, aplicația are nevoie de următoarele permisiuni, pe care te rugăm să le activezi:\n\n',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                    textAlign: TextAlign.center,
-                  ),
-                  Card(
-                    child: ListTileSwitch(
-                      value: subscription.topicAll,
-                      leading: Icon(Icons.circle_notifications_rounded),
-                      onChanged: (value) => notificationOnChanged(
-                          subscription: subscription, value: value),
-                      title: Text('Notificari'),
-                    ),
-                  ),
-                  Card(
-                    child: ListTileSwitch(
-                      value: geolocatorState.value,
-                      leading: Icon(Icons.location_on_outlined),
-                      onChanged: (value) => geolocationOnChanged(
-                          context: context,
-                          geolocatorState: geolocatorState,
-                          value: value),
-                      title: Text('Locatie'),
-                    ),
-                  ),
-                ],
-              ))
+          firstPage(),
+          secondPage(subscription, geolocatorState),
         ],
         showNextButton: true,
         showBackButton: true,
         showSkipButton: false,
+        nextText: Text('Următorul'),
+        backText: Text('Înapoi'),
+        doneText: Text('Închide'),
         pageButtonTextStyles: TextStyle(color: Colors.black),
         pageButtonsColor: Colors.black,
         background: Colors.black,
         onTapDoneButton: () {
           Navigator.pushNamed(context, '/main');
         },
+      ),
+    );
+  }
+
+  PageViewModel firstPage() {
+    return PageViewModel(
+      pageColor: Colors.white,
+      mainImage: Column(
+        children: [
+          Image.asset(
+            'assets/logo_images/app_logo_final.png',
+            width: MediaQuery.of(context).size.width / 3,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 12),
+            child: Text(
+              'Aplicația e-Rădăuți',
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 12, left: 40, right: 40),
+            child: Text(
+              'Aplicație dezvoltată voluntar de către\nAsociația Radauțiul Civic',
+              style: TextStyle(
+                color: Colors.black,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 40, left: 40, right: 40),
+            child: Text(
+              'Bine ai venit!',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          )
+        ],
+      ),
+      textStyle: TextStyle(color: Colors.black),
+      titleTextStyle: TextStyle(color: Colors.black),
+    );
+  }
+
+  PageViewModel secondPage(
+      Subscription subscription, GeolocatorState geolocatorState) {
+    return PageViewModel(
+      pageColor: Colors.white,
+      mainImage: Column(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/logo_images/app_logo_final.png',
+                width: MediaQuery.of(context).size.width / 4,
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 10),
+              ),
+              Text(
+                'Pentru a te putea bucura de toate funcționalitățile e-Rădăuți, aplicația are nevoie de următoarele permisiuni, pe care te rugăm să le activezi\n\n',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              Card(
+                child: ListTileSwitch(
+                  value: subscription.topicAll,
+                  leading: Icon(Icons.circle_notifications_rounded),
+                  onChanged: (value) => notificationOnChanged(
+                      subscription: subscription, value: value),
+                  title: Text('Notificari'),
+                ),
+              ),
+              Card(
+                child: ListTileSwitch(
+                  value: geolocatorState.value,
+                  leading: Icon(Icons.location_on_outlined),
+                  onChanged: (value) => geolocationOnChanged(
+                      context: context,
+                      geolocatorState: geolocatorState,
+                      value: value),
+                  title: Text('Locatie'),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

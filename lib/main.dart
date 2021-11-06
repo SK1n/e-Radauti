@@ -26,6 +26,7 @@ import 'package:flutterapperadauti/town_hall/models/council_meetings.dart';
 import 'package:flutterapperadauti/town_hall/models/legislation_model.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/transport/Train.dart';
+import 'package:flutterapperadauti/transport/models/taxi_model.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
 import 'package:flutterapperadauti/usefull_pages/partner.dart';
@@ -164,6 +165,7 @@ Future<void> main() async {
       Provider<FetchLegislationData>(create: (_) => FetchLegislationData()),
       Provider<FetchCouncilMeetingsData>(
           create: (_) => FetchCouncilMeetingsData()),
+      Provider<FetchTaxiData>(create: (_) => FetchTaxiData()),
     ],
     child: MyApp(),
   ));
