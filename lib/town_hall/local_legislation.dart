@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/town_hall/legislation_list_state.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
-import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -68,6 +66,7 @@ class _LocalLegislationState extends State<LocalLegislation> {
                           },
                         ),
                   title: TextField(
+                    decoration: InputDecoration(hintText: 'Cauta...'),
                     controller: searchQueryController,
                     onChanged: (query) {},
                   ),

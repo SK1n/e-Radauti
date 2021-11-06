@@ -32,6 +32,7 @@ import 'package:flutterapperadauti/transport/models/train_model.dart';
 import 'package:flutterapperadauti/transport/models/taxi_model.dart';
 import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
+import 'package:flutterapperadauti/usefull_numbers/models/numbers_model.dart';
 import 'package:flutterapperadauti/usefull_pages/partner.dart';
 import 'package:flutterapperadauti/usefull_pages/contact.dart';
 import 'package:flutterapperadauti/usefull_pages/confidential.dart';
@@ -172,6 +173,7 @@ Future<void> main() async {
       Provider<FetchTrainData>(create: (_) => FetchTrainData()),
       Provider<FetchLeaderData>(create: (_) => FetchLeaderData()),
       Provider<FetchLocalCouncilData>(create: (_) => FetchLocalCouncilData()),
+      Provider<FetchNumbersData>(create: (_) => FetchNumbersData()),
     ],
     child: MyApp(),
   ));
