@@ -2,6 +2,7 @@ import 'package:async/async.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/events/widgets/event_widget.dart';
 import 'package:flutterapperadauti/events/fetch_data.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
@@ -58,12 +59,24 @@ class _NewEventsScreenState extends State<NewEventsScreen> {
                   }
                   if (!hasDisplayedThatThereAreNoEvents && !thereAreEvents) {
                     hasDisplayedThatThereAreNoEvents = true;
-                    debugPrint('here');
                     return Center(
-                      child: Container(
-                        child: Text(
-                          'Nu am gasit nici un eveniment!\nReveniti mai tarziu',
-                          style: TextStyle(color: Colors.black, fontSize: 24),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.width / 2),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/not-found.png',
+                              width: 80,
+                              height: 80,
+                            ),
+                            Text(
+                              'Nu am gasit nici un eveniment!\nReveniti mai tarziu',
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 24),
+                            ),
+                          ],
                         ),
                       ),
                     );
