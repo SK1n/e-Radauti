@@ -23,6 +23,7 @@ import 'package:flutterapperadauti/state/loading_state.dart';
 import 'package:flutterapperadauti/state/subscribed.dart';
 import 'package:flutterapperadauti/town_hall/legislation_list_state.dart';
 import 'package:flutterapperadauti/town_hall/models/council_meetings.dart';
+import 'package:flutterapperadauti/town_hall/models/leaders_model.dart';
 import 'package:flutterapperadauti/town_hall/models/legislation_model.dart';
 import 'package:flutterapperadauti/town_hall/town_hall_main.dart';
 import 'package:flutterapperadauti/transport/Train.dart';
@@ -168,6 +169,7 @@ Future<void> main() async {
           create: (_) => FetchCouncilMeetingsData()),
       Provider<FetchTaxiData>(create: (_) => FetchTaxiData()),
       Provider<FetchTrainData>(create: (_) => FetchTrainData()),
+      Provider<FetchLeaderData>(create: (_) => FetchLeaderData()),
     ],
     child: MyApp(),
   ));
