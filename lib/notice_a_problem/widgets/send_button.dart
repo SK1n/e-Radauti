@@ -22,14 +22,6 @@ class SendButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    IsLoading loadingScreen = Provider.of<IsLoading>(context, listen: false);
-
-    DownloadableList downloadableList =
-        Provider.of<DownloadableList>(context, listen: false);
-    LocationSwitchState locationSwitchState =
-        Provider.of<LocationSwitchState>(context, listen: false);
-    NoticeFormState noticeFormState =
-        Provider.of<NoticeFormState>(context, listen: false);
     return context.watch<SendButtonLoadingState>().isLoading
         ? TextButton(
             onPressed: () => DoNothingAction(),
@@ -52,65 +44,99 @@ class SendButton extends StatelessWidget {
             onPressed: () async {
               {
                 if (formKey.currentState.validate()) {
-                  final firestoreInstance = FirebaseFirestore.instance;
-                  loadingScreen.changeLoadingState();
-                  try {
-                    await Future.forEach(
-                        formKey.currentState.fields['image'].value,
-                        (element) async => uploadImageToFirebase(
-                            context, element, downloadableList));
-
-                    var data = [
-                      {
-                        "category": noticeFormState.category,
-                        "description": noticeFormState.description,
-                        "index": noticeFormState.index,
-                        "institution": noticeFormState.institution,
-                        "lat": locationSwitchState.value
-                            ? noticeFormState.position.latitude
-                            : null,
-                        "long": locationSwitchState.value
-                            ? noticeFormState.position.longitude
-                            : null,
-                        "status": "În lucru",
-                        "subject": noticeFormState.subject,
-                        "email": noticeFormState.email,
-                        "name": noticeFormState.name,
-                        "url": downloadableList.list,
-                      }
-                    ];
-                    CollectionReference collectionReference =
-                        firestoreInstance.collection('collection');
-                    DocumentReference documentReference =
-                        collectionReference.doc('Markers');
-                    await documentReference.update(
-                        {"markers": FieldValue.arrayUnion(data)}).then((value) {
-                      //  formKey.currentState.reset();
-                      resetData(noticeFormState);
-                      locationSwitchState.updateState(false);
-                      downloadableList.deleteList();
-                      loadingScreen.changeLoadingState();
-                      print('added');
-                      ScaffoldMessenger.of(scaffoldState.currentContext)
-                        ..hideCurrentSnackBar()
-                        ..showSnackBar(SnackBar(
-                          content: Text('Reusit'),
-                          backgroundColor: Colors.greenAccent,
-                        ));
-                    });
-                  } on Exception catch (e) {
-                    ScaffoldMessenger.of(scaffoldState.currentContext)
-                      ..hideCurrentSnackBar()
-                      ..showSnackBar(SnackBar(
-                        content: Text('Esuat'),
-                        backgroundColor: Colors.redAccent,
-                      ));
-                    debugPrint('$e');
-                  }
+                  showConfirmDialog(context);
                 }
               }
             },
           );
+  }
+
+  showConfirmDialog(BuildContext context) {
+    return Platform.isIOS
+        ? CupertinoAlertDialog(
+            title: Text('Vreti sa trimiteti formularul?'),
+            content: Text(
+                'Verificati ca toate datele sa fie corecte!\nDaca sunt corecte apasati pe Trimite\nDaca vreti sa faceti modificari apasati pe nu si reveniti'),
+            actions: [
+              TextButton(
+                child: Text('Nu'),
+                onPressed: () => Navigator.pop(context),
+              ),
+              TextButton(
+                onPressed: () {
+                  sendData();
+                  Navigator.pop(context);
+                },
+                child: Text('Trimiteti'),
+              )
+            ],
+          )
+        : AlertDialog();
+  }
+
+  sendData({BuildContext context}) async {
+    final firestoreInstance = FirebaseFirestore.instance;
+    IsLoading loadingScreen = Provider.of<IsLoading>(context, listen: false);
+    DownloadableList downloadableList =
+        Provider.of<DownloadableList>(context, listen: false);
+    LocationSwitchState locationSwitchState =
+        Provider.of<LocationSwitchState>(context, listen: false);
+    NoticeFormState noticeFormState =
+        Provider.of<NoticeFormState>(context, listen: false);
+
+    try {
+      loadingScreen.changeLoadingState();
+      await Future.forEach(
+          formKey.currentState.fields['image'].value,
+          (element) async =>
+              uploadImageToFirebase(context, element, downloadableList));
+
+      var data = [
+        {
+          "category": noticeFormState.category,
+          "description": noticeFormState.description,
+          "index": noticeFormState.index,
+          "institution": noticeFormState.institution,
+          "lat": locationSwitchState.value
+              ? noticeFormState.position.latitude
+              : null,
+          "long": locationSwitchState.value
+              ? noticeFormState.position.longitude
+              : null,
+          "status": "În lucru",
+          "subject": noticeFormState.subject,
+          "email": noticeFormState.email,
+          "name": noticeFormState.name,
+          "url": downloadableList.list,
+        }
+      ];
+      CollectionReference collectionReference =
+          firestoreInstance.collection('collection');
+      DocumentReference documentReference = collectionReference.doc('Markers');
+      await documentReference
+          .update({"markers": FieldValue.arrayUnion(data)}).then((value) {
+        //  formKey.currentState.reset();
+        resetData(noticeFormState);
+        locationSwitchState.updateState(false);
+        downloadableList.deleteList();
+        loadingScreen.changeLoadingState();
+        print('added');
+        ScaffoldMessenger.of(scaffoldState.currentContext)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(SnackBar(
+            content: Text('Reusit'),
+            backgroundColor: Colors.greenAccent,
+          ));
+      });
+    } on Exception catch (e) {
+      ScaffoldMessenger.of(scaffoldState.currentContext)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(SnackBar(
+          content: Text('Esuat'),
+          backgroundColor: Colors.redAccent,
+        ));
+      debugPrint('$e');
+    }
   }
 
   Future<void> uploadImageToFirebase(BuildContext context, dynamic file,
