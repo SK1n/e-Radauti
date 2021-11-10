@@ -171,7 +171,7 @@ class AirQualityChartsPage extends StatelessWidget {
                     children: <Widget>[
                       //grafic pm25
                       Center(
-                        child: Text('Grafic de PM2.5 vs Timp'),
+                        child: Text('Grafic de PM2.5 (ug/m3) vs Timp'),
                       ),
                       SizedBox(
                         height: 5.0,
@@ -198,7 +198,7 @@ class AirQualityChartsPage extends StatelessWidget {
                               new charts.SelectNearest(),
                               new charts.DomainHighlighter(),
                               new charts.ChartTitle(
-                                'PM2.5',
+                                'PM2.5 (ug/m3)',
                                 behaviorPosition: charts.BehaviorPosition.start,
                                 titleOutsideJustification:
                                     charts.OutsideJustification.middleDrawArea,
@@ -238,7 +238,7 @@ class AirQualityChartsPage extends StatelessWidget {
 
                       //grafic co2
                       Center(
-                        child: Text('Grafic de CO2 vs Timp'),
+                        child: Text('Grafic de CO2 (ppm) vs Timp'),
                       ),
                       SizedBox(
                         height: 5.0,
@@ -269,7 +269,7 @@ class AirQualityChartsPage extends StatelessWidget {
                               new charts.SelectNearest(),
                               new charts.DomainHighlighter(),
                               new charts.ChartTitle(
-                                'CO2',
+                                'CO2 (ppm)',
                                 behaviorPosition: charts.BehaviorPosition.start,
                                 titleOutsideJustification:
                                     charts.OutsideJustification.middleDrawArea,
@@ -321,8 +321,8 @@ class AirQualityChartsPage extends StatelessWidget {
 
                       //grafic pm25 & vant
                       Center(
-                        child:
-                            Text('Grafic de PM2.5 & Viteza Vântului vs Timp'),
+                        child: Text(
+                            'Grafic de PM2.5 (ug/m3) & Viteza Vântului (m/s) vs Timp'),
                       ),
                       SizedBox(
                         height: 5.0,
@@ -358,7 +358,7 @@ class AirQualityChartsPage extends StatelessWidget {
                               new charts.SelectNearest(),
                               new charts.DomainHighlighter(),
                               new charts.ChartTitle(
-                                'PM2.5',
+                                'PM2.5 (ug/m3)',
                                 behaviorPosition: charts.BehaviorPosition.start,
                                 titleOutsideJustification:
                                     charts.OutsideJustification.middleDrawArea,
@@ -367,7 +367,7 @@ class AirQualityChartsPage extends StatelessWidget {
                                 ),
                               ),
                               new charts.ChartTitle(
-                                'Vânt',
+                                'Vânt (m/s)',
                                 behaviorPosition: charts.BehaviorPosition.end,
                                 titleOutsideJustification:
                                     charts.OutsideJustification.middleDrawArea,
