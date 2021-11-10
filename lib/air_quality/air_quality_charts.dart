@@ -97,8 +97,7 @@ Future<List<dynamic>> createSampleDataFuture() async {
       domainFn: (TimeSeriesSales sales, _) => sales.time,
       measureFn: (TimeSeriesSales sales, _) => sales.sales,
       seriesColor: charts.ColorUtil.fromDartColor(Colors.red.shade700),
-      fillColorFn: (_, __) =>
-          charts.MaterialPalette.deepOrange.shadeDefault.darker,
+      fillColorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
       data: dataRVant,
     ),
     new charts.Series<TimeSeriesSales, DateTime>(
