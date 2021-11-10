@@ -75,7 +75,6 @@ class NoticeFormState extends ChangeNotifier {
   void getPosition(Position position) {
     _position = position;
     notifyListeners();
-    debugPrint('Position: $_position');
   }
 
   void upDialOpen() {

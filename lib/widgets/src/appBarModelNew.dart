@@ -24,40 +24,47 @@ class AppBarUiSliver extends StatelessWidget {
         elevation: 10,
         forceElevated: true,
         shadowColor: Colors.black,
-        leading: FlatButton(
-          child: Icon(Ionicons.ios_arrow_back),
-          onPressed: () => Navigator.pop(context),
+        leading: SafeArea(
+          child: FlatButton(
+            child: Icon(Ionicons.ios_arrow_back),
+            onPressed: () => Navigator.pop(context),
+          ),
         ),
         actions: [
           scaffoldKey != null
-              ? IconButton(
-                  icon: Icon(
-                    Icons.menu,
-                    color: Colors.black,
+              ? SafeArea(
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.menu,
+                      color: Colors.black,
+                    ),
+                    onPressed: () => scaffoldKey.currentState.openDrawer(),
                   ),
-                  onPressed: () => scaffoldKey.currentState.openDrawer(),
                 )
               : null,
         ],
-        title: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: leading != null
-                  ? Icon(
-                      leading,
-                      color: Color(0x55FB6340),
-                    )
-                  : null,
-            ),
-            Expanded(
-              child: Text(
-                '$content',
-                maxLines: 2,
-                style: TextStyle(color: Colors.black),
+        title: SafeArea(
+          top: false,
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: leading != null
+                    ? Icon(
+                        leading,
+                        color: Color(0x55FB6340),
+                      )
+                    : null,
               ),
-            )
-          ],
+              Expanded(
+                child: Text(
+                  '$content',
+                  maxLines: 2,
+                  style: TextStyle(color: Colors.black),
+                ),
+              )
+            ],
+          ),
         ));
   }
 }
@@ -88,40 +95,47 @@ class AppBarUi extends StatelessWidget {
         //     : PreferredSize(child: Container(), preferredSize: Size(0, 0)),
         shadowColor: Colors.black,
         bottom: bottom != null ? bottom : null,
-        leading: FlatButton(
-          child: Icon(Ionicons.ios_arrow_back),
-          onPressed: () => Navigator.pop(context),
+        leading: SafeArea(
+          child: FlatButton(
+            child: Icon(Ionicons.ios_arrow_back),
+            onPressed: () => Navigator.pop(context),
+          ),
         ),
         actions: [
           scaffoldKey != null
-              ? IconButton(
-                  icon: Icon(
-                    Icons.menu,
-                    color: Colors.black,
+              ? SafeArea(
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.menu,
+                      color: Colors.black,
+                    ),
+                    onPressed: () => scaffoldKey.currentState.openDrawer(),
                   ),
-                  onPressed: () => scaffoldKey.currentState.openDrawer(),
                 )
               : null,
         ],
-        title: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: leading != null
-                  ? Icon(
-                      leading,
-                      color: Color(0x55FB6340),
-                    )
-                  : null,
-            ),
-            Expanded(
-              child: Text(
-                '$content',
-                maxLines: 2,
-                style: TextStyle(color: Colors.black),
+        title: SafeArea(
+          top: false,
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: leading != null
+                    ? Icon(
+                        leading,
+                        color: Color(0x55FB6340),
+                      )
+                    : null,
               ),
-            )
-          ],
+              Expanded(
+                child: Text(
+                  '$content',
+                  maxLines: 2,
+                  style: TextStyle(color: Colors.black),
+                ),
+              )
+            ],
+          ),
         ));
   }
 }

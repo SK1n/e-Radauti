@@ -17,10 +17,11 @@ import 'package:provider/provider.dart';
 import 'package:flutterapperadauti/state/notice_problem_state.dart';
 
 class NoticeFormUi extends StatelessWidget {
-  final _formKey = GlobalKey<FormBuilderState>();
-
+  final GlobalKey<ScaffoldState> scaffoldState;
+  const NoticeFormUi({key, this.scaffoldState});
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormBuilderState>();
     IsLoading isLoading = Provider.of<IsLoading>(context);
     return FormBuilder(
       key: _formKey,
@@ -44,6 +45,7 @@ class NoticeFormUi extends StatelessWidget {
                 ImagePickerField(),
                 SendButton(
                   formKey: _formKey,
+                  scaffoldState: scaffoldState,
                 )
               ],
             ),

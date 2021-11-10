@@ -52,6 +52,8 @@ class _IntroPagesState extends State<IntroPages> {
     );
   }
 
+  bool subscribed = false;
+
   introViews(Subscription subscription, GeolocatorState geolocatorState) {
     return Builder(
       builder: (context) => IntroViewsFlutter(
@@ -146,10 +148,15 @@ class _IntroPagesState extends State<IntroPages> {
               ),
               Card(
                 child: ListTileSwitch(
-                  value: subscription.topicAll,
+                  value: subscribed,
                   leading: Icon(Icons.circle_notifications_rounded),
-                  onChanged: (value) => notificationOnChanged(
-                      subscription: subscription, value: value),
+                  onChanged: (value) {
+                    setState(() {
+                      subscribed = !subscribed;
+                    });
+                    notificationOnChanged(
+                        subscription: subscription, value: value);
+                  },
                   title: Text('Notificari'),
                 ),
               ),
@@ -175,13 +182,14 @@ class _IntroPagesState extends State<IntroPages> {
     @required Subscription subscription,
     @required bool value,
   }) {
-    subscription.changeSubscription(value);
     if (value) {
       Permission.notification.request().then((value) => value.isGranted
-          ? pushTopicToFirestoreAndSubscribe(context: context)
-          : subscription.changeSubscription(false));
+          ? pushTopicToFirestoreAndSubscribe(
+              context: context, events: true, notice: true, all: true)
+          : subscribed = false);
     } else {
-      deleteFromFirestoreAndUnsubscribe(context: context);
+      deleteFromFirestoreAndUnsubscribe(
+          context: context, events: true, notice: true, all: true);
     }
   }
 

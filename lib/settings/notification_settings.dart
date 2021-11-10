@@ -8,18 +8,25 @@ import 'package:flutterapperadauti/state/fcm_state.dart';
 import 'package:flutterapperadauti/state/subscribed.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
+import 'package:http/http.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
 import 'package:provider/provider.dart';
 
-class SettingsNotification extends StatelessWidget {
+class SettingsNotification extends StatefulWidget {
   SettingsNotification({Key key}) : super(key: key);
 
-  bool topicAll;
+  @override
+  State<SettingsNotification> createState() => _SettingsNotificationState();
+}
 
+class _SettingsNotificationState extends State<SettingsNotification> {
+  List subscribed = [];
+  String token;
   @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-    Subscription subscribed = Provider.of<Subscription>(context);
+
+    List topics = ['default', 'events', 'notice'];
     return Scaffold(
       key: _scaffoldKey,
       appBar: PreferredSize(
@@ -31,52 +38,67 @@ class SettingsNotification extends StatelessWidget {
         preferredSize: Size(MediaQuery.of(context).size.width, 50),
       ),
       drawer: NavDrawer(),
-      body: Column(
-        children: [
-          ListTileSwitch(
-            value: getBooltopics(context),
-            leading: Icon(Icons.circle_notifications_rounded),
-            onChanged: (value) {
-              subscribed.changeSubscription(value);
-              debugPrint('principal switch: $value');
-              if (value != true) {
-                deleteFromFirestoreAndUnsubscribe(context: context);
-              } else {
-                pushTopicToFirestoreAndSubscribe(context: context);
-              }
-            },
-            title: Text('Notificari'),
-          ),
-          ListTileSwitch(
-            switchType: SwitchType.cupertino,
-            visualDensity: VisualDensity.comfortable,
-            switchActiveColor: Platform.isAndroid ? Colors.blue : Colors.green,
-            leading: Icon(subscribed.topicAll
-                ? Icons.notifications_active
-                : Icons.notifications_none),
-            title: Text('Toate notificarile importante'),
-            onChanged: (value) async {
-              subscribed.changeSubscription(value);
-              value = !value;
-              debugPrint('topic switch: $value');
-              if (value == true) {
-                deleteFromFirestoreAndUnsubscribe(context: context);
-              } else {
-                pushTopicToFirestoreAndSubscribe(context: context);
-              }
-            },
-            value: context.watch<Subscription>().topicAll,
-          ),
-        ],
-      ),
+      body: ListView.builder(
+          itemCount: topics.length,
+          itemBuilder: (BuildContext context, int item) {
+            return ListTile(
+                title: Text('${topics[item]}'),
+                trailing: subscribed.contains(topics[item])
+                    ? TextButton(
+                        onPressed: () async {
+                          await FirebaseMessaging.instance
+                              .unsubscribeFromTopic(topics[item]);
+                          await FirebaseFirestore.instance
+                              .collection('topics')
+                              .doc(token)
+                              .update({topics[item]: FieldValue.delete()});
+                          setState(() {
+                            subscribed.remove(topics[item]);
+                          });
+                        },
+                        child: Text('Unsubscribe'))
+                    : TextButton(
+                        onPressed: () async {
+                          await FirebaseMessaging.instance
+                              .subscribeToTopic(topics[item]);
+                          await FirebaseFirestore.instance
+                              .collection('topics')
+                              .doc(token)
+                              .set({topics[item]: 'subscribed'},
+                                  SetOptions(merge: true));
+                          setState(() {
+                            subscribed.add(topics[item]);
+                          });
+                        },
+                        child: Text('Subscribe')));
+          }),
     );
   }
 
-  bool getBooltopics(BuildContext context) {
-    topicAll = Provider.of<Subscription>(context, listen: false).topicAll;
-    if (topicAll) {
-      return true;
-    }
-    return false;
+  @override
+  void initState() {
+    super.initState();
+    getToken();
+    getTopics();
+  }
+
+  getToken() async {
+    token = await FirebaseMessaging.instance.getToken();
+    setState(() {
+      token = token;
+    });
+  }
+
+  getTopics() async {
+    await FirebaseFirestore.instance.collection('topics').get().then((value) {
+      value.docs.forEach((element) {
+        if (token == element.id) {
+          subscribed = element.data().keys.toList();
+        }
+      });
+    });
+    setState(() {
+      subscribed = subscribed;
+    });
   }
 }

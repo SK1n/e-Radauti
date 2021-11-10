@@ -22,3 +22,24 @@ class ImagePickerField extends StatelessWidget {
         ));
   }
 }
+
+class DownloadableList extends ChangeNotifier {
+  List<String> _list = [];
+  List<String> get list => _list;
+
+  Future<void> addLink(String link) async {
+    _list.add(link);
+    printList();
+    notifyListeners();
+  }
+
+  void deleteList() {
+    _list = [];
+    printList();
+    notifyListeners();
+  }
+
+  void printList() {
+    debugPrint('Downloadable List: $_list');
+  }
+}

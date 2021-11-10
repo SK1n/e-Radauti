@@ -12,6 +12,7 @@ import 'package:flutterapperadauti/jobs/models/local_announcement_model.dart';
 import 'package:flutterapperadauti/menu_screen.dart';
 import 'package:flutterapperadauti/notice_a_problem/models/get_markers.dart';
 import 'package:flutterapperadauti/notice_a_problem/screens/notice_map_ui.dart';
+import 'package:flutterapperadauti/notice_a_problem/widgets/image_picker_field.dart';
 import 'package:flutterapperadauti/notice_a_problem/widgets/send_button.dart';
 import 'package:flutterapperadauti/settings/app_settings.dart';
 import 'package:flutterapperadauti/settings/debug_settings.dart';
@@ -161,6 +162,8 @@ Future<void> main() async {
       ChangeNotifierProvider<GeolocatorState>(create: (_) => GeolocatorState()),
       ChangeNotifierProvider<SendButtonLoadingState>(
           create: (_) => SendButtonLoadingState()),
+      ChangeNotifierProvider<DownloadableList>(
+          create: (_) => DownloadableList()),
       ChangeNotifierProvider<LegislationListData>(
           create: (_) => LegislationListData()),
       Provider<FetchData>(create: (_) => FetchData()),

@@ -23,7 +23,9 @@ class MainNoticeUi extends StatelessWidget {
             ),
           ];
         },
-        body: NoticeFormUi(),
+        body: NoticeFormUi(
+          scaffoldState: _scaffoldKey,
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(MaterialIcons.map),

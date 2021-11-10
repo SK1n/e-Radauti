@@ -2,9 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutterapperadauti/notice_a_problem/models/get_markers.dart';
-import 'package:flutterapperadauti/notice_a_problem/widgets/info_window.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
@@ -31,36 +30,7 @@ class _NoticeMapUiState extends State<NoticeMapUi>
 
   @override
   void initState() {
-    getData();
     super.initState();
-  }
-
-  getData() async {
-    await db.once().then((snapshot) {
-      Map<dynamic, dynamic> values = snapshot.value;
-      values.forEach((key, value) {
-        _markers.add(
-          Marker(
-            subject: value["subject"],
-            category: value['category'],
-            description: value['description'],
-            iconIndex: value['index'],
-            institution: value['institution'],
-            status: value['status'],
-            point: latLng.LatLng(value["lat"], value["long"]),
-            width: 40.0,
-            height: 40.0,
-            builder: (_) => Container(
-                width: 40,
-                height: 40,
-                child: CircleAvatar(
-                  child: switchIcon(value['index']),
-                )),
-            anchorPos: AnchorPos.align(AnchorAlign.top),
-          ),
-        );
-      });
-    });
   }
 
   @override
@@ -79,10 +49,8 @@ class _NoticeMapUiState extends State<NoticeMapUi>
         label: extend ? Text('Legenda') : null,
         useRotationAnimation: false,
         activeLabel: extend ? Text('Inchide') : null,
-        //label: extend ? null : Text('Legenda'),
         labelTransitionBuilder: (widget, animation) =>
             ScaleTransition(scale: animation, child: widget),
-        //label: Text('Legenda'),
         children: [
           speedDialChild(6, 'Calitatea aerului si poluare'),
           speedDialChild(3, 'Probleme la utilitati'),
@@ -108,6 +76,9 @@ class _NoticeMapUiState extends State<NoticeMapUi>
               options: MapOptions(
                 interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
                 zoom: 11.0,
+                plugins: [
+                  MarkerClusterPlugin(),
+                ],
                 center: latLng.LatLng(47.843876, 25.916276),
                 onTap: (_, __) => _popupLayerController.hideAllPopups(),
               ),
@@ -117,13 +88,23 @@ class _NoticeMapUiState extends State<NoticeMapUi>
                       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                   subdomains: ['a', 'b', 'c'],
                 ),
-                PopupMarkerLayerOptions(
-                  popupController: _popupLayerController,
+                MarkerClusterLayerOptions(
+                  maxClusterRadius: 120,
+                  size: Size(40, 40),
+                  fitBoundsOptions: FitBoundsOptions(
+                    padding: EdgeInsets.all(50),
+                  ),
                   markers: snapshot.data,
-                  markerRotateAlignment:
-                      PopupMarkerLayerOptions.rotationAlignmentFor(
-                          AnchorAlign.top),
-                  popupBuilder: (BuildContext context, Marker marker) => null,
+                  polygonOptions: PolygonOptions(
+                      borderColor: Colors.white,
+                      color: Colors.black12,
+                      borderStrokeWidth: 3),
+                  builder: (context, markers) {
+                    return FloatingActionButton(
+                      child: Text(markers.length.toString()),
+                      onPressed: null,
+                    );
+                  },
                 ),
               ],
             );

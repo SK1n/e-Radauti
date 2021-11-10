@@ -60,61 +60,58 @@ class FetchMarkers {
       _getMarkers.add(GetMarkers.fromJson(element));
     });
     _getMarkers.forEach((element) {
-      _marker.add(
-        Marker(
-            category: element.category,
-            subject: element.subject,
-            status: element.status,
-            institution: element.institution,
-            iconIndex: element.index,
-            description: element.description,
-            point: latLng.LatLng(element.lat, element.long),
-            builder: (BuildContext context) {
-              return InkWell(
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) => Platform.isIOS
-                        ? CupertinoAlertDialog(
-                            title: Text(
-                              '${element.subject}',
-                            ),
-                            content: Text('${element.description}'),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Navigator.pop(context),
-                                child: Text(
-                                  'Inchide',
-                                  textAlign: TextAlign.center,
+      if (element.lat != null && element.long != null) {
+        _marker.add(
+          Marker(
+              point: latLng.LatLng(element.lat, element.long),
+              builder: (BuildContext context) {
+                return InkWell(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => Platform.isIOS
+                          ? CupertinoAlertDialog(
+                              title: Text(
+                                '${element.subject}',
+                              ),
+                              content: Text('${element.description}'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: Text(
+                                    'Inchide',
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
+                              ],
+                            )
+                          : AlertDialog(
+                              title: Text('${element.subject}'),
+                              content: bodyText(
+                                element.description,
+                                element.status,
+                                element.institution,
                               ),
-                            ],
-                          )
-                        : AlertDialog(
-                            title: Text('${element.subject}'),
-                            content: bodyText(
-                              element.description,
-                              element.status,
-                              element.institution,
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: Text('Inchide'),
+                                ),
+                              ],
                             ),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Navigator.pop(context),
-                                child: Text('Inchide'),
-                              ),
-                            ],
-                          ),
-                  );
-                },
-                child: Container(
-                    width: 40,
-                    height: 40,
-                    child: CircleAvatar(
-                      child: switchIcon(element.index),
-                    )),
-              );
-            }),
-      );
+                    );
+                  },
+                  child: Container(
+                      width: 40,
+                      height: 40,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: switchIcon(element.index),
+                      )),
+                );
+              }),
+        );
+      }
     });
     return _marker;
   }

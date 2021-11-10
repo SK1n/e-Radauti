@@ -7,7 +7,6 @@ import 'package:flutterapperadauti/events/widgets/event_widget.dart';
 import 'package:flutterapperadauti/events/fetch_data.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class NewEventsScreen extends StatefulWidget {
   const NewEventsScreen({Key key}) : super(key: key);
@@ -87,10 +86,5 @@ class _NewEventsScreenState extends State<NewEventsScreen> {
             : LoadingScreen();
       },
     );
-  }
-
-  onRefresh(FetchData fetchData, RefreshController refreshController) {
-    fetchData.getEventsFromFirebase();
-    refreshController.refreshCompleted();
   }
 }
