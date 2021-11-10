@@ -18,7 +18,7 @@ class _SettingsNotificationState extends State<SettingsNotification> {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-    List topics = ['default', 'events', 'notice'];
+    List topics = ['Toate', 'Evenimente', 'Sesizari'];
     return Scaffold(
       key: _scaffoldKey,
       appBar: PreferredSize(

@@ -133,9 +133,16 @@ class SendButton extends StatelessWidget {
       CollectionReference collectionReference =
           firestoreInstance.collection('collection');
       DocumentReference documentReference = collectionReference.doc('Markers');
+      CollectionReference collectionReferenceNotifications =
+          firestoreInstance.collection('notifications');
+      DocumentReference documentReferenceNotifications =
+          collectionReferenceNotifications.doc('Sesizari');
+      await documentReferenceNotifications
+          .update({"sesizari": FieldValue.arrayUnion(data)});
       await documentReference
           .update({"markers": FieldValue.arrayUnion(data)}).then((value) {
         //  formKey.currentState.reset();
+
         resetData(noticeFormState);
         locationSwitchState.updateState(false);
         downloadableList.deleteList();
@@ -144,7 +151,7 @@ class SendButton extends StatelessWidget {
         ScaffoldMessenger.of(scaffoldState.currentContext)
           ..hideCurrentSnackBar()
           ..showSnackBar(SnackBar(
-            content: Text('Reusit'),
+            content: Text('Reusit. Vreti primi un email in cateva minute'),
             backgroundColor: Colors.greenAccent,
           ));
       });
@@ -152,7 +159,7 @@ class SendButton extends StatelessWidget {
       ScaffoldMessenger.of(scaffoldState.currentContext)
         ..hideCurrentSnackBar()
         ..showSnackBar(SnackBar(
-          content: Text('Esuat'),
+          content: Text('Esuat. Va rugam sa incercati din nou.'),
           backgroundColor: Colors.redAccent,
         ));
       debugPrint('$e');

@@ -21,9 +21,9 @@ Future<void> pushTopicToFirestoreAndSubscribe({
         .collection('topics')
         .doc(context.read<FCMState>().fcm)
         .set({
-      'default': all ? 'subscribed' : null,
-      'events': events ? 'subscribed' : null,
-      'notice': notice ? 'subscribed' : null,
+      'Toate': all ? 'subscribed' : null,
+      'Evenimente': events ? 'subscribed' : null,
+      'Sesizari': notice ? 'subscribed' : null,
     });
     debugPrint('Pushed and subscribed to the topic: default');
   } on FirebaseException catch (firebaseException) {
