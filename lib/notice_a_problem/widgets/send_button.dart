@@ -156,6 +156,8 @@ class SendButton extends StatelessWidget {
           ));
       });
     } on Exception catch (e) {
+      loadingScreen.changeLoadingState();
+      downloadableList.deleteList();
       ScaffoldMessenger.of(scaffoldState.currentContext)
         ..hideCurrentSnackBar()
         ..showSnackBar(SnackBar(
