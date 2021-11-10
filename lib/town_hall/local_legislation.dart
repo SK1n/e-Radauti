@@ -86,12 +86,16 @@ ListView list(LegislationListData data) {
     itemBuilder: (BuildContext context, int item) {
       return Card(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ListTile(
               leading: Icon(Icons.calendar_today),
               title: Text(data.list[item].date.toString()),
             ),
-            Text(data.list[item].title),
+            Text(
+              data.list[item].title,
+              textAlign: TextAlign.start,
+            ),
             TextButton(
               onPressed: () async {
                 debugPrint('${data.list[item].url}');
