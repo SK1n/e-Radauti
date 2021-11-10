@@ -74,22 +74,6 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
     );
   }
 
-  // Widget imageWidget(image) {
-  //   Widget returnWidget;
-  //   if (image != null) {
-  //     returnWidget = Container(
-  //       child: Image.network(linkContentImage(image)),
-  //       padding: EdgeInsets.only(
-  //         top: 2.0,
-  //         bottom: 2.0,
-  //       ),
-  //     );
-  //   } else {
-  //     returnWidget = Container();
-  //   }
-  //   return returnWidget;
-  // }
-
   Future getDownloadUrlFromUrlRef(BuildContext context, String imgURL) async {
     Image image;
     await FirebaseStorage.instance
@@ -123,6 +107,7 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
           right: 10,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FutureBuilder(
               future: getDownloadUrlFromUrlRef(context, url),
