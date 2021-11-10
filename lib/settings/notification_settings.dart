@@ -1,16 +1,8 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutterapperadauti/firestore_subscribe.dart';
-import 'package:flutterapperadauti/state/fcm_state.dart';
-import 'package:flutterapperadauti/state/subscribed.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:http/http.dart';
-import 'package:list_tile_switch/list_tile_switch.dart';
-import 'package:provider/provider.dart';
 
 class SettingsNotification extends StatefulWidget {
   SettingsNotification({Key key}) : super(key: key);

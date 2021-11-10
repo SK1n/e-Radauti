@@ -26,6 +26,7 @@ class _FurniturePageState extends State<FurniturePage> {
       this.setState(() {
         jsonResponse = json.decode(response.body);
       });
+      // ignore: deprecated_member_use
       jobList = List<JobModel>();
       jsonResponse.forEach((key, value) {
         jobList = (jsonResponse['context']['posts']['records'] as List)

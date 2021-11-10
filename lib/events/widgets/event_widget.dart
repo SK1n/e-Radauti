@@ -1,12 +1,9 @@
 import 'dart:io';
-import 'dart:math';
 import 'dart:ui';
 import 'package:async/async.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_autolink_text/flutter_autolink_text.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -108,6 +105,7 @@ class _NewEventWidgetState extends State<NewEventWidget>
   }
 
   @override
+  // ignore: must_call_super
   Widget build(BuildContext context) {
     FetchData fetchData = Provider.of<FetchData>(context, listen: true);
     Future<bool> sendNotif = hasEnabledNotification(widget.snapshot.id);

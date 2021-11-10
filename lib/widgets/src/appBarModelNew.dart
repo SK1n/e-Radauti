@@ -25,6 +25,7 @@ class AppBarUiSliver extends StatelessWidget {
         forceElevated: true,
         shadowColor: Colors.black,
         leading: SafeArea(
+          // ignore: deprecated_member_use
           child: FlatButton(
             child: Icon(Ionicons.ios_arrow_back),
             onPressed: () => Navigator.pop(context),
@@ -96,6 +97,7 @@ class AppBarUi extends StatelessWidget {
         shadowColor: Colors.black,
         bottom: bottom != null ? bottom : null,
         leading: SafeArea(
+          // ignore: deprecated_member_use
           child: FlatButton(
             child: Icon(Ionicons.ios_arrow_back),
             onPressed: () => Navigator.pop(context),

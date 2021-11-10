@@ -2,7 +2,6 @@ import 'package:async/async.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/events/widgets/event_widget.dart';
 import 'package:flutterapperadauti/events/fetch_data.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';

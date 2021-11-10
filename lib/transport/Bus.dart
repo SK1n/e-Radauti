@@ -147,6 +147,7 @@ class _BusMainState extends State<BusMain> {
   //3
   List<DropdownMenuItem<String>> _dropdownMenuItems;
   List<DropdownMenuItem<String>> buildDropdownMenuItems(List listItems) {
+    // ignore: deprecated_member_use
     List<DropdownMenuItem<String>> items = List();
     for (String listItem in listItems) {
       items.add(
@@ -171,6 +172,7 @@ class _BusMainState extends State<BusMain> {
   var regExp2 = RegExp(r'.* - ');
   List<String> getItems;
   List<String> buildListStringItemes(List listItems) {
+    // ignore: deprecated_member_use
     List<String> items = List();
     items = ['- Selectează -'];
     String value;
@@ -207,9 +209,11 @@ class _BusMainState extends State<BusMain> {
 
   //2
   void filterSearchResults(String query1, String query2) {
+    // ignore: deprecated_member_use
     List<dynamic> dummySearchList = List<dynamic>();
     dummySearchList.addAll(duplicateItems);
     if (query1.isNotEmpty && query2.isNotEmpty) {
+      // ignore: deprecated_member_use
       List<dynamic> dummyListData = List<dynamic>();
       dummySearchList.forEach((item) {
         if (item.contains(query1 + ' - ' + query2) ||

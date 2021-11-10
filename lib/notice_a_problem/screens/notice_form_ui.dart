@@ -14,7 +14,6 @@ import 'package:flutterapperadauti/notice_a_problem/widgets/type_drop_down.dart'
 import 'package:flutterapperadauti/state/loading_state.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:flutterapperadauti/state/notice_problem_state.dart';
 
 class NoticeFormUi extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldState;

@@ -104,6 +104,7 @@ Widget fWidget(child, BuildContext context) {
                         height: 28.0,
                         child: Container(
                           height: 22.0,
+                          // ignore: deprecated_member_use
                           child: FlatButton(
                             color: Colors.deepOrange.shade200,
                             textColor: Colors.white,
@@ -142,6 +143,7 @@ Widget fWidget(child, BuildContext context) {
             Card(
               child: Container(
                 height: 24.0,
+                // ignore: deprecated_member_use
                 child: FlatButton(
                   color: Color(0xFF38A49C),
                   textColor: Colors.white,
@@ -173,6 +175,7 @@ Widget fWidget(child, BuildContext context) {
                 height: 25.0,
                 child: Container(
                   height: 24.0,
+                  // ignore: deprecated_member_use
                   child: FlatButton(
                     color: Colors.deepOrange.shade200,
                     textColor: Colors.white,

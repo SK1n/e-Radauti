@@ -39,6 +39,7 @@ class _ContactState extends State<Contact> {
     return Container(
       margin: EdgeInsets.only(top: 20, left: 20, right: 20),
       width: MediaQuery.of(_context).size.width,
+      // ignore: deprecated_member_use
       child: FlatButton(
         color: Color.fromRGBO(56, 164, 156, 10),
         textColor: Colors.white,
@@ -74,6 +75,7 @@ class _ContactState extends State<Contact> {
     var validate = await LoadMailer().tryLoadMailer(_nameController,
         _recipientController, _bodyController, _emailController);
     if (validate) {
+      // ignore: deprecated_member_use
       _scaffoldKey.currentState.showSnackBar(SnackBar(
         content: Text('"Mesaj trimis!"'),
       ));
@@ -84,6 +86,7 @@ class _ContactState extends State<Contact> {
         isLoading = false;
       });
     } else {
+      // ignore: deprecated_member_use
       _scaffoldKey.currentState.showSnackBar(SnackBar(
         content: Text("Mesaj netrimis!"),
       ));

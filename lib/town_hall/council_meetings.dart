@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/town_hall/models/council_meetings.dart';
@@ -7,11 +5,9 @@ import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:http/http.dart' as http;
 import 'package:expandable/expandable.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
-import 'package:video_player/video_player.dart';
 
 class CouncilMeetings extends StatefulWidget {
   CouncilMeetings({Key key}) : super(key: key);

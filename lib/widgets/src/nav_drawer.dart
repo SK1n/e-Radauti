@@ -117,6 +117,7 @@ class NavDrawer extends StatelessWidget {
   }
 
   void showSnackBar(BuildContext context, SnackBar snackBar) {
+    // ignore: deprecated_member_use
     Scaffold.of(context).showSnackBar(snackBar);
   }
 }

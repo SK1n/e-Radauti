@@ -123,6 +123,7 @@ class Contractors extends StatelessWidget {
                           top: 10,
                         ),
                         width: MediaQuery.of(context).size.width - 35,
+                        // ignore: deprecated_member_use
                         child: FlatButton(
                           color: Color(0xFF38A49C),
                           textColor: Colors.white,
@@ -248,6 +249,7 @@ class Contractors extends StatelessWidget {
                           top: 10,
                         ),
                         width: MediaQuery.of(context).size.width - 35,
+                        // ignore: deprecated_member_use
                         child: FlatButton(
                           color: Color(0xFF38A49C),
                           textColor: Colors.white,
@@ -375,6 +377,7 @@ class Contractors extends StatelessWidget {
                           top: 10,
                         ),
                         width: MediaQuery.of(context).size.width - 35,
+                        // ignore: deprecated_member_use
                         child: FlatButton(
                           color: Color(0xFF38A49C),
                           textColor: Colors.white,
@@ -501,6 +504,7 @@ class Contractors extends StatelessWidget {
                           top: 10,
                         ),
                         width: MediaQuery.of(context).size.width - 35,
+                        // ignore: deprecated_member_use
                         child: FlatButton(
                           color: Color(0xFF38A49C),
                           textColor: Colors.white,
@@ -637,6 +641,7 @@ class Contractors extends StatelessWidget {
                           top: 10,
                         ),
                         width: MediaQuery.of(context).size.width - 35,
+                        // ignore: deprecated_member_use
                         child: FlatButton(
                           color: Color(0xFF38A49C),
                           textColor: Colors.white,
@@ -791,6 +796,7 @@ class Contractors extends StatelessWidget {
                           top: 10,
                         ),
                         width: MediaQuery.of(context).size.width - 35,
+                        // ignore: deprecated_member_use
                         child: FlatButton(
                           color: Color(0xFF38A49C),
                           textColor: Colors.white,
@@ -927,6 +933,7 @@ class Contractors extends StatelessWidget {
                           top: 10,
                         ),
                         width: MediaQuery.of(context).size.width - 35,
+                        // ignore: deprecated_member_use
                         child: FlatButton(
                           color: Color(0xFF38A49C),
                           textColor: Colors.white,
@@ -1071,6 +1078,7 @@ class Contractors extends StatelessWidget {
                           top: 10,
                         ),
                         width: MediaQuery.of(context).size.width - 35,
+                        // ignore: deprecated_member_use
                         child: FlatButton(
                           color: Color(0xFF38A49C),
                           textColor: Colors.white,

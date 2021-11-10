@@ -7,7 +7,6 @@ import 'package:flutterapperadauti/geolocator.dart';
 import 'package:flutterapperadauti/menu_screen.dart';
 import 'package:flutterapperadauti/state/geolocator_state.dart';
 import 'package:flutterapperadauti/state/subscribed.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 import 'package:is_first_run/is_first_run.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';

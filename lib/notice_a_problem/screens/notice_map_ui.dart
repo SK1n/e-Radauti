@@ -23,7 +23,6 @@ class NoticeMapUi extends StatefulWidget {
 class _NoticeMapUiState extends State<NoticeMapUi>
     with TickerProviderStateMixin {
   final db = FirebaseDatabase.instance.reference().child('Notice_Problem_Map');
-  List<Marker> _markers = [];
   double size = 300;
   var extend = true;
   final PopupController _popupLayerController = PopupController();

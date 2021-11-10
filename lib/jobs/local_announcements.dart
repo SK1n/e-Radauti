@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:async';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,8 +7,7 @@ import 'package:flutterapperadauti/jobs/models/local_announcement_model.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:http/http.dart' as http;
-import 'package:flutter_linkify/flutter_linkify.dart';
+
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -86,14 +84,6 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
               height: 200,
             ));
     return image;
-  }
-
-  Future<void> _onOpen(LinkableElement link) async {
-    if (await canLaunch(link.url)) {
-      await launch(link.url);
-    } else {
-      throw 'Nu pot încărca $link';
-    }
   }
 
   Card listItem({context, url, date, host, title, content}) {
