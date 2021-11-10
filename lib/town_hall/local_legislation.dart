@@ -87,6 +87,10 @@ ListView list(LegislationListData data) {
       return Card(
         child: Column(
           children: [
+            ListTile(
+              leading: Icon(Icons.calendar_today),
+              title: Text(data.list[item].date.toString()),
+            ),
             Text(data.list[item].title),
             TextButton(
               onPressed: () async {
