@@ -112,7 +112,7 @@ class LocalCouncilCard extends StatelessWidget {
                   child: Image.asset(
                     'assets/images/$party.png',
                     width: 80,
-                    height: 40,
+                    height: 80,
                     fit: BoxFit.fill,
                   ),
                 )
