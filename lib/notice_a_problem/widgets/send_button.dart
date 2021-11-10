@@ -44,7 +44,9 @@ class SendButton extends StatelessWidget {
             onPressed: () async {
               {
                 if (formKey.currentState.validate()) {
-                  showConfirmDialog(context);
+                  showDialog(
+                      context: context,
+                      builder: (_) => showConfirmDialog(context));
                 }
               }
             },
@@ -71,21 +73,38 @@ class SendButton extends StatelessWidget {
               )
             ],
           )
-        : AlertDialog();
+        : AlertDialog(
+            title: Text('Vreti sa trimiteti formularul?'),
+            content: Text(
+                'Verificati ca toate datele sa fie corecte!\nDaca sunt corecte apasati pe Trimite\nDaca vreti sa faceti modificari apasati pe nu si reveniti'),
+            actions: [
+              TextButton(
+                child: Text('Nu'),
+                onPressed: () => Navigator.pop(context),
+              ),
+              TextButton(
+                onPressed: () {
+                  sendData(context: context);
+                  Navigator.pop(context);
+                },
+                child: Text('Trimiteti'),
+              )
+            ],
+          );
   }
 
   sendData({BuildContext context}) async {
     final firestoreInstance = FirebaseFirestore.instance;
-    IsLoading loadingScreen = Provider.of<IsLoading>(context, listen: false);
+    IsLoading loadingScreen =
+        Provider.of<IsLoading>(scaffoldState.currentContext, listen: false);
     DownloadableList downloadableList =
         Provider.of<DownloadableList>(context, listen: false);
     LocationSwitchState locationSwitchState =
         Provider.of<LocationSwitchState>(context, listen: false);
     NoticeFormState noticeFormState =
         Provider.of<NoticeFormState>(context, listen: false);
-
+    loadingScreen.changeLoadingState();
     try {
-      loadingScreen.changeLoadingState();
       await Future.forEach(
           formKey.currentState.fields['image'].value,
           (element) async =>
