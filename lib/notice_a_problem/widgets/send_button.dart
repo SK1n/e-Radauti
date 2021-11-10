@@ -116,6 +116,7 @@ class SendButton extends StatelessWidget {
           "description": noticeFormState.description,
           "index": noticeFormState.index,
           "institution": noticeFormState.institution,
+          "institution_email": noticeFormState.institutionEmail,
           "lat": locationSwitchState.value
               ? noticeFormState.position.latitude
               : null,
