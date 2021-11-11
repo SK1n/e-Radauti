@@ -11,6 +11,7 @@ import 'package:flutterapperadauti/air_quality/windDirectionLocation.dart';
 import 'package:flutterapperadauti/air_quality/wind_model.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class AirQualityPage extends StatefulWidget {
   @override
@@ -18,49 +19,14 @@ class AirQualityPage extends StatefulWidget {
 }
 
 class _AirQualityPageState extends State<AirQualityPage> {
-  Future<AirQualityModel> _getAirQuality() async {
-    var dio = Dio();
-    Response dioResponse;
-
-    try {
-      dio.interceptors.add(
-          DioCacheManager(CacheConfig(baseUrl: "https://www.airvisual.com"))
-              .interceptor);
-      dioResponse = await dio.get(
-          "https://www.airvisual.com/api/v2/node/5ded3e13994dfe107f7013a0",
-          options: buildCacheOptions(Duration(minutes: 10)));
-      debugPrint('dioResponseAirQuality:' + dioResponse.data.toString());
-    } catch (e) {
-      print('catch error: $e');
-    }
-    return AirQualityModel.fromJson(dioResponse.data["current"]);
-  }
-
-  Future<WindModel> _getWindPropriety() async {
-    var dio = Dio();
-    Response dioResponse;
-
-    try {
-      dio.interceptors.add(
-          DioCacheManager(CacheConfig(baseUrl: "http://www.meteoromania.ro"))
-              .interceptor);
-      dioResponse = await dio.get(
-          "http://www.meteoromania.ro/wp-json/meteoapi/v2/starea-vremii",
-          options: buildCacheOptions(Duration(minutes: 10)));
-      debugPrint('dioResponseWind:' + dioResponse.data.toString());
-    } catch (e) {
-      print('catch error: $e');
-    }
-    return WindModel.fromJson(dioResponse.data["features"][2]["properties"]);
-  }
-
   @override
   Widget build(BuildContext context) {
+    FetchAirQualityData data = Provider.of<FetchAirQualityData>(context);
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
           FutureBuilder(
-            future: _getAirQuality(),
+            future: data.getDataFromFirebase(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasError) {
                 return Container(
@@ -71,7 +37,16 @@ class _AirQualityPageState extends State<AirQualityPage> {
                 );
               }
               if (snapshot.hasData) {
-                var date = snapshot.data.airTS.toString();
+                int index1 = snapshot.data[0].wind.toString().indexOf(',');
+                int index2 = snapshot.data[0].wind.toString().indexOf(':');
+                int index3 = snapshot.data[0].pression.toString().indexOf(' ');
+                List windSplit = [
+                  snapshot.data[0].wind.toString().substring(0, index1).trim(),
+                  snapshot.data[0].wind.toString().substring(index2 + 1).trim()
+                ];
+                String pression =
+                    snapshot.data[0].pression.toString().substring(0, index3);
+                var date = snapshot.data[0].airTS.toString();
                 var inputFormat = DateFormat('yyyy-MM-dd HH:mm');
                 var inputDate = inputFormat
                     .parseUTC(
@@ -107,7 +82,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                               Container(),
                               Container(
                                 color: changeColorInstance
-                                    .changeColorQuality(snapshot.data.pm25),
+                                    .changeColorQuality(snapshot.data[0].pm),
                                 padding: EdgeInsets.only(top: 10, bottom: 10),
                                 child: Row(
                                   children: <Widget>[
@@ -119,7 +94,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                           children: [
                                             changeColorInstance
                                                 .changeTextQuality(
-                                                    snapshot.data.pm25),
+                                                    snapshot.data[0].pm),
                                           ],
                                         ),
                                       ),
@@ -135,7 +110,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                               style: TextStyle(fontSize: 14),
                                             ),
                                             Text(
-                                              '${snapshot.data.pm25.toString()}',
+                                              '${snapshot.data[0].pm.toString()}',
                                               style: TextStyle(fontSize: 24),
                                             ),
                                             Text(
@@ -155,7 +130,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                             Text('CO2',
                                                 style: TextStyle(fontSize: 14)),
                                             Text(
-                                                '${snapshot.data.co2.toString()}',
+                                                '${snapshot.data[0].co.toString()}',
                                                 style: TextStyle(fontSize: 24)),
                                             Text('ppm',
                                                 style: TextStyle(fontSize: 18)),
@@ -176,7 +151,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                       color: Colors.black,
                                     ),
                                     label: Text(
-                                        '${snapshot.data.temperature.toString()}°C',
+                                        '${snapshot.data[0].temperature.toString()}°C',
                                         style: TextStyle(
                                           fontSize: 24,
                                           color: Colors.black,
@@ -192,7 +167,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                       color: Colors.black,
                                     ),
                                     label: Text(
-                                        '${snapshot.data.humidity.toString()}%',
+                                        '${snapshot.data[0].humidity.toString()}%',
                                         style: TextStyle(
                                           fontSize: 24,
                                           color: Colors.black,
@@ -221,112 +196,69 @@ class _AirQualityPageState extends State<AirQualityPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      FutureBuilder(
-                        future: _getWindPropriety(),
-                        // ignore: missing_return
-                        builder:
-                            (BuildContext context, AsyncSnapshot snapshot) {
-                          if (snapshot.hasError) {
-                            return Container(
-                              height: MediaQuery.of(context).size.height,
-                              child: Center(
-                                child: Text(
-                                    'A apărut o eroare de conexiune la internet!'),
-                              ),
-                            );
-                          }
-                          if (snapshot.hasData) {
-                            int index1 =
-                                snapshot.data.wind.toString().indexOf(',');
-                            int index2 =
-                                snapshot.data.wind.toString().indexOf(':');
-                            int index3 =
-                                snapshot.data.pression.toString().indexOf(' ');
-                            List windSplit = [
-                              snapshot.data.wind
-                                  .toString()
-                                  .substring(0, index1)
-                                  .trim(),
-                              snapshot.data.wind
-                                  .toString()
-                                  .substring(index2 + 1)
-                                  .trim()
-                            ];
-                            String pression = snapshot.data.pression
-                                .toString()
-                                .substring(0, index3);
-                            debugPrint(windSplit[1]);
-                            return Card(
-                              elevation: 2,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    child: ListTile(
-                                      leading: TextButton.icon(
-                                        icon: Icon(
-                                          WeatherIcons.wi_windy,
-                                          color: Colors.black,
-                                        ),
-                                        label: new Text(
-                                          "Vânt: \n" + windSplit[0],
-                                          textAlign: TextAlign.left,
-                                          maxLines: 2,
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 16.0),
-                                        ),
-                                        onPressed: () {},
-                                      ),
-                                      trailing: TextButton.icon(
-                                        icon: windDirection(
-                                          windSplit[1],
-                                        ),
-                                        label: Text(
-                                          'Direcția: \n${windSplit[1]}',
-                                          maxLines: 2,
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 16.0),
-                                        ),
-                                        onPressed: () {},
-                                      ),
-                                    ),
+                      Card(
+                        elevation: 2,
+                        child: Column(
+                          children: [
+                            Container(
+                              child: ListTile(
+                                leading: TextButton.icon(
+                                  icon: Icon(
+                                    WeatherIcons.wi_windy,
+                                    color: Colors.black,
                                   ),
-                                  Container(
-                                    child: ListTile(
-                                      leading: TextButton.icon(
-                                        onPressed: () {},
-                                        icon: Icon(
-                                          WeatherIcons.wi_barometer,
-                                          color: Colors.black,
-                                        ),
-                                        label: Text(
-                                          '${pression.toString()}\nmBar',
-                                          maxLines: 2,
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 16.0),
-                                        ),
-                                      ),
-                                      trailing: TextButton.icon(
-                                        onPressed: () {},
-                                        icon: Icon(
-                                          WeatherIcons.wi_small_craft_advisory,
-                                          color: Colors.black,
-                                        ),
-                                        label: windDirectionLocation(
-                                          windSplit[1],
-                                        ),
-                                      ),
-                                    ),
+                                  label: new Text(
+                                    "Vânt: \n" + windSplit[0],
+                                    textAlign: TextAlign.left,
+                                    maxLines: 2,
+                                    style: const TextStyle(
+                                        color: Colors.black, fontSize: 16.0),
                                   ),
-                                ],
+                                  onPressed: () {},
+                                ),
+                                trailing: TextButton.icon(
+                                  icon: windDirection(
+                                    windSplit[1],
+                                  ),
+                                  label: Text(
+                                    'Direcția: \n${windSplit[1]}',
+                                    maxLines: 2,
+                                    style: const TextStyle(
+                                        color: Colors.black, fontSize: 16.0),
+                                  ),
+                                  onPressed: () {},
+                                ),
                               ),
-                            );
-                          } else {
-                            return LoadingScreen();
-                          }
-                        },
+                            ),
+                            Container(
+                              child: ListTile(
+                                leading: TextButton.icon(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    WeatherIcons.wi_barometer,
+                                    color: Colors.black,
+                                  ),
+                                  label: Text(
+                                    '${pression.toString()}\nmBar',
+                                    maxLines: 2,
+                                    style: const TextStyle(
+                                        color: Colors.black, fontSize: 16.0),
+                                  ),
+                                ),
+                                trailing: TextButton.icon(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    WeatherIcons.wi_small_craft_advisory,
+                                    color: Colors.black,
+                                  ),
+                                  label: windDirectionLocation(
+                                    windSplit[1],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       AirQualityLegend(),
                     ],
