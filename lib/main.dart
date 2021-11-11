@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutterapperadauti/air_quality/airquality_model.dart';
 import 'package:flutterapperadauti/events/fetch_data.dart';
 import 'package:flutterapperadauti/events/main.dart';
 import 'package:flutterapperadauti/intro_pages.dart';
@@ -177,6 +178,7 @@ Future<void> main() async {
       Provider<FetchLeaderData>(create: (_) => FetchLeaderData()),
       Provider<FetchLocalCouncilData>(create: (_) => FetchLocalCouncilData()),
       Provider<FetchNumbersData>(create: (_) => FetchNumbersData()),
+      Provider<FetchAirQualityData>(create: (_) => FetchAirQualityData()),
     ],
     child: MyApp(),
   ));

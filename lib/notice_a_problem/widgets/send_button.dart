@@ -128,6 +128,7 @@ class SendButton extends StatelessWidget {
           "email": noticeFormState.email,
           "name": noticeFormState.name,
           "url": downloadableList.list,
+          "phone": noticeFormState.phoneNumber,
         }
       ];
       CollectionReference collectionReference =
