@@ -69,8 +69,8 @@ class NavDrawer extends StatelessWidget {
       title: Text(title),
       onTap: () {
         if (following != null) {
-          Navigator.of(context).pop();
-          Navigator.popAndPushNamed(context, following);
+          Navigator.popUntil(context, ModalRoute.withName('/'));
+          Navigator.pushNamed(context, following);
         } else {
           if (Platform.isIOS) {
             showAboutDialog(
