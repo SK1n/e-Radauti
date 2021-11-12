@@ -22,6 +22,8 @@ class DescriptionTextField extends StatelessWidget {
         validator: FormBuilderValidators.compose(
           [
             FormBuilderValidators.required(context, errorText: errorRequired),
+            FormBuilderValidators.minLength(context, 150,
+                errorText: 'Trebuie sa introduceti minimum 150 charactere'),
           ],
         ));
   }
