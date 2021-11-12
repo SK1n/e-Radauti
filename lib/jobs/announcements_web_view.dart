@@ -24,22 +24,17 @@ class _AnnouncementWebViewState extends State<AnnouncementWebView> {
     return Scaffold(
       key: _scaffoldKey,
       drawer: NavDrawer(),
-      body: NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return [
-            AppBarUiSliver(
-              content: 'Anunțuri',
-              scaffoldKey: _scaffoldKey,
-              leading: Icons.announcement,
-            )
-          ];
-        },
-        body: isLoading.loading
-            ? LoadingScreen()
-            : WebView(
-                javascriptMode: JavascriptMode.unrestricted,
-                initialUrl: widget.slug,
-              ),
+      appBar: PreferredSize(
+        child: AppBarUi(
+          content: 'Anunțuri',
+          scaffoldKey: _scaffoldKey,
+          leading: Icons.announcement,
+        ),
+        preferredSize: Size(MediaQuery.of(context).size.width, 50),
+      ),
+      body: WebView(
+        javascriptMode: JavascriptMode.unrestricted,
+        initialUrl: widget.slug,
       ),
     );
   }
