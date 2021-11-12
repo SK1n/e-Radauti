@@ -152,7 +152,7 @@ class SendButton extends StatelessWidget {
         ScaffoldMessenger.of(scaffoldState.currentContext)
           ..hideCurrentSnackBar()
           ..showSnackBar(SnackBar(
-            content: Text('Reusit. Vreti primi un email in cateva minute'),
+            content: Text('Reusit. Veti primi un email in cateva minute'),
             backgroundColor: Colors.greenAccent,
           ));
       });
