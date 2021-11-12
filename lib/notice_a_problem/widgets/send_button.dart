@@ -164,7 +164,6 @@ class SendButton extends StatelessWidget {
           content: Text('Esuat. Va rugam sa incercati din nou.'),
           backgroundColor: Colors.redAccent,
         ));
-      debugPrint('$e');
     }
   }
 
