@@ -148,7 +148,6 @@ class SendButton extends StatelessWidget {
         locationSwitchState.updateState(false);
         downloadableList.deleteList();
         loadingScreen.changeLoadingState();
-        print('added');
         ScaffoldMessenger.of(scaffoldState.currentContext)
           ..hideCurrentSnackBar()
           ..showSnackBar(SnackBar(
