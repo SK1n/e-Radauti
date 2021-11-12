@@ -31,4 +31,8 @@ class LegislationListData extends ChangeNotifier {
     _query = '';
     notifyListeners();
   }
+
+  void clearQueryInitState() {
+    _query = '';
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/town_hall/legislation_list_state.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
@@ -21,6 +22,8 @@ class _LocalLegislationState extends State<LocalLegislation> {
 
   void getData() {
     Provider.of<LegislationListData>(context, listen: false).getData();
+    Provider.of<LegislationListData>(context, listen: false)
+        .clearQueryInitState();
   }
 
   @override
@@ -65,7 +68,14 @@ class _LocalLegislationState extends State<LocalLegislation> {
                             legislationListData.getData();
                           },
                         ),
-                  title: TextField(
+                  title: TextFormField(
+                    keyboardType: TextInputType.text,
+                    onFieldSubmitted: (_) {
+                      legislationListData
+                          .removeElements(searchQueryController.text);
+                      searchQueryController.text = legislationListData.query;
+                      debugPrint('submitted');
+                    },
                     decoration: InputDecoration(hintText: 'Cauta...'),
                     controller: searchQueryController,
                     onChanged: (query) {},

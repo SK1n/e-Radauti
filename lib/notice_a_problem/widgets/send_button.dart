@@ -148,7 +148,6 @@ class SendButton extends StatelessWidget {
         locationSwitchState.updateState(false);
         downloadableList.deleteList();
         loadingScreen.changeLoadingState();
-        print('added');
         ScaffoldMessenger.of(scaffoldState.currentContext)
           ..hideCurrentSnackBar()
           ..showSnackBar(SnackBar(
@@ -165,7 +164,6 @@ class SendButton extends StatelessWidget {
           content: Text('Esuat. Va rugam sa incercati din nou.'),
           backgroundColor: Colors.redAccent,
         ));
-      debugPrint('$e');
     }
   }
 
