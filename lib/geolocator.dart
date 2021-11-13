@@ -4,32 +4,65 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/state/geolocator_state.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:permission_handler/permission_handler.dart';
 
-void geolocationOnChanged({
+Future<void> geolocationOnChanged({
   @required BuildContext context,
   @required GeolocatorState geolocatorState,
   @required bool value,
-}) {
+}) async {
   geolocatorState.changeValue(value);
-  geolocatorState.value
-      ? Permission.location.request().then((value) => {
-            value.isGranted
-                ? geolocatorState.changeValue(true)
-                : geolocatorState.changeValue(false),
-            value.isPermanentlyDenied
-                ? showDialog(
-                    barrierDismissible: false,
-                    context: context,
-                    builder: (BuildContext context) => Platform.isIOS
-                        ? cupertinoGeolocationDeniedDialog(
-                            context, geolocatorState)
-                        : androidGeolocationDeniedDialog(
-                            context, geolocatorState),
-                  )
-                : DoNothingAction()
-          })
-      : DoNothingAction();
+  LocationPermission permission = await Geolocator.checkPermission();
+  if (geolocatorState.value) {
+    if (permission == LocationPermission.denied) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => Platform.isIOS
+            ? CupertinoAlertDialog(
+                title: Text('Avem nevoie de acces la locatie'),
+                content: Text(
+                    'Locatia va fi folosita doar atunci cand trimiteti o sesizare.'),
+                actions: [
+                  TextButton(
+                      onPressed: () async {
+                        Navigator.pop(context);
+                        await Geolocator.requestPermission().then((value) {
+                          if (value == LocationPermission.always ||
+                              value == LocationPermission.whileInUse) {
+                            geolocatorState.changeValue(true);
+                          }
+                        });
+                      },
+                      child: Text('OK'))
+                ],
+              )
+            : AlertDialog(
+                title: Text('Avem nevoie de acces la locatie'),
+                content: Text(
+                    'Locatia va fi folosita doar atunci cand trimiteti o sesizare.'),
+                actions: [
+                  TextButton(
+                      onPressed: () async {
+                        Navigator.pop(context);
+                        await Geolocator.requestPermission().then((value) {
+                          if (value == LocationPermission.always ||
+                              value == LocationPermission.whileInUse) {
+                            geolocatorState.changeValue(true);
+                          }
+                        });
+                      },
+                      child: Text('OK'))
+                ],
+              ),
+      );
+    } else if (permission == LocationPermission.deniedForever) {
+      geolocatorState.changeValue(false);
+      Platform.isIOS
+          ? cupertinoGeolocationDeniedDialog(context, geolocatorState)
+          : androidGeolocationDeniedDialog(context, geolocatorState);
+    } else {
+      geolocatorState.changeValue(true);
+    }
+  }
 }
 
 cupertinoGeolocationDeniedDialog(
@@ -47,7 +80,7 @@ cupertinoGeolocationDeniedDialog(
       ),
       TextButton(
         onPressed: () => {
-          Geolocator.openAppSettings(),
+          Geolocator.openLocationSettings(),
           Navigator.pop(context),
         },
         child: Text('Setari'),

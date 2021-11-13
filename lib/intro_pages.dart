@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/firestore_subscribe.dart';
@@ -7,6 +8,8 @@ import 'package:flutterapperadauti/geolocator.dart';
 import 'package:flutterapperadauti/menu_screen.dart';
 import 'package:flutterapperadauti/state/geolocator_state.dart';
 import 'package:flutterapperadauti/state/subscribed.dart';
+import 'package:geolocator/geolocator.dart';
+
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 import 'package:is_first_run/is_first_run.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
@@ -50,8 +53,6 @@ class _IntroPagesState extends State<IntroPages> {
       },
     );
   }
-
-  bool subscribed = false;
 
   introViews(Subscription subscription, GeolocatorState geolocatorState) {
     return Builder(
@@ -147,14 +148,11 @@ class _IntroPagesState extends State<IntroPages> {
               ),
               Card(
                 child: ListTileSwitch(
-                  value: subscribed,
+                  value: subscription.enabled,
                   leading: Icon(Icons.circle_notifications_rounded),
                   onChanged: (value) {
-                    setState(() {
-                      subscribed = !subscribed;
-                    });
-                    notificationOnChanged(
-                        subscription: subscription, value: value);
+                    subscription.changeEnabled(value);
+                    notificationOnChanged(subscription: subscription);
                   },
                   title: Text('Notificari'),
                 ),
@@ -179,17 +177,89 @@ class _IntroPagesState extends State<IntroPages> {
 
   notificationOnChanged({
     @required Subscription subscription,
-    @required bool value,
-  }) {
-    if (value) {
-      Permission.notification.request().then((value) => value.isGranted
-          ? pushTopicToFirestoreAndSubscribe(
-              context: context, events: true, notice: true, all: true)
-          : subscribed = false);
+  }) async {
+    if (subscription.enabled) {
+      FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+      NotificationSettings settings = await messaging.requestPermission(
+        alert: true,
+        announcement: false,
+        badge: true,
+        carPlay: false,
+        criticalAlert: false,
+        provisional: false,
+        sound: true,
+      );
+      if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+        subscription.changeEnabled(true);
+        pushTopicToFirestoreAndSubscribe(
+            context: context, events: true, notice: true, all: true);
+        print('User granted permission');
+      } else if (settings.authorizationStatus ==
+          AuthorizationStatus.provisional) {
+        subscription.changeEnabled(true);
+        pushTopicToFirestoreAndSubscribe(
+            context: context, events: true, notice: true, all: true);
+      } else {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) => Platform.isIOS
+                ? cupertinoNotificationDeniedDialog(context, subscription)
+                : androidNotificationDeniedDialog(context, subscription));
+      }
     } else {
+      subscription.changeEnabled(false);
       deleteFromFirestoreAndUnsubscribe(
           context: context, events: true, notice: true, all: true);
     }
+  }
+
+  cupertinoNotificationDeniedDialog(
+      BuildContext context, Subscription subscription) {
+    return CupertinoAlertDialog(
+      title: Text('Permisiunea de notificari este oprita'),
+      content: Text('Doriti sa deschideti setarile pentru a le activa?'),
+      actions: [
+        TextButton(
+          onPressed: () => {
+            Navigator.pop(context),
+            subscription.changeEnabled(false),
+          },
+          child: Text('Cancel'),
+        ),
+        TextButton(
+          onPressed: () => {
+            Geolocator.openAppSettings(),
+            Navigator.pop(context),
+          },
+          child: Text('Setari'),
+        ),
+      ],
+    );
+  }
+
+  androidNotificationDeniedDialog(
+      BuildContext context, Subscription subscription) {
+    return AlertDialog(
+      title: Text('Permisiunea de notificari este oprita'),
+      content: Text('Doriti sa deschideti setarile pentru a le activa?'),
+      actions: [
+        TextButton(
+          onPressed: () => {
+            Navigator.pop(context),
+            subscription.changeEnabled(false),
+          },
+          child: Text('Cancel'),
+        ),
+        TextButton(
+          onPressed: () async => {
+            await Geolocator.openAppSettings(),
+            Navigator.pop(context),
+          },
+          child: Text('Setari'),
+        ),
+      ],
+    );
   }
 
   cupertinoIntoPagesError(dynamic error) {

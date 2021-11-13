@@ -25,6 +25,9 @@ Future<void> pushTopicToFirestoreAndSubscribe({
       'Evenimente': events ? 'subscribed' : null,
       'Sesizari': notice ? 'subscribed' : null,
     });
+    FirebaseMessaging.instance.subscribeToTopic('Toate');
+    FirebaseMessaging.instance.subscribeToTopic('Evenimente');
+    FirebaseMessaging.instance.subscribeToTopic('Sesizari');
     debugPrint('Pushed and subscribed to the topic: default');
   } on FirebaseException catch (firebaseException) {
     firebaseError(
@@ -46,10 +49,13 @@ Future<void> deleteFromFirestoreAndUnsubscribe({
         .collection('topics')
         .doc(context.read<FCMState>().fcm)
         .update({
-      'default': all ? FieldValue.delete() : DoNothingAction(),
-      'events': events ? FieldValue.delete() : DoNothingAction(),
-      'notice': notice ? FieldValue.delete() : DoNothingAction(),
+      'Toate': all ? FieldValue.delete() : DoNothingAction(),
+      'Evenimente': events ? FieldValue.delete() : DoNothingAction(),
+      'Sesizari': notice ? FieldValue.delete() : DoNothingAction(),
     });
+    FirebaseMessaging.instance.unsubscribeFromTopic('Toate');
+    FirebaseMessaging.instance.unsubscribeFromTopic('Evenimente');
+    FirebaseMessaging.instance.unsubscribeFromTopic('Sesizari');
     debugPrint('Deleted from firestore and unsubscribed');
   } on FirebaseException catch (firebaseException) {
     debugPrint('error: ${firebaseException.message}');

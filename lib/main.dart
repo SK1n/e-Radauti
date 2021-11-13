@@ -126,9 +126,9 @@ Future<void> main() async {
 
   final IOSInitializationSettings initializationSettingsIOS =
       IOSInitializationSettings(
-    requestAlertPermission: true,
-    requestBadgePermission: true,
-    requestSoundPermission: true,
+    requestAlertPermission: false,
+    requestBadgePermission: false,
+    requestSoundPermission: false,
   );
   final InitializationSettings initializationSettings = InitializationSettings(
     android: initializationSettingsAndroid,
@@ -146,9 +146,9 @@ Future<void> main() async {
           AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
   await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
-    alert: true,
-    badge: true,
-    sound: true,
+    alert: false,
+    badge: false,
+    sound: false,
   );
   runApp(MultiProvider(
     providers: [

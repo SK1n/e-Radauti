@@ -87,9 +87,39 @@ class _AppSettingsState extends State<AppSettings> {
         builder: (BuildContext context) => Platform.isIOS
             ? CupertinoAlertDialog(
                 title: Text('Introduceti parola'),
-                content: TextField(
-                  controller: debugTextEditingController,
+                content: Container(
+                  child: CupertinoTextField(
+                    controller: debugTextEditingController,
+                  ),
                 ),
+                actions: [
+                  TextButton(
+                    child: Text(
+                      'Cancel',
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  TextButton(
+                    child: Text(
+                      'Open',
+                      textAlign: TextAlign.end,
+                    ),
+                    onPressed: () {
+                      if (debugTextEditingController.text == 'e-Radauti2021') {
+                        //e-radauti2021
+                        debugPrint('corect');
+                        Navigator.pop(context);
+                        Navigator.pushNamed(context, '/settings/debug');
+                      } else {
+                        setState(() {
+                          debugPasswordHasError = false;
+                        });
+                      }
+                    },
+                  ),
+                ],
               )
             : AlertDialog(
                 title: Text('Introduceti parola'),
