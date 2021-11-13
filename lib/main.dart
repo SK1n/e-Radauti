@@ -36,7 +36,6 @@ import 'package:flutterapperadauti/usefull_numbers/main_page.dart';
 import 'package:flutterapperadauti/jobs/main_page_jobs.dart';
 import 'package:flutterapperadauti/usefull_numbers/models/numbers_model.dart';
 import 'package:flutterapperadauti/usefull_pages/partner.dart';
-import 'package:flutterapperadauti/usefull_pages/contact.dart';
 import 'package:flutterapperadauti/usefull_pages/confidential.dart';
 import 'package:flutterapperadauti/usefull_pages/about_us_main.dart';
 import 'package:flutterapperadauti/air_quality/air_quality_main.dart';
@@ -257,7 +256,6 @@ class _MyAppState extends State<MyApp> {
         '/job': (BuildContext context) => JobPage(),
         '/about': (BuildContext context) => AboutUsMain(),
         '/confidential': (BuildContext context) => Confidential(),
-        '/contact': (BuildContext context) => Contact(),
         '/partner': (BuildContext context) => Partner(),
         '/contractors': (BuildContext context) => Contractors(),
         '/localAuthorities': (BuildContext context) => LocalAuthorities(),
