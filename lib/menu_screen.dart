@@ -178,25 +178,6 @@ class _MenuScreenState extends State<MenuScreen> {
                             },
                           ),
                         ),
-                        VerticalDivider(
-                          color: Colors.black,
-                        ),
-                        Container(
-                          child: new InkWell(
-                            child: new Text(
-                              'Contact',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline,
-                                color: Color(0xFF32325D),
-                                fontSize: 15,
-                              ),
-                            ),
-                            onTap: () {
-                              Navigator.pushNamed(context, '/contact');
-                            },
-                          ),
-                        ),
                       ],
                     ),
                   ),
