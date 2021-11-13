@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>338675190296-sktr39kicv23vcotun3mh01h95gjqhhf.apps.googleusercontent.com</string>
+	<string>893520358233-1kp17tvjmh5fcrjhspl4bggtqgrl9ekm.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.338675190296-sktr39kicv23vcotun3mh01h95gjqhhf</string>
+	<string>com.googleusercontent.apps.893520358233-1kp17tvjmh5fcrjhspl4bggtqgrl9ekm</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>338675190296-ovelt0bhgnmend7mcmv0a2g39o1dh1jt.apps.googleusercontent.com</string>
+	<string>893520358233-0hnjqdp4jthgq2lqqgo6s0rf6qcjd8lb.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDa4flNvKrX3NskDFOvAkvbJCIQouwSLbY</string>
+	<string>AIzaSyAKuDygHaD4b9W6pwHQXWD5KLTLjGb13FE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>338675190296</string>
+	<string>893520358233</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>radautiul.civic</string>
 	<key>PROJECT_ID</key>
-	<string>eradauti-nativ</string>
+	<string>e-radauti-80139</string>
 	<key>STORAGE_BUCKET</key>
-	<string>eradauti-nativ.appspot.com</string>
+	<string>e-radauti-80139.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:338675190296:ios:a6265b5e7edc167eafd16d</string>
+	<string>1:893520358233:ios:5d76fb1b7fff0157ea7a48</string>
 	<key>DATABASE_URL</key>
-	<string>https://eradauti-nativ-default-rtdb.firebaseio.com</string>
+	<string>https://e-radauti-80139.firebaseio.com</string>
 </dict>
 </plist>
