@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutterapperadauti/jobs/models/job_model.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
@@ -10,7 +11,6 @@ import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/src/nav_drawer.dart';
-import 'announcements_web_view.dart';
 
 class JobPage extends StatefulWidget {
   @override
@@ -45,6 +45,7 @@ class _JobPageState extends State<JobPage> {
 
   @override
   Widget build(BuildContext context) {
+    ChromeSafariBrowser browser = ChromeSafariBrowser();
     return Scaffold(
       key: _scaffoldKey,
       drawer: NavDrawer(),
@@ -89,12 +90,22 @@ class _JobPageState extends State<JobPage> {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 onPressed: () => {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => AnnouncementWebView(
-                                              slug:
-                                                  'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
+                                  browser.open(
+                                      url: Uri.parse(
+                                          'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${jobList[index].slug.toString()}-${jobList[index].id.toString()}'),
+                                      options: ChromeSafariBrowserClassOptions(
+                                          android:
+                                              AndroidChromeCustomTabsOptions(
+                                                  addDefaultShareMenuItem:
+                                                      false,
+                                                  keepAliveEnabled: true),
+                                          ios: IOSSafariOptions(
+                                              dismissButtonStyle:
+                                                  IOSSafariDismissButtonStyle
+                                                      .CLOSE,
+                                              presentationStyle:
+                                                  IOSUIModalPresentationStyle
+                                                      .OVER_FULL_SCREEN))),
                                 },
                               ),
                             )
