@@ -47,8 +47,10 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
           'Notice_A_Problem/${DateTime.now().millisecondsSinceEpoch.toString() + Random().nextInt(3000).toString()}');
       UploadTask uploadTask;
 
+      File newFile = File(file.path);
+
       try {
-        uploadTask = ref.putFile(file);
+        uploadTask = ref.putFile(newFile);
         await downloadableList
             .addLink(await (await uploadTask).ref.getDownloadURL());
       } catch (e) {

@@ -28,7 +28,6 @@ class LocationSwitch extends StatelessWidget {
         geolocatorState.changeValue(value);
         await geolocationOnChanged(
             context: context, geolocatorState: geolocatorState, value: value);
-
         if (geolocatorState.value) {
           context.read<SendButtonLoadingState>().updateState(true);
           Geolocator.getCurrentPosition().then(
@@ -37,6 +36,8 @@ class LocationSwitch extends StatelessWidget {
               context.read<SendButtonLoadingState>().updateState(false),
             },
           );
+        } else {
+          context.read<SendButtonLoadingState>().updateState(false);
         }
       },
     );
