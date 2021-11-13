@@ -74,6 +74,7 @@ class NoticeFormState extends ChangeNotifier {
 
   void getPosition(Position position) {
     _position = position;
+    debugPrint('$_position');
     notifyListeners();
   }
 
