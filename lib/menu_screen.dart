@@ -178,9 +178,6 @@ class _MenuScreenState extends State<MenuScreen> {
                             },
                           ),
                         ),
-                        VerticalDivider(
-                          color: Colors.black,
-                        ),
                       ],
                     ),
                   ),
