@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/jobs/announcements_web_view.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutterapperadauti/jobs/models/job_model.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'dart:convert';
@@ -41,6 +41,7 @@ class _FurniturePageState extends State<FurniturePage> {
 
   @override
   Widget build(BuildContext context) {
+    ChromeSafariBrowser browser = ChromeSafariBrowser();
     return Scaffold(
       key: _scaffoldKey,
       drawer: NavDrawer(),
@@ -87,12 +88,22 @@ class _FurniturePageState extends State<FurniturePage> {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 onPressed: () => {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => AnnouncementWebView(
-                                              slug:
-                                                  'https://www.eradauti.ro/anunturi/imobiliare-19/${jobList[index].slug.toString()}-${jobList[index].id.toString()}')))
+                                  browser.open(
+                                      url: Uri.parse(
+                                          'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${jobList[index].slug.toString()}-${jobList[index].id.toString()}'),
+                                      options: ChromeSafariBrowserClassOptions(
+                                          android:
+                                              AndroidChromeCustomTabsOptions(
+                                                  addDefaultShareMenuItem:
+                                                      false,
+                                                  keepAliveEnabled: true),
+                                          ios: IOSSafariOptions(
+                                              dismissButtonStyle:
+                                                  IOSSafariDismissButtonStyle
+                                                      .CLOSE,
+                                              presentationStyle:
+                                                  IOSUIModalPresentationStyle
+                                                      .OVER_FULL_SCREEN))),
                                 },
                               ),
                             )
