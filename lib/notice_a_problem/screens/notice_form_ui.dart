@@ -1,3 +1,5 @@
+// ignore_for_file: missing_return
+
 import 'dart:io';
 import 'dart:math';
 
@@ -19,7 +21,6 @@ import 'package:flutterapperadauti/notice_a_problem/widgets/type_drop_down.dart'
 import 'package:flutterapperadauti/state/geolocator_state.dart';
 import 'package:flutterapperadauti/state/loading_state.dart';
 import 'package:flutterapperadauti/state/notice_problem_state.dart';
-import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:provider/provider.dart';
 
 class NoticeFormUi extends StatefulWidget {
@@ -70,9 +71,9 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
       noticeFormState.upTypeName('Altele');
       noticeFormState.upName('');
       noticeFormState.getPosition(null);
-      noticeFormState.upInstitutionEmail('');
+      noticeFormState.upInstitutionEmail('radautiulcivic@gmail.com');
       noticeFormState.upSubject('');
-      noticeFormState.upInstitution('');
+      noticeFormState.upInstitution('Asociația Rădăuțiul Civic');
     }
 
     sendData() async {
@@ -119,7 +120,7 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
           locationSwitchState.changeValueSwitch(false);
           downloadableList.deleteList();
           isLoading.changeLoadingState();
-          ScaffoldMessenger.of(context)
+          ScaffoldMessenger.of(widget.scaffoldState.currentState.context)
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
               content: Text('Reusit. Veti primi un email in cateva minute'),
@@ -138,8 +139,8 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
       }
     }
 
-    showConfirmDialog(var formKey) {
-      return Platform.isIOS
+    showConfirmDialog(var formKey) async {
+      Platform.isIOS
           ? CupertinoAlertDialog(
               title: Text('Vreti sa trimiteti formularul?'),
               content: Text(
@@ -150,9 +151,9 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
                   onPressed: () => Navigator.pop(context),
                 ),
                 TextButton(
-                  onPressed: () {
-                    sendData();
+                  onPressed: () async {
                     Navigator.pop(context);
+                    return await sendData();
                   },
                   child: Text('Trimiteti'),
                 )
@@ -168,9 +169,9 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
                   onPressed: () => Navigator.pop(context),
                 ),
                 TextButton(
-                  onPressed: () {
-                    sendData();
+                  onPressed: () async {
                     Navigator.pop(context);
+                    return await sendData();
                   },
                   child: Text('Trimiteti'),
                 )
@@ -186,10 +187,6 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
           children: [
             NameTextField(),
             InstitutionDropDown(),
-            Padding(
-              child: Text('Alegeti o categorie de sesizare'),
-              padding: EdgeInsets.only(top: 20),
-            ),
             TypeDropDown(),
             SubjectTextField(),
             DescriptionTextField(),
@@ -225,7 +222,9 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
                           if (_formKey.currentState.validate()) {
                             showDialog(
                                 context: context,
-                                builder: (_) => showConfirmDialog(_formKey));
+                                builder: (_) {
+                                  showConfirmDialog(_formKey);
+                                });
                           }
                         }
                       },
@@ -235,10 +234,5 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
         ),
       ),
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 }

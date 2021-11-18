@@ -4,13 +4,13 @@ import 'package:latlong2/latlong.dart' as latlng;
 
 class NoticeFormState extends ChangeNotifier {
   String _name;
-  String _institutionEmail;
+  String _institutionEmail = 'radautiulcivic@gmail.com';
   String _subject;
-  String _description;
+  String _description = '';
   String _phoneNumber;
   String _email;
   String _category = 'Altele';
-  String _institution;
+  String _institution = 'Asociația Rădăuțiul Civic';
   int _index = 0;
   Position _position;
   bool _dialOpen = false;

@@ -13,8 +13,15 @@ class DescriptionTextField extends StatelessWidget {
     NoticeFormState noticeFormState =
         Provider.of<NoticeFormState>(context, listen: false);
     return FormBuilderTextField(
-        decoration: InputDecoration(hintText: 'Descriere'),
-        maxLines: 5,
+        decoration: InputDecoration(
+            hintText: 'Descriere',
+            errorText: Provider.of<NoticeFormState>(context)
+                        .description
+                        .length <
+                    50
+                ? '${Provider.of<NoticeFormState>(context).description.length}/50'
+                : null),
+        maxLines: 10,
         initialValue: noticeFormState.description,
         name: 'description',
         onChanged: (value) {
@@ -23,8 +30,8 @@ class DescriptionTextField extends StatelessWidget {
         validator: FormBuilderValidators.compose(
           [
             FormBuilderValidators.required(context, errorText: errorRequired),
-            FormBuilderValidators.minLength(context, 150,
-                errorText: 'Trebuie sa introduceti minimum 150 charactere'),
+            FormBuilderValidators.minLength(context, 50,
+                errorText: 'Trebuie sa introduceti minimum 50 charactere'),
           ],
         ));
   }
