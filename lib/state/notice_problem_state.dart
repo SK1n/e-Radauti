@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:latlong2/latlong.dart' as latlng;
 
 class NoticeFormState extends ChangeNotifier {
   String _name;

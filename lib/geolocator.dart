@@ -2,8 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/notice_a_problem/widgets/send_button.dart';
 import 'package:flutterapperadauti/state/geolocator_state.dart';
+import 'package:flutterapperadauti/state/notice_problem_state.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:provider/provider.dart';
 
 Future<void> geolocationOnChanged({
   @required BuildContext context,
@@ -12,8 +15,11 @@ Future<void> geolocationOnChanged({
 }) async {
   geolocatorState.changeValue(value);
   LocationPermission permission = await Geolocator.checkPermission();
+  NoticeFormState noticeFormState =
+      Provider.of<NoticeFormState>(context, listen: false);
   if (geolocatorState.value) {
     if (permission == LocationPermission.denied) {
+      debugPrint("Permission denied");
       showDialog(
         context: context,
         builder: (BuildContext context) => Platform.isIOS
@@ -25,10 +31,13 @@ Future<void> geolocationOnChanged({
                   TextButton(
                       onPressed: () async {
                         Navigator.pop(context);
-                        await Geolocator.requestPermission().then((value) {
+                        await Geolocator.requestPermission()
+                            .then((value) async {
                           if (value == LocationPermission.always ||
                               value == LocationPermission.whileInUse) {
                             geolocatorState.changeValue(true);
+                            await Geolocator.getCurrentPosition().then(
+                                (value) => noticeFormState.getPosition(value));
                           }
                         });
                       },
@@ -43,10 +52,13 @@ Future<void> geolocationOnChanged({
                   TextButton(
                       onPressed: () async {
                         Navigator.pop(context);
-                        await Geolocator.requestPermission().then((value) {
+                        await Geolocator.requestPermission()
+                            .then((value) async {
                           if (value == LocationPermission.always ||
                               value == LocationPermission.whileInUse) {
                             geolocatorState.changeValue(true);
+                            await Geolocator.getCurrentPosition().then(
+                                (value) => noticeFormState.getPosition(value));
                           }
                         });
                       },
@@ -55,11 +67,17 @@ Future<void> geolocationOnChanged({
               ),
       );
     } else if (permission == LocationPermission.deniedForever) {
+      debugPrint("Permission denied forever");
       geolocatorState.changeValue(false);
       Platform.isIOS
           ? cupertinoGeolocationDeniedDialog(context, geolocatorState)
           : androidGeolocationDeniedDialog(context, geolocatorState);
     } else {
+      debugPrint("Permission granted");
+      await Geolocator.getCurrentPosition().then((value) {
+        context.read<SendButtonLoadingState>().updateState(false);
+        noticeFormState.getPosition(value);
+      });
       geolocatorState.changeValue(true);
     }
   }

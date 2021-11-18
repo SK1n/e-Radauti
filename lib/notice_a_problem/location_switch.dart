@@ -23,19 +23,13 @@ class LocationSwitch extends StatelessWidget {
       title: Text(
           'Adăugați locația sesizării dacă sunteți în locul unde este problema sesizată'),
       isThreeLine: false,
-      value: geolocatorState.value,
+      value: geolocatorState.valueSwitch,
       onChanged: (value) async {
-        geolocatorState.changeValue(value);
-        await geolocationOnChanged(
-            context: context, geolocatorState: geolocatorState, value: value);
-        if (geolocatorState.value) {
+        geolocatorState.changeValueSwitch(value);
+        if (geolocatorState.valueSwitch) {
+          geolocationOnChanged(
+              context: context, geolocatorState: geolocatorState, value: value);
           context.read<SendButtonLoadingState>().updateState(true);
-          Geolocator.getCurrentPosition().then(
-            (position) => {
-              context.read<NoticeFormState>().getPosition(position),
-              context.read<SendButtonLoadingState>().updateState(false),
-            },
-          );
         } else {
           context.read<SendButtonLoadingState>().updateState(false);
         }
