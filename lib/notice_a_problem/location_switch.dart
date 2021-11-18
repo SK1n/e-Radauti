@@ -7,16 +7,20 @@ import 'package:flutterapperadauti/geolocator.dart';
 import 'package:flutterapperadauti/notice_a_problem/widgets/send_button.dart';
 import 'package:flutterapperadauti/state/geolocator_state.dart';
 import 'package:flutterapperadauti/state/notice_problem_state.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 class LocationSwitch extends StatelessWidget {
-  const LocationSwitch({Key key}) : super(key: key);
+  final SendButtonLoadingState sendButtonLoadingState;
+  const LocationSwitch({
+    Key key,
+    this.sendButtonLoadingState,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     GeolocatorState geolocatorState = Provider.of<GeolocatorState>(context);
+    NoticeFormState noticeFormState =
+        Provider.of<NoticeFormState>(context, listen: false);
     return SwitchListTile(
       dense: true,
       secondary: Icon(SimpleLineIcons.location_pin),
@@ -27,26 +31,17 @@ class LocationSwitch extends StatelessWidget {
       onChanged: (value) async {
         geolocatorState.changeValueSwitch(value);
         if (geolocatorState.valueSwitch) {
-          geolocationOnChanged(
-              context: context, geolocatorState: geolocatorState, value: value);
-          context.read<SendButtonLoadingState>().updateState(true);
+          sendButtonLoadingState.updateState(true);
+          await geolocationOnChanged(
+                  context: context,
+                  geolocatorState: geolocatorState,
+                  noticeFormState: noticeFormState,
+                  value: value)
+              .then((value) => sendButtonLoadingState.updateState(false));
         } else {
-          context.read<SendButtonLoadingState>().updateState(false);
+          sendButtonLoadingState.updateState(false);
         }
       },
     );
   }
 }
-
-class LocationSwitchState extends ChangeNotifier {
-  bool _value = false;
-  bool get value => _value;
-
-  void updateState(bool value) {
-    _value = value;
-    debugPrint('switch: $value');
-    notifyListeners();
-  }
-}
-
-// TODO : check if the email works properly. Solved switcher problem.

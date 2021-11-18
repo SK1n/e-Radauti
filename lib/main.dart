@@ -57,7 +57,6 @@ import 'usefull_numbers/miscellaneous.dart';
 import 'usefull_numbers/public_institutions.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
-import 'package:flutterapperadauti/notice_a_problem/location_switch.dart';
 import 'package:flutterapperadauti/state/marker_state.dart';
 import 'package:flutterapperadauti/state/fcm_state.dart';
 
@@ -154,8 +153,6 @@ Future<void> main() async {
     providers: [
       ChangeNotifierProvider<IsLoading>(create: (_) => IsLoading()),
       ChangeNotifierProvider<NoticeFormState>(create: (_) => NoticeFormState()),
-      ChangeNotifierProvider<LocationSwitchState>(
-          create: (_) => LocationSwitchState()),
       ChangeNotifierProvider<MarkerNotifier>(create: (_) => MarkerNotifier()),
       ChangeNotifierProvider<FCMState>(create: (_) => FCMState()),
       ChangeNotifierProvider<Subscription>(create: (_) => Subscription()),
