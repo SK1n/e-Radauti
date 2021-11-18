@@ -69,16 +69,20 @@ class _NewEventWidgetState extends State<NewEventWidget>
   final AsyncMemoizer dCMemorizer = AsyncMemoizer();
   Future getDownloadUrlFromUrlRef(BuildContext context, String imgURL) async {
     Image image;
-    await FirebaseStorage.instance
-        .refFromURL(imgURL)
-        .getDownloadURL()
-        .then((imageUrl) => image = Image.network(
-              imageUrl.toString(),
-              scale: 1.0,
-              fit: BoxFit.fitWidth,
-              height: 200,
-            ));
-    return image;
+    try {
+      await FirebaseStorage.instance
+          .refFromURL(imgURL)
+          .getDownloadURL()
+          .then((imageUrl) => image = Image.network(
+                imageUrl.toString(),
+                scale: 1.0,
+                fit: BoxFit.fitWidth,
+                height: 200,
+              ));
+      return image;
+    } on Exception catch (e) {
+      return Image.asset('assets/images/no-wifi.png');
+    }
   }
 
   String convertTimestampToDate(int timestamp) {
