@@ -15,7 +15,7 @@ class ImagePickerField extends StatelessWidget {
     return FormBuilderImagePicker(
         enabled: !Provider.of<SendButtonLoadingState>(context).isLoading,
         name: 'image',
-        loadingWidget: (BuildContext context) => LoadingScreen(),
+        // loadingWidget: (BuildContext context) => LoadingScreen(),
         maxImages: 3,
         decoration: InputDecoration(
             errorText: Provider.of<SendButtonLoadingState>(context).isLoading

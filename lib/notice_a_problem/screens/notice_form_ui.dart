@@ -21,6 +21,7 @@ import 'package:flutterapperadauti/notice_a_problem/widgets/type_drop_down.dart'
 import 'package:flutterapperadauti/state/geolocator_state.dart';
 import 'package:flutterapperadauti/state/loading_state.dart';
 import 'package:flutterapperadauti/state/notice_problem_state.dart';
+import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:provider/provider.dart';
 
 class NoticeFormUi extends StatefulWidget {
@@ -65,20 +66,47 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
 
     void resetData() {
       noticeFormState.upIndex(0);
+      debugPrint('${noticeFormState.index}');
       noticeFormState.upDescription('');
+      debugPrint('${noticeFormState.description}');
       noticeFormState.upPhoneNumber('');
+      debugPrint('${noticeFormState.phoneNumber}');
       noticeFormState.upEmail('');
+      debugPrint('${noticeFormState.email}');
       noticeFormState.upTypeName('Altele');
+      debugPrint('${noticeFormState.category}');
       noticeFormState.upName('');
+      debugPrint('${noticeFormState.name}');
       noticeFormState.getPosition(null);
+      debugPrint('${noticeFormState.position}');
       noticeFormState.upInstitutionEmail('radautiulcivic@gmail.com');
+      debugPrint('${noticeFormState.institutionEmail}');
       noticeFormState.upSubject('');
+      debugPrint('${noticeFormState.subject}');
       noticeFormState.upInstitution('Asociația Rădăuțiul Civic');
+      debugPrint('${noticeFormState.institution}');
+      _formKey.currentState.reset();
     }
 
     sendData() async {
       final firestoreInstance = FirebaseFirestore.instance;
-      isLoading.changeLoadingState();
+      showDialog(
+          context: context,
+          builder: (BuildContext context) => Platform.isIOS
+              ? Container(
+                  width: MediaQuery.of(context).size.width - 20,
+                  height: 100,
+                  child: CupertinoAlertDialog(
+                    content: LoadingScreen(),
+                  ),
+                )
+              : Container(
+                  width: MediaQuery.of(context).size.width - 20,
+                  height: 100,
+                  child: AlertDialog(
+                    content: LoadingScreen(),
+                  ),
+                ));
       try {
         await Future.forEach(_formKey.currentState.fields['image'].value,
             (element) async => uploadImageToFirebase(element));
@@ -116,10 +144,10 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
             .update({"sesizari": FieldValue.arrayUnion(data)});
         await documentReference
             .update({"markers": FieldValue.arrayUnion(data)}).then((value) {
-          resetData();
           locationSwitchState.changeValueSwitch(false);
+
           downloadableList.deleteList();
-          isLoading.changeLoadingState();
+          Navigator.pop(context);
           ScaffoldMessenger.of(widget.scaffoldState.currentState.context)
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
@@ -128,7 +156,7 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
             ));
         });
       } on Exception catch (e) {
-        isLoading.changeLoadingState();
+        Navigator.pop(context);
         downloadableList.deleteList();
         ScaffoldMessenger.of(context)
           ..hideCurrentSnackBar()
@@ -137,10 +165,11 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
             backgroundColor: Colors.redAccent,
           ));
       }
+      resetData();
     }
 
-    showConfirmDialog(var formKey) async {
-      Platform.isIOS
+    showConfirmDialog(var formKey) {
+      return Platform.isIOS
           ? CupertinoAlertDialog(
               title: Text('Vreti sa trimiteti formularul?'),
               content: Text(
@@ -223,7 +252,7 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
                             showDialog(
                                 context: context,
                                 builder: (_) {
-                                  showConfirmDialog(_formKey);
+                                  return showConfirmDialog(_formKey);
                                 });
                           }
                         }

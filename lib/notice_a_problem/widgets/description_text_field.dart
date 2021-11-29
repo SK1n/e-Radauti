@@ -15,12 +15,11 @@ class DescriptionTextField extends StatelessWidget {
     return FormBuilderTextField(
         decoration: InputDecoration(
             hintText: 'Descriere',
-            errorText: Provider.of<NoticeFormState>(context)
-                        .description
-                        .length <
-                    50
-                ? '${Provider.of<NoticeFormState>(context).description.length}/50'
-                : null),
+            errorText: Provider.of<NoticeFormState>(context).description.isEmpty
+                ? null
+                : Provider.of<NoticeFormState>(context).description.length < 50
+                    ? '${Provider.of<NoticeFormState>(context).description.length}/50'
+                    : null),
         maxLines: 10,
         initialValue: noticeFormState.description,
         name: 'description',
