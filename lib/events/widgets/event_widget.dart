@@ -81,6 +81,7 @@ class _NewEventWidgetState extends State<NewEventWidget>
               ));
       return image;
     } on Exception catch (e) {
+      debugPrint('$e');
       return Image.asset('assets/images/no-wifi.png');
     }
   }
