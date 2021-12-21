@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutterapperadauti/air_quality/airquality_model.dart';
+import 'package:flutterapperadauti/air_quality/models/airquality_model.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:flutterapperadauti/air_quality/value_adapter.dart';
