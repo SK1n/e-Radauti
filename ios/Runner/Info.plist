@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key></key>
-	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -36,6 +34,8 @@
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Aplicația nu acceseaza direct Apple Music dar unele pachete din ea cer o astfel de permisiune.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Deși aplicația nu folosește microfon-ul, unele pachete ar putea cere această permisiune.</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Evenimentele din aplicație pot fi salvate direct în calendarul telefonului. Din acest motiv, aplicația are nevoie de acces la el.</string>
 	<key>NSCameraUsageDescription</key>
