@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/air_quality/models/charts_model.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
@@ -55,11 +58,39 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                   Card(
                     child: Column(
                       children: [
-                        Text('Grafic de PM2.5 (ug/m3) vs Timp'),
+                        Text('Grafic de PM2.5 (μg/m³) vs Timp'),
                         SfCartesianChart(
                           series: [
                             ColumnSeries<ChartsModel, DateTime>(
                               dataSource: dataChartPmVsTime,
+                              onPointTap: (item) {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) => Platform
+                                            .isIOS
+                                        ? CupertinoAlertDialog(
+                                            title: Text('Valoarea selectata'),
+                                            content: Text(
+                                                '${dataChartPmVsTime[item.pointIndex].value}'),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(context),
+                                                  child: Text('Inchide!'))
+                                            ],
+                                          )
+                                        : AlertDialog(
+                                            title: Text('Valoarea selectata'),
+                                            content: Text(
+                                                '${dataChartPmVsTime[item.pointIndex].value}'),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(context),
+                                                  child: Text('Inchide!'))
+                                            ],
+                                          ));
+                              },
                               pointColorMapper: (ChartsModel model, _) {
                                 if (model.value <= 25) {
                                   return Colors.greenAccent;
@@ -96,6 +127,34 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                                   model.value,
                               xAxisName: 'Timp',
                               yAxisName: 'CO2',
+                              onPointTap: (item) {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) => Platform
+                                            .isIOS
+                                        ? CupertinoAlertDialog(
+                                            title: Text('Valoarea selectata'),
+                                            content: Text(
+                                                '${dataChartCoVsTime[item.pointIndex].value} (ppm)'),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(context),
+                                                  child: Text('Inchide!'))
+                                            ],
+                                          )
+                                        : AlertDialog(
+                                            title: Text('Valoarea selectata'),
+                                            content: Text(
+                                                '${dataChartCoVsTime[item.pointIndex].value} (ppm)'),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(context),
+                                                  child: Text('Inchide!'))
+                                            ],
+                                          ));
+                              },
                             ),
                           ],
                           primaryXAxis: DateTimeAxis(),
@@ -119,6 +178,34 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                                   model.value,
                               xAxisName: 'Timp',
                               yAxisName: 'PM',
+                              onPointTap: (item) {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) => Platform
+                                            .isIOS
+                                        ? CupertinoAlertDialog(
+                                            title: Text('Valoarea selectata'),
+                                            content: Text(
+                                                '${dataChartPmVsWindVsTime[item.pointIndex].value} μg/m³'),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(context),
+                                                  child: Text('Inchide!'))
+                                            ],
+                                          )
+                                        : AlertDialog(
+                                            title: Text('Valoarea selectata'),
+                                            content: Text(
+                                                '${dataChartPmVsWindVsTime[item.pointIndex].value} μg/m³'),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(context),
+                                                  child: Text('Inchide!'))
+                                            ],
+                                          ));
+                              },
                             ),
                             ColumnSeries<ChartsModel, DateTime>(
                               name: 'Viteza Vântului \n(m/s)',
@@ -129,6 +216,34 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                                   model.secondValue,
                               xAxisName: 'Timp',
                               yAxisName: 'Wind',
+                              onPointTap: (item) {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) => Platform
+                                            .isIOS
+                                        ? CupertinoAlertDialog(
+                                            title: Text('Valoarea selectata'),
+                                            content: Text(
+                                                '${dataChartPmVsWindVsTime[item.pointIndex].secondValue} (m/s)'),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(context),
+                                                  child: Text('Inchide!'))
+                                            ],
+                                          )
+                                        : AlertDialog(
+                                            title: Text('Valoarea selectata'),
+                                            content: Text(
+                                                '${dataChartPmVsWindVsTime[item.pointIndex].secondValue} (m/s)'),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(context),
+                                                  child: Text('Inchide!'))
+                                            ],
+                                          ));
+                              },
                             ),
                           ],
                           legend: Legend(
@@ -146,6 +261,38 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                         SfCartesianChart(
                           series: <ColumnSeries>[
                             ColumnSeries<ChartsModel, DateTime>(
+                                onPointTap: (item) {
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          Platform.isIOS
+                                              ? CupertinoAlertDialog(
+                                                  title: Text(
+                                                      'Valoarea selectata'),
+                                                  content: Text(
+                                                      '${dataChartTempVsTime[item.pointIndex].secondValue} °C'),
+                                                  actions: [
+                                                    TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                context),
+                                                        child: Text('Inchide!'))
+                                                  ],
+                                                )
+                                              : AlertDialog(
+                                                  title: Text(
+                                                      'Valoarea selectata'),
+                                                  content: Text(
+                                                      '${dataChartTempVsTime[item.pointIndex].secondValue} °C'),
+                                                  actions: [
+                                                    TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                context),
+                                                        child: Text('Inchide!'))
+                                                  ],
+                                                ));
+                                },
                                 dataSource: dataChartTempVsTime,
                                 xValueMapper: (ChartsModel model, _) =>
                                     model.date,
