@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/geolocator.dart';
 import 'package:flutterapperadauti/state/geolocator_state.dart';
+import 'package:flutterapperadauti/state/notice_problem_state.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
@@ -29,6 +31,7 @@ class _AppSettingsState extends State<AppSettings> {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
     GeolocatorState geolocatorState = Provider.of<GeolocatorState>(context);
+    NoticeFormState noticeFormState = Provider.of<NoticeFormState>(context);
 
     return Scaffold(
       key: _scaffoldKey,
@@ -44,14 +47,18 @@ class _AppSettingsState extends State<AppSettings> {
       body: Column(
         children: [
           notificationSection(),
-          geolocatorSection(geolocatorState: geolocatorState),
-          ListTileSettings(
-              routeName: 'debug',
-              title: 'Debug',
-              leadingIcon: Icons.bug_report_outlined,
-              onTap: () {
-                debugDialog(context);
-              }),
+          geolocatorSection(
+              geolocatorState: geolocatorState,
+              noticeFormState: noticeFormState),
+          kDebugMode
+              ? ListTileSettings(
+                  routeName: 'debug',
+                  title: 'Debug',
+                  leadingIcon: Icons.bug_report_outlined,
+                  onTap: () {
+                    Navigator.pushNamed(context, '/settings/debug');
+                  })
+              : Container(),
         ],
       ),
     );
@@ -70,95 +77,18 @@ class _AppSettingsState extends State<AppSettings> {
     );
   }
 
-  geolocatorSection({@required GeolocatorState geolocatorState}) {
+  geolocatorSection(
+      {@required GeolocatorState geolocatorState,
+      @required NoticeFormState noticeFormState}) {
     return ListTileSwitch(
         value: geolocatorState.value,
         onChanged: (value) => geolocationOnChanged(
               context: context,
               geolocatorState: geolocatorState,
               value: value,
+              noticeFormState: noticeFormState,
             ),
         title: Text('Locatie'));
-  }
-
-  debugDialog(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context) => Platform.isIOS
-            ? CupertinoAlertDialog(
-                title: Text('Introduceti parola'),
-                content: Container(
-                  child: CupertinoTextField(
-                    controller: debugTextEditingController,
-                  ),
-                ),
-                actions: [
-                  TextButton(
-                    child: Text(
-                      'Cancel',
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  TextButton(
-                    child: Text(
-                      'Open',
-                      textAlign: TextAlign.end,
-                    ),
-                    onPressed: () {
-                      if (debugTextEditingController.text == 'e-Radauti2021') {
-                        //e-radauti2021
-                        debugPrint('corect');
-                        Navigator.pop(context);
-                        Navigator.pushNamed(context, '/settings/debug');
-                      } else {
-                        setState(() {
-                          debugPasswordHasError = false;
-                        });
-                      }
-                    },
-                  ),
-                ],
-              )
-            : AlertDialog(
-                title: Text('Introduceti parola'),
-                content: TextField(
-                  controller: debugTextEditingController,
-                  decoration: InputDecoration(
-                      errorText: debugPasswordHasError
-                          ? 'Parola nu este corecta!'
-                          : null),
-                ),
-                actions: [
-                  TextButton(
-                    child: Text(
-                      'Cancel',
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  TextButton(
-                    child: Text(
-                      'Open',
-                      textAlign: TextAlign.end,
-                    ),
-                    onPressed: () {
-                      if (debugTextEditingController.text == 'e-Radauti2021') {
-                        //e-radauti2021
-                        debugPrint('corect');
-                        Navigator.pop(context);
-                        Navigator.pushNamed(context, '/settings/debug');
-                      } else {
-                        setState(() {
-                          debugPasswordHasError = false;
-                        });
-                      }
-                    },
-                  ),
-                ],
-              ));
   }
 }
 

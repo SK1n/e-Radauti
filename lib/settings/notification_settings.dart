@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
+import 'package:flutter/foundation.dart';
 
 class SettingsNotification extends StatefulWidget {
   SettingsNotification({Key key}) : super(key: key);
@@ -18,7 +19,7 @@ class _SettingsNotificationState extends State<SettingsNotification> {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-    List topics = ['Toate', 'Evenimente', 'Sesizari'];
+    List topics = ['Toate', 'Evenimente', 'Sesizari', 'Test'];
     return Scaffold(
       key: _scaffoldKey,
       appBar: PreferredSize(
@@ -30,40 +31,45 @@ class _SettingsNotificationState extends State<SettingsNotification> {
         preferredSize: Size(MediaQuery.of(context).size.width, 50),
       ),
       drawer: NavDrawer(),
-      body: ListView.builder(
-          itemCount: topics.length,
-          itemBuilder: (BuildContext context, int item) {
-            return ListTile(
-                title: Text('${topics[item]}'),
-                trailing: subscribed.contains(topics[item])
-                    ? TextButton(
-                        onPressed: () async {
-                          await FirebaseMessaging.instance
-                              .unsubscribeFromTopic(topics[item]);
-                          await FirebaseFirestore.instance
-                              .collection('topics')
-                              .doc(token)
-                              .update({topics[item]: FieldValue.delete()});
-                          setState(() {
-                            subscribed.remove(topics[item]);
-                          });
-                        },
-                        child: Text('Unsubscribe'))
-                    : TextButton(
-                        onPressed: () async {
-                          await FirebaseMessaging.instance
-                              .subscribeToTopic(topics[item]);
-                          await FirebaseFirestore.instance
-                              .collection('topics')
-                              .doc(token)
-                              .set({topics[item]: 'subscribed'},
-                                  SetOptions(merge: true));
-                          setState(() {
-                            subscribed.add(topics[item]);
-                          });
-                        },
-                        child: Text('Subscribe')));
-          }),
+      body: Column(
+        children: [
+          ListView.builder(
+              shrinkWrap: kDebugMode ? true : false,
+              itemCount: kDebugMode ? topics.length : 3,
+              itemBuilder: (BuildContext context, int item) {
+                return ListTile(
+                    title: Text('${topics[item]}'),
+                    trailing: subscribed.contains(topics[item])
+                        ? TextButton(
+                            onPressed: () async {
+                              await FirebaseMessaging.instance
+                                  .unsubscribeFromTopic(topics[item]);
+                              await FirebaseFirestore.instance
+                                  .collection('topics')
+                                  .doc(token)
+                                  .update({topics[item]: FieldValue.delete()});
+                              setState(() {
+                                subscribed.remove(topics[item]);
+                              });
+                            },
+                            child: Text('Unsubscribe'))
+                        : TextButton(
+                            onPressed: () async {
+                              await FirebaseMessaging.instance
+                                  .subscribeToTopic(topics[item]);
+                              await FirebaseFirestore.instance
+                                  .collection('topics')
+                                  .doc(token)
+                                  .set({topics[item]: 'subscribed'},
+                                      SetOptions(merge: true));
+                              setState(() {
+                                subscribed.add(topics[item]);
+                              });
+                            },
+                            child: Text('Subscribe')));
+              }),
+        ],
+      ),
     );
   }
 

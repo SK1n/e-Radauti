@@ -1,9 +1,11 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterapperadauti/state/fcm_state.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -67,12 +69,15 @@ class NavDrawer extends StatelessWidget {
         color: Color(0x55FB6340),
       ),
       title: Text(title),
-      onTap: () {
+      onTap: () async {
         if (following != null) {
           Navigator.popUntil(context, ModalRoute.withName('/'));
           Navigator.pushNamed(context, following);
         } else {
           if (Platform.isIOS) {
+            PackageInfo packageInfo = await PackageInfo.fromPlatform();
+            debugPrint(
+                'Version: ${packageInfo.version} | Build number: ${packageInfo.buildNumber}');
             showAboutDialog(
                 context: context,
                 children: [
@@ -85,26 +90,33 @@ class NavDrawer extends StatelessWidget {
                           }),
                 ],
                 applicationName: 'e-Radauti',
-                applicationVersion: 'Version: 2.1.4 (3)',
+                applicationVersion:
+                    'Version: ${packageInfo.version} | Build number: ${packageInfo.buildNumber}',
                 applicationIcon: Image.asset(
                   'assets/logo_images/app_logo_final.png',
                   width: 24,
                   height: 24,
                 ));
           } else if (Platform.isAndroid) {
+            PackageInfo packageInfo = await PackageInfo.fromPlatform();
+            debugPrint(
+                'Version: ${packageInfo.version} | Build number: ${packageInfo.buildNumber}');
             showAboutDialog(
                 context: context,
                 children: [
-                  InkWell(
-                      child: Text('Tap to copy: FCM token'),
-                      onTap: () => {
-                            Clipboard.setData(
-                                ClipboardData(text: provider.fcm)),
-                            showSnackBar(context, snackBar),
-                          }),
+                  kDebugMode
+                      ? InkWell(
+                          child: Text('Tap to copy: FCM token'),
+                          onTap: () => {
+                                Clipboard.setData(
+                                    ClipboardData(text: provider.fcm)),
+                                showSnackBar(context, snackBar),
+                              })
+                      : Container(),
                 ],
                 applicationName: 'e-Radauti',
-                applicationVersion: 'Version: 2.5.0 (45)',
+                applicationVersion:
+                    'Version: ${packageInfo.version} | Build number: ${packageInfo.buildNumber}',
                 applicationIcon: Image.asset(
                   'assets/logo_images/app_logo_final.png',
                   width: 24,

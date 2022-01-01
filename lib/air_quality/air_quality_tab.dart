@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/air_quality/air_quality.dart';
-import 'package:flutterapperadauti/air_quality/air_quality_charts.dart';
+import 'package:flutterapperadauti/air_quality/air_quality_charts2.dart';
 
 class TabDemo extends StatefulWidget {
   @override
@@ -36,8 +36,14 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
               controller: _tabController,
               labelPadding: const EdgeInsets.all(0.0),
               tabs: [
-                _getTab(0, 'CALITATEA AERULUI',),
-                _getTab(1, 'GRAFICE',),
+                _getTab(
+                  0,
+                  'CALITATEA AERULUI',
+                ),
+                _getTab(
+                  1,
+                  'GRAFICE',
+                ),
               ],
             ),
           ),
@@ -48,7 +54,7 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
             controller: _tabController,
             children: [
               AirQualityPage(),
-              AirQualityChartsPage(),
+              AirQualityCharts2(),
             ],
           ),
         ),
@@ -63,7 +69,10 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
           child: Center(
             child: Text(
               childString,
-              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold,),
+              style: TextStyle(
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           decoration: BoxDecoration(
