@@ -34,8 +34,6 @@
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Aplicația nu acceseaza direct Apple Music dar unele pachete din ea cer o astfel de permisiune.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Deși aplicația nu folosește microfon-ul, unele pachete ar putea cere această permisiune.</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Evenimentele din aplicație pot fi salvate direct în calendarul telefonului. Din acest motiv, aplicația are nevoie de acces la el.</string>
 	<key>NSCameraUsageDescription</key>
@@ -50,6 +48,8 @@
 	<string>Deși aplicația cere această permisiune, aplicația nu folosește aceasta permisiune, unele pachete ar putea cere această permisiune.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>La sesizează o problemă, utilizatorul poate selecta să fie folosită locația de pe GPS. Din acest motiv, aplicația are nevoie să acceseze locația.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Deși aplicația nu folosește microfon-ul, unele pachete ar putea cere această permisiune.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Deși aplicația nu are nicăieri senzorii de mișcare, unele pachete ar putea cere această permisiune.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
