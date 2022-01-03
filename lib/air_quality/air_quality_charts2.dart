@@ -60,8 +60,16 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                       children: [
                         Text('Grafic de PM2.5 (μg/m³) vs Timp'),
                         SfCartesianChart(
+                          zoomPanBehavior: ZoomPanBehavior(
+                            enablePanning: true,
+                            enablePinching: true,
+                            enableDoubleTapZooming: true,
+                          ),
                           series: [
                             ColumnSeries<ChartsModel, DateTime>(
+                              enableTooltip: true,
+                              dataLabelSettings:
+                                  DataLabelSettings(isVisible: true),
                               dataSource: dataChartPmVsTime,
                               onPointTap: (item) {
                                 showDialog(
@@ -118,6 +126,11 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                       children: [
                         Text('Grafic de CO2 (ppm) vs Timp'),
                         SfCartesianChart(
+                          zoomPanBehavior: ZoomPanBehavior(
+                            enablePanning: true,
+                            enablePinching: true,
+                            enableDoubleTapZooming: true,
+                          ),
                           series: <ColumnSeries>[
                             ColumnSeries<ChartsModel, DateTime>(
                               dataSource: dataChartCoVsTime,
@@ -168,6 +181,11 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                         Text(
                             'Grafic de PM2.5 μg/m³ & Viteza Vântului (m/s) vs Timp'),
                         SfCartesianChart(
+                          zoomPanBehavior: ZoomPanBehavior(
+                            enablePanning: true,
+                            enablePinching: true,
+                            enableDoubleTapZooming: true,
+                          ),
                           series: <ColumnSeries>[
                             ColumnSeries<ChartsModel, DateTime>(
                               name: 'PM2.5 μg/m³',
@@ -259,6 +277,11 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                       children: [
                         Text('Grafic de Temperatură vs Timp'),
                         SfCartesianChart(
+                          zoomPanBehavior: ZoomPanBehavior(
+                            enablePanning: true,
+                            enablePinching: true,
+                            enableDoubleTapZooming: true,
+                          ),
                           series: <ColumnSeries>[
                             ColumnSeries<ChartsModel, DateTime>(
                                 onPointTap: (item) {
