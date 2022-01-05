@@ -20,7 +20,7 @@ class DescriptionTextField extends StatelessWidget {
                 : Provider.of<NoticeFormState>(context).description.length < 50
                     ? '${Provider.of<NoticeFormState>(context).description.length}/50'
                     : null),
-        maxLines: 10,
+        maxLines: 5,
         initialValue: noticeFormState.description,
         name: 'description',
         onChanged: (value) {

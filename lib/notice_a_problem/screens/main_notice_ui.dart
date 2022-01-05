@@ -42,8 +42,11 @@ class _MainNoticeUiState extends State<MainNoticeUi> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(MaterialIcons.map),
+      floatingActionButton: FloatingActionButton.extended(
+        tooltip: "Harta",
+        isExtended: true,
+        label: const Text('Harta'),
+        icon: Icon(MaterialIcons.map),
         onPressed: () => Navigator.pushNamed(context, '/noticeMap'),
       ),
     );

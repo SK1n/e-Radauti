@@ -242,7 +242,7 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
                     )
                   : TextButton(
                       style: TextButton.styleFrom(
-                        backgroundColor: Colors.red,
+                        backgroundColor: Colors.blueAccent,
                         primary: Colors.white,
                       ),
                       child: Text('Trimite'),

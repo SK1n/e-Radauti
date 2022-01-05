@@ -79,7 +79,7 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                                         ? CupertinoAlertDialog(
                                             title: Text('Valoarea selectata'),
                                             content: Text(
-                                                '${dataChartPmVsTime[item.pointIndex].value}'),
+                                                '${dataChartPmVsTime[item.pointIndex].value} \n La data de: ${dataChartPmVsTime[item.pointIndex].date}'),
                                             actions: [
                                               TextButton(
                                                   onPressed: () =>
@@ -90,7 +90,7 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                                         : AlertDialog(
                                             title: Text('Valoarea selectata'),
                                             content: Text(
-                                                '${dataChartPmVsTime[item.pointIndex].value}'),
+                                                '${dataChartPmVsTime[item.pointIndex].value} \n La data de: ${dataChartPmVsTime[item.pointIndex].date}'),
                                             actions: [
                                               TextButton(
                                                   onPressed: () =>
