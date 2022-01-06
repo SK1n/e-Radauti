@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutterapperadauti/air_quality/models/airquality_model.dart';
 import 'package:flutterapperadauti/air_quality/models/charts_model.dart';
 import 'package:flutterapperadauti/events/fetch_data.dart';
@@ -245,6 +246,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,

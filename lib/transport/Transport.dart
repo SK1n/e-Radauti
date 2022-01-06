@@ -39,12 +39,11 @@ class HomePageTransport extends StatelessWidget {
                 subTitle: 'Lista trenurilor din Rădăuți',
               ),
               CustomListTile(
-                content: 'Autobuz',
+                content: 'Microbuze',
                 leadingIcon: Icons.directions_bus,
                 leadingColor: Color(0x55FB6340),
                 route: '/bus',
-                subTitle:
-                    'Lista autobuzelor Rădăuți - alte localtăți din  județul Suceava',
+                subTitle: 'Lista microbuzelor pe ruta Rădăuți - Suceava',
               ),
             ],
           ),

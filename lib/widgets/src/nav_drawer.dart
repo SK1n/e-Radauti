@@ -76,8 +76,6 @@ class NavDrawer extends StatelessWidget {
         } else {
           if (Platform.isIOS) {
             PackageInfo packageInfo = await PackageInfo.fromPlatform();
-            debugPrint(
-                'Version: ${packageInfo.version} | Build number: ${packageInfo.buildNumber}');
             showAboutDialog(
                 context: context,
                 children: [
@@ -90,8 +88,9 @@ class NavDrawer extends StatelessWidget {
                           }),
                 ],
                 applicationName: 'e-Radauti',
-                applicationVersion:
-                    'Version: ${packageInfo.version} | Build number: ${packageInfo.buildNumber}',
+                applicationVersion: kDebugMode
+                    ? 'Version: BETA | Build number: BETA'
+                    : 'Version: ${packageInfo.version} | Build number: ${packageInfo.buildNumber}',
                 applicationIcon: Image.asset(
                   'assets/logo_images/app_logo_final.png',
                   width: 24,
@@ -99,8 +98,6 @@ class NavDrawer extends StatelessWidget {
                 ));
           } else if (Platform.isAndroid) {
             PackageInfo packageInfo = await PackageInfo.fromPlatform();
-            debugPrint(
-                'Version: ${packageInfo.version} | Build number: ${packageInfo.buildNumber}');
             showAboutDialog(
                 context: context,
                 children: [
@@ -115,8 +112,9 @@ class NavDrawer extends StatelessWidget {
                       : Container(),
                 ],
                 applicationName: 'e-Radauti',
-                applicationVersion:
-                    'Version: ${packageInfo.version} | Build number: ${packageInfo.buildNumber}',
+                applicationVersion: kDebugMode
+                    ? 'Version: BETA | Build number: BETA'
+                    : 'Version: ${packageInfo.version} | Build number: ${packageInfo.buildNumber}',
                 applicationIcon: Image.asset(
                   'assets/logo_images/app_logo_final.png',
                   width: 24,
