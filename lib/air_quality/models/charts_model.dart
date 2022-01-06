@@ -53,7 +53,7 @@ class NewFetchAirQualityData {
     CollectionReference collectionReference =
         _instance.collection('collection');
     DocumentSnapshot snapshot =
-        await collectionReference.doc('AirDatabase').get();
+        await collectionReference.doc('AirDatabase2').get();
     var data = snapshot.data() as Map;
     var localData;
     localData = data['air'] as List<dynamic>;

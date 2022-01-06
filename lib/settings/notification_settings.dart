@@ -37,6 +37,7 @@ class _SettingsNotificationState extends State<SettingsNotification> {
               shrinkWrap: kDebugMode ? true : false,
               itemCount: kDebugMode ? topics.length : 3,
               itemBuilder: (BuildContext context, int item) {
+                debugPrint('topic lenght: ${topics.length}');
                 return ListTile(
                     title: Text('${topics[item]}'),
                     trailing: subscribed.contains(topics[item])
