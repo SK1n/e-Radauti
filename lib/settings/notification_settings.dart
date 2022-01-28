@@ -34,8 +34,8 @@ class _SettingsNotificationState extends State<SettingsNotification> {
       body: Column(
         children: [
           ListView.builder(
-              shrinkWrap: kDebugMode ? true : false,
-              itemCount: kDebugMode ? topics.length : 3,
+              shrinkWrap: true,
+              itemCount: kReleaseMode ? topics.length - 1 : topics.length,
               itemBuilder: (BuildContext context, int item) {
                 debugPrint('topic lenght: ${topics.length}');
                 return ListTile(
