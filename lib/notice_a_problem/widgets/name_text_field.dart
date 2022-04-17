@@ -6,7 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
 class NameTextField extends StatelessWidget {
-  const NameTextField({Key key}) : super(key: key);
+  const NameTextField({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class NameTextField extends StatelessWidget {
       name: 'name',
       onChanged: (value) => noticeFormState.upName(value),
       validator: FormBuilderValidators.compose(
-          [FormBuilderValidators.required(context, errorText: errorRequired)]),
+          [FormBuilderValidators.required(errorText: errorRequired)]),
     );
   }
 }

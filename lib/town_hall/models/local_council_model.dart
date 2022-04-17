@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LocalCouncilModel {
-  String party;
-  String name;
-  String function;
-  String phoneNumber;
-  String email;
-  String url;
+  String? party;
+  String? name;
+  String? function;
+  String? phoneNumber;
+  String? email;
+  String? url;
   LocalCouncilModel({
     this.email,
     this.function,
@@ -29,7 +29,7 @@ class LocalCouncilModel {
 }
 
 class FetchLocalCouncilData {
-  FirebaseFirestore _instance;
+  FirebaseFirestore? _instance;
   List<LocalCouncilModel> _localModel = [];
   List<LocalCouncilModel> get localModel => _localModel;
 
@@ -37,7 +37,7 @@ class FetchLocalCouncilData {
     _instance = FirebaseFirestore.instance;
     _localModel = [];
     CollectionReference collectionReference =
-        _instance.collection('collection');
+        _instance!.collection('collection');
     DocumentSnapshot snapshot =
         await collectionReference.doc('LocalCouncil').get();
     var data = snapshot.data() as Map;

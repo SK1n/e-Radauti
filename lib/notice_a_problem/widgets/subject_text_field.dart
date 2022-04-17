@@ -6,7 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
 class SubjectTextField extends StatelessWidget {
-  const SubjectTextField({Key key}) : super(key: key);
+  const SubjectTextField({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class SubjectTextField extends StatelessWidget {
       },
       validator: FormBuilderValidators.compose(
         [
-          FormBuilderValidators.required(context, errorText: errorRequired),
+          FormBuilderValidators.required(errorText: errorRequired),
         ],
       ),
     );

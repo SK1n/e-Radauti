@@ -8,16 +8,16 @@ class TabDemo extends StatefulWidget {
 }
 
 class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  TabController? _tabController;
   int _selectedTab = 0;
   @override
   void initState() {
     super.initState();
     _tabController = TabController(vsync: this, length: 2);
-    _tabController.addListener(() {
-      if (!_tabController.indexIsChanging) {
+    _tabController!.addListener(() {
+      if (!_tabController!.indexIsChanging) {
         setState(() {
-          _selectedTab = _tabController.index;
+          _selectedTab = _tabController!.index;
         });
       }
     });
@@ -36,8 +36,14 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
               controller: _tabController,
               labelPadding: const EdgeInsets.all(0.0),
               tabs: [
-                _getTab(0, 'DESPRE NOI',),
-                _getTab(1, 'DESPRE APLICAȚIE',),
+                _getTab(
+                  0,
+                  'DESPRE NOI',
+                ),
+                _getTab(
+                  1,
+                  'DESPRE APLICAȚIE',
+                ),
               ],
             ),
           ),
@@ -63,7 +69,10 @@ class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
           child: Center(
             child: Text(
               childString,
-              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold,),
+              style: TextStyle(
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           decoration: BoxDecoration(

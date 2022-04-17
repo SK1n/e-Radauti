@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/usefull_pages/tab_bar_view/tab_bar.dart';
 import 'package:flutterapperadauti/usefull_pages/usefull_pages_widget/widget_about_model.dart';

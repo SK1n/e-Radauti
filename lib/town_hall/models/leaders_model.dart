@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LeadersModel {
-  String name;
-  String function;
-  String location;
-  String urlFb;
-  String email;
-  String wealth;
-  String interests;
-  String urlImg;
+  String? name;
+  String? function;
+  String? location;
+  String? urlFb;
+  String? email;
+  String? wealth;
+  String? interests;
+  String? urlImg;
 
   LeadersModel({
     this.email,
@@ -36,7 +36,7 @@ class LeadersModel {
 }
 
 class FetchLeaderData {
-  FirebaseFirestore _instance;
+  FirebaseFirestore? _instance;
   List<LeadersModel> _localModel = [];
   List<LeadersModel> get localModel => _localModel;
 
@@ -44,7 +44,7 @@ class FetchLeaderData {
     _instance = FirebaseFirestore.instance;
     _localModel = [];
     CollectionReference collectionReference =
-        _instance.collection('collection');
+        _instance!.collection('collection');
     DocumentSnapshot snapshot = await collectionReference.doc('Leaders').get();
     var data = snapshot.data() as Map;
     var localData;

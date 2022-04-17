@@ -8,16 +8,16 @@ class TabDemo extends StatefulWidget {
 }
 
 class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  TabController? _tabController;
   int _selectedTab = 0;
   @override
   void initState() {
     super.initState();
     _tabController = TabController(vsync: this, length: 2);
-    _tabController.addListener(() {
-      if (!_tabController.indexIsChanging) {
+    _tabController!.addListener(() {
+      if (!_tabController!.indexIsChanging) {
         setState(() {
-          _selectedTab = _tabController.index;
+          _selectedTab = _tabController!.index;
         });
       }
     });

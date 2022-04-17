@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+
 import 'package:flutterapperadauti/state/notice_problem_state.dart';
 import 'package:flutterapperadauti/strings/form.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -14,7 +14,7 @@ class Item {
 }
 
 class TypeDropDown extends StatelessWidget {
-  const TypeDropDown({Key key}) : super(key: key);
+  const TypeDropDown({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +40,10 @@ class TypeDropDown extends StatelessWidget {
               ))
           .toList(),
       validator: FormBuilderValidators.compose(
-          [FormBuilderValidators.required(context, errorText: errorRequired)]),
+          [FormBuilderValidators.required(errorText: errorRequired)]),
       onChanged: (value) {
-        noticeFormState.upTypeName(value);
-        noticeFormState.upIndex(returnIndex(value));
+        noticeFormState.upTypeName(value.toString());
+        noticeFormState.upIndex(returnIndex(value.toString()));
       },
     );
   }
@@ -54,25 +54,23 @@ int returnIndex(String text) {
     case 'Altele':
       return 0;
 
-      break;
     case 'Gunoi neridicat':
       return 1;
-      break;
+
     case 'Infrastructură':
       return 2;
-      break;
+
     case 'Probleme la utilitati':
       return 3;
-      break;
+
     case 'Constructii ilegale':
       return 4;
-      break;
+
     case 'Siguranta':
       return 5;
-      break;
+
     case 'Calitatea aerului si poluare':
       return 6;
-      break;
 
     default:
       return 0;

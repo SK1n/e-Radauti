@@ -6,7 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
 class PhoneNumberTextField extends StatelessWidget {
-  const PhoneNumberTextField({Key key}) : super(key: key);
+  const PhoneNumberTextField({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +22,10 @@ class PhoneNumberTextField extends StatelessWidget {
         keyboardType: TextInputType.number,
         validator: FormBuilderValidators.compose(
           [
-            FormBuilderValidators.required(context, errorText: errorRequired),
-            FormBuilderValidators.numeric(context,
+            FormBuilderValidators.required(errorText: errorRequired),
+            FormBuilderValidators.numeric(
                 errorText: 'Acest camp trebuie sa contina numai numere!'),
-            FormBuilderValidators.match(context,
+            FormBuilderValidators.match(
                 r'^(\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\s|\.|\-)?([0-9]{3}(\s|\.|\-|)){2}$',
                 errorText: errorPhonePattern),
           ],

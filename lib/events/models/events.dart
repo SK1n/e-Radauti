@@ -1,14 +1,14 @@
 class Events {
-  String url;
-  String host;
-  String street;
-  String headline;
-  String description;
-  int start;
-  int end;
-  int id;
-  String category;
-  String location;
+  String? url;
+  String? host;
+  String? street;
+  String? headline;
+  String? description;
+  int? start;
+  int? end;
+  int? id;
+  String? category;
+  String? location;
 
   Events({
     this.category,

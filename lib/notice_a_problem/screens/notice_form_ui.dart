@@ -19,14 +19,14 @@ import 'package:flutterapperadauti/notice_a_problem/widgets/send_button.dart';
 import 'package:flutterapperadauti/notice_a_problem/widgets/subject_text_field.dart';
 import 'package:flutterapperadauti/notice_a_problem/widgets/type_drop_down.dart';
 import 'package:flutterapperadauti/state/geolocator_state.dart';
-import 'package:flutterapperadauti/state/loading_state.dart';
+
 import 'package:flutterapperadauti/state/notice_problem_state.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:provider/provider.dart';
 
 class NoticeFormUi extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldState;
-  const NoticeFormUi({key, this.scaffoldState});
+  const NoticeFormUi({key, required this.scaffoldState});
 
   @override
   State<NoticeFormUi> createState() => _NoticeFormUiState();
@@ -36,7 +36,6 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormBuilderState>();
-    IsLoading isLoading = Provider.of<IsLoading>(context);
     DownloadableList downloadableList =
         Provider.of<DownloadableList>(context, listen: false);
     GeolocatorState locationSwitchState =
@@ -66,26 +65,15 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
 
     void resetData() {
       noticeFormState.upIndex(0);
-      debugPrint('${noticeFormState.index}');
       noticeFormState.upDescription('');
-      debugPrint('${noticeFormState.description}');
       noticeFormState.upPhoneNumber('');
-      debugPrint('${noticeFormState.phoneNumber}');
       noticeFormState.upEmail('');
-      debugPrint('${noticeFormState.email}');
       noticeFormState.upTypeName('Altele');
-      debugPrint('${noticeFormState.category}');
       noticeFormState.upName('');
-      debugPrint('${noticeFormState.name}');
-      noticeFormState.getPosition(null);
-      debugPrint('${noticeFormState.position}');
       noticeFormState.upInstitutionEmail('radautiulcivic@gmail.com');
-      debugPrint('${noticeFormState.institutionEmail}');
       noticeFormState.upSubject('');
-      debugPrint('${noticeFormState.subject}');
       noticeFormState.upInstitution('Asociația Rădăuțiul Civic');
-      debugPrint('${noticeFormState.institution}');
-      _formKey.currentState.reset();
+      _formKey.currentState!.reset();
     }
 
     sendData() async {
@@ -108,7 +96,7 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
                   ),
                 ));
       try {
-        await Future.forEach(_formKey.currentState.fields['image'].value,
+        await Future.forEach(_formKey.currentState!.fields['image']!.value,
             (element) async => uploadImageToFirebase(element));
 
         var data = [
@@ -119,10 +107,10 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
             "institution": noticeFormState.institution,
             "institution_email": noticeFormState.institutionEmail,
             "lat": locationSwitchState.valueSwitch
-                ? noticeFormState.position.latitude
+                ? noticeFormState.position!.latitude
                 : null,
             "long": locationSwitchState.valueSwitch
-                ? noticeFormState.position.longitude
+                ? noticeFormState.position!.longitude
                 : null,
             "status": "În lucru",
             "subject": noticeFormState.subject,
@@ -148,7 +136,7 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
 
           downloadableList.deleteList();
           Navigator.pop(context);
-          ScaffoldMessenger.of(widget.scaffoldState.currentState.context)
+          ScaffoldMessenger.of(widget.scaffoldState.currentState!.context)
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
               content: Text('Reusit. Veti primi un email in cateva minute'),
@@ -248,7 +236,7 @@ class _NoticeFormUiState extends State<NoticeFormUi> {
                       child: Text('Trimite'),
                       onPressed: () async {
                         {
-                          if (_formKey.currentState.validate()) {
+                          if (_formKey.currentState!.validate()) {
                             showDialog(
                                 context: context,
                                 builder: (_) {

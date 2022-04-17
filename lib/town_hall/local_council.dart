@@ -1,16 +1,16 @@
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+
 import 'package:flutterapperadauti/town_hall/models/local_council_model.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
+import 'package:fluttericon/entypo_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class LocalCouncil extends StatelessWidget {
-  const LocalCouncil({Key key}) : super(key: key);
+  const LocalCouncil({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,14 +61,14 @@ class LocalCouncil extends StatelessWidget {
 }
 
 class LocalCouncilCard extends StatelessWidget {
-  final String url;
-  final String name;
-  final String function;
-  final String party;
-  final String phoneNumber;
-  final String email;
+  final String? url;
+  final String? name;
+  final String? function;
+  final String? party;
+  final String? phoneNumber;
+  final String? email;
   const LocalCouncilCard({
-    Key key,
+    Key? key,
     this.url,
     this.name,
     this.function,
@@ -93,7 +93,7 @@ class LocalCouncilCard extends StatelessWidget {
                   backgroundColor: Colors.white,
                   child: ClipOval(
                     child: FutureBuilder(
-                      future: getDownloadUrlFromUrlRef(context, url),
+                      future: getDownloadUrlFromUrlRef(context, url!),
                       builder: (BuildContext context, AsyncSnapshot snap) {
                         if (snap.hasError) {
                           return Text('A aparut o eroare');
@@ -143,7 +143,7 @@ class LocalCouncilCard extends StatelessWidget {
                         child: Row(
                           children: [
                             Icon(
-                              AntDesign.phone,
+                              Entypo.phone,
                               color: Colors.blueAccent,
                             ),
                             Padding(
@@ -164,7 +164,7 @@ class LocalCouncilCard extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(
-                        AntDesign.mail,
+                        Entypo.mail,
                         color: Colors.blueAccent,
                       ),
                       Padding(
@@ -187,15 +187,18 @@ class LocalCouncilCard extends StatelessWidget {
 
   Future getDownloadUrlFromUrlRef(BuildContext context, String imgURL) async {
     Image image;
-    await FirebaseStorage.instance.refFromURL(imgURL).getDownloadURL().then(
-          (imageUrl) => image = Image.network(
-            imageUrl.toString(),
-            fit: BoxFit.cover,
-            width: 80,
-            height: 80,
-          ),
-        );
-    return image;
+    await FirebaseStorage.instance
+        .refFromURL(imgURL)
+        .getDownloadURL()
+        .then((imageUrl) {
+      image = Image.network(
+        imageUrl.toString(),
+        fit: BoxFit.cover,
+        width: 80,
+        height: 80,
+      );
+      return image;
+    });
   }
 
   _launchURL(url) async {

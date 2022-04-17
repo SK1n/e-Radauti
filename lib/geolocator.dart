@@ -7,10 +7,10 @@ import 'package:flutterapperadauti/state/notice_problem_state.dart';
 import 'package:geolocator/geolocator.dart';
 
 Future<void> geolocationOnChanged({
-  @required BuildContext context,
-  @required GeolocatorState geolocatorState,
-  @required bool value,
-  @required NoticeFormState noticeFormState,
+  required BuildContext context,
+  required GeolocatorState geolocatorState,
+  required bool value,
+  required NoticeFormState noticeFormState,
 }) async {
   geolocatorState.changeValue(value);
   LocationPermission permission = await Geolocator.checkPermission();

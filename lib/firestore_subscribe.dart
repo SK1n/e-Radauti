@@ -8,14 +8,14 @@ import 'package:flutterapperadauti/state/fcm_state.dart';
 import 'package:provider/provider.dart';
 
 Future<void> pushTopicToFirestoreAndSubscribe({
-  @required BuildContext context,
-  bool all,
-  bool events,
-  bool notice,
+  required BuildContext context,
+  required bool all,
+  required bool events,
+  required bool notice,
 }) async {
   try {
     await FirebaseMessaging.instance.getToken.call().then((value) {
-      context.read<FCMState>().getFcm(value);
+      context.read<FCMState>().getFcm(value!);
     });
     await FirebaseFirestore.instance
         .collection('topics')
@@ -38,10 +38,10 @@ Future<void> pushTopicToFirestoreAndSubscribe({
 }
 
 Future<void> deleteFromFirestoreAndUnsubscribe({
-  @required BuildContext context,
-  bool all,
-  bool events,
-  bool notice,
+  required BuildContext context,
+  required bool all,
+  required bool events,
+  required bool notice,
 }) async {
   try {
     await FirebaseMessaging.instance.unsubscribeFromTopic('default');
@@ -66,7 +66,7 @@ Future<void> deleteFromFirestoreAndUnsubscribe({
   }
 }
 
-firebaseError({BuildContext context, String message}) {
+firebaseError({required BuildContext context, String? message}) {
   showDialog(
     context: context,
     builder: (BuildContext context) => Platform.isIOS

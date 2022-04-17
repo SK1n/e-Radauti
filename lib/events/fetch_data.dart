@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/events/models/events.dart';
 
 class FetchData {
-  FirebaseFirestore _instance;
+  FirebaseFirestore? _instance;
   List<Events> _events = [];
 
-  Future<void> getEventsFromFirebase() async {
+  Future<List<Events>> getEventsFromFirebase() async {
     _instance = FirebaseFirestore.instance;
     _events = [];
-    CollectionReference events = _instance.collection('collection');
+    CollectionReference events = _instance!.collection('collection');
     DocumentSnapshot snapshot = await events.doc('Events').get();
     var data = snapshot.data() as Map;
     var eventsData = data['events'] as List<dynamic>;

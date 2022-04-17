@@ -6,7 +6,7 @@ import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutter/foundation.dart';
 
 class SettingsNotification extends StatefulWidget {
-  SettingsNotification({Key key}) : super(key: key);
+  SettingsNotification({Key? key}) : super(key: key);
 
   @override
   State<SettingsNotification> createState() => _SettingsNotificationState();
@@ -14,7 +14,7 @@ class SettingsNotification extends StatefulWidget {
 
 class _SettingsNotificationState extends State<SettingsNotification> {
   List subscribed = [];
-  String token;
+  String? token;
   @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();

@@ -7,27 +7,27 @@ import 'package:flutterapperadauti/firestore_subscribe.dart';
 import 'package:flutterapperadauti/geolocator.dart';
 import 'package:flutterapperadauti/menu_screen.dart';
 import 'package:flutterapperadauti/state/geolocator_state.dart';
+import 'package:flutterapperadauti/state/notice_problem_state.dart';
 import 'package:flutterapperadauti/state/subscribed.dart';
 import 'package:geolocator/geolocator.dart';
 
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 import 'package:is_first_run/is_first_run.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 class IntroPages extends StatefulWidget {
-  const IntroPages({Key key}) : super(key: key);
+  const IntroPages({Key? key}) : super(key: key);
 
   @override
   _IntroPagesState createState() => _IntroPagesState();
 }
 
 class _IntroPagesState extends State<IntroPages> {
-  bool isFirstRun;
-  bool notValue;
+  bool? isFirstRun;
+  late bool notValue;
 
-  Future<bool> checkFirstRun() async {
+  Future<bool?> checkFirstRun() async {
     isFirstRun = await IsFirstRun.isFirstRun();
     return isFirstRun;
   }
@@ -162,6 +162,7 @@ class _IntroPagesState extends State<IntroPages> {
                   value: geolocatorState.value,
                   leading: Icon(Icons.location_on_outlined),
                   onChanged: (value) => geolocationOnChanged(
+                      noticeFormState: NoticeFormState(),
                       context: context,
                       geolocatorState: geolocatorState,
                       value: value),
@@ -176,7 +177,7 @@ class _IntroPagesState extends State<IntroPages> {
   }
 
   notificationOnChanged({
-    @required Subscription subscription,
+    required Subscription subscription,
   }) async {
     if (subscription.enabled) {
       FirebaseMessaging messaging = FirebaseMessaging.instance;

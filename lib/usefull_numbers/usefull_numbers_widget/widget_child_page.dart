@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:fluttericon/entypo_icons.dart';
+
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class UsefullNumbersWidget extends StatelessWidget {
   final String title;
-  final List<dynamic> phone;
+  final List<dynamic>? phone;
   final List<dynamic> email;
   const UsefullNumbersWidget({
-    Key key,
-    this.title,
+    Key? key,
+    required this.title,
     this.phone,
-    this.email,
+    required this.email,
   }) : super(key: key);
 
   @override
@@ -35,17 +36,17 @@ class UsefullNumbersWidget extends StatelessWidget {
             ),
             phone != null
                 ? ListView.builder(
-                    itemCount: phone.length,
+                    itemCount: phone!.length,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (BuildContext context, int item) {
                       return Column(
                         children: [
                           ListTile(
-                            leading: Icon(AntDesign.phone),
-                            title: Text('${phone[item]}'),
+                            leading: Icon(Entypo.phone),
+                            title: Text('${phone![item]}'),
                             onTap: () {
-                              _launchURL('tel:${phone[item]}');
+                              _launchURL('tel:${phone![item]}');
                             },
                           ),
                           Divider(
@@ -56,7 +57,7 @@ class UsefullNumbersWidget extends StatelessWidget {
                       );
                     })
                 : Container(),
-            email != null
+            email.isNotEmpty
                 ? ListView.builder(
                     itemCount: email.length,
                     shrinkWrap: true,
@@ -65,7 +66,7 @@ class UsefullNumbersWidget extends StatelessWidget {
                       return Column(
                         children: [
                           ListTile(
-                            leading: Icon(AntDesign.mail),
+                            leading: Icon(Entypo.mail),
                             title: Text('${email[item]}'),
                             onTap: () {
                               _launchURL('mailto:${email[item]}');

@@ -4,7 +4,7 @@ import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:is_first_run/is_first_run.dart';
 
 class DebugSettings extends StatelessWidget {
-  const DebugSettings({Key key}) : super(key: key);
+  const DebugSettings({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

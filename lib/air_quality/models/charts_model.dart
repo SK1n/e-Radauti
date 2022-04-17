@@ -2,16 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/rendering.dart';
 
 class NewAirQualityModel {
-  final int co;
-  final String date;
-  final String direction;
-  final int hum;
-  final int hum_c;
-  final int pm;
-  final double temp_c;
-  final double temp_m;
-  final double wind;
-  final int pression;
+  final int? co;
+  final String? date;
+  final String? direction;
+  final int? hum;
+  final int? hum_c;
+  final int? pm;
+  final double? temp_c;
+  final double? temp_m;
+  final double? wind;
+  final int? pression;
 
   NewAirQualityModel({
     this.co,
@@ -43,7 +43,7 @@ class NewAirQualityModel {
 }
 
 class NewFetchAirQualityData {
-  FirebaseFirestore _instance;
+  FirebaseFirestore? _instance;
   List<NewAirQualityModel> _localModel = [];
   List<NewAirQualityModel> get localModel => _localModel;
 
@@ -51,7 +51,7 @@ class NewFetchAirQualityData {
     _instance = FirebaseFirestore.instance;
     _localModel = [];
     CollectionReference collectionReference =
-        _instance.collection('collection');
+        _instance!.collection('collection');
     DocumentSnapshot snapshot =
         await collectionReference.doc('AirDatabase2').get();
     var data = snapshot.data() as Map;

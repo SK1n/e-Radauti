@@ -6,7 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
 class InstitutionDropDown extends StatelessWidget {
-  const InstitutionDropDown({Key key}) : super(key: key);
+  const InstitutionDropDown({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +26,13 @@ class InstitutionDropDown extends StatelessWidget {
       name: 'destinationEmail',
       initialValue: noticeFormState.institution,
       onChanged: (value) {
-        noticeFormState.upInstitution(value);
+        noticeFormState.upInstitution(value.toString());
         debugPrint('${noticeFormState.institution}');
-        noticeFormState.upInstitutionEmail(emailDestination(value));
+        noticeFormState.upInstitutionEmail(emailDestination(value.toString()));
       },
       hint: Text('Selecteaza o institutie'),
       validator: FormBuilderValidators.compose(
-          [FormBuilderValidators.required(context, errorText: errorRequired)]),
+          [FormBuilderValidators.required(errorText: errorRequired)]),
       items: list
           .map((emailDestination) => DropdownMenuItem(
                 value: emailDestination,
@@ -46,33 +46,33 @@ class InstitutionDropDown extends StatelessWidget {
     switch (value) {
       case "Primăria Rădăuți":
         return "relatiipublice@primariaradauti.ro";
-        break;
+
       case "Servicii Comunale":
         return "office@serviciicomunale.ro";
-        break;
+
       case "ACET Rădăuți":
         return "agentia.radauti@acetsv.ro";
-        break;
+
       case "Consiliul Județean Suceava":
         return "contact@cjsuceava.ro";
-        break;
+
       case "Garda De Mediu Suceava":
         return "cjsuceava@gnm.ro";
-        break;
+
       case "Garda Forestieră Suceava":
         return "gardaforestiera.suceava@gmail.com";
-        break;
+
       case "DSP Suceava":
         return "dspsv@dspsv.ro";
-        break;
+
       case "Ocolul Silvic Marginea":
         return "marginea@suceava.rosilva.ro";
-        break;
+
       case "Asociația Rădăuțiul Civic":
         return "radautiulcivic@gmail.com";
-        break;
+
       default:
-        return null;
+        return '';
     }
   }
 }

@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class AirQualityCharts2 extends StatefulWidget {
-  const AirQualityCharts2({Key key}) : super(key: key);
+  const AirQualityCharts2({Key? key}) : super(key: key);
 
   @override
   _AirQualityCharts2State createState() => _AirQualityCharts2State();
@@ -77,15 +77,15 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                           dataSource: dataChartPmVsTime,
                           onPointTap: (item) {
                             showTappedValue(
-                              dataChartPmVsTime[item.pointIndex].value,
+                              dataChartPmVsTime[item.pointIndex!].value,
                               'μg/m³',
-                              dataChartPmVsTime[item.pointIndex].date,
+                              dataChartPmVsTime[item.pointIndex!].date,
                             );
                           },
                           pointColorMapper: (ChartsModel model, _) {
-                            if (model.value <= 25) {
+                            if (model.value! <= 25) {
                               return Colors.greenAccent;
-                            } else if (model.value <= 35) {
+                            } else if (model.value! <= 35) {
                               return Colors.yellowAccent;
                             } else {
                               return Colors.redAccent;
@@ -113,9 +113,9 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                           yAxisName: 'CO2',
                           onPointTap: (item) {
                             showTappedValue(
-                              dataChartCoVsTime[item.pointIndex].value,
+                              dataChartCoVsTime[item.pointIndex!].value,
                               'ppm',
-                              dataChartCoVsTime[item.pointIndex].date,
+                              dataChartCoVsTime[item.pointIndex!].date,
                             );
                           },
                         ),
@@ -137,9 +137,9 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                           yAxisName: 'PM',
                           onPointTap: (item) {
                             showTappedValue(
-                              dataChartPmVsWindVsTime[item.pointIndex].value,
+                              dataChartPmVsWindVsTime[item.pointIndex!].value,
                               'μg/m³',
-                              dataChartPmVsWindVsTime[item.pointIndex].date,
+                              dataChartPmVsWindVsTime[item.pointIndex!].date,
                             );
                           },
                         ),
@@ -153,10 +153,10 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                           yAxisName: 'Wind',
                           onPointTap: (item) {
                             showTappedValue(
-                              dataChartPmVsWindVsTime[item.pointIndex]
+                              dataChartPmVsWindVsTime[item.pointIndex!]
                                   .secondValue,
                               'm/s',
-                              dataChartPmVsWindVsTime[item.pointIndex].date,
+                              dataChartPmVsWindVsTime[item.pointIndex!].date,
                             );
                           },
                         ),
@@ -174,10 +174,10 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                         ColumnSeries<ChartsModel, DateTime>(
                             onPointTap: (item) {
                               showTappedValue(
-                                dataChartTempVsTime[item.pointIndex]
+                                dataChartTempVsTime[item.pointIndex!]
                                     .secondValue,
                                 '°C',
-                                dataChartTempVsTime[item.pointIndex].date,
+                                dataChartTempVsTime[item.pointIndex!].date,
                               );
                             },
                             dataSource: dataChartTempVsTime,
@@ -187,15 +187,15 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
                             xAxisName: 'Timp',
                             yAxisName: 'Temperatură',
                             pointColorMapper: (ChartsModel model, _) {
-                              if (model.secondValue <= -5) {
+                              if (model.secondValue! <= -5) {
                                 return Colors.blue[100];
-                              } else if (model.secondValue <= 0) {
+                              } else if (model.secondValue! <= 0) {
                                 return Colors.blue[300];
-                              } else if (model.secondValue <= 10) {
+                              } else if (model.secondValue! <= 10) {
                                 return Colors.yellowAccent;
-                              } else if (model.secondValue <= 15) {
+                              } else if (model.secondValue! <= 15) {
                                 return Colors.yellow;
-                              } else if (model.secondValue <= 20) {
+                              } else if (model.secondValue! <= 20) {
                                 return Colors.redAccent;
                               } else {
                                 return Colors.red;
@@ -245,7 +245,7 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
 
 class ChartsModel {
   final DateTime date;
-  final int value;
-  final double secondValue;
-  ChartsModel({this.value, this.date, this.secondValue});
+  final int? value;
+  final double? secondValue;
+  ChartsModel({this.value, required this.date, this.secondValue});
 }

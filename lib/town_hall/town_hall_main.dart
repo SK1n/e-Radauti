@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/custom_list_tile.dart';
@@ -39,28 +38,28 @@ class TownHallMain extends StatelessWidget {
                 content: 'Conducere',
                 subTitle: 'Informații despre primar, viceprimar și secretar.',
                 leadingIcon: Icons.circle,
-                leadingColor: Colors.green[300],
+                leadingColor: Colors.green[300]!,
                 route: '/leaders',
               ),
               CustomListTile(
                 content: 'Consiliul Local',
                 subTitle: 'Consilierii locali. Contactează-ți reprezentantul!',
                 leadingIcon: Icons.circle,
-                leadingColor: Colors.blue[200],
+                leadingColor: Colors.blue[200]!,
                 route: '/localCouncil',
               ),
               CustomListTile(
                 content: 'Ședințe de Consiliu local',
                 subTitle: 'Vizualizează live ședințele de consiliu local.',
                 leadingIcon: Icons.circle,
-                leadingColor: Colors.pink[50],
+                leadingColor: Colors.pink[50]!,
                 route: '/councilMeetings',
               ),
               CustomListTile(
                 content: 'Hotărâri de Consiliu Local',
                 subTitle: 'Descoperă hotărârile de consiliu local.',
                 leadingIcon: Icons.circle,
-                leadingColor: Colors.orange[100],
+                leadingColor: Colors.orange[100]!,
                 route: '/localLegislation',
               ),
             ],

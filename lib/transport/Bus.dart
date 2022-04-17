@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/transport/LocalInconvenience.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
@@ -41,7 +40,7 @@ class Bus extends StatelessWidget {
 
 class BusMain extends StatefulWidget {
   BusMain({
-    Key key,
+    Key? key,
   }) : super(key: key);
   @override
   _BusMainState createState() => new _BusMainState();
@@ -142,13 +141,13 @@ class _BusMainState extends State<BusMain> {
   //2
   TextEditingController editingControllerStart = TextEditingController();
   TextEditingController editingControllerEnd = TextEditingController();
-  String _chosenValue;
-  String _chosenValue2;
+  late String _chosenValue;
+  late String _chosenValue2;
   //3
-  List<DropdownMenuItem<String>> _dropdownMenuItems;
+  late List<DropdownMenuItem<String>> _dropdownMenuItems;
   List<DropdownMenuItem<String>> buildDropdownMenuItems(List listItems) {
     // ignore: deprecated_member_use
-    List<DropdownMenuItem<String>> items = List();
+    List<DropdownMenuItem<String>> items = [];
     for (String listItem in listItems) {
       items.add(
         DropdownMenuItem<String>(
@@ -170,10 +169,10 @@ class _BusMainState extends State<BusMain> {
   //4
   var regExp = RegExp(r' - .*');
   var regExp2 = RegExp(r'.* - ');
-  List<String> getItems;
+  late List<String> getItems;
   List<String> buildListStringItemes(List listItems) {
     // ignore: deprecated_member_use
-    List<String> items = List();
+    List<String> items = [];
     items = ['- Selectează -'];
     String value;
     String value2;
@@ -210,11 +209,11 @@ class _BusMainState extends State<BusMain> {
   //2
   void filterSearchResults(String query1, String query2) {
     // ignore: deprecated_member_use
-    List<dynamic> dummySearchList = List<dynamic>();
+    List<dynamic> dummySearchList = <dynamic>[];
     dummySearchList.addAll(duplicateItems);
     if (query1.isNotEmpty && query2.isNotEmpty) {
       // ignore: deprecated_member_use
-      List<dynamic> dummyListData = List<dynamic>();
+      List<dynamic> dummyListData = <dynamic>[];
       dummySearchList.forEach((item) {
         if (item.contains(query1 + ' - ' + query2) ||
             (item.startsWith(query1) && item.contains(' - ' + query2))) {
@@ -273,16 +272,16 @@ class _BusMainState extends State<BusMain> {
                       child: DropdownButton<String>(
                         value: _chosenValue,
                         items: _dropdownMenuItems,
-                        onChanged: (String value) {
+                        onChanged: (String? value) {
                           setState(() {
                             if (value != '- Selectează -') {
-                              _chosenValue = value;
-                              if (_chosenValue2 != null) {
+                              _chosenValue = value!;
+                              if (_chosenValue2.isEmpty) {
                                 filterSearchResults(
                                     _chosenValue, _chosenValue2);
                               }
                             } else {
-                              _chosenValue = null;
+                              _chosenValue = '';
                               items.clear();
                               items.addAll(duplicateItems);
                             }
@@ -324,16 +323,16 @@ class _BusMainState extends State<BusMain> {
                         ),
                         elevation: 2,
                         items: _dropdownMenuItems,
-                        onChanged: (String value) {
+                        onChanged: (String? value) {
                           setState(() {
                             if (value != '- Selectează -') {
-                              _chosenValue2 = value;
-                              if (_chosenValue != null) {
+                              _chosenValue2 = value!;
+                              if (_chosenValue.isEmpty) {
                                 filterSearchResults(
                                     _chosenValue, _chosenValue2);
                               }
                             } else {
-                              _chosenValue2 = null;
+                              _chosenValue2 = '';
                               items.clear();
                               items.addAll(duplicateItems);
                             }

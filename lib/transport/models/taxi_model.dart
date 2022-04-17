@@ -8,11 +8,11 @@ class TaxiModel {
   String plateNumber;
 
   TaxiModel({
-    this.car,
-    this.driverName,
-    this.phoneNumber,
-    this.plateNumber,
-    this.url,
+    required this.car,
+    required this.driverName,
+    required this.phoneNumber,
+    required this.plateNumber,
+    required this.url,
   });
 
   factory TaxiModel.fromJson(Map<String, dynamic> json) {
@@ -27,7 +27,7 @@ class TaxiModel {
 }
 
 class FetchTaxiData {
-  FirebaseFirestore _instance;
+  FirebaseFirestore? _instance;
   List<TaxiModel> _localModel = [];
   List<TaxiModel> get localModel => _localModel;
 
@@ -35,7 +35,7 @@ class FetchTaxiData {
     _instance = FirebaseFirestore.instance;
     _localModel = [];
     CollectionReference collectionReference =
-        _instance.collection('collection');
+        _instance!.collection('collection');
     DocumentSnapshot snapshot = await collectionReference.doc('Taxi').get();
     var data = snapshot.data() as Map;
     var localData;

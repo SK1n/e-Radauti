@@ -18,12 +18,12 @@ class JobPage extends StatefulWidget {
 }
 
 class _JobPageState extends State<JobPage> {
-  List<JobModel> jobList;
-  Map<String, dynamic> jsonResponse;
+  List<JobModel>? jobList;
+  Map<String, dynamic>? jsonResponse;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  String errorMessage;
+  String? errorMessage;
 
-  Future<List<JobModel>> _getJobs() async {
+  Future<List<JobModel>?> _getJobs() async {
     try {
       var response = await http.get(Uri.parse(
           "https://www.eradauti.ro/api/context?pathname=/anunturi/locuri-de-munca-20"));
@@ -31,9 +31,9 @@ class _JobPageState extends State<JobPage> {
         jsonResponse = json.decode(response.body);
       });
       // ignore: deprecated_member_use
-      jobList = List<JobModel>();
-      jsonResponse.forEach((key, value) {
-        jobList = (jsonResponse['context']['posts']['records'] as List)
+      jobList = <JobModel>[];
+      jsonResponse!.forEach((key, value) {
+        jobList = (jsonResponse!['context']['posts']['records'] as List)
             .map<JobModel>((j) => JobModel.fromJson(j))
             .toList();
       });
@@ -63,7 +63,7 @@ class _JobPageState extends State<JobPage> {
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               return new ListView.builder(
-                  itemCount: jobList == null ? 0 : jobList.length,
+                  itemCount: jobList == null ? 0 : jobList!.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                         padding: EdgeInsets.only(top: 10),
@@ -83,7 +83,7 @@ class _JobPageState extends State<JobPage> {
                                     padding: MaterialStateProperty.all(
                                         EdgeInsets.all(10))),
                                 child: Text(
-                                  '${jobList[index].title.toString().toUpperCase()}',
+                                  '${jobList![index].title.toString().toUpperCase()}',
                                   style: TextStyle(
                                     color: Colors.white,
                                   ),
@@ -92,7 +92,7 @@ class _JobPageState extends State<JobPage> {
                                 onPressed: () => {
                                   browser.open(
                                       url: Uri.parse(
-                                          'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${jobList[index].slug.toString()}-${jobList[index].id.toString()}'),
+                                          'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${jobList![index].slug.toString()}-${jobList![index].id.toString()}'),
                                       options: ChromeSafariBrowserClassOptions(
                                           android:
                                               AndroidChromeCustomTabsOptions(

@@ -2,26 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 
-class MenuScreen extends StatefulWidget {
-  @override
-  _MenuScreenState createState() => new _MenuScreenState();
-}
-
-class _MenuScreenState extends State<MenuScreen> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class MenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return menuScreen();
-  }
-
-  // Hide debug section in settings
-
-  menuScreen() {
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -48,7 +33,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 size: 24,
                 color: Colors.black,
               ),
-              onPressed: () => _scaffoldKey.currentState.openDrawer(),
+              onPressed: () => _scaffoldKey.currentState!.openDrawer(),
             ),
           ),
         ],
@@ -213,6 +198,8 @@ class _MenuScreenState extends State<MenuScreen> {
       ),
     );
   }
+
+  // Hide debug section in settings
 
   GestureDetector itemMenu(context, title, icon, nextScreen) {
     return GestureDetector(

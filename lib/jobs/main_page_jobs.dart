@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/custom_list_tile.dart';
@@ -37,7 +36,7 @@ class HomePageJobs extends StatelessWidget {
               subTitle:
                   'Locuri de muncă preluate de pe portalul www.eradauti.ro',
               leadingIcon: Icons.circle,
-              leadingColor: Colors.amberAccent[100],
+              leadingColor: Colors.amberAccent[100]!,
               route: '/job',
             ),
             CustomListTile(
@@ -45,7 +44,7 @@ class HomePageJobs extends StatelessWidget {
               subTitle:
                   'Anunțuri de imobiliare preluate de pe portalul www.eradauti.ro',
               leadingIcon: Icons.circle,
-              leadingColor: Colors.brown[200],
+              leadingColor: Colors.brown[200]!,
               route: '/furniture',
             ),
           ],

@@ -1,10 +1,10 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutterapperadauti/town_hall/models/leaders_model.dart';
+import 'package:fluttericon/entypo_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
@@ -58,24 +58,24 @@ class Leaders extends StatelessWidget {
 }
 
 class WidgetLeader extends StatelessWidget {
-  final String name;
-  final String wealth;
-  final String interests;
-  final String email;
-  final String urlFb;
-  final String function;
+  final String? name;
+  final String? wealth;
+  final String? interests;
+  final String? email;
+  final String? urlFb;
+  final String? function;
   final String urlImg;
-  final String location;
+  final String? location;
 
   const WidgetLeader({
-    Key key,
+    Key? key,
     this.name,
     this.wealth,
     this.interests,
     this.email,
     this.urlFb,
     this.function,
-    this.urlImg,
+    required this.urlImg,
     this.location,
   }) : super(key: key);
 
@@ -129,15 +129,15 @@ class WidgetLeader extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: InkWell(
-                        child: Icon(AntDesign.facebook_square),
+                        child: Icon(Entypo.facebook),
                         onTap: () {
                           _launchURL('$urlFb');
                         },
                       ),
                     ),
-                    email != null
+                    email!.isEmpty
                         ? InkWell(
-                            child: Icon(AntDesign.mail),
+                            child: Icon(Entypo.mail),
                             onTap: () {
                               _launchURL('mailto:$email');
                             },
@@ -184,14 +184,16 @@ class WidgetLeader extends StatelessWidget {
   Future getDownloadUrlFromUrlRef(BuildContext context, String imgURL) async {
     Image image;
     await FirebaseStorage.instance.refFromURL(imgURL).getDownloadURL().then(
-          (imageUrl) => image = Image.network(
-            imageUrl.toString(),
-            fit: BoxFit.cover,
-            width: 80,
-            height: 80,
-          ),
+      (imageUrl) {
+        image = Image.network(
+          imageUrl.toString(),
+          fit: BoxFit.cover,
+          width: 80,
+          height: 80,
         );
-    return image;
+        return image;
+      },
+    );
   }
 
   _launchURL(url) async {

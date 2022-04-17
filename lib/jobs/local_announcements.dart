@@ -1,18 +1,17 @@
 import 'dart:async';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_autolink_text/flutter_autolink_text.dart';
 import 'package:flutterapperadauti/jobs/models/local_announcement_model.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
 import 'package:provider/provider.dart';
+import 'package:selectable_autolink_text/selectable_autolink_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LocalAnounnouncements extends StatefulWidget {
-  LocalAnounnouncements({Key key}) : super(key: key);
+  LocalAnounnouncements({Key? key}) : super(key: key);
   @override
   _LocalAnnouncementsState createState() => _LocalAnnouncementsState();
 }
@@ -43,8 +42,8 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
         },
         body: FutureBuilder(
           future: fetchAnnouncementData.getAnnouncementsFromFirebase(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
+          builder: (context, AsyncSnapshot? snapshot) {
+            if (snapshot!.hasData) {
               return ListView.builder(
                   itemCount: fetchAnnouncementData.getLength(),
                   itemBuilder: (BuildContext context, int item) {
@@ -75,16 +74,18 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
   Future getDownloadUrlFromUrlRef(BuildContext context, String imgURL) async {
     Image image;
     try {
-      await FirebaseStorage.instance
+      return await FirebaseStorage.instance
           .refFromURL(imgURL)
           .getDownloadURL()
-          .then((imageUrl) => image = Image.network(
-                imageUrl.toString(),
-                scale: 1.0,
-                fit: BoxFit.fitWidth,
-                height: 200,
-              ));
-      return image;
+          .then((imageUrl) {
+        image = Image.network(
+          imageUrl.toString(),
+          scale: 1.0,
+          fit: BoxFit.fitWidth,
+          height: 200,
+        );
+        return image;
+      });
     } on Exception catch (e) {
       return Image.asset('assets/images/no-wifi.png');
     }
@@ -147,12 +148,15 @@ class _LocalAnnouncementsState extends State<LocalAnounnouncements> {
             ),
             // imageWidget(contentImage),
             Container(
-              child: AutolinkText(
-                text: '$content',
-                textStyle: TextStyle(color: Colors.black),
+              child: SelectableAutoLinkText(
+                '$content',
+                onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
                 linkStyle: TextStyle(color: Colors.pinkAccent),
-                humanize: false,
-                onWebLinkTap: (link) => launch(link, forceSafariVC: false),
+                onTap: (link) async {
+                  if (await canLaunch(link)) {
+                    launch(link, forceSafariVC: false);
+                  }
+                },
               ),
             ),
           ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:expandable/expandable.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:fluttericon/font_awesome_icons.dart';
 
 class AirQualityLegend extends StatelessWidget {
   @override
@@ -17,13 +18,10 @@ class AirQualityLegend extends StatelessWidget {
                     collapsed: ExpandableButton(
                       child: Container(
                         width: MediaQuery.of(context).size.width,
-                        // ignore: missing_required_param
                         child: TextButton.icon(
-                            //disabledColor: Colors.grey[100],
-                            //onPressed: () {},
-                            //onPressed: null ,
+                            onPressed: () {},
                             icon: Icon(
-                              Ionicons.ios_arrow_down,
+                              FontAwesome.down_big,
                               color: Colors.black,
                             ),
                             label: Container(
@@ -41,7 +39,8 @@ class AirQualityLegend extends StatelessWidget {
                             width: MediaQuery.of(context).size.width,
                             // ignore: missing_required_param
                             child: TextButton.icon(
-                              icon: Icon(Ionicons.ios_arrow_up),
+                              onPressed: () {},
+                              icon: Icon(FontAwesome.up_big),
                               label: Container(
                                   width:
                                       MediaQuery.of(context).size.width - 100,
@@ -78,8 +77,9 @@ class AirQualityLegend extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         // ignore: missing_required_param
                         child: TextButton.icon(
+                          onPressed: () {},
                           icon: Icon(
-                            Ionicons.ios_arrow_down,
+                            FontAwesome.down_big,
                             color: Colors.black,
                           ),
                           label: Container(
@@ -98,7 +98,8 @@ class AirQualityLegend extends StatelessWidget {
                             width: MediaQuery.of(context).size.width,
                             // ignore: missing_required_param
                             child: TextButton.icon(
-                              icon: Icon(Ionicons.ios_arrow_up),
+                              onPressed: () {},
+                              icon: Icon(FontAwesome.up_big),
                               label: Container(
                                   width:
                                       MediaQuery.of(context).size.width - 100,
@@ -134,8 +135,9 @@ class AirQualityLegend extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         // ignore: missing_required_param
                         child: TextButton.icon(
+                          onPressed: () {},
                           icon: Icon(
-                            Ionicons.ios_arrow_down,
+                            FontAwesome.down_big,
                             color: Colors.black,
                           ),
                           label: Container(
@@ -156,7 +158,8 @@ class AirQualityLegend extends StatelessWidget {
                             width: MediaQuery.of(context).size.width,
                             // ignore: missing_required_param
                             child: TextButton.icon(
-                              icon: Icon(Ionicons.ios_arrow_up),
+                              onPressed: () {},
+                              icon: Icon(FontAwesome.up_big),
                               label: Container(
                                   width:
                                       MediaQuery.of(context).size.width - 100,
@@ -170,7 +173,7 @@ class AirQualityLegend extends StatelessWidget {
                                 width: 40,
                                 child: TextButton(
                                   child: Icon(
-                                    Ionicons.ios_square,
+                                    FontAwesome5.square,
                                     color: Color.fromRGBO(80, 240, 230, 1),
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
@@ -195,7 +198,7 @@ class AirQualityLegend extends StatelessWidget {
                                 width: 40,
                                 child: TextButton(
                                   child: Icon(
-                                    Ionicons.ios_square,
+                                    FontAwesome5.square,
                                     color: Color.fromRGBO(80, 204, 170, 1),
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
@@ -220,7 +223,7 @@ class AirQualityLegend extends StatelessWidget {
                                 width: 40,
                                 child: TextButton(
                                   child: Icon(
-                                    Ionicons.ios_square,
+                                    FontAwesome5.square,
                                     color: Color.fromRGBO(240, 230, 65, 1),
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
@@ -246,7 +249,7 @@ class AirQualityLegend extends StatelessWidget {
                                 child: TextButton(
                                   onPressed: null,
                                   child: Icon(
-                                    Ionicons.ios_square,
+                                    FontAwesome5.square,
                                     color: Color.fromRGBO(255, 80, 80, 1),
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
@@ -270,7 +273,7 @@ class AirQualityLegend extends StatelessWidget {
                                 child: TextButton(
                                   onPressed: null,
                                   child: Icon(
-                                    Ionicons.ios_square,
+                                    FontAwesome5.square,
                                     color: Color.fromRGBO(150, 0, 50, 1),
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
@@ -294,7 +297,7 @@ class AirQualityLegend extends StatelessWidget {
                                 child: TextButton(
                                   onPressed: null,
                                   child: Icon(
-                                    Ionicons.ios_square,
+                                    FontAwesome5.square,
                                     color: Color.fromRGBO(125, 33, 129, 1),
                                     //You also have to change the color in value_adapter.dart
                                     //in case you change the colors
@@ -332,8 +335,9 @@ class AirQualityLegend extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         // ignore: missing_required_param
                         child: TextButton.icon(
+                          onPressed: () {},
                           icon: Icon(
-                            Ionicons.ios_arrow_down,
+                            FontAwesome.down_big,
                             color: Colors.black,
                           ),
                           label: Container(
@@ -352,7 +356,8 @@ class AirQualityLegend extends StatelessWidget {
                             width: MediaQuery.of(context).size.width,
                             // ignore: missing_required_param
                             child: TextButton.icon(
-                              icon: Icon(Ionicons.ios_arrow_up),
+                              onPressed: () {},
+                              icon: Icon(FontAwesome.up_big),
                               label: Container(
                                   width:
                                       MediaQuery.of(context).size.width - 100,
@@ -390,8 +395,9 @@ class AirQualityLegend extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         // ignore: missing_required_param
                         child: TextButton.icon(
+                          onPressed: () {},
                           icon: Icon(
-                            Ionicons.ios_arrow_down,
+                            FontAwesome.down_big,
                             color: Colors.black,
                           ),
                           label: Container(
@@ -410,7 +416,8 @@ class AirQualityLegend extends StatelessWidget {
                             width: MediaQuery.of(context).size.width,
                             // ignore: missing_required_param
                             child: TextButton.icon(
-                              icon: Icon(Ionicons.ios_arrow_up),
+                              onPressed: () {},
+                              icon: Icon(FontAwesome.up_big),
                               label: Container(
                                   width:
                                       MediaQuery.of(context).size.width - 100,

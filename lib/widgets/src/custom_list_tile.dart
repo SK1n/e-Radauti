@@ -1,25 +1,24 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 
 class CustomListTile extends ListTile {
   final IconData leadingIcon;
   final double leadingSize;
   final String content;
   final String subTitle;
-  final Color leadingColor;
+  final Color? leadingColor;
   final String route;
   const CustomListTile({
-    Key key,
-    this.content,
-    this.subTitle,
-    this.leadingIcon,
+    Key? key,
+    required this.content,
+    required this.subTitle,
+    required this.leadingIcon,
     this.leadingSize = 35,
-    this.leadingColor,
-    this.route,
+    required this.leadingColor,
+    required this.route,
     bool isThreeLine = false,
-    Function onTap,
+    Function()? onTap,
   }) : super(
           key: key,
           isThreeLine: isThreeLine,
@@ -32,8 +31,8 @@ class CustomListTile extends ListTile {
       elevation: 1,
       child: ListTile(
         trailing: Platform.isAndroid
-            ? Icon(Ionicons.md_arrow_forward)
-            : Icon(Ionicons.ios_arrow_forward),
+            ? Icon(Icons.arrow_forward)
+            : Icon(Icons.arrow_forward_ios),
         leading: Icon(
           leadingIcon,
           size: leadingSize,
@@ -41,7 +40,8 @@ class CustomListTile extends ListTile {
         ),
         //isThreeLine: isThreeLine,
         subtitle: Text('$subTitle'),
-        onTap: () => Navigator.pushNamed(context, route != null ? route : null),
+        onTap: () =>
+            Navigator.pushNamed(context, route.isNotEmpty ? route : ''),
         title: Text(
           '$content',
           style: TextStyle(

@@ -5,9 +5,9 @@ class NumbersModel {
   List<dynamic> phone;
   List<dynamic> email;
   NumbersModel({
-    this.title,
-    this.phone,
-    this.email,
+    required this.title,
+    required this.phone,
+    required this.email,
   });
 
   factory NumbersModel.fromJson(Map<String, dynamic> json) {
@@ -20,7 +20,7 @@ class NumbersModel {
 }
 
 class FetchNumbersData {
-  FirebaseFirestore _instance;
+  FirebaseFirestore? _instance;
   List<NumbersModel> _localModel = [];
   List<NumbersModel> get localModel => _localModel;
 
@@ -28,7 +28,7 @@ class FetchNumbersData {
     _instance = FirebaseFirestore.instance;
     _localModel = [];
     CollectionReference collectionReference =
-        _instance.collection('collection');
+        _instance!.collection('collection');
     DocumentSnapshot snapshot = await collectionReference.doc('Numbers').get();
     var data = snapshot.data() as Map;
     var localData;

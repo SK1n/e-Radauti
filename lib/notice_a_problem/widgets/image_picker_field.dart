@@ -1,15 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutterapperadauti/notice_a_problem/widgets/send_button.dart';
 import 'package:flutterapperadauti/strings/form.dart';
-import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
 class ImagePickerField extends StatelessWidget {
-  const ImagePickerField({Key key}) : super(key: key);
+  const ImagePickerField({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +28,7 @@ class ImagePickerField extends StatelessWidget {
         placeholderImage: AssetImage('assets/images/add-image.png'),
         validator: FormBuilderValidators.compose(
           [
-            FormBuilderValidators.required(context, errorText: errorRequired),
+            FormBuilderValidators.required(errorText: errorRequired),
           ],
         ));
   }

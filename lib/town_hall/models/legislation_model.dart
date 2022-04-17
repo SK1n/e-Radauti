@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LegislationModel {
   String url;
-  int date;
+  int? date;
   String title;
   LegislationModel({
-    this.url,
+    required this.url,
     this.date,
-    this.title,
+    required this.title,
   });
   factory LegislationModel.fromJson(Map<String, dynamic> json) {
     return LegislationModel(
@@ -19,7 +19,7 @@ class LegislationModel {
 }
 
 class FetchLegislationData {
-  FirebaseFirestore _instance;
+  FirebaseFirestore? _instance;
   List<LegislationModel> _localModel = [];
   List<LegislationModel> get localModel => _localModel;
 
@@ -27,7 +27,7 @@ class FetchLegislationData {
     _instance = FirebaseFirestore.instance;
     _localModel = [];
     CollectionReference collectionReference =
-        _instance.collection('collection');
+        _instance!.collection('collection');
     DocumentSnapshot snapshot =
         await collectionReference.doc('Legislation').get();
     var data = snapshot.data() as Map;

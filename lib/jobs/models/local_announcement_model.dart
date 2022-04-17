@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class LocalAnnouncementModel {
-  String url;
-  String description;
-  String date;
-  String host;
-  String title;
+  String? url;
+  String? description;
+  String? date;
+  String? host;
+  String? title;
   LocalAnnouncementModel({
     this.url,
     this.description,
@@ -26,13 +26,13 @@ class LocalAnnouncementModel {
 }
 
 class FetchAnnouncementData {
-  FirebaseFirestore _instance;
+  FirebaseFirestore? _instance;
   List<LocalAnnouncementModel> _localAnnouncement = [];
 
-  Future<void> getAnnouncementsFromFirebase() async {
+  Future<List<LocalAnnouncementModel>> getAnnouncementsFromFirebase() async {
     _instance = FirebaseFirestore.instance;
     _localAnnouncement = [];
-    CollectionReference localAnnouncement = _instance.collection('collection');
+    CollectionReference localAnnouncement = _instance!.collection('collection');
     DocumentSnapshot snapshot =
         await localAnnouncement.doc('Announcements').get();
     var data = snapshot.data() as Map;

@@ -1,20 +1,20 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutterapperadauti/notice_a_problem/models/get_markers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:fluttericon/entypo_icons.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:fluttericon/octicons_icons.dart';
 import 'package:latlong2/latlong.dart' as latLng;
 import 'package:provider/provider.dart';
 
 class NoticeMapUi extends StatefulWidget {
-  const NoticeMapUi({Key key}) : super(key: key);
+  const NoticeMapUi({Key? key}) : super(key: key);
 
   @override
   _NoticeMapUiState createState() => _NoticeMapUiState();
@@ -22,7 +22,7 @@ class NoticeMapUi extends StatefulWidget {
 
 class _NoticeMapUiState extends State<NoticeMapUi>
     with TickerProviderStateMixin {
-  final db = FirebaseDatabase.instance.reference().child('Notice_Problem_Map');
+  final db = FirebaseDatabase.instance.ref().child('Notice_Problem_Map');
   double size = 300;
   var extend = true;
   final PopupController _popupLayerController = PopupController();
@@ -115,7 +115,7 @@ class _NoticeMapUiState extends State<NoticeMapUi>
     );
   }
 
-  SpeedDialChild speedDialChild(int iconID, String label) {
+  SpeedDialChild speedDialChild(int? iconID, String label) {
     return SpeedDialChild(
         child: iconID != null ? switchIcon(iconID) : null,
         backgroundColor: Colors.white,
@@ -131,49 +131,49 @@ class _NoticeMapUiState extends State<NoticeMapUi>
     switch (icon) {
       case 0:
         return Icon(
-          MaterialCommunityIcons.dots_horizontal_circle_outline,
+          Entypo.dot_3,
           color: Colors.black,
         );
-        break;
+
       case 1:
         return Icon(
-          MaterialCommunityIcons.trash_can_outline,
+          Entypo.trash,
           color: Colors.black,
         );
-        break;
+
       case 2:
         return Icon(
-          MaterialCommunityIcons.road,
+          FontAwesome5.road,
           color: Colors.black,
         );
-        break;
+
       case 3:
         return Icon(
-          MaterialCommunityIcons.electric_switch,
+          Entypo.lamp,
           color: Colors.black,
         );
-        break;
+
       case 4:
         return Icon(
-          MaterialCommunityIcons.home_alert,
+          Entypo.home,
           color: Colors.black,
         );
-        break;
+
       case 5:
         return Icon(
-          MaterialCommunityIcons.security,
+          Octicons.shield_check,
           color: Colors.black,
         );
-        break;
+
       case 6:
         return Icon(
-          MaterialCommunityIcons.blur,
+          Icons.blur_circular,
           color: Colors.black,
         );
-        break;
+
       default:
         return Icon(
-          MaterialCommunityIcons.dots_horizontal_circle_outline,
+          Entypo.dot_3,
           color: Colors.black,
         );
     }

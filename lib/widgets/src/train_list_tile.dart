@@ -3,12 +3,12 @@ import 'package:flutterapperadauti/transport/timeline.dart';
 
 class ListTileRoute extends StatelessWidget {
   const ListTileRoute(
-      {Key key,
-      @required this.leadinIcon,
-      @required this.title,
-      @required this.timeArray,
-      @required this.trainRoute,
-      this.subTitle,
+      {Key? key,
+      required this.leadinIcon,
+      required this.title,
+      required this.timeArray,
+      required this.trainRoute,
+      required this.subTitle,
       this.trailingIcon = Icons.arrow_forward_ios})
       : super(key: key);
 

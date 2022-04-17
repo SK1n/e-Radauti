@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterapperadauti/air_quality/models/airquality_model.dart';
 import 'package:flutterapperadauti/air_quality/models/charts_model.dart';
@@ -72,7 +70,8 @@ final GlobalKey<NavigatorState> _navigator = new GlobalKey<NavigatorState>();
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   'high_importance_channel', // id
   'High Importance Notifications', // title
-  'This channel is used for important notifications.', // description
+  description:
+      'This channel is used for important notifications.', // description
   importance: Importance.high,
 );
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -136,10 +135,10 @@ Future<void> main() async {
     iOS: initializationSettingsIOS,
   );
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-      onSelectNotification: (String payload) async {
+      onSelectNotification: (String? payload) async {
     debugPrint('payload: $payload');
 
-    _navigator.currentState.pushNamed('/$payload');
+    _navigator.currentState!.pushNamed('/$payload');
   });
 
   await flutterLocalNotificationsPlugin
@@ -186,7 +185,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -201,14 +200,14 @@ class _MyAppState extends State<MyApp> {
     }
     FirebaseMessaging.instance
         .getInitialMessage()
-        .then((RemoteMessage message) {
+        .then((RemoteMessage? message) {
       if (message != null) {
         navigate(context, message.data['view']);
       }
     });
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      RemoteNotification notification = message.notification;
-      AndroidNotification android = message.notification?.android;
+      RemoteNotification? notification = message.notification;
+      AndroidNotification? android = message.notification?.android;
       if (notification != null && android != null) {
         flutterLocalNotificationsPlugin.show(
             notification.hashCode,
@@ -218,7 +217,7 @@ class _MyAppState extends State<MyApp> {
               android: AndroidNotificationDetails(
                 channel.id,
                 channel.name,
-                channel.description,
+                channelDescription: channel.description,
                 icon: 'app_logo_final',
               ),
             ),
@@ -233,12 +232,12 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> didOpenAppFromNotif() async {
-    final NotificationAppLaunchDetails notificationAppLaunchDetails =
+    final NotificationAppLaunchDetails? notificationAppLaunchDetails =
         await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
-    debugPrint('${notificationAppLaunchDetails.payload}');
-    if (notificationAppLaunchDetails.didNotificationLaunchApp) {
+    debugPrint('${notificationAppLaunchDetails?.payload}');
+    if (notificationAppLaunchDetails!.didNotificationLaunchApp) {
       if (notificationAppLaunchDetails.payload != null) {
-        _navigator.currentState
+        _navigator.currentState!
             .pushNamed('/${notificationAppLaunchDetails.payload}');
       }
     }
@@ -254,38 +253,36 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (_) => IntroPages(),
         '/main': (_) => MenuScreen(),
-        '/announcement': (BuildContext context) => HomePageJobs(),
-        '/furniture': (BuildContext context) => FurniturePage(),
-        '/job': (BuildContext context) => JobPage(),
-        '/about': (BuildContext context) => AboutUsMain(),
-        '/confidential': (BuildContext context) => Confidential(),
-        '/partner': (BuildContext context) => Partner(),
-        '/contractors': (BuildContext context) => Contractors(),
-        '/localAuthorities': (BuildContext context) => LocalAuthorities(),
-        '/localAnnouncements': (BuildContext context) =>
-            LocalAnounnouncements(),
-        '/numbers': (BuildContext context) => HomePageNumbers(),
-        '/miscellaneous': (BuildContext context) => Miscellaneous(),
-        '/publicInstitutions': (BuildContext context) => PublicInstitutions(),
-        '/bus': (BuildContext context) => Bus(),
-        '/localInconvenience': (BuildContext context) => LocalInconvenience(),
-        '/taxi': (BuildContext context) => Taxi(),
-        '/train': (BuildContext context) => Train(),
-        '/transport': (BuildContext context) => HomePageTransport(),
-        '/councilMeetings': (BuildContext context) => CouncilMeetings(),
-        '/leaders': (BuildContext context) => Leaders(),
-        '/localCouncil': (BuildContext context) => LocalCouncil(),
-        '/localLegislation': (BuildContext context) => LocalLegislation(),
-        '/townHall': (BuildContext context) => TownHallMain(),
-        '/noticeProblem': (BuildContext context) => MainNoticeUi(),
-        '/noticeMap': (BuildContext context) => NoticeMapUi(),
-        '/events': (BuildContext context) => MainEventsScreen(),
-        '/air': (BuildContext context) => AirQualityMain(),
-        '/volunteer': (BuildContext context) => VolunteerPage(),
-        '/settings': (BuildContext context) => AppSettings(),
-        '/settings/notifications': (BuildContext context) =>
-            SettingsNotification(),
-        '/settings/debug': (BuildContext context) => DebugSettings(),
+        '/announcement': (_) => HomePageJobs(),
+        '/furniture': (_) => FurniturePage(),
+        '/job': (_) => JobPage(),
+        '/about': (_) => AboutUsMain(),
+        '/confidential': (_) => Confidential(),
+        '/partner': (_) => Partner(),
+        '/contractors': (_) => Contractors(),
+        '/localAuthorities': (_) => LocalAuthorities(),
+        '/localAnnouncements': (_) => LocalAnounnouncements(),
+        '/numbers': (_) => HomePageNumbers(),
+        '/miscellaneous': (_) => Miscellaneous(),
+        '/publicInstitutions': (_) => PublicInstitutions(),
+        '/bus': (_) => Bus(),
+        '/localInconvenience': (_) => LocalInconvenience(),
+        '/taxi': (_) => Taxi(),
+        '/train': (_) => Train(),
+        '/transport': (_) => HomePageTransport(),
+        '/councilMeetings': (_) => CouncilMeetings(),
+        '/leaders': (_) => Leaders(),
+        '/localCouncil': (_) => LocalCouncil(),
+        '/localLegislation': (_) => LocalLegislation(),
+        '/townHall': (_) => TownHallMain(),
+        '/noticeProblem': (_) => MainNoticeUi(),
+        '/noticeMap': (_) => NoticeMapUi(),
+        '/events': (_) => MainEventsScreen(),
+        '/air': (_) => AirQualityMain(),
+        '/volunteer': (_) => VolunteerPage(),
+        '/settings': (_) => AppSettings(),
+        '/settings/notifications': (_) => SettingsNotification(),
+        '/settings/debug': (_) => DebugSettings(),
       },
       navigatorKey: _navigator,
       theme: ThemeData(

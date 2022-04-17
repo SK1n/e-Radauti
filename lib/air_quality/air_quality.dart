@@ -1,15 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutterapperadauti/air_quality/models/airquality_model.dart';
-import 'package:dio/dio.dart';
-import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:flutterapperadauti/air_quality/value_adapter.dart';
 import 'package:flutterapperadauti/air_quality/legend.dart';
 import 'package:flutterapperadauti/air_quality/windDirection.dart';
 import 'package:flutterapperadauti/air_quality/windDirectionLocation.dart';
-import 'package:flutterapperadauti/air_quality/wind_model.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
+import 'package:fluttericon/entypo_icons.dart';
+import 'package:fluttericon/linearicons_free_icons.dart';
+import 'package:fluttericon/meteocons_icons.dart';
+import 'package:fluttericon/rpg_awesome_icons.dart';
+import 'package:fluttericon/typicons_icons.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -146,7 +146,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                 child: ListTile(
                                   leading: TextButton.icon(
                                     icon: Icon(
-                                      Ionicons.ios_thermometer,
+                                      Typicons.temperatire,
                                       size: 30,
                                       color: Colors.black,
                                     ),
@@ -162,7 +162,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                   ),
                                   trailing: TextButton.icon(
                                     icon: Icon(
-                                      Ionicons.ios_water,
+                                      RpgAwesome.droplet,
                                       size: 30,
                                       color: Colors.black,
                                     ),
@@ -204,7 +204,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                               child: ListTile(
                                 leading: TextButton.icon(
                                   icon: Icon(
-                                    WeatherIcons.wi_windy,
+                                    Meteocons.wind,
                                     color: Colors.black,
                                   ),
                                   label: new Text(
@@ -235,7 +235,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                 leading: TextButton.icon(
                                   onPressed: () {},
                                   icon: Icon(
-                                    WeatherIcons.wi_barometer,
+                                    Entypo.gauge,
                                     color: Colors.black,
                                   ),
                                   label: Text(
@@ -248,7 +248,7 @@ class _AirQualityPageState extends State<AirQualityPage> {
                                 trailing: TextButton.icon(
                                   onPressed: () {},
                                   icon: Icon(
-                                    WeatherIcons.wi_small_craft_advisory,
+                                    LineariconsFree.flag,
                                     color: Colors.black,
                                   ),
                                   label: windDirectionLocation(

@@ -5,9 +5,9 @@ class CouncilMeetingsModel {
   String date;
   String theagend;
   CouncilMeetingsModel({
-    this.url,
-    this.date,
-    this.theagend,
+    required this.url,
+    required this.date,
+    required this.theagend,
   });
   factory CouncilMeetingsModel.fromJson(Map<String, dynamic> json) {
     return CouncilMeetingsModel(
@@ -19,7 +19,7 @@ class CouncilMeetingsModel {
 }
 
 class FetchCouncilMeetingsData {
-  FirebaseFirestore _instance;
+  FirebaseFirestore? _instance;
   List<CouncilMeetingsModel> _localModel = [];
   List<CouncilMeetingsModel> get localModel => _localModel;
 
@@ -27,7 +27,7 @@ class FetchCouncilMeetingsData {
     _instance = FirebaseFirestore.instance;
     _localModel = [];
     CollectionReference collectionReference =
-        _instance.collection('collection');
+        _instance!.collection('collection');
     DocumentSnapshot snapshot =
         await collectionReference.doc('CouncilMeetings').get();
     var data = snapshot.data() as Map;

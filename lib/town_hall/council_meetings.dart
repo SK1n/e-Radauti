@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/town_hall/models/council_meetings.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
@@ -10,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class CouncilMeetings extends StatefulWidget {
-  CouncilMeetings({Key key}) : super(key: key);
+  CouncilMeetings({Key? key}) : super(key: key);
 
   @override
   _CouncilMeetingsState createState() => _CouncilMeetingsState();
@@ -64,9 +63,9 @@ class CouncilListItemWidget extends StatefulWidget {
   final CouncilMeetingsModel data;
   final bool isFirst;
   const CouncilListItemWidget({
-    Key key,
-    this.data,
-    this.isFirst,
+    Key? key,
+    required this.data,
+    required this.isFirst,
   }) : super(key: key);
 
   @override
@@ -146,6 +145,8 @@ class _CouncilListItemWidgetState extends State<CouncilListItemWidget> {
             src="https://www.facebook.com/v2.3/plugins/video.php? 
             allowfullscreen=false&autoplay=true&href=$url" </iframe>
      ''',
+
+      // ignore: deprecated_member_use
       webView: true,
     );
   }

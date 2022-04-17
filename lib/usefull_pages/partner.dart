@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/usefull_pages/usefull_pages_widget/widget_partner_model.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';

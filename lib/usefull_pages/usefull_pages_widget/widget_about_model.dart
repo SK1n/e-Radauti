@@ -1,48 +1,80 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:fluttericon/entypo_icons.dart';
+
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
-class WidgetAboutModel{
-  Widget itemText(child, childFontWeight, childSize, childColor, childDecoration){
+class WidgetAboutModel {
+  Widget itemText(
+      child, childFontWeight, childSize, childColor, childDecoration) {
     return Text(
       child,
-      style: TextStyle(fontWeight: childFontWeight, fontSize: childSize, color: childColor, decoration: childDecoration,),
+      style: TextStyle(
+        fontWeight: childFontWeight,
+        fontSize: childSize,
+        color: childColor,
+        decoration: childDecoration,
+      ),
     );
   }
-  Widget widgetFloatingActionButton(childContext){
+
+  Widget widgetFloatingActionButton(childContext) {
     return FloatingActionButton(
-      child: Icon(Ionicons.ios_mail, color: Colors.white, size: 35,),
-      onPressed: () {Navigator.pushNamed(childContext, '/contact');},
+      child: Icon(
+        Entypo.mail,
+        color: Colors.white,
+        size: 35,
+      ),
+      onPressed: () {
+        Navigator.pushNamed(childContext, '/contact');
+      },
     );
   }
-  Widget widgetCover(child, childContext){
+
+  Widget widgetCover(child, childContext) {
     return Container(
-      padding: EdgeInsets.only(bottom: 10,),
+      padding: EdgeInsets.only(
+        bottom: 10,
+      ),
       width: MediaQuery.of(childContext).size.width - 30,
-      child: Image.asset(child, fit: BoxFit.cover,),
+      child: Image.asset(
+        child,
+        fit: BoxFit.cover,
+      ),
     );
   }
-  Widget widgetTitle(child, childContext){
+
+  Widget widgetTitle(child, childContext) {
     return Container(
-      padding: EdgeInsets.only(bottom: 10,),
+      padding: EdgeInsets.only(
+        bottom: 10,
+      ),
       width: MediaQuery.of(childContext).size.width - 30,
-      child: itemText(child, FontWeight.bold, 16.0, Colors.black, TextDecoration.none),
+      child: itemText(
+          child, FontWeight.bold, 16.0, Colors.black, TextDecoration.none),
     );
   }
-  Widget widgetParagraph(child, childContext){
+
+  Widget widgetParagraph(child, childContext) {
     return Container(
-      padding: EdgeInsets.only(bottom: 10,),
+      padding: EdgeInsets.only(
+        bottom: 10,
+      ),
       width: MediaQuery.of(childContext).size.width - 30,
-      child: itemText(child, FontWeight.normal, 15.0, Colors.black, TextDecoration.none),
+      child: itemText(
+          child, FontWeight.normal, 15.0, Colors.black, TextDecoration.none),
     );
   }
-  Widget widgetParagraphLink(child, childLink, childContext){
+
+  Widget widgetParagraphLink(child, childLink, childContext) {
     return Container(
-      padding: EdgeInsets.only(bottom: 20,),
+      padding: EdgeInsets.only(
+        bottom: 20,
+      ),
       width: MediaQuery.of(childContext).size.width - 30,
       child: Center(
         child: new InkWell(
-          child: itemText(child, FontWeight.normal, 15.0, Color(0xFF38A49C), TextDecoration.underline),
+          child: itemText(child, FontWeight.normal, 15.0, Color(0xFF38A49C),
+              TextDecoration.underline),
           onTap: () => UrlLauncher.launch(childLink),
         ),
       ),

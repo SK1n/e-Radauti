@@ -8,7 +8,7 @@ import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:provider/provider.dart';
 
 class NewEventsScreen extends StatefulWidget {
-  const NewEventsScreen({Key key}) : super(key: key);
+  const NewEventsScreen({Key? key}) : super(key: key);
 
   @override
   State<NewEventsScreen> createState() => _NewEventsScreenState();
@@ -23,7 +23,7 @@ class _NewEventsScreenState extends State<NewEventsScreen> {
 
   final AsyncMemoizer dCMemorizer = AsyncMemoizer();
 
-  FirebaseApp firebaseApp;
+  FirebaseApp? firebaseApp;
 
   Future<void> initializeFB() async {
     firebaseApp = await Firebase.initializeApp();

@@ -338,9 +338,11 @@ Widget expandableWidget(child, childString, childWidget, BuildContext bC) {
                       child: Expandable(
                         expanded: expanded,
                         theme: ExpandableThemeData(),
+                        collapsed: Container(),
                       ),
                     );
                   },
+                  collapsed: Container(),
                 ),
               ),
             ),
@@ -358,9 +360,9 @@ Widget expandableWidget(child, childString, childWidget, BuildContext bC) {
 //2
 class LocalInconvenience extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  final String giveString;
+  final String? giveString;
   LocalInconvenience({
-    Key key,
+    Key? key,
     this.giveString,
   }) : super(key: key);
   @override
@@ -400,9 +402,9 @@ class LocalInconvenience extends StatelessWidget {
               //2
               Container(
                 child: FutureBuilder(
-                  future: fetchBusList(giveString),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
+                  future: fetchBusList(giveString!),
+                  builder: (context, AsyncSnapshot? snapshot) {
+                    if (snapshot!.hasData) {
                       return Column(
                         children: <Widget>[
                           for (final item in snapshot.data)

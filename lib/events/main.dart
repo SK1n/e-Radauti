@@ -6,7 +6,7 @@ import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
 class MainEventsScreen extends StatefulWidget {
-  const MainEventsScreen({Key key}) : super(key: key);
+  const MainEventsScreen({Key? key}) : super(key: key);
 
   @override
   State<MainEventsScreen> createState() => _MainEventsScreenState();
@@ -19,7 +19,7 @@ class _MainEventsScreenState extends State<MainEventsScreen> {
     initializeFB();
   }
 
-  FirebaseApp firebaseApp;
+  FirebaseApp? firebaseApp;
 
   Future<void> initializeFB() async {
     firebaseApp = await Firebase.initializeApp();

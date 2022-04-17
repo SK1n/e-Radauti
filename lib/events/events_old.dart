@@ -8,7 +8,7 @@ import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:provider/provider.dart';
 
 class OldEventsScreen extends StatefulWidget {
-  const OldEventsScreen({Key key}) : super(key: key);
+  const OldEventsScreen({Key? key}) : super(key: key);
 
   @override
   State<OldEventsScreen> createState() => _OldEventsScreenState();
@@ -22,7 +22,7 @@ class _OldEventsScreenState extends State<OldEventsScreen> {
     initializeFB();
   }
 
-  FirebaseApp firebaseApp;
+  FirebaseApp? firebaseApp;
 
   Future<void> initializeFB() async {
     firebaseApp = await Firebase.initializeApp();

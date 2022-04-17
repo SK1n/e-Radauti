@@ -1,15 +1,17 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+
 import 'package:flutterapperadauti/transport/models/taxi_model.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
+import 'package:fluttericon/entypo_icons.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class Taxi extends StatefulWidget {
-  Taxi({Key key}) : super(key: key);
+  Taxi({Key? key}) : super(key: key);
 
   @override
   State<Taxi> createState() => _TaxiState();
@@ -61,21 +63,23 @@ class _TaxiState extends State<Taxi> {
 
   Future getDownloadUrlFromUrlRef(BuildContext context, String imgURL) async {
     Image image;
-    await FirebaseStorage.instance
+    return await FirebaseStorage.instance
         .refFromURL(imgURL)
         .getDownloadURL()
-        .then((imageUrl) => image = Image.network(
-              imageUrl.toString(),
-            ));
-    return image;
+        .then((imageUrl) {
+      image = Image.network(
+        imageUrl.toString(),
+      );
+      return image;
+    });
   }
 
   Card listItem({
-    String phone,
-    String url,
-    String plate,
-    String car,
-    String driver,
+    String? phone,
+    String? url,
+    String? plate,
+    String? car,
+    String? driver,
   }) {
     return Card(
       child: Row(
@@ -86,7 +90,7 @@ class _TaxiState extends State<Taxi> {
                 height: 100,
                 width: 100,
                 child: FutureBuilder(
-                  future: getDownloadUrlFromUrlRef(context, url),
+                  future: getDownloadUrlFromUrlRef(context, url!),
                   builder: (BuildContext context, AsyncSnapshot snap) {
                     if (snap.hasError) {
                       return Text('Nu am putut incarca imaginea');
@@ -107,7 +111,7 @@ class _TaxiState extends State<Taxi> {
                   Padding(
                     padding: const EdgeInsets.only(right: 8.0),
                     child: Icon(
-                      AntDesign.user,
+                      Entypo.user,
                       size: 17,
                     ),
                   ),
@@ -122,7 +126,7 @@ class _TaxiState extends State<Taxi> {
                   Padding(
                     padding: const EdgeInsets.only(right: 8.0),
                     child: Icon(
-                      AntDesign.car,
+                      FontAwesome5.car,
                       size: 17,
                     ),
                   ),
@@ -134,7 +138,7 @@ class _TaxiState extends State<Taxi> {
                   Padding(
                     padding: const EdgeInsets.only(right: 8.0),
                     child: Icon(
-                      AntDesign.idcard,
+                      Entypo.vcard,
                       size: 17,
                     ),
                   ),
@@ -150,7 +154,7 @@ class _TaxiState extends State<Taxi> {
                     Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: Icon(
-                        AntDesign.phone,
+                        Entypo.phone,
                         color: Colors.blue,
                         size: 17,
                       ),

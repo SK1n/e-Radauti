@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 
 class AppBarUiSliver extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
-  final IconData leading;
+  final IconData? leading;
   final String content;
   final bool pinned;
   const AppBarUiSliver({
-    Key key,
-    this.scaffoldKey,
+    Key? key,
+    required this.scaffoldKey,
     this.leading,
     this.pinned = false,
-    @required this.content,
+    required this.content,
   }) : super(
           key: key,
         );
@@ -27,22 +26,19 @@ class AppBarUiSliver extends StatelessWidget {
         leading: SafeArea(
           // ignore: deprecated_member_use
           child: FlatButton(
-            child: Icon(Ionicons.ios_arrow_back),
+            child: Icon(Icons.arrow_back),
             onPressed: () => Navigator.pop(context),
           ),
         ),
         actions: [
-          scaffoldKey != null
-              ? SafeArea(
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.menu,
-                      color: Colors.black,
-                    ),
-                    onPressed: () => scaffoldKey.currentState.openDrawer(),
-                  ),
-                )
-              : null,
+          TextButton.icon(
+            label: Text(''),
+            icon: Icon(
+              Icons.menu,
+              color: Colors.black,
+            ),
+            onPressed: () => scaffoldKey.currentState!.openDrawer(),
+          )
         ],
         title: SafeArea(
           top: false,
@@ -72,16 +68,16 @@ class AppBarUiSliver extends StatelessWidget {
 
 class AppBarUi extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
-  final IconData leading;
+  final IconData? leading;
   final String content;
   final bool pinned;
-  final TabBar bottom;
+  final TabBar? bottom;
   const AppBarUi({
-    Key key,
-    this.scaffoldKey,
+    Key? key,
+    required this.scaffoldKey,
     this.leading,
     this.pinned = false,
-    @required this.content,
+    required this.content,
     this.bottom,
   }) : super(
           key: key,
@@ -99,22 +95,21 @@ class AppBarUi extends StatelessWidget {
         leading: SafeArea(
           // ignore: deprecated_member_use
           child: FlatButton(
-            child: Icon(Ionicons.ios_arrow_back),
+            child: Icon(Icons.arrow_back),
             onPressed: () => Navigator.pop(context),
           ),
         ),
         actions: [
-          scaffoldKey != null
-              ? SafeArea(
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.menu,
-                      color: Colors.black,
-                    ),
-                    onPressed: () => scaffoldKey.currentState.openDrawer(),
-                  ),
-                )
-              : null,
+          SafeArea(
+            child: TextButton.icon(
+              label: Text(''),
+              icon: Icon(
+                Icons.menu,
+                color: Colors.black,
+              ),
+              onPressed: () => scaffoldKey.currentState!.openDrawer(),
+            ),
+          )
         ],
         title: SafeArea(
           top: false,

@@ -3,9 +3,11 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+
 import 'package:flutter_map/flutter_map.dart';
+import 'package:fluttericon/entypo_icons.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:fluttericon/octicons_icons.dart';
 import 'package:latlong2/latlong.dart' as latLng;
 
 class GetMarkers {
@@ -13,20 +15,20 @@ class GetMarkers {
   String description;
   int index;
   String institution;
-  double lat;
-  double long;
+  double? lat;
+  double? long;
   String status;
   String subject;
 
   GetMarkers({
-    this.category,
-    this.description,
-    this.index,
-    this.institution,
+    required this.category,
+    required this.description,
+    required this.index,
+    required this.institution,
     this.lat,
     this.long,
-    this.status,
-    this.subject,
+    required this.status,
+    required this.subject,
   });
 
   factory GetMarkers.fromJson(Map<String, dynamic> json) {
@@ -44,7 +46,7 @@ class GetMarkers {
 }
 
 class FetchMarkers {
-  FirebaseFirestore _instance;
+  FirebaseFirestore? _instance;
   List<GetMarkers> _getMarkers = [];
   List<Marker> _marker = [];
 
@@ -52,7 +54,7 @@ class FetchMarkers {
     _instance = FirebaseFirestore.instance;
     _getMarkers = [];
     _marker = [];
-    CollectionReference getMarkers = _instance.collection('collection');
+    CollectionReference getMarkers = _instance!.collection('collection');
     DocumentSnapshot snapshot = await getMarkers.doc('Markers').get();
     var data = snapshot.data() as Map;
     var eventsData = data['markers'] as List<dynamic>;
@@ -63,7 +65,7 @@ class FetchMarkers {
       if (element.lat != null && element.long != null) {
         _marker.add(
           Marker(
-              point: latLng.LatLng(element.lat, element.long),
+              point: latLng.LatLng(element.lat!, element.long!),
               builder: (BuildContext context) {
                 return InkWell(
                   onTap: () {
@@ -161,49 +163,48 @@ class FetchMarkers {
     switch (icon) {
       case 0:
         return Icon(
-          MaterialCommunityIcons.dots_horizontal_circle_outline,
+          Entypo.dot_3,
           color: Colors.black,
         );
-        break;
       case 1:
         return Icon(
-          MaterialCommunityIcons.trash_can_outline,
+          Entypo.trash,
           color: Colors.black,
         );
-        break;
+
       case 2:
         return Icon(
-          MaterialCommunityIcons.road,
+          FontAwesome5.road,
           color: Colors.black,
         );
-        break;
+
       case 3:
         return Icon(
-          MaterialCommunityIcons.electric_switch,
+          Entypo.lamp,
           color: Colors.black,
         );
-        break;
+
       case 4:
         return Icon(
-          MaterialCommunityIcons.home_alert,
+          Entypo.home,
           color: Colors.black,
         );
-        break;
+
       case 5:
         return Icon(
-          MaterialCommunityIcons.security,
+          Octicons.shield_check,
           color: Colors.black,
         );
-        break;
+
       case 6:
         return Icon(
-          MaterialCommunityIcons.blur,
+          Icons.blur_circular,
           color: Colors.black,
         );
-        break;
+
       default:
         return Icon(
-          MaterialCommunityIcons.dots_horizontal_circle_outline,
+          Entypo.dot_3,
           color: Colors.black,
         );
     }

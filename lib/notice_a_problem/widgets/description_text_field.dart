@@ -6,7 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
 class DescriptionTextField extends StatelessWidget {
-  const DescriptionTextField({Key key}) : super(key: key);
+  const DescriptionTextField({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +15,12 @@ class DescriptionTextField extends StatelessWidget {
     return FormBuilderTextField(
         decoration: InputDecoration(
             hintText: 'Descriere',
-            errorText: Provider.of<NoticeFormState>(context).description.isEmpty
+            errorText: Provider.of<NoticeFormState>(context)
+                    .description!
+                    .isEmpty
                 ? null
-                : Provider.of<NoticeFormState>(context).description.length < 50
-                    ? '${Provider.of<NoticeFormState>(context).description.length}/50'
+                : Provider.of<NoticeFormState>(context).description!.length < 50
+                    ? '${Provider.of<NoticeFormState>(context).description!.length}/50'
                     : null),
         maxLines: 5,
         initialValue: noticeFormState.description,
@@ -28,8 +30,8 @@ class DescriptionTextField extends StatelessWidget {
         },
         validator: FormBuilderValidators.compose(
           [
-            FormBuilderValidators.required(context, errorText: errorRequired),
-            FormBuilderValidators.minLength(context, 50,
+            FormBuilderValidators.required(errorText: errorRequired),
+            FormBuilderValidators.minLength(50,
                 errorText: 'Trebuie sa introduceti minimum 50 charactere'),
           ],
         ));

@@ -7,10 +7,10 @@ class TrainModel {
   String train;
 
   TrainModel({
-    this.stations,
-    this.timeTable,
-    this.title,
-    this.train,
+    required this.stations,
+    required this.timeTable,
+    required this.title,
+    required this.train,
   });
 
   factory TrainModel.fromJson(Map<String, dynamic> json) {
@@ -24,7 +24,7 @@ class TrainModel {
 }
 
 class FetchTrainData {
-  FirebaseFirestore _instance;
+  FirebaseFirestore? _instance;
   List<TrainModel> _localModel = [];
   List<TrainModel> get localModel => _localModel;
 
@@ -32,7 +32,7 @@ class FetchTrainData {
     _instance = FirebaseFirestore.instance;
     _localModel = [];
     CollectionReference collectionReference =
-        _instance.collection('collection');
+        _instance!.collection('collection');
     DocumentSnapshot snapshot = await collectionReference.doc('Train').get();
     var data = snapshot.data() as Map;
     var localData;

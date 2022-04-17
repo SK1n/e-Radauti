@@ -6,7 +6,7 @@ import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 
 class VolunteerPage extends StatelessWidget {
   VolunteerPage({
-    Key key,
+    Key? key,
   }) : super(key: key);
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override

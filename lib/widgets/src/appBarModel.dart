@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 
 //var appBarModel = AppBarModel();
 
 @deprecated
 class AppBarModel {
-  AppBar loadAppBar(context, title, icon, scaffoldKey, {TabBar tabBar}) {
+  AppBar loadAppBar(context, title, icon, scaffoldKey, {TabBar? tabBar}) {
     return AppBar(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -26,7 +25,7 @@ class AppBarModel {
       ]),
       leading: Container(
         child: FlatButton(
-          child: Icon(Ionicons.ios_arrow_back),
+          child: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },

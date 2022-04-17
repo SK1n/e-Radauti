@@ -6,7 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
 class EmailTextField extends StatelessWidget {
-  const EmailTextField({Key key}) : super(key: key);
+  const EmailTextField({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +21,8 @@ class EmailTextField extends StatelessWidget {
         },
         validator: FormBuilderValidators.compose(
           [
-            FormBuilderValidators.required(context, errorText: errorRequired),
-            FormBuilderValidators.email(context, errorText: errorEmail),
+            FormBuilderValidators.required(errorText: errorRequired),
+            FormBuilderValidators.email(errorText: errorEmail),
           ],
         ));
   }

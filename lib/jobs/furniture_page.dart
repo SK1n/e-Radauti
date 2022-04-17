@@ -15,21 +15,19 @@ class FurniturePage extends StatefulWidget {
 }
 
 class _FurniturePageState extends State<FurniturePage> {
-  List<JobModel> jobList;
-  Map<String, dynamic> jsonResponse;
+  List<JobModel>? jobList = [];
+  Map<String, dynamic>? jsonResponse;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  Future<List<JobModel>> _getJobs() async {
+  Future<List<JobModel>?> _getJobs() async {
     try {
       var response = await http.get(Uri.parse(
           "https://www.eradauti.ro/api/context?pathname=/anunturi/imobiliare-19"));
       this.setState(() {
         jsonResponse = json.decode(response.body);
       });
-      // ignore: deprecated_member_use
-      jobList = List<JobModel>();
-      jsonResponse.forEach((key, value) {
-        jobList = (jsonResponse['context']['posts']['records'] as List)
+      jsonResponse!.forEach((key, value) {
+        jobList = (jsonResponse!['context']['posts']['records'] as List)
             .map<JobModel>((j) => JobModel.fromJson(j))
             .toList();
       });
@@ -60,7 +58,7 @@ class _FurniturePageState extends State<FurniturePage> {
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               return new ListView.builder(
-                  itemCount: jobList == null ? 0 : jobList.length,
+                  itemCount: jobList == null ? 0 : jobList!.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                         padding: EdgeInsets.only(top: 10),
@@ -77,33 +75,32 @@ class _FurniturePageState extends State<FurniturePage> {
                                 style: ButtonStyle(
                                     backgroundColor:
                                         MaterialStateProperty.all<Color>(
-                                            Colors.blue[300]),
+                                            Colors.blue[300]!),
                                     padding:
                                         MaterialStateProperty.all<EdgeInsets>(
                                             EdgeInsets.all(10))),
                                 child: Text(
-                                  '${jobList[index].title.toString().toUpperCase()}',
+                                  '${jobList![index].title.toString().toUpperCase()}',
                                   style: TextStyle(color: Colors.white),
                                   textAlign: TextAlign.start,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 onPressed: () => {
                                   browser.open(
-                                      url: Uri.parse(
-                                          'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${jobList[index].slug.toString()}-${jobList[index].id.toString()}'),
-                                      options: ChromeSafariBrowserClassOptions(
-                                          android:
-                                              AndroidChromeCustomTabsOptions(
-                                                  addDefaultShareMenuItem:
-                                                      false,
-                                                  keepAliveEnabled: true),
-                                          ios: IOSSafariOptions(
-                                              dismissButtonStyle:
-                                                  IOSSafariDismissButtonStyle
-                                                      .CLOSE,
-                                              presentationStyle:
-                                                  IOSUIModalPresentationStyle
-                                                      .OVER_FULL_SCREEN))),
+                                    url: Uri.parse(
+                                        'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${jobList![index].slug.toString()}-${jobList![index].id.toString()}'),
+                                    options: ChromeSafariBrowserClassOptions(
+                                      android: AndroidChromeCustomTabsOptions(
+                                          addDefaultShareMenuItem: false,
+                                          keepAliveEnabled: true),
+                                      ios: IOSSafariOptions(
+                                          dismissButtonStyle:
+                                              IOSSafariDismissButtonStyle.CLOSE,
+                                          presentationStyle:
+                                              IOSUIModalPresentationStyle
+                                                  .OVER_FULL_SCREEN),
+                                    ),
+                                  ),
                                 },
                               ),
                             )

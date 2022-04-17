@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+
 import 'package:flutterapperadauti/notice_a_problem/screens/notice_form_ui.dart';
-import 'package:flutterapperadauti/state/loading_state.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
-import 'package:flutterapperadauti/widgets/src/loading_screen_ui.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:provider/provider.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 
 class MainNoticeUi extends StatefulWidget {
-  const MainNoticeUi({Key key}) : super(key: key);
+  const MainNoticeUi({Key? key}) : super(key: key);
 
   @override
   State<MainNoticeUi> createState() => _MainNoticeUiState();
@@ -18,7 +16,6 @@ class _MainNoticeUiState extends State<MainNoticeUi> {
   @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-    IsLoading isLoading = Provider.of<IsLoading>(context);
     return Scaffold(
       key: _scaffoldKey,
       drawer: NavDrawer(),
@@ -46,7 +43,7 @@ class _MainNoticeUiState extends State<MainNoticeUi> {
         tooltip: "Harta",
         isExtended: true,
         label: const Text('Harta'),
-        icon: Icon(MaterialIcons.map),
+        icon: Icon(FontAwesome5.map),
         onPressed: () => Navigator.pushNamed(context, '/noticeMap'),
       ),
     );

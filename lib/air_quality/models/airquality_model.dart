@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AirQualityModel {
-  final int pm;
-  final int co;
-  final double humidity;
-  final double temperature;
-  final String wind;
-  final String pression;
-  String airTS;
+  final int? pm;
+  final int? co;
+  final double? humidity;
+  final double? temperature;
+  final String? wind;
+  final String? pression;
+  String? airTS;
 
   AirQualityModel({
     this.pm,
@@ -33,7 +33,7 @@ class AirQualityModel {
 }
 
 class FetchAirQualityData {
-  FirebaseFirestore _instance;
+  FirebaseFirestore? _instance;
   List<AirQualityModel> _localModel = [];
   List<AirQualityModel> get localModel => _localModel;
 
@@ -41,7 +41,7 @@ class FetchAirQualityData {
     _instance = FirebaseFirestore.instance;
     _localModel = [];
     CollectionReference collectionReference =
-        _instance.collection('collection');
+        _instance!.collection('collection');
     DocumentSnapshot snapshot = await collectionReference.doc('Air').get();
     var data = snapshot.data() as Map;
     var localData;

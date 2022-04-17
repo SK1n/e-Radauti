@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
@@ -9,10 +8,10 @@ class TimelineRoute extends StatefulWidget {
   final List<dynamic> trainRoute;
   final List<dynamic> timeTable;
   TimelineRoute(
-      {Key key,
-      @required this.title,
-      @required this.trainRoute,
-      @required this.timeTable})
+      {Key? key,
+      required this.title,
+      required this.trainRoute,
+      required this.timeTable})
       : super(key: key);
 
   @override
