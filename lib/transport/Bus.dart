@@ -59,7 +59,7 @@ class _BusMainState extends State<BusMain> {
     List<dynamic> v = await fetchRoutes();
     setState(() {
       getItems = buildListStringItemes(v);
-      _dropdownMenuItems = buildDropdownMenuItems(getItems);
+      _dropdownMenuItems = buildDropdownMenuItems(getItems!);
     });
   }
 
@@ -141,10 +141,10 @@ class _BusMainState extends State<BusMain> {
   //2
   TextEditingController editingControllerStart = TextEditingController();
   TextEditingController editingControllerEnd = TextEditingController();
-  late String _chosenValue;
-  late String _chosenValue2;
+  String? _chosenValue;
+  String? _chosenValue2;
   //3
-  late List<DropdownMenuItem<String>> _dropdownMenuItems;
+  List<DropdownMenuItem<String>>? _dropdownMenuItems;
   List<DropdownMenuItem<String>> buildDropdownMenuItems(List listItems) {
     // ignore: deprecated_member_use
     List<DropdownMenuItem<String>> items = [];
@@ -169,7 +169,7 @@ class _BusMainState extends State<BusMain> {
   //4
   var regExp = RegExp(r' - .*');
   var regExp2 = RegExp(r'.* - ');
-  late List<String> getItems;
+  List<String>? getItems;
   List<String> buildListStringItemes(List listItems) {
     // ignore: deprecated_member_use
     List<String> items = [];
@@ -276,9 +276,9 @@ class _BusMainState extends State<BusMain> {
                           setState(() {
                             if (value != '- Selectează -') {
                               _chosenValue = value!;
-                              if (_chosenValue2.isEmpty) {
+                              if (_chosenValue2!.isEmpty) {
                                 filterSearchResults(
-                                    _chosenValue, _chosenValue2);
+                                    _chosenValue!, _chosenValue2!);
                               }
                             } else {
                               _chosenValue = '';
@@ -327,9 +327,9 @@ class _BusMainState extends State<BusMain> {
                           setState(() {
                             if (value != '- Selectează -') {
                               _chosenValue2 = value!;
-                              if (_chosenValue.isEmpty) {
+                              if (_chosenValue!.isEmpty) {
                                 filterSearchResults(
-                                    _chosenValue, _chosenValue2);
+                                    _chosenValue!, _chosenValue2!);
                               }
                             } else {
                               _chosenValue2 = '';

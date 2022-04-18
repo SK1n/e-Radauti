@@ -69,7 +69,7 @@ class _NewEventWidgetState extends State<NewEventWidget>
   Future getDownloadUrlFromUrlRef(BuildContext context, String imgURL) async {
     Image image;
     try {
-      await FirebaseStorage.instance
+      return await FirebaseStorage.instance
           .refFromURL(imgURL)
           .getDownloadURL()
           .then((imageUrl) {
@@ -114,7 +114,7 @@ class _NewEventWidgetState extends State<NewEventWidget>
   // ignore: must_call_super
   Widget build(BuildContext context) {
     FetchData fetchData = Provider.of<FetchData>(context, listen: true);
-    Future<bool> sendNotif = hasEnabledNotification(widget.snapshot!.id!);
+    Future<bool> sendNotif = hasEnabledNotification(widget.snapshot!.id ?? 0);
     return ExpandableNotifier(
       child: ScrollOnExpand(
         child: ExpandablePanel(
@@ -278,10 +278,10 @@ class _NewEventWidgetState extends State<NewEventWidget>
                         title: Text('Vreau sa primesc notificare'),
                         onChanged: (value) {
                           if (value) {
-                            registerNotification(widget.snapshot!.id!);
+                            registerNotification(widget.snapshot!.id ?? 0);
                             setState(() {
-                              sendNotif =
-                                  hasEnabledNotification(widget.snapshot!.id!);
+                              sendNotif = hasEnabledNotification(
+                                  widget.snapshot!.id ?? 0);
                             });
                             showDialog(
                               context: context,
@@ -341,13 +341,13 @@ class _NewEventWidgetState extends State<NewEventWidget>
                                     ),
                             );
                             flutterLocalNotificationsPlugin
-                                .cancel(widget.snapshot!.id!);
+                                .cancel(widget.snapshot!.id ?? 0);
                             setState(() {
-                              sendNotif =
-                                  hasEnabledNotification(widget.snapshot!.id!);
+                              sendNotif = hasEnabledNotification(
+                                  widget.snapshot!.id ?? 0);
                             });
                           }
-                          hasEnabledNotification(widget.snapshot!.id!);
+                          hasEnabledNotification(widget.snapshot!.id ?? 0);
                         },
                       )
                     : Container()

@@ -187,7 +187,7 @@ class LocalCouncilCard extends StatelessWidget {
 
   Future getDownloadUrlFromUrlRef(BuildContext context, String imgURL) async {
     Image image;
-    await FirebaseStorage.instance
+    return await FirebaseStorage.instance
         .refFromURL(imgURL)
         .getDownloadURL()
         .then((imageUrl) {

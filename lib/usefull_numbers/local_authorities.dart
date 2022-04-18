@@ -37,7 +37,7 @@ class LocalAuthorities extends StatelessWidget {
                         return UsefullNumbersWidget(
                           title: snap.data[item].title,
                           phone: snap.data[item].phone,
-                          email: snap.data[item].email,
+                          email: snap.data[item].email ?? [],
                         );
                       });
                 } else {

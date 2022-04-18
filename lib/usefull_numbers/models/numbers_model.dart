@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NumbersModel {
   String title;
-  List<dynamic> phone;
-  List<dynamic> email;
+  List<dynamic>? phone;
+  List<dynamic>? email;
   NumbersModel({
     required this.title,
     required this.phone,
-    required this.email,
+    this.email,
   });
 
   factory NumbersModel.fromJson(Map<String, dynamic> json) {

@@ -42,7 +42,7 @@ class Leaders extends StatelessWidget {
                         wealth: snap.data[item].wealth,
                         interests: snap.data[item].interests,
                         function: snap.data[item].function,
-                        email: snap.data[item].email,
+                        email: snap.data[item].email ?? '',
                         location: snap.data[item].location,
                         urlFb: snap.data[item].urlFb,
                         urlImg: snap.data[item].urlImg,
@@ -61,7 +61,7 @@ class WidgetLeader extends StatelessWidget {
   final String? name;
   final String? wealth;
   final String? interests;
-  final String? email;
+  final String email;
   final String? urlFb;
   final String? function;
   final String urlImg;
@@ -72,7 +72,7 @@ class WidgetLeader extends StatelessWidget {
     this.name,
     this.wealth,
     this.interests,
-    this.email,
+    required this.email,
     this.urlFb,
     this.function,
     required this.urlImg,
@@ -135,7 +135,7 @@ class WidgetLeader extends StatelessWidget {
                         },
                       ),
                     ),
-                    email!.isEmpty
+                    email.isNotEmpty
                         ? InkWell(
                             child: Icon(Entypo.mail),
                             onTap: () {
@@ -183,7 +183,10 @@ class WidgetLeader extends StatelessWidget {
 
   Future getDownloadUrlFromUrlRef(BuildContext context, String imgURL) async {
     Image image;
-    await FirebaseStorage.instance.refFromURL(imgURL).getDownloadURL().then(
+    return await FirebaseStorage.instance
+        .refFromURL(imgURL)
+        .getDownloadURL()
+        .then(
       (imageUrl) {
         image = Image.network(
           imageUrl.toString(),
