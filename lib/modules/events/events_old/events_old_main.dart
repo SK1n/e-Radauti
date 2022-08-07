@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/controllers/get_data_from_firebase_controller.dart';
 import 'package:flutterapperadauti/modules/events/events_old/widgets/event_widget.dart';
-import 'package:futuristic/futuristic.dart';
+import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
 
 class OldEventsScreen extends StatelessWidget {

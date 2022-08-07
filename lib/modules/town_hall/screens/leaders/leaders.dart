@@ -4,7 +4,7 @@ import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/controllers/download_image_controller.dart';
 import 'package:flutterapperadauti/controllers/get_data_from_firebase_controller.dart';
 import 'package:fluttericon/entypo_icons.dart';
-import 'package:futuristic/futuristic.dart';
+import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:flutter/material.dart';

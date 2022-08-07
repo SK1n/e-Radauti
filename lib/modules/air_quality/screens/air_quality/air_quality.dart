@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
-import 'package:flutterapperadauti/air_quality/screens/air_quality/controllers/air_quality_controller.dart';
-import 'package:flutterapperadauti/air_quality/screens/air_quality/utils/value_adapter.dart';
-import 'package:flutterapperadauti/air_quality/screens/air_quality/legend.dart';
-import 'package:flutterapperadauti/air_quality/screens/air_quality/utils/windDirection.dart';
-import 'package:flutterapperadauti/air_quality/screens/air_quality/utils/windDirectionLocation.dart';
 import 'package:flutterapperadauti/controllers/get_data_from_firebase_controller.dart';
+import 'package:flutterapperadauti/modules/air_quality/screens/air_quality/controllers/air_quality_controller.dart';
+import 'package:flutterapperadauti/modules/air_quality/screens/air_quality/legend.dart';
+import 'package:flutterapperadauti/modules/air_quality/screens/air_quality/utils/value_adapter.dart';
+import 'package:flutterapperadauti/modules/air_quality/screens/air_quality/utils/windDirection.dart';
+import 'package:flutterapperadauti/modules/air_quality/screens/air_quality/utils/windDirectionLocation.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/linearicons_free_icons.dart';
 import 'package:fluttericon/meteocons_icons.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
-import 'package:futuristic/futuristic.dart';
+import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 
 extension on String {
   firstSubstring() {

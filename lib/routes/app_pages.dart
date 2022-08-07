@@ -1,10 +1,9 @@
-import 'package:flutterapperadauti/air_quality/air_quality_main.dart';
-import 'package:flutterapperadauti/air_quality/screens/air_quality/bindings/air_quality_bindings.dart';
 import 'package:flutterapperadauti/bindings/download_data_from_url_bindings.dart';
 import 'package:flutterapperadauti/bindings/download_image_bindigns.dart';
 import 'package:flutterapperadauti/bindings/events_bindings.dart';
 import 'package:flutterapperadauti/bindings/first_run_bindings.dart';
 import 'package:flutterapperadauti/middlewares/first_run_middleware.dart';
+import 'package:flutterapperadauti/modules/air_quality/air_quality_main.dart';
 import 'package:flutterapperadauti/modules/announcements/announcements_main.dart';
 import 'package:flutterapperadauti/modules/announcements/screens/furniture/furniture_page.dart';
 import 'package:flutterapperadauti/modules/announcements/screens/jobs/job_page.dart';
@@ -37,6 +36,8 @@ import 'package:flutterapperadauti/modules/usefull_numbers/public_institutions.d
 import 'package:flutterapperadauti/modules/volunteer/volunteer.dart';
 import 'package:flutterapperadauti/bindings/get_data_from_firebase_bindings.dart';
 import 'package:get/route_manager.dart';
+
+import '../modules/air_quality/screens/air_quality/air_quality_bindings.dart';
 part 'app_routes.dart';
 
 class AppPages {

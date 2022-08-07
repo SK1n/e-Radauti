@@ -1,9 +1,9 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
-import 'package:flutterapperadauti/air_quality/screens/air_quality/controllers/air_quality_controller.dart';
 import 'package:flutterapperadauti/controllers/get_data_from_firebase_controller.dart';
-import 'package:futuristic/futuristic.dart';
+import 'package:flutterapperadauti/modules/air_quality/screens/air_quality/controllers/air_quality_controller.dart';
+import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';

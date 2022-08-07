@@ -4,7 +4,7 @@ import 'package:flutterapperadauti/controllers/download_image_controller.dart';
 import 'package:flutterapperadauti/controllers/events_controller.dart';
 import 'package:flutterapperadauti/modules/events/events_old/widgets/event_old_expanded.dart';
 import 'package:flutterapperadauti/modules/events/events_old/widgets/event_old_collapsed.dart';
-import 'package:futuristic/futuristic.dart';
+import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
 
 import 'package:expandable/expandable.dart';

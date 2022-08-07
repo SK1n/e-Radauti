@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/modules/air_quality/air_quality_tab.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:flutterapperadauti/air_quality/air_quality_tab.dart';
 
 class AirQualityMain extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();

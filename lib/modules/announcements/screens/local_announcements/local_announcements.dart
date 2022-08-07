@@ -7,7 +7,7 @@ import 'package:flutterapperadauti/controllers/download_image_controller.dart';
 import 'package:flutterapperadauti/controllers/get_data_from_firebase_controller.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:futuristic/futuristic.dart';
+import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
 import 'package:selectable_autolink_text/selectable_autolink_text.dart';
 import 'package:url_launcher/url_launcher.dart';

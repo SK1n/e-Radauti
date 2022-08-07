@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/air_quality/screens/air_quality/air_quality.dart';
-import 'package:flutterapperadauti/air_quality/screens/air_quality_map/air_quality_charts2.dart';
+import 'package:flutterapperadauti/modules/air_quality/screens/air_quality/air_quality.dart';
+import 'package:flutterapperadauti/modules/air_quality/screens/air_quality_map/air_quality_charts2.dart';
 
 class AirQualityTab extends StatefulWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/air_quality/screens/air_quality/utils/color_legend_widget.dart';
-import 'package:flutterapperadauti/air_quality/screens/air_quality/utils/legend_widget.dart';
+import 'package:flutterapperadauti/modules/air_quality/screens/air_quality/utils/color_legend_widget.dart';
+import 'package:flutterapperadauti/modules/air_quality/screens/air_quality/utils/legend_widget.dart';
 
 class AirQualityLegend extends StatelessWidget {
   @override
