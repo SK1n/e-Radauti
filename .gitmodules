@@ -1,0 +1,3 @@
+[submodule "futuristic"]
+	path = futuristic
+	url = ./packages/futuristic

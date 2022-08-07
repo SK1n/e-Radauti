@@ -67,14 +67,14 @@ class AppBarUiSliver extends StatelessWidget {
 }
 
 class AppBarUi extends StatelessWidget {
-  final GlobalKey<ScaffoldState> scaffoldKey;
+  final GlobalKey<ScaffoldState>? scaffoldKey;
   final IconData? leading;
   final String content;
   final bool pinned;
   final TabBar? bottom;
   const AppBarUi({
     Key? key,
-    required this.scaffoldKey,
+    this.scaffoldKey,
     this.leading,
     this.pinned = false,
     required this.content,
@@ -107,7 +107,9 @@ class AppBarUi extends StatelessWidget {
                 Icons.menu,
                 color: Colors.black,
               ),
-              onPressed: () => scaffoldKey.currentState!.openDrawer(),
+              onPressed: () => {
+                //scaffoldKey.currentState!.openDrawer()
+              },
             ),
           )
         ],

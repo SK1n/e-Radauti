@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/air_quality/air_quality.dart';
-import 'package:flutterapperadauti/air_quality/air_quality_charts2.dart';
+import 'package:flutterapperadauti/air_quality/screens/air_quality/air_quality.dart';
+import 'package:flutterapperadauti/air_quality/screens/air_quality_map/air_quality_charts2.dart';
 
-class TabDemo extends StatefulWidget {
+class AirQualityTab extends StatefulWidget {
   @override
-  _TabDemoState createState() => _TabDemoState();
+  _AirQualityTabState createState() => _AirQualityTabState();
 }
 
-class _TabDemoState extends State<TabDemo> with SingleTickerProviderStateMixin {
+class _AirQualityTabState extends State<AirQualityTab>
+    with SingleTickerProviderStateMixin {
   TabController? _tabController;
   int _selectedTab = 0;
   @override

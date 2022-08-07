@@ -1,0 +1,70 @@
+part of 'app_pages.dart';
+
+abstract class Routes {
+  Routes._();
+  static const HOME = _Paths.HOME;
+  static const NOTICE_PROBLEM = HOME + _Paths.NOTICE_PROBLEM;
+  static const NOTICE_MAP = NOTICE_PROBLEM + _Paths.NOTICE_MAP;
+  static const TOWN_HALL = HOME + _Paths.TOWN_HALL;
+  static const LEADERS = TOWN_HALL + _Paths.LEADERS;
+  static const LOCAL_MEETINGS = TOWN_HALL + _Paths.LOCAL_MEETINGS;
+  static const LOCAL_COUNCIL = TOWN_HALL + _Paths.LOCAL_COUNCIL;
+  static const LOCAL_LEGISLATION = TOWN_HALL + _Paths.LOCAL_LEGISLATION;
+  static const EVENTS = HOME + _Paths.EVENTS;
+  static const ANNOUNCEMENTS = HOME + _Paths.ANNOUNCEMENTS;
+  static const JOBS = ANNOUNCEMENTS + _Paths.JOBS;
+  static const FURNITURE = ANNOUNCEMENTS + _Paths.FURNITURE;
+  static const LOCAL_ANNOUNCEMENTS = ANNOUNCEMENTS + _Paths.LOCAL_ANNOUNCEMENTS;
+  static const PHONE_NUMBERS = HOME + _Paths.PHONE_NUMBERS;
+  static const PUBLIC_INSTITUTIONS = PHONE_NUMBERS + _Paths.PUBLIC_INSTITUTIONS;
+  static const LOCAL_DISTURBANCE = PHONE_NUMBERS + _Paths.LOCAL_DISTURBANCE;
+  static const LOCAL_AUTHORITIES = PHONE_NUMBERS + _Paths.LOCAL_AUTHORITIES;
+  static const AIR = HOME + _Paths.AIR;
+  static const TRANSPORT = HOME + _Paths.TRANSPORT;
+  static const TRAIN = TRANSPORT + _Paths.TRAIN;
+  static const TAXI = TRANSPORT + _Paths.TAXI;
+  static const BUS = TRANSPORT + _Paths.BUS;
+  static const TRAIN_TIMELINE = TRAIN + _Paths.TRAIN_TIMELINE;
+  static const VOLUNTEER = HOME + _Paths.VOLUNTEER;
+  static const ABOUT = HOME + _Paths.ABOUT;
+  static const CONFIDENTIAL = HOME + _Paths.CONFIDENTIAL;
+  static const PARTNER = HOME + _Paths.PARTNER;
+  static const SETTINGS = HOME + _Paths.SETTINGS;
+  static const DEBUG = SETTINGS + _Paths.DEBUG;
+  static const NOTIFICATIONS = SETTINGS + _Paths.NOTIFICATIONS;
+  static const ONBOARD = _Paths.ONBOARD;
+}
+
+abstract class _Paths {
+  static const HOME = '/home';
+  static const NOTICE_PROBLEM = '/notice_problem';
+  static const NOTICE_MAP = '/notice_map';
+  static const TOWN_HALL = '/town_hall';
+  static const LEADERS = '/leaders';
+  static const LOCAL_MEETINGS = '/council_meetings';
+  static const LOCAL_COUNCIL = '/local_council';
+  static const LOCAL_AUTHORITIES = '/local_authorities';
+  static const TRAIN_TIMELINE = '/train_timeline';
+  static const SETTINGS = '/settings';
+  static const DEBUG = '/debug';
+  static const NOTIFICATIONS = '/notifications';
+  static const LOCAL_DISTURBANCE = '/local_disturbance';
+  static const LOCAL_ANNOUNCEMENTS = '/local_announcements';
+  static const PARTNER = '/partner';
+  static const CONFIDENTIAL = '/confidential';
+  static const PHONE_NUMBERS = '/phone_numbers';
+  static const PUBLIC_INSTITUTIONS = '/public_institutions';
+  static const TRANSPORT = '/transport';
+  static const TRAIN = '/train';
+  static const TAXI = '/taxi';
+  static const BUS = '/bus';
+  static const VOLUNTEER = '/volunteer';
+  static const AIR = '/air';
+  static const EVENTS = '/events';
+  static const LOCAL_LEGISLATION = '/local_legislation';
+  static const ANNOUNCEMENTS = '/announcements';
+  static const JOBS = '/jobs';
+  static const FURNITURE = '/furniture';
+  static const ABOUT = '/about';
+  static const ONBOARD = '/onboard';
+}

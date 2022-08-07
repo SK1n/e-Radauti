@@ -19,7 +19,7 @@ class AirQualityMain extends StatelessWidget {
               content: 'Calitatea aerului',
             ),
             preferredSize: Size(MediaQuery.of(context).size.width, 50)),
-        body: TabDemo(),
+        body: AirQualityTab(),
       ),
     );
   }
