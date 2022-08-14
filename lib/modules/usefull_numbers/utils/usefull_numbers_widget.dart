@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/entypo_icons.dart';
 
-import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
+import 'package:url_launcher/url_launcher_string.dart';
 
 class UsefullNumbersWidget extends StatelessWidget {
   final String title;
@@ -87,8 +87,8 @@ class UsefullNumbersWidget extends StatelessWidget {
   }
 
   _launchURL(url) async {
-    if (await UrlLauncher.canLaunch(url)) {
-      await UrlLauncher.launch(url);
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
     } else {
       throw 'Nu se poate încărca $url';
     }

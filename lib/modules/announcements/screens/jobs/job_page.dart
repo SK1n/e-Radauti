@@ -6,7 +6,7 @@ import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class JobPage extends StatelessWidget {
   const JobPage({Key? key});
@@ -80,7 +80,7 @@ class JobPage extends StatelessWidget {
                                       'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${data['slug'].toString()}-${data['id'].toString()}'),
                                   options: ChromeSafariBrowserClassOptions(
                                       android: AndroidChromeCustomTabsOptions(
-                                          addDefaultShareMenuItem: false,
+                                        shareState: CustomTabsShareState.SHARE_STATE_OFF,
                                           keepAliveEnabled: true),
                                       ios: IOSSafariOptions(
                                           dismissButtonStyle:
@@ -115,9 +115,9 @@ class JobPage extends StatelessWidget {
               TextButton(
                   onPressed: () async {
                     Get.back();
-                    if (await canLaunch(
+                    if (await canLaunchUrlString(
                         'https://www.eradauti.ro/publica-anunt-gratuit')) {
-                      await launch(
+                      await launchUrlString(
                           'https://www.eradauti.ro/publica-anunt-gratuit');
                     } else {
                       throw 'Could not launch https://www.eradauti.ro/publica-anunt-gratuit';

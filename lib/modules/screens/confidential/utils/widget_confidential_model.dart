@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:flutter/gestures.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class WidgetConfidentialModel{
   Widget widgetTitleParagraph(child){
@@ -43,7 +43,7 @@ class WidgetConfidentialModel{
     return TextSpan(
       text: child,
       style: TextStyle(decoration: TextDecoration.underline, color: Color(0xFF38A49C), fontSize: 15,),
-      recognizer: new TapGestureRecognizer()..onTap = () => UrlLauncher.launch(link),
+      recognizer: new TapGestureRecognizer()..onTap = () => launchUrlString(link),
     );
   }
   Widget widgetRichText(child, children, childContext){

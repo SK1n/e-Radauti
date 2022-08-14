@@ -25,7 +25,7 @@ class AppBarUiSliver extends StatelessWidget {
         shadowColor: Colors.black,
         leading: SafeArea(
           // ignore: deprecated_member_use
-          child: FlatButton(
+          child: TextButton(
             child: Icon(Icons.arrow_back),
             onPressed: () => Navigator.pop(context),
           ),
@@ -94,7 +94,7 @@ class AppBarUi extends StatelessWidget {
         bottom: bottom != null ? bottom : null,
         leading: SafeArea(
           // ignore: deprecated_member_use
-          child: FlatButton(
+          child: TextButton(
             child: Icon(Icons.arrow_back),
             onPressed: () => Navigator.pop(context),
           ),

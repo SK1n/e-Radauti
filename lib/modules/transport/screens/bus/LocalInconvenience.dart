@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:timeline_tile/timeline_tile.dart';
-import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:http/http.dart' as http;
 import 'package:expandable/expandable.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 ///
-///NOT MADE BY SK1N
-///I'M NOT SURE HOW IT WORK, GONNA LEAVE IT LIKE THAT. IT'S BROKEN ALREADY
-///MAYBE IN THE FUTURE I'LL REWORK THIS SCREEN
+/// NOT WRITTEN BY SK1N
+///  I'M NOT SURE HOW IT WORK, GONNA LEAVE IT LIKE THAT. IT'S BROKEN ALREADY
+///   MAYBE IN THE FUTURE I'LL REWORK THIS SCREEN
 ///
-///
+
 Future<List> fetchBusList(String? route) async {
   Map<String, dynamic> fd;
   http.Response r = await http.get(Uri.parse(
@@ -111,12 +111,7 @@ Widget fWidget(child, BuildContext context) {
                         child: Container(
                           height: 22.0,
                           // ignore: deprecated_member_use
-                          child: FlatButton(
-                            color: Colors.deepOrange.shade200,
-                            textColor: Colors.white,
-                            disabledColor: Colors.deepOrange.shade200,
-                            disabledTextColor: Colors.white,
-                            splashColor: Colors.black26,
+                          child: TextButton(
                             onPressed: null,
                             child: Text(
                               child['durata'],
@@ -150,16 +145,11 @@ Widget fWidget(child, BuildContext context) {
               child: Container(
                 height: 24.0,
                 // ignore: deprecated_member_use
-                child: FlatButton(
-                  color: Color(0xFF38A49C),
-                  textColor: Colors.white,
-                  disabledColor: Colors.grey,
-                  disabledTextColor: Colors.black,
-                  splashColor: Color(0x8838A49C),
+                child: TextButton(
                   onPressed: child['telefon'] == null
                       ? null
                       : () {
-                          UrlLauncher.launch('tel://${child['telefon']}');
+                          launchUrlString('tel://${child['telefon']}');
                         },
                   child: Row(
                     children: <Widget>[
@@ -182,12 +172,7 @@ Widget fWidget(child, BuildContext context) {
                 child: Container(
                   height: 24.0,
                   // ignore: deprecated_member_use
-                  child: FlatButton(
-                    color: Colors.deepOrange.shade200,
-                    textColor: Colors.white,
-                    disabledColor: Colors.deepOrange.shade200,
-                    disabledTextColor: Colors.white,
-                    splashColor: Colors.black26,
+                  child: TextButton(
                     onPressed: null,
                     child: Text(
                       'Zile de circulație: ' + child['zile de circulatie'],

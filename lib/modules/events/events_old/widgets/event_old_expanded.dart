@@ -1,7 +1,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:selectable_autolink_text/selectable_autolink_text.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class EventsOldExpanded extends StatelessWidget {
   final String? imageUrl;
@@ -92,8 +92,8 @@ class EventsOldExpanded extends StatelessWidget {
                 onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
                 linkStyle: TextStyle(color: Colors.pinkAccent),
                 onTap: (link) async {
-                  if (await canLaunch(link)) {
-                    launch(link, forceSafariVC: false);
+                  if (await canLaunchUrlString(link)) {
+                    launchUrlString(link);
                   }
                 },
               ),

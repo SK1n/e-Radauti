@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/modules/menu/menu_item.dart';
-import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:get/get.dart';
 

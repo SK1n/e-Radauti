@@ -6,8 +6,8 @@ import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutterapperadauti/utils/futuristic.dart';
-import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class LocalMeetings extends StatefulWidget {
   LocalMeetings({Key? key}) : super(key: key);
@@ -119,8 +119,7 @@ class _CouncilListItemWidgetState extends State<CouncilListItemWidget> {
                 videoWidget(widget.data['URL']),
                 TextButton(
                   onPressed: () async {
-                    await UrlLauncher.launch(widget.data.theagend,
-                        forceSafariVC: false);
+                    await launchUrlString(widget.data.theagend);
                   },
                   child: Text('Deschideti ordinea de zi'),
                 ),

@@ -1,16 +1,15 @@
 import 'package:card_loading/card_loading.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/controllers/download_image_controller.dart';
 import 'package:flutterapperadauti/controllers/get_data_from_firebase_controller.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:flutter/material.dart';
 
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class Leaders extends StatelessWidget {
   Leaders({Key? key}) : super(key: key);
@@ -215,8 +214,8 @@ class WidgetLeader extends StatelessWidget {
   }
 
   _launchURL(url) async {
-    if (await UrlLauncher.canLaunch(url)) {
-      await UrlLauncher.launch(url);
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
     } else {
       throw 'Nu se poate încărca $url';
     }

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/controllers/first_run_controller.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:get/get.dart';

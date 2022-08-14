@@ -40,8 +40,7 @@ class NoticeFormUi extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: TextButton(
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
-                  primary: Colors.white,
+                  foregroundColor: Colors.white, backgroundColor: Colors.blueAccent,
                 ),
                 child: Text('Trimite'),
                 onPressed: () {

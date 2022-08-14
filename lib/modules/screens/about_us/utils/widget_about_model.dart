@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/entypo_icons.dart';
 
-import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
+import 'package:url_launcher/url_launcher_string.dart';
 
 class WidgetAboutModel {
   Widget itemText(
@@ -75,7 +75,7 @@ class WidgetAboutModel {
         child: new InkWell(
           child: itemText(child, FontWeight.normal, 15.0, Color(0xFF38A49C),
               TextDecoration.underline),
-          onTap: () => UrlLauncher.launch(childLink),
+          onTap: () => launchUrlString(childLink),
         ),
       ),
     );

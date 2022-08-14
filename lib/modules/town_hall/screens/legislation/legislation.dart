@@ -5,7 +5,7 @@ import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class LocalLegislation extends StatefulWidget {
   @override
@@ -83,8 +83,7 @@ class _LocalLegislationState extends State<LocalLegislation> {
                             ),
                             TextButton(
                               onPressed: () async {
-                                await launch(snap.data['2020'][item]['link'],
-                                    forceSafariVC: false);
+                                await launchUrlString(snap.data['2020'][item]['link']);
                               },
                               child: Text('Deschideti link-ul'),
                             )

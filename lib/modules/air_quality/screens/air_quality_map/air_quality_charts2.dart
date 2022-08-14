@@ -2,7 +2,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/controllers/get_data_from_firebase_controller.dart';
-import 'package:flutterapperadauti/modules/air_quality/screens/air_quality/controllers/air_quality_controller.dart';
 import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -40,7 +39,6 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
     List<ChartsModel> dataChartTempVsTime = [];
     final GetDataFromFirebaseController _getDataFromFirebaseController =
         Get.find();
-    final AirQualityController _airQualityController = Get.find();
     return Futuristic(
         futureBuilder: () =>
             _getDataFromFirebaseController.getDataFromFirebase('AirDatabase2'),

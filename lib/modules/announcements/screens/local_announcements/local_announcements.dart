@@ -1,6 +1,4 @@
-import 'dart:async';
 import 'package:card_loading/card_loading.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/controllers/download_image_controller.dart';
@@ -10,7 +8,7 @@ import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
 import 'package:selectable_autolink_text/selectable_autolink_text.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class LocalAnounnouncements extends StatelessWidget {
   LocalAnounnouncements({Key? key}) : super(key: key);
@@ -146,8 +144,8 @@ class LocalAnounnouncements extends StatelessWidget {
                 onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
                 linkStyle: TextStyle(color: Colors.pinkAccent),
                 onTap: (link) async {
-                  if (await canLaunch(link)) {
-                    launch(link, forceSafariVC: false);
+                  if (await canLaunchUrlString(link)) {
+                    canLaunchUrlString(link);
                   }
                 },
               ),

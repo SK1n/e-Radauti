@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
+import 'package:url_launcher/url_launcher_string.dart';
 
 class WidgetVolunteerModel{
   Widget textCard(child, childSize, childFontWeight, childColor, childDecoration){
@@ -44,7 +44,7 @@ class WidgetVolunteerModel{
             new InkWell(
               child:
               cardRow(childrenRow6_1, 0.0, 15.0, FontWeight.normal, Color(0xFF38A49C), TextDecoration.underline),
-              onTap: () => UrlLauncher.launch(childRow6_2),
+              onTap: () => launchUrlString(childRow6_2),
             ),
           ],
         ),

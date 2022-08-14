@@ -1,5 +1,4 @@
 import 'package:card_loading/card_loading.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/controllers/download_image_controller.dart';
@@ -11,8 +10,7 @@ import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
+import 'package:url_launcher/url_launcher_string.dart';
 
 class Taxi extends StatelessWidget {
   Taxi({Key? key}) : super(key: key);
@@ -162,7 +160,7 @@ class Taxi extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  UrlLauncher.launch("tel://$phone");
+                  launchUrlString("tel://$phone");
                 },
                 child: Row(
                   children: [

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
+import 'package:url_launcher/url_launcher_string.dart';
 
 class Contractors extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -123,12 +123,7 @@ class Contractors extends StatelessWidget {
                         ),
                         width: MediaQuery.of(context).size.width - 35,
                         // ignore: deprecated_member_use
-                        child: FlatButton(
-                          color: Color(0xFF38A49C),
-                          textColor: Colors.white,
-                          disabledColor: Colors.grey,
-                          disabledTextColor: Colors.black,
-                          splashColor: Color(0x8838A49C),
+                        child: TextButton(
                           child: Text(
                             'Sună acum',
                             style: TextStyle(
@@ -137,7 +132,7 @@ class Contractors extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            UrlLauncher.launch("tel://0230520172");
+                            launchUrlString("tel://0230520172");
                           },
                         ),
                       ),
@@ -154,9 +149,9 @@ class Contractors extends StatelessWidget {
                               color: Color(0xFF38A49C),
                             ),
                           ),
-                          onTap: () => UrlLauncher.launch("mailto:"),
-                          //onTap: () => UrlLauncher.launch("tel://0230520172"),
-                          //onTap: () => UrlLauncher.launch("mailto:registratura@primarie.ro"),
+                          onTap: () => launchUrlString("mailto:"),
+                          //onTap: () => launchUrlString("tel://0230520172"),
+                          //onTap: () => launchUrlString("mailto:registratura@primarie.ro"),
                         ),
                       ),
                     ],
@@ -249,12 +244,7 @@ class Contractors extends StatelessWidget {
                         ),
                         width: MediaQuery.of(context).size.width - 35,
                         // ignore: deprecated_member_use
-                        child: FlatButton(
-                          color: Color(0xFF38A49C),
-                          textColor: Colors.white,
-                          disabledColor: Colors.grey,
-                          disabledTextColor: Colors.black,
-                          splashColor: Color(0x8838A49C),
+                        child: TextButton(
                           child: Text(
                             'Sună acum',
                             style: TextStyle(
@@ -263,7 +253,7 @@ class Contractors extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            UrlLauncher.launch("tel://0230563306");
+                            launchUrlString("tel://0230563306");
                           },
                         ),
                       ),
@@ -281,9 +271,9 @@ class Contractors extends StatelessWidget {
                               color: Color(0xFF38A49C),
                             ),
                           ),
-                          onTap: () => UrlLauncher.launch("mailto:"),
-                          //onTap: () => UrlLauncher.launch("tel://0230520172"),
-                          //onTap: () => UrlLauncher.launch("mailto:registratura@primarie.ro"),
+                          onTap: () => launchUrlString("mailto:"),
+                          //onTap: () => launchUrlString("tel://0230520172"),
+                          //onTap: () => launchUrlString("mailto:registratura@primarie.ro"),
                         ),
                       ),
                     ],
@@ -377,12 +367,8 @@ class Contractors extends StatelessWidget {
                         ),
                         width: MediaQuery.of(context).size.width - 35,
                         // ignore: deprecated_member_use
-                        child: FlatButton(
-                          color: Color(0xFF38A49C),
-                          textColor: Colors.white,
-                          disabledColor: Colors.grey,
-                          disabledTextColor: Colors.black,
-                          splashColor: Color(0x8838A49C),
+                        child: TextButton(
+
                           child: Text(
                             'Sună acum',
                             style: TextStyle(
@@ -391,7 +377,7 @@ class Contractors extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            UrlLauncher.launch("tel://0230567299");
+                            launchUrlString("tel://0230567299");
                           },
                         ),
                       ),
@@ -409,9 +395,9 @@ class Contractors extends StatelessWidget {
                               color: Color(0xFF38A49C),
                             ),
                           ),
-                          onTap: () => UrlLauncher.launch("mailto:"),
-                          //onTap: () => UrlLauncher.launch("tel://0230520172"),
-                          //onTap: () => UrlLauncher.launch("mailto:registratura@primarie.ro"),
+                          onTap: () => launchUrlString("mailto:"),
+                          //onTap: () => launchUrlString("tel://0230520172"),
+                          //onTap: () => launchUrlString("mailto:registratura@primarie.ro"),
                         ),
                       ),
                     ],
@@ -504,12 +490,7 @@ class Contractors extends StatelessWidget {
                         ),
                         width: MediaQuery.of(context).size.width - 35,
                         // ignore: deprecated_member_use
-                        child: FlatButton(
-                          color: Color(0xFF38A49C),
-                          textColor: Colors.white,
-                          disabledColor: Colors.grey,
-                          disabledTextColor: Colors.black,
-                          splashColor: Color(0x8838A49C),
+                        child: TextButton(
                           child: Text(
                             'Sună acum',
                             style: TextStyle(
@@ -518,7 +499,7 @@ class Contractors extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            UrlLauncher.launch("tel://0740287614");
+                            launchUrlString("tel://0740287614");
                           },
                         ),
                       ),
@@ -536,9 +517,9 @@ class Contractors extends StatelessWidget {
                               color: Color(0xFF38A49C),
                             ),
                           ),
-                          onTap: () => UrlLauncher.launch("mailto:"),
-                          //onTap: () => UrlLauncher.launch("tel://0230520172"),
-                          //onTap: () => UrlLauncher.launch("mailto:registratura@primarie.ro"),
+                          onTap: () => launchUrlString("mailto:"),
+                          //onTap: () => launchUrlString("tel://0230520172"),
+                          //onTap: () => launchUrlString("mailto:registratura@primarie.ro"),
                         ),
                       ),
                     ],
@@ -641,12 +622,7 @@ class Contractors extends StatelessWidget {
                         ),
                         width: MediaQuery.of(context).size.width - 35,
                         // ignore: deprecated_member_use
-                        child: FlatButton(
-                          color: Color(0xFF38A49C),
-                          textColor: Colors.white,
-                          disabledColor: Colors.grey,
-                          disabledTextColor: Colors.black,
-                          splashColor: Color(0x8838A49C),
+                        child: TextButton(
                           child: Text(
                             'Sună acum',
                             style: TextStyle(
@@ -655,7 +631,7 @@ class Contractors extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            UrlLauncher.launch("tel://0230514056");
+                            launchUrlString("tel://0230514056");
                           },
                         ),
                       ),
@@ -673,9 +649,9 @@ class Contractors extends StatelessWidget {
                               color: Color(0xFF38A49C),
                             ),
                           ),
-                          onTap: () => UrlLauncher.launch("mailto:"),
-                          //onTap: () => UrlLauncher.launch("tel://0230520172"),
-                          //onTap: () => UrlLauncher.launch("mailto:registratura@primarie.ro"),
+                          onTap: () => launchUrlString("mailto:"),
+                          //onTap: () => launchUrlString("tel://0230520172"),
+                          //onTap: () => launchUrlString("mailto:registratura@primarie.ro"),
                         ),
                       ),
                     ],
@@ -796,12 +772,7 @@ class Contractors extends StatelessWidget {
                         ),
                         width: MediaQuery.of(context).size.width - 35,
                         // ignore: deprecated_member_use
-                        child: FlatButton(
-                          color: Color(0xFF38A49C),
-                          textColor: Colors.white,
-                          disabledColor: Colors.grey,
-                          disabledTextColor: Colors.black,
-                          splashColor: Color(0x8838A49C),
+                        child: TextButton(
                           child: Text(
                             'Sună acum',
                             style: TextStyle(
@@ -810,7 +781,7 @@ class Contractors extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            UrlLauncher.launch("tel://0230563281");
+                            launchUrlString("tel://0230563281");
                           },
                         ),
                       ),
@@ -828,9 +799,9 @@ class Contractors extends StatelessWidget {
                               color: Color(0xFF38A49C),
                             ),
                           ),
-                          onTap: () => UrlLauncher.launch("mailto:"),
-                          //onTap: () => UrlLauncher.launch("tel://0230520172"),
-                          //onTap: () => UrlLauncher.launch("mailto:registratura@primarie.ro"),
+                          onTap: () => launchUrlString("mailto:"),
+                          //onTap: () => launchUrlString("tel://0230520172"),
+                          //onTap: () => launchUrlString("mailto:registratura@primarie.ro"),
                         ),
                       ),
                     ],
@@ -933,12 +904,7 @@ class Contractors extends StatelessWidget {
                         ),
                         width: MediaQuery.of(context).size.width - 35,
                         // ignore: deprecated_member_use
-                        child: FlatButton(
-                          color: Color(0xFF38A49C),
-                          textColor: Colors.white,
-                          disabledColor: Colors.grey,
-                          disabledTextColor: Colors.black,
-                          splashColor: Color(0x8838A49C),
+                        child: TextButton(
                           child: Text(
                             'Sună acum',
                             style: TextStyle(
@@ -947,7 +913,7 @@ class Contractors extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            UrlLauncher.launch("tel://0230560530");
+                            launchUrlString("tel://0230560530");
                           },
                         ),
                       ),
@@ -965,9 +931,9 @@ class Contractors extends StatelessWidget {
                               color: Color(0xFF38A49C),
                             ),
                           ),
-                          onTap: () => UrlLauncher.launch("mailto:"),
-                          //onTap: () => UrlLauncher.launch("tel://0230520172"),
-                          //onTap: () => UrlLauncher.launch("mailto:registratura@primarie.ro"),
+                          onTap: () => launchUrlString("mailto:"),
+                          //onTap: () => launchUrlString("tel://0230520172"),
+                          //onTap: () => launchUrlString("mailto:registratura@primarie.ro"),
                         ),
                       ),
                     ],
@@ -1078,12 +1044,7 @@ class Contractors extends StatelessWidget {
                         ),
                         width: MediaQuery.of(context).size.width - 35,
                         // ignore: deprecated_member_use
-                        child: FlatButton(
-                          color: Color(0xFF38A49C),
-                          textColor: Colors.white,
-                          disabledColor: Colors.grey,
-                          disabledTextColor: Colors.black,
-                          splashColor: Color(0x8838A49C),
+                        child: TextButton(
                           child: Text(
                             'Sună acum',
                             style: TextStyle(
@@ -1092,7 +1053,7 @@ class Contractors extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            UrlLauncher.launch("tel://0230561140");
+                            launchUrlString("tel://0230561140");
                           },
                         ),
                       ),
@@ -1110,9 +1071,9 @@ class Contractors extends StatelessWidget {
                               color: Color(0xFF38A49C),
                             ),
                           ),
-                          onTap: () => UrlLauncher.launch("mailto:"),
-                          //onTap: () => UrlLauncher.launch("tel://0230520172"),
-                          //onTap: () => UrlLauncher.launch("mailto:registratura@primarie.ro"),
+                          onTap: () => launchUrlString("mailto:"),
+                          //onTap: () => launchUrlString("tel://0230520172"),
+                          //onTap: () => launchUrlString("mailto:registratura@primarie.ro"),
                         ),
                       ),
                     ],
