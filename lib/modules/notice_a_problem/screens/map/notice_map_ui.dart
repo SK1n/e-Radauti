@@ -70,7 +70,7 @@ class _NoticeMapUiState extends State<NoticeMapUi>
           ),
           preferredSize: Size(MediaQuery.of(context).size.width, 50)),
       body: Futuristic(
-        futureBuilder:
+        futureBuilder: () =>
             _getDataFromFirebaseController.getDataFromFirebase('Markers'),
         busyBuilder: (_) {
           if (!EasyLoading.isShow) {
@@ -87,6 +87,12 @@ class _NoticeMapUiState extends State<NoticeMapUi>
           if (EasyLoading.isShow) {
             EasyLoading.dismiss();
           }
+          List<Marker> list = [];
+          snapshot.data['markers'].forEach((element) {
+            if (element['lat'] != null && element['long'] != null) {
+              list.add(_translateElementToMarker(element));
+            }
+          });
           return FlutterMap(
             options: MapOptions(
               interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
@@ -109,7 +115,7 @@ class _NoticeMapUiState extends State<NoticeMapUi>
                 fitBoundsOptions: FitBoundsOptions(
                   padding: EdgeInsets.all(50),
                 ),
-                markers: snapshot.data['markers'],
+                markers: list,
                 polygonOptions: PolygonOptions(
                     borderColor: Colors.white,
                     color: Colors.black12,
@@ -126,6 +132,36 @@ class _NoticeMapUiState extends State<NoticeMapUi>
         },
       ),
     );
+  }
+
+  Marker _translateElementToMarker(element) {
+    return Marker(
+        point: latLng.LatLng(element['lat'], element['long']!),
+        builder: (BuildContext context) {
+          return InkWell(
+            onTap: () {
+              Get.defaultDialog(
+                  title: '${element['subject']}',
+                  content: Text('${element['description']}'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Get.back(),
+                      child: Text(
+                        'Inchide',
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                  ]);
+            },
+            child: Container(
+                width: 40,
+                height: 40,
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: switchIcon(element['index']),
+                )),
+          );
+        });
   }
 
   SpeedDialChild speedDialChild(int? iconID, String label) {

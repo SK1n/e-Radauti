@@ -64,8 +64,8 @@ Future<void> main() async {
       debugShowCheckedModeBanner: false,
       builder: EasyLoading.init(),
       getPages: AppPages.routes,
-      // routeInformationParser:
-      //     GetInformationParser(initialRoute: AppPages.INITIAL),
+       routeInformationParser:
+           GetInformationParser(initialRoute: AppPages.INITIAL),
       initialBinding: AppBindings(),
       navigatorObservers: [
         AnalyticsController().getAnalyticsObserver(),

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutterapperadauti/controllers/analytics_controller.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
@@ -27,8 +28,7 @@ class NotificationsController extends GetxController {
         .then((RemoteMessage? message) {
       if (message != null) {
         _analytics.addToAnalytics('getInitialMessage:' + message.data['view']);
-        Get.rootDelegate.toNamed(Routes.HOME);
-        Get.rootDelegate.toNamed(message.data['view']);
+        Navigator.pushNamed(Get.context!, message.data['view']);
       }
     });
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {

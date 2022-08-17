@@ -12,7 +12,6 @@ class GetDataFromFirebaseController {
         _instance!.collection('collection');
     DocumentSnapshot snapshot = await collectionReference.doc(document).get();
     var _localModel = snapshot.data();
-    debugPrint(_localModel.toString());
     return _localModel;
   }
 

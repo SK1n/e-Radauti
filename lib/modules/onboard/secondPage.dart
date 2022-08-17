@@ -26,18 +26,18 @@ PageViewModel secondPage() {
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            Card(
-              child: ListTileSwitch(
-                //TODO: value: subscription.enabled,
-                value: false,
-                leading: Icon(Icons.circle_notifications_rounded),
-                onChanged: (value) {
-                  //subscription.changeEnabled(value);
-                  //notificationOnChanged(subscription: subscription);
-                },
-                title: Text('Notificari'),
-              ),
-            ),
+            // Card(
+            //   child: ListTileSwitch(
+            //     //TODO: value: subscription.enabled,
+            //     value: false,
+            //     leading: Icon(Icons.circle_notifications_rounded),
+            //     onChanged: (value) {
+            //       //subscription.changeEnabled(value);
+            //       //notificationOnChanged(subscription: subscription);
+            //     },
+            //     title: Text('Notificari'),
+            //   ),
+            // ),
             LocSwitch(),
           ],
         )
