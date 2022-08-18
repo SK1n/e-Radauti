@@ -1,7 +1,6 @@
 {
   "project_info": {
     "project_number": "338675190296",
-    "firebase_url": "https://eradauti-nativ-default-rtdb.firebaseio.com",
     "project_id": "eradauti-nativ",
     "storage_bucket": "eradauti-nativ.appspot.com"
   },
@@ -14,14 +13,6 @@
         }
       },
       "oauth_client": [
-        {
-          "client_id": "338675190296-ovelt0bhgnmend7mcmv0a2g39o1dh1jt.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "radautiul_civic.e_radauti",
-            "certificate_hash": "74797eee5daf51d2a53bcb8ba80664642fb72967"
-          }
-        },
         {
           "client_id": "338675190296-0nfbj2cmr4o1on0ojgr8apu3q5stalhe.apps.googleusercontent.com",
           "client_type": 3
@@ -38,13 +29,6 @@
             {
               "client_id": "338675190296-0nfbj2cmr4o1on0ojgr8apu3q5stalhe.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "338675190296-sktr39kicv23vcotun3mh01h95gjqhhf.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "radautiul.civic"
-              }
             }
           ]
         }

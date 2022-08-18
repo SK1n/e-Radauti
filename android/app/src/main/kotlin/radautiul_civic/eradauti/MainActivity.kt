@@ -1,4 +1,4 @@
-package com.example.eradauti2
+package radautiul_civic.eradauti
 
 import io.flutter.embedding.android.FlutterActivity
 
