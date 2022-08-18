@@ -29,7 +29,6 @@ dependencies:
   gallery_saver: ^2.3.2
   geolocator: ^9.0.1
   intl: ^0.17.0
-  list_tile_switch: ^1.0.0
   timeline_tile: ^2.0.0
   url_launcher: ^6.0.20
   intro_views_flutter: ^3.2.0
@@ -43,7 +42,6 @@ dependencies:
   location: any
   flutter_loadingindicator: ^1.0.1
   card_loading: ^0.2.1
-  firebase_crashlytics: ^2.8.6
   firebase_analytics: ^9.3.0
   is_first_run: ^1.0.0
   google_maps: ^6.2.0
@@ -54,6 +52,7 @@ dev_dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.9.3
   flutter_native_splash: ^2.1.6
+  dependency_validator: ^3.0.0
 
 flutter_native_splash:
   image: assets/logo_images/prop_6.png

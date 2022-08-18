@@ -4,7 +4,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutterapperadauti/controllers/analytics_controller.dart';
-import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -53,7 +52,7 @@ class NotificationsController extends GetxController {
     });
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       _analytics.addToAnalytics('onMessageOpenedApp:' + message.data['view']);
-      Get.rootDelegate.toNamed(message.data['view']);
+      Get.toNamed(message.data['view']);
     });
     didOpenAppFromNotif();
   }
@@ -65,7 +64,7 @@ class NotificationsController extends GetxController {
       _analytics.addToAnalytics(
           "didOpenAppFromBotif: " + notificationAppLaunchDetails.payload!);
       if (notificationAppLaunchDetails.payload != null) {
-        Get.rootDelegate.toNamed('${notificationAppLaunchDetails.payload}');
+        Get.toNamed('${notificationAppLaunchDetails.payload}');
       }
     }
   }
