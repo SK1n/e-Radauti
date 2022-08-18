@@ -59,6 +59,7 @@ Future<void> main() async {
     badge: true,
     sound: true,
   );
+
   runApp(
     GetMaterialApp(
       title: 'e-Rădăuți',
@@ -78,35 +79,3 @@ Future<void> main() async {
     ),
   );
 }
-
-// class MyApp extends StatefulWidget {
-//   const MyApp({Key? key}) : super(key: key);
-
-//   @override
-//   State<MyApp> createState() => _MyAppState();
-// }
-
-// class _MyAppState extends State<MyApp> {
-//   @override
-//   void initState() {
-//     super.initState();
-
-
-
-//   final GetDelegate getDelegate = GetDelegate();
-
-//   @override
-//   Widget build(BuildContext context) {
-//     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-//     return GetMaterialApp(
-//       title: 'e-Rădăuți',
-//       debugShowCheckedModeBanner: false,
-//       getPages: AppPages.routes,
-//       initialRoute: Routes.HOME,
-//       theme: ThemeData(
-//         scaffoldBackgroundColor: Color(0xFFFFFFFF),
-//         primaryColor: Color(0xFFFFFFFF),
-//       ),
-//     );
-//   }
-// }

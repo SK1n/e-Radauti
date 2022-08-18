@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/modules/menu/menu_screen.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/modules/onboard/firstPage.dart';
 import 'package:flutterapperadauti/modules/onboard/secondPage.dart';
