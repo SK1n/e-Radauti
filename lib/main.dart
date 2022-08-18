@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
+import 'package:is_first_run/is_first_run.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -58,14 +59,15 @@ Future<void> main() async {
     badge: true,
     sound: true,
   );
+
   runApp(
-    GetMaterialApp.router(
+    GetMaterialApp(
       title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,
       builder: EasyLoading.init(),
       getPages: AppPages.routes,
-       routeInformationParser:
-           GetInformationParser(initialRoute: AppPages.INITIAL),
+      initialRoute:
+          await IsFirstRun.isFirstRun() ? Routes.ONBOARD : Routes.HOME,
       initialBinding: AppBindings(),
       navigatorObservers: [
         AnalyticsController().getAnalyticsObserver(),
@@ -77,35 +79,3 @@ Future<void> main() async {
     ),
   );
 }
-
-// class MyApp extends StatefulWidget {
-//   const MyApp({Key? key}) : super(key: key);
-
-//   @override
-//   State<MyApp> createState() => _MyAppState();
-// }
-
-// class _MyAppState extends State<MyApp> {
-//   @override
-//   void initState() {
-//     super.initState();
-
-
-
-//   final GetDelegate getDelegate = GetDelegate();
-
-//   @override
-//   Widget build(BuildContext context) {
-//     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-//     return GetMaterialApp(
-//       title: 'e-Rădăuți',
-//       debugShowCheckedModeBanner: false,
-//       getPages: AppPages.routes,
-//       initialRoute: Routes.HOME,
-//       theme: ThemeData(
-//         scaffoldBackgroundColor: Color(0xFFFFFFFF),
-//         primaryColor: Color(0xFFFFFFFF),
-//       ),
-//     );
-//   }
-// }

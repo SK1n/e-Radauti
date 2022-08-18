@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/modules/menu/menu_screen.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/modules/onboard/firstPage.dart';
 import 'package:flutterapperadauti/modules/onboard/secondPage.dart';
@@ -33,10 +32,7 @@ class _OnboardState extends State<Onboard> {
       pageButtonTextStyles: TextStyle(color: Colors.black),
       pageButtonsColor: Colors.black,
       background: Colors.black,
-      onTapDoneButton: () {
-        GetPlatform.isIOS ? Navigator.push(context,  MaterialPageRoute(builder: (_) => MenuScreen())) : 
-        Get.rootDelegate.toNamed(Routes.HOME);
-      },
+      onTapDoneButton: () => Get.offAndToNamed(Routes.HOME),
     );
   }
 }

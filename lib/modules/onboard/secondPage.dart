@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/loc_switch.dart';
 import 'package:get/get.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
-import 'package:list_tile_switch/list_tile_switch.dart';
 
 PageViewModel secondPage() {
   return PageViewModel(

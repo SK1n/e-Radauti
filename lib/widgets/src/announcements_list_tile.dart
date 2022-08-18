@@ -41,7 +41,7 @@ class AnnouncementsListTile extends ListTile {
         ),
         subtitle: Text('$subTitle'),
         onTap: () {
-          Get.rootDelegate.toNamed(route);
+          Get.toNamed(route);
         },
         title: Text(
           '$content',

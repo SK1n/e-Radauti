@@ -43,7 +43,7 @@ class _MainNoticeUiState extends State<MainNoticeUi> {
         label: const Text('Harta'),
         icon: Icon(FontAwesome5.map),
         onPressed: () {
-          Get.rootDelegate.toNamed(Routes.NOTICE_MAP);
+          Get.toNamed(Routes.NOTICE_MAP);
         },
       ),
     );
