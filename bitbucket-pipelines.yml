@@ -6,7 +6,7 @@ options:
 pipelines:
   default:
      - step:
-          name: IMON
+          name: e-Radauti
           deployment: Test
           caches:
             - gradle
