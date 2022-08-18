@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
+import 'package:is_first_run/is_first_run.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -59,13 +60,13 @@ Future<void> main() async {
     sound: true,
   );
   runApp(
-    GetMaterialApp.router(
+    GetMaterialApp(
       title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,
       builder: EasyLoading.init(),
       getPages: AppPages.routes,
-       routeInformationParser:
-           GetInformationParser(initialRoute: AppPages.INITIAL),
+      initialRoute:
+          await IsFirstRun.isFirstRun() ? Routes.ONBOARD : Routes.HOME,
       initialBinding: AppBindings(),
       navigatorObservers: [
         AnalyticsController().getAnalyticsObserver(),

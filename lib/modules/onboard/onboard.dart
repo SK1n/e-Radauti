@@ -34,8 +34,7 @@ class _OnboardState extends State<Onboard> {
       pageButtonsColor: Colors.black,
       background: Colors.black,
       onTapDoneButton: () {
-        GetPlatform.isIOS ? Navigator.push(context,  MaterialPageRoute(builder: (_) => MenuScreen())) : 
-        Get.rootDelegate.toNamed(Routes.HOME);
+        Get.toNamed(Routes.HOME);
       },
     );
   }

@@ -23,20 +23,6 @@ class MenuScreen extends StatelessWidget {
             fontSize: 19,
           ),
         ),
-        actions: <Widget>[
-          Container(
-            alignment: Alignment.topRight,
-            margin: EdgeInsets.only(top: 0.0, right: 0.0),
-            child: IconButton(
-              icon: Icon(
-                Icons.settings,
-                size: 24,
-                color: Colors.black,
-              ),
-              onPressed: () => Get.rootDelegate.toNamed(Routes.SETTINGS),
-            ),
-          ),
-        ],
       ),
       body: CustomScrollView(
         slivers: <Widget>[
@@ -139,7 +125,7 @@ class MenuScreen extends StatelessWidget {
                                 fontSize: 15,
                               ),
                             ),
-                            onTap: () => Get.rootDelegate.toNamed(Routes.ABOUT),
+                            onTap: () => Get.toNamed(Routes.ABOUT),
                           ),
                         ),
                         VerticalDivider(
@@ -156,8 +142,7 @@ class MenuScreen extends StatelessWidget {
                                 fontSize: 15,
                               ),
                             ),
-                            onTap: () =>
-                                Get.rootDelegate.toNamed(Routes.CONFIDENTIAL),
+                            onTap: () => Get.toNamed(Routes.CONFIDENTIAL),
                           ),
                         ),
                       ],
@@ -180,7 +165,7 @@ class MenuScreen extends StatelessWidget {
                               fontSize: 15,
                             ),
                           ),
-                          onTap: () => Get.rootDelegate.toNamed(Routes.PARTNER),
+                          onTap: () => Get.toNamed(Routes.PARTNER),
                         ),
                       ),
                     ],

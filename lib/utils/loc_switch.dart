@@ -9,11 +9,10 @@ class LocSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     final LocationController locationController = Get.put(LocationController());
     return Card(
-        child: ListTile(
-      title: Text('Locatie'),
-      leading: Icon(Icons.pin_drop),
-      trailing: Obx(
-        () => TextButton(
+      child: ListTile(
+        title: Text('Locatie'),
+        leading: Icon(Icons.pin_drop),
+        trailing: TextButton(
           child: Text('Acorda'),
           onPressed: locationController.enabled.value
               ? () async {
@@ -27,6 +26,6 @@ class LocSwitch extends StatelessWidget {
               : null,
         ),
       ),
-    ));
+    );
   }
 }

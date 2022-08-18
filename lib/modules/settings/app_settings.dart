@@ -52,7 +52,7 @@ class _AppSettingsState extends State<AppSettings> {
                   title: 'Debug',
                   leadingIcon: Icons.bug_report_outlined,
                   onTap: () {
-                    Get.rootDelegate.toNamed(Routes.DEBUG);
+                    Get.toNamed(Routes.DEBUG);
                     // Navigator.pushNamed(context, '/settings/debug');
                   })
               : Container(),

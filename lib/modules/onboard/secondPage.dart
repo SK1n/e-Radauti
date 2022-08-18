@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/loc_switch.dart';
+import 'package:flutterapperadauti/utils/loc_switch.dart';
+import 'package:flutterapperadauti/utils/not_switch.dart';
 import 'package:get/get.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
@@ -26,18 +27,7 @@ PageViewModel secondPage() {
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            // Card(
-            //   child: ListTileSwitch(
-            //     //TODO: value: subscription.enabled,
-            //     value: false,
-            //     leading: Icon(Icons.circle_notifications_rounded),
-            //     onChanged: (value) {
-            //       //subscription.changeEnabled(value);
-            //       //notificationOnChanged(subscription: subscription);
-            //     },
-            //     title: Text('Notificari'),
-            //   ),
-            // ),
+            //GetPlatform.isAndroid ? NotSwitch() : Container(),
             LocSwitch(),
           ],
         )

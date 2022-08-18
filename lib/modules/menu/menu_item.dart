@@ -17,7 +17,7 @@ class ItemMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.rootDelegate.toNamed(route);
+        Get.toNamed(route);
       },
       child: Card(
         elevation: 4,

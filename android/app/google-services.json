@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "338675190296",
+    "project_id": "eradauti-nativ",
+    "storage_bucket": "eradauti-nativ.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338675190296:android:6a72486113be8ddaafd16d",
+        "android_client_info": {
+          "package_name": "radautiul_civic.e_radauti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338675190296-0nfbj2cmr4o1on0ojgr8apu3q5stalhe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsG3fH2fIVIzYwdmlZTE5naCYKN8Evqvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338675190296-0nfbj2cmr4o1on0ojgr8apu3q5stalhe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

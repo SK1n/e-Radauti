@@ -53,7 +53,7 @@ class NotificationsController extends GetxController {
     });
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       _analytics.addToAnalytics('onMessageOpenedApp:' + message.data['view']);
-      Get.rootDelegate.toNamed(message.data['view']);
+      Get.toNamed(message.data['view']);
     });
     didOpenAppFromNotif();
   }
@@ -65,7 +65,7 @@ class NotificationsController extends GetxController {
       _analytics.addToAnalytics(
           "didOpenAppFromBotif: " + notificationAppLaunchDetails.payload!);
       if (notificationAppLaunchDetails.payload != null) {
-        Get.rootDelegate.toNamed('${notificationAppLaunchDetails.payload}');
+        Get.toNamed('${notificationAppLaunchDetails.payload}');
       }
     }
   }

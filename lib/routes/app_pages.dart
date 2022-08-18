@@ -1,8 +1,7 @@
 import 'package:flutterapperadauti/bindings/download_data_from_url_bindings.dart';
 import 'package:flutterapperadauti/bindings/download_image_bindigns.dart';
 import 'package:flutterapperadauti/bindings/events_bindings.dart';
-import 'package:flutterapperadauti/bindings/first_run_bindings.dart';
-import 'package:flutterapperadauti/middlewares/first_run_middleware.dart';
+import 'package:flutterapperadauti/bindings/notifications_switch_bindings.dart';
 import 'package:flutterapperadauti/modules/air_quality/air_quality_main.dart';
 import 'package:flutterapperadauti/modules/announcements/announcements_main.dart';
 import 'package:flutterapperadauti/modules/announcements/screens/furniture/furniture_page.dart';
@@ -49,12 +48,6 @@ class AppPages {
         name: Routes.HOME,
         page: () => MenuScreen(),
         preventDuplicates: true,
-        middlewares: [
-          FirstRunMiddleware()
-        ],
-        bindings: [
-          FirstRunBindings(),
-        ],
         children: [
           GetPage(name: _Paths.SETTINGS, page: () => AppSettings(), children: [
             GetPage(name: _Paths.DEBUG, page: () => DebugSettings()),
@@ -200,6 +193,9 @@ class AppPages {
                 ),
               ]),
         ]),
-    GetPage(name: Routes.ONBOARD, page: () => Onboard()),
+    GetPage(
+        name: Routes.ONBOARD,
+        page: () => Onboard(),
+        bindings: [NotificationsSwitchBindings()]),
   ];
 }
