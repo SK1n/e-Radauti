@@ -33,17 +33,7 @@ class AirQualityPage extends StatelessWidget {
           Futuristic(
             futureBuilder: () =>
                 _getDataFromFirebaseController.getDataFromFirebase('Air'),
-            busyBuilder: (_) {
-              if (!EasyLoading.isShow) {
-                EasyLoading.show();
-              }
-              return Container();
-            },
-            errorBuilder: (_, error, retry) {
-              EasyLoading.showError("Eroare");
-              return TextButton(
-                  onPressed: () => retry, child: Text('Incearca din nou!'));
-            },
+            query: 'air',
             dataBuilder: (_, snapshot) {
               if (EasyLoading.isShow) {
                 EasyLoading.dismiss();

@@ -46,6 +46,7 @@ dependencies:
   is_first_run: ^1.0.0
   google_maps: ^6.2.0
   json_serializable: ^4.1.4
+  im_animations: ^0.1.2
 
 dev_dependencies:
   flutter_test:

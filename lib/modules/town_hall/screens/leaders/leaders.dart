@@ -36,17 +36,7 @@ class Leaders extends StatelessWidget {
           body: Futuristic(
             futureBuilder: () =>
                 getDataFromFirebaseController.getDataFromFirebase('Leaders'),
-            busyBuilder: (_) {
-              if (!EasyLoading.isShow) {
-                EasyLoading.show();
-              }
-              return Container();
-            },
-            errorBuilder: (_, error, retry) {
-              EasyLoading.showError("Eroare");
-              return TextButton(
-                  onPressed: () => retry, child: Text('Incearca din nou!'));
-            },
+            query: 'leaders',
             dataBuilder: (_, snap) {
               if (EasyLoading.isShow) {
                 EasyLoading.dismiss();
@@ -114,6 +104,7 @@ class WidgetLeader extends StatelessWidget {
                   child: Futuristic(
                     futureBuilder: () => _downloadImageController
                         .getDownloadUrlFromUrlRef(urlImg),
+                    useQuery: false,
                     busyBuilder: (_) {
                       return CardLoading(
                         height: 200,
@@ -122,12 +113,6 @@ class WidgetLeader extends StatelessWidget {
                           Radius.circular(10),
                         ),
                       );
-                    },
-                    errorBuilder: (_, error, retry) {
-                      EasyLoading.showError("Eroare");
-                      return TextButton(
-                          onPressed: () => retry,
-                          child: Text('Incearca din nou!'));
                     },
                     dataBuilder: (_, snap) => Container(
                       width: Get.width,

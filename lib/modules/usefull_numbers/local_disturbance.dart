@@ -31,17 +31,7 @@ class LocalDisturbance extends StatelessWidget {
             body: Futuristic(
               futureBuilder: () =>
                   _getDataFromFirebaseController.getDataFromFirebase('Numbers'),
-              busyBuilder: (_) {
-                if (!EasyLoading.isShow) {
-                  EasyLoading.show();
-                }
-                return Container();
-              },
-              errorBuilder: (_, error, retry) {
-                EasyLoading.showError("Eroare");
-                return TextButton(
-                    onPressed: () => retry, child: Text('Incearca din nou!'));
-              },
+              query: 'upsets',
               dataBuilder: (_, snap) {
                 if (EasyLoading.isShow) {
                   EasyLoading.dismiss();

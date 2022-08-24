@@ -10,28 +10,15 @@ class NewEventsScreen extends StatelessWidget {
   const NewEventsScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final AsyncMemoizer dCMemorizer = AsyncMemoizer();
     final GetDataFromFirebaseController _getDataFromFirebaseController =
         Get.find();
 
     return Futuristic(
-      futureBuilder: () => dCMemorizer.runOnce(
-          () => _getDataFromFirebaseController.getDataFromFirebase('Events')),
-      busyBuilder: (_) {
-        if (!EasyLoading.isShow) {
-          EasyLoading.show();
-        }
-        return Container();
-      },
-      errorBuilder: (_, error, retry) {
-        EasyLoading.showError("Eroare");
-        return TextButton(
-            onPressed: () => retry, child: Text('Incearca din nou!'));
-      },
+      futureBuilder: () =>
+          _getDataFromFirebaseController.getSortedDataFromFirebase(
+              document: 'Events', array: 'events', sortValue: 'start'),
+      query: 'events',
       dataBuilder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (EasyLoading.isShow) {
-          EasyLoading.dismiss();
-        }
         return ListView.builder(
             itemCount: _getDataFromFirebaseController
                 .getLength(snapshot.data['events']),

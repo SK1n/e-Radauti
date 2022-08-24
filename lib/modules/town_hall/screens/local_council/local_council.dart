@@ -37,17 +37,7 @@ class LocalCouncil extends StatelessWidget {
         body: Futuristic(
           futureBuilder: () => _getDataFromFirebaseController
               .getDataFromFirebase('LocalCouncil'),
-          busyBuilder: (_) {
-            if (!EasyLoading.isShow) {
-              EasyLoading.show();
-            }
-            return Container();
-          },
-          errorBuilder: (_, error, retry) {
-            EasyLoading.showError("Eroare");
-            return TextButton(
-                onPressed: () => retry, child: Text('Incearca din nou!'));
-          },
+          query: 'localcouncil',
           dataBuilder: (BuildContext context, AsyncSnapshot snap) {
             EasyLoading.dismiss();
             return ListView.builder(
@@ -108,6 +98,7 @@ class LocalCouncilCard extends StatelessWidget {
                     child: Futuristic(
                       futureBuilder: () => _downloadImageController
                           .getDownloadUrlFromUrlRef(url!),
+                      useQuery: false,
                       busyBuilder: (_) {
                         return CardLoading(
                           height: 200,
@@ -116,12 +107,6 @@ class LocalCouncilCard extends StatelessWidget {
                             Radius.circular(10),
                           ),
                         );
-                      },
-                      errorBuilder: (_, error, retry) {
-                        EasyLoading.showError("Eroare");
-                        return TextButton(
-                            onPressed: () => retry,
-                            child: Text('Incearca din nou!'));
                       },
                       dataBuilder: (_, snap) => Container(
                         width: Get.width,

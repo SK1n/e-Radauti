@@ -38,17 +38,7 @@ class Taxi extends StatelessWidget {
         body: Futuristic(
           futureBuilder: () =>
               _getDataFromFirebaseController.getDataFromFirebase('Taxi'),
-          busyBuilder: (_) {
-            if (!EasyLoading.isShow) {
-              EasyLoading.show();
-            }
-            return Container();
-          },
-          errorBuilder: (_, error, retry) {
-            EasyLoading.showError("Eroare");
-            return TextButton(
-                onPressed: () => retry, child: Text('Incearca din nou!'));
-          },
+          query: 'taxi',
           dataBuilder: (_, snap) {
             if (EasyLoading.isShow) {
               EasyLoading.dismiss();
@@ -90,6 +80,7 @@ class Taxi extends StatelessWidget {
               child: Futuristic(
                 futureBuilder: () =>
                     _downloadImageController.getDownloadUrlFromUrlRef(url!),
+                useQuery: false,
                 busyBuilder: (_) {
                   return CardLoading(
                     height: 200,
@@ -98,11 +89,6 @@ class Taxi extends StatelessWidget {
                       Radius.circular(10),
                     ),
                   );
-                },
-                errorBuilder: (_, error, retry) {
-                  EasyLoading.showError("Eroare");
-                  return TextButton(
-                      onPressed: () => retry, child: Text('Incearca din nou!'));
                 },
                 dataBuilder: (_, snap) => Container(
                   width: Get.width,

@@ -7,32 +7,13 @@ import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class LocalLegislation extends StatefulWidget {
-  @override
-  State<LocalLegislation> createState() => _LocalLegislationState();
-}
-
-class _LocalLegislationState extends State<LocalLegislation> {
-  @override
-  void initState() {
-    super.initState();
-    // getData();
-  }
-
-  void getData() {
-    //Provider.of<LegislationListData>(context, listen: false).getData();
-    //Provider.of<LegislationListData>(context, listen: false)
-    // .clearQueryInitState();
-  }
-  final GetDataFromFirebaseController _getDataFromFirebaseController =
-      Get.find();
+class LocalLegislation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
-    //LegislationListData legislationListData =
-    //Provider.of<LegislationListData>(context);
-
+    final GetDataFromFirebaseController _getDataFromFirebaseController =
+        Get.find();
     return Scaffold(
       key: _scaffoldKey,
       drawer: NavDrawer(),
@@ -51,17 +32,7 @@ class _LocalLegislationState extends State<LocalLegislation> {
               Futuristic(
                 futureBuilder: () => _getDataFromFirebaseController
                     .getDataFromFirebase('Legislation'),
-                busyBuilder: (_) {
-                  if (!EasyLoading.isShow) {
-                    EasyLoading.show();
-                  }
-                  return Container();
-                },
-                errorBuilder: (_, error, retry) {
-                  EasyLoading.showError("Eroare");
-                  return TextButton(
-                      onPressed: () => retry, child: Text('Incearca din nou!'));
-                },
+                query: '2020',
                 dataBuilder: (_, snap) {
                   if (EasyLoading.isShow) {
                     EasyLoading.dismiss();
@@ -83,7 +54,8 @@ class _LocalLegislationState extends State<LocalLegislation> {
                             ),
                             TextButton(
                               onPressed: () async {
-                                await launchUrlString(snap.data['2020'][item]['link']);
+                                await launchUrlString(
+                                    snap.data['2020'][item]['link']);
                               },
                               child: Text('Deschideti link-ul'),
                             )

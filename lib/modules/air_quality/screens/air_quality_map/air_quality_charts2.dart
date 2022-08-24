@@ -42,22 +42,8 @@ class _AirQualityCharts2State extends State<AirQualityCharts2> {
     return Futuristic(
         futureBuilder: () =>
             _getDataFromFirebaseController.getDataFromFirebase('AirDatabase2'),
-        busyBuilder: (_) {
-          if (!EasyLoading.isShow) {
-            EasyLoading.show();
-          }
-          return Container();
-        },
-        errorBuilder: (_, error, retry) {
-          EasyLoading.showError("Eroare");
-          return TextButton(
-              onPressed: () => retry, child: Text('Incearca din nou!'));
-        },
+        query: 'air',
         dataBuilder: (_, snap) {
-          if (EasyLoading.isShow) {
-            EasyLoading.dismiss();
-          }
-
           for (int index = 0;
               index <=
                   min(

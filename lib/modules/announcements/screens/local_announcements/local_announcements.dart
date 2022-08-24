@@ -36,21 +36,8 @@ class LocalAnounnouncements extends StatelessWidget {
         body: Futuristic(
           futureBuilder: () => _getDataFromFirebaseController
               .getDataFromFirebase('Announcements'),
-          busyBuilder: (_) {
-            if (!EasyLoading.isShow) {
-              EasyLoading.show();
-            }
-            return Container();
-          },
-          errorBuilder: (_, error, retry) {
-            EasyLoading.showError("Eroare");
-            return TextButton(
-                onPressed: () => retry, child: Text('Incearca din nou!'));
-          },
+          query: 'announcement',
           dataBuilder: (_, snapshot) {
-            if (EasyLoading.isShow) {
-              EasyLoading.dismiss();
-            }
             return ListView.builder(
                 itemCount: _getDataFromFirebaseController
                     .getLength(snapshot.data['announcement']),
@@ -95,11 +82,7 @@ class LocalAnounnouncements extends StatelessWidget {
                   ),
                 );
               },
-              errorBuilder: (_, error, retry) {
-                EasyLoading.showError("Eroare");
-                return TextButton(
-                    onPressed: () => retry, child: Text('Incearca din nou!'));
-              },
+              useQuery: false,
               dataBuilder: (_, snap) => Container(
                 width: Get.width,
                 child: Image.network(

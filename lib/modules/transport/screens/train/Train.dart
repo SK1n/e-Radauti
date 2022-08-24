@@ -31,17 +31,7 @@ class Train extends StatelessWidget {
           body: Futuristic(
             futureBuilder: () =>
                 _getDataFromFirebaseController.getDataFromFirebase('Train'),
-            busyBuilder: (_) {
-              if (!EasyLoading.isShow) {
-                EasyLoading.show();
-              }
-              return Container();
-            },
-            errorBuilder: (_, error, retry) {
-              EasyLoading.showError("Eroare");
-              return TextButton(
-                  onPressed: () => retry, child: Text('Incearca din nou!'));
-            },
+            query: 'train',
             dataBuilder: (_, snap) {
               if (EasyLoading.isShow) {
                 EasyLoading.dismiss();

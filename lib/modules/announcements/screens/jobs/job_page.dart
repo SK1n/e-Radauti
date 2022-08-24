@@ -30,17 +30,7 @@ class JobPage extends StatelessWidget {
         body: Futuristic(
           futureBuilder: () => _downloadData.getData(
               'https://www.eradauti.ro/api/context?pathname=/anunturi/locuri-de-munca-20'),
-          busyBuilder: (_) {
-            if (!EasyLoading.isShow) {
-              EasyLoading.show();
-            }
-            return Container();
-          },
-          errorBuilder: (_, error, retry) {
-            EasyLoading.showError("Eroare");
-            return TextButton(
-                onPressed: () => retry, child: Text('Incearca din nou!'));
-          },
+          useQuery: false,
           dataBuilder: (_, snapshot) {
             if (EasyLoading.isShow) {
               EasyLoading.dismiss();
@@ -80,7 +70,8 @@ class JobPage extends StatelessWidget {
                                       'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${data['slug'].toString()}-${data['id'].toString()}'),
                                   options: ChromeSafariBrowserClassOptions(
                                       android: AndroidChromeCustomTabsOptions(
-                                        shareState: CustomTabsShareState.SHARE_STATE_OFF,
+                                          shareState: CustomTabsShareState
+                                              .SHARE_STATE_OFF,
                                           keepAliveEnabled: true),
                                       ios: IOSSafariOptions(
                                           dismissButtonStyle:

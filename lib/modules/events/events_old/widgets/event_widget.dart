@@ -33,11 +33,7 @@ class EventsOldWidget extends StatelessWidget {
             ),
           );
         },
-        errorBuilder: (_, error, retry) {
-          EasyLoading.showError("Eroare");
-          return TextButton(
-              onPressed: () => retry, child: Text('Incearca din nou!'));
-        },
+        useQuery: false,
         dataBuilder: (_, AsyncSnapshot snap) {
           return ExpandableNotifier(
             child: ScrollOnExpand(
@@ -67,105 +63,4 @@ class EventsOldWidget extends StatelessWidget {
           );
         });
   }
-
-  // FutureBuilder sendNotifSwitchListTile(
-  //     FetchData fetchData, Future<bool> sendNotif) {
-  //   return FutureBuilder(
-  //       future: sendNotif,
-  //       builder: (BuildContext context, AsyncSnapshot snapshot) {
-  //         if (snapshot.hasData) {
-  //           return !widget.oldEvent
-  //               ? fetchData.getEventStatus(
-  //                           widget.snapshot!.start!, widget.snapshot!.end!) ==
-  //                       Colors.amberAccent
-  //                   ? SwitchListTile(
-  //                       value: snapshot.data,
-  //                       secondary: Icon(
-  //                         FontAwesome5.calendar_plus,
-  //                         color: Colors.limeAccent,
-  //                       ),
-  //                       title: Text('Vreau sa primesc notificare'),
-  //                       onChanged: (value) {
-  //                         if (value) {
-  //                           registerNotification(widget.snapshot!.id ?? 0);
-  //                           setState(() {
-  //                             sendNotif = hasEnabledNotification(
-  //                                 widget.snapshot!.id ?? 0);
-  //                           });
-  //                           showDialog(
-  //                             context: context,
-  //                             builder: (BuildContext context) => Platform.isIOS
-  //                                 ? CupertinoAlertDialog(
-  //                                     title: Text('Notificare adaugata'),
-  //                                     content: Text(
-  //                                         'Veti fi notificat cand evenimentul incepe!'),
-  //                                     actions: [
-  //                                       TextButton(
-  //                                         onPressed: () =>
-  //                                             Navigator.pop(context),
-  //                                         child: Text('OK'),
-  //                                       )
-  //                                     ],
-  //                                   )
-  //                                 : AlertDialog(
-  //                                     title: Text('Notificare adaugata'),
-  //                                     content: Text(
-  //                                         'Veti fi notificat cand evenimentul incepe!'),
-  //                                     actions: [
-  //                                       TextButton(
-  //                                         onPressed: () =>
-  //                                             Navigator.pop(context),
-  //                                         child: Text('OK'),
-  //                                       )
-  //                                     ],
-  //                                   ),
-  //                           );
-  //                         } else {
-  //                           showDialog(
-  //                             context: context,
-  //                             builder: (BuildContext context) => Platform.isIOS
-  //                                 ? CupertinoAlertDialog(
-  //                                     title: Text('Notificare a fost stearsa'),
-  //                                     content: Text(
-  //                                         'Nu veti mai fi notificat cand evenimentul incepe!'),
-  //                                     actions: [
-  //                                       TextButton(
-  //                                         onPressed: () =>
-  //                                             Navigator.pop(context),
-  //                                         child: Text('OK'),
-  //                                       )
-  //                                     ],
-  //                                   )
-  //                                 : AlertDialog(
-  //                                     title: Text('Notificare a fost stearsa'),
-  //                                     content: Text(
-  //                                         'Nu veti mai fi notificat cand evenimentul incepe!'),
-  //                                     actions: [
-  //                                       TextButton(
-  //                                         onPressed: () =>
-  //                                             Navigator.pop(context),
-  //                                         child: Text('OK'),
-  //                                       )
-  //                                     ],
-  //                                   ),
-  //                           );
-  //                           flutterLocalNotificationsPlugin
-  //                               .cancel(widget.snapshot!.id ?? 0);
-  //                           setState(() {
-  //                             sendNotif = hasEnabledNotification(
-  //                                 widget.snapshot!.id ?? 0);
-  //                           });
-  //                         }
-  //                         hasEnabledNotification(widget.snapshot!.id ?? 0);
-  //                       },
-  //                     )
-  //                   : Container()
-  //               : Container();
-  //         } else {
-  //           return LoadingScreen();
-  //         }
-  //       });
-  // }
-
-  bool get wantKeepAlive => true;
 }

@@ -9,17 +9,11 @@ import 'package:flutterapperadauti/utils/futuristic.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class LocalMeetings extends StatefulWidget {
-  LocalMeetings({Key? key}) : super(key: key);
-
-  @override
-  _LocalMeetingsState createState() => _LocalMeetingsState();
-}
-
-class _LocalMeetingsState extends State<LocalMeetings> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+class LocalMeetings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
     GetDataFromFirebaseController _getDataFromFirebaseController =
         Get.find<GetDataFromFirebaseController>();
     return Scaffold(
@@ -39,17 +33,7 @@ class _LocalMeetingsState extends State<LocalMeetings> {
             body: Futuristic(
               futureBuilder: () => _getDataFromFirebaseController
                   .getDataFromFirebase('CouncilMeetings'),
-              busyBuilder: (_) {
-                if (!EasyLoading.isShow) {
-                  EasyLoading.show();
-                }
-                return Container();
-              },
-              errorBuilder: (_, error, retry) {
-                EasyLoading.showError("Eroare");
-                return TextButton(
-                    onPressed: () => retry, child: Text('Incearca din nou!'));
-              },
+              query: 'meetings',
               dataBuilder: (BuildContext context, AsyncSnapshot snap) {
                 EasyLoading.dismiss();
                 return ListView.builder(

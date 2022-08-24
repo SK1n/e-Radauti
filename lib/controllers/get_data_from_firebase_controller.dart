@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class GetDataFromFirebaseController {
   FirebaseFirestore? _instance;
@@ -14,23 +15,26 @@ class GetDataFromFirebaseController {
     return _localModel;
   }
 
-  int getLength(List firebaseArray) {
-    return firebaseArray.length;
+  getSortedDataFromFirebase(
+      {String? document, String? array, String? sortValue}) async {
+    var localModel = await getDataFromFirebase(document);
+    var aux;
+    for (int element1 = 0; element1 < localModel[array].length; element1++) {
+      for (int element2 = element1;
+          element2 < localModel[array].length;
+          element2++) {
+        if (localModel[array][element1][sortValue] <
+            localModel[array][element2][sortValue]) {
+          aux = localModel[array][element2];
+          localModel[array][element2] = localModel[array][element1];
+          localModel[array][element1] = aux;
+        }
+      }
+    }
+    return localModel;
   }
 
-  getDataFromFirebase2<TModel>(String array, String document,
-      TModel Function(Map<String, dynamic>) converter) async {
-    final instance = FirebaseFirestore.instance;
-    final localModel = <TModel>[];
-    final collectionReference = instance.collection('collection');
-    final snapshot = await collectionReference.doc(document).get();
-    final data = snapshot.data() as Map;
-    final localData = data[array] as List<dynamic>;
-
-    localData.forEach((element) {
-      localModel.add(converter(element));
-    });
-
-    return localModel;
+  int getLength(List firebaseArray) {
+    return firebaseArray.length;
   }
 }

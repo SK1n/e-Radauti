@@ -72,17 +72,7 @@ class _NoticeMapUiState extends State<NoticeMapUi>
       body: Futuristic(
         futureBuilder: () =>
             _getDataFromFirebaseController.getDataFromFirebase('Markers'),
-        busyBuilder: (_) {
-          if (!EasyLoading.isShow) {
-            EasyLoading.show();
-          }
-          return Container();
-        },
-        errorBuilder: (_, error, retry) {
-          EasyLoading.showError("Eroare");
-          return TextButton(
-              onPressed: () => retry, child: Text('Incearca din nou!'));
-        },
+        query: 'markers',
         dataBuilder: (BuildContext context, AsyncSnapshot snapshot) {
           if (EasyLoading.isShow) {
             EasyLoading.dismiss();
