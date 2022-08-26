@@ -1,6 +1,4 @@
-import 'package:async/async.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/controllers/get_data_from_firebase_controller.dart';
 import 'package:flutterapperadauti/modules/events/events_new/widgets/event_widget.dart';
 import 'package:flutterapperadauti/utils/futuristic.dart';

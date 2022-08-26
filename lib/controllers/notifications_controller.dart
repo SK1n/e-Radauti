@@ -11,7 +11,7 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 
 class NotificationsController extends GetxController {
   final AnalyticsController _analytics = Get.put(AnalyticsController());
-  final AndroidNotificationChannel channel = AndroidNotificationChannel(
+  final AndroidNotificationChannel _channel = AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title
     description:
@@ -34,16 +34,15 @@ class NotificationsController extends GetxController {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
       if (notification != null && android != null) {
-        _analytics.addToAnalytics(message.data['view']);
         flutterLocalNotificationsPlugin.show(
             notification.hashCode,
             notification.title,
             notification.body,
             NotificationDetails(
               android: AndroidNotificationDetails(
-                channel.id,
-                channel.name,
-                channelDescription: channel.description,
+                _channel.id,
+                _channel.name,
+                channelDescription: _channel.description,
                 icon: 'app_logo_final',
               ),
             ),

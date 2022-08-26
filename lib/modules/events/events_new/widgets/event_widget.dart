@@ -1,5 +1,4 @@
 import 'package:card_loading/card_loading.dart';
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/controllers/download_image_controller.dart';
 import 'package:flutterapperadauti/controllers/events_controller.dart';
 import 'package:flutterapperadauti/modules/events/events_new/widgets/event_new_collapsed.dart';

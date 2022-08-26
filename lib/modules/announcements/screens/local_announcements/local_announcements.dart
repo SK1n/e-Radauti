@@ -1,6 +1,5 @@
 import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/controllers/download_image_controller.dart';
 import 'package:flutterapperadauti/controllers/get_data_from_firebase_controller.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';

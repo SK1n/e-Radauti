@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:get/get.dart';
-import 'package:im_animations/im_animations.dart';
 
 /// A widget that makes it easy to execute a [Future] from a StatelessWidget.
 class Futuristic<T> extends StatefulWidget {
@@ -31,7 +30,6 @@ class Futuristic<T> extends StatefulWidget {
   final String? query;
   final bool useQuery;
 
-  //IMPLEMENT: TODO: add all array to future builder OR make a Futuristic for new events
   const Futuristic(
       {Key? key,
       required this.futureBuilder,

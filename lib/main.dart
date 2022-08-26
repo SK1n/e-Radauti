@@ -1,65 +1,90 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutterapperadauti/bindings/app_bindings.dart';
 import 'package:flutterapperadauti/controllers/analytics_controller.dart';
-import 'package:flutterapperadauti/controllers/notifications_controller.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:is_first_run/is_first_run.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
-  print('Handling a background message ${message.messageId}');
+  await setupFlutterNotifications();
+  showFlutterNotification(message);
+  //Get.toNamed(message.data['view']);
+  print('Handling a background message ${message.data}');
 }
 
-const AndroidNotificationChannel channel = AndroidNotificationChannel(
-  'high_importance_channel', // id
-  'High Importance Notifications', // title
-  description:
-      'This channel is used for important notifications.', // description
-  importance: Importance.high,
-);
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
+late AndroidNotificationChannel channel;
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  //FIREBASE + NOTIFICATIONS
-  await Firebase.initializeApp();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('app_logo_final');
+bool isFlutterLocalNotificationsInitialized = false;
 
-  final IOSInitializationSettings initializationSettingsIOS =
-      IOSInitializationSettings(
-    requestAlertPermission: true,
-    requestBadgePermission: true,
-    requestSoundPermission: true,
+Future<void> setupFlutterNotifications() async {
+  if (isFlutterLocalNotificationsInitialized) {
+    return;
+  }
+  channel = const AndroidNotificationChannel(
+    'high_importance_channel', // id
+    'High Importance Notifications', // title
+    description:
+        'This channel is used for important notifications.', // description
+    importance: Importance.high,
   );
-  final InitializationSettings initializationSettings = InitializationSettings(
-    android: initializationSettingsAndroid,
-    iOS: initializationSettingsIOS,
-  );
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-      onSelectNotification: (String? payload) async {
-    AnalyticsController().addToAnalytics("onSelectNotifications:" + payload!);
-  });
 
-  NotificationsController().setupNotifs();
+  flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
+  /// Create an Android Notification Channel.
+  ///
+  /// We use this channel in the `AndroidManifest.xml` file to override the
+  /// default FCM channel to enable heads up notifications.
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
+
+  /// Update the iOS foreground notification presentation options to allow
+  /// heads up notifications.
   await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
     alert: true,
     badge: true,
     sound: true,
   );
+  isFlutterLocalNotificationsInitialized = true;
+}
 
+void showFlutterNotification(RemoteMessage message) {
+  RemoteNotification? notification = message.notification;
+  AndroidNotification? android = message.notification?.android;
+  if (notification != null && android != null && !kIsWeb) {
+    flutterLocalNotificationsPlugin.show(
+      notification.hashCode,
+      notification.title,
+      notification.body,
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          channel.id,
+          channel.name,
+          channelDescription: channel.description,
+          icon: 'app_logo_final',
+        ),
+      ),
+    );
+  }
+}
+
+/// Initialize the [FlutterLocalNotificationsPlugin] package.
+late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  if (!kIsWeb) {
+    await setupFlutterNotifications();
+  }
   runApp(
     GetMaterialApp(
       title: 'e-Rădăuți',
@@ -76,6 +101,7 @@ Future<void> main() async {
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
         primaryColor: Color(0xFFFFFFFF),
       ),
+      navigatorKey: Get.key,
     ),
   );
 }

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
+import 'package:flutterapperadauti/utils/not_switch.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:get/get.dart';
@@ -25,15 +26,9 @@ class _AppSettingsState extends State<AppSettings> {
 
   @override
   Widget build(BuildContext context) {
-    // GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-    // GeolocatorState geolocatorState = Provider.of<GeolocatorState>(context);
-    // NoticeFormState noticeFormState = Provider.of<NoticeFormState>(context);
-
     return Scaffold(
-      //key: _scaffoldKey,
       appBar: PreferredSize(
         child: AppBarUi(
-          //scaffoldKey: _scaffoldKey,
           leading: Icons.settings,
           content: 'Setari',
         ),
@@ -42,10 +37,6 @@ class _AppSettingsState extends State<AppSettings> {
       drawer: NavDrawer(),
       body: Column(
         children: [
-          // notificationSection(),
-          // geolocatorSection(
-          //     geolocatorState: geolocatorState,
-          //     noticeFormState: noticeFormState),
           kDebugMode
               ? ListTileSettings(
                   routeName: 'debug',
@@ -53,40 +44,13 @@ class _AppSettingsState extends State<AppSettings> {
                   leadingIcon: Icons.bug_report_outlined,
                   onTap: () {
                     Get.toNamed(Routes.DEBUG);
-                    // Navigator.pushNamed(context, '/settings/debug');
                   })
               : Container(),
+          NotSwitch(),
         ],
       ),
     );
   }
-
-  notificationSection() {
-    return Card(
-      child: ListTileSettings(
-        routeName: 'notifications',
-        title: 'Notificari',
-        leadingIcon: Icons.topic,
-        onTap: () {
-          Navigator.pushNamed(context, '/settings/notifications');
-        },
-      ),
-    );
-  }
-
-  // geolocatorSection(
-  //     {required GeolocatorState geolocatorState,
-  //     required NoticeFormState noticeFormState}) {
-  //   return ListTileSwitch(
-  //       value: geolocatorState.value,
-  //       onChanged: (value) => geolocationOnChanged(
-  //             context: context,
-  //             geolocatorState: geolocatorState,
-  //             value: value,
-  //             noticeFormState: noticeFormState,
-  //           ),
-  //       title: Text('Locatie'));
-  // }
 }
 
 class ListTileSettings extends StatelessWidget {

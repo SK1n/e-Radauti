@@ -15,6 +15,7 @@ class MenuScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
+        actions: [],
         title: Text(
           'e-Rădăuți',
           style: TextStyle(

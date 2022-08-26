@@ -47,6 +47,7 @@ dependencies:
   google_maps: ^6.2.0
   json_serializable: ^4.1.4
   im_animations: ^0.1.2
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:

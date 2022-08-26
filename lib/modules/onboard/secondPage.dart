@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/loc_switch.dart';
+import 'package:flutterapperadauti/utils/not_switch.dart';
 import 'package:get/get.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 
@@ -25,7 +26,7 @@ PageViewModel secondPage() {
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            //GetPlatform.isAndroid ? NotSwitch() : Container(),
+            NotSwitch(),
             LocSwitch(),
           ],
         )

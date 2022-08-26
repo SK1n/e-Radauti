@@ -49,9 +49,13 @@ class AppPages {
         page: () => MenuScreen(),
         preventDuplicates: true,
         children: [
-          GetPage(name: _Paths.SETTINGS, page: () => AppSettings(), children: [
-            GetPage(name: _Paths.DEBUG, page: () => DebugSettings()),
-          ]),
+          GetPage(
+            name: _Paths.SETTINGS,
+            page: () => AppSettings(),
+            children: [
+              GetPage(name: _Paths.DEBUG, page: () => DebugSettings()),
+            ],
+          ),
           GetPage(
             name: _Paths.ABOUT,
             page: () => AboutUsMain(),
