@@ -78,6 +78,10 @@ void showFlutterNotification(RemoteMessage message) {
 /// Initialize the [FlutterLocalNotificationsPlugin] package.
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
+void _handleMessage(RemoteMessage message) {
+  Get.toNamed('/home/' + message.data['view']);
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -85,6 +89,14 @@ Future<void> main() async {
   if (!kIsWeb) {
     await setupFlutterNotifications();
   }
+
+  RemoteMessage? initialMessage =
+      await FirebaseMessaging.instance.getInitialMessage();
+  if (initialMessage != null) {
+    _handleMessage(initialMessage);
+  }
+
+  FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
   runApp(
     GetMaterialApp(
       title: 'e-Rădăuți',

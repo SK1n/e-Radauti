@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/modules/menu/menu_item.dart';
+import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +16,15 @@ class MenuScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        actions: [],
+        actions: [
+          IconButton(
+            onPressed: () => _scaffoldKey.currentState!.openDrawer(),
+            icon: Icon(
+              Icons.menu,
+              color: Colors.black,
+            ),
+          ),
+        ],
         title: Text(
           'e-Rădăuți',
           style: TextStyle(
@@ -25,6 +34,7 @@ class MenuScreen extends StatelessWidget {
           ),
         ),
       ),
+      drawer: NavDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(
