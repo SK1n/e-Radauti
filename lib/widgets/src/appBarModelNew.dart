@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/routes/app_pages.dart';
+import 'package:get/get.dart';
 
 class AppBarUiSliver extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -27,7 +29,9 @@ class AppBarUiSliver extends StatelessWidget {
           // ignore: deprecated_member_use
           child: TextButton(
             child: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Get.previousRoute.isEmpty
+                ? Get.offAndToNamed(Routes.HOME)
+                : Get.back(),
           ),
         ),
         actions: [
@@ -96,7 +100,9 @@ class AppBarUi extends StatelessWidget {
           // ignore: deprecated_member_use
           child: TextButton(
             child: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Get.previousRoute.isEmpty
+                ? Get.offAndToNamed(Routes.HOME)
+                : Get.back(),
           ),
         ),
         actions: [

@@ -14,7 +14,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   await setupFlutterNotifications();
   showFlutterNotification(message);
-  //Get.toNamed(message.data['view']);
+  // Get.toNamed(message.data['view']);
   print('Handling a background message ${message.data}');
 }
 
@@ -60,18 +60,18 @@ void showFlutterNotification(RemoteMessage message) {
   AndroidNotification? android = message.notification?.android;
   if (notification != null && android != null && !kIsWeb) {
     flutterLocalNotificationsPlugin.show(
-      notification.hashCode,
-      notification.title,
-      notification.body,
-      NotificationDetails(
-        android: AndroidNotificationDetails(
-          channel.id,
-          channel.name,
-          channelDescription: channel.description,
-          icon: 'app_logo_final',
+        notification.hashCode,
+        notification.title,
+        notification.body,
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+            channel.id,
+            channel.name,
+            channelDescription: channel.description,
+            icon: 'app_logo_final',
+          ),
         ),
-      ),
-    );
+        payload: message.data['view']);
   }
 }
 
@@ -79,6 +79,7 @@ void showFlutterNotification(RemoteMessage message) {
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
 void _handleMessage(RemoteMessage message) {
+  debugPrint('handleMessage');
   Get.toNamed('/home/' + message.data['view']);
 }
 
@@ -89,6 +90,9 @@ Future<void> main() async {
   if (!kIsWeb) {
     await setupFlutterNotifications();
   }
+
+  final NotificationAppLaunchDetails? notificationAppLaunchDetails =
+      await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
 
   RemoteMessage? initialMessage =
       await FirebaseMessaging.instance.getInitialMessage();
@@ -103,8 +107,11 @@ Future<void> main() async {
       debugShowCheckedModeBanner: false,
       builder: EasyLoading.init(),
       getPages: AppPages.routes,
-      initialRoute:
-          await IsFirstRun.isFirstRun() ? Routes.ONBOARD : Routes.HOME,
+      initialRoute: await IsFirstRun.isFirstRun()
+          ? Routes.ONBOARD
+          : notificationAppLaunchDetails!.didNotificationLaunchApp
+              ? '/home/' + notificationAppLaunchDetails.payload.toString()
+              : Routes.HOME,
       initialBinding: AppBindings(),
       navigatorObservers: [
         AnalyticsController().getAnalyticsObserver(),
