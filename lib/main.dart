@@ -7,14 +7,13 @@ import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/widgets/src/is_first_run.dart';
 import 'package:get/get.dart';
-import 'package:is_first_run/is_first_run.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   await setupFlutterNotifications();
   showFlutterNotification(message);
-  // Get.toNamed(message.data['view']);
   print('Handling a background message ${message.data}');
 }
 

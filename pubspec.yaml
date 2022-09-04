@@ -43,7 +43,6 @@ dependencies:
   flutter_loadingindicator: ^1.0.1
   card_loading: ^0.2.1
   firebase_analytics: ^9.3.0
-  is_first_run: ^1.0.0
   google_maps: ^6.2.0
   json_serializable: ^4.1.4
   im_animations: ^0.1.2

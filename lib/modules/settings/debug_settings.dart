@@ -1,8 +1,8 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/widgets/src/appBarModelNew.dart';
+import 'package:flutterapperadauti/widgets/src/is_first_run.dart';
 import 'package:flutterapperadauti/widgets/src/nav_drawer.dart';
-import 'package:is_first_run/is_first_run.dart';
 
 class DebugSettings extends StatelessWidget {
   const DebugSettings({Key? key}) : super(key: key);
