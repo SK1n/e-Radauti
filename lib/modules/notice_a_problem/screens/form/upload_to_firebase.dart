@@ -37,7 +37,7 @@ class UploadToFirebase {
                     "description": _noticeProblemController
                         .formKey.currentState!.fields['description']?.value,
                     "index": _getIndex(_noticeProblemController
-                        .formKey.currentState!.fields['index']?.value),
+                        .formKey.currentState!.fields['category']?.value),
                     "institution": _noticeProblemController.formKey
                         .currentState!.fields['institution_email']?.value,
                     "institution_email": _noticeProblemController
@@ -64,7 +64,7 @@ class UploadToFirebase {
                 CollectionReference collectionReference =
                     _firestoreInstance.collection('collection');
                 DocumentReference documentReference =
-                    collectionReference.doc('MarkersTest');
+                    collectionReference.doc('Markers');
                 await documentReference.update(
                     {"markers": FieldValue.arrayUnion(data)}).then((value) {
                   EasyLoading.showSuccess('Success').then((value) {
