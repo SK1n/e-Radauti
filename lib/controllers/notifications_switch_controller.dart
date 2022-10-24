@@ -5,11 +5,11 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NotificationsSwitchController extends GetxController {
-  dynamic _switchValue = false.obs;
-  get switchValue => this._switchValue.value;
-  set switchValue(value) => this._switchValue.value = value;
+  final dynamic _switchValue = false.obs;
+  get switchValue => _switchValue.value;
+  set switchValue(value) => _switchValue.value = value;
 
-  FirebaseMessaging _messaging = FirebaseMessaging.instance;
+  final FirebaseMessaging _messaging = FirebaseMessaging.instance;
 
   _saveToSharedPreferences(bool value) async {
     final prefs = await SharedPreferences.getInstance();
@@ -19,8 +19,8 @@ class NotificationsSwitchController extends GetxController {
   getSharedPreferencesValue() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.containsKey('subscribed')
-        ? this.switchValue = prefs.getBool('subscribed')
-        : this.switchValue = false;
+        ? switchValue = prefs.getBool('subscribed')
+        : switchValue = false;
   }
 
   subscribeToNotifications() async {
@@ -31,12 +31,12 @@ class NotificationsSwitchController extends GetxController {
         (value) {
           Get.defaultDialog(
             title: 'Success!',
-            content: Text(
+            content: const Text(
               'Din acest moment veti primi notificari!\nAceasta setare poate fi schimbata din setari!',
               textAlign: TextAlign.center,
             ),
             actions: [
-              TextButton(onPressed: () => Get.back(), child: Text('OK'))
+              TextButton(onPressed: () => Get.back(), child: const Text('OK'))
             ],
           );
           EasyLoading.dismiss();
@@ -48,12 +48,12 @@ class NotificationsSwitchController extends GetxController {
       return Get.defaultDialog(
         title: 'A intervenit o eroare!',
         content: Text(
-          'Aceasta este eroarea: ' + exception.toString(),
+          'Aceasta este eroarea: $exception',
         ),
         actions: [
           TextButton(
             onPressed: () => Get.back(),
-            child: Text('OK'),
+            child: const Text('OK'),
           ),
         ],
       );
@@ -68,12 +68,12 @@ class NotificationsSwitchController extends GetxController {
         (value) {
           Get.defaultDialog(
             title: 'Success!',
-            content: Text(
+            content: const Text(
               'Din acest moment nu veti mai primi notificari!\nAceasta setare poate fi schimbata din setari!',
               textAlign: TextAlign.center,
             ),
             actions: [
-              TextButton(onPressed: () => Get.back(), child: Text('OK'))
+              TextButton(onPressed: () => Get.back(), child: const Text('OK'))
             ],
           );
           EasyLoading.dismiss();
@@ -85,12 +85,12 @@ class NotificationsSwitchController extends GetxController {
       return Get.defaultDialog(
         title: 'A intervenit o eroare!',
         content: Text(
-          'Aceasta este eroarea: ' + exception.toString(),
+          'Aceasta este eroarea: $exception',
         ),
         actions: [
           TextButton(
             onPressed: () => Get.back(),
-            child: Text('OK'),
+            child: const Text('OK'),
           ),
         ],
       );

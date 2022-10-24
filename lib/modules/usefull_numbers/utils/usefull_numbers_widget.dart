@@ -1,36 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:fluttericon/entypo_icons.dart';
 
-import 'package:url_launcher/url_launcher_string.dart';
-
-class UsefullNumbersWidget extends StatelessWidget {
-  final String title;
+class UsefullNumbersWidget extends StatelessWidget with UrlLauncher {
+  final String? title;
   final List<dynamic>? phone;
-  final List<dynamic> email;
+  final List<dynamic>? email;
   const UsefullNumbersWidget({
-    Key? key,
+    super.key,
     required this.title,
     this.phone,
     required this.email,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 10.0,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '$title',
-              style: TextStyle(
+              title!,
+              style: const TextStyle(
                   color: Colors.blueGrey,
                   fontWeight: FontWeight.bold,
                   fontSize: 20),
             ),
-            Divider(
+            const Divider(
               height: 20,
               thickness: 2,
             ),
@@ -38,18 +36,18 @@ class UsefullNumbersWidget extends StatelessWidget {
                 ? ListView.builder(
                     itemCount: phone!.length,
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (BuildContext context, int item) {
                       return Column(
                         children: [
                           ListTile(
-                            leading: Icon(Entypo.phone),
+                            leading: const Icon(Entypo.phone),
                             title: Text('${phone![item]}'),
                             onTap: () {
-                              _launchURL('tel:${phone![item]}');
+                              launchUrl('tel:${phone![item]}');
                             },
                           ),
-                          Divider(
+                          const Divider(
                             height: 20,
                             thickness: 2,
                           ),
@@ -57,22 +55,22 @@ class UsefullNumbersWidget extends StatelessWidget {
                       );
                     })
                 : Container(),
-            email.isNotEmpty
+            email != null
                 ? ListView.builder(
-                    itemCount: email.length,
+                    itemCount: email!.length,
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (BuildContext context, int item) {
                       return Column(
                         children: [
                           ListTile(
-                            leading: Icon(Entypo.mail),
-                            title: Text('${email[item]}'),
+                            leading: const Icon(Entypo.mail),
+                            title: Text('${email![item]}'),
                             onTap: () {
-                              _launchURL('mailto:${email[item]}');
+                              launchUrl('mailto:${email![item]}');
                             },
                           ),
-                          Divider(
+                          const Divider(
                             height: 20,
                             thickness: 2,
                           ),
@@ -84,13 +82,5 @@ class UsefullNumbersWidget extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  _launchURL(url) async {
-    if (await canLaunchUrlString(url)) {
-      await launchUrlString(url);
-    } else {
-      throw 'Nu se poate încărca $url';
-    }
   }
 }

@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
-import 'package:flutterapperadauti/modules/onboard/firstPage.dart';
-import 'package:flutterapperadauti/modules/onboard/secondPage.dart';
+import 'package:flutterapperadauti/modules/onboard/first_page.dart';
+import 'package:flutterapperadauti/modules/onboard/second_page.dart';
 import 'package:get/get.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 
-class Onboard extends StatefulWidget {
-  const Onboard({Key? key}) : super(key: key);
-
-  @override
-  _OnboardState createState() => _OnboardState();
-}
-
-class _OnboardState extends State<Onboard> {
-  bool? isFirstRun;
-  late bool notValue;
-
+class Onboard extends StatelessWidget {
+  const Onboard({super.key});
   @override
   Widget build(BuildContext context) {
     return IntroViewsFlutter(
@@ -26,10 +17,10 @@ class _OnboardState extends State<Onboard> {
       showNextButton: true,
       showBackButton: true,
       showSkipButton: false,
-      nextText: Text('Următorul'),
-      backText: Text('Înapoi'),
-      doneText: Text('Închide'),
-      pageButtonTextStyles: TextStyle(color: Colors.black),
+      nextText: const Text('Următorul'),
+      backText: const Text('Înapoi'),
+      doneText: const Text('Închide'),
+      pageButtonTextStyles: const TextStyle(color: Colors.black),
       pageButtonsColor: Colors.black,
       background: Colors.black,
       onTapDoneButton: () {

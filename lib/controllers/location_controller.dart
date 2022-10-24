@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:location/location.dart';
 
 class LocationController extends GetxController {
-  var location = new Location();
+  var location = Location();
   bool? _serviceEnabled;
   dynamic enabled = true.obs;
   Future<bool> get hasPermissions async =>
