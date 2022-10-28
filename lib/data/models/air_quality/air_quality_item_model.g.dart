@@ -24,6 +24,7 @@ AirQualityItemModel _$AirQualityItemModelFromJson(Map<String, dynamic> json) =>
       json['formatedDate'] as String?,
       json['quality'] as String?,
       json['hm'] as num?,
+      json['directionDegrees'] as num?,
     );
 
 Map<String, dynamic> _$AirQualityItemModelToJson(
@@ -41,6 +42,7 @@ Map<String, dynamic> _$AirQualityItemModelToJson(
       'airTS': instance.airTs,
       'windMs': instance.windMs,
       'direction': instance.direction,
+      'directionDegrees': instance.directionDeg,
       'formatedPression': instance.fPression,
       'formatedDate': instance.fDate,
       'quality': instance.quality,

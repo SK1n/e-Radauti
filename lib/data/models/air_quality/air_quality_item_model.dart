@@ -28,6 +28,8 @@ class AirQualityItemModel {
   final String? windMs;
   @JsonKey(name: 'direction')
   final String? direction;
+  @JsonKey(name: 'directionDegrees')
+  final num? directionDeg;
   @JsonKey(name: 'formatedPression')
   final String? fPression;
   @JsonKey(name: 'formatedDate')
@@ -53,7 +55,8 @@ class AirQualityItemModel {
       this.fPression,
       this.fDate,
       this.quality,
-      this.hm);
+      this.hm,
+      this.directionDeg);
 
   factory AirQualityItemModel.fromJson(Map<String, dynamic> json) =>
       _$AirQualityItemModelFromJson(json);

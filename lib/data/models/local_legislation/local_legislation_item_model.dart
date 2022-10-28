@@ -5,9 +5,10 @@ part 'local_legislation_item_model.g.dart';
 @JsonSerializable()
 class LocalLegislationItemModel {
   @JsonKey(name: 'an')
-  final int? year;
+  final String? year;
+  @JsonKey(name: 'link')
   final String? link;
-  @JsonKey(name: 'titlu')
+  @JsonKey(name: 'title')
   final String? title;
 
   const LocalLegislationItemModel(this.year, this.link, this.title);

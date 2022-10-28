@@ -7,6 +7,8 @@ class AppBarUi extends StatelessWidget {
   final bool pinned;
   final bool centerTitle;
   final PreferredSizeWidget? bottom;
+  final Widget? flexibleSpace;
+  final double? expandedHeight;
   const AppBarUi({
     super.key,
     required this.content,
@@ -14,6 +16,8 @@ class AppBarUi extends StatelessWidget {
     this.pinned = false,
     this.bottom,
     this.centerTitle = true,
+    this.flexibleSpace,
+    this.expandedHeight,
   });
 
   @override
@@ -22,6 +26,8 @@ class AppBarUi extends StatelessWidget {
       pinned: true,
       floating: true,
       centerTitle: centerTitle,
+      flexibleSpace: flexibleSpace,
+      expandedHeight: expandedHeight,
       bottom: bottom ??
           PreferredSize(
             preferredSize: const Size(0, 0),

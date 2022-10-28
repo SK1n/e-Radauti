@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/air_quality/air_quality_item_model.dart';
 import 'package:flutterapperadauti/data/models/air_quality/air_quality_model.dart';
+import 'package:flutterapperadauti/modules/air_quality/views/air_quality_satu_mare_item.dart';
 import 'package:flutterapperadauti/modules/air_quality/views/legend.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:fluttericon/entypo_icons.dart';
@@ -9,6 +10,7 @@ import 'package:fluttericon/meteocons_icons.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
+import 'dart:math' as math;
 import 'package:get/get.dart';
 
 class AirQuality extends StatelessWidget with GetDataFirebase {
@@ -156,14 +158,6 @@ class AirQuality extends StatelessWidget with GetDataFirebase {
                         ],
                       ),
                     ),
-                    const Text(
-                      'STAȚIA METEO\nStr. Ștefan cel Mare Nr. 132',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
                     Card(
                       elevation: 2,
                       child: Column(
@@ -182,8 +176,13 @@ class AirQuality extends StatelessWidget with GetDataFirebase {
                               onPressed: () {},
                             ),
                             trailing: TextButton.icon(
-                              icon: Image.asset(
-                                  'assets/wind/${Get.isDarkMode ? 'w' : 'b'}${item.direction}.png'),
+                              icon: Transform.rotate(
+                                angle: item.directionDeg!.toDouble() *
+                                    math.pi /
+                                    180,
+                                child: Image.asset(
+                                    'assets/wind/direction_${Get.isDarkMode ? 'white' : 'black'}.png'),
+                              ),
                               label: Text(
                                 'Direcția ${item.direction}',
                                 maxLines: 2,
@@ -215,6 +214,7 @@ class AirQuality extends StatelessWidget with GetDataFirebase {
                         ],
                       ),
                     ),
+                    const AirQualitySatuMareItem(),
                     const AirQualityLegend(),
                   ],
                 ),

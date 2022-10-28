@@ -13,14 +13,10 @@ class LocalLegislationItem extends StatelessWidget with UrlLauncher {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTile(
-            leading: const Icon(Icons.calendar_today),
-            title: Text(year.toString()),
-          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              title.toString(),
+              "[ $year ] $title",
               textAlign: TextAlign.start,
             ),
           ),

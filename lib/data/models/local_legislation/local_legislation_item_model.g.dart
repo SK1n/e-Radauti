@@ -9,9 +9,9 @@ part of 'local_legislation_item_model.dart';
 LocalLegislationItemModel _$LocalLegislationItemModelFromJson(
         Map<String, dynamic> json) =>
     LocalLegislationItemModel(
-      json['an'] as int?,
+      json['an'] as String?,
       json['link'] as String?,
-      json['titlu'] as String?,
+      json['title'] as String?,
     );
 
 Map<String, dynamic> _$LocalLegislationItemModelToJson(
@@ -19,5 +19,5 @@ Map<String, dynamic> _$LocalLegislationItemModelToJson(
     <String, dynamic>{
       'an': instance.year,
       'link': instance.link,
-      'titlu': instance.title,
+      'title': instance.title,
     };

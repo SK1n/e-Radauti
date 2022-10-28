@@ -19,6 +19,7 @@ import 'package:flutterapperadauti/modules/screens/views/confidential_page.dart'
 import 'package:flutterapperadauti/modules/screens/views/partner_page.dart';
 import 'package:flutterapperadauti/modules/settings/app_settings.dart';
 import 'package:flutterapperadauti/modules/settings/debug_settings.dart';
+import 'package:flutterapperadauti/modules/town_hall/bindings/local_legislation_bindings.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/leaders_page.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/local_legislation_page.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/local_council_page.dart';
@@ -157,6 +158,7 @@ class AppPages {
                 GetPage(
                   name: _Paths.LOCAL_LEGISLATION,
                   page: () => const LocalLegislationPage(),
+                  binding: LocalLegislationBinding(),
                 ),
               ]),
           GetPage(

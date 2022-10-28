@@ -9,8 +9,8 @@ part of 'local_legislation_model.dart';
 LocalLegislationModel _$LocalLegislationModelFromJson(
         Map<String, dynamic> json) =>
     LocalLegislationModel(
-      items: (json['2020'] as List<dynamic>?)
-          ?.map((e) =>
+      (json[DateTime.now().year.toString()] as List<dynamic>)
+          .map((e) =>
               LocalLegislationItemModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -18,5 +18,5 @@ LocalLegislationModel _$LocalLegislationModelFromJson(
 Map<String, dynamic> _$LocalLegislationModelToJson(
         LocalLegislationModel instance) =>
     <String, dynamic>{
-      '2020': instance.items,
+      DateTime.now().year.toString(): instance.items,
     };
