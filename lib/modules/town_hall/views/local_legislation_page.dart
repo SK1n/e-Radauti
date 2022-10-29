@@ -8,7 +8,9 @@ import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
+import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:get/get.dart';
+import 'package:searchbar_animation/searchbar_animation.dart';
 
 class LocalLegislationPage extends StatelessWidget with UrlLauncher {
   const LocalLegislationPage({super.key});
@@ -37,34 +39,43 @@ class LocalLegislationPage extends StatelessWidget with UrlLauncher {
                     dataBuilder: (context, snap) {
                       return Column(
                         children: [
-                          ListTile(
-                            trailing: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Obx(
-                                  () => controller.filter.isNotEmpty
-                                      ? FilledButton(
-                                          onPressed: () {
-                                            textEditingController.text = '';
-                                            controller.filter = '';
-                                            controller.filterResults();
+                          SearchBarAnimation(
+                              textEditingController: textEditingController,
+                              isOriginalAnimation: true,
+                              trailingWidget: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 8.0),
+                                    child: Obx(
+                                      () => InkWell(
+                                          onTap: () {
+                                            if (controller.filter.isNotEmpty) {
+                                              textEditingController.clear();
+                                              controller.filter = '';
+                                              controller.filterResults();
+                                            }
                                           },
-                                          child: const Icon(Icons.delete),
-                                        )
-                                      : FilledButton(
-                                          child: const Icon(Icons.search),
-                                          onPressed: () => {
-                                                controller.filter =
-                                                    textEditingController.text,
-                                                controller.filterResults()
-                                              }),
-                                ),
-                              ],
-                            ),
-                            title: TextField(
-                              controller: textEditingController,
-                            ),
-                          ),
+                                          child: Icon(
+                                            Icons.close,
+                                            color: controller.filter.isEmpty
+                                                ? Colors.transparent
+                                                : context.theme.iconTheme.color,
+                                          )),
+                                    ),
+                                  ),
+                                  InkWell(
+                                      onTap: () {
+                                        controller.filter =
+                                            textEditingController.text;
+                                        controller.filterResults();
+                                      },
+                                      child: const Icon(Icons.search)),
+                                ],
+                              ),
+                              secondaryButtonWidget:
+                                  const Icon(Icons.arrow_back),
+                              buttonWidget: const Icon(Icons.search)),
                           Obx(
                             () => controller.allResults.length != 0
                                 ? ListView.builder(

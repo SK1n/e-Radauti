@@ -1106,6 +1106,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.27.5"
+  searchbar_animation:
+    dependency: "direct main"
+    description:
+      name: searchbar_animation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
   selectable_autolink_text:
     dependency: "direct main"
     description:

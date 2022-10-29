@@ -5,13 +5,11 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutterapperadauti/data/clients/local_legislation_client.dart';
 
 void main() async {
   LocalLegislationClient client = const LocalLegislationClient();
-  debugPrint(await client.getData());
   test('LocalLegislationClient',
-      () async => expectLater(await client.getData(), contains('2022')));
+      () async => expectLater(await client.getData(2022), contains('2022')));
 }
