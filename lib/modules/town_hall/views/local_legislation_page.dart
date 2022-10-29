@@ -40,8 +40,21 @@ class LocalLegislationPage extends StatelessWidget with UrlLauncher {
                       return Column(
                         children: [
                           SearchBarAnimation(
+                              searchBoxColour: Get.isDarkMode
+                                  ? context.theme.canvasColor
+                                  : Colors.white,
                               textEditingController: textEditingController,
+                              searchBoxBorderColour: Get.isDarkMode
+                                  ? context.theme.canvasColor
+                                  : Colors.white,
                               isOriginalAnimation: true,
+                              cursorColour:
+                                  Get.isDarkMode ? Colors.white : Colors.black,
+                              enteredTextStyle: TextStyle(
+                                  color: Get.isDarkMode
+                                      ? Colors.white
+                                      : Colors.black),
+                              hintText: '',
                               trailingWidget: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [

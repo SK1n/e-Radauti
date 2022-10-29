@@ -1,4 +1,3 @@
-import 'package:flutterapperadauti/bindings/download_data_from_url_bindings.dart';
 import 'package:flutterapperadauti/modules/air_quality/bindings/air_quality_bindings.dart';
 import 'package:flutterapperadauti/modules/announcements/bindings/get_e_radauti_data_bindings.dart';
 import 'package:flutterapperadauti/modules/events/bindings/events_bindings.dart';
@@ -127,7 +126,6 @@ class AppPages {
                   page: () => const JobPage(),
                   bindings: [
                     GetERadautiDataBinding(),
-                    DownloadDataFromUrlBindings(),
                   ],
                 ),
                 GetPage(
@@ -135,7 +133,6 @@ class AppPages {
                   page: () => const FurniturePage(),
                   bindings: [
                     GetERadautiDataBinding(),
-                    DownloadDataFromUrlBindings(),
                   ],
                 ),
               ]),

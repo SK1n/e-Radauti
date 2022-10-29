@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutterapperadauti/bindings/app_bindings.dart';
+import 'package:flutterapperadauti/controllers/dark_mode_switch_controller.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -76,15 +77,17 @@ Future<void> main() async {
   if (!kIsWeb) {
     await setupFlutterNotifications();
   }
-
+  bool isFirstRun = await IsFirstRun.isFirstRun();
+  final DarkModeSwitchController darkModeSwitchController =
+      Get.put(DarkModeSwitchController());
+  darkModeSwitchController.getThemeStatus();
   runApp(
     GetMaterialApp(
       title: 'e-Rădăuți',
       debugShowCheckedModeBanner: false,
       builder: EasyLoading.init(),
       getPages: AppPages.routes,
-      initialRoute:
-          await IsFirstRun.isFirstRun() ? Routes.ONBOARD : Routes.HOME,
+      initialRoute: isFirstRun ? Routes.ONBOARD : Routes.HOME,
       initialBinding: AppBindings(),
       theme: FlexThemeData.light(
         scheme: FlexScheme.barossa,

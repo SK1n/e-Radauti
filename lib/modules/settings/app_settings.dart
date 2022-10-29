@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/dark_mode_switch.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/not_switch.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
@@ -48,6 +49,7 @@ class _AppSettingsState extends State<AppSettings> {
                           })
                       : Container(),
                   const NotSwitch(),
+                  const DarkModeSwitch(),
                 ],
               ),
             ),
