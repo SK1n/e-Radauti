@@ -12,6 +12,11 @@ on:
     branches: [ "master" ]
 
 jobs:
+  - name: Flutter Deployment
+  # You may pin to the exact commit or the version.
+  # uses: jeanluc243/Flutter-Deployment@1fd33eb513293af0c6cde57363d66a6a848ef6e5
+    uses: jeanluc243/Flutter-Deployment@0.1:
+
   build:
     runs-on: ubuntu-latest
 
@@ -34,10 +39,7 @@ jobs:
       # Consider passing '--fatal-infos' for slightly stricter analysis.
       - name: Analyze project source
         run: dart analyze
-      - name: Flutter Deployment
-  # You may pin to the exact commit or the version.
-  # uses: jeanluc243/Flutter-Deployment@1fd33eb513293af0c6cde57363d66a6a848ef6e5
-        uses: jeanluc243/Flutter-Deployment@0.1
+
       # Your project will need to have tests in test/ and a dependency on
       # package:test for this step to succeed. Note that Flutter projects will
       # want to change this to 'flutter test'.
