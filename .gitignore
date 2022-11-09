@@ -45,3 +45,7 @@ app.*.map.json
 # Don't add the TODO file in the git
 *.todo
 flutter_run.txt
+
+
+#ignore generated file
+**/*.g.dart

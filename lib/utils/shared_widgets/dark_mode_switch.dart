@@ -11,22 +11,25 @@ class DarkModeSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     final DarkModeSwitchController darkModeSwitchController =
         Get.put(DarkModeSwitchController());
-    return ObxValue(
-      (data) => SwitchListTile(
-        title: const Text('Dark mode'),
-        subtitle: const Text('Schimba culorile aplicatiei'),
-        value: darkModeSwitchController.isLightTheme.value,
-        onChanged: (val) async {
-          darkModeSwitchController.isLightTheme.value = val;
-          Get.changeThemeMode(
-            darkModeSwitchController.isLightTheme.value
-                ? ThemeMode.dark
-                : ThemeMode.light,
-          );
-          await darkModeSwitchController.saveThemeStatus();
-        },
+    return Card(
+      child: ObxValue(
+        (data) => SwitchListTile(
+          tileColor: context.theme.cardColor,
+          title: const Text('Dark mode'),
+          subtitle: const Text('Schimba culorile aplicatiei'),
+          value: !darkModeSwitchController.isLightTheme.value,
+          onChanged: (val) async {
+            darkModeSwitchController.isLightTheme.value = !val;
+            Get.changeThemeMode(
+              darkModeSwitchController.isLightTheme.value
+                  ? ThemeMode.light
+                  : ThemeMode.dark,
+            );
+            await darkModeSwitchController.saveThemeStatus();
+          },
+        ),
+        false.obs,
       ),
-      false.obs,
     );
   }
 }

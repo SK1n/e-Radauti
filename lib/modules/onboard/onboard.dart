@@ -20,11 +20,9 @@ class Onboard extends StatelessWidget {
       nextText: const Text('Următorul'),
       backText: const Text('Înapoi'),
       doneText: const Text('Închide'),
-      pageButtonTextStyles: const TextStyle(color: Colors.black),
-      pageButtonsColor: Colors.black,
-      background: Colors.black,
+      pageButtonTextStyles: TextStyle(color: Get.theme.primaryColor),
       onTapDoneButton: () {
-        Get.toNamed(Routes.HOME);
+        Get.offAndToNamed(Routes.HOME);
       },
     );
   }

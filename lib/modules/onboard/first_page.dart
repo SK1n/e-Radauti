@@ -4,7 +4,6 @@ import 'package:intro_views_flutter/intro_views_flutter.dart';
 
 PageViewModel firstPage() {
   return PageViewModel(
-    pageColor: Colors.white,
     mainImage: Column(
       children: [
         Image.asset(
@@ -15,16 +14,14 @@ PageViewModel firstPage() {
           padding: EdgeInsets.only(top: 12),
           child: Text(
             'Aplicația e-Rădăuți',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         const Padding(
           padding: EdgeInsets.only(top: 12, left: 40, right: 40),
           child: Text(
             'Aplicație dezvoltată voluntar de către\nAsociația Radauțiul Civic',
-            style: TextStyle(
-              color: Colors.black,
-            ),
+            style: TextStyle(),
             textAlign: TextAlign.center,
           ),
         ),
@@ -34,7 +31,6 @@ PageViewModel firstPage() {
             'Bine ai venit!',
             style: TextStyle(
               fontSize: 20,
-              color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
             textAlign: TextAlign.center,
@@ -42,7 +38,5 @@ PageViewModel firstPage() {
         )
       ],
     ),
-    textStyle: const TextStyle(color: Colors.black),
-    titleTextStyle: const TextStyle(color: Colors.black),
   );
 }

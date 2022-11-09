@@ -34,8 +34,6 @@ class ColorLegendWidget extends StatelessWidget {
           child: Icon(
             FontAwesome5.square,
             color: color,
-            //You also have to change the color in value_adapter.dart
-            //in case you change the colors
           ),
         ),
         Expanded(

@@ -31,12 +31,12 @@ class OldEventsCollapsedWidget extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Get.theme.primaryColor.withOpacity(0.9),
                   child: ListTile(
-                    tileColor: Colors.white,
                     title: Text(
                       timestamp!,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                   ),
                 ),

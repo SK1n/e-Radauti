@@ -33,14 +33,12 @@ class LegendWidget extends StatelessWidget {
                             padding: EdgeInsets.only(right: 8.0),
                             child: Icon(
                               FontAwesome.down_big,
-                              color: Colors.black,
                             ),
                           ),
                           SizedBox(
                               width: MediaQuery.of(context).size.width - 100,
                               child: Text(
                                 collapsedTitle!,
-                                style: const TextStyle(color: Colors.black),
                               )),
                         ],
                       ),
@@ -49,19 +47,21 @@ class LegendWidget extends StatelessWidget {
                   expanded: ExpandableButton(
                     child: Column(
                       children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          child: Row(
-                            children: [
-                              const Padding(
-                                padding: EdgeInsets.only(right: 8.0),
-                                child: Icon(FontAwesome.up_big),
-                              ),
-                              SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width - 100,
-                                  child: Text(expandedTitle!)),
-                            ],
+                        Card(
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            child: Row(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(right: 8.0),
+                                  child: Icon(FontAwesome.up_big),
+                                ),
+                                SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width - 100,
+                                    child: Text(expandedTitle!)),
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(

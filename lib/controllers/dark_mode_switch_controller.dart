@@ -17,7 +17,7 @@ class DarkModeSwitchController extends GetxController {
       return prefs.getBool('theme') ?? true;
     }).obs;
     isLightTheme.value = await isLight.value;
-    Get.changeThemeMode(isLightTheme.value ? ThemeMode.dark : ThemeMode.light);
+    Get.changeThemeMode(isLightTheme.value ? ThemeMode.light : ThemeMode.dark);
   }
 
   getCurrentTheme() async {

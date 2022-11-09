@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
@@ -14,6 +16,7 @@ class NotificationsSwitchController extends GetxController {
   _saveToSharedPreferences(bool value) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('subscribed', value);
+    switchValue = value;
   }
 
   getSharedPreferencesValue() async {
@@ -26,9 +29,8 @@ class NotificationsSwitchController extends GetxController {
   subscribeToNotifications() async {
     EasyLoading.show();
     try {
-      _saveToSharedPreferences(true);
       return await _messaging.subscribeToTopic('all').then(
-        (value) {
+        (value) async {
           Get.defaultDialog(
             title: 'Success!',
             content: const Text(
@@ -40,15 +42,21 @@ class NotificationsSwitchController extends GetxController {
             ],
           );
           EasyLoading.dismiss();
+          await _saveToSharedPreferences(true);
+        },
+      ).timeout(
+        const Duration(minutes: 1),
+        onTimeout: () {
+          throw TimeoutException('Timeout exception2');
         },
       );
-    } catch (exception) {
-      _saveToSharedPreferences(false);
+    } on Exception catch (exception) {
+      await _saveToSharedPreferences(false);
       EasyLoading.dismiss();
       return Get.defaultDialog(
         title: 'A intervenit o eroare!',
         content: Text(
-          'Aceasta este eroarea: $exception',
+          '$exception \nVa rugam sa incercati din nou',
         ),
         actions: [
           TextButton(
@@ -77,6 +85,11 @@ class NotificationsSwitchController extends GetxController {
             ],
           );
           EasyLoading.dismiss();
+        },
+      ).timeout(
+        const Duration(minutes: 1),
+        onTimeout: () {
+          throw TimeoutException('Timeout exception2');
         },
       );
     } catch (exception) {
