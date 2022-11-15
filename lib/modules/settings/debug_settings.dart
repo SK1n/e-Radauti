@@ -29,7 +29,7 @@ class DebugSettings extends StatelessWidget {
                 TextButton(
                     onPressed: () async => await FirebaseMessaging.instance
                         .getToken()
-                        .then((value) => debugPrint(value)),
+                        .then((value) => debugPrint('FCM: $value')),
                     child: const Text('print FCM'))
               ],
             ),

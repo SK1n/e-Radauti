@@ -33,6 +33,8 @@ abstract class Routes {
   static const DEBUG = SETTINGS + _Paths.DEBUG;
   static const NOTIFICATIONS = SETTINGS + _Paths.NOTIFICATIONS;
   static const ONBOARD = _Paths.ONBOARD;
+  static const LOGIN = _Paths.LOGIN;
+  static const SIGNUP = LOGIN + _Paths.SIGNUP;
 }
 
 abstract class _Paths {
@@ -67,4 +69,6 @@ abstract class _Paths {
   static const FURNITURE = '/furniture';
   static const ABOUT = '/about';
   static const ONBOARD = '/onboard';
+  static const LOGIN = '/login';
+  static const SIGNUP = '/signup';
 }

@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_adjacent_string_concatenation, prefer_interpolation_to_compose_strings, depend_on_referenced_packages
 
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/local_legislation/local_legislation_item_model.dart';
 import 'package:flutterapperadauti/data/models/local_legislation/local_legislation_model.dart';
 import 'package:html/parser.dart' show parse;
@@ -19,6 +18,7 @@ class LocalLegislationClient {
       var rawElements = document.querySelectorAll("div.entry-content ol a");
 
       for (var element in rawElements) {
+        // add \s
         var title = element.text.replaceAll(RegExp('/\s+/g'), '').trim();
         var link = element.attributes['href'];
         elements.add([title, link]);

@@ -1,8 +1,7 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/main.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/modules/menu/menu_item.dart';
+import 'package:flutterapperadauti/utils/services/cloud_messaging_service.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
@@ -18,17 +17,20 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   @override
   void initState() {
-    FirebaseMessaging.onMessage.listen(showFlutterNotification);
+    // FirebaseMessaging.onMessage.listen(showFlutterNotification);
 
-    FirebaseMessaging.instance.getInitialMessage().then(
-          (RemoteMessage? message) => message != null
-              ? Get.toNamed('/home/${message.data['view']}')
-              : DoNothingAction(),
-        );
+    // FirebaseMessaging.instance.getInitialMessage().then(
+    //       (RemoteMessage? message) => message != null
+    //           ? Get.toNamed('/home/${message.data['view']}')
+    //           : DoNothingAction(),
+    //     );
 
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      Get.toNamed('/home/${message.data['view']}');
-    });
+    // FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    //   Get.toNamed('/home/${message.data['view']}');
+    // });
+
+    CloudMessagingService cloudMessagingService = CloudMessagingService();
+    cloudMessagingService.handleBackgroundMessageInteraction();
 
     super.initState();
   }

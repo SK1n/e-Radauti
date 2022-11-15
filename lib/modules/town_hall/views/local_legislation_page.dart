@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/data/models/local_legislation/local_legislation_item_model.dart';
-import 'package:flutterapperadauti/data/models/local_legislation/local_legislation_model.dart';
 import 'package:flutterapperadauti/modules/town_hall/controllers/local_legislation_controller.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/local_legislation_item.dart';
-import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
-import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:get/get.dart';
 import 'package:searchbar_animation/searchbar_animation.dart';
 

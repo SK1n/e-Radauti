@@ -8,6 +8,10 @@ import 'package:flutterapperadauti/modules/announcements/views/furniture_page.da
 import 'package:flutterapperadauti/modules/announcements/views/job_page.dart';
 import 'package:flutterapperadauti/modules/announcements/views/local_announcements_page.dart';
 import 'package:flutterapperadauti/modules/events/views/events_page.dart';
+import 'package:flutterapperadauti/modules/login/bindings/sign_in_bindings.dart';
+import 'package:flutterapperadauti/modules/login/bindings/sign_up_bindings.dart';
+import 'package:flutterapperadauti/modules/login/views/login_page.dart';
+import 'package:flutterapperadauti/modules/login/views/signup_page.dart';
 import 'package:flutterapperadauti/modules/menu/menu_screen.dart';
 import 'package:flutterapperadauti/modules/notice_a_problem/bindings/form_binding.dart';
 import 'package:flutterapperadauti/modules/notice_a_problem/views/notice_problem_page.dart';
@@ -43,6 +47,22 @@ class AppPages {
   static const String INITIAL = Routes.HOME;
 
   static final routes = [
+    GetPage(
+      name: _Paths.LOGIN,
+      page: () => const LoginPage(),
+      bindings: [
+        SignInBinding(),
+      ],
+      children: [
+        GetPage(
+          name: _Paths.SIGNUP,
+          page: () => const SignUpPage(),
+          bindings: [
+            SignUpBinding(),
+          ],
+        ),
+      ],
+    ),
     GetPage(
         name: Routes.HOME,
         page: () => const MenuScreen(),
