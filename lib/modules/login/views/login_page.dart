@@ -98,7 +98,9 @@ class LoginPage extends StatelessWidget {
                           style: TextButton.styleFrom(
                             minimumSize: Size(Get.width, 50),
                           ),
-                          onPressed: () {},
+                          onPressed: () async {
+                            await signInController.signInWithGoogle();
+                          },
                           icon: const Icon(FontAwesome.google),
                           label: const Text('Google'),
                         ),
