@@ -1,4 +1,5 @@
 import 'package:card_loading/card_loading.dart';
+import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
 import 'package:flutterapperadauti/modules/events/controllers/events_controller.dart';
 import 'package:flutterapperadauti/modules/events/views/new_events_collapsed_widget.dart';
 import 'package:flutterapperadauti/modules/events/views/new_events_expanded_widget.dart';
@@ -10,7 +11,7 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
 class NewEventsItemWidget extends StatelessWidget with GetImageUrl {
-  final dynamic data;
+  final EventsListModel? data;
   const NewEventsItemWidget({
     super.key,
     this.data,
@@ -20,7 +21,7 @@ class NewEventsItemWidget extends StatelessWidget with GetImageUrl {
   Widget build(BuildContext context) {
     final EventsController eventsNewController = Get.find();
     return Futuristic(
-        futureBuilder: () => getImageUrl(data['URL'].toString()),
+        futureBuilder: () => getImageUrl(data!.url),
         busyBuilder: (_) {
           return const CardLoading(
             height: 200,
@@ -36,22 +37,22 @@ class NewEventsItemWidget extends StatelessWidget with GetImageUrl {
               child: ExpandablePanel(
                 collapsed: NewEventsCollapsedWidget(
                   imageUrl: snap.data,
-                  headline: data['headline'],
+                  headline: data!.headline,
                   timestamp: eventsNewController.convertTimestampToDate(
-                    data['start'],
+                    data!.start!.toInt(),
                   ),
                 ),
                 expanded: NewEventsExpandedWidget(
-                  description: data['description'],
-                  location: data['location'],
-                  street: data['street'],
+                  description: data!.description,
+                  location: data!.location,
+                  street: data!.street,
                   imageUrl: snap.data,
-                  headline: data['headline'],
-                  host: data['host'],
-                  start:
-                      eventsNewController.convertTimestampToDate(data['start']),
+                  headline: data!.headline,
+                  host: data!.host,
+                  start: eventsNewController
+                      .convertTimestampToDate(data!.start!.toInt()),
                   end: eventsNewController.convertTimestampToDate(
-                    data['end'],
+                    data!.end!.toInt(),
                   ),
                 ),
               ),

@@ -45,7 +45,7 @@ class _AppSettingsState extends State<AppSettings> {
                           title: 'Debug',
                           leadingIcon: Icons.bug_report_outlined,
                           onTap: () {
-                            Get.toNamed(Routes.DEBUG);
+                            Get.toNamed(Routes.debug);
                           })
                       : Container(),
                   const NotSwitch(),

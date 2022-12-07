@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/modules/screens/views/partner_item.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 
 class PartnerPage extends StatelessWidget {
@@ -17,16 +17,32 @@ class PartnerPage extends StatelessWidget {
             leading: Icons.add_box_outlined,
           ),
           SliverList(
-              delegate: SliverChildListDelegate([
-            PartnerItem().widgetItem(
-                "assets/images/fondul_pentru_democratie.png",
-                "Fondul pentru Democrație",
-                context),
-            PartnerItem().widgetItem(
-                "assets/images/code_4_romania.png", "Code4Romania", context),
-            PartnerItem().widgetItem("assets/images/hard_power_radauti.png",
-                "Hard Power Services Rădăuți", context),
-          ])),
+            delegate: SliverChildListDelegate(
+              [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ImageWidget.asset(
+                    link: "assets/images/fondul_pentru_democratie.png",
+                    height: 100,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ImageWidget.asset(
+                    link: "assets/images/code_4_romania.png",
+                    height: 100,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ImageWidget.asset(
+                    link: "assets/images/hard_power_radauti.png",
+                    height: 100,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

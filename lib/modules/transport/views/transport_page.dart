@@ -3,6 +3,7 @@ import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/menu_list_tile.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
+import 'package:get/get.dart';
 
 class TransportPage extends StatelessWidget {
   const TransportPage({super.key});
@@ -13,8 +14,8 @@ class TransportPage extends StatelessWidget {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
-            content: 'Transport',
+          AppBarUi(
+            content: 'transport'.tr,
             leading: Icons.train,
           ),
           SliverPadding(
@@ -22,20 +23,20 @@ class TransportPage extends StatelessWidget {
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  const MenuListTile(
-                    title: 'Taximetriști',
-                    subtitle: 'Lista taximetriștilor autorizați din Rădăuți',
-                    route: Routes.TAXI,
+                  MenuListTile(
+                    title: 'cabbies'.tr,
+                    subtitle: 'cabbies-description'.tr,
+                    route: Routes.taxi,
                   ),
-                  const MenuListTile(
-                    title: 'Trenuri',
-                    subtitle: 'Lista trenurilor din Rădăuți',
-                    route: Routes.TRAIN,
+                  MenuListTile(
+                    title: 'trains'.tr,
+                    subtitle: 'trains-description'.tr,
+                    route: Routes.train,
                   ),
-                  const MenuListTile(
-                    title: 'Microbuze',
-                    subtitle: 'Lista microbuzelor pe ruta Rădăuți - Suceava',
-                    route: Routes.BUS,
+                  MenuListTile(
+                    title: 'minibuses'.tr,
+                    subtitle: 'minibuses-description'.tr,
+                    route: Routes.bus,
                   ),
                 ],
               ),

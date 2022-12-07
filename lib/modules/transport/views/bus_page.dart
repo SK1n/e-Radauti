@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/transport/views/bus_list.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
+import 'package:get/get.dart';
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
@@ -254,11 +255,11 @@ class BusMainState extends State<BusMain> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                const Padding(
-                  padding: EdgeInsets.only(left: 10.0, bottom: 5.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0, bottom: 5.0),
                   child: Text(
-                    'Plecare',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    'departure'.tr,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
@@ -274,7 +275,7 @@ class BusMainState extends State<BusMain> {
                       items: _dropdownMenuItems,
                       onChanged: (String? value) {
                         setState(() {
-                          if (value != '- Selectează -') {
+                          if (value != 'select'.tr) {
                             _chosenValue = value!;
                             if (_chosenValue2!.isEmpty) {
                               filterSearchResults(
@@ -287,9 +288,9 @@ class BusMainState extends State<BusMain> {
                           }
                         });
                       },
-                      hint: const Padding(
-                        padding: EdgeInsets.only(left: 5.0),
-                        child: Text('- Selectează -'),
+                      hint: Padding(
+                        padding: const EdgeInsets.only(left: 5.0),
+                        child: Text('select'.tr),
                       ),
                       isExpanded: true,
                     ),
@@ -300,11 +301,11 @@ class BusMainState extends State<BusMain> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                const Padding(
-                  padding: EdgeInsets.only(left: 10.0, bottom: 5.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0, bottom: 5.0),
                   child: Text(
-                    'Sosire',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    'arrival'.tr,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(

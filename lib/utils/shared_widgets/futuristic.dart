@@ -89,16 +89,15 @@ class FuturisticState<T> extends State<Futuristic<T>> with DisplayError {
                 'assets/images/system.png',
                 width: Get.width / 3,
               ),
-              const Text(
-                  'A intervenit o eroare\n Va rugam sa reveniti mai tarziu sau sa reincercati!'),
+              Text('no-results-found'.tr),
               TextButton(
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.pink,
                 ),
                 onPressed: () => _execute(),
-                child: const Text(
-                  'Incercati din nou!',
-                  style: TextStyle(color: Colors.white),
+                child: Text(
+                  'please-retry'.tr,
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
             ],

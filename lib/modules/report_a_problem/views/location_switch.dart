@@ -1,7 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/controllers/location_controller.dart';
-import 'package:flutterapperadauti/modules/notice_a_problem/controllers/form_controller.dart';
+import 'package:flutterapperadauti/modules/report_a_problem/controllers/form_controller.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:get/get.dart';
 
@@ -30,7 +30,7 @@ class LocationSwitch extends StatelessWidget {
               ? FlexColor.darkScaffoldBackground
               : FlexColor.lightScaffoldBackground,
           secondary: const Icon(FontAwesome.pin),
-          title: const Text('Adăugați locația sesizării'),
+          title: Text('add-location'.tr),
           isThreeLine: false,
           value: noticeProblemController.useLocation.value,
           onChanged: (value) {

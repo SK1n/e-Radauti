@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutterapperadauti/data/models/notice_problem_map/notice_problem_map_marker_model.dart';
-import 'package:flutterapperadauti/modules/notice_a_problem/controllers/notice_map_controller.dart';
+import 'package:flutterapperadauti/modules/report_a_problem/controllers/notice_map_controller.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 // ignore: library_prefixes, depend_on_referenced_packages
 import 'package:latlong2/latlong.dart' as latLng;
 
-class NoticeProblemMap extends StatelessWidget with GetDataFirebase {
-  const NoticeProblemMap({super.key});
+class ReportProblemMap extends StatelessWidget with GetDataFirebase {
+  const ReportProblemMap({super.key});
 
   @override
   Widget build(BuildContext context) {

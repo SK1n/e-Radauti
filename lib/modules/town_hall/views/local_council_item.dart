@@ -56,7 +56,7 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
               width: Get.width - 110,
               height: 20,
               child: AutoSizeText(
-                function!,
+                function!.toLowerCase().replaceAll(" ", "-").tr,
               ),
             ),
           ),
@@ -72,7 +72,7 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                         launchUrl('tel:$phoneNumber');
                       },
                       child: Text(
-                        'Tel: $phoneNumber',
+                        '${"tel".tr}: $phoneNumber',
                         style: const TextStyle(color: Colors.blueAccent),
                       ),
                     ),
@@ -89,7 +89,7 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
               child: SizedBox(
                 width: Get.width - 110,
                 child: AutoSizeText(
-                  'Email: $email',
+                  '${"email".tr}: $email',
                   style: const TextStyle(color: Colors.blueAccent),
                 ),
               ),

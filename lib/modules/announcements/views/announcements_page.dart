@@ -3,6 +3,7 @@ import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/menu_list_tile.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
+import 'package:get/get.dart';
 
 class AnnouncementsPage extends StatelessWidget {
   const AnnouncementsPage({super.key});
@@ -13,32 +14,29 @@ class AnnouncementsPage extends StatelessWidget {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
-            content: 'Anunțuri',
+          AppBarUi(
+            content: 'announces'.tr,
             leading: Icons.announcement,
           ),
           SliverPadding(
             padding: const EdgeInsets.all(8.0),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
-                const [
+                [
                   MenuListTile(
-                    title: 'Anunțuri locale',
-                    subtitle:
-                        'Anunțuri de la principalele instituții\nAnunțuri de la servicii locale',
-                    route: Routes.LOCAL_ANNOUNCEMENTS,
+                    title: 'local-announces'.tr,
+                    subtitle: 'local-announces-info'.tr,
+                    route: Routes.localAnnouncements,
                   ),
                   MenuListTile(
-                    title: 'Locuri de Muncă',
-                    subtitle:
-                        'Locuri de muncă preluate de pe portalul www.eradauti.ro',
-                    route: Routes.JOBS,
+                    title: 'jobs'.tr,
+                    subtitle: 'jobs-info'.tr,
+                    route: Routes.jobs,
                   ),
                   MenuListTile(
-                    title: 'Imobiliare',
-                    subtitle:
-                        'Anunțuri de imobiliare preluate de pe portalul www.eradauti.ro',
-                    route: Routes.FURNITURE,
+                    title: 'real-estate'.tr,
+                    subtitle: 'real-estate-info'.tr,
+                    route: Routes.furniture,
                   ),
                 ],
               ),

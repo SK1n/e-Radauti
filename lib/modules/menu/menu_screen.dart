@@ -41,8 +41,8 @@ class _MenuScreenState extends State<MenuScreen> {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
-            content: 'e-Rădăuți',
+          AppBarUi(
+            content: 'e-radauti'.tr,
             leading: Icons.home,
           ),
           SliverToBoxAdapter(
@@ -53,39 +53,39 @@ class _MenuScreenState extends State<MenuScreen> {
               crossAxisCount: 2,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              children: const [
+              children: [
                 MenuItem(
-                    title: 'Sesizează o problemă',
+                    title: 'report-problem'.tr,
                     iconData: Icons.photo_filter,
-                    route: Routes.NOTICE_PROBLEM),
+                    route: Routes.noticeProblem),
                 MenuItem(
-                    title: 'Administrație locală',
+                    title: 'local-administration'.tr,
                     iconData: Icons.location_city,
-                    route: Routes.TOWN_HALL),
+                    route: Routes.townHall),
                 MenuItem(
-                    title: 'Evenimente',
+                    title: 'events'.tr,
                     iconData: Icons.calendar_today,
-                    route: Routes.EVENTS),
+                    route: Routes.events),
                 MenuItem(
-                    title: 'Numere utile',
+                    title: 'usefull-numbers'.tr,
                     iconData: Icons.perm_phone_msg,
-                    route: Routes.PHONE_NUMBERS),
+                    route: Routes.phoneNumbers),
                 MenuItem(
-                    title: 'Anunțuri',
+                    title: 'announces'.tr,
                     iconData: Icons.announcement,
-                    route: Routes.ANNOUNCEMENTS),
+                    route: Routes.announcements),
                 MenuItem(
-                    title: 'Calitatea aerului',
+                    title: 'air-quality'.tr,
                     iconData: Icons.bubble_chart,
-                    route: Routes.AIR),
+                    route: Routes.air),
                 MenuItem(
-                    title: 'Transport',
+                    title: 'transport'.tr,
                     iconData: Icons.train,
-                    route: Routes.TRANSPORT),
+                    route: Routes.transport),
                 MenuItem(
-                  title: 'Voluntariat',
+                  title: 'volunteering'.tr,
                   iconData: FontAwesome5.hand_holding_heart,
-                  route: Routes.VOLUNTEER,
+                  route: Routes.volunteer,
                 ),
               ],
             ),
@@ -101,31 +101,31 @@ class _MenuScreenState extends State<MenuScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         InkWell(
-                          child: const Text(
-                            'Despre noi',
-                            style: TextStyle(
+                          child: Text(
+                            'about-us'.tr,
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.underline,
                               color: Color(0xFF32325D),
                               fontSize: 15,
                             ),
                           ),
-                          onTap: () => Get.toNamed(Routes.ABOUT),
+                          onTap: () => Get.toNamed(Routes.about),
                         ),
                         const VerticalDivider(
                           color: Colors.black,
                         ),
                         InkWell(
-                          child: const Text(
-                            'Confidențialitate',
-                            style: TextStyle(
+                          child: Text(
+                            'privacy'.tr,
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.underline,
                               color: Color(0xFF32325D),
                               fontSize: 15,
                             ),
                           ),
-                          onTap: () => Get.toNamed(Routes.CONFIDENTIAL),
+                          onTap: () => Get.toNamed(Routes.confidential),
                         ),
                       ],
                     ),
@@ -137,16 +137,16 @@ class _MenuScreenState extends State<MenuScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       InkWell(
-                        child: const Text(
-                          'Parteneri',
-                          style: TextStyle(
+                        child: Text(
+                          'partners'.tr,
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.underline,
                             color: Color(0xFF32325D),
                             fontSize: 15,
                           ),
                         ),
-                        onTap: () => Get.toNamed(Routes.PARTNER),
+                        onTap: () => Get.toNamed(Routes.partner),
                       ),
                     ],
                   ),

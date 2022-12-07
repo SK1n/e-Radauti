@@ -2,15 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutterapperadauti/modules/notice_a_problem/controllers/form_controller.dart';
-import 'package:flutterapperadauti/modules/notice_a_problem/views/location_switch.dart';
-import 'package:flutterapperadauti/utils/error_texts.dart';
+import 'package:flutterapperadauti/modules/report_a_problem/controllers/form_controller.dart';
+import 'package:flutterapperadauti/modules/report_a_problem/views/location_switch.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 
-class NoticeProblemForm extends StatelessWidget {
-  const NoticeProblemForm({super.key});
+class ReportProblemForm extends StatelessWidget {
+  const ReportProblemForm({super.key});
   @override
   Widget build(BuildContext context) {
     final NoticeProblemController controller =
@@ -22,57 +21,55 @@ class NoticeProblemForm extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FormBuilderTextField(
-              decoration: const InputDecoration(
-                label: Text('Nume și prenume'),
+              decoration: InputDecoration(
+                label: Text('name-surname'.tr),
                 floatingLabelAlignment: FloatingLabelAlignment.start,
               ),
               initialValue: '',
               name: 'name',
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: FormBuilderValidators.compose(
-                  [FormBuilderValidators.required(errorText: errorRequired)]),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(errorText: 'required-field'.tr)
+              ]),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: FormBuilderDropdown(
-              name: 'institution_email',
-              decoration: const InputDecoration(label: Text('Institutie')),
-              validator: FormBuilderValidators.compose(
-                  [FormBuilderValidators.required(errorText: errorRequired)]),
-              items: controller.institutionDropDownList
-                  .map((emailDestination) => DropdownMenuItem(
-                        value: emailDestination,
-                        child: Text('$emailDestination'),
-                      ))
-                  .toList(),
-            ),
-          ),
+              padding: const EdgeInsets.all(8.0),
+              child: FormBuilderDropdown(
+                  name: 'institution_email',
+                  decoration: InputDecoration(label: Text('institution'.tr)),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(
+                        errorText: 'required-field'.tr)
+                  ]),
+                  items: controller.dropdowns)),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FormBuilderDropdown(
               name: 'category',
               itemHeight: 80,
-              decoration: const InputDecoration(label: Text('Categorie')),
-              items: controller.categoryDropDownList
+              decoration: InputDecoration(label: Text('category'.tr)),
+              items: controller.category
                   .map((item) => DropdownMenuItem(
-                        value: item[0],
-                        child: Text('${item[0]}'),
+                        value: item.toString(),
+                        child: Text(item),
                       ))
                   .toList(),
-              validator: FormBuilderValidators.compose(
-                  [FormBuilderValidators.required(errorText: errorRequired)]),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(errorText: 'required-field'.tr)
+              ]),
               autovalidateMode: AutovalidateMode.onUserInteraction,
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FormBuilderTextField(
-              decoration: const InputDecoration(label: Text('Subiect')),
+              decoration: InputDecoration(label: Text('subject'.tr)),
               name: 'subject',
               validator: FormBuilderValidators.compose(
                 [
-                  FormBuilderValidators.required(errorText: errorRequired),
+                  FormBuilderValidators.required(
+                      errorText: 'required-field'.tr),
                 ],
               ),
             ),
@@ -81,8 +78,8 @@ class NoticeProblemForm extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: FormBuilderTextField(
               initialValue: '',
-              decoration: const InputDecoration(
-                label: Text('Descriere'),
+              decoration: InputDecoration(
+                label: Text('description'.tr),
               ),
               maxLines: 5,
               minLines: 1,
@@ -91,10 +88,10 @@ class NoticeProblemForm extends StatelessWidget {
               //maxLines: null,
               validator: FormBuilderValidators.compose(
                 [
-                  FormBuilderValidators.required(errorText: errorRequired),
+                  FormBuilderValidators.required(
+                      errorText: 'required-field'.tr),
                   FormBuilderValidators.minLength(50,
-                      errorText:
-                          'Trebuie sa introduceti minimum 50 charactere'),
+                      errorText: 'minimum-50'.tr),
                 ],
               ),
             ),
@@ -102,18 +99,18 @@ class NoticeProblemForm extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FormBuilderTextField(
-              decoration:
-                  const InputDecoration(label: Text('Număr de telefon')),
+              decoration: InputDecoration(label: Text('phone-number'.tr)),
               name: 'phone',
               keyboardType: TextInputType.number,
               validator: FormBuilderValidators.compose(
                 [
-                  FormBuilderValidators.required(errorText: errorRequired),
+                  FormBuilderValidators.required(
+                      errorText: 'required-field'.tr),
                   FormBuilderValidators.numeric(
-                      errorText: 'Acest camp trebuie sa contina numai numere!'),
+                      errorText: 'only-numbers-field'.tr),
                   FormBuilderValidators.match(
                       r'^(\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\s|\.|\-)?([0-9]{3}(\s|\.|\-|)){2}$',
-                      errorText: errorPhonePattern),
+                      errorText: 'wrong-number-format'.tr),
                 ],
               ),
             ),
@@ -121,13 +118,14 @@ class NoticeProblemForm extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FormBuilderTextField(
-              decoration: const InputDecoration(label: Text('Email')),
+              decoration: InputDecoration(label: Text('email'.tr)),
               name: 'email',
               initialValue: '',
               validator: FormBuilderValidators.compose(
                 [
-                  FormBuilderValidators.required(errorText: errorRequired),
-                  FormBuilderValidators.email(errorText: errorEmail),
+                  FormBuilderValidators.required(
+                      errorText: 'required-field'.tr),
+                  FormBuilderValidators.email(errorText: 'email-format'.tr),
                 ],
               ),
             ),
@@ -139,7 +137,7 @@ class NoticeProblemForm extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FormBuilderImagePicker(
-              decoration: const InputDecoration(label: Text('Imagini')),
+              decoration: InputDecoration(label: Text('images'.tr)),
               name: 'ImagePicker',
               initialValue: const [],
               maxImages: 3,
@@ -151,7 +149,8 @@ class NoticeProblemForm extends StatelessWidget {
               //placeholderImage: AssetImage('assets/images/add-image.png'),
               validator: FormBuilderValidators.compose(
                 [
-                  FormBuilderValidators.required(errorText: errorRequired),
+                  FormBuilderValidators.required(
+                      errorText: 'required-field'.tr),
                 ],
               ),
             ),
@@ -161,7 +160,7 @@ class NoticeProblemForm extends StatelessWidget {
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
               child: FilledButton(
-                child: const Text('Trimite'),
+                child: Text('send'.tr.toUpperCase()),
                 onPressed: () {
                   {
                     controller.prepareDataAndUpload();

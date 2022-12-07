@@ -1,5 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:selectable_autolink_text/selectable_autolink_text.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -66,14 +67,14 @@ class OldEventsExpandedWidget extends StatelessWidget {
                 Icons.calendar_today,
                 color: Colors.blueAccent,
               ),
-              title: Text('Data inceperii: ${start!}'),
+              title: Text('${"start-date".tr}: ${start!}'),
             ),
             ListTile(
               leading: const Icon(
                 Icons.calendar_today,
                 color: Colors.greenAccent,
               ),
-              title: Text('Data finalizarii: ${end!}'),
+              title: Text('${"end-date".tr}: ${end!}'),
             ),
             ListTile(
               leading: const Icon(

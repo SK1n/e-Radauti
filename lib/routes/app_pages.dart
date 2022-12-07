@@ -1,3 +1,4 @@
+import 'package:flutterapperadauti/modules/account/views/account_page.dart';
 import 'package:flutterapperadauti/modules/air_quality/bindings/air_quality_bindings.dart';
 import 'package:flutterapperadauti/modules/announcements/bindings/get_e_radauti_data_bindings.dart';
 import 'package:flutterapperadauti/modules/events/bindings/events_bindings.dart';
@@ -8,14 +9,16 @@ import 'package:flutterapperadauti/modules/announcements/views/furniture_page.da
 import 'package:flutterapperadauti/modules/announcements/views/job_page.dart';
 import 'package:flutterapperadauti/modules/announcements/views/local_announcements_page.dart';
 import 'package:flutterapperadauti/modules/events/views/events_page.dart';
+import 'package:flutterapperadauti/modules/login/bindings/reset_password_bindings.dart';
 import 'package:flutterapperadauti/modules/login/bindings/sign_in_bindings.dart';
 import 'package:flutterapperadauti/modules/login/bindings/sign_up_bindings.dart';
-import 'package:flutterapperadauti/modules/login/views/login_page.dart';
-import 'package:flutterapperadauti/modules/login/views/signup_page.dart';
+import 'package:flutterapperadauti/modules/login/views/sign_in_page.dart';
+import 'package:flutterapperadauti/modules/login/views/reset_password_page.dart';
+import 'package:flutterapperadauti/modules/login/views/sign_up_page.dart';
 import 'package:flutterapperadauti/modules/menu/menu_screen.dart';
-import 'package:flutterapperadauti/modules/notice_a_problem/bindings/form_binding.dart';
-import 'package:flutterapperadauti/modules/notice_a_problem/views/notice_problem_page.dart';
-import 'package:flutterapperadauti/modules/notice_a_problem/bindings/notice_problem_map_bindings.dart';
+import 'package:flutterapperadauti/modules/report_a_problem/bindings/form_binding.dart';
+import 'package:flutterapperadauti/modules/report_a_problem/views/report_problem_page.dart';
+import 'package:flutterapperadauti/modules/report_a_problem/bindings/notice_problem_map_bindings.dart';
 import 'package:flutterapperadauti/modules/onboard/onboard.dart';
 import 'package:flutterapperadauti/modules/screens/views/about_us_page.dart';
 import 'package:flutterapperadauti/modules/screens/views/confidential_page.dart';
@@ -44,71 +47,82 @@ part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
-  static const String INITIAL = Routes.HOME;
+  static const String initial = Routes.home;
 
   static final routes = [
     GetPage(
-      name: _Paths.LOGIN,
-      page: () => const LoginPage(),
+      name: _Paths.signIn,
+      page: () => const SignInPage(),
       bindings: [
         SignInBinding(),
       ],
       children: [
         GetPage(
-          name: _Paths.SIGNUP,
+          name: _Paths.signUp,
           page: () => const SignUpPage(),
           bindings: [
             SignUpBinding(),
           ],
         ),
+        GetPage(
+          name: _Paths.resetPassword,
+          page: () => const ResetPasswordPage(),
+          bindings: [
+            ResetPasswordBinding(),
+          ],
+        ),
       ],
     ),
     GetPage(
-        name: Routes.HOME,
+        name: Routes.home,
         page: () => const MenuScreen(),
         preventDuplicates: true,
         children: [
           GetPage(
-            name: _Paths.SETTINGS,
+            name: _Paths.account,
+            page: () => const AccountPage(),
+          ),
+          GetPage(
+            name: _Paths.settings,
             page: () => const AppSettings(),
             children: [
-              GetPage(name: _Paths.DEBUG, page: () => const DebugSettings()),
+              GetPage(name: _Paths.debug, page: () => const DebugSettings()),
             ],
           ),
           GetPage(
-            name: _Paths.ABOUT,
+            name: _Paths.about,
             page: () => const AboutUsPage(),
           ),
           GetPage(
-            name: _Paths.CONFIDENTIAL,
+            name: _Paths.confidential,
             page: () => const Confidential(),
           ),
           GetPage(
-            name: _Paths.PARTNER,
+            name: _Paths.partner,
             page: () => const PartnerPage(),
           ),
           GetPage(
-            name: _Paths.VOLUNTEER,
+            name: _Paths.volunteer,
             page: () => const VolunteerPage(),
           ),
           GetPage(
-            name: _Paths.TRANSPORT,
+            name: _Paths.transport,
             page: () => const TransportPage(),
             children: [
               GetPage(
-                name: _Paths.TAXI,
+                name: _Paths.taxi,
                 page: () => const TaxiPage(),
               ),
               GetPage(
-                  name: _Paths.BUS,
+                  name: _Paths.bus,
                   page: () => const BusPage(),
                   bindings: const []),
               GetPage(
-                name: _Paths.TRAIN,
+                name: _Paths.train,
                 page: () => const TrainPage(),
                 children: [
                   GetPage(
-                    name: _Paths.TRAIN_TIMELINE,
+                    name: _Paths.trainTimeline,
                     page: () => const TimelineRoute(),
                   ),
                 ],
@@ -116,40 +130,40 @@ class AppPages {
             ],
           ),
           GetPage(
-              name: _Paths.AIR,
+              name: _Paths.air,
               page: () => const AirQualityPage(),
               bindings: [
                 AirQualityBindings(),
               ]),
           GetPage(
-            name: _Paths.NOTICE_PROBLEM,
-            page: () => const NoticeProblemPage(),
+            name: _Paths.noticeProblem,
+            page: () => const ReportProblemPage(),
             bindings: [NoticeProblemFormBindings(), NoticeProblemMapBinding()],
             preventDuplicates: true,
           ),
           GetPage(
-              name: _Paths.EVENTS,
+              name: _Paths.events,
               page: () => const EventsPage(),
               bindings: [
                 EventsBindings(),
               ]),
           GetPage(
-              name: _Paths.ANNOUNCEMENTS,
+              name: _Paths.announcements,
               page: () => const AnnouncementsPage(),
               children: [
                 GetPage(
-                  name: _Paths.LOCAL_ANNOUNCEMENTS,
+                  name: _Paths.localAnnouncements,
                   page: () => const LocalAnnouncementsPage(),
                 ),
                 GetPage(
-                  name: _Paths.JOBS,
+                  name: _Paths.jobs,
                   page: () => const JobPage(),
                   bindings: [
                     GetERadautiDataBinding(),
                   ],
                 ),
                 GetPage(
-                  name: _Paths.FURNITURE,
+                  name: _Paths.furniture,
                   page: () => const FurniturePage(),
                   bindings: [
                     GetERadautiDataBinding(),
@@ -157,47 +171,47 @@ class AppPages {
                 ),
               ]),
           GetPage(
-              name: _Paths.TOWN_HALL,
+              name: _Paths.townHall,
               page: () => const TownHallMain(),
               children: [
                 GetPage(
-                  name: _Paths.LEADERS,
+                  name: _Paths.leaders,
                   page: () => const LeadersPage(),
                 ),
                 GetPage(
-                  name: _Paths.LOCAL_COUNCIL,
+                  name: _Paths.localCouncil,
                   page: () => const LocalCouncilPage(),
                 ),
                 GetPage(
-                  name: _Paths.LOCAL_MEETINGS,
+                  name: _Paths.localMeetings,
                   page: () => const LocalMeetingsPage(),
                 ),
                 GetPage(
-                  name: _Paths.LOCAL_LEGISLATION,
+                  name: _Paths.localLegislation,
                   page: () => const LocalLegislationPage(),
                   binding: LocalLegislationBinding(),
                 ),
               ]),
           GetPage(
-              name: _Paths.PHONE_NUMBERS,
+              name: _Paths.phoneNumberrs,
               page: () => const UsefullNumbersPage(),
               children: [
                 GetPage(
-                  name: _Paths.LOCAL_AUTHORITIES,
+                  name: _Paths.localAuthorities,
                   page: () => const LocalAuthoritiesPage(),
                 ),
                 GetPage(
-                  name: _Paths.PUBLIC_INSTITUTIONS,
+                  name: _Paths.publicInstitutions,
                   page: () => const PublicInstitutionsPage(),
                 ),
                 GetPage(
-                  name: _Paths.LOCAL_DISTURBANCE,
+                  name: _Paths.localDisturbances,
                   page: () => const LocalDisturbancePage(),
                 ),
               ]),
         ]),
     GetPage(
-        name: Routes.ONBOARD,
+        name: Routes.onboard,
         page: () => const Onboard(),
         bindings: [NotificationsSwitchBindings()]),
   ];

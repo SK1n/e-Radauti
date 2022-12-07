@@ -5,27 +5,42 @@ import 'package:get/get.dart';
 import 'package:octo_image/octo_image.dart';
 
 class ImageWidget extends StatelessWidget {
-  final String? link;
+  ImageWidget({
+    super.key,
+    required link,
+    this.width,
+    this.height = 200,
+    this.fit = BoxFit.cover,
+  }) : image = CachedNetworkImageProvider(
+          link != null
+              ? link!
+              : 'https://developers.google.com/static/maps/documentation/streetview/images/error-image-generic.png?hl=sv',
+        );
+
+  ImageWidget.asset({
+    super.key,
+    required link,
+    this.width,
+    this.height = 80.0,
+    this.fit = BoxFit.fitWidth,
+  }) : image = AssetImage(link!);
+
   final double? height;
   final double? width;
-  const ImageWidget(
-      {super.key, required this.link, this.width, this.height = 200});
+  final ImageProvider<Object> image;
+  final BoxFit fit;
 
   @override
   Widget build(BuildContext context) {
     return OctoImage(
-      image: CachedNetworkImageProvider(
-        link != null
-            ? link!
-            : 'https://developers.google.com/static/maps/documentation/streetview/images/error-image-generic.png?hl=sv',
-      ),
+      image: image,
       placeholderBuilder: OctoPlaceholder.blurHash(
         blurHash,
       ),
       height: height,
       width: width ?? Get.width,
       errorBuilder: OctoError.icon(color: Colors.red),
-      fit: BoxFit.cover,
+      fit: fit,
     );
   }
 }

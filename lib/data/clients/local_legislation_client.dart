@@ -19,7 +19,7 @@ class LocalLegislationClient {
 
       for (var element in rawElements) {
         // add \s
-        var title = element.text.replaceAll(RegExp('/\s+/g'), '').trim();
+        var title = element.text.replaceAll(RegExp('/\\s+/g'), '').trim();
         var link = element.attributes['href'];
         elements.add([title, link]);
       }

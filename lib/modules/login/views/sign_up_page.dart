@@ -12,6 +12,7 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final GlobalKey<FormBuilderState> formKey = GlobalKey();
     final SignUpController signUpController = Get.find();
+    final String email = Get.parameters['email'].toString();
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -51,7 +52,7 @@ class SignUpPage extends StatelessWidget {
                             name: 'email',
                             decoration:
                                 const InputDecoration(hintText: 'Email'),
-                            initialValue: '',
+                            initialValue: email,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             validator: FormBuilderValidators.compose([

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/public_institutions/public_institutions_item_model.dart';
 import 'package:flutterapperadauti/data/models/public_institutions/public_institutions_model.dart';
-import 'package:flutterapperadauti/modules/usefull_numbers/utils/usefull_numbers_widget.dart';
+import 'package:flutterapperadauti/modules/usefull_numbers/views/usefull_numbers_widget.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
+import 'package:get/get.dart';
 
 class PublicInstitutionsPage extends StatelessWidget with GetDataFirebase {
   const PublicInstitutionsPage({super.key});
@@ -16,8 +17,8 @@ class PublicInstitutionsPage extends StatelessWidget with GetDataFirebase {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
-            content: 'Instituții publice',
+          AppBarUi(
+            content: 'local-institutions'.tr,
             leading: Icons.perm_phone_msg,
           ),
           SliverPadding(

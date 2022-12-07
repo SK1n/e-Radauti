@@ -34,8 +34,8 @@ class NoticeProblemMapController extends GetxController
                   actions: [
                     TextButton(
                       onPressed: () => Get.back(),
-                      child: const Text(
-                        'Inchide',
+                      child: Text(
+                        'close'.tr,
                         textAlign: TextAlign.center,
                       ),
                     )

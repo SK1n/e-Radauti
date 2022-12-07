@@ -55,7 +55,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
 
                 return Column(
                   children: [
-                    const Text('Grafic de PM2.5 (μg/m³) vs Timp'),
+                    Text('pm-time'.tr),
                     Card(
                       child: SfCartesianChart(
                         zoomPanBehavior: zoomPanBehavior,
@@ -80,14 +80,14 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                             },
                             xValueMapper: (ChartsModel model, _) => model.date,
                             yValueMapper: (ChartsModel model, _) => model.value,
-                            xAxisName: 'Timp',
+                            xAxisName: 'time'.tr,
                             yAxisName: 'Pm2.5',
                           ),
                         ],
                         primaryXAxis: DateTimeAxis(),
                       ),
                     ),
-                    const Text('Grafic de CO2 (ppm) vs Timp'),
+                    Text('co2-time'.tr),
                     Card(
                       child: SfCartesianChart(
                         zoomPanBehavior: zoomPanBehavior,
@@ -96,7 +96,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                             dataSource: dataChartCoVsTime,
                             xValueMapper: (ChartsModel model, _) => model.date,
                             yValueMapper: (ChartsModel model, _) => model.value,
-                            xAxisName: 'Timp',
+                            xAxisName: 'time'.tr,
                             yAxisName: 'CO2',
                             onPointTap: (item) {
                               showTappedValue(
@@ -110,8 +110,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                         primaryXAxis: DateTimeAxis(),
                       ),
                     ),
-                    const Text(
-                        'Grafic de PM2.5 μg/m³ & Viteza Vântului (m/s) vs Timp'),
+                    Text('pm-speed-time'.tr),
                     Card(
                       child: SfCartesianChart(
                         zoomPanBehavior: zoomPanBehavior,
@@ -121,7 +120,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                             dataSource: dataChartPmVsWindVsTime,
                             xValueMapper: (ChartsModel model, _) => model.date,
                             yValueMapper: (ChartsModel model, _) => model.value,
-                            xAxisName: 'Timp',
+                            xAxisName: 'time'.tr,
                             yAxisName: 'PM',
                             onPointTap: (item) {
                               showTappedValue(
@@ -132,13 +131,13 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                             },
                           ),
                           ColumnSeries<ChartsModel, DateTime>(
-                            name: 'Viteza Vântului \n(m/s)',
+                            name: '${"wind-speed".tr} \n(m/s)',
                             dataSource: dataChartPmVsWindVsTime,
                             xValueMapper: (ChartsModel model, _) => model.date,
                             yValueMapper: (ChartsModel model, _) =>
                                 model.secondValue,
-                            xAxisName: 'Timp',
-                            yAxisName: 'Wind',
+                            xAxisName: 'time'.tr,
+                            yAxisName: 'wind'.tr,
                             onPointTap: (item) {
                               showTappedValue(
                                 dataChartPmVsWindVsTime[item.pointIndex!]
@@ -150,12 +149,12 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                           ),
                         ],
                         legend: Legend(
-                            title: LegendTitle(text: 'Legenda'),
+                            title: LegendTitle(text: 'legend'.tr),
                             isVisible: true),
                         primaryXAxis: DateTimeAxis(),
                       ),
                     ),
-                    const Text('Grafic de Temperatură vs Timp'),
+                    Text('temperature-time'.tr),
                     Card(
                       child: SfCartesianChart(
                         zoomPanBehavior: zoomPanBehavior,
@@ -174,8 +173,8 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                                   model.date,
                               yValueMapper: (ChartsModel model, _) =>
                                   model.secondValue,
-                              xAxisName: 'Timp',
-                              yAxisName: 'Temperatură',
+                              xAxisName: 'time'.tr,
+                              yAxisName: 'temperature'.tr,
                               pointColorMapper: (ChartsModel model, _) {
                                 if (model.secondValue! <= -5) {
                                   return Colors.blue[100];
@@ -205,13 +204,13 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
 
   showTappedValue(dynamic value, String measurement, DateTime time) {
     Get.defaultDialog(
-      title: 'Valoarea selectata',
+      title: 'selected-value'.tr,
       content: Text(
-        'Valoarea selectata este: $value $measurement \nLa data de: $time',
+        '${"selected-value-is".tr}: $value $measurement \n${"value-date".tr}: $time',
         maxLines: 2,
       ),
       actions: [
-        TextButton(onPressed: () => Get.back(), child: const Text('Inchide!'))
+        TextButton(onPressed: () => Get.back(), child: Text('close'.tr))
       ],
     );
   }

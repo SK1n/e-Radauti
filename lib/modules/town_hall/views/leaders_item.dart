@@ -5,6 +5,7 @@ import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
 import 'package:fluttericon/entypo_icons.dart';
+import 'package:get/get.dart';
 
 class LeaderCard extends StatelessWidget with GetImageUrl, UrlLauncher {
   final String? name;
@@ -55,7 +56,7 @@ class LeaderCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                   minFontSize: 20,
                 ),
                 Text(
-                  '$function',
+                  '$function'.toLowerCase().tr,
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Row(
@@ -78,9 +79,9 @@ class LeaderCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                         : Container(),
                   ],
                 ),
-                const Text(
-                  'Informații adiționale',
-                  style: TextStyle(
+                Text(
+                  'additional-information'.tr,
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.underline),
                 ),
@@ -88,9 +89,9 @@ class LeaderCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                   onTap: () {
                     launchUrl(wealth!);
                   },
-                  child: const Text(
-                    'Declarație de avere',
-                    style: TextStyle(
+                  child: Text(
+                    'wealth-declaration'.tr,
+                    style: const TextStyle(
                         decoration: TextDecoration.underline,
                         color: Colors.blueAccent),
                   ),
@@ -99,9 +100,9 @@ class LeaderCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                   onTap: () {
                     launchUrl(interests!);
                   },
-                  child: const Text(
-                    'Declarație de interese',
-                    style: TextStyle(
+                  child: Text(
+                    'declaration-interests'.tr,
+                    style: const TextStyle(
                         decoration: TextDecoration.underline,
                         color: Colors.blueAccent),
                   ),

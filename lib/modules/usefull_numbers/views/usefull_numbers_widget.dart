@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:fluttericon/entypo_icons.dart';
+import 'package:get/get.dart';
 
 class UsefullNumbersWidget extends StatelessWidget with UrlLauncher {
   final String? title;
@@ -22,7 +23,7 @@ class UsefullNumbersWidget extends StatelessWidget with UrlLauncher {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              title!,
+              title!.toLowerCase().replaceAll(" ", "-").tr,
               style: const TextStyle(
                   color: Colors.blueGrey,
                   fontWeight: FontWeight.bold,

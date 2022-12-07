@@ -3,6 +3,7 @@ import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/menu_list_tile.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
+import 'package:get/get.dart';
 
 class UsefullNumbersPage extends StatelessWidget {
   const UsefullNumbersPage({super.key});
@@ -11,8 +12,8 @@ class UsefullNumbersPage extends StatelessWidget {
     return Scaffold(
       endDrawer: const NavDrawer(),
       body: CustomScrollView(slivers: [
-        const AppBarUi(
-          content: 'Numere utille',
+        AppBarUi(
+          content: 'usefull-numbers'.tr,
           leading: Icons.perm_phone_msg,
         ),
         SliverPadding(
@@ -20,23 +21,20 @@ class UsefullNumbersPage extends StatelessWidget {
           sliver: SliverList(
             delegate: SliverChildListDelegate(
               [
-                const MenuListTile(
-                  title: 'Deranjamente',
-                  subtitle:
-                      'Date de contact pentru informații sau reclamații privind serviciile de alimentare cu apă, canalizare sau servicii comunale',
-                  route: Routes.LOCAL_DISTURBANCE,
+                MenuListTile(
+                  title: 'inconveniences'.tr,
+                  subtitle: 'inconveniences-info'.tr,
+                  route: Routes.localDisturbances,
                 ),
-                const MenuListTile(
-                  title: 'Autorități locale',
-                  subtitle:
-                      'Date de contact pentru principalele autorități publice locale (primărie, spital, poliție etc.)',
-                  route: Routes.LOCAL_AUTHORITIES,
+                MenuListTile(
+                  title: 'local-authorities'.tr,
+                  subtitle: 'local-authorities-info'.tr,
+                  route: Routes.localAuthorities,
                 ),
-                const MenuListTile(
-                  title: 'Instituții publice',
-                  subtitle:
-                      'Date de contact pentru principalele instituții de protecție civilă (a consumatorului, copilului, animalelor, mediului etc.)',
-                  route: Routes.PUBLIC_INSTITUTIONS,
+                MenuListTile(
+                  title: 'local-institutions'.tr,
+                  subtitle: 'local-institutions-info'.tr,
+                  route: Routes.publicInstitutions,
                 ),
               ],
             ),

@@ -2,6 +2,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/bindings/app_bindings.dart';
 import 'package:flutterapperadauti/controllers/dark_mode_switch_controller.dart';
+import 'package:flutterapperadauti/localization/languages.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +25,10 @@ Future<void> main() async {
       debugShowCheckedModeBanner: false,
       builder: EasyLoading.init(),
       getPages: AppPages.routes,
-      initialRoute: isFirstRun ? Routes.ONBOARD : Routes.LOGIN,
+      initialRoute: isFirstRun ? Routes.onboard : Routes.signIn,
       initialBinding: AppBindings(),
+      locale: Get.deviceLocale,
+      translations: Languages(),
       theme: FlexThemeData.light(
         scheme: FlexScheme.barossa,
         surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffoldVariantDialog,

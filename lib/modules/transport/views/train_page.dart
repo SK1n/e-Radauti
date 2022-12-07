@@ -6,6 +6,7 @@ import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
+import 'package:get/get.dart';
 
 class TrainPage extends StatelessWidget with GetDataFirebase {
   const TrainPage({super.key});
@@ -15,8 +16,8 @@ class TrainPage extends StatelessWidget with GetDataFirebase {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
-            content: 'Trenuri',
+          AppBarUi(
+            content: 'trains'.tr,
             leading: Icons.train,
           ),
           SliverPadding(

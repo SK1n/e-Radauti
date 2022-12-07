@@ -10,18 +10,18 @@ class ColorLegendWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        boxDetails(const Color.fromARGB(255, 78, 236, 226),
-            'Nivelul de PM2,5 este bun (0 - 10 \u03BCg/m\u00B3)'),
-        boxDetails(const Color.fromARGB(255, 13, 95, 73),
-            'Nivelul de PM2,5 este acceptabil (10 - 20 \u03BCg/m\u00B3)'),
-        boxDetails(const Color.fromARGB(255, 236, 228, 63),
-            'Nivelul de PM2,5 este moderat (20 - 25 \u03BCg/m\u00B3)'),
-        boxDetails(const Color.fromARGB(255, 238, 74, 74),
-            'Nivelul de PM2,5 este rău (25 - 50 \u03BCg/m\u00B3)'),
-        boxDetails(const Color.fromARGB(255, 167, 25, 25),
-            'Nivelul de PM2,5 este foarte rău (50 - 75 \u03BCg/m\u00B3)'),
-        boxDetails(const Color.fromARGB(255, 126, 5, 5),
-            'Nivelul de PM2,5 este extrem de rău (75 - 800 \u03BCg/m\u00B3)'),
+        boxDetails(
+            const Color.fromARGB(255, 78, 236, 226), 'color-meaning-blue'.tr),
+        boxDetails(
+            const Color.fromARGB(255, 13, 95, 73), 'color-meaning-green'.tr),
+        boxDetails(
+            const Color.fromARGB(255, 236, 228, 63), 'color-meaning-yellow'.tr),
+        boxDetails(
+            const Color.fromARGB(255, 238, 74, 74), 'color-meaning-pink'.tr),
+        boxDetails(
+            const Color.fromARGB(255, 167, 25, 25), 'color-meaning-red'.tr),
+        boxDetails(
+            const Color.fromARGB(255, 126, 5, 5), 'color-meaning-red-dark'.tr),
       ],
     );
   }

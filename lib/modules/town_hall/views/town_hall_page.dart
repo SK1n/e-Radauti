@@ -3,6 +3,7 @@ import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/menu_list_tile.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
+import 'package:get/get.dart';
 
 class TownHallMain extends StatelessWidget {
   const TownHallMain({super.key});
@@ -12,9 +13,9 @@ class TownHallMain extends StatelessWidget {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
+          AppBarUi(
             leading: Icons.location_city,
-            content: 'Administrație locală',
+            content: 'local-administration'.tr,
           ),
           SliverPadding(
             padding: const EdgeInsets.all(8.0),
@@ -32,27 +33,25 @@ class TownHallMain extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  const MenuListTile(
-                    title: 'Conducere',
-                    subtitle:
-                        'Informații despre primar, viceprimar și secretar.',
-                    route: Routes.LEADERS,
+                  MenuListTile(
+                    title: 'lead'.tr,
+                    subtitle: 'lead-info'.tr,
+                    route: Routes.leaders,
                   ),
-                  const MenuListTile(
-                    title: 'Consiliul Local',
-                    subtitle:
-                        'Consilierii locali. Contactează-ți reprezentantul!',
-                    route: Routes.LOCAL_COUNCIL,
+                  MenuListTile(
+                    title: 'local-council'.tr,
+                    subtitle: 'local-council-info'.tr,
+                    route: Routes.localCouncil,
                   ),
-                  const MenuListTile(
-                    title: 'Ședințe de Consiliu local',
-                    subtitle: 'Vizualizează live ședințele de consiliu local.',
-                    route: Routes.LOCAL_MEETINGS,
+                  MenuListTile(
+                    title: 'local-council-meetings'.tr,
+                    subtitle: 'local-council-meetings-info'.tr,
+                    route: Routes.localMeetings,
                   ),
-                  const MenuListTile(
-                    title: 'Hotărâri de Consiliu Local',
-                    subtitle: 'Descoperă hotărârile de consiliu local.',
-                    route: Routes.LOCAL_LEGISLATION,
+                  MenuListTile(
+                    title: 'local-council-decisions'.tr,
+                    subtitle: 'local-council-decisions-info'.tr,
+                    route: Routes.localLegislation,
                   ),
                 ],
               ),

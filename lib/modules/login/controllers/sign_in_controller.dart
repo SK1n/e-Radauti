@@ -10,7 +10,20 @@ class SignInController extends GetxController {
     try {
       EasyLoading.show();
       await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: emailAddress, password: password);
+          .signInWithEmailAndPassword(email: emailAddress, password: password)
+          .then((value) {
+        EasyLoading.dismiss();
+        Get.defaultDialog(
+          title: 'Succes',
+          middleText: 'Ati fost autentificat cu success',
+          actions: [
+            TextButton(
+              onPressed: () => Get.offAndToNamed(Routes.home),
+              child: const Text('ok'),
+            ),
+          ],
+        );
+      });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         EasyLoading.dismiss();
@@ -59,9 +72,45 @@ class SignInController extends GetxController {
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential).then(
       (value) {
-        Get.toNamed(Routes.HOME);
+        Get.offAndToNamed(Routes.home);
         return value;
       },
     );
+  }
+
+  Future signInAsGuest() async {
+    try {
+      if (!EasyLoading.isShow) {
+        EasyLoading.show();
+      }
+      await FirebaseAuth.instance.signInAnonymously().then((value) {
+        EasyLoading.dismiss();
+        Get.defaultDialog(
+          title: 'Succes',
+          middleText: 'Ati fost autentificat cu success ca si Guest',
+          barrierDismissible: false,
+          actions: [
+            TextButton(
+              onPressed: () {
+                // Get.offAllNamed(Routes.HOME);
+                Get.back();
+                Get.offAndToNamed(Routes.home);
+              },
+              child: const Text('ok'),
+            ),
+          ],
+        );
+      });
+      debugPrint("Signed in with temporary account.");
+    } on FirebaseAuthException catch (e) {
+      EasyLoading.dismiss();
+      switch (e.code) {
+        case "operation-not-allowed":
+          debugPrint("Anonymous auth hasn't been enabled for this project.");
+          break;
+        default:
+          debugPrint("Unknown error.");
+      }
+    }
   }
 }

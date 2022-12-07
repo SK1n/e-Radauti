@@ -31,7 +31,7 @@ class AirQuality extends StatelessWidget with GetDataFirebase {
                 delegate: SliverChildListDelegate(
                   [
                     Text(
-                      'CENTRU RĂDĂUȚI\n${item!.fDate!}',
+                      '${"centru-radauti".tr}\n${item!.fDate!}',
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 20,
@@ -54,7 +54,10 @@ class AirQuality extends StatelessWidget with GetDataFirebase {
                                     child: Align(
                                       alignment: Alignment.center,
                                       child: Text(
-                                        item.quality!,
+                                        item.quality!
+                                            .toLowerCase()
+                                            .replaceAll(" ", "-")
+                                            .tr,
                                         style: const TextStyle(
                                             color: Colors.white),
                                       ),
@@ -168,7 +171,7 @@ class AirQuality extends StatelessWidget with GetDataFirebase {
                                 Meteocons.wind,
                               ),
                               label: Text(
-                                "Vânt ${item.windMs!} m/s",
+                                "${"wind".tr} ${item.windMs!} m/s",
                                 textAlign: TextAlign.left,
                                 maxLines: 2,
                                 style: const TextStyle(fontSize: 16.0),
@@ -184,7 +187,7 @@ class AirQuality extends StatelessWidget with GetDataFirebase {
                                     'assets/wind/direction_${Get.isDarkMode ? 'white' : 'black'}.png'),
                               ),
                               label: Text(
-                                'Direcția ${item.direction}',
+                                '${"direction"} ${item.direction!.tr}',
                                 maxLines: 2,
                                 style: const TextStyle(fontSize: 16.0),
                               ),
@@ -208,7 +211,7 @@ class AirQuality extends StatelessWidget with GetDataFirebase {
                               icon: const Icon(
                                 LineariconsFree.flag,
                               ),
-                              label: Text(item.direction!),
+                              label: Text(item.direction!.tr),
                             ),
                           ),
                         ],

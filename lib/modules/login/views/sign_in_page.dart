@@ -8,8 +8,8 @@ import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -83,11 +83,16 @@ class LoginPage extends StatelessWidget {
                                 backgroundColor: Colors.orange),
                             icon: const Icon(Icons.login),
                             label: const Text('Autentificare')),
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            'Am uitat parola',
-                            style: TextStyle(color: Colors.blue),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: InkWell(
+                            onTap: () {
+                              Get.toNamed(Routes.resetPassword);
+                            },
+                            child: const Text(
+                              'Am uitat parola',
+                              style: TextStyle(color: Colors.blue),
+                            ),
                           ),
                         ),
                         const SignUpTextWidget(text: 'SAU AUTENTIFICARE PRIN'),
@@ -111,7 +116,9 @@ class LoginPage extends StatelessWidget {
                           style: TextButton.styleFrom(
                             minimumSize: Size(Get.width, 50),
                           ),
-                          onPressed: () {},
+                          onPressed: () async {
+                            await signInController.signInAsGuest();
+                          },
                           icon: const Icon(Icons.person),
                           label: const Text('Oaspete'),
                         ),
@@ -127,7 +134,10 @@ class LoginPage extends StatelessWidget {
                             minimumSize: Size(Get.width, 50),
                           ),
                           onPressed: () {
-                            Get.toNamed(Routes.SIGNUP);
+                            Get.toNamed(Routes.signUp, parameters: {
+                              "email":
+                                  formKey.currentState!.fields['email']!.value
+                            });
                           },
                           icon: const Icon(Icons.add),
                           label: const Text('Creaza un cont nou'),

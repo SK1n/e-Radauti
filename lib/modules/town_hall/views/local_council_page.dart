@@ -6,6 +6,7 @@ import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
+import 'package:get/get.dart';
 
 class LocalCouncilPage extends StatelessWidget with GetDataFirebase {
   const LocalCouncilPage({super.key});
@@ -16,8 +17,8 @@ class LocalCouncilPage extends StatelessWidget with GetDataFirebase {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
-            content: 'Consiliu Local',
+          AppBarUi(
+            content: 'local-council'.tr,
             leading: Icons.location_city,
           ),
           SliverList(

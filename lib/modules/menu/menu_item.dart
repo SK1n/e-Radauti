@@ -10,7 +10,7 @@ class MenuItem extends StatelessWidget {
     super.key,
     this.iconData = Icons.error,
     this.title = '',
-    this.route = Routes.HOME,
+    this.route = Routes.home,
   });
 
   @override

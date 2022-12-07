@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/modules/notice_a_problem/views/notice_problem_map.dart';
-import 'package:flutterapperadauti/modules/notice_a_problem/views/notice_problem_form.dart';
+import 'package:flutterapperadauti/modules/report_a_problem/views/report_problem_map.dart';
+import 'package:flutterapperadauti/modules/report_a_problem/views/report_problem_form.dart';
 
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
+import 'package:get/get.dart';
 
-class NoticeProblemPage extends StatelessWidget {
-  const NoticeProblemPage({super.key});
+class ReportProblemPage extends StatelessWidget {
+  const ReportProblemPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,24 +15,24 @@ class NoticeProblemPage extends StatelessWidget {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
+          AppBarUi(
             leading: Icons.camera,
-            content: 'Sesizează o problemă',
+            content: 'report-problem'.tr,
           ),
           SliverList(
             delegate: SliverChildListDelegate(
               [
                 const Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: NoticeProblemMap(),
+                  child: ReportProblemMap(),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 40,
                   child: Center(
-                    child: Text('TRIMITE O SESIZARE'),
+                    child: Text('send-report'.tr),
                   ),
                 ),
-                const NoticeProblemForm(),
+                const ReportProblemForm(),
               ],
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
+import 'package:get/get.dart';
 
 class LocalLegislationItem extends StatelessWidget with UrlLauncher {
   final String? title;
@@ -24,7 +25,7 @@ class LocalLegislationItem extends StatelessWidget with UrlLauncher {
             onPressed: () async {
               await launchUrl(link!);
             },
-            child: const Text('Deschideti link-ul'),
+            child: Text('open-link'.tr.toUpperCase()),
           )
         ],
       ),

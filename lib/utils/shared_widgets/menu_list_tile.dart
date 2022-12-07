@@ -10,7 +10,7 @@ class MenuListTile extends StatelessWidget {
       {super.key,
       required this.title,
       this.subtitle = '',
-      this.route = Routes.HOME});
+      this.route = Routes.home});
 
   @override
   Widget build(BuildContext context) {

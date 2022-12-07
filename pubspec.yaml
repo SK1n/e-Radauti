@@ -52,7 +52,6 @@ dependencies:
   logger: ^1.1.0
   firebase_auth: ^3.11.2
   google_sign_in: ^5.4.2
-  google_sign_in_mocks: ^0.2.1
 
 dev_dependencies:
   flutter_test:

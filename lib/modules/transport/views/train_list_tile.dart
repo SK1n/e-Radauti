@@ -27,7 +27,7 @@ class ListTileRoute extends StatelessWidget {
           Get.put(title, tag: 'title');
           Get.put(trainRoute, tag: 'train_route');
           Get.put(timeArray, tag: 'time_array');
-          Get.toNamed(Routes.TRAIN_TIMELINE, arguments: [
+          Get.toNamed(Routes.trainTimeLine, arguments: [
             title,
             trainRoute,
             timeArray,

@@ -1,8 +1,10 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
+import 'package:selectable_autolink_text/selectable_autolink_text.dart';
 
-class LegendWidget extends StatelessWidget {
+class LegendWidget extends StatelessWidget with UrlLauncher {
   final String? collapsedTitle;
   final String? expandedTitle;
   final String? expandedContent;
@@ -67,11 +69,15 @@ class LegendWidget extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width - 20,
                           child: expandedWidget ??
-                              Text(
+                              SelectableAutoLinkText(
                                 expandedContent!,
                                 textAlign: TextAlign.start,
-                                softWrap: true,
-                                maxLines: 50,
+                                onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
+                                linkStyle:
+                                    const TextStyle(color: Colors.pinkAccent),
+                                onTap: (link) async {
+                                  launchUrl(link);
+                                },
                               ),
                         ),
                       ],

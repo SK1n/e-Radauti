@@ -7,6 +7,7 @@ import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
+import 'package:get/get.dart';
 
 class LeadersPage extends StatelessWidget with GetDataFirebase, GetImageUrl {
   const LeadersPage({super.key});
@@ -17,8 +18,8 @@ class LeadersPage extends StatelessWidget with GetDataFirebase, GetImageUrl {
         endDrawer: const NavDrawer(),
         body: CustomScrollView(
           slivers: [
-            const AppBarUi(
-              content: 'Administrație locală',
+            AppBarUi(
+              content: 'local-administration'.tr,
               leading: Icons.location_city,
             ),
             SliverPadding(

@@ -7,6 +7,7 @@ import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
+import 'package:get/get.dart';
 
 class TaxiPage extends StatelessWidget with GetImageUrl, GetDataFirebase {
   const TaxiPage({super.key});
@@ -17,8 +18,8 @@ class TaxiPage extends StatelessWidget with GetImageUrl, GetDataFirebase {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
-            content: 'Taximetriști',
+          AppBarUi(
+            content: 'cabbies'.tr,
             leading: Icons.local_taxi,
           ),
           SliverPadding(

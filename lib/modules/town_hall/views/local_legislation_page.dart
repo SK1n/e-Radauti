@@ -20,8 +20,8 @@ class LocalLegislationPage extends StatelessWidget with UrlLauncher {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
-            content: 'Hotărâri de Consiliu Local',
+          AppBarUi(
+            content: 'local-council-decisions'.tr,
             leading: Icons.location_city,
           ),
           SliverPadding(
@@ -104,9 +104,9 @@ class LocalLegislationPage extends StatelessWidget with UrlLauncher {
                                         ? 1
                                         : controller.allResults.length,
                                   )
-                                : const Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Text('Nu am gasit nici un rezultat'),
+                                : Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text('no-results-found'.tr),
                                   ),
                           ),
                         ],

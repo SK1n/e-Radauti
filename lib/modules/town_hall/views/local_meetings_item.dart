@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:flutterapperadauti/data/models/local_meetings/local_meetings_item_model.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
+import 'package:get/get.dart';
 
 class LocalMeetingsItem extends StatefulWidget {
   final LocalMeetingsItemModel data;
@@ -49,7 +50,7 @@ class _LocalMeetingsItemState extends State<LocalMeetingsItem>
             child: Column(
               children: [
                 ListTile(
-                  title: Text('Ordinea: ${widget.data.date}'),
+                  title: Text('${"order".tr}: ${widget.data.date}'),
                   trailing: expandableController.expanded
                       ? const Icon(Icons.arrow_upward)
                       : const Icon(Icons.arrow_downward),
@@ -57,9 +58,10 @@ class _LocalMeetingsItemState extends State<LocalMeetingsItem>
                 videoWidget(widget.data.fbLink!),
                 TextButton(
                   onPressed: () async {
+                    debugPrint(widget.data.pdfLink!);
                     await launchUrl(widget.data.pdfLink!);
                   },
-                  child: const Text('Deschideti ordinea de zi'),
+                  child: Text('see-order'.tr),
                 ),
               ],
             ),
@@ -74,7 +76,7 @@ class _LocalMeetingsItemState extends State<LocalMeetingsItem>
           },
           child: Card(
             child: ListTile(
-                title: Text('Ordinea: ${widget.data.date}'),
+                title: Text('${"order".tr}: ${widget.data.date}'),
                 trailing: Icon(expandableController.expanded
                     ? Icons.arrow_upward
                     : Icons.arrow_downward)),

@@ -4,6 +4,7 @@ import 'package:flutterapperadauti/modules/screens/views/about_us_content.dart';
 
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
+import 'package:get/get.dart';
 
 class AboutUsPage extends StatelessWidget {
   const AboutUsPage({super.key});
@@ -11,11 +12,11 @@ class AboutUsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Tab> tabs = [
-      const Tab(
-        child: Text('DESPRE NOI'),
+      Tab(
+        child: Text('about-us'.tr.toUpperCase()),
       ),
-      const Tab(
-        child: Text('DESPRE APLICAȚIE'),
+      Tab(
+        child: Text('about-app'.tr.toUpperCase()),
       ),
     ];
     return Scaffold(
@@ -26,7 +27,7 @@ class AboutUsPage extends StatelessWidget {
             headerSliverBuilder: (context, innerBoxIsScrolled) {
               return [
                 AppBarUi(
-                  content: 'Despre Noi',
+                  content: 'about-us'.tr,
                   leading: Icons.add_box_outlined,
                   bottom: TabBar(tabs: tabs),
                 )

@@ -29,32 +29,43 @@ class NavDrawer extends StatelessWidget {
           DrawerHeader(
             child: addDrawerHeaderIcon(),
           ),
-          listTile(Icons.photo_filter, 'Sesizează o problemă',
-              Routes.NOTICE_PROBLEM),
+          listTile(Icons.person_4, "my-account".tr, Routes.account),
           listTile(
-              Icons.location_city, 'Administrație locală', Routes.TOWN_HALL),
-          listTile(Icons.calendar_today, 'Evenimente', Routes.EVENTS),
-          listTile(Icons.perm_phone_msg, 'Numere utile', Routes.PHONE_NUMBERS),
-          listTile(Icons.announcement, 'Anunțuri', Routes.ANNOUNCEMENTS),
-          listTile(Icons.bubble_chart, 'Calitatea aerului', Routes.AIR),
-          listTile(Icons.train, 'Transport', Routes.TRANSPORT),
+              Icons.photo_filter, 'report-problem'.tr, Routes.noticeProblem),
           listTile(
-              FontAwesome5.hand_holding_heart, 'Voluntariat', Routes.VOLUNTEER),
-          listTile(Icons.settings, 'Setari', Routes.SETTINGS),
+              Icons.location_city, 'local-administration'.tr, Routes.townHall),
+          listTile(Icons.calendar_today, 'events'.tr, Routes.events),
+          listTile(
+              Icons.perm_phone_msg, 'usefull-numbers'.tr, Routes.phoneNumbers),
+          listTile(Icons.announcement, 'announces'.tr, Routes.announcements),
+          listTile(Icons.bubble_chart, 'air-quality'.tr, Routes.air),
+          listTile(Icons.train, 'transport'.tr, Routes.transport),
+          listTile(FontAwesome5.hand_holding_heart, 'volunteering'.tr,
+              Routes.volunteer),
+          listTile(Icons.settings, 'settings'.tr, Routes.settings),
+          listTile(
+            Icons.exit_to_app,
+            "sign-out".tr,
+            Routes.signIn,
+            onTap: () {
+              debugPrint("logging out");
+            },
+          ),
         ],
       ),
     );
   }
 
-  ListTile listTile(icon, title, route) {
+  ListTile listTile(icon, title, route, {Function()? onTap}) {
     return ListTile(
       leading: Icon(
         icon,
       ),
       title: Text(title),
-      onTap: () {
-        Get.toNamed(route);
-      },
+      onTap: onTap ??
+          () {
+            Get.toNamed(route);
+          },
     );
   }
 }
