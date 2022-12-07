@@ -1,4 +1,6 @@
+import 'package:flutterapperadauti/bindings/account_bindings.dart';
 import 'package:flutterapperadauti/modules/account/views/account_page.dart';
+import 'package:flutterapperadauti/modules/account/views/update_password_page.dart';
 import 'package:flutterapperadauti/modules/air_quality/bindings/air_quality_bindings.dart';
 import 'package:flutterapperadauti/modules/announcements/bindings/get_e_radauti_data_bindings.dart';
 import 'package:flutterapperadauti/modules/events/bindings/events_bindings.dart';
@@ -9,12 +11,12 @@ import 'package:flutterapperadauti/modules/announcements/views/furniture_page.da
 import 'package:flutterapperadauti/modules/announcements/views/job_page.dart';
 import 'package:flutterapperadauti/modules/announcements/views/local_announcements_page.dart';
 import 'package:flutterapperadauti/modules/events/views/events_page.dart';
-import 'package:flutterapperadauti/modules/login/bindings/reset_password_bindings.dart';
-import 'package:flutterapperadauti/modules/login/bindings/sign_in_bindings.dart';
-import 'package:flutterapperadauti/modules/login/bindings/sign_up_bindings.dart';
-import 'package:flutterapperadauti/modules/login/views/sign_in_page.dart';
-import 'package:flutterapperadauti/modules/login/views/reset_password_page.dart';
-import 'package:flutterapperadauti/modules/login/views/sign_up_page.dart';
+import 'package:flutterapperadauti/modules/account/bindings/reset_password_bindings.dart';
+import 'package:flutterapperadauti/modules/account/bindings/sign_in_bindings.dart';
+import 'package:flutterapperadauti/modules/account/bindings/sign_up_bindings.dart';
+import 'package:flutterapperadauti/modules/account/views/sign_in_page.dart';
+import 'package:flutterapperadauti/modules/account/views/reset_password_page.dart';
+import 'package:flutterapperadauti/modules/account/views/sign_up_page.dart';
 import 'package:flutterapperadauti/modules/menu/menu_screen.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/bindings/form_binding.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/views/report_problem_page.dart';
@@ -79,9 +81,20 @@ class AppPages {
         preventDuplicates: true,
         children: [
           GetPage(
-            name: _Paths.account,
-            page: () => const AccountPage(),
-          ),
+              name: _Paths.account,
+              page: () => const AccountPage(),
+              bindings: [
+                AccountBinding(),
+              ],
+              children: [
+                GetPage(
+                  name: _Paths.updatePassword,
+                  page: () => const UpdatePasswordPage(),
+                  bindings: [
+                    AccountBinding(),
+                  ],
+                ),
+              ]),
           GetPage(
             name: _Paths.settings,
             page: () => const AppSettings(),
@@ -138,7 +151,11 @@ class AppPages {
           GetPage(
             name: _Paths.noticeProblem,
             page: () => const ReportProblemPage(),
-            bindings: [NoticeProblemFormBindings(), NoticeProblemMapBinding()],
+            bindings: [
+              NoticeProblemFormBindings(),
+              NoticeProblemMapBinding(),
+              AccountBinding()
+            ],
             preventDuplicates: true,
           ),
           GetPage(

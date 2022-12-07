@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutterapperadauti/controllers/account_controller.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/controllers/form_controller.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/views/location_switch.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
@@ -14,6 +15,7 @@ class ReportProblemForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final NoticeProblemController controller =
         Get.put(NoticeProblemController());
+    final AccountController accountController = Get.find();
     return FormBuilder(
       key: controller.formKey,
       child: Column(
@@ -22,7 +24,7 @@ class ReportProblemForm extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: FormBuilderTextField(
               decoration: InputDecoration(
-                label: Text('name-surname'.tr),
+                label: Text("${'name-surname'.tr} *"),
                 floatingLabelAlignment: FloatingLabelAlignment.start,
               ),
               initialValue: '',
@@ -37,7 +39,8 @@ class ReportProblemForm extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: FormBuilderDropdown(
                   name: 'institution_email',
-                  decoration: InputDecoration(label: Text('institution'.tr)),
+                  decoration:
+                      InputDecoration(label: Text("${'institution'.tr} *")),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(
                         errorText: 'required-field'.tr)
@@ -48,7 +51,7 @@ class ReportProblemForm extends StatelessWidget {
             child: FormBuilderDropdown(
               name: 'category',
               itemHeight: 80,
-              decoration: InputDecoration(label: Text('category'.tr)),
+              decoration: InputDecoration(label: Text("${'category'.tr} *")),
               items: controller.category
                   .map((item) => DropdownMenuItem(
                         value: item.toString(),
@@ -64,7 +67,7 @@ class ReportProblemForm extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FormBuilderTextField(
-              decoration: InputDecoration(label: Text('subject'.tr)),
+              decoration: InputDecoration(label: Text("${'subject'.tr} *")),
               name: 'subject',
               validator: FormBuilderValidators.compose(
                 [
@@ -79,7 +82,7 @@ class ReportProblemForm extends StatelessWidget {
             child: FormBuilderTextField(
               initialValue: '',
               decoration: InputDecoration(
-                label: Text('description'.tr),
+                label: Text("${'description'.tr} *"),
               ),
               maxLines: 5,
               minLines: 1,
@@ -99,7 +102,8 @@ class ReportProblemForm extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FormBuilderTextField(
-              decoration: InputDecoration(label: Text('phone-number'.tr)),
+              decoration:
+                  InputDecoration(label: Text("${'phone-number'.tr} *")),
               name: 'phone',
               keyboardType: TextInputType.number,
               validator: FormBuilderValidators.compose(
@@ -118,9 +122,11 @@ class ReportProblemForm extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FormBuilderTextField(
-              decoration: InputDecoration(label: Text('email'.tr)),
+              decoration: InputDecoration(label: Text("${'email'.tr} *")),
               name: 'email',
-              initialValue: '',
+              initialValue: accountController.isSignedIn()
+                  ? accountController.getEmail()
+                  : '',
               validator: FormBuilderValidators.compose(
                 [
                   FormBuilderValidators.required(

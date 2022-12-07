@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutterapperadauti/modules/login/controllers/sign_up_controller.dart';
+import 'package:flutterapperadauti/modules/account/controllers/sign_up_controller.dart';
 import 'package:flutterapperadauti/utils/error_texts.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
@@ -43,23 +43,44 @@ class SignUpPage extends StatelessWidget {
                           height: Get.height / 10,
                         ),
                         Text(
-                          'CREAZA UN CONT',
+                          'create-new-account'.tr.toUpperCase(),
                           style: Get.textTheme.headlineLarge,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: FormBuilderTextField(
                             name: 'email',
-                            decoration:
-                                const InputDecoration(hintText: 'Email'),
+                            decoration: InputDecoration(
+                                hintText: "${'email'.tr} *",
+                                prefixIcon: const Icon(Icons.email)),
                             initialValue: email,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(
-                                  errorText: errorRequired),
+                                  errorText: 'required-field'.tr),
                               FormBuilderValidators.email(
-                                  errorText: errorEmail),
+                                  errorText: 'email-format'.tr),
+                            ]),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: FormBuilderTextField(
+                            name: 'phone_number',
+                            decoration: InputDecoration(
+                                hintText: "${'phone-number'.tr} *",
+                                prefixIcon: const Icon(Icons.phone)),
+                            initialValue: email,
+                            keyboardType: TextInputType.number,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.match(
+                                  r'^(\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\s|\.|\-)?([0-9]{3}(\s|\.|\-|)){2}$',
+                                  errorText: 'wrong-phone-format'.tr),
+                              FormBuilderValidators.required(
+                                  errorText: 'required-field'.tr),
                             ]),
                           ),
                         ),
@@ -67,15 +88,16 @@ class SignUpPage extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: FormBuilderTextField(
                             name: 'password',
-                            decoration:
-                                const InputDecoration(hintText: 'Parola'),
+                            decoration: InputDecoration(
+                                hintText: "${'password'.tr} *",
+                                prefixIcon: const Icon(Icons.password)),
                             initialValue: '',
                             obscureText: true,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(
-                                  errorText: errorRequired),
+                                  errorText: 'required-field'.tr),
                             ]),
                           ),
                         ),
@@ -90,11 +112,12 @@ class SignUpPage extends StatelessWidget {
                               if (formKey.currentState!.validate()) {
                                 signUpController.createAccount(
                                     form.fields['email']!.value,
-                                    form.fields['password']!.value);
+                                    form.fields['password']!.value,
+                                    form.fields['phone_number']?.value ?? "");
                               }
                             },
                             icon: const Icon(Icons.add),
-                            label: const Text('Creaza un cont nou'),
+                            label: Text('create-new-account'.tr.toUpperCase()),
                           ),
                         ),
                       ],

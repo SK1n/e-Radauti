@@ -68,4 +68,9 @@ Map<String, String> roRO = {
           '\nAceastă politică de protecție a datelor cu caracter personal descrie practicile noastre privind colectarea, utilizarea și transferul datelor comunicate direct sau indirect organizației noastre, precum și modul de utilizare a datelor cu caracter personal în scopul furnizării serviciilor.'
           '\nDacă, din orice motiv, termenii stabiliți în cadrul acestor condiții de utilizare a datelor cu caracter personal, nu sunt acceptabili pentru dvs., aveți posibilitatea de a ne comunica acest lucru și eventual puteți solicita detalii sau explicit, ștergerea datelor dvs., prin trimiterea mesajului la adresa menționată în preambul (radautiulcivic@gmail.com).'
           '\nInformațiile nu vor fi distribuite public și nu vor fi publicate decât în condițiile specifice în „termenii de confidențialitate”.',
+  "update-password": "Schimbă parola",
+  "password-mismatch": "Parola nu corespunde",
+  "new-password": "Parolă nouă",
+  "current-password": "Parola actuală",
+  "re-type-password": "Reintroduceți parola nouă",
 };

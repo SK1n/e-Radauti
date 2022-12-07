@@ -7,7 +7,7 @@ class LocalLegislationController extends GetxController {
   LocalLegislationController(this.client);
 
   final _allResults = [].obs;
-  get allResults => _allResults.value;
+  get allResults => _allResults;
   set allResults(value) => _allResults.value = value;
   late LocalLegislationModel _data;
 

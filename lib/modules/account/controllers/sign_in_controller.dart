@@ -4,6 +4,7 @@ import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInController extends GetxController {
   Future signInEmail(String emailAddress, String password) async {
@@ -11,8 +12,12 @@ class SignInController extends GetxController {
       EasyLoading.show();
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: emailAddress, password: password)
-          .then((value) {
+          .then((account) async {
         EasyLoading.dismiss();
+        SharedPreferences sharedPreferences =
+            await SharedPreferences.getInstance();
+        sharedPreferences.setString("email", emailAddress);
+        sharedPreferences.setString("password", password);
         Get.defaultDialog(
           title: 'Succes',
           middleText: 'Ati fost autentificat cu success',

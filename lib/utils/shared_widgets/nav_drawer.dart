@@ -43,14 +43,6 @@ class NavDrawer extends StatelessWidget {
           listTile(FontAwesome5.hand_holding_heart, 'volunteering'.tr,
               Routes.volunteer),
           listTile(Icons.settings, 'settings'.tr, Routes.settings),
-          listTile(
-            Icons.exit_to_app,
-            "sign-out".tr,
-            Routes.signIn,
-            onTap: () {
-              debugPrint("logging out");
-            },
-          ),
         ],
       ),
     );

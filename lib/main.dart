@@ -1,6 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/bindings/app_bindings.dart';
+import 'package:flutterapperadauti/controllers/account_controller.dart';
 import 'package:flutterapperadauti/controllers/dark_mode_switch_controller.dart';
 import 'package:flutterapperadauti/localization/languages.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
@@ -18,6 +19,7 @@ Future<void> main() async {
   bool isFirstRun = await IsFirstRun.isFirstRun();
   final DarkModeSwitchController darkModeSwitchController =
       Get.put(DarkModeSwitchController());
+  final AccountController accountController = Get.put(AccountController());
   darkModeSwitchController.getThemeStatus();
   runApp(
     GetMaterialApp(
@@ -25,9 +27,13 @@ Future<void> main() async {
       debugShowCheckedModeBanner: false,
       builder: EasyLoading.init(),
       getPages: AppPages.routes,
-      initialRoute: isFirstRun ? Routes.onboard : Routes.signIn,
+      initialRoute: isFirstRun
+          ? Routes.onboard
+          : accountController.isSignedIn()
+              ? Routes.home
+              : Routes.signIn,
       initialBinding: AppBindings(),
-      locale: Get.deviceLocale,
+      locale: const Locale('en', "US"),
       translations: Languages(),
       theme: FlexThemeData.light(
         scheme: FlexScheme.barossa,

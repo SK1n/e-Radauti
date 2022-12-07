@@ -15,6 +15,7 @@ Map<String, String> enUS = {
   "wrong-password": "The password is wrong",
   "invalid-verification-code": "The verification code is invalid",
   "invalid-verification-id": "The verification ID is invalid",
+  "password-mismatch": "The old password doesn't match",
   "user-mismatch":
       "The credential given does not correspond to the current user",
   "expired-action-code": "The code has expired",
@@ -343,4 +344,11 @@ Map<String, String> enUS = {
           '\nIf, for any reason, the terms set out in these terms of use of personal data are not acceptable to you, you have the opportunity to communicate this to us and possibly request details or explicitly, the deletion of your data, by sending the message to the address mentioned in the preamble (radautiulcivic@gmail.com).'
           '\nInformation will not be shared publicly and will not be published except as specified in the "privacy terms".',
   "error": "Error",
+  "update-password": "Change password",
+  "new-password": "New password",
+  "current-password": "Current password",
+  "re-type-password": "Re-type new password",
+  "new-password-match": "The password doesn't match",
+  "create-new-account": "Create a new account",
+  "password": "Password",
 };

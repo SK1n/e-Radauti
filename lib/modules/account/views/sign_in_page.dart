@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutterapperadauti/modules/login/controllers/sign_in_controller.dart';
-import 'package:flutterapperadauti/modules/login/views/widgets/sign_up_text_widget.dart';
+import 'package:flutterapperadauti/modules/account/controllers/sign_in_controller.dart';
+import 'package:flutterapperadauti/modules/account/widgets/sign_up_text_widget.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/error_texts.dart';
 import 'package:fluttericon/font_awesome_icons.dart';

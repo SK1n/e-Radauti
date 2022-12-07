@@ -1,4 +1,4 @@
-import 'package:flutterapperadauti/modules/login/controllers/sign_in_controller.dart';
+import 'package:flutterapperadauti/modules/account/controllers/sign_in_controller.dart';
 import 'package:get/get.dart';
 
 class SignInBinding implements Bindings {
