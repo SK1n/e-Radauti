@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/bindings/app_bindings.dart';
@@ -19,7 +20,7 @@ Future<void> main() async {
   bool isFirstRun = await IsFirstRun.isFirstRun();
   final DarkModeSwitchController darkModeSwitchController =
       Get.put(DarkModeSwitchController());
-  final AccountController accountController = Get.put(AccountController());
+  final User? isSignedIn = FirebaseAuth.instance.currentUser;
   darkModeSwitchController.getThemeStatus();
   runApp(
     GetMaterialApp(
@@ -29,7 +30,7 @@ Future<void> main() async {
       getPages: AppPages.routes,
       initialRoute: isFirstRun
           ? Routes.onboard
-          : accountController.isSignedIn()
+          : isSignedIn != null
               ? Routes.home
               : Routes.signIn,
       initialBinding: AppBindings(),

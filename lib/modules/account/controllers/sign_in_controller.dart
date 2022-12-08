@@ -73,6 +73,7 @@ class SignInController extends GetxController {
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
+
     EasyLoading.show();
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential).then(

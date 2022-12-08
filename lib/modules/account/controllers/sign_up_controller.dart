@@ -6,8 +6,8 @@ import 'package:flutterapperadauti/utils/helpers/upload_to_firebase.dart';
 import 'package:get/get.dart';
 
 class SignUpController extends GetxController with UploadDataFirebase {
-  Future createAccount(
-      String emailAddress, String password, String phoneNumber) async {
+  Future createAccount(String emailAddress, String password, String phoneNumber,
+      String name) async {
     EasyLoading.show();
     try {
       await FirebaseAuth.instance
@@ -15,16 +15,15 @@ class SignUpController extends GetxController with UploadDataFirebase {
         email: emailAddress,
         password: password,
       )
-          .then((value) {
+          .then((value) async {
         EasyLoading.dismiss();
-        if (phoneNumber.isNotEmpty) {
-          value.user!.updatePassword(phoneNumber);
-        }
-        uploadData(
+        await uploadData(
           uid: value.user!.uid,
           data: {
             "phone_number": phoneNumber,
             "email": emailAddress,
+            "verified_email": false,
+            "name": name,
           },
         );
         Get.defaultDialog(

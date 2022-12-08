@@ -78,7 +78,24 @@ class SignUpPage extends StatelessWidget {
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.match(
                                   r'^(\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\s|\.|\-)?([0-9]{3}(\s|\.|\-|)){2}$',
-                                  errorText: 'wrong-phone-format'.tr),
+                                  errorText: 'wrong-number-format'.tr),
+                              FormBuilderValidators.required(
+                                  errorText: 'required-field'.tr),
+                            ]),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: FormBuilderTextField(
+                            name: 'name',
+                            decoration: InputDecoration(
+                                hintText: "${'name-surname'.tr} *",
+                                prefixIcon: const Icon(Icons.person_4)),
+                            initialValue: '',
+                            obscureText: true,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(
                                   errorText: 'required-field'.tr),
                             ]),
@@ -113,7 +130,8 @@ class SignUpPage extends StatelessWidget {
                                 signUpController.createAccount(
                                     form.fields['email']!.value,
                                     form.fields['password']!.value,
-                                    form.fields['phone_number']?.value ?? "");
+                                    form.fields['phone_number']?.value ?? "",
+                                    form.fields['name']?.value ?? "");
                               }
                             },
                             icon: const Icon(Icons.add),

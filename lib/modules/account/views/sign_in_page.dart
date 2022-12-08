@@ -4,6 +4,7 @@ import 'package:flutterapperadauti/modules/account/controllers/sign_in_controlle
 import 'package:flutterapperadauti/modules/account/widgets/sign_up_text_widget.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/error_texts.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
@@ -23,12 +24,28 @@ class SignInPage extends StatelessWidget {
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [
+                  Navigator.canPop(context)
+                      ? Padding(
+                          padding: const EdgeInsets.only(top: 20.0),
+                          child: Stack(
+                            alignment: AlignmentDirectional.centerStart,
+                            children: [
+                              InkWell(
+                                onTap: () => Get.back(),
+                                child: const Icon(
+                                  Icons.arrow_back,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : Container(),
                   FormBuilder(
                     key: formKey,
                     child: Column(
                       children: [
                         SizedBox(
-                          height: Get.height / 10,
+                          height: Get.height / 15,
                         ),
                         Text(
                           'AUTENTIFICARE',
@@ -99,16 +116,16 @@ class SignInPage extends StatelessWidget {
                         const SizedBox(
                           height: 10,
                         ),
-                        FilledButton.icon(
-                          style: TextButton.styleFrom(
-                            minimumSize: Size(Get.width, 50),
-                          ),
-                          onPressed: () async {
-                            await signInController.signInWithGoogle();
-                          },
-                          icon: const Icon(FontAwesome.google),
-                          label: const Text('Google'),
-                        ),
+                        // FilledButton.icon(
+                        //   style: TextButton.styleFrom(
+                        //     minimumSize: Size(Get.width, 50),
+                        //   ),
+                        //   onPressed: () async {
+                        //     await signInController.signInWithGoogle();
+                        //   },
+                        //   icon: const Icon(FontAwesome.google),
+                        //   label: const Text('Google'),
+                        // ),
                         const SizedBox(
                           height: 10,
                         ),

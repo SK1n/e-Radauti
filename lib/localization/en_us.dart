@@ -274,7 +274,7 @@ Map<String, String> enUS = {
   "contact-us": "Contact us",
   "about-app": "About this app",
   "no-results-found": "No results found",
-  "please-retry": "Please try again later",
+  "please-retry": "Please try again",
   "about-us-app-description": 'The e-Rădăuți application is a voluntary project born in 2017 from the desire to bring the city closer to the digital age, to facilitate the involvement of local residents in local actions.'
       '\nThe application was born as a result of a first competition in the city entitled Let\'s digitize the city in which eighteen students from two high schools in Rădăuți participated.'
       '\nThe applications developed during the contest were evaluated by an international jury of IT and Design professionals and the financial resources for the awards came from donations from the members of the Rădăuțiul Civic, the jury and the local firm Hard Power Services.'
@@ -344,6 +344,7 @@ Map<String, String> enUS = {
           '\nIf, for any reason, the terms set out in these terms of use of personal data are not acceptable to you, you have the opportunity to communicate this to us and possibly request details or explicitly, the deletion of your data, by sending the message to the address mentioned in the preamble (radautiulcivic@gmail.com).'
           '\nInformation will not be shared publicly and will not be published except as specified in the "privacy terms".',
   "error": "Error",
+
   "update-password": "Change password",
   "new-password": "New password",
   "current-password": "Current password",
@@ -351,4 +352,12 @@ Map<String, String> enUS = {
   "new-password-match": "The password doesn't match",
   "create-new-account": "Create a new account",
   "password": "Password",
+  "success": "Success",
+  "success-name-update": "You have successfully setted the name to: @name",
+  "display-name": "Display name",
+  "update-name": "Update name",
+  "display-phone-number": "Phone number",
+  "update-phone-number": "Update phone number",
+  "success-phone-update":
+      "You have successfully setted the phone number to: @phone",
 };
