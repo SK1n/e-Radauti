@@ -22,37 +22,26 @@ class AccountController extends GetxController
     try {
       EasyLoading.show();
       await _firebaseAuth.currentUser!.updateDisplayName(displayName);
-
       await updateUserData(name: displayName);
       userData.value = await getUserData();
       EasyLoading.dismiss();
       Get.defaultDialog(
+        barrierDismissible: false,
         title: 'success'.tr,
+        onConfirm: () => Get.back(),
         content: Text(
           'success-name-update'.trParams(
             {"name": displayName},
           ),
         ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Get.back();
-            },
-            child: const Text('OK'),
-          ),
-        ],
       );
     } catch (e) {
       EasyLoading.dismiss();
       Get.defaultDialog(
+        barrierDismissible: false,
         title: 'error'.tr,
         content: Text('please-retry'.tr),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(),
-            child: const Text('OK'),
-          ),
-        ],
+        onConfirm: () => Get.back(),
       );
     }
   }
@@ -65,32 +54,22 @@ class AccountController extends GetxController
       userData.value = await getUserData();
       EasyLoading.dismiss();
       Get.defaultDialog(
+        barrierDismissible: false,
         title: 'success'.tr,
         content: Text(
           'success-phone-update'.trParams(
             {"phone": phoneNumber},
           ),
         ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Get.back();
-            },
-            child: const Text('OK'),
-          ),
-        ],
+        onConfirm: () => Get.back(),
       );
     } catch (e) {
       EasyLoading.dismiss();
       Get.defaultDialog(
+        barrierDismissible: false,
         title: 'error'.tr,
         content: Text('please-retry'.tr),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(),
-            child: const Text('OK'),
-          ),
-        ],
+        onConfirm: () => Get.back(),
       );
     }
   }
@@ -109,12 +88,17 @@ class AccountController extends GetxController
 
   getPassword() => _sharedPreferences.getString("password");
   getPhoneNumber() => _firebaseAuth.currentUser!.phoneNumber;
-  Future<UserModel> getUserData() async {
-    return await getData(
-      convert: UserModel.fromJson,
-      collection: "users",
-      document: _firebaseAuth.currentUser!.uid,
-    );
+
+  getUserData() async {
+    try {
+      return await getData(
+        convert: UserModel.fromJson,
+        collection: "users",
+        document: _firebaseAuth.currentUser!.uid,
+      );
+    } catch (e) {
+      rethrow;
+    }
   }
 
   getDisplayName() => _firebaseAuth.currentUser!.displayName;
@@ -128,7 +112,12 @@ class AccountController extends GetxController
           .updatePassword(newPassword)
           .then((value) => Get.back());
     } on FirebaseAuthException catch (exception) {
-      Get.defaultDialog(title: exception.code.tr);
+      Get.defaultDialog(
+        barrierDismissible: false,
+        title: exception.code.tr,
+        onConfirm: () => Get.back(),
+        middleText: '',
+      );
     }
   }
 
@@ -143,13 +132,23 @@ class AccountController extends GetxController
 
   @override
   void onReady() async {
-    if (!isAnnonymous()) {
-      _sharedPreferences = await SharedPreferences.getInstance();
-      userData.value = await getUserData();
-    } else {
-      Get.offAndToNamed(Routes.signIn);
+    if (Get.currentRoute != Routes.noticeProblem) {
+      if (!isAnnonymous()) {
+        _sharedPreferences = await SharedPreferences.getInstance();
+        try {
+          userData.value = await getUserData();
+        } catch (e) {
+          Get.defaultDialog(
+            barrierDismissible: false,
+            title: 'no-data-account'.tr,
+            middleText: '',
+            onConfirm: () => Get.back(),
+          );
+        }
+      } else {
+        Get.offAndToNamed(Routes.signIn);
+      }
     }
-
     super.onReady();
   }
 }

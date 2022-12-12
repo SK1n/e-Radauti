@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
@@ -16,7 +16,7 @@ class VolunteerPage extends StatelessWidget {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          AppBarUi(
+          AppBarWidget(
             content: 'volunteering'.tr,
             leading: FontAwesome5.hand_holding_heart,
           ),

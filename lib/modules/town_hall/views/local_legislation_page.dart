@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/town_hall/controllers/local_legislation_controller.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/local_legislation_item.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
@@ -20,7 +20,7 @@ class LocalLegislationPage extends StatelessWidget with UrlLauncher {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          AppBarUi(
+          AppBarWidget(
             content: 'local-council-decisions'.tr,
             leading: Icons.location_city,
           ),

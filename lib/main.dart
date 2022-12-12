@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/bindings/app_bindings.dart';
-import 'package:flutterapperadauti/controllers/account_controller.dart';
 import 'package:flutterapperadauti/controllers/dark_mode_switch_controller.dart';
 import 'package:flutterapperadauti/localization/languages.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';

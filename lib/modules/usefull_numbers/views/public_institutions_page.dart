@@ -4,7 +4,7 @@ import 'package:flutterapperadauti/data/models/public_institutions/public_instit
 import 'package:flutterapperadauti/modules/usefull_numbers/views/usefull_numbers_widget.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +17,7 @@ class PublicInstitutionsPage extends StatelessWidget with GetDataFirebase {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          AppBarUi(
+          AppBarWidget(
             content: 'local-institutions'.tr,
             leading: Icons.perm_phone_msg,
           ),

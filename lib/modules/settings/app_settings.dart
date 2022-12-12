@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/dark_mode_switch.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/not_switch.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 
@@ -30,7 +30,7 @@ class _AppSettingsState extends State<AppSettings> {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
+          const AppBarWidget(
             leading: Icons.settings,
             content: 'Setari',
           ),

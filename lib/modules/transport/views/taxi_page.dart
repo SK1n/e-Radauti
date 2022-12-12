@@ -4,7 +4,7 @@ import 'package:flutterapperadauti/data/models/taxi/taxi_model.dart';
 import 'package:flutterapperadauti/modules/transport/views/taxi_item.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
@@ -18,7 +18,7 @@ class TaxiPage extends StatelessWidget with GetImageUrl, GetDataFirebase {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          AppBarUi(
+          AppBarWidget(
             content: 'cabbies'.tr,
             leading: Icons.local_taxi,
           ),

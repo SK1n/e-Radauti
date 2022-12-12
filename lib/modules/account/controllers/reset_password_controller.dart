@@ -14,6 +14,7 @@ class ResetPasswordController extends GetxController {
           .then((value) {
         EasyLoading.dismiss();
         Get.defaultDialog(
+          barrierDismissible: false,
           title: 'Succes',
           middleText: 'A fost trimis un email de resetare a parolei pe $email',
           actions: [
@@ -28,14 +29,10 @@ class ResetPasswordController extends GetxController {
       if (e.code == "user-not-found") {
         EasyLoading.dismiss();
         Get.defaultDialog(
+          barrierDismissible: false,
           title: 'Oops',
           middleText: 'Nu exista un user cu acest email!',
-          actions: [
-            TextButton(
-              onPressed: () => Get.back(),
-              child: const Text('Ok'),
-            ),
-          ],
+          onConfirm: () => Get.back(),
         );
         debugPrint('No user found for that email.');
       }

@@ -119,12 +119,12 @@ class CloudMessagingService {
 
   Future<void> _handleMessageInteraction() async {
     _logger.d('Handling message interactions');
-    //await handleBackgroundMessageInteraction();
+    await _handleBackgroundMessageInteraction();
     _handleForegroundMessageInteraction();
     _handleLocalNotificationInteraction();
   }
 
-  Future<void> handleBackgroundMessageInteraction() async {
+  Future<void> _handleBackgroundMessageInteraction() async {
     // Get any messages which caused the application to open from
     // a terminated state.
     final initialMessage = await _firebaseMessaging.getInitialMessage();

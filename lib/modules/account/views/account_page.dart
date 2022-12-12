@@ -3,7 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/controllers/account_controller.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
@@ -21,7 +21,7 @@ class AccountPage extends StatelessWidget {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          AppBarUi(
+          AppBarWidget(
             content: 'my-account'.tr,
             leading: Icons.person_4,
           ),
@@ -146,7 +146,13 @@ class AccountPage extends StatelessWidget {
                           style: TextButton.styleFrom(
                             minimumSize: Size(Get.width, 40),
                           ),
-                          onPressed: () => controller.signOut(),
+                          onPressed: () => Get.defaultDialog(
+                            title: "Do you really want to sign out?",
+                            middleText: '',
+                            onConfirm: () => controller.signOut(),
+                            textConfirm: 'yes'.tr,
+                            textCancel: 'no'.tr,
+                          ),
                           icon: const Icon(Icons.logout),
                           label: Text('sign-out'.tr),
                         ),

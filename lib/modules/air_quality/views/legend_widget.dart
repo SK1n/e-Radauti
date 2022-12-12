@@ -76,7 +76,7 @@ class LegendWidget extends StatelessWidget with UrlLauncher {
                                 linkStyle:
                                     const TextStyle(color: Colors.pinkAccent),
                                 onTap: (link) async {
-                                  launchUrl(link);
+                                  await launchUrl(link);
                                 },
                               ),
                         ),

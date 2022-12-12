@@ -27,27 +27,19 @@ class SignUpController extends GetxController with UploadDataFirebase {
           },
         );
         Get.defaultDialog(
+          barrierDismissible: false,
           title: 'Succes',
           middleText: 'User-ul ${value.user!.email} a fost creat',
-          actions: [
-            TextButton(
-              onPressed: () => Get.back(),
-              child: const Text('ok'),
-            ),
-          ],
+          onConfirm: () => Get.back(closeOverlays: true),
         );
       });
     } on FirebaseAuthException catch (e) {
       EasyLoading.dismiss();
       Get.defaultDialog(
+        barrierDismissible: false,
         title: e.code.tr,
         middleText: '',
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(),
-            child: const Text('Ok'),
-          ),
-        ],
+        onConfirm: () => Get.back(),
       );
     } catch (e) {
       debugPrint(e.toString());

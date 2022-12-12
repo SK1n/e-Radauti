@@ -93,7 +93,7 @@ class TaxiItem extends StatelessWidget with GetImageUrl, UrlLauncher {
                 ],
               ),
               InkWell(
-                onTap: () => launchUrl('tel://$phone'),
+                onTap: () async => await launchUrl('tel://$phone'),
                 child: Row(
                   children: [
                     const Padding(

@@ -67,9 +67,8 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                 ? SizedBox(
                     height: 20,
                     child: InkWell(
-                      onTap: () {
-                        //  launchUrl('tel:$phoneNumber');
-                        launchUrl('tel:$phoneNumber');
+                      onTap: () async {
+                        await launchUrl('tel:$phoneNumber');
                       },
                       child: Text(
                         '${"tel".tr}: $phoneNumber',
@@ -83,8 +82,8 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
             left: 110,
             top: phoneNumber != null ? 80 : 60,
             child: InkWell(
-              onTap: () {
-                launchUrl('mailto:$email');
+              onTap: () async {
+                await launchUrl('mailto:$email');
               },
               child: SizedBox(
                 width: Get.width - 110,
@@ -110,85 +109,3 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
     );
   }
 }
-// Card(
-//       elevation: 5,
-//       child: Row(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           Padding(
-//             padding: const EdgeInsets.all(8.0),
-//             child: Futuristic(
-//                 futureBuilder: () => getImageUrl(url!),
-//                 useQuery: false,
-//                 dataBuilder: (_, snap) => ImageWidget(
-//                       link: snap.data,
-//                       width: 100,
-//                       height: 100,
-//                     )),
-//           ),
-//           Padding(
-//             padding: const EdgeInsets.only(top: 20.0),
-//             child: Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 Text(
-//                   '$name',
-//                   style: TextStyle(
-//                     fontSize: 20,
-//                     fontWeight: FontWeight.bold,
-//                     color: Colors.blueGrey,
-//                   ),
-//                 ),
-//                 Text(
-//                   '$function',
-//                   style: TextStyle(fontWeight: FontWeight.bold),
-//                 ),
-//                 phoneNumber != null
-//                     ? InkWell(
-//                         onTap: () {
-//                           launchUrl('tel:$phoneNumber');
-//                         },
-//                         child: Row(
-//                           children: [
-//                             Icon(
-//                               Entypo.phone,
-//                               color: Colors.blueAccent,
-//                             ),
-//                             Padding(
-//                               padding: EdgeInsets.only(left: 8.0),
-//                               child: Text(
-//                                 '$phoneNumber',
-//                                 style: TextStyle(color: Colors.blueAccent),
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                       )
-//                     : Container(),
-//                 InkWell(
-//                   onTap: () {
-//                     launchUrl('mailto:$email');
-//                   },
-//                   child: Row(
-//                     children: [
-//                       Icon(
-//                         Entypo.mail,
-//                         color: Colors.blueAccent,
-//                       ),
-//                       Padding(
-//                         padding: EdgeInsets.only(left: 10.0),
-//                         child: Text(
-//                           '$email',
-//                           style: TextStyle(color: Colors.blueAccent),
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ),
-
-//         ],
-//       ),
-//     );

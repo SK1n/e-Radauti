@@ -1,6 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/is_first_run.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 
@@ -13,7 +13,7 @@ class DebugSettings extends StatelessWidget {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
+          const AppBarWidget(
             content: 'Debug',
             leading: Icons.bug_report_outlined,
           ),

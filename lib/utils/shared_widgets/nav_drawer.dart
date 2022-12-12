@@ -56,6 +56,7 @@ class NavDrawer extends StatelessWidget {
       title: Text(title),
       onTap: onTap ??
           () {
+            Get.back();
             Get.toNamed(route);
           },
     );

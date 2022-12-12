@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/linkable_text.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +13,7 @@ class Confidential extends StatelessWidget {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          AppBarUi(
+          AppBarWidget(
             content: 'privacy'.tr,
             leading: Icons.add_box_outlined,
           ),

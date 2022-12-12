@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
 import 'package:flutterapperadauti/data/models/events/new_events_model.dart';
@@ -14,7 +15,9 @@ class NewEventsPage extends StatelessWidget {
 
     return Futuristic(
       futureBuilder: () => controller.getData(
-          convert: NewEventsModel.fromJson, document: 'Events'),
+          collection: kDebugMode ? 'test' : 'collection',
+          convert: NewEventsModel.fromJson,
+          document: 'Events'),
       dataBuilder: (BuildContext context, AsyncSnapshot snapshot) {
         NewEventsModel data = snapshot.data;
         List<EventsListModel>? list = data.events

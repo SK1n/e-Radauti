@@ -3,7 +3,7 @@ import 'package:flutterapperadauti/data/models/local_announcements/local_announc
 import 'package:flutterapperadauti/data/models/local_announcements/local_announcements_model.dart';
 import 'package:flutterapperadauti/modules/announcements/views/local_announcements_item_card.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 
@@ -15,7 +15,7 @@ class LocalAnnouncementsPage extends StatelessWidget with GetDataFirebase {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
+          const AppBarWidget(
             content: 'Anunțuri locale',
             leading: Icons.announcement,
           ),

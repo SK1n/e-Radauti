@@ -71,7 +71,6 @@ class SignUpPage extends StatelessWidget {
                             decoration: InputDecoration(
                                 hintText: "${'phone-number'.tr} *",
                                 prefixIcon: const Icon(Icons.phone)),
-                            initialValue: email,
                             keyboardType: TextInputType.number,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
@@ -92,7 +91,6 @@ class SignUpPage extends StatelessWidget {
                                 hintText: "${'name-surname'.tr} *",
                                 prefixIcon: const Icon(Icons.person_4)),
                             initialValue: '',
-                            obscureText: true,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             validator: FormBuilderValidators.compose([

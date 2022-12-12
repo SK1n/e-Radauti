@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 // ignore: depend_on_referenced_packages
@@ -144,8 +144,8 @@ class BusList extends StatelessWidget with UrlLauncher {
               FilledButton(
                 onPressed: child['telefon'] == null
                     ? null
-                    : () {
-                        launchUrl('tel://${child['telefon']}');
+                    : () async {
+                        await launchUrl('tel://${child['telefon']}');
                       },
                 child: Row(
                   children: <Widget>[
@@ -295,7 +295,7 @@ class BusList extends StatelessWidget with UrlLauncher {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
+          const AppBarWidget(
             leading: Icons.directions_bus,
             content: 'Autobuz',
           ),

@@ -3,7 +3,7 @@ import 'package:flutterapperadauti/data/models/train/train_item_model.dart';
 import 'package:flutterapperadauti/data/models/train/train_model.dart';
 import 'package:flutterapperadauti/modules/transport/views/train_list_tile.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
@@ -16,7 +16,7 @@ class TrainPage extends StatelessWidget with GetDataFirebase {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          AppBarUi(
+          AppBarWidget(
             content: 'trains'.tr,
             leading: Icons.train,
           ),

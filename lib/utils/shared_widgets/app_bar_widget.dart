@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-class AppBarUi extends StatelessWidget {
+class AppBarWidget extends StatelessWidget {
   final IconData? leading;
   final String content;
   final bool pinned;
@@ -9,7 +9,7 @@ class AppBarUi extends StatelessWidget {
   final PreferredSizeWidget? bottom;
   final Widget? flexibleSpace;
   final double? expandedHeight;
-  const AppBarUi({
+  const AppBarWidget({
     super.key,
     required this.content,
     this.leading,

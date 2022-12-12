@@ -344,20 +344,28 @@ Map<String, String> enUS = {
           '\nIf, for any reason, the terms set out in these terms of use of personal data are not acceptable to you, you have the opportunity to communicate this to us and possibly request details or explicitly, the deletion of your data, by sending the message to the address mentioned in the preamble (radautiulcivic@gmail.com).'
           '\nInformation will not be shared publicly and will not be published except as specified in the "privacy terms".',
   "error": "Error",
-
   "update-password": "Change password",
   "new-password": "New password",
   "current-password": "Current password",
   "re-type-password": "Re-type new password",
+  //not translated
   "new-password-match": "The password doesn't match",
   "create-new-account": "Create a new account",
   "password": "Password",
   "success": "Success",
   "success-name-update": "You have successfully setted the name to: @name",
-  "display-name": "Display name",
+  "display-name": "Enter new name",
   "update-name": "Update name",
-  "display-phone-number": "Phone number",
+  "display-phone-number": "Enter new phone number",
   "update-phone-number": "Update phone number",
   "success-phone-update":
       "You have successfully setted the phone number to: @phone",
+  "no-data-account": 'No name or phone number found for this account'
+      '\nPlease update them using the field below',
+  "couldnt-open-link": "We couldn't open this link please try again",
+  "redirected-eradauti": "You will be redirected to www.eradauti.ro",
+  "cancel": "Cancel",
+  "yes": "Yes",
+  "no": "No",
+  "proceed": "Do you want to proceed?",
 };

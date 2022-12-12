@@ -32,14 +32,13 @@ class NotificationsSwitchController extends GetxController {
       return await _messaging.subscribeToTopic('all').then(
         (value) async {
           Get.defaultDialog(
+            barrierDismissible: false,
             title: 'Success!',
             content: const Text(
               'Din acest moment veti primi notificari!\nAceasta setare poate fi schimbata din setari!',
               textAlign: TextAlign.center,
             ),
-            actions: [
-              TextButton(onPressed: () => Get.back(), child: const Text('OK'))
-            ],
+            onConfirm: () => Get.back(),
           );
           EasyLoading.dismiss();
           await _saveToSharedPreferences(true);
@@ -54,16 +53,12 @@ class NotificationsSwitchController extends GetxController {
       await _saveToSharedPreferences(false);
       EasyLoading.dismiss();
       return Get.defaultDialog(
+        barrierDismissible: false,
         title: 'A intervenit o eroare!',
         content: Text(
           '$exception \nVa rugam sa incercati din nou',
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(),
-            child: const Text('OK'),
-          ),
-        ],
+        onConfirm: () => Get.back(),
       );
     }
   }
@@ -75,14 +70,13 @@ class NotificationsSwitchController extends GetxController {
       return await _messaging.unsubscribeFromTopic('all').then(
         (value) {
           Get.defaultDialog(
+            barrierDismissible: false,
             title: 'Success!',
             content: const Text(
               'Din acest moment nu veti mai primi notificari!\nAceasta setare poate fi schimbata din setari!',
               textAlign: TextAlign.center,
             ),
-            actions: [
-              TextButton(onPressed: () => Get.back(), child: const Text('OK'))
-            ],
+            onConfirm: () => Get.back(),
           );
           EasyLoading.dismiss();
         },
@@ -96,16 +90,12 @@ class NotificationsSwitchController extends GetxController {
       _saveToSharedPreferences(false);
       EasyLoading.dismiss();
       return Get.defaultDialog(
+        barrierDismissible: false,
         title: 'A intervenit o eroare!',
         content: Text(
           'Aceasta este eroarea: $exception',
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(),
-            child: const Text('OK'),
-          ),
-        ],
+        onConfirm: () => Get.back(),
       );
     }
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/views/report_problem_map.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/views/report_problem_form.dart';
 
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +15,7 @@ class ReportProblemPage extends StatelessWidget {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          AppBarUi(
+          AppBarWidget(
             leading: Icons.camera,
             content: 'report-problem'.tr,
           ),

@@ -204,14 +204,14 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
 
   showTappedValue(dynamic value, String measurement, DateTime time) {
     Get.defaultDialog(
+      barrierDismissible: false,
       title: 'selected-value'.tr,
       content: Text(
         '${"selected-value-is".tr}: $value $measurement \n${"value-date".tr}: $time',
         maxLines: 2,
       ),
-      actions: [
-        TextButton(onPressed: () => Get.back(), child: Text('close'.tr))
-      ],
+      onConfirm: () => Get.back(),
+      textConfirm: 'close'.tr,
     );
   }
 }

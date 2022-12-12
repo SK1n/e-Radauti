@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -13,7 +13,7 @@ class TimelineRoute extends StatelessWidget {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          AppBarUi(
+          AppBarWidget(
             content: '${arguments[0]}',
             leading: Icons.train,
           ),

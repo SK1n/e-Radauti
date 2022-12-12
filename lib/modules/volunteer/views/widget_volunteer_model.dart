@@ -54,7 +54,7 @@ class WidgetVolunteerModel extends UrlLauncher {
             InkWell(
               child: cardRow(childrenRow6_1, 0.0, 15.0, FontWeight.normal,
                   const Color(0xFF38A49C), TextDecoration.underline),
-              onTap: () => launchUrl(childRow6_2),
+              onTap: () async => await launchUrl(childRow6_2),
             ),
           ],
         ),

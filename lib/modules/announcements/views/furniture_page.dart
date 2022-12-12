@@ -5,7 +5,7 @@ import 'package:flutterapperadauti/modules/announcements/controllers/get_e_radau
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +21,7 @@ class FurniturePage extends StatelessWidget with UrlLauncher {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarUi(
+          const AppBarWidget(
             content: 'Anunțuri',
             leading: Icons.announcement,
           ),
@@ -47,24 +47,32 @@ class FurniturePage extends StatelessWidget with UrlLauncher {
                             data?.title ?? '',
                             textAlign: TextAlign.center,
                           ),
-                          onPressed: () => {
-                            browser.open(
-                              url: Uri.parse(
-                                  'https://www.eradauti.ro/anunturi/imobiliare-19/${data?.slug ?? ''}-${data?.id ?? ''}'),
-                              options: ChromeSafariBrowserClassOptions(
-                                android: AndroidChromeCustomTabsOptions(
-                                    shareState:
-                                        CustomTabsShareState.SHARE_STATE_OFF,
-                                    keepAliveEnabled: true),
-                                ios: IOSSafariOptions(
-                                  dismissButtonStyle:
-                                      IOSSafariDismissButtonStyle.CLOSE,
-                                  presentationStyle: IOSUIModalPresentationStyle
-                                      .OVER_FULL_SCREEN,
+                          onPressed: () => Get.defaultDialog(
+                            title: 'redirected-eradauti'.tr,
+                            middleText: 'proceed'.tr,
+                            textCancel: 'cancel'.tr,
+                            textConfirm: 'yes'.tr,
+                            onConfirm: () {
+                              Get.back();
+                              browser.open(
+                                url: Uri.parse(
+                                    'https://www.eradauti.ro/anunturi/imobiliare-19/${data?.slug ?? ''}-${data?.id ?? ''}'),
+                                options: ChromeSafariBrowserClassOptions(
+                                  android: AndroidChromeCustomTabsOptions(
+                                      shareState:
+                                          CustomTabsShareState.SHARE_STATE_OFF,
+                                      keepAliveEnabled: true),
+                                  ios: IOSSafariOptions(
+                                    dismissButtonStyle:
+                                        IOSSafariDismissButtonStyle.CLOSE,
+                                    presentationStyle:
+                                        IOSUIModalPresentationStyle
+                                            .OVER_FULL_SCREEN,
+                                  ),
                                 ),
-                              ),
-                            ),
-                          },
+                              );
+                            },
+                          ),
                         ),
                       );
                     },
@@ -80,20 +88,15 @@ class FurniturePage extends StatelessWidget with UrlLauncher {
         child: const Icon(Icons.add_rounded),
         onPressed: () {
           Get.defaultDialog(
+            barrierDismissible: false,
             title: 'Doriti sa deschideti pagina web?',
             content: const Text(''),
-            actions: [
-              TextButton(
-                onPressed: () => Get.back(),
-                child: const Text('Nu'),
-              ),
-              TextButton(
-                  onPressed: () async {
-                    Get.back();
-                    launchUrl('https://www.eradauti.ro/publica-anunt-gratuit');
-                  },
-                  child: const Text('Da')),
-            ],
+            onConfirm: () async {
+              Get.back();
+              await launchUrl('https://www.eradauti.ro/publica-anunt-gratuit');
+            },
+            textCancel: 'no'.tr,
+            textConfirm: 'yes'.tr,
           );
         },
       ),

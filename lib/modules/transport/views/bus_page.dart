@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/transport/views/bus_list.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 // ignore: depend_on_referenced_packages
@@ -29,7 +29,7 @@ class BusPage extends StatelessWidget {
       endDrawer: NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          AppBarUi(
+          AppBarWidget(
             leading: Icons.directions_bus,
             content: 'Autobuzuri',
           ),

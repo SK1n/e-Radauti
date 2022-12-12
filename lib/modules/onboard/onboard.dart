@@ -22,7 +22,7 @@ class Onboard extends StatelessWidget {
       doneText: const Text('Închide'),
       pageButtonTextStyles: TextStyle(color: Get.theme.primaryColor),
       onTapDoneButton: () {
-        Get.offAndToNamed(Routes.home);
+        Get.offAllNamed(Routes.signIn);
       },
     );
   }

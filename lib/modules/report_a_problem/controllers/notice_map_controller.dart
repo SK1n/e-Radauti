@@ -29,17 +29,12 @@ class NoticeProblemMapController extends GetxController
           return InkWell(
             onTap: () {
               Get.defaultDialog(
-                  title: '${element.subject}',
-                  content: Text('${element.description}'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Get.back(),
-                      child: Text(
-                        'close'.tr,
-                        textAlign: TextAlign.center,
-                      ),
-                    )
-                  ]);
+                barrierDismissible: false,
+                title: '${element.subject}',
+                content: Text('${element.description}'),
+                onConfirm: () => Get.back(),
+                textConfirm: 'close'.tr,
+              );
             },
             child: SizedBox(
                 width: 40,

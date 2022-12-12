@@ -1,10 +1,10 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:get/get.dart';
 import 'package:selectable_autolink_text/selectable_autolink_text.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
-class OldEventsExpandedWidget extends StatelessWidget {
+class OldEventsExpandedWidget extends StatelessWidget with UrlLauncher {
   final String? imageUrl;
   final String? headline;
   final String? host;
@@ -93,9 +93,7 @@ class OldEventsExpandedWidget extends StatelessWidget {
                 onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
                 linkStyle: const TextStyle(color: Colors.pinkAccent),
                 onTap: (link) async {
-                  if (await canLaunchUrlString(link)) {
-                    launchUrlString(link);
-                  }
+                  await launchUrl(link);
                 },
               ),
             )

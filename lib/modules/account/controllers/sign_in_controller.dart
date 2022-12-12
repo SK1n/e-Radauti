@@ -19,41 +19,29 @@ class SignInController extends GetxController {
         sharedPreferences.setString("email", emailAddress);
         sharedPreferences.setString("password", password);
         Get.defaultDialog(
+          barrierDismissible: false,
           title: 'Succes',
           middleText: 'Ati fost autentificat cu success',
-          actions: [
-            TextButton(
-              onPressed: () => Get.offAndToNamed(Routes.home),
-              child: const Text('ok'),
-            ),
-          ],
+          onConfirm: () => Get.offAllNamed(Routes.home),
         );
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         EasyLoading.dismiss();
         Get.defaultDialog(
+          barrierDismissible: false,
           title: 'Oops',
           middleText: 'Nu exista un user cu acest email!',
-          actions: [
-            TextButton(
-              onPressed: () => Get.back(),
-              child: const Text('Ok'),
-            ),
-          ],
+          onConfirm: () => Get.back(),
         );
         debugPrint('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         EasyLoading.dismiss();
         Get.defaultDialog(
+          barrierDismissible: false,
           title: 'Oops',
           middleText: 'Parola introdusa nu este corecta!',
-          actions: [
-            TextButton(
-              onPressed: () => Get.back(),
-              child: const Text('Ok'),
-            ),
-          ],
+          onConfirm: () => Get.back(),
         );
         debugPrint('Wrong password provided for that user.');
       }
@@ -92,19 +80,10 @@ class SignInController extends GetxController {
       await FirebaseAuth.instance.signInAnonymously().then((value) {
         EasyLoading.dismiss();
         Get.defaultDialog(
+          barrierDismissible: false,
           title: 'Succes',
           middleText: 'Ati fost autentificat cu success ca si Guest',
-          barrierDismissible: false,
-          actions: [
-            TextButton(
-              onPressed: () {
-                // Get.offAllNamed(Routes.HOME);
-                Get.back();
-                Get.offAndToNamed(Routes.home);
-              },
-              child: const Text('ok'),
-            ),
-          ],
+          onConfirm: () => Get.offAllNamed(Routes.home),
         );
       });
       debugPrint("Signed in with temporary account.");

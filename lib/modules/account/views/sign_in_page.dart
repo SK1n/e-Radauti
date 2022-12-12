@@ -4,7 +4,7 @@ import 'package:flutterapperadauti/modules/account/controllers/sign_in_controlle
 import 'package:flutterapperadauti/modules/account/widgets/sign_up_text_widget.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/error_texts.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_model.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
@@ -85,21 +85,21 @@ class SignInPage extends StatelessWidget {
                           ),
                         ),
                         FilledButton.icon(
-                            onPressed: () {
-                              formKey.currentState!.save();
-                              if (formKey.currentState!.validate()) {
-                                signInController.signInEmail(
-                                  formKey.currentState!.fields['email']!.value,
-                                  formKey
-                                      .currentState!.fields['password']!.value,
-                                );
-                              }
-                            },
-                            style: TextButton.styleFrom(
-                                minimumSize: Size(Get.width, 50),
-                                backgroundColor: Colors.orange),
-                            icon: const Icon(Icons.login),
-                            label: const Text('Autentificare')),
+                          onPressed: () {
+                            formKey.currentState!.save();
+                            if (formKey.currentState!.validate()) {
+                              signInController.signInEmail(
+                                formKey.currentState!.fields['email']!.value,
+                                formKey.currentState!.fields['password']!.value,
+                              );
+                            }
+                          },
+                          style: TextButton.styleFrom(
+                              minimumSize: Size(Get.width, 50),
+                              backgroundColor: Colors.orange),
+                          icon: const Icon(Icons.login),
+                          label: const Text('Autentificare'),
+                        ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: InkWell(
