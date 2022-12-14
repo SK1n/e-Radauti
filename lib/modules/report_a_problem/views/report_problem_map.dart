@@ -39,7 +39,7 @@ class ReportProblemMap extends StatelessWidget with GetDataFirebase {
               options: MapOptions(
                 interactiveFlags:
                     ~InteractiveFlag.rotate & InteractiveFlag.pinchZoom,
-                zoom: 11.0,
+                zoom: 12.0,
                 plugins: [
                   MarkerClusterPlugin(),
                 ],

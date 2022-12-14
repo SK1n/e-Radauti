@@ -14,7 +14,6 @@ abstract class Routes {
   static const announcements = home + _Paths.announcements;
   static const jobs = announcements + _Paths.jobs;
   static const furniture = announcements + _Paths.furniture;
-  static const localAnnouncements = announcements + _Paths.localAnnouncements;
   static const phoneNumbers = home + _Paths.phoneNumberrs;
   static const publicInstitutions = phoneNumbers + _Paths.publicInstitutions;
   static const localDisturbances = phoneNumbers + _Paths.localDisturbances;
@@ -54,7 +53,6 @@ abstract class _Paths {
   static const debug = '/debug';
   static const notifications = '/notifications';
   static const localDisturbances = '/local_disturbance';
-  static const localAnnouncements = '/local_announcements';
   static const partner = '/partner';
   static const confidential = '/confidential';
   static const phoneNumberrs = '/phone_numbers';

@@ -25,21 +25,20 @@ class AirQualitySatuMareItem extends StatelessWidget with GetDataFirebase {
 
         return Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                '${"radauti-iesire-dornesti".tr}\n${item.fDate}',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
             Card(
-              elevation: 3,
               child: Column(
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      '${"radauti-iesire-dornesti".tr}\n${item.fDate}',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                   Container(
                     color: Color.fromARGB(item.a!, item.r!, item.g!, item.b!),
                     padding: const EdgeInsets.only(top: 10, bottom: 10),
