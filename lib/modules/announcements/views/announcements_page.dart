@@ -24,11 +24,6 @@ class AnnouncementsPage extends StatelessWidget {
               delegate: SliverChildListDelegate(
                 [
                   MenuListTile(
-                    title: 'local-announces'.tr,
-                    subtitle: 'local-announces-info'.tr,
-                    route: Routes.localAnnouncements,
-                  ),
-                  MenuListTile(
                     title: 'jobs'.tr,
                     subtitle: 'jobs-info'.tr,
                     route: Routes.jobs,

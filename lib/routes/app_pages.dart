@@ -1,4 +1,5 @@
 import 'package:flutterapperadauti/bindings/account_bindings.dart';
+import 'package:flutterapperadauti/bindings/navigation_bar_bindings.dart';
 import 'package:flutterapperadauti/modules/account/views/account_page.dart';
 import 'package:flutterapperadauti/modules/account/views/update_password_page.dart';
 import 'package:flutterapperadauti/modules/air_quality/bindings/air_quality_bindings.dart';
@@ -9,7 +10,6 @@ import 'package:flutterapperadauti/modules/air_quality/views/air_quality_page.da
 import 'package:flutterapperadauti/modules/announcements/views/announcements_page.dart';
 import 'package:flutterapperadauti/modules/announcements/views/furniture_page.dart';
 import 'package:flutterapperadauti/modules/announcements/views/job_page.dart';
-import 'package:flutterapperadauti/modules/announcements/views/local_announcements_page.dart';
 import 'package:flutterapperadauti/modules/events/views/events_page.dart';
 import 'package:flutterapperadauti/modules/account/bindings/reset_password_bindings.dart';
 import 'package:flutterapperadauti/modules/account/bindings/sign_in_bindings.dart';
@@ -79,6 +79,10 @@ class AppPages {
         name: Routes.home,
         page: () => const MenuScreen(),
         preventDuplicates: true,
+        bindings: [
+          NavigationBarBinding(),
+          NoticeProblemMapBinding(),
+        ],
         children: [
           GetPage(
               name: _Paths.account,
@@ -168,10 +172,6 @@ class AppPages {
               name: _Paths.announcements,
               page: () => const AnnouncementsPage(),
               children: [
-                GetPage(
-                  name: _Paths.localAnnouncements,
-                  page: () => const LocalAnnouncementsPage(),
-                ),
                 GetPage(
                   name: _Paths.jobs,
                   page: () => const JobPage(),
