@@ -45,7 +45,6 @@ dependencies:
   json_serializable: ^6.5.2
   location: any
   logger: ^1.1.0
-  mason_cli: ^0.1.0-dev.39
   octo_image: ^1.0.2
   searchbar_animation: ^0.0.4
   selectable_autolink_text: ^2.3.0
