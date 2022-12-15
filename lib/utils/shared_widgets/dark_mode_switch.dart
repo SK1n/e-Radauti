@@ -10,6 +10,7 @@ class DarkModeSwitch extends StatelessWidget {
     final DarkModeSwitchController darkModeSwitchController =
         Get.put(DarkModeSwitchController());
     return Card(
+      elevation: 10,
       child: ObxValue(
         (data) => SwitchListTile(
           tileColor: context.theme.cardColor,

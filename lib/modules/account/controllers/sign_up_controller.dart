@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/utils/helpers/upload_data_firebase.dart';
-import 'package:flutterapperadauti/utils/helpers/upload_to_firebase.dart';
 import 'package:get/get.dart';
 
 class SignUpController extends GetxController with UploadDataFirebase {

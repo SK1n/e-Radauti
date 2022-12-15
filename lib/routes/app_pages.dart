@@ -25,8 +25,8 @@ import 'package:flutterapperadauti/modules/onboard/onboard.dart';
 import 'package:flutterapperadauti/modules/screens/views/about_us_page.dart';
 import 'package:flutterapperadauti/modules/screens/views/confidential_page.dart';
 import 'package:flutterapperadauti/modules/screens/views/partner_page.dart';
-import 'package:flutterapperadauti/modules/settings/app_settings.dart';
-import 'package:flutterapperadauti/modules/settings/debug_settings.dart';
+import 'package:flutterapperadauti/modules/settings/views/app_settings.dart';
+import 'package:flutterapperadauti/modules/settings/views/debug_settings.dart';
 import 'package:flutterapperadauti/modules/town_hall/bindings/local_legislation_bindings.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/leaders_page.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/local_legislation_page.dart';
@@ -102,6 +102,9 @@ class AppPages {
           GetPage(
             name: _Paths.settings,
             page: () => const AppSettings(),
+            bindings: [
+              NotificationsSwitchBindings(),
+            ],
             children: [
               GetPage(name: _Paths.debug, page: () => const DebugSettings()),
             ],

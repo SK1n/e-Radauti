@@ -367,5 +367,6 @@ Map<String, String> enUS = {
   "cancel": "Cancel",
   "yes": "Yes",
   "no": "No",
+  "all": "All",
   "proceed": "Do you want to proceed?",
 };
