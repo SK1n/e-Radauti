@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/settings/views/notification_settings.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/dark_mode_switch.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/not_switch.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/notification_switch.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
@@ -49,9 +49,18 @@ class _AppSettingsState extends State<AppSettings> {
                             Get.toNamed(Routes.debug);
                           })
                       : Container(),
-                  const NotSwitch(),
+                  Card(
+                    child: Column(
+                      children: const [
+                        NotificationSwitch(),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: NotificationSettings(),
+                        ),
+                      ],
+                    ),
+                  ),
                   const DarkModeSwitch(),
-                  const SettingsNotification(),
                 ],
               ),
             ),

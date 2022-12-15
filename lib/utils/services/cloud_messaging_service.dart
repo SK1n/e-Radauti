@@ -148,7 +148,8 @@ class CloudMessagingService {
         if (payload == null) return;
 
         final data = json.decode(payload) as Map<String, dynamic>;
-        Get.toNamed('/home/${data['view']}');
+        String view = data['view'];
+        if (view.isNotEmpty) Get.toNamed('/home/$view');
         _messageHandler?.call(data);
       },
     );

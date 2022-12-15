@@ -4,125 +4,64 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NotificationsSwitchController extends GetxController {
   final topics = {
     "all": false,
     "events": false,
-    "air": false,
-    "reports": false,
+    "air-quality": false,
+    "report-problem": false,
   }.obs;
   final dynamic _switchValue = false.obs;
   get switchValue => _switchValue.value;
   set switchValue(value) => _switchValue.value = value;
+  late final SharedPreferences prefs;
 
   final FirebaseMessaging _messaging = FirebaseMessaging.instance;
 
-  _saveToSharedPreferences(bool value) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setBool('subscribed', value);
-    switchValue = value;
-  }
+  notificationsEnabled() => topics.containsValue(true);
 
-  getSharedPreferencesValue() async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.containsKey('subscribed')
-        ? switchValue = prefs.getBool('subscribed')
-        : switchValue = false;
-  }
-
-  subscribeToNotifications() async {
+  setSubscription(String key, bool value) async {
     EasyLoading.show();
     try {
-      return await _messaging.subscribeToTopic('all').then(
-        (value) async {
-          Get.defaultDialog(
-            barrierDismissible: false,
-            title: 'Success!',
-            content: const Text(
-              'Din acest moment veti primi notificari!\nAceasta setare poate fi schimbata din setari!',
-              textAlign: TextAlign.center,
-            ),
-            onConfirm: () => Get.back(),
-          );
-          EasyLoading.dismiss();
-          await _saveToSharedPreferences(true);
-        },
-      ).timeout(
-        const Duration(minutes: 1),
-        onTimeout: () {
-          throw TimeoutException('Timeout exception2');
-        },
-      );
-    } on Exception catch (exception) {
-      await _saveToSharedPreferences(false);
+      await prefs.setBool(key, value);
+      value
+          ? await _messaging.subscribeToTopic(key)
+          : await _messaging.unsubscribeFromTopic(key);
+      Logger().d("Subscribed to $key: $value");
+      topics.update(key, (v) => value);
+      topics.refresh();
       EasyLoading.dismiss();
-      return Get.defaultDialog(
-        barrierDismissible: false,
-        title: 'A intervenit o eroare!',
-        content: Text(
-          '$exception \nVa rugam sa incercati din nou',
-        ),
-        onConfirm: () => Get.back(),
+    } catch (e) {
+      EasyLoading.dismiss();
+      Get.defaultDialog(
+        title: 'error'.tr,
+        middleText: "$e\n${"please-retry".tr}",
+        textConfirm: 'ok'.tr,
       );
     }
   }
 
-  unsubscribeFromNotifications() async {
-    EasyLoading.show();
-    try {
-      _saveToSharedPreferences(false);
-      return await _messaging.unsubscribeFromTopic('all').then(
-        (value) {
-          Get.defaultDialog(
-            barrierDismissible: false,
-            title: 'Success!',
-            content: const Text(
-              'Din acest moment nu veti mai primi notificari!\nAceasta setare poate fi schimbata din setari!',
-              textAlign: TextAlign.center,
-            ),
-            onConfirm: () => Get.back(),
-          );
-          EasyLoading.dismiss();
-        },
-      ).timeout(
-        const Duration(minutes: 1),
-        onTimeout: () {
-          throw TimeoutException('Timeout exception2');
-        },
+  setSubscriptionAll(bool value) => topics.forEach(
+        (key, _) async => await setSubscription(key, value),
       );
-    } catch (exception) {
-      _saveToSharedPreferences(false);
-      EasyLoading.dismiss();
-      return Get.defaultDialog(
-        barrierDismissible: false,
-        title: 'A intervenit o eroare!',
-        content: Text(
-          'Aceasta este eroarea: $exception',
-        ),
-        onConfirm: () => Get.back(),
-      );
-    }
-  }
 
-  getToken() async {
-    return await _messaging.getToken();
-  }
-
-  printToken() async {
-    await getToken().then((value) => debugPrint(value));
-  }
+  printToken() async =>
+      await _messaging.getToken().then((value) => debugPrint(value));
 
   @override
   void onInit() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    EasyLoading.show();
+    prefs = await SharedPreferences.getInstance();
     topics.value = {
-      "all": sharedPreferences.getBool("all") ?? false,
-      "events": sharedPreferences.getBool("events") ?? false,
-      "reports": sharedPreferences.getBool("reports") ?? false,
-      "air": sharedPreferences.getBool("air") ?? false,
+      "all": prefs.getBool("all") ?? false,
+      "events": prefs.getBool("events") ?? false,
+      "air-quality": prefs.getBool("air-quality") ?? false,
+      "report-problem": prefs.getBool("report-problem") ?? false,
     };
+    EasyLoading.dismiss();
     super.onInit();
   }
 }

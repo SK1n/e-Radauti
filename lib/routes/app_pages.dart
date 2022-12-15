@@ -102,6 +102,9 @@ class AppPages {
           GetPage(
             name: _Paths.settings,
             page: () => const AppSettings(),
+            bindings: [
+              NotificationsSwitchBindings(),
+            ],
             children: [
               GetPage(name: _Paths.debug, page: () => const DebugSettings()),
             ],
