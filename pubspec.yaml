@@ -45,7 +45,6 @@ dependencies:
   json_serializable: ^6.5.2
   location: any
   logger: ^1.1.0
-  mason_cli: ^0.1.0-dev.39
   octo_image: ^1.0.2
   searchbar_animation: ^0.0.4
   selectable_autolink_text: ^2.3.0
@@ -53,6 +52,7 @@ dependencies:
   syncfusion_flutter_charts: ^20.1.48
   timeline_tile: ^2.0.0
   url_launcher: ^6.0.20
+  custom_navigation_bar: ^0.8.2
 
 dev_dependencies:
   build_runner: ^2.3.1

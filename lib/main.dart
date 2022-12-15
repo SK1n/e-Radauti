@@ -24,7 +24,7 @@ Future<void> main() async {
   runApp(
     GetMaterialApp(
       title: 'e-Rădăuți',
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       builder: EasyLoading.init(),
       getPages: AppPages.routes,
       initialRoute: isFirstRun
