@@ -7,6 +7,12 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NotificationsSwitchController extends GetxController {
+  final topics = {
+    "all": false,
+    "events": false,
+    "air": false,
+    "reports": false,
+  }.obs;
   final dynamic _switchValue = false.obs;
   get switchValue => _switchValue.value;
   set switchValue(value) => _switchValue.value = value;
@@ -106,5 +112,17 @@ class NotificationsSwitchController extends GetxController {
 
   printToken() async {
     await getToken().then((value) => debugPrint(value));
+  }
+
+  @override
+  void onInit() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    topics.value = {
+      "all": sharedPreferences.getBool("all") ?? false,
+      "events": sharedPreferences.getBool("events") ?? false,
+      "reports": sharedPreferences.getBool("reports") ?? false,
+      "air": sharedPreferences.getBool("air") ?? false,
+    };
+    super.onInit();
   }
 }
