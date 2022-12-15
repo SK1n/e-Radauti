@@ -201,22 +201,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.6"
-  cli_completion:
-    dependency: transitive
-    description:
-      name: cli_completion
-      sha256: c277646e36ef993cea829ddc39d7d2b7e781855361f5ab40560a9975c78f34c7
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.0+1"
-  cli_util:
-    dependency: transitive
-    description:
-      name: cli_util
-      sha256: "66f86e916d285c1a93d3b79587d94bd71984a66aac4ff74e524cfa7877f1395c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.3.5"
   clock:
     dependency: transitive
     description:
@@ -345,14 +329,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.6"
-  equatable:
-    dependency: transitive
-    description:
-      name: equatable
-      sha256: c2b87cb7756efdf69892005af546c56c0b5037f54d2a88269b4f347a505e3ca2
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.5"
   expandable:
     dependency: "direct main"
     description:
@@ -1109,38 +1085,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
-  mason:
-    dependency: transitive
-    description:
-      name: mason
-      sha256: "0bfff0f7fc3a7e0e5a4dba298a846db75a206d296728ef68533fef11a622c29a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.0-dev.39"
-  mason_api:
-    dependency: transitive
-    description:
-      name: mason_api
-      sha256: e092926382a6c22adb1db829ef656c894d87bddcc30fb49e2db4011e85b1f51a
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.0-dev.8"
-  mason_cli:
-    dependency: "direct main"
-    description:
-      name: mason_cli
-      sha256: "08205a1036cde240c8e4889041212d2168180a9f6851819f8a8e3c9e98464cf4"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.0-dev.41"
-  mason_logger:
-    dependency: transitive
-    description:
-      name: mason_logger
-      sha256: e2326853b3038b677215a1511615aefefcf33f448249107fe5a6d385a6e4d4b8
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.3"
   matcher:
     dependency: transitive
     description:
@@ -1181,14 +1125,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.3"
-  mustache_template:
-    dependency: transitive
-    description:
-      name: mustache_template
-      sha256: a46e26f91445bfb0b60519be280555b06792460b27b19e2b19ad5b9740df5d1c
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
   nested:
     dependency: transitive
     description:
@@ -1389,14 +1325,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.3"
-  pub_updater:
-    dependency: transitive
-    description:
-      name: pub_updater
-      sha256: "00e42b515aa046b171d05bbe2dd566c0feaab7808c33c5bacb5beff93cf16561"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.3"
   pubspec_parse:
     dependency: transitive
     description:
@@ -1413,14 +1341,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.0"
-  recase:
-    dependency: transitive
-    description:
-      name: recase
-      sha256: e4eb4ec2dcdee52dcf99cb4ceabaffc631d7424ee55e56f280bc039737f89213
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.1.0"
   rxdart:
     dependency: transitive
     description:
