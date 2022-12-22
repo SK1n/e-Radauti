@@ -11,33 +11,31 @@ class NavigationBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final NavigationBarController navigationBarController = Get.find();
-    return Card(
-      child: CustomNavigationBar(
-        iconSize: 30.0,
-        selectedColor: Get.theme.primaryColor,
-        unSelectedColor: Get.theme.primaryColor,
-        backgroundColor: Colors.transparent,
-        items: navigationBarController.items,
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              Get.toNamed(Routes.noticeProblem);
-              break;
-            case 1:
-              Get.toNamed(Routes.events);
-              break;
-            case 2:
-              Get.toNamed(Routes.air);
-              break;
-            case 3:
-              Get.toNamed(Routes.townHall);
-              break;
-            case 4:
-              Get.toNamed(Routes.phoneNumbers);
-              break;
-          }
-        },
-      ),
+    return CustomNavigationBar(
+      iconSize: 20.0,
+      selectedColor: Get.theme.primaryColor,
+      unSelectedColor: Get.theme.primaryColor,
+      backgroundColor: Get.theme.canvasColor,
+      items: navigationBarController.items,
+      onTap: (index) {
+        switch (index) {
+          case 0:
+            Get.toNamed(Routes.noticeProblem);
+            break;
+          case 1:
+            Get.toNamed(Routes.events);
+            break;
+          case 2:
+            Get.toNamed(Routes.air);
+            break;
+          case 3:
+            Get.toNamed(Routes.townHall);
+            break;
+          case 4:
+            Get.toNamed(Routes.phoneNumbers);
+            break;
+        }
+      },
     );
   }
 }

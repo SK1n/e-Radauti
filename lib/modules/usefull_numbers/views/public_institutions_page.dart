@@ -25,11 +25,13 @@ class PublicInstitutionsPage extends StatelessWidget with GetDataFirebase {
             padding: const EdgeInsets.all(8.0),
             sliver: SliverToBoxAdapter(
               child: Futuristic(
+                initialBuilder: (_, __) => Container(),
                 futureBuilder: () => getData(
                     document: 'Numbers',
                     convert: PublicInstitutionsModel.fromJson),
-                dataBuilder: (context, snap) {
-                  PublicInstitutionsModel data = snap.data;
+                dataBuilder: (context, snapshot) {
+                  PublicInstitutionsModel data =
+                      snapshot as PublicInstitutionsModel;
                   List<PublicInstitutionsItemModel>? items = data.items;
                   return ListView.builder(
                     shrinkWrap: true,

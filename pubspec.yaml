@@ -39,7 +39,6 @@ dependencies:
   get: ^4.6.5
   google_sign_in: ^5.4.2
   intl: ^0.17.0
-  intro_views_flutter: ^3.2.0
   js: ^0.6.4
   json_annotation: ^4.7.0
   json_serializable: ^6.5.2

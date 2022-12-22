@@ -24,10 +24,11 @@ class TrainPage extends StatelessWidget with GetDataFirebase {
             padding: const EdgeInsets.all(8.0),
             sliver: SliverToBoxAdapter(
               child: Futuristic(
+                initialBuilder: (_, __) => Container(),
                 futureBuilder: () =>
                     getData(document: 'Train', convert: TrainModel.fromJson),
-                dataBuilder: (_, snap) {
-                  TrainModel data = snap.data;
+                dataBuilder: (_, snapshot) {
+                  TrainModel data = snapshot as TrainModel;
                   List<TrainItemModel>? items = data.items;
                   return ListView.builder(
                     shrinkWrap: true,

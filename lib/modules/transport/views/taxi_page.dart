@@ -26,10 +26,11 @@ class TaxiPage extends StatelessWidget with GetImageUrl, GetDataFirebase {
             padding: const EdgeInsets.all(8.0),
             sliver: SliverToBoxAdapter(
               child: Futuristic(
+                initialBuilder: (_, __) => Container(),
                 futureBuilder: () =>
                     getData(document: 'Taxi', convert: TaxiModel.fromJson),
-                dataBuilder: (_, snap) {
-                  TaxiModel data = snap.data;
+                dataBuilder: (_, snapshot) {
+                  TaxiModel data = snapshot as TaxiModel;
                   List<TaxiItemModel>? items = data.items;
                   return ListView.builder(
                       shrinkWrap: true,

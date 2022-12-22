@@ -1,3 +1,4 @@
+import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -7,8 +8,8 @@ extension on String {
   }
 }
 
-class AirQualityController extends GetxController {
-  String getDate(String date) {
+class AirQualityController extends GetxController with GetDataFirebase {
+  String formatDate(String date) {
     DateFormat inputFormat = DateFormat('yyyy-MM-dd HH:mm');
     DateFormat outputFormat = DateFormat('dd/MM/yyyy HH:mm');
     DateTime inputDate = inputFormat.parseUTC(date.convert()).toLocal();

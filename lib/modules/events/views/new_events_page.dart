@@ -14,17 +14,22 @@ class NewEventsPage extends StatelessWidget {
     final EventsController controller = Get.find();
 
     return Futuristic(
+      initialBuilder: (_, __) => Container(),
       futureBuilder: () => controller.getData(
-          collection: kDebugMode ? 'test' : 'collection',
-          convert: NewEventsModel.fromJson,
-          document: 'Events'),
-      dataBuilder: (BuildContext context, AsyncSnapshot snapshot) {
-        NewEventsModel data = snapshot.data;
+        collection: kDebugMode ? 'test' : 'collection',
+        convert: NewEventsModel.fromJson,
+        document: 'Events',
+      ),
+      dataBuilder: (BuildContext context, snapshot) {
+        NewEventsModel data = snapshot as NewEventsModel;
         List<EventsListModel>? list = data.events
-          ?..sort((e1, e2) => e2.start!.compareTo(e1.start!));
+          ?..sort(
+            (e1, e2) => e2.start!.compareTo(
+              e1.start!,
+            ),
+          );
         return ListView.builder(
             shrinkWrap: true,
-            // physics: NeverScrollableScrollPhysics(),
             itemCount: list!.length,
             itemBuilder: (BuildContext context, int item) {
               return NewEventsItemWidget(

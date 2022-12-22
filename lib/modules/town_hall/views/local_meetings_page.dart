@@ -25,11 +25,12 @@ class LocalMeetingsPage extends StatelessWidget with GetDataFirebase {
             delegate: SliverChildListDelegate(
               [
                 Futuristic(
+                  initialBuilder: (_, __) => Container(),
                   futureBuilder: () => getData(
                       convert: LocalMeetingsModel.fromJson,
                       document: 'CouncilMeetings'),
-                  dataBuilder: (BuildContext context, AsyncSnapshot snap) {
-                    LocalMeetingsModel data = snap.data;
+                  dataBuilder: (BuildContext context, snapshot) {
+                    LocalMeetingsModel data = snapshot as LocalMeetingsModel;
                     List<LocalMeetingsItemModel>? items = data.items;
                     return ListView.builder(
                       shrinkWrap: true,

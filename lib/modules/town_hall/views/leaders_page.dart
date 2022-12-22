@@ -27,10 +27,11 @@ class LeadersPage extends StatelessWidget with GetDataFirebase, GetImageUrl {
               sliver: SliverList(
                   delegate: SliverChildListDelegate([
                 Futuristic(
+                  initialBuilder: (_, __) => Container(),
                   futureBuilder: () => getData(
                       document: 'Leaders', convert: LeadersModel.fromJson),
-                  dataBuilder: (context, snap) {
-                    LeadersModel data = snap.data;
+                  dataBuilder: (context, snapshot) {
+                    LeadersModel data = snapshot as LeadersModel;
                     List<LeadersItemModel>? items = data.items;
 
                     return ListView.builder(

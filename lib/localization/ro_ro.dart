@@ -73,4 +73,19 @@ Map<String, String> roRO = {
   "new-password": "Parolă nouă",
   "current-password": "Parola actuală",
   "re-type-password": "Reintroduceți parola nouă",
+  "next": "Următorul",
+  "back": "Înapoi",
+  "close": "Închide",
+  "public-announcements": "Anunțuri publice",
+  "map-title": "Harta sesizărilor din Radauti",
+  "guest": "Folosiți acum aplicația cu statul de Oaspete",
+  "report-sent":
+      "Sesizarea a fost trimisă cu succes\nVeți fi notificat prin e-mail în următoarele zile",
+  "permissions_text":
+      'Pentru a te putea bucura de toate funcționalitățile e-Rădăuți, aplicația are nevoie de următoarele permisiuni, pe care te rugăm să le activezi\nAceste permisiuni pot fi modificate mai târziu în setări.',
+  "forgot-password": "Am uitat parola",
+  "or-log-in-as": "Sau autentifacre prin",
+  "user-created": "User-ul @name a fost creat",
+  "reset-password-email": "Un email a fost trimis către @email",
+  "send-mail": "Trimiteți mail",
 };

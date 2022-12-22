@@ -21,30 +21,31 @@ class FurniturePage extends StatelessWidget with UrlLauncher {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarWidget(
-            content: 'Anunțuri',
+          AppBarWidget(
+            content: 'announces'.tr,
             leading: Icons.announcement,
           ),
           SliverPadding(
             padding: const EdgeInsets.all(8.0),
             sliver: SliverToBoxAdapter(
               child: Futuristic(
+                initialBuilder: (_, __) => Container(),
                 futureBuilder: () async =>
                     await controller.getData(eRadautiFurnitureLink),
                 dataBuilder: (_, snapshot) {
-                  List<RecordsModel>? items = snapshot.data;
+                  List<RecordsModel>? items = snapshot as List<RecordsModel>;
                   return ListView.builder(
                     itemCount: 9,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
-                      var data = items?[index];
+                      var data = items[index];
                       return Container(
                         padding: const EdgeInsets.only(top: 5),
                         width: MediaQuery.of(context).size.width,
                         child: FilledButton(
                           child: Text(
-                            data?.title ?? '',
+                            data.title ?? '',
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () => Get.defaultDialog(
@@ -56,7 +57,7 @@ class FurniturePage extends StatelessWidget with UrlLauncher {
                               Get.back();
                               browser.open(
                                 url: Uri.parse(
-                                    'https://www.eradauti.ro/anunturi/imobiliare-19/${data?.slug ?? ''}-${data?.id ?? ''}'),
+                                    'https://www.eradauti.ro/anunturi/imobiliare-19/${data.slug ?? ''}-${data.id ?? ''}'),
                                 options: ChromeSafariBrowserClassOptions(
                                   android: AndroidChromeCustomTabsOptions(
                                       shareState:

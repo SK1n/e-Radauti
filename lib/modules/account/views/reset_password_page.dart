@@ -42,20 +42,20 @@ class ResetPasswordPage extends StatelessWidget {
                           height: Get.height / 10,
                         ),
                         Text(
-                          'Resetare parola',
+                          'reset-password'.tr,
                           style: Get.textTheme.headlineLarge,
                         ),
                         FormBuilderTextField(
                           name: 'email',
                           initialValue: '',
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          decoration: const InputDecoration(hintText: 'Email'),
+                          decoration: InputDecoration(hintText: 'email'.tr),
                           validator: FormBuilderValidators.compose(
                             [
                               FormBuilderValidators.required(
-                                  errorText: errorRequired),
+                                  errorText: 'required-field'.tr),
                               FormBuilderValidators.email(
-                                  errorText: errorEmail),
+                                  errorText: 'email-format'.tr),
                             ],
                           ),
                         ),
@@ -74,8 +74,8 @@ class ResetPasswordPage extends StatelessWidget {
                             style: TextButton.styleFrom(
                                 minimumSize: Size(Get.width, 50),
                                 backgroundColor: Colors.orange),
-                            label: const Text(
-                              'Trimiteti mail',
+                            label: Text(
+                              'send-mail'.tr.toUpperCase(),
                             ),
                           ),
                         ),

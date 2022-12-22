@@ -29,9 +29,10 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
       child: Stack(
         children: [
           Futuristic(
+              initialBuilder: (_, __) => Container(),
               futureBuilder: () => getImageUrl(url!),
-              dataBuilder: (_, snap) => ImageWidget(
-                    link: snap.data,
+              dataBuilder: (_, snapshot) => ImageWidget(
+                    link: snapshot as String,
                     width: 100,
                     height: 150,
                   )),

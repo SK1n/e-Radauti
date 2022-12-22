@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
-import 'package:flutterapperadauti/utils/helpers/display_error.dart';
 import 'package:get/get.dart';
 
 /// A widget that makes it easy to execute a [Future] from a StatelessWidget.
@@ -13,11 +13,24 @@ class Futuristic<T> extends StatefulWidget {
   /// Whether to immediately begin executing the [Future]. If true, [initialBuilder] must be null.
   final bool autoStart;
 
+  /// Widget to display before the [Future] starts executing.
+  /// Call [VoidCallback] to start executing the [Future].
+  /// If not null, [autoStart] should be false.
+  final Widget Function(BuildContext, VoidCallback) initialBuilder;
+
+  /// Widget to display while the [Future] is executing.
+  /// If null, a [CircularProgressIndicator] will be displayed.
+  final WidgetBuilder? busyBuilder;
+
+  /// Widget to display when the [Future] has completed with an error.
+  /// If null, [initialBuilder] will be displayed again.
+  /// The [Object] is the [Error] or [Exception] returned by the [Future].
+  /// Call [VoidCallback] to start executing the [Future] again.
+  final Widget Function(BuildContext, Object, VoidCallback)? errorBuilder;
+
   /// Widget to display when the [Future] has completed successfully.
   /// If null, [initialBuilder] will be displayed again.
-  final Widget Function(BuildContext, AsyncSnapshot)? dataBuilder;
-
-  final Widget Function(BuildContext)? busyBuilder;
+  final Widget Function(BuildContext, T)? dataBuilder;
 
   /// Callback to invoke when the [Future] has completed successfully.
   /// Will only be invoked once per [Future] execution.
@@ -27,26 +40,32 @@ class Futuristic<T> extends StatefulWidget {
   /// Will only be invoked once per [Future] execution.
   /// Call [VoidCallback] to start executing the [Future] again.
   final Function(Object, VoidCallback)? onError;
+
   const Futuristic(
-      {super.key,
+      {Key? key,
       required this.futureBuilder,
       this.autoStart = true,
+      required this.initialBuilder,
+      this.busyBuilder,
+      this.errorBuilder,
       this.dataBuilder,
       this.onData,
-      this.busyBuilder,
-      this.onError});
+      this.onError})
+      : super(key: key);
 
   @override
   FuturisticState<T> createState() => FuturisticState<T>();
 }
 
-class FuturisticState<T> extends State<Futuristic<T>> with DisplayError {
+class FuturisticState<T> extends State<Futuristic<T>> {
   Future<T>? _future;
 
   @override
   void initState() {
     super.initState();
-    _execute();
+    if (widget.autoStart) {
+      _execute();
+    }
   }
 
   @override
@@ -55,6 +74,8 @@ class FuturisticState<T> extends State<Futuristic<T>> with DisplayError {
       future: _future,
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
+          case ConnectionState.none:
+            return _handleInitial(context);
           case ConnectionState.waiting:
           case ConnectionState.active:
             return _handleBusy(context);
@@ -67,98 +88,55 @@ class FuturisticState<T> extends State<Futuristic<T>> with DisplayError {
     );
   }
 
+  Widget _handleInitial(BuildContext context) {
+    return widget.initialBuilder(context, _execute);
+  }
+
   Widget _handleSnapshot(BuildContext context, AsyncSnapshot<T> snapshot) {
     if (snapshot.hasError) {
-      return _handleError(snapshot.error as Object);
+      return _handleError(context, snapshot.error as Object);
     }
-    return _handleData(context, snapshot);
+    return _handleData(context, snapshot.data as T);
   }
 
-  //Add error widget
-  Widget _handleError(Object error) {
-    EasyLoading.isShow
-        ? EasyLoading.showError('Error')
-        : DoNothingAction(consumesKey: false);
-
-    return error.toString() == 'Exception: empty'
-        ? _handleEmpty()
-        : Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/images/system.png',
-                width: Get.width / 3,
+  Widget _handleError(BuildContext context, Object error) {
+    if (widget.errorBuilder != null) {
+      if (EasyLoading.isShow) {
+        EasyLoading.dismiss();
+      }
+      return Card(
+        child: Column(
+          children: [
+            Text('${'error'.tr}$error'),
+            FilledButton.icon(
+              onPressed: () => _execute(),
+              icon: const Icon(Icons.error),
+              label: Text(
+                'please-retry'.tr,
               ),
-              Text('no-results-found'.tr),
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.pink,
-                ),
-                onPressed: () => _execute(),
-                child: Text(
-                  'please-retry'.tr,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ),
-            ],
-          );
-  }
-
-  Widget _handleData(BuildContext context, AsyncSnapshot snap) {
-    if (EasyLoading.isShow) {
-      EasyLoading.dismiss();
+            ),
+          ],
+        ),
+      );
     }
-    return widget.dataBuilder!(context, snap);
+    return _handleInitial(context);
   }
 
-  //Add busy widget
+  Widget _handleData(BuildContext context, T data) {
+    if (widget.dataBuilder != null) {
+      return widget.dataBuilder!(context, data);
+    }
+    return _handleInitial(context);
+  }
+
   Widget _handleBusy(BuildContext context) {
-    if (!EasyLoading.isShow) {
-      EasyLoading.show();
-    }
-    if (widget.busyBuilder != null && _isActive()) {
-      return widget.busyBuilder!(context);
-    } else {
+    if (widget.busyBuilder == null) {
       return Container();
     }
-  }
-
-  Widget _handleEmpty() {
-    if (EasyLoading.isShow) {
-      EasyLoading.dismiss();
-    }
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(
-          'assets/images/no-results.png',
-          width: Get.width / 3,
-        ),
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(
-            'Nu am gasit nimic de afisat\n Va rugam sa reveniti mai tarziu sau sa reincercati',
-            textAlign: TextAlign.center,
-          ),
-        ),
-        TextButton(
-          style: TextButton.styleFrom(
-            backgroundColor: Colors.pink,
-          ),
-          onPressed: () => _execute(),
-          child: const Text(
-            'Incercati din nou!',
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-      ],
-    );
+    return widget.busyBuilder!(context);
   }
 
   void _execute() {
-    if (!EasyLoading.isShow) {
-      EasyLoading.show();
-    }
     setState(() {
       _future = widget.futureBuilder();
       _future!.then(_onData).catchError(_onError);
@@ -178,5 +156,6 @@ class FuturisticState<T> extends State<Futuristic<T>> with DisplayError {
   }
 
   bool _isActive() => mounted && (ModalRoute.of(context)?.isActive ?? true);
+
   Widget _defaultWidget() => const SizedBox.shrink();
 }

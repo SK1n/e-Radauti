@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/satu_mare/satu_mare_item_model.dart';
 import 'package:flutterapperadauti/data/models/satu_mare/satu_mare_model.dart';
+import 'package:flutterapperadauti/modules/air_quality/controllers/air_quality_controller.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:fluttericon/entypo_icons.dart';
@@ -16,16 +17,18 @@ class AirQualitySatuMareItem extends StatelessWidget with GetDataFirebase {
 
   @override
   Widget build(BuildContext context) {
+    final AirQualityController airQualityController = Get.find();
     return Futuristic(
-      futureBuilder: () =>
-          getData(convert: SatuMareModel.fromJson, document: 'AirSatuMare'),
+      initialBuilder: (_, __) => Container(),
+      futureBuilder: () => airQualityController.getData(
+          convert: SatuMareModel.fromJson, document: 'AirSatuMare'),
       dataBuilder: (context, snapshot) {
-        SatuMareModel data = snapshot.data;
+        SatuMareModel data = snapshot as SatuMareModel;
         SatuMareItemModel item = data.item![0];
-
         return Column(
           children: [
             Card(
+              elevation: 10,
               child: Column(
                 children: [
                   Padding(
@@ -39,55 +42,57 @@ class AirQualitySatuMareItem extends StatelessWidget with GetDataFirebase {
                       ),
                     ),
                   ),
-                  Container(
-                    color: Color.fromARGB(item.a!, item.r!, item.g!, item.b!),
-                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                    child: IntrinsicHeight(
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            flex: 1,
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                item.quality!
-                                    .toLowerCase()
-                                    .replaceAll(" ", "-")
-                                    .tr,
-                                style: const TextStyle(color: Colors.white),
+                  Card(
+                    child: Container(
+                      color: Color.fromARGB(item.a!, item.r!, item.g!, item.b!),
+                      padding: const EdgeInsets.only(top: 10, bottom: 10),
+                      child: IntrinsicHeight(
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(
+                              flex: 1,
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  item.quality!
+                                      .toLowerCase()
+                                      .replaceAll(" ", "-")
+                                      .tr,
+                                  style: const TextStyle(color: Colors.white),
+                                ),
                               ),
                             ),
-                          ),
-                          VerticalDivider(
-                            thickness: 1,
-                            color: context.theme.canvasColor,
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Column(
-                                children: [
-                                  const Text(
-                                    'PM2,5',
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.white),
-                                  ),
-                                  Text(
-                                    '${item.pm}',
-                                    style: const TextStyle(
-                                        fontSize: 24, color: Colors.white),
-                                  ),
-                                  const Text(
-                                    '\u03BCg/m\u00B3',
-                                    style: TextStyle(
-                                        fontSize: 18, color: Colors.white),
-                                  ),
-                                ],
+                            VerticalDivider(
+                              thickness: 1,
+                              color: context.theme.canvasColor,
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Column(
+                                  children: [
+                                    const Text(
+                                      'PM2,5',
+                                      style: TextStyle(
+                                          fontSize: 14, color: Colors.white),
+                                    ),
+                                    Text(
+                                      '${item.pm}',
+                                      style: const TextStyle(
+                                          fontSize: 24, color: Colors.white),
+                                    ),
+                                    const Text(
+                                      '\u03BCg/m\u00B3',
+                                      style: TextStyle(
+                                          fontSize: 18, color: Colors.white),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

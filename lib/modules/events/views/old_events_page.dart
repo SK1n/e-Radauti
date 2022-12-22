@@ -13,15 +13,15 @@ class OldEventsPage extends StatelessWidget {
     final EventsController eventsController = Get.find();
 
     return Futuristic(
+      initialBuilder: (_, __) => Container(),
       futureBuilder: () => eventsController.getData(
           convert: OldEventsModel.fromJson, document: 'OldEvents'),
-      dataBuilder: (BuildContext context, AsyncSnapshot snapshot) {
-        OldEventsModel data = snapshot.data;
+      dataBuilder: (BuildContext context, snapshot) {
+        OldEventsModel data = snapshot as OldEventsModel;
         List<EventsListModel>? list = data.events!
           ..sort((e1, e2) => e2.start!.compareTo(e1.start!));
         return ListView.builder(
             shrinkWrap: true,
-            //  physics: NeverScrollableScrollPhysics(),
             itemCount: 30,
             itemBuilder: (BuildContext context, int item) {
               return OldEventsItemWidget(

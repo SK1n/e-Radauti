@@ -27,11 +27,12 @@ Future<void> main() async {
       debugShowCheckedModeBanner: true,
       builder: EasyLoading.init(),
       getPages: AppPages.routes,
-      initialRoute: isFirstRun
-          ? Routes.onboard
-          : isSignedIn != null
-              ? Routes.home
-              : Routes.signIn,
+      // initialRoute: isFirstRun
+      //     ? Routes.onboard
+      //     : isSignedIn != null
+      //         ? Routes.home
+      //         : Routes.signIn,
+      initialRoute: Routes.onboard,
       initialBinding: AppBindings(),
       locale: const Locale('en', "US"),
       translations: Languages(),

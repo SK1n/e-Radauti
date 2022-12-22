@@ -30,6 +30,7 @@ class LocalLegislationPage extends StatelessWidget with UrlLauncher {
               delegate: SliverChildListDelegate(
                 [
                   Futuristic(
+                    initialBuilder: (_, __) => Container(),
                     futureBuilder: () =>
                         controller.getData(DateTime.now().year),
                     dataBuilder: (context, snap) {

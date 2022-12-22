@@ -18,10 +18,12 @@ import 'package:flutterapperadauti/modules/account/views/sign_in_page.dart';
 import 'package:flutterapperadauti/modules/account/views/reset_password_page.dart';
 import 'package:flutterapperadauti/modules/account/views/sign_up_page.dart';
 import 'package:flutterapperadauti/modules/menu/menu_screen.dart';
+import 'package:flutterapperadauti/modules/onboard/bindings/onboard_bindings.dart';
+import 'package:flutterapperadauti/modules/onboard/views/permissions_page.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/bindings/form_binding.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/views/report_problem_page.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/bindings/notice_problem_map_bindings.dart';
-import 'package:flutterapperadauti/modules/onboard/onboard.dart';
+import 'package:flutterapperadauti/modules/onboard/views/onboard_page.dart';
 import 'package:flutterapperadauti/modules/screens/views/about_us_page.dart';
 import 'package:flutterapperadauti/modules/screens/views/confidential_page.dart';
 import 'package:flutterapperadauti/modules/screens/views/partner_page.dart';
@@ -82,6 +84,7 @@ class AppPages {
         bindings: [
           NavigationBarBinding(),
           NoticeProblemMapBinding(),
+          AirQualityBindings(),
         ],
         children: [
           GetPage(
@@ -230,9 +233,14 @@ class AppPages {
                 ),
               ]),
         ]),
-    GetPage(
-        name: Routes.onboard,
-        page: () => const Onboard(),
-        bindings: [NotificationsSwitchBindings()]),
+    GetPage(name: Routes.onboard, page: () => const OnboardPage(), children: [
+      GetPage(
+        name: _Paths.permissionsPage,
+        page: () => const PermissionsPage(),
+      ),
+    ], bindings: [
+      NotificationsSwitchBindings(),
+      OnboardBinding()
+    ]),
   ];
 }

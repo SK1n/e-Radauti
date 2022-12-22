@@ -2,6 +2,13 @@ Map<String, String> enUS = {
   "e-radauti": "e-Radauti",
   "app-radauti": "e-Raduti App",
 
+  ///
+  /// Not translated
+  ///
+  "developed-by":
+      "Application developed voluntarily by the Radauțiul Civic Association",
+  "welcome": "Welcome!",
+
   /// app title
   ///
   ///FIREBASE AUTH CODES
@@ -159,7 +166,7 @@ Map<String, String> enUS = {
   ///AIR QUALITY
   ///
   "graphs": "Graphics",
-  "centru-radauti": "RADAUTI CENTER",
+  "centru-radauti": "Air quality in the center of Radauti",
   "bună": "Good",
   "acceptabilă": "Acceptable",
   "moderată": "Moderate",
@@ -348,11 +355,26 @@ Map<String, String> enUS = {
   "new-password": "New password",
   "current-password": "Current password",
   "re-type-password": "Re-type new password",
+  "public-announcements": "Public announcements",
+  "map-title": "Map of reports from Radauti",
+  "guest": "Use the app now with Guest status",
+  "report-sent":
+      "The report has been sent successfully\nYou will be notified by email in the following days",
+  "permissions-text":
+      "To be able to enjoy all the functionalities of e-Rădăuți, the application needs the following permissions, which we ask you to activate\nThese permissions can be changed later in the settings.",
+
+  "forgot-password": "I forgot the password",
+  "or-log-in-as": "Or log in as",
+  "send-mail": "Send email",
   //not translated
+
   "new-password-match": "The password doesn't match",
   "create-new-account": "Create a new account",
   "password": "Password",
   "success": "Success",
+  "success-sign-in": "You have been authenticated successfully",
+  "user-created": "The user @name has been created",
+  "reset-password-email": "An email has been sent to @email",
   "success-name-update": "You have successfully setted the name to: @name",
   "display-name": "Enter new name",
   "update-name": "Update name",
@@ -369,4 +391,6 @@ Map<String, String> enUS = {
   "no": "No",
   "all": "All",
   "proceed": "Do you want to proceed?",
+  "next": "Next",
+  "back": "Back",
 };

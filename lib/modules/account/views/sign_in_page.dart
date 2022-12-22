@@ -4,8 +4,6 @@ import 'package:flutterapperadauti/modules/account/controllers/sign_in_controlle
 import 'package:flutterapperadauti/modules/account/widgets/sign_up_text_widget.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/error_texts.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
-import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 
@@ -48,23 +46,22 @@ class SignInPage extends StatelessWidget {
                           height: Get.height / 15,
                         ),
                         Text(
-                          'AUTENTIFICARE',
+                          'log-in'.tr.toUpperCase(),
                           style: Get.textTheme.headlineLarge,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: FormBuilderTextField(
                             name: 'email',
-                            decoration:
-                                const InputDecoration(hintText: 'Email'),
+                            decoration: InputDecoration(hintText: 'email'.tr),
                             initialValue: '',
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(
-                                  errorText: errorRequired),
+                                  errorText: 'required-field'.tr),
                               FormBuilderValidators.email(
-                                  errorText: errorEmail),
+                                  errorText: 'email-format'.tr),
                             ]),
                           ),
                         ),
@@ -73,14 +70,14 @@ class SignInPage extends StatelessWidget {
                           child: FormBuilderTextField(
                             name: 'password',
                             decoration:
-                                const InputDecoration(hintText: 'Parola'),
+                                InputDecoration(hintText: 'password'.tr),
                             initialValue: '',
                             obscureText: true,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(
-                                  errorText: errorRequired),
+                                  errorText: 'required-field'.tr),
                             ]),
                           ),
                         ),
@@ -98,7 +95,7 @@ class SignInPage extends StatelessWidget {
                               minimumSize: Size(Get.width, 50),
                               backgroundColor: Colors.orange),
                           icon: const Icon(Icons.login),
-                          label: const Text('Autentificare'),
+                          label: Text('log-in'.tr),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -106,26 +103,16 @@ class SignInPage extends StatelessWidget {
                             onTap: () {
                               Get.toNamed(Routes.resetPassword);
                             },
-                            child: const Text(
-                              'Am uitat parola',
-                              style: TextStyle(color: Colors.blue),
+                            child: Text(
+                              'forgot-password'.tr,
+                              style: const TextStyle(color: Colors.blue),
                             ),
                           ),
                         ),
-                        const SignUpTextWidget(text: 'SAU AUTENTIFICARE PRIN'),
+                        SignUpTextWidget(text: 'or-log-in-as'.tr.toUpperCase()),
                         const SizedBox(
                           height: 10,
                         ),
-                        // FilledButton.icon(
-                        //   style: TextButton.styleFrom(
-                        //     minimumSize: Size(Get.width, 50),
-                        //   ),
-                        //   onPressed: () async {
-                        //     await signInController.signInWithGoogle();
-                        //   },
-                        //   icon: const Icon(FontAwesome.google),
-                        //   label: const Text('Google'),
-                        // ),
                         const SizedBox(
                           height: 10,
                         ),
@@ -137,12 +124,13 @@ class SignInPage extends StatelessWidget {
                             await signInController.signInAsGuest();
                           },
                           icon: const Icon(Icons.person),
-                          label: const Text('Oaspete'),
+                          label: Text('guest'.tr),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        const SignUpTextWidget(text: 'CREAZA UN CONT'),
+                        SignUpTextWidget(
+                            text: 'create-new-account'.tr.toUpperCase()),
                         const SizedBox(
                           height: 10,
                         ),
@@ -157,7 +145,7 @@ class SignInPage extends StatelessWidget {
                             });
                           },
                           icon: const Icon(Icons.add),
-                          label: const Text('Creaza un cont nou'),
+                          label: Text('create-new-account'.tr),
                         ),
                         const SizedBox(
                           height: 10,

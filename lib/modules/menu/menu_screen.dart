@@ -48,25 +48,40 @@ class _MenuScreenState extends State<MenuScreen> with GetDataFirebase {
           ),
           SliverToBoxAdapter(
             child: Futuristic(
+              initialBuilder: (_, __) => Container(),
               futureBuilder: () => getData(
                   document: 'Announcements',
                   convert: LocalAnnouncementsModel.fromJson),
               dataBuilder: (_, snapshot) {
-                LocalAnnouncementsModel data = snapshot.data;
-                List<LocalAnnouncementsItemModel>? items = data.items;
-                return ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: items!.length < 10 ? items.length : 10,
-                    itemBuilder: (BuildContext context, int index) {
-                      var data = items[index];
-                      return HomeAnnouncementsItem(
-                          url: data.url,
-                          date: data.date,
-                          host: data.host,
-                          title: data.title,
-                          content: data.description);
-                    });
+                LocalAnnouncementsModel? data =
+                    snapshot as LocalAnnouncementsModel;
+                List<LocalAnnouncementsItemModel>? items = data.items ?? [];
+                if (items.isEmpty) return Container();
+                var element = items[items.length - 1];
+                return SafeArea(
+                  child: Card(
+                    elevation: 10,
+                    child: Column(
+                      children: [
+                        Text(
+                          'public-announcements'.tr.toUpperCase(),
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        HomeAnnouncementsItem(
+                          content: element.description,
+                          title: element.title,
+                          host: element.host,
+                          date: element.date,
+                          url: element.url,
+                        ),
+                      ],
+                    ),
+                  ),
+                );
               },
             ),
           ),

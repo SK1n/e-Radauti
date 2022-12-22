@@ -1,4 +1,3 @@
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -17,61 +16,73 @@ class ReportProblemMap extends StatelessWidget with GetDataFirebase {
   Widget build(BuildContext context) {
     NoticeProblemMapController mapController = Get.find();
     return Card(
+      elevation: 10,
       child: Futuristic(
-        futureBuilder: () => getData(
-            collection: 'collection',
-            document: 'Markers',
-            convert: NoticeProblemMapMarkerModel.fromJson),
-        dataBuilder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (EasyLoading.isShow) {
-            EasyLoading.dismiss();
-          }
-          NoticeProblemMapMarkerModel data = snapshot.data;
+        initialBuilder: (_, __) => Container(),
+        futureBuilder: () => mapController.getMarkers(),
+        dataBuilder: (BuildContext context, snapshot) {
+          NoticeProblemMapMarkerModel data =
+              snapshot as NoticeProblemMapMarkerModel;
 
           for (var element in data.markers!) {
             if (element.lat != null && element.long != null) {
               mapController.addMarkersToList(element);
             }
           }
-          return SizedBox(
-            height: Get.height / 3,
-            child: FlutterMap(
-              options: MapOptions(
-                interactiveFlags:
-                    ~InteractiveFlag.rotate & InteractiveFlag.pinchZoom,
-                zoom: 12.0,
-                plugins: [
-                  MarkerClusterPlugin(),
-                ],
-                center: latLng.LatLng(47.843876, 25.916276),
-                onTap: (_, __) => mapController.popupController.hideAllPopups(),
+          return Column(
+            children: [
+              Text(
+                'map-title'.tr.toUpperCase(),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              layers: [
-                TileLayerOptions(
-                  urlTemplate:
-                      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                  subdomains: ['a', 'b', 'c'],
-                ),
-                MarkerClusterLayerOptions(
-                  maxClusterRadius: 120,
-                  size: const Size(40, 40),
-                  fitBoundsOptions: const FitBoundsOptions(
-                    padding: EdgeInsets.all(50),
+              Card(
+                child: SizedBox(
+                  height: Get.height / 3,
+                  child: FlutterMap(
+                    options: MapOptions(
+                      interactiveFlags:
+                          ~InteractiveFlag.rotate & InteractiveFlag.pinchZoom,
+                      zoom: 12.0,
+                      plugins: [
+                        MarkerClusterPlugin(),
+                      ],
+                      center: latLng.LatLng(47.843876, 25.916276),
+                      onTap: (_, __) =>
+                          mapController.popupController.hideAllPopups(),
+                    ),
+                    layers: [
+                      TileLayerOptions(
+                        urlTemplate:
+                            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                        subdomains: ['a', 'b', 'c'],
+                      ),
+                      MarkerClusterLayerOptions(
+                        maxClusterRadius: 120,
+                        size: const Size(40, 40),
+                        fitBoundsOptions: const FitBoundsOptions(
+                          padding: EdgeInsets.all(50),
+                        ),
+                        markers: mapController.markerList,
+                        polygonOptions: const PolygonOptions(
+                            borderColor: Colors.white,
+                            color: Colors.black12,
+                            borderStrokeWidth: 3),
+                        builder: (context, markers) {
+                          return FloatingActionButton(
+                            onPressed: null,
+                            child: Text(markers.length.toString()),
+                          );
+                        },
+                      ),
+                    ],
                   ),
-                  markers: mapController.markerList,
-                  polygonOptions: const PolygonOptions(
-                      borderColor: Colors.white,
-                      color: Colors.black12,
-                      borderStrokeWidth: 3),
-                  builder: (context, markers) {
-                    return FloatingActionButton(
-                      onPressed: null,
-                      child: Text(markers.length.toString()),
-                    );
-                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           );
         },
       ),

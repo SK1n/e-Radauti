@@ -1,4 +1,3 @@
-import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
@@ -28,20 +27,12 @@ class TaxiItem extends StatelessWidget with GetImageUrl, UrlLauncher {
               height: 100,
               width: 100,
               child: Futuristic(
+                initialBuilder: (_, __) => Container(),
                 futureBuilder: () => getImageUrl(url!),
-                busyBuilder: (_) {
-                  return const CardLoading(
-                    height: 200,
-                    margin: EdgeInsets.only(bottom: 20),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  );
-                },
-                dataBuilder: (_, snap) => SizedBox(
+                dataBuilder: (_, snapshot) => SizedBox(
                   width: Get.width,
                   child: Image.network(
-                    snap.data.toString(),
+                    snapshot as String,
                     scale: 1.0,
                     fit: BoxFit.fitWidth,
                     height: 200,

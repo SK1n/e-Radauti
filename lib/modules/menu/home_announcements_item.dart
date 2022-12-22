@@ -1,4 +1,3 @@
-import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
@@ -29,20 +28,12 @@ class HomeAnnouncementsItem extends StatelessWidget
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Futuristic(
+            initialBuilder: (_, __) => Container(),
             futureBuilder: () => getImageUrl(url!),
-            busyBuilder: (_) {
-              return const CardLoading(
-                height: 200,
-                margin: EdgeInsets.only(bottom: 20),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
-                ),
-              );
-            },
-            dataBuilder: (_, snap) => SizedBox(
+            dataBuilder: (_, snapshot) => SizedBox(
               width: Get.width,
               child: Image.network(
-                snap.data.toString(),
+                snapshot as String,
                 scale: 1.0,
                 fit: BoxFit.fitWidth,
                 height: 200,
@@ -51,7 +42,8 @@ class HomeAnnouncementsItem extends StatelessWidget
           ),
           Center(
             child: Text(
-              "${title!} - ${date ?? ""}",
+              "${title!}\n ${date ?? ""}",
+              textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,

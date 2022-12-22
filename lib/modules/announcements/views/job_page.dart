@@ -20,29 +20,30 @@ class JobPage extends StatelessWidget with UrlLauncher {
       endDrawer: const NavDrawer(),
       body: CustomScrollView(
         slivers: [
-          const AppBarWidget(
-            content: 'Anunțuri',
+          AppBarWidget(
+            content: 'announces'.tr,
             leading: Icons.announcement,
           ),
           SliverPadding(
             padding: const EdgeInsets.all(8.0),
             sliver: SliverToBoxAdapter(
               child: Futuristic(
+                initialBuilder: (_, __) => Container(),
                 futureBuilder: () => controller.getData(eRadautiJobsLink),
                 dataBuilder: (_, snapshot) {
-                  List<RecordsModel>? items = snapshot.data;
+                  List<RecordsModel>? items = snapshot as List<RecordsModel>;
                   return ListView.builder(
                     shrinkWrap: true,
                     itemCount: 9,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
-                      var data = items?[index];
+                      var data = items[index];
                       return Container(
                         padding: const EdgeInsets.only(top: 5),
                         width: MediaQuery.of(context).size.width,
                         child: FilledButton(
                           child: AutoSizeText(
-                            data!.title.toString().toUpperCase(),
+                            data.title.toString().toUpperCase(),
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () => Get.defaultDialog(

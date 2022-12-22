@@ -20,31 +20,19 @@ class SignInController extends GetxController {
         sharedPreferences.setString("password", password);
         Get.defaultDialog(
           barrierDismissible: false,
-          title: 'Succes',
-          middleText: 'Ati fost autentificat cu success',
+          title: 'success'.tr,
+          middleText: 'success-sign-in'.tr,
           onConfirm: () => Get.offAllNamed(Routes.home),
         );
       });
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        EasyLoading.dismiss();
-        Get.defaultDialog(
-          barrierDismissible: false,
-          title: 'Oops',
-          middleText: 'Nu exista un user cu acest email!',
-          onConfirm: () => Get.back(),
-        );
-        debugPrint('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        EasyLoading.dismiss();
-        Get.defaultDialog(
-          barrierDismissible: false,
-          title: 'Oops',
-          middleText: 'Parola introdusa nu este corecta!',
-          onConfirm: () => Get.back(),
-        );
-        debugPrint('Wrong password provided for that user.');
-      }
+      EasyLoading.dismiss();
+      Get.defaultDialog(
+        barrierDismissible: false,
+        title: 'Oops',
+        middleText: e.code,
+        onConfirm: () => Get.back(),
+      );
     }
   }
 

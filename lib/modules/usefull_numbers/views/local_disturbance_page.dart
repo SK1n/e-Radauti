@@ -26,11 +26,13 @@ class LocalDisturbancePage extends StatelessWidget with GetDataFirebase {
               delegate: SliverChildListDelegate(
                 [
                   Futuristic(
+                    initialBuilder: (_, __) => Container(),
                     futureBuilder: () => getData(
                         convert: LocalDisturbancesModel.fromJson,
                         document: 'Numbers'),
-                    dataBuilder: (context, snap) {
-                      LocalDisturbancesModel data = snap.data;
+                    dataBuilder: (context, snapshot) {
+                      LocalDisturbancesModel data =
+                          snapshot as LocalDisturbancesModel;
                       List<LocalDisturbancesItemModel>? items = data.items;
 
                       return ListView.builder(
