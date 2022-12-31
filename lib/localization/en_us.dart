@@ -393,4 +393,8 @@ Map<String, String> enUS = {
   "proceed": "Do you want to proceed?",
   "next": "Next",
   "back": "Back",
+  'air-quality-short': 'Air',
+  'local-administration-short': 'Information',
+  'usefull-numbers-short': 'Numbers',
+  'report-problem-short': 'Report',
 };

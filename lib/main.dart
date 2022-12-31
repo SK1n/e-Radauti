@@ -27,51 +27,51 @@ Future<void> main() async {
       debugShowCheckedModeBanner: true,
       builder: EasyLoading.init(),
       getPages: AppPages.routes,
-      // initialRoute: isFirstRun
-      //     ? Routes.onboard
-      //     : isSignedIn != null
-      //         ? Routes.home
-      //         : Routes.signIn,
-      initialRoute: Routes.onboard,
+      initialRoute: isFirstRun
+          ? Routes.onboard
+          : isSignedIn != null
+              ? Routes.home
+              : Routes.signIn,
+      // initialRoute: Routes.onboard,z
       initialBinding: AppBindings(),
       locale: const Locale('en', "US"),
       translations: Languages(),
+// This theme was made for FlexColorScheme version 6.1.1. Make sure
+// you use same or higher version, but still same major version. If
+// you use a lower version, some properties may not be supported. In
+// that case you can also remove them after copying the theme to your app.
       theme: FlexThemeData.light(
-        scheme: FlexScheme.barossa,
-        surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffoldVariantDialog,
-        blendLevel: 20,
-        appBarOpacity: 0.95,
-        tabBarStyle: FlexTabBarStyle.universal,
+        scheme: FlexScheme.materialHc,
+        surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+        blendLevel: 9,
         subThemesData: const FlexSubThemesData(
-          blendOnLevel: 20,
+          blendOnLevel: 10,
           blendOnColors: false,
-          inputDecoratorIsFilled: true,
-          inputDecoratorBorderType: FlexInputBorderType.underline,
-          inputDecoratorRadius: 4.0,
-          inputDecoratorFillColor: FlexColor.lightScaffoldBackground,
+          bottomNavigationBarSelectedLabelSchemeColor: SchemeColor.primary,
+          bottomNavigationBarSelectedIconSchemeColor: SchemeColor.primary,
+          bottomNavigationBarBackgroundSchemeColor: SchemeColor.surfaceVariant,
         ),
-        useMaterial3ErrorColors: true,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        useMaterial3: true,
+        // To use the playground font, add GoogleFonts package and uncomment
+        // fontFamily: GoogleFonts.notoSans().fontFamily,
       ),
       darkTheme: FlexThemeData.dark(
-        scheme: FlexScheme.bigStone,
-        surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
+        scheme: FlexScheme.materialHc,
+        surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
         blendLevel: 15,
-        appBarElevation: 1.0,
-        tabBarStyle: FlexTabBarStyle.universal,
         subThemesData: const FlexSubThemesData(
-          blendOnLevel: 30,
-          inputDecoratorIsFilled: true,
-          inputDecoratorBorderType: FlexInputBorderType.underline,
-          inputDecoratorRadius: 4.0,
-          inputDecoratorFillColor: FlexColor.darkScaffoldBackground,
+          blendOnLevel: 20,
+          bottomNavigationBarSelectedLabelSchemeColor: SchemeColor.primary,
+          bottomNavigationBarSelectedIconSchemeColor: SchemeColor.primary,
+          bottomNavigationBarBackgroundSchemeColor: SchemeColor.surfaceVariant,
         ),
-        useMaterial3ErrorColors: true,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        useMaterial3: true,
+        // To use the Playground font, add GoogleFonts package and uncomment
+        // fontFamily: GoogleFonts.notoSans().fontFamily,
       ),
-      themeMode: ThemeMode.system,
+// If you do not have a themeMode switch, uncomment this line
+// to let the device system mode control the theme mode:
+// themeMode: ThemeMode.system,
       navigatorKey: Get.key,
     ),
   );
