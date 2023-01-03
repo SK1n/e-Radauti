@@ -4,12 +4,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutterapperadauti/controllers/location_controller.dart';
-import 'package:flutterapperadauti/utils/helpers/display_error.dart';
 import 'package:flutterapperadauti/utils/helpers/upload_to_firebase.dart';
 import 'package:get/get.dart';
 
-class NoticeProblemController extends GetxController
-    with DisplayError, UploadToFirebase {
+class NoticeProblemController extends GetxController with UploadToFirebase {
   final GlobalKey<FormBuilderState> formKey = GlobalKey();
   final LocationController _locationController = Get.find<LocationController>();
   dynamic useLocation = false.obs;
@@ -111,7 +109,13 @@ class NoticeProblemController extends GetxController
           useLocation.value = false;
         });
       } catch (e) {
-        displayError(e);
+        Get.showSnackbar(
+          GetSnackBar(
+            title: 'A intervenit o eroare',
+            message: e.toString(),
+            duration: const Duration(seconds: 5),
+          ),
+        );
       }
     }
   }

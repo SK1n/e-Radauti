@@ -2,6 +2,13 @@ Map<String, String> enUS = {
   "e-radauti": "e-Radauti",
   "app-radauti": "e-Raduti App",
 
+  ///
+  /// Not translated
+  ///
+  "developed-by":
+      "Application developed voluntarily by the Radauțiul Civic Association",
+  "welcome": "Welcome!",
+
   /// app title
   ///
   ///FIREBASE AUTH CODES
@@ -115,8 +122,8 @@ Map<String, String> enUS = {
   ///
   ///EVENTS
   ///
-  "new-events": "NEW EVENTS",
-  "old-events": "PAST EVENTS",
+  "new-events": "New events",
+  "old-events": "Past events",
   "start-date": "Start date",
   "end-date": "End date",
 
@@ -159,7 +166,7 @@ Map<String, String> enUS = {
   ///AIR QUALITY
   ///
   "graphs": "Graphics",
-  "centru-radauti": "RADAUTI CENTER",
+  "centru-radauti": "Air quality in Radauti",
   "bună": "Good",
   "acceptabilă": "Acceptable",
   "moderată": "Moderate",
@@ -199,7 +206,7 @@ Map<String, String> enUS = {
   "NbV": "NbW",
   "m-s": "m/s",
   "mBar": "mBar",
-  "radauti-iesire-dornesti": "RADAUTI - DORNESTI EXIT",
+  "radauti-iesire-dornesti": "Radauti - Dornest Exit",
   "device-location?": "Where is the device installed?",
   "device-location":
       "The air quality monitoring device is installed in the center of Radauti Municipality, in Piata Garoafelor and measures the concentration of PM2.5, CO2, temperature and relative humidity. The Radauti Weather Station is the official one installed by the Romanian authorities. The station is located on Str. Stephen the Great, No. 132 and measures temperature, relative humidity, wind speed, wind direction and atmospheric pressure.",
@@ -348,11 +355,26 @@ Map<String, String> enUS = {
   "new-password": "New password",
   "current-password": "Current password",
   "re-type-password": "Re-type new password",
+  "public-announcements": "Public announcements",
+  "map-title": "Map of reports from Radauti",
+  "guest": "Use the app now with Guest status",
+  "report-sent":
+      "The report has been sent successfully\nYou will be notified by email in the following days",
+  "permissions-text":
+      "To be able to enjoy all the functionalities of e-Rădăuți, the application needs the following permissions, which we ask you to activate\nThese permissions can be changed later in the settings.",
+
+  "forgot-password": "I forgot the password",
+  "or-log-in-as": "Or log in as",
+  "send-mail": "Send email",
   //not translated
+
   "new-password-match": "The password doesn't match",
   "create-new-account": "Create a new account",
   "password": "Password",
   "success": "Success",
+  "success-sign-in": "You have been authenticated successfully",
+  "user-created": "The user @name has been created",
+  "reset-password-email": "An email has been sent to @email",
   "success-name-update": "You have successfully setted the name to: @name",
   "display-name": "Enter new name",
   "update-name": "Update name",
@@ -369,4 +391,10 @@ Map<String, String> enUS = {
   "no": "No",
   "all": "All",
   "proceed": "Do you want to proceed?",
+  "next": "Next",
+  "back": "Back",
+  'air-quality-short': 'Air',
+  'local-administration-short': 'Information',
+  'usefull-numbers-short': 'Numbers',
+  'report-problem-short': 'Report',
 };

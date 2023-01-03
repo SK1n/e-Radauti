@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutterapperadauti/modules/account/controllers/reset_password_controller.dart';
@@ -12,8 +13,8 @@ class ResetPasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final GlobalKey<FormBuilderState> formKey = GlobalKey();
     final ResetPasswordController resetPasswordController = Get.find();
-    return Scaffold(
-      body: CustomScrollView(
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
         slivers: [
           SliverPadding(
             padding: const EdgeInsets.all(20.0),
@@ -42,20 +43,20 @@ class ResetPasswordPage extends StatelessWidget {
                           height: Get.height / 10,
                         ),
                         Text(
-                          'Resetare parola',
+                          'reset-password'.tr,
                           style: Get.textTheme.headlineLarge,
                         ),
                         FormBuilderTextField(
                           name: 'email',
                           initialValue: '',
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          decoration: const InputDecoration(hintText: 'Email'),
+                          decoration: InputDecoration(hintText: 'email'.tr),
                           validator: FormBuilderValidators.compose(
                             [
                               FormBuilderValidators.required(
-                                  errorText: errorRequired),
+                                  errorText: 'required-field'.tr),
                               FormBuilderValidators.email(
-                                  errorText: errorEmail),
+                                  errorText: 'email-format'.tr),
                             ],
                           ),
                         ),
@@ -74,8 +75,8 @@ class ResetPasswordPage extends StatelessWidget {
                             style: TextButton.styleFrom(
                                 minimumSize: Size(Get.width, 50),
                                 backgroundColor: Colors.orange),
-                            label: const Text(
-                              'Trimiteti mail',
+                            label: Text(
+                              'send-mail'.tr.toUpperCase(),
                             ),
                           ),
                         ),

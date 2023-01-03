@@ -27,9 +27,7 @@ class ReportProblemForm extends StatelessWidget {
                 label: Text("${'name-surname'.tr} *"),
                 floatingLabelAlignment: FloatingLabelAlignment.start,
               ),
-              initialValue: accountController.isSignedIn()
-                  ? accountController.userData.value.name ?? ""
-                  : "",
+              initialValue: accountController.getDisplayName(),
               name: 'name',
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: FormBuilderValidators.compose([
@@ -108,9 +106,6 @@ class ReportProblemForm extends StatelessWidget {
                   InputDecoration(label: Text("${'phone-number'.tr} *")),
               name: 'phone',
               keyboardType: TextInputType.number,
-              initialValue: accountController.isSignedIn()
-                  ? accountController.userData.value.phoneNumber ?? ""
-                  : "",
               validator: FormBuilderValidators.compose(
                 [
                   FormBuilderValidators.required(
@@ -129,9 +124,7 @@ class ReportProblemForm extends StatelessWidget {
             child: FormBuilderTextField(
               decoration: InputDecoration(label: Text("${'email'.tr} *")),
               name: 'email',
-              initialValue: accountController.isSignedIn()
-                  ? accountController.getEmail()
-                  : '',
+              initialValue: accountController.getEmail(),
               validator: FormBuilderValidators.compose(
                 [
                   FormBuilderValidators.required(

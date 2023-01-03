@@ -27,8 +27,8 @@ class SignUpController extends GetxController with UploadDataFirebase {
         );
         Get.defaultDialog(
           barrierDismissible: false,
-          title: 'Succes',
-          middleText: 'User-ul ${value.user!.email} a fost creat',
+          title: 'success'.tr,
+          middleText: 'user-created'.trParams({"name": value.user!.email!}),
           onConfirm: () => Get.back(closeOverlays: true),
         );
       });

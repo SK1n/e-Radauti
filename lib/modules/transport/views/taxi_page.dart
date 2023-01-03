@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/taxi/taxi_item_model.dart';
 import 'package:flutterapperadauti/data/models/taxi/taxi_model.dart';
 import 'package:flutterapperadauti/modules/transport/views/taxi_item.dart';
+import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
@@ -14,22 +16,25 @@ class TaxiPage extends StatelessWidget with GetImageUrl, GetDataFirebase {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: const NavDrawer(),
-      body: CustomScrollView(
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
         slivers: [
           AppBarWidget(
             content: 'cabbies'.tr,
             leading: Icons.local_taxi,
           ),
           SliverPadding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              left: leftMargin,
+              right: rightMargin,
+            ),
             sliver: SliverToBoxAdapter(
               child: Futuristic(
+                initialBuilder: (_, __) => Container(),
                 futureBuilder: () =>
                     getData(document: 'Taxi', convert: TaxiModel.fromJson),
-                dataBuilder: (_, snap) {
-                  TaxiModel data = snap.data;
+                dataBuilder: (_, snapshot) {
+                  TaxiModel data = snapshot as TaxiModel;
                   List<TaxiItemModel>? items = data.items;
                   return ListView.builder(
                       shrinkWrap: true,

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
@@ -9,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class NotificationsSwitchController extends GetxController {
   final topics = {
-    "all": false,
+    "announces": false,
     "events": false,
     "air-quality": false,
     "report-problem": false,
@@ -56,7 +54,7 @@ class NotificationsSwitchController extends GetxController {
     EasyLoading.show();
     prefs = await SharedPreferences.getInstance();
     topics.value = {
-      "all": prefs.getBool("all") ?? false,
+      "announces": prefs.getBool("announces") ?? false,
       "events": prefs.getBool("events") ?? false,
       "air-quality": prefs.getBool("air-quality") ?? false,
       "report-problem": prefs.getBool("report-problem") ?? false,

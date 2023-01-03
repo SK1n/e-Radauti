@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
+import 'package:get/get.dart';
 
 abstract class UploadToFirebase {
   Future<void> uploadDataToFirebase({
@@ -21,9 +22,7 @@ abstract class UploadToFirebase {
       !EasyLoading.isShow ? EasyLoading.show() : DoNothingAction();
       await documentReference.update({
         array!: FieldValue.arrayUnion(jsonDecode(data))
-      }).whenComplete(() => EasyLoading.isShow
-          ? EasyLoading.showSuccess('Success')
-          : DoNothingAction());
+      }).whenComplete(() => EasyLoading.showSuccess('report-sent'.tr));
     } catch (e) {
       rethrow;
     }

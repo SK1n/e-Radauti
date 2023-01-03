@@ -13,6 +13,7 @@ dependencies:
   card_loading: ^0.2.1
   cloud_firestore: ^4.2.0
   cupertino_icons: ^1.0.4
+  custom_navigation_bar: ^0.8.2
   dio: ^4.0.6
   expandable: ^5.0.1
   firebase_auth: ^4.2.0
@@ -27,6 +28,7 @@ dependencies:
   flutter_inappwebview: ^5.3.2
   flutter_loadingindicator: ^1.0.1
   flutter_local_notifications: ^9.4.0
+  flutter_localization: ^0.1.9
   flutter_map: ^2.2.0
   flutter_map_marker_cluster: ^0.5.0
   flutter_speed_dial: ^6.0.0
@@ -39,7 +41,6 @@ dependencies:
   get: ^4.6.5
   google_sign_in: ^5.4.2
   intl: ^0.17.0
-  intro_views_flutter: ^3.2.0
   js: ^0.6.4
   json_annotation: ^4.7.0
   json_serializable: ^6.5.2
@@ -52,7 +53,6 @@ dependencies:
   syncfusion_flutter_charts: ^20.1.48
   timeline_tile: ^2.0.0
   url_launcher: ^6.0.20
-  custom_navigation_bar: ^0.8.2
 
 dev_dependencies:
   build_runner: ^2.3.1
@@ -83,9 +83,10 @@ flutter_icons:
 flutter:
   assets:
     - assets/
+    - assets/faces/
+    - assets/buttons/
     - assets/images/
     - assets/logo_images/
-    - assets/images/volunteer/
-    - assets/images/bus/
+    - assets/images/
     - assets/wind/
   uses-material-design: true

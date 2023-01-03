@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/screens/views/about_us_app.dart';
 import 'package:flutterapperadauti/modules/screens/views/about_us_content.dart';
@@ -19,9 +20,8 @@ class AboutUsPage extends StatelessWidget {
         child: Text('about-app'.tr.toUpperCase()),
       ),
     ];
-    return Scaffold(
-      endDrawer: const NavDrawer(),
-      body: DefaultTabController(
+    return CupertinoPageScaffold(
+      child: DefaultTabController(
         length: tabs.length,
         child: NestedScrollView(
             headerSliverBuilder: (context, innerBoxIsScrolled) {

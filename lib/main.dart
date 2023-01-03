@@ -9,6 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/is_first_run.dart';
 import 'package:flutterapperadauti/utils/services/cloud_messaging_service.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
@@ -27,50 +28,53 @@ Future<void> main() async {
       debugShowCheckedModeBanner: true,
       builder: EasyLoading.init(),
       getPages: AppPages.routes,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('ro', 'RO'),
+      ],
       initialRoute: isFirstRun
           ? Routes.onboard
           : isSignedIn != null
               ? Routes.home
               : Routes.signIn,
       initialBinding: AppBindings(),
-      locale: const Locale('en', "US"),
+      locale: const Locale('ro', "RO"),
       translations: Languages(),
       theme: FlexThemeData.light(
-        scheme: FlexScheme.barossa,
-        surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffoldVariantDialog,
-        blendLevel: 20,
-        appBarOpacity: 0.95,
-        tabBarStyle: FlexTabBarStyle.universal,
+        scheme: FlexScheme.materialHc,
+        surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+        blendLevel: 9,
         subThemesData: const FlexSubThemesData(
-          blendOnLevel: 20,
+          blendOnLevel: 10,
           blendOnColors: false,
-          inputDecoratorIsFilled: true,
-          inputDecoratorBorderType: FlexInputBorderType.underline,
-          inputDecoratorRadius: 4.0,
-          inputDecoratorFillColor: FlexColor.lightScaffoldBackground,
+          bottomNavigationBarSelectedLabelSchemeColor: SchemeColor.primary,
+          bottomNavigationBarSelectedIconSchemeColor: SchemeColor.primary,
+          bottomNavigationBarBackgroundSchemeColor: SchemeColor.surfaceVariant,
         ),
-        useMaterial3ErrorColors: true,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        useMaterial3: true,
+        // To use the playground font, add GoogleFonts package and uncomment
+        // fontFamily: GoogleFonts.notoSans().fontFamily,
       ),
       darkTheme: FlexThemeData.dark(
-        scheme: FlexScheme.bigStone,
-        surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
+        scheme: FlexScheme.materialHc,
+        surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
         blendLevel: 15,
-        appBarElevation: 1.0,
-        tabBarStyle: FlexTabBarStyle.universal,
         subThemesData: const FlexSubThemesData(
-          blendOnLevel: 30,
-          inputDecoratorIsFilled: true,
-          inputDecoratorBorderType: FlexInputBorderType.underline,
-          inputDecoratorRadius: 4.0,
-          inputDecoratorFillColor: FlexColor.darkScaffoldBackground,
+          blendOnLevel: 20,
+          bottomNavigationBarSelectedLabelSchemeColor: SchemeColor.primary,
+          bottomNavigationBarSelectedIconSchemeColor: SchemeColor.primary,
+          bottomNavigationBarBackgroundSchemeColor: SchemeColor.surfaceVariant,
         ),
-        useMaterial3ErrorColors: true,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        useMaterial3: true,
+        // To use the Playground font, add GoogleFonts package and uncomment
+        // fontFamily: GoogleFonts.notoSans().fontFamily,
       ),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       navigatorKey: Get.key,
     ),
   );

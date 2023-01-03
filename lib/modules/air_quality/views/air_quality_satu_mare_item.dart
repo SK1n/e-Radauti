@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/satu_mare/satu_mare_item_model.dart';
 import 'package:flutterapperadauti/data/models/satu_mare/satu_mare_model.dart';
+import 'package:flutterapperadauti/modules/air_quality/controllers/air_quality_controller.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:fluttericon/entypo_icons.dart';
@@ -16,111 +17,84 @@ class AirQualitySatuMareItem extends StatelessWidget with GetDataFirebase {
 
   @override
   Widget build(BuildContext context) {
+    final AirQualityController airQualityController = Get.find();
     return Futuristic(
-      futureBuilder: () =>
-          getData(convert: SatuMareModel.fromJson, document: 'AirSatuMare'),
+      initialBuilder: (_, __) => Container(),
+      futureBuilder: () => airQualityController.getData(
+          convert: SatuMareModel.fromJson, document: 'AirSatuMare'),
       dataBuilder: (context, snapshot) {
-        SatuMareModel data = snapshot.data;
+        SatuMareModel data = snapshot as SatuMareModel;
         SatuMareItemModel item = data.item![0];
-
         return Column(
           children: [
             Card(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      '${"radauti-iesire-dornesti".tr}\n${item.fDate}',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    color: Color.fromARGB(item.a!, item.r!, item.g!, item.b!),
-                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                    child: IntrinsicHeight(
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            flex: 1,
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                item.quality!
-                                    .toLowerCase()
-                                    .replaceAll(" ", "-")
-                                    .tr,
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          VerticalDivider(
-                            thickness: 1,
-                            color: context.theme.canvasColor,
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Column(
-                                children: [
-                                  const Text(
-                                    'PM2,5',
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.white),
-                                  ),
-                                  Text(
-                                    '${item.pm}',
-                                    style: const TextStyle(
-                                        fontSize: 24, color: Colors.white),
-                                  ),
-                                  const Text(
-                                    '\u03BCg/m\u00B3',
-                                    style: TextStyle(
-                                        fontSize: 18, color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 0, bottom: 0),
-                    child: ListTile(
-                      leading: TextButton.icon(
-                        icon: const Icon(
-                          Typicons.temperatire,
-                          size: 30,
+              elevation: 5,
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                              '${item.fDate}\n${'radauti-iesire-dornesti'.tr}'),
                         ),
-                        label: Text('${item.temp}°C',
-                            style: const TextStyle(
-                              fontSize: 24,
-                            )),
-                        onPressed: () {
-                          DoNothingAction();
-                        },
-                      ),
-                      trailing: TextButton.icon(
-                        icon: const Icon(
-                          RpgAwesome.droplet,
-                          size: 30,
+                        Expanded(
+                          child: Text(
+                            '${item.temp}°C | ${item.hm}%',
+                            textAlign: TextAlign.end,
+                          ),
                         ),
-                        label: Text('${item.hm}%',
-                            style: const TextStyle(
-                              fontSize: 24,
-                            )),
-                        onPressed: () {},
-                      ),
+                      ],
                     ),
-                  ),
-                ],
+                    const Divider(),
+                    IntrinsicHeight(
+                      child: Card(
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(
+                                  item.a!, item.r!, item.g!, item.b!)),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Color.fromARGB(
+                                          item.a!, item.r!, item.g!, item.b!)),
+                                  child: Image.asset(
+                                    'assets/faces/${item.quality}.png',
+                                    width: 40,
+                                    height: 40,
+                                  ),
+                                ),
+                              ),
+                              const VerticalDivider(
+                                width: 10,
+                                thickness: 2,
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      item.quality!
+                                          .toLowerCase()
+                                          .replaceAll(" ", "-")
+                                          .tr,
+                                      style: const TextStyle(fontSize: 20),
+                                    ),
+                                    Text('${item.pm} PM2.5'),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Card(

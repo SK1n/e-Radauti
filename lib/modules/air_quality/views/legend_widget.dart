@@ -1,7 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
-import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:selectable_autolink_text/selectable_autolink_text.dart';
 
 class LegendWidget extends StatelessWidget with UrlLauncher {
@@ -19,69 +18,48 @@ class LegendWidget extends StatelessWidget with UrlLauncher {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Container(
-        padding: const EdgeInsets.all(10.0),
-        child: ExpandableNotifier(
+      elevation: 10,
+      child: ExpandableNotifier(
+        child: Container(
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: [
-              ScrollOnExpand(
-                child: Expandable(
-                  collapsed: ExpandableButton(
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(right: 8.0),
-                            child: Icon(
-                              FontAwesome.down_big,
-                            ),
-                          ),
-                          SizedBox(
-                              width: MediaQuery.of(context).size.width - 100,
-                              child: Text(
-                                collapsedTitle!,
-                              )),
-                        ],
-                      ),
+              Expandable(
+                collapsed: ExpandableButton(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Text(
+                      collapsedTitle!.toUpperCase(),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  expanded: ExpandableButton(
-                    child: Column(
-                      children: [
-                        Card(
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: Row(
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.only(right: 8.0),
-                                  child: Icon(FontAwesome.up_big),
-                                ),
-                                SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width - 100,
-                                    child: Text(expandedTitle!)),
-                              ],
+                ),
+                expanded: ExpandableButton(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width - 100,
+                        child: Text(
+                          expandedTitle!.toUpperCase(),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const Divider(),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width - 20,
+                        child: expandedWidget ??
+                            SelectableAutoLinkText(
+                              expandedContent!,
+                              textAlign: TextAlign.start,
+                              onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
+                              linkStyle:
+                                  const TextStyle(color: Colors.pinkAccent),
+                              onTap: (link) async {
+                                await launchUrl(link);
+                              },
                             ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width - 20,
-                          child: expandedWidget ??
-                              SelectableAutoLinkText(
-                                expandedContent!,
-                                textAlign: TextAlign.start,
-                                onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
-                                linkStyle:
-                                    const TextStyle(color: Colors.pinkAccent),
-                                onTap: (link) async {
-                                  await launchUrl(link);
-                                },
-                              ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               )

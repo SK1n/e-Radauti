@@ -1,11 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/controllers/account_controller.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
@@ -17,13 +16,18 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final AccountController controller = Get.find();
     final GlobalKey<FormBuilderState> formKey = GlobalKey();
-    return Scaffold(
-      endDrawer: const NavDrawer(),
-      body: CustomScrollView(
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
         slivers: [
           AppBarWidget(
             content: 'my-account'.tr,
             leading: Icons.person_4,
+            trailing: InkWell(
+              onTap: () => Get.toNamed(Routes.settings),
+              child: const Icon(
+                Icons.settings,
+              ),
+            ),
           ),
           SliverList(
             delegate: SliverChildListDelegate(

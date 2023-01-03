@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutterapperadauti/data/models/e_radauti_website/records_model.dart';
@@ -17,34 +18,37 @@ class FurniturePage extends StatelessWidget with UrlLauncher {
     ChromeSafariBrowser browser = ChromeSafariBrowser();
     final GetERadautiDataController controller = Get.find();
 
-    return Scaffold(
-      endDrawer: const NavDrawer(),
-      body: CustomScrollView(
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
         slivers: [
-          const AppBarWidget(
-            content: 'Anunțuri',
+          AppBarWidget(
+            content: 'announces'.tr,
             leading: Icons.announcement,
           ),
           SliverPadding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              left: leftMargin,
+              right: rightMargin,
+            ),
             sliver: SliverToBoxAdapter(
               child: Futuristic(
+                initialBuilder: (_, __) => Container(),
                 futureBuilder: () async =>
                     await controller.getData(eRadautiFurnitureLink),
                 dataBuilder: (_, snapshot) {
-                  List<RecordsModel>? items = snapshot.data;
+                  List<RecordsModel>? items = snapshot as List<RecordsModel>;
                   return ListView.builder(
                     itemCount: 9,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
-                      var data = items?[index];
+                      var data = items[index];
                       return Container(
                         padding: const EdgeInsets.only(top: 5),
                         width: MediaQuery.of(context).size.width,
                         child: FilledButton(
                           child: Text(
-                            data?.title ?? '',
+                            data.title ?? '',
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () => Get.defaultDialog(
@@ -56,7 +60,7 @@ class FurniturePage extends StatelessWidget with UrlLauncher {
                               Get.back();
                               browser.open(
                                 url: Uri.parse(
-                                    'https://www.eradauti.ro/anunturi/imobiliare-19/${data?.slug ?? ''}-${data?.id ?? ''}'),
+                                    'https://www.eradauti.ro/anunturi/imobiliare-19/${data.slug ?? ''}-${data.id ?? ''}'),
                                 options: ChromeSafariBrowserClassOptions(
                                   android: AndroidChromeCustomTabsOptions(
                                       shareState:
@@ -83,23 +87,23 @@ class FurniturePage extends StatelessWidget with UrlLauncher {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        elevation: 10,
-        child: const Icon(Icons.add_rounded),
-        onPressed: () {
-          Get.defaultDialog(
-            barrierDismissible: false,
-            title: 'Doriti sa deschideti pagina web?',
-            content: const Text(''),
-            onConfirm: () async {
-              Get.back();
-              await launchUrl('https://www.eradauti.ro/publica-anunt-gratuit');
-            },
-            textCancel: 'no'.tr,
-            textConfirm: 'yes'.tr,
-          );
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   elevation: 10,
+      //   child: const Icon(Icons.add_rounded),
+      //   onPressed: () {
+      //     Get.defaultDialog(
+      //       barrierDismissible: false,
+      //       title: 'Doriti sa deschideti pagina web?',
+      //       content: const Text(''),
+      //       onConfirm: () async {
+      //         Get.back();
+      //         await launchUrl('https://www.eradauti.ro/publica-anunt-gratuit');
+      //       },
+      //       textCancel: 'no'.tr,
+      //       textConfirm: 'yes'.tr,
+      //     );
+      //   },
+      // ),
     );
   }
 }

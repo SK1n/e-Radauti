@@ -40,10 +40,11 @@ class LeaderCard extends StatelessWidget with GetImageUrl, UrlLauncher {
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
               child: Futuristic(
+                  initialBuilder: (_, __) => Container(),
                   futureBuilder: () => getImageUrl(urlImg!),
-                  dataBuilder: (_, snap) => ImageWidget(
-                        link: snap.data,
-                        width: 140,
+                  dataBuilder: (_, snapshot) => ImageWidget(
+                        link: snapshot as String,
+                        width: Get.width / 3,
                         height: 200,
                       )),
             ),
@@ -53,7 +54,7 @@ class LeaderCard extends StatelessWidget with GetImageUrl, UrlLauncher {
               children: [
                 AutoSizeText(
                   '$name',
-                  minFontSize: 20,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(
                   '$function'.toLowerCase().tr,

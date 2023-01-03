@@ -15,8 +15,12 @@ class ResetPasswordController extends GetxController {
         EasyLoading.dismiss();
         Get.defaultDialog(
           barrierDismissible: false,
-          title: 'Succes',
-          middleText: 'A fost trimis un email de resetare a parolei pe $email',
+          title: 'success'.tr,
+          middleText: 'reset-password-email'.trParams(
+            {
+              "email": email,
+            },
+          ),
           actions: [
             TextButton(
               onPressed: () => Get.back(),
@@ -26,16 +30,13 @@ class ResetPasswordController extends GetxController {
         );
       });
     } on FirebaseAuthException catch (e) {
-      if (e.code == "user-not-found") {
-        EasyLoading.dismiss();
-        Get.defaultDialog(
-          barrierDismissible: false,
-          title: 'Oops',
-          middleText: 'Nu exista un user cu acest email!',
-          onConfirm: () => Get.back(),
-        );
-        debugPrint('No user found for that email.');
-      }
+      EasyLoading.dismiss();
+      Get.defaultDialog(
+        barrierDismissible: false,
+        title: 'Oops',
+        middleText: e.code,
+        onConfirm: () => Get.back(),
+      );
     }
   }
 }

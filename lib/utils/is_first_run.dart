@@ -1,8 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class IsFirstRun {
-  static const _firstRunSettingsKey = 'is_first_app_run';
-  static const _firstCallSettingsKey = 'is_first_call';
+  static const _firstRunSettingsKey = 'is_first_app_run_v2';
+  static const _firstCallSettingsKey = 'is_first_call_v2';
 
   static bool? _isFirstRun;
 

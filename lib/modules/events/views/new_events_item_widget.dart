@@ -21,6 +21,7 @@ class NewEventsItemWidget extends StatelessWidget with GetImageUrl {
   Widget build(BuildContext context) {
     final EventsController eventsNewController = Get.find();
     return Futuristic(
+        initialBuilder: (_, __) => Container(),
         futureBuilder: () => getImageUrl(data!.url),
         busyBuilder: (_) {
           return const CardLoading(
@@ -31,12 +32,12 @@ class NewEventsItemWidget extends StatelessWidget with GetImageUrl {
             ),
           );
         },
-        dataBuilder: (_, AsyncSnapshot snap) {
+        dataBuilder: (_, snapshot) {
           return ExpandableNotifier(
             child: ScrollOnExpand(
               child: ExpandablePanel(
                 collapsed: NewEventsCollapsedWidget(
-                  imageUrl: snap.data,
+                  imageUrl: snapshot as String,
                   headline: data!.headline,
                   timestamp: eventsNewController.convertTimestampToDate(
                     data!.start!.toInt(),
@@ -46,7 +47,7 @@ class NewEventsItemWidget extends StatelessWidget with GetImageUrl {
                   description: data!.description,
                   location: data!.location,
                   street: data!.street,
-                  imageUrl: snap.data,
+                  imageUrl: snapshot,
                   headline: data!.headline,
                   host: data!.host,
                   start: eventsNewController

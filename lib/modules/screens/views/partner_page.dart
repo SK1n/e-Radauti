@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
@@ -8,9 +9,8 @@ class PartnerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: const NavDrawer(),
-      body: CustomScrollView(
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
         slivers: [
           const AppBarWidget(
             content: 'Parteneri',

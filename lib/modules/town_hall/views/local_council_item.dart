@@ -26,84 +26,83 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Stack(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Futuristic(
-              futureBuilder: () => getImageUrl(url!),
-              dataBuilder: (_, snap) => ImageWidget(
-                    link: snap.data,
-                    width: 100,
-                    height: 150,
-                  )),
-          Positioned(
-            left: 110,
-            child: SizedBox(
-              width: Get.width - 170,
-              height: 50,
-              child: AutoSizeText(
-                name!,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                ),
-              ),
+            initialBuilder: (_, __) => Container(),
+            futureBuilder: () => getImageUrl(url!),
+            dataBuilder: (_, snapshot) => ImageWidget(
+              link: snapshot as String,
+              width: 100,
+              height: 150,
             ),
           ),
-          Positioned(
-            left: 110,
-            top: 42,
-            child: SizedBox(
-              width: Get.width - 110,
-              height: 20,
-              child: AutoSizeText(
-                function!.toLowerCase().replaceAll(" ", "-").tr,
-              ),
-            ),
-          ),
-          Positioned(
-            left: 110,
-            top: 60,
-            child: phoneNumber != null
-                ? SizedBox(
-                    height: 20,
-                    child: InkWell(
-                      onTap: () async {
-                        await launchUrl('tel:$phoneNumber');
-                      },
-                      child: Text(
-                        '${"tel".tr}: $phoneNumber',
-                        style: const TextStyle(color: Colors.blueAccent),
-                      ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AutoSizeText(
+                          name!,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                          child: AutoSizeText(
+                            function!.toLowerCase().replaceAll(" ", "-").tr,
+                          ),
+                        ),
+                        phoneNumber != null
+                            ? SizedBox(
+                                height: 20,
+                                child: InkWell(
+                                  onTap: () async {
+                                    await launchUrl('tel:$phoneNumber');
+                                  },
+                                  child: Text(
+                                    '${"tel".tr}: $phoneNumber',
+                                    style: const TextStyle(
+                                        color: Colors.blueAccent),
+                                  ),
+                                ),
+                              )
+                            : Container(),
+                        InkWell(
+                          onTap: () async {
+                            await launchUrl('mailto:$email');
+                          },
+                          child: SizedBox(
+                            width: Get.width - 110,
+                            child: AutoSizeText(
+                              '$email',
+                              style: const TextStyle(color: Colors.blueAccent),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  )
-                : Container(),
-          ),
-          Positioned(
-            left: 110,
-            top: phoneNumber != null ? 80 : 60,
-            child: InkWell(
-              onTap: () async {
-                await launchUrl('mailto:$email');
-              },
-              child: SizedBox(
-                width: Get.width - 110,
-                child: AutoSizeText(
-                  '${"email".tr}: $email',
-                  style: const TextStyle(color: Colors.blueAccent),
+                  ),
                 ),
-              ),
+                Expanded(
+                  child: Image.asset(
+                    'assets/images/$party.png',
+                    fit: BoxFit.fitHeight,
+                  ),
+                )
+              ],
             ),
           ),
-          Positioned(
-            right: 0,
-            top: 0,
-            child: Image.asset(
-              'assets/images/$party.png',
-              width: 40,
-              height: 40,
-              fit: BoxFit.fill,
-            ),
-          )
         ],
       ),
     );

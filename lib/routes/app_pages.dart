@@ -4,6 +4,7 @@ import 'package:flutterapperadauti/modules/account/views/account_page.dart';
 import 'package:flutterapperadauti/modules/account/views/update_password_page.dart';
 import 'package:flutterapperadauti/modules/air_quality/bindings/air_quality_bindings.dart';
 import 'package:flutterapperadauti/modules/announcements/bindings/get_e_radauti_data_bindings.dart';
+import 'package:flutterapperadauti/modules/announcements/views/local_announcements_page.dart';
 import 'package:flutterapperadauti/modules/events/bindings/events_bindings.dart';
 import 'package:flutterapperadauti/bindings/notifications_switch_bindings.dart';
 import 'package:flutterapperadauti/modules/air_quality/views/air_quality_page.dart';
@@ -18,10 +19,12 @@ import 'package:flutterapperadauti/modules/account/views/sign_in_page.dart';
 import 'package:flutterapperadauti/modules/account/views/reset_password_page.dart';
 import 'package:flutterapperadauti/modules/account/views/sign_up_page.dart';
 import 'package:flutterapperadauti/modules/menu/menu_screen.dart';
+import 'package:flutterapperadauti/modules/onboard/bindings/onboard_bindings.dart';
+import 'package:flutterapperadauti/modules/onboard/views/permissions_page.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/bindings/form_binding.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/views/report_problem_page.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/bindings/notice_problem_map_bindings.dart';
-import 'package:flutterapperadauti/modules/onboard/onboard.dart';
+import 'package:flutterapperadauti/modules/onboard/views/onboard_page.dart';
 import 'package:flutterapperadauti/modules/screens/views/about_us_page.dart';
 import 'package:flutterapperadauti/modules/screens/views/confidential_page.dart';
 import 'package:flutterapperadauti/modules/screens/views/partner_page.dart';
@@ -34,7 +37,6 @@ import 'package:flutterapperadauti/modules/town_hall/views/local_council_page.da
 import 'package:flutterapperadauti/modules/town_hall/views/local_meetings_page.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/town_hall_page.dart';
 import 'package:flutterapperadauti/modules/transport/views/transport_page.dart';
-import 'package:flutterapperadauti/modules/transport/views/bus_page.dart';
 import 'package:flutterapperadauti/modules/transport/views/taxi_page.dart';
 import 'package:flutterapperadauti/modules/transport/views/train_page.dart';
 import 'package:flutterapperadauti/modules/transport/views/timeline_route.dart';
@@ -82,6 +84,7 @@ class AppPages {
         bindings: [
           NavigationBarBinding(),
           NoticeProblemMapBinding(),
+          AirQualityBindings(),
         ],
         children: [
           GetPage(
@@ -134,10 +137,6 @@ class AppPages {
                 page: () => const TaxiPage(),
               ),
               GetPage(
-                  name: _Paths.bus,
-                  page: () => const BusPage(),
-                  bindings: const []),
-              GetPage(
                 name: _Paths.train,
                 page: () => const TrainPage(),
                 children: [
@@ -181,6 +180,10 @@ class AppPages {
                   bindings: [
                     GetERadautiDataBinding(),
                   ],
+                ),
+                GetPage(
+                  name: _Paths.localAnnouncements,
+                  page: () => const LocalAnnouncementsPage(),
                 ),
                 GetPage(
                   name: _Paths.furniture,
@@ -230,9 +233,14 @@ class AppPages {
                 ),
               ]),
         ]),
-    GetPage(
-        name: Routes.onboard,
-        page: () => const Onboard(),
-        bindings: [NotificationsSwitchBindings()]),
+    GetPage(name: Routes.onboard, page: () => const OnboardPage(), children: [
+      GetPage(
+        name: _Paths.permissionsPage,
+        page: () => const PermissionsPage(),
+      ),
+    ], bindings: [
+      NotificationsSwitchBindings(),
+      OnboardBinding()
+    ]),
   ];
 }

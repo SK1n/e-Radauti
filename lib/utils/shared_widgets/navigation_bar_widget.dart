@@ -12,16 +12,18 @@ class NavigationBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final NavigationBarController navigationBarController = Get.find();
     return Card(
-      child: CustomNavigationBar(
-        iconSize: 30.0,
-        selectedColor: Get.theme.primaryColor,
-        unSelectedColor: Get.theme.primaryColor,
-        backgroundColor: Colors.transparent,
+      child: BottomNavigationBar(
+        selectedItemColor: Get.theme.primaryColor,
+        unselectedItemColor: Get.theme.primaryColor,
+        selectedIconTheme: IconThemeData(color: Get.theme.primaryColor),
+        unselectedIconTheme: IconThemeData(color: Get.theme.primaryColor),
+        type: BottomNavigationBarType.fixed,
+        iconSize: 20.0,
         items: navigationBarController.items,
         onTap: (index) {
           switch (index) {
             case 0:
-              Get.toNamed(Routes.noticeProblem);
+              Get.toNamed(Routes.reportProblem);
               break;
             case 1:
               Get.toNamed(Routes.events);

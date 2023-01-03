@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:flutterapperadauti/data/models/notice_problem_map/markers_model.dart';
 import 'package:flutterapperadauti/data/models/notice_problem_map/notice_problem_map_marker_model.dart';
+import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/octicons_icons.dart';
@@ -11,7 +13,7 @@ import 'package:latlong2/latlong.dart' as latLng;
 import 'package:get/get.dart';
 
 class NoticeProblemMapController extends GetxController
-    with GetSingleTickerProviderStateMixin {
+    with GetSingleTickerProviderStateMixin, GetDataFirebase {
   late PopupController popupController;
   List<Marker> markerList = [];
 
@@ -20,6 +22,24 @@ class NoticeProblemMapController extends GetxController
   final _extendSpeedDial = true.obs;
   get extendSpeedDial => _extendSpeedDial.value;
   set extendSpeedDial(value) => _extendSpeedDial.value = value;
+
+  Future getMarkers() async {
+    if (!EasyLoading.isShow) {
+      EasyLoading.show();
+    }
+    markerList.clear();
+
+    try {
+      var data = await getData(
+          collection: 'collection',
+          document: 'Markers',
+          convert: NoticeProblemMapMarkerModel.fromJson);
+      EasyLoading.dismiss();
+      return data;
+    } on Exception catch (e) {
+      EasyLoading.showError(e.toString());
+    }
+  }
 
   addMarkersToList(MarkersModel element) {
     markerList.add(
@@ -31,7 +51,12 @@ class NoticeProblemMapController extends GetxController
               Get.defaultDialog(
                 barrierDismissible: false,
                 title: '${element.subject}',
-                content: Text('${element.description}'),
+                content: Column(
+                  children: [
+                    Text('${element.description}'),
+                    Text('${element.institution}'),
+                  ],
+                ),
                 onConfirm: () => Get.back(),
                 textConfirm: 'close'.tr,
               );
@@ -106,5 +131,11 @@ class NoticeProblemMapController extends GetxController
     popupController = PopupController();
     markerList.clear();
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    markerList.clear();
+    super.onClose();
   }
 }
