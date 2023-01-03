@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutterapperadauti/modules/account/controllers/reset_password_controller.dart';
@@ -12,8 +13,8 @@ class ResetPasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final GlobalKey<FormBuilderState> formKey = GlobalKey();
     final ResetPasswordController resetPasswordController = Get.find();
-    return Scaffold(
-      body: CustomScrollView(
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
         slivers: [
           SliverPadding(
             padding: const EdgeInsets.all(20.0),

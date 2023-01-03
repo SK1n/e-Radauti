@@ -5,14 +5,14 @@ import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:get/get.dart';
 import 'package:selectable_autolink_text/selectable_autolink_text.dart';
 
-class HomeAnnouncementsItem extends StatelessWidget
+class LocalAnnouncementsItem extends StatelessWidget
     with GetImageUrl, UrlLauncher {
   final String? url;
   final String? content;
   final String? title;
   final String? host;
   final String? date;
-  const HomeAnnouncementsItem({
+  const LocalAnnouncementsItem({
     super.key,
     this.url,
     required this.content,

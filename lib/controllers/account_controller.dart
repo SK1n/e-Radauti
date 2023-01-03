@@ -132,7 +132,7 @@ class AccountController extends GetxController
 
   @override
   void onReady() async {
-    if (Get.currentRoute != Routes.noticeProblem) {
+    if (Get.currentRoute != Routes.reportProblem) {
       if (!isAnnonymous()) {
         _sharedPreferences = await SharedPreferences.getInstance();
         try {

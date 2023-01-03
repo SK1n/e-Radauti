@@ -1,9 +1,15 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/local_announcements/local_announcements_item_model.dart';
 import 'package:flutterapperadauti/data/models/local_announcements/local_announcements_model.dart';
 import 'package:flutterapperadauti/modules/air_quality/views/air_quality_center_view.dart';
-import 'package:flutterapperadauti/modules/menu/home_announcements_item.dart';
+import 'package:flutterapperadauti/modules/announcements/views/local_announcements_item.dart';
+import 'package:flutterapperadauti/modules/menu/big_menu_item.dart';
+import 'package:flutterapperadauti/modules/menu/small_menu_item.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/views/report_problem_map.dart';
+import 'package:flutterapperadauti/routes/app_pages.dart';
+import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/services/cloud_messaging_service.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
@@ -30,125 +36,102 @@ class _MenuScreenState extends State<MenuScreen> with GetDataFirebase {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: const NavDrawer(),
-      extendBody: true,
-      bottomNavigationBar: const NavigationBarWidget(),
-      body: CustomScrollView(
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
         slivers: [
           AppBarWidget(
             content: 'e-radauti'.tr,
             leading: Icons.home,
           ),
-          const SliverToBoxAdapter(
-            child: AirQualityCenterView(),
-          ),
-          const SliverToBoxAdapter(
-            child: ReportProblemMap(),
-          ),
-          SliverToBoxAdapter(
-            child: Futuristic(
-              initialBuilder: (_, __) => Container(),
-              futureBuilder: () => getData(
-                  document: 'Announcements',
-                  convert: LocalAnnouncementsModel.fromJson),
-              dataBuilder: (_, snapshot) {
-                LocalAnnouncementsModel? data =
-                    snapshot as LocalAnnouncementsModel;
-                List<LocalAnnouncementsItemModel>? items = data.items ?? [];
-                if (items.isEmpty) return Container();
-                var element = items[items.length - 1];
-                return SafeArea(
-                  child: Card(
-                    elevation: 10,
-                    child: Column(
-                      children: [
-                        Text(
-                          'public-announcements'.tr.toUpperCase(),
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        HomeAnnouncementsItem(
-                          content: element.description,
-                          title: element.title,
-                          host: element.host,
-                          date: element.date,
-                          url: element.url,
-                        ),
-                      ],
-                    ),
+          SliverPadding(
+            padding:
+                const EdgeInsets.only(left: leftMargin, right: rightMargin),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  const AirQualityCenterView(),
+                  GridView.count(
+                    physics: const NeverScrollableScrollPhysics(),
+                    crossAxisCount: 2,
+                    shrinkWrap: true,
+                    mainAxisSpacing: 10.0,
+                    crossAxisSpacing: 10.0,
+                    children: [
+                      BigMenuItem(
+                        title: 'report-problem'.tr,
+                        image: 'assets/buttons/report.png',
+                        bckImg: 1,
+                        onTap: () => Get.toNamed(Routes.reportProblem),
+                      ),
+                      BigMenuItem(
+                        title: 'events'.tr,
+                        image: 'assets/buttons/calendar.png',
+                        bckImg: 2,
+                        onTap: () => Get.toNamed(Routes.events),
+                      ),
+                      BigMenuItem(
+                        title: 'local-administration'.tr,
+                        image: 'assets/buttons/townhall.png',
+                        bckImg: 3,
+                        onTap: () => Get.toNamed(Routes.townHall),
+                      ),
+                      BigMenuItem(
+                        title: 'air-quality'.tr,
+                        image: 'assets/buttons/pollution.png',
+                        bckImg: 4,
+                        onTap: () => Get.toNamed(Routes.air),
+                      ),
+                    ],
                   ),
-                );
-              },
+                ],
+              ),
             ),
           ),
-          // SliverToBoxAdapter(
-          //   child: SizedBox(
-          //     height: 50,
-          //     child: Column(
-          //       children: <Widget>[
-          //         SizedBox(
-          //           height: 17,
-          //           child: Row(
-          //             mainAxisAlignment: MainAxisAlignment.center,
-          //             children: <Widget>[
-          //               InkWell(
-          //                 child: Text(
-          //                   'about-us'.tr,
-          //                   style: const TextStyle(
-          //                     fontWeight: FontWeight.bold,
-          //                     decoration: TextDecoration.underline,
-          //                     color: Color(0xFF32325D),
-          //                     fontSize: 15,
-          //                   ),
-          //                 ),
-          //                 onTap: () => Get.toNamed(Routes.about),
-          //               ),
-          //               const VerticalDivider(
-          //                 color: Colors.black,
-          //               ),
-          //               InkWell(
-          //                 child: Text(
-          //                   'privacy'.tr,
-          //                   style: const TextStyle(
-          //                     fontWeight: FontWeight.bold,
-          //                     decoration: TextDecoration.underline,
-          //                     color: Color(0xFF32325D),
-          //                     fontSize: 15,
-          //                   ),
-          //                 ),
-          //                 onTap: () => Get.toNamed(Routes.confidential),
-          //               ),
-          //             ],
-          //           ),
-          //         ),
-          //         const SizedBox(
-          //           height: 10,
-          //         ),
-          //         Row(
-          //           mainAxisAlignment: MainAxisAlignment.center,
-          //           children: <Widget>[
-          //             InkWell(
-          //               child: Text(
-          //                 'partners'.tr,
-          //                 style: const TextStyle(
-          //                   fontWeight: FontWeight.bold,
-          //                   decoration: TextDecoration.underline,
-          //                   color: Color(0xFF32325D),
-          //                   fontSize: 15,
-          //                 ),
-          //               ),
-          //               onTap: () => Get.toNamed(Routes.partner),
-          //             ),
-          //           ],
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
+          SliverPadding(
+            padding: const EdgeInsets.only(
+              left: leftMargin,
+              right: rightMargin,
+              top: 20,
+            ),
+            sliver: SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Divider(
+                    thickness: 2,
+                  ),
+                  Row(
+                    children: [
+                      SmallMenuItem(
+                        image: 'assets/buttons/phone.png',
+                        title: 'usefull-numbers'.tr,
+                        onTap: () => Get.toNamed(Routes.phoneNumbers),
+                      ),
+                      SmallMenuItem(
+                        image: 'assets/buttons/announcement.png',
+                        title: 'announces'.tr,
+                        onTap: () => Get.toNamed(Routes.announcements),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      SmallMenuItem(
+                        image: 'assets/buttons/volunteering.png',
+                        title: 'volunteering'.tr,
+                        onTap: () => Get.toNamed(Routes.volunteer),
+                      ),
+                      SmallMenuItem(
+                        image: 'assets/buttons/transport.png',
+                        title: 'transport'.tr,
+                        onTap: () => Get.toNamed(Routes.transport),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

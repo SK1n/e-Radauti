@@ -3,8 +3,8 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
   static const home = _Paths.home;
-  static const noticeProblem = home + _Paths.noticeProblem;
-  static const noticeMap = noticeProblem + _Paths.noticeMap;
+  static const reportProblem = home + _Paths.noticeProblem;
+  static const noticeMap = reportProblem + _Paths.noticeMap;
   static const townHall = home + _Paths.townHall;
   static const leaders = townHall + _Paths.leaders;
   static const localMeetings = townHall + _Paths.localMeetings;
@@ -14,6 +14,7 @@ abstract class Routes {
   static const announcements = home + _Paths.announcements;
   static const jobs = announcements + _Paths.jobs;
   static const furniture = announcements + _Paths.furniture;
+  static const localAnnouncements = announcements + _Paths.localAnnouncements;
   static const phoneNumbers = home + _Paths.phoneNumberrs;
   static const publicInstitutions = phoneNumbers + _Paths.publicInstitutions;
   static const localDisturbances = phoneNumbers + _Paths.localDisturbances;
@@ -77,4 +78,5 @@ abstract class _Paths {
   static const account = '/account';
   static const updatePassword = "/update_password";
   static const permissionsPage = "/permissions_page";
+  static const localAnnouncements = '/localAnnouncements';
 }

@@ -9,6 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/is_first_run.dart';
 import 'package:flutterapperadauti/utils/services/cloud_messaging_service.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
@@ -27,19 +28,23 @@ Future<void> main() async {
       debugShowCheckedModeBanner: true,
       builder: EasyLoading.init(),
       getPages: AppPages.routes,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('ro', 'RO'),
+      ],
       initialRoute: isFirstRun
           ? Routes.onboard
           : isSignedIn != null
               ? Routes.home
               : Routes.signIn,
-      // initialRoute: Routes.onboard,z
       initialBinding: AppBindings(),
-      locale: const Locale('en', "US"),
+      locale: const Locale('ro', "RO"),
       translations: Languages(),
-// This theme was made for FlexColorScheme version 6.1.1. Make sure
-// you use same or higher version, but still same major version. If
-// you use a lower version, some properties may not be supported. In
-// that case you can also remove them after copying the theme to your app.
       theme: FlexThemeData.light(
         scheme: FlexScheme.materialHc,
         surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
@@ -69,9 +74,7 @@ Future<void> main() async {
         // To use the Playground font, add GoogleFonts package and uncomment
         // fontFamily: GoogleFonts.notoSans().fontFamily,
       ),
-// If you do not have a themeMode switch, uncomment this line
-// to let the device system mode control the theme mode:
-// themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       navigatorKey: Get.key,
     ),
   );

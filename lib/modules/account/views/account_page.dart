@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutterapperadauti/controllers/account_controller.dart';
@@ -15,13 +16,18 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final AccountController controller = Get.find();
     final GlobalKey<FormBuilderState> formKey = GlobalKey();
-    return Scaffold(
-      endDrawer: const NavDrawer(),
-      body: CustomScrollView(
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
         slivers: [
           AppBarWidget(
             content: 'my-account'.tr,
             leading: Icons.person_4,
+            trailing: InkWell(
+              onTap: () => Get.toNamed(Routes.settings),
+              child: const Icon(
+                Icons.settings,
+              ),
+            ),
           ),
           SliverList(
             delegate: SliverChildListDelegate(

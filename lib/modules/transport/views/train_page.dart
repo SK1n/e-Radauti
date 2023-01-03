@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/train/train_item_model.dart';
 import 'package:flutterapperadauti/data/models/train/train_model.dart';
 import 'package:flutterapperadauti/modules/transport/views/train_list_tile.dart';
+import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
@@ -12,16 +14,18 @@ class TrainPage extends StatelessWidget with GetDataFirebase {
   const TrainPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: const NavDrawer(),
-      body: CustomScrollView(
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
         slivers: [
           AppBarWidget(
             content: 'trains'.tr,
             leading: Icons.train,
           ),
           SliverPadding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              left: leftMargin,
+              right: rightMargin,
+            ),
             sliver: SliverToBoxAdapter(
               child: Futuristic(
                 initialBuilder: (_, __) => Container(),

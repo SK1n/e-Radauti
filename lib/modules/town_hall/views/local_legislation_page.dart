@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/town_hall/controllers/local_legislation_controller.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/local_legislation_item.dart';
+import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
@@ -16,16 +18,18 @@ class LocalLegislationPage extends StatelessWidget with UrlLauncher {
     final LocalLegislationController controller = Get.find();
     final TextEditingController textEditingController = TextEditingController();
 
-    return Scaffold(
-      endDrawer: const NavDrawer(),
-      body: CustomScrollView(
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
         slivers: [
           AppBarWidget(
             content: 'local-council-decisions'.tr,
             leading: Icons.location_city,
           ),
           SliverPadding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              left: leftMargin,
+              right: rightMargin,
+            ),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [

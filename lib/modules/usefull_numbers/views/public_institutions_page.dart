@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/public_institutions/public_institutions_item_model.dart';
 import 'package:flutterapperadauti/data/models/public_institutions/public_institutions_model.dart';
 import 'package:flutterapperadauti/modules/usefull_numbers/views/usefull_numbers_widget.dart';
+import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
@@ -13,16 +15,18 @@ class PublicInstitutionsPage extends StatelessWidget with GetDataFirebase {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: const NavDrawer(),
-      body: CustomScrollView(
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
         slivers: [
           AppBarWidget(
             content: 'local-institutions'.tr,
             leading: Icons.perm_phone_msg,
           ),
           SliverPadding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              left: leftMargin,
+              right: rightMargin,
+            ),
             sliver: SliverToBoxAdapter(
               child: Futuristic(
                 initialBuilder: (_, __) => Container(),

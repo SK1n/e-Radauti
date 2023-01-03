@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutterapperadauti/data/models/e_radauti_website/records_model.dart';
@@ -16,16 +17,18 @@ class JobPage extends StatelessWidget with UrlLauncher {
   Widget build(BuildContext context) {
     final GetERadautiDataController controller = Get.find();
     ChromeSafariBrowser browser = ChromeSafariBrowser();
-    return Scaffold(
-      endDrawer: const NavDrawer(),
-      body: CustomScrollView(
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
         slivers: [
           AppBarWidget(
             content: 'announces'.tr,
             leading: Icons.announcement,
           ),
           SliverPadding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              left: leftMargin,
+              right: rightMargin,
+            ),
             sliver: SliverToBoxAdapter(
               child: Futuristic(
                 initialBuilder: (_, __) => Container(),
@@ -81,23 +84,23 @@ class JobPage extends StatelessWidget with UrlLauncher {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        elevation: 10,
-        child: const Icon(Icons.add_rounded),
-        onPressed: () {
-          Get.defaultDialog(
-            barrierDismissible: false,
-            title: 'Doriti sa deschideti pagina web?',
-            content: const Text(''),
-            onConfirm: () async {
-              Get.back();
-              await launchUrl('https://www.eradauti.ro/publica-anunt-gratuit');
-            },
-            textCancel: 'no'.tr,
-            textConfirm: 'yes'.tr,
-          );
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   elevation: 10,
+      //   child: const Icon(Icons.add_rounded),
+      //   onPressed: () {
+      //     Get.defaultDialog(
+      //       barrierDismissible: false,
+      //       title: 'Doriti sa deschideti pagina web?',
+      //       content: const Text(''),
+      //       onConfirm: () async {
+      //         Get.back();
+      //         await launchUrl('https://www.eradauti.ro/publica-anunt-gratuit');
+      //       },
+      //       textCancel: 'no'.tr,
+      //       textConfirm: 'yes'.tr,
+      //     );
+      //   },
+      // ),
     );
   }
 }

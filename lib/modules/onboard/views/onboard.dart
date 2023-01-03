@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/onboard/controllers/onboard_controller.dart';
 import 'package:flutterapperadauti/modules/onboard/views/oboard_slides.dart';
@@ -25,8 +26,8 @@ class _OnboardState extends State<Onboard> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
+    return CupertinoPageScaffold(
+      child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,

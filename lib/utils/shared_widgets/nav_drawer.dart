@@ -31,7 +31,7 @@ class NavDrawer extends StatelessWidget {
           ),
           listTile(Icons.person_4, "my-account".tr, Routes.account),
           listTile(
-              Icons.photo_filter, 'report-problem'.tr, Routes.noticeProblem),
+              Icons.photo_filter, 'report-problem'.tr, Routes.reportProblem),
           listTile(
               Icons.location_city, 'local-administration'.tr, Routes.townHall),
           listTile(Icons.calendar_today, 'events'.tr, Routes.events),

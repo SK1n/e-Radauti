@@ -28,104 +28,73 @@ class AirQualitySatuMareItem extends StatelessWidget with GetDataFirebase {
         return Column(
           children: [
             Card(
-              elevation: 10,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      '${"radauti-iesire-dornesti".tr}\n${item.fDate}',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
+              elevation: 5,
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                              '${item.fDate}\n${'radauti-iesire-dornesti'.tr}'),
+                        ),
+                        Expanded(
+                          child: Text(
+                            '${item.temp}°C | ${item.hm}%',
+                            textAlign: TextAlign.end,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Card(
-                    child: Container(
-                      color: Color.fromARGB(item.a!, item.r!, item.g!, item.b!),
-                      padding: const EdgeInsets.only(top: 10, bottom: 10),
-                      child: IntrinsicHeight(
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              flex: 1,
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  item.quality!
-                                      .toLowerCase()
-                                      .replaceAll(" ", "-")
-                                      .tr,
-                                  style: const TextStyle(color: Colors.white),
+                    const Divider(),
+                    IntrinsicHeight(
+                      child: Card(
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(
+                                  item.a!, item.r!, item.g!, item.b!)),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Color.fromARGB(
+                                          item.a!, item.r!, item.g!, item.b!)),
+                                  child: Image.asset(
+                                    'assets/faces/${item.quality}.png',
+                                    width: 40,
+                                    height: 40,
+                                  ),
                                 ),
                               ),
-                            ),
-                            VerticalDivider(
-                              thickness: 1,
-                              color: context.theme.canvasColor,
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Align(
-                                alignment: Alignment.center,
+                              const VerticalDivider(
+                                width: 10,
+                                thickness: 2,
+                              ),
+                              Expanded(
+                                flex: 2,
                                 child: Column(
                                   children: [
-                                    const Text(
-                                      'PM2,5',
-                                      style: TextStyle(
-                                          fontSize: 14, color: Colors.white),
-                                    ),
                                     Text(
-                                      '${item.pm}',
-                                      style: const TextStyle(
-                                          fontSize: 24, color: Colors.white),
+                                      item.quality!
+                                          .toLowerCase()
+                                          .replaceAll(" ", "-")
+                                          .tr,
+                                      style: const TextStyle(fontSize: 20),
                                     ),
-                                    const Text(
-                                      '\u03BCg/m\u00B3',
-                                      style: TextStyle(
-                                          fontSize: 18, color: Colors.white),
-                                    ),
+                                    Text('${item.pm} PM2.5'),
                                   ],
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 0, bottom: 0),
-                    child: ListTile(
-                      leading: TextButton.icon(
-                        icon: const Icon(
-                          Typicons.temperatire,
-                          size: 30,
-                        ),
-                        label: Text('${item.temp}°C',
-                            style: const TextStyle(
-                              fontSize: 24,
-                            )),
-                        onPressed: () {
-                          DoNothingAction();
-                        },
-                      ),
-                      trailing: TextButton.icon(
-                        icon: const Icon(
-                          RpgAwesome.droplet,
-                          size: 30,
-                        ),
-                        label: Text('${item.hm}%',
-                            style: const TextStyle(
-                              fontSize: 24,
-                            )),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
             Card(

@@ -11,17 +11,17 @@ class ColorLegendWidget extends StatelessWidget {
     return Column(
       children: [
         boxDetails(
-            const Color.fromARGB(255, 78, 236, 226), 'color-meaning-blue'.tr),
+            const Color.fromARGB(255, 80, 240, 230), 'color-meaning-blue'.tr),
         boxDetails(
-            const Color.fromARGB(255, 13, 95, 73), 'color-meaning-green'.tr),
+            const Color.fromARGB(255, 80, 204, 170), 'color-meaning-green'.tr),
         boxDetails(
-            const Color.fromARGB(255, 236, 228, 63), 'color-meaning-yellow'.tr),
+            const Color.fromARGB(255, 240, 230, 65), 'color-meaning-yellow'.tr),
         boxDetails(
-            const Color.fromARGB(255, 238, 74, 74), 'color-meaning-pink'.tr),
+            const Color.fromARGB(255, 255, 80, 80), 'color-meaning-pink'.tr),
         boxDetails(
-            const Color.fromARGB(255, 167, 25, 25), 'color-meaning-red'.tr),
-        boxDetails(
-            const Color.fromARGB(255, 126, 5, 5), 'color-meaning-red-dark'.tr),
+            const Color.fromARGB(255, 150, 0, 50), 'color-meaning-red'.tr),
+        boxDetails(const Color.fromARGB(255, 125, 33, 129),
+            'color-meaning-red-dark'.tr),
       ],
     );
   }

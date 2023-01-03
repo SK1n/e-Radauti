@@ -23,7 +23,7 @@ class NavigationBarWidget extends StatelessWidget {
         onTap: (index) {
           switch (index) {
             case 0:
-              Get.toNamed(Routes.noticeProblem);
+              Get.toNamed(Routes.reportProblem);
               break;
             case 1:
               Get.toNamed(Routes.events);

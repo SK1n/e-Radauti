@@ -122,8 +122,8 @@ Map<String, String> enUS = {
   ///
   ///EVENTS
   ///
-  "new-events": "NEW EVENTS",
-  "old-events": "PAST EVENTS",
+  "new-events": "New events",
+  "old-events": "Past events",
   "start-date": "Start date",
   "end-date": "End date",
 
@@ -166,7 +166,7 @@ Map<String, String> enUS = {
   ///AIR QUALITY
   ///
   "graphs": "Graphics",
-  "centru-radauti": "Air quality in the center of Radauti",
+  "centru-radauti": "Air quality in Radauti",
   "bună": "Good",
   "acceptabilă": "Acceptable",
   "moderată": "Moderate",
@@ -206,7 +206,7 @@ Map<String, String> enUS = {
   "NbV": "NbW",
   "m-s": "m/s",
   "mBar": "mBar",
-  "radauti-iesire-dornesti": "RADAUTI - DORNESTI EXIT",
+  "radauti-iesire-dornesti": "Radauti - Dornest Exit",
   "device-location?": "Where is the device installed?",
   "device-location":
       "The air quality monitoring device is installed in the center of Radauti Municipality, in Piata Garoafelor and measures the concentration of PM2.5, CO2, temperature and relative humidity. The Radauti Weather Station is the official one installed by the Romanian authorities. The station is located on Str. Stephen the Great, No. 132 and measures temperature, relative humidity, wind speed, wind direction and atmospheric pressure.",

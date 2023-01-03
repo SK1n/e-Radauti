@@ -25,76 +25,65 @@ class AirQuality extends StatelessWidget with GetDataFirebase {
       dataBuilder: (context, snapshot) {
         AirQualityModel data = snapshot as AirQualityModel;
         AirQualityItemModel? item = data.item?[0];
-        return CustomScrollView(
-          slivers: [
-            SliverPadding(
-              padding: const EdgeInsets.all(8.0),
-              sliver: SliverList(
-                delegate: SliverChildListDelegate(
-                  [
-                    const AirQualityCenterView(),
-                    Card(
-                      elevation: 2,
-                      child: Column(
-                        children: [
-                          ListTile(
-                            leading: TextButton.icon(
-                              icon: const Icon(
-                                Meteocons.wind,
-                              ),
-                              label: Text(
-                                "${"wind".tr} ${item!.windMs!} m/s",
-                                textAlign: TextAlign.left,
-                                maxLines: 2,
-                                style: const TextStyle(fontSize: 16.0),
-                              ),
-                              onPressed: () {},
-                            ),
-                            trailing: TextButton.icon(
-                              icon: Transform.rotate(
-                                angle: item.directionDeg!.toDouble() *
-                                    math.pi /
-                                    180,
-                                child: Image.asset(
-                                    'assets/wind/direction_${Get.isDarkMode ? 'white' : 'black'}.png'),
-                              ),
-                              label: Text(
-                                '${"direction"} ${item.direction!.tr}',
-                                maxLines: 2,
-                                style: const TextStyle(fontSize: 16.0),
-                              ),
-                              onPressed: () {},
-                            ),
-                          ),
-                          ListTile(
-                            leading: TextButton.icon(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Entypo.gauge,
-                              ),
-                              label: Text(
-                                '${item.fPression} mBar',
-                                maxLines: 2,
-                                style: const TextStyle(fontSize: 16.0),
-                              ),
-                            ),
-                            trailing: TextButton.icon(
-                              onPressed: () {},
-                              icon: const Icon(
-                                LineariconsFree.flag,
-                              ),
-                              label: Text(item.direction!.tr),
-                            ),
-                          ),
-                        ],
+        return Column(
+          children: [
+            const AirQualityCenterView(),
+            Card(
+              elevation: 2,
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: TextButton.icon(
+                      icon: const Icon(
+                        Meteocons.wind,
+                      ),
+                      label: Text(
+                        "${"wind".tr} ${item!.windMs!} m/s",
+                        textAlign: TextAlign.left,
+                        maxLines: 2,
+                        style: const TextStyle(fontSize: 16.0),
+                      ),
+                      onPressed: () {},
+                    ),
+                    trailing: TextButton.icon(
+                      icon: Transform.rotate(
+                        angle: item.directionDeg!.toDouble() * math.pi / 180,
+                        child: Image.asset(
+                            'assets/wind/direction_${Get.isDarkMode ? 'white' : 'black'}.png'),
+                      ),
+                      label: Text(
+                        '${"direction"} ${item.direction!.tr}',
+                        maxLines: 2,
+                        style: const TextStyle(fontSize: 16.0),
+                      ),
+                      onPressed: () {},
+                    ),
+                  ),
+                  ListTile(
+                    leading: TextButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Entypo.gauge,
+                      ),
+                      label: Text(
+                        '${item.fPression} mBar',
+                        maxLines: 2,
+                        style: const TextStyle(fontSize: 16.0),
                       ),
                     ),
-                    const AirQualitySatuMareItem(),
-                    const AirQualityLegend(),
-                  ],
-                ),
+                    trailing: TextButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(
+                        LineariconsFree.flag,
+                      ),
+                      label: Text(item.direction!.tr),
+                    ),
+                  ),
+                ],
               ),
             ),
+            const AirQualitySatuMareItem(),
+            const AirQualityLegend(),
           ],
         );
       },

@@ -4,6 +4,7 @@ import 'package:flutterapperadauti/modules/account/views/account_page.dart';
 import 'package:flutterapperadauti/modules/account/views/update_password_page.dart';
 import 'package:flutterapperadauti/modules/air_quality/bindings/air_quality_bindings.dart';
 import 'package:flutterapperadauti/modules/announcements/bindings/get_e_radauti_data_bindings.dart';
+import 'package:flutterapperadauti/modules/announcements/views/local_announcements_page.dart';
 import 'package:flutterapperadauti/modules/events/bindings/events_bindings.dart';
 import 'package:flutterapperadauti/bindings/notifications_switch_bindings.dart';
 import 'package:flutterapperadauti/modules/air_quality/views/air_quality_page.dart';
@@ -36,7 +37,6 @@ import 'package:flutterapperadauti/modules/town_hall/views/local_council_page.da
 import 'package:flutterapperadauti/modules/town_hall/views/local_meetings_page.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/town_hall_page.dart';
 import 'package:flutterapperadauti/modules/transport/views/transport_page.dart';
-import 'package:flutterapperadauti/modules/transport/views/bus_page.dart';
 import 'package:flutterapperadauti/modules/transport/views/taxi_page.dart';
 import 'package:flutterapperadauti/modules/transport/views/train_page.dart';
 import 'package:flutterapperadauti/modules/transport/views/timeline_route.dart';
@@ -137,10 +137,6 @@ class AppPages {
                 page: () => const TaxiPage(),
               ),
               GetPage(
-                  name: _Paths.bus,
-                  page: () => const BusPage(),
-                  bindings: const []),
-              GetPage(
                 name: _Paths.train,
                 page: () => const TrainPage(),
                 children: [
@@ -184,6 +180,10 @@ class AppPages {
                   bindings: [
                     GetERadautiDataBinding(),
                   ],
+                ),
+                GetPage(
+                  name: _Paths.localAnnouncements,
+                  page: () => const LocalAnnouncementsPage(),
                 ),
                 GetPage(
                   name: _Paths.furniture,
