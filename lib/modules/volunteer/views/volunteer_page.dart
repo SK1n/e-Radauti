@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/modules/volunteer/views/volunteer_widget.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
@@ -36,30 +37,50 @@ class VolunteerPage extends StatelessWidget {
                     VolunteerWidget(
                       path: "assets/images/volunteer/rc_logo_web.png",
                       description: "radautiul-civic".tr,
+                      phone: 'radautiul-civic-phone'.tr,
+                      email: 'radautiul-civic-email'.tr,
+                      site: 'radautiul-civic-site'.tr,
                     ),
                     VolunteerWidget(
                       path: "assets/images/volunteer/toastmasters.jpg",
                       description: "toast-master".tr,
+                      phone: 'toast-master-phone'.tr,
+                      email: 'toast-master-email'.tr,
+                      site: 'toast-master-site'.tr,
                     ),
                     VolunteerWidget(
                       path: "assets/images/volunteer/eco_montan.jpg",
                       description: "club-eco".tr,
+                      phone: 'club-eco-phone'.tr,
+                      email: 'club-eco-email'.tr,
+                      site: 'club-eco-site'.tr,
                     ),
                     VolunteerWidget(
                       path: "assets/images/volunteer/asociatia_bafi.png",
                       description: "bafi".tr,
+                      phone: 'bafi-phone'.tr,
+                      email: 'bafi-email'.tr,
+                      site: 'bafi-site'.tr,
                     ),
                     VolunteerWidget(
                       path: "assets/images/volunteer/door_to_home.png",
                       description: "door-to-home".tr,
+                      phone: 'door-to-home-phone'.tr,
+                      email: 'door-to-home-email'.tr,
+                      site: 'door-to-home-site'.tr,
                     ),
                     VolunteerWidget(
                       path: "assets/images/volunteer/maria_ward.png",
                       description: "maria-ward".tr,
+                      phone: 'maria-ward-phone'.tr,
+                      email: 'maria-ward-email'.tr,
+                      site: 'maria-ward-site'.tr,
                     ),
                     VolunteerWidget(
                       path: "assets/images/volunteer/umania.png",
                       description: "umania".tr,
+                      email: 'umania-email'.tr,
+                      site: 'umania-site'.tr,
                     ),
                   ],
                 )),
@@ -69,98 +90,3 @@ class VolunteerPage extends StatelessWidget {
     );
   }
 }
-
-class VolunteerWidget extends StatelessWidget with UrlLauncher {
-  final String path;
-  final String description;
-  const VolunteerWidget(
-      {super.key, required this.path, required this.description});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: SizedBox(
-        height: 200,
-        child: Column(
-          children: [
-            ImageWidget.asset(
-              link: path,
-              fit: BoxFit.scaleDown,
-            ),
-            SelectableAutoLinkText(
-              description,
-              textAlign: TextAlign.center,
-              onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
-              linkStyle: const TextStyle(color: Colors.pinkAccent),
-              onTap: (link) async {
-                await launchUrl(link);
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
-
-
-//  SliverGrid.count(
-//               crossAxisSpacing: 15,
-//               mainAxisSpacing: 15,
-//               crossAxisCount: 2,
-//               childAspectRatio: Get.width / (Get.height / 1.4),
-              // children: <Widget>[
-              //   const VolunteerWidget(
-              //     path: "assets/images/volunteer/rc_logo_web.png",
-              //     description:
-              //         "Rădăuțiul Civic\nTelefon: 0741975076\nradautiulcivic@gmail.com\nhttps://www.radautiulcivic.ro/",
-              //   ),
-              //   const VolunteerWidget(
-              //     path: "assets/images/volunteer/toastmasters.jpg",
-              //     description:
-              //         "Toastmasters Rădăuți\n Telefon: 0740757280\nradautitm@gmail.com\nhttps://www.facebook.com/radautitoastmasters/",
-              //   ),
-              //   const VolunteerWidget(
-              //     path: "assets/images/volunteer/eco_montan.jpg",
-              //     description:
-              //         "Club Eco Montan\nTelefon: 0746814430\nclubulecomontan@gmail.com\nhttps://www.facebook.com/ClubulEcoMontanBucovinaRadauti/",
-              //   ),
-              //   const VolunteerWidget(
-              //     path: "assets/images/volunteer/asociatia_bafi.png",
-              //     description:
-              //         "BAFI\nTelefon: 0755403224\nasociatia@bafi.ro\nhttp://www.bafi.ro",
-              //   ),
-              //   const VolunteerWidget(
-              //     path: "assets/images/volunteer/door_to_home.png",
-              //     description:
-              //         "BAFI\nTelefon: 0755403224\nasociatia@bafi.ro\nhttp://www.bafi.ro",
-              //   ),
-              //   WidgetVolunteerModel().cardVolunteer(
-              //       "assets/images/volunteer/door_to_home.png",
-              //       ['Asociația Door', 'to Home'],
-              //       ['Domeniul: Social,', 'Filantropic'],
-              //       ['Telefon: 0230 562 751'],
-              //       ['info@doortohome.ro'],
-              //       ['doortohome.ro'],
-              //       'http://doortohome.ro/'),
-              //   WidgetVolunteerModel().cardVolunteer(
-              //       "assets/images/volunteer/maria_ward.png",
-              //       ['Asociația Maria', 'Ward'],
-              //       ['Domeniul: Social'],
-              //       ['Telefon: 0757 114 181'],
-              //       ['centrul.mariaward', '@gmail.com'],
-              //       ['centrulsocialmaria', 'ward.org'],
-              //       'https://centrulsocialmariaward.org/'),
-              //   //4
-              //   WidgetVolunteerModel().cardVolunteer(
-              //       "assets/images/volunteer/umania.png",
-              //       ['Asociația Umania'],
-              //       ['Domeniul: Social'],
-              //       ['Telefon: -'],
-              //       ['ioanadeliar@', 'gmail.com'],
-              //       ['www.facebook.com/', 'umania.ffs'],
-              //       'https://www.facebook.com/umania.ffs'),
-              // ],
-//             ),

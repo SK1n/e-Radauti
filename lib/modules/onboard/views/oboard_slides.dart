@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/avatar_image_widget.dart';
 
-class OnboardSlides extends StatelessWidget {
+class OnboardSlides extends StatelessWidget with UrlLauncher {
   final String? image;
   final String? title;
   final Widget? body;
@@ -23,6 +24,13 @@ class OnboardSlides extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         body!,
+        AvatarImageWidget.asset(
+          link: 'assets/images/radautiul_civic.jpg',
+        ),
+        SelectableText(
+          'www.radautiulcivic.ro',
+          onTap: () => launchUrl('https://www.radautiulcivic.ro'),
+        ),
       ],
     );
   }

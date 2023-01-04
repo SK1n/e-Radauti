@@ -26,12 +26,6 @@ class ReportProblemPage extends StatelessWidget {
               delegate: SliverChildListDelegate(
                 [
                   const ReportProblemMap(),
-                  SizedBox(
-                    height: 40,
-                    child: Center(
-                      child: Text('send-report'.tr),
-                    ),
-                  ),
                   const ReportProblemForm(),
                 ],
               ),

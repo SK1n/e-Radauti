@@ -45,8 +45,15 @@ class ListTileRoute extends StatelessWidget {
             style: const TextStyle(fontSize: 20),
           ),
         ),
-        subtitle: Center(child: Text(subTitle)),
-        trailing: Icon(trailingIcon),
+        subtitle: Center(
+          child: Text(
+            subTitle,
+            textAlign: TextAlign.center,
+          ),
+        ),
+        trailing: Icon(
+          trailingIcon,
+        ),
       ),
     );
   }

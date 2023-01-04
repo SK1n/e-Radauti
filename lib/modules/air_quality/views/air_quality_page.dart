@@ -19,11 +19,13 @@ class AirQualityPage extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
             label: 'air-quality'.tr,
-            icon: const Icon(Icons.abc),
+            icon: const Icon(Icons.air),
           ),
           BottomNavigationBarItem(
-            label: 'graphics'.tr,
-            icon: const Icon(Icons.abc),
+            label: 'graphs'.tr,
+            icon: const Icon(
+              FontAwesome5.chart_area,
+            ),
           ),
         ],
       ),

@@ -253,19 +253,33 @@ Map<String, String> enUS = {
   ///
   ///VOLUNTEERING
   ///
-  "radautiul-civic":
-      "Radautiul Civic\nPhone: 0741975076\nradautiulcivic@gmail.com\nhttps://www.radautiulcivic.ro",
-  "toast-master":
-      "Toastmasters Radauti\nPhone: 0740757280\nradautitm@gmail.com\nhttps://www.facebook.com/radautitoastmasters",
-  "club-eco":
-      "Club Eco Montan\nPhone: 0746814430\nclubulecomontan@gmail.com\nhttps://www.facebook.com/ClubulEcoMontanBucovinaRadauti",
-  "bafi": "BAFI\nPhone: 0755403224\nasociatia@bafi.ro\nhttp://www.bafi.ro",
-  "door-to-home":
-      "Door to Home Association\nPhone: 0230562751\ninfo@doortohome.ro\nhttp://doortohome.ro",
-  "maria-ward":
-      "Maria Ward Association\nPhone: 0757114181\ncentrul.mariaward@gmail.com\nhttps://centrulsocialmariaward.org",
-  "umania":
-      "Umania Association\nioanadeliar@gmail.com\nhttps://www.facebook.com/umania.ffs",
+  "radautiul-civic": "Radautiul Civic",
+  "radautiul-civic-phone": "Phone: 0741975076",
+  "radautiul-civic-email": "Email: radautiulcivic@gmail.com",
+  "radautiul-civic-site": "https://www.radautiulcivic.ro",
+  "toast-master": "Toastmasters Radauti",
+  "toast-master-phone": "Phone: 0740757280",
+  "toast-master-email": "radautitm@gmail.com",
+  "toast-master-site": "https://www.facebook.com/radautitoastmasters",
+  "club-eco": "Club Eco Montan",
+  "club-eco-phone": "Phone: 0746814430",
+  "club-eco-email": "clubulecomontan@gmail.com",
+  "club-eco-site": "https://www.facebook.com/ClubulEcoMontanBucovinaRadauti",
+  "bafi": "BAFI",
+  "bafi-phone": "Phone: 0755403224",
+  "bafi-email": "asociatia@bafi.ro",
+  "bafi-site": "http://www.bafi.ro",
+  "door-to-home": "Door to Home Association",
+  "door-to-home-phone": "Phone: 0230562751",
+  "door-to-home-email": "info@doortohome.ro",
+  "door-to-home-site": "http://doortohome.ro",
+  "maria-ward": "Maria Ward Association",
+  "maria-ward-phone": "Phone: 0757114181",
+  "maria-ward-email": "centrul.mariaward@gmail.com",
+  "maria-ward-site": "https://centrulsocialmariaward.org",
+  "umania": "Umania Association",
+  "umania-email": "ioanadeliar@gmail.com",
+  "umania-site": "https://www.facebook.com/umania.ffs",
 
   ///
   ///TRANSPORT

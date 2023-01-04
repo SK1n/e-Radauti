@@ -15,31 +15,32 @@ class NewEventsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final EventsController controller = Get.find();
-    return Futuristic(
-      initialBuilder: (_, __) => Container(),
-      futureBuilder: () => controller.getData(
-        collection: kDebugMode ? 'test' : 'collection',
-        convert: NewEventsModel.fromJson,
-        document: 'Events',
+    return SafeArea(
+      child: Futuristic(
+        initialBuilder: (_, __) => Container(),
+        futureBuilder: () => controller.getData(
+          collection: kDebugMode ? 'test' : 'collection',
+          convert: NewEventsModel.fromJson,
+          document: 'Events',
+        ),
+        dataBuilder: (BuildContext context, snapshot) {
+          NewEventsModel data = snapshot as NewEventsModel;
+          List<EventsListModel>? list = data.events
+            ?..sort(
+              (e1, e2) => e2.start!.compareTo(
+                e1.start!,
+              ),
+            );
+          return ListView.builder(
+              shrinkWrap: true,
+              itemCount: list!.length,
+              itemBuilder: (BuildContext context, int item) {
+                return NewEventsItemWidget(
+                  data: list[item],
+                );
+              });
+        },
       ),
-      dataBuilder: (BuildContext context, snapshot) {
-        NewEventsModel data = snapshot as NewEventsModel;
-        List<EventsListModel>? list = data.events
-          ?..sort(
-            (e1, e2) => e2.start!.compareTo(
-              e1.start!,
-            ),
-          );
-        return ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: list!.length,
-            itemBuilder: (BuildContext context, int item) {
-              return NewEventsItemWidget(
-                data: list[item],
-              );
-            });
-      },
     );
   }
 }

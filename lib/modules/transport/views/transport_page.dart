@@ -37,11 +37,6 @@ class TransportPage extends StatelessWidget {
                     subtitle: 'trains-description'.tr,
                     route: Routes.train,
                   ),
-                  MenuListTile(
-                    title: 'minibuses'.tr,
-                    subtitle: 'minibuses-description'.tr,
-                    route: Routes.bus,
-                  ),
                 ],
               ),
             ),

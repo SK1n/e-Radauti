@@ -121,25 +121,25 @@ class NoticeProblemController extends GetxController with UploadToFirebase {
   }
 
   Future<String> createData() async {
-    var fields = formKey.currentState!;
+    var form = formKey.currentState!;
     String json = jsonEncode([
       {
-        "category": fields.fields['category']?.value ?? '',
-        "description": fields.fields['description']?.value ?? '',
-        "index": category.indexOf(fields.fields['category']?.value),
-        "institution": fields.fields['institution_email']?.value["text"] ?? '',
+        "category": form.fields['category']?.value ?? '',
+        "description": form.fields['description']?.value ?? '',
+        "index": category.indexOf(form.fields['category']?.value),
+        "institution": form.fields['institution_email']?.value["text"] ?? '',
         "institution_email":
-            fields.fields['institution_email']?.value["email"] ?? '',
+            form.fields['institution_email']?.value["email"] ?? '',
         "lat":
             useLocation.value ? await _locationController.getLatitute() : null,
         "long":
             useLocation.value ? await _locationController.getLongitude() : null,
         "status": "În lucru",
-        "subject": fields.fields['subject']?.value ?? '',
-        "email": fields.fields['email']?.value ?? '',
-        "name": fields.fields['name']?.value ?? '',
+        "subject": form.fields['subject']?.value ?? '',
+        "email": form.fields['email']?.value ?? '',
+        "name": form.fields['name']?.value ?? '',
         "url": imageLinks,
-        "phone": fields.fields['phone']?.value ?? '',
+        "phone": form.fields['phone']?.value ?? '',
       },
     ]);
     debugPrint(json);
@@ -147,12 +147,13 @@ class NoticeProblemController extends GetxController with UploadToFirebase {
   }
 
   List<String> category = [
-    'other'.tr,
-    'uncollected-garbage'.tr,
     'infrastructure'.tr,
     'utilities-problems'.tr,
+    'uncollected-garbage'.tr,
+    'infrastructure-streets'.tr,
     'illegal-constructions'.tr,
-    'safety'.tr,
     'air-quality-pollution'.tr,
+    'safety'.tr,
+    'other'.tr,
   ];
 }

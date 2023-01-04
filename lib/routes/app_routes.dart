@@ -3,8 +3,8 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
   static const home = _Paths.home;
-  static const reportProblem = home + _Paths.noticeProblem;
-  static const noticeMap = reportProblem + _Paths.noticeMap;
+  static const reportProblem = home + _Paths.reportProblem;
+  static const noticeMap = reportProblem + _Paths.reportMap;
   static const townHall = home + _Paths.townHall;
   static const leaders = townHall + _Paths.leaders;
   static const localMeetings = townHall + _Paths.localMeetings;
@@ -43,8 +43,8 @@ abstract class Routes {
 
 abstract class _Paths {
   static const home = '/home';
-  static const noticeProblem = '/notice_problem';
-  static const noticeMap = '/notice_map';
+  static const reportProblem = '/report_problem';
+  static const reportMap = '/report_map';
   static const townHall = '/town_hall';
   static const leaders = '/leaders';
   static const localMeetings = '/council_meetings';

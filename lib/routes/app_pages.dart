@@ -155,7 +155,7 @@ class AppPages {
                 AirQualityBindings(),
               ]),
           GetPage(
-            name: _Paths.noticeProblem,
+            name: _Paths.reportProblem,
             page: () => const ReportProblemPage(),
             bindings: [
               NoticeProblemFormBindings(),

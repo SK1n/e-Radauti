@@ -17,10 +17,14 @@ class EventsPage extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
             label: 'new-events'.tr,
-            icon: const Icon(Icons.abc),
+            icon: const Icon(Icons.calendar_today_outlined),
           ),
           BottomNavigationBarItem(
-              label: 'old-events'.tr, icon: const Icon(Icons.abc))
+            label: 'old-events'.tr,
+            icon: const Icon(
+              Icons.calendar_month_outlined,
+            ),
+          ),
         ],
       ),
       tabBuilder: (_, index) => CupertinoTabView(
@@ -31,7 +35,7 @@ class EventsPage extends StatelessWidget {
               SliverPadding(
                 padding:
                     const EdgeInsets.only(left: leftMargin, right: rightMargin),
-                sliver: SliverFillRemaining(child: pages[index]),
+                sliver: SliverToBoxAdapter(child: pages[index]),
               ),
             ],
           ),

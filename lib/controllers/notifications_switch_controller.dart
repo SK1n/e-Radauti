@@ -11,6 +11,7 @@ class NotificationsSwitchController extends GetxController {
     "events": false,
     "air-quality": false,
     "report-problem": false,
+    "local-council": false,
   }.obs;
   final dynamic _switchValue = false.obs;
   get switchValue => _switchValue.value;
@@ -58,6 +59,7 @@ class NotificationsSwitchController extends GetxController {
       "events": prefs.getBool("events") ?? false,
       "air-quality": prefs.getBool("air-quality") ?? false,
       "report-problem": prefs.getBool("report-problem") ?? false,
+      "local-council": prefs.getBool("local-council") ?? false,
     };
     EasyLoading.dismiss();
     super.onInit();

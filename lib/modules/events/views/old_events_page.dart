@@ -24,7 +24,6 @@ class OldEventsPage extends StatelessWidget {
         List<EventsListModel>? list = data.events!
           ..sort((e1, e2) => e2.start!.compareTo(e1.start!));
         return ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: 30,
             itemBuilder: (BuildContext context, int item) {

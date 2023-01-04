@@ -18,52 +18,33 @@ class LegendWidget extends StatelessWidget with UrlLauncher {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 10,
+      elevation: 1,
       child: ExpandableNotifier(
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              Expandable(
-                collapsed: ExpandableButton(
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: Text(
-                      collapsedTitle!.toUpperCase(),
-                      textAlign: TextAlign.center,
+        child: ScrollOnExpand(
+          child: ExpandablePanel(
+            theme: const ExpandableThemeData(
+              headerAlignment: ExpandablePanelHeaderAlignment.center,
+            ),
+            header: Text(
+              collapsedTitle!.toUpperCase(),
+              textAlign: TextAlign.center,
+            ),
+            collapsed: Container(),
+            expanded: ExpandableButton(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width - 20,
+                child: expandedWidget ??
+                    SelectableAutoLinkText(
+                      expandedContent!,
+                      textAlign: TextAlign.start,
+                      onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
+                      linkStyle: const TextStyle(color: Colors.pinkAccent),
+                      onTap: (link) async {
+                        await launchUrl(link);
+                      },
                     ),
-                  ),
-                ),
-                expanded: ExpandableButton(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width - 100,
-                        child: Text(
-                          expandedTitle!.toUpperCase(),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      const Divider(),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width - 20,
-                        child: expandedWidget ??
-                            SelectableAutoLinkText(
-                              expandedContent!,
-                              textAlign: TextAlign.start,
-                              onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
-                              linkStyle:
-                                  const TextStyle(color: Colors.pinkAccent),
-                              onTap: (link) async {
-                                await launchUrl(link);
-                              },
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-              )
-            ],
+              ),
+            ),
           ),
         ),
       ),
