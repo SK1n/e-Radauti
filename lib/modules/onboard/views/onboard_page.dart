@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/onboard/views/oboard_slides.dart';
 import 'package:flutterapperadauti/modules/onboard/views/onboard.dart';
-import 'package:flutterapperadauti/modules/settings/views/notification_settings.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/dark_mode_switch.dart';
 import 'package:get/get.dart';
 
 class OnboardPage extends StatelessWidget {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/onboard/controllers/onboard_controller.dart';
 import 'package:flutterapperadauti/modules/onboard/views/oboard_slides.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
+import 'package:flutterapperadauti/utils/const.dart';
 import 'package:get/get.dart';
 
 class Onboard extends StatefulWidget {
@@ -28,7 +29,7 @@ class _OnboardState extends State<Onboard> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(left: leftMargin, right: rightMargin),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

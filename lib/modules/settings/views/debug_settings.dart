@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:flutterapperadauti/utils/is_first_run.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
+import 'package:get/get.dart';
 
 class DebugSettings extends StatelessWidget {
   const DebugSettings({super.key});
@@ -20,17 +20,44 @@ class DebugSettings extends StatelessWidget {
           SliverToBoxAdapter(
             child: Column(
               children: [
-                TextButton(
+                FilledButton(
                   child: const Text('Show the intro views(first run)'),
                   onPressed: () {
                     IsFirstRun.reset();
                   },
                 ),
-                TextButton(
+                FilledButton(
                     onPressed: () async => await FirebaseMessaging.instance
                         .getToken()
                         .then((value) => debugPrint('FCM: $value')),
-                    child: const Text('print FCM'))
+                    child: const Text('print FCM')),
+                FilledButton(
+                  onPressed: () async {
+                    await FirebaseMessaging.instance.subscribeToTopic('test');
+                    Get.showSnackbar(const GetSnackBar(
+                      title: 'Success',
+                      message: 'subscribed to topic test',
+                      duration: Duration(seconds: 1),
+                    ));
+                  },
+                  child: const Text(
+                    'Subscribe to test topic!',
+                  ),
+                ),
+                FilledButton(
+                  onPressed: () async {
+                    await FirebaseMessaging.instance
+                        .unsubscribeFromTopic('test');
+                    Get.showSnackbar(const GetSnackBar(
+                      title: 'Success',
+                      message: 'unsubscribed to topic test',
+                      duration: Duration(seconds: 1),
+                    ));
+                  },
+                  child: const Text(
+                    'Unsubscribe to test topic!',
+                  ),
+                ),
               ],
             ),
           ),

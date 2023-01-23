@@ -4,7 +4,6 @@ import 'package:flutterapperadauti/modules/events/views/new_events_page.dart';
 import 'package:flutterapperadauti/modules/events/views/old_events_page.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 
 class EventsPage extends StatelessWidget {
@@ -17,10 +16,14 @@ class EventsPage extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
             label: 'new-events'.tr,
-            icon: const Icon(Icons.abc),
+            icon: const Icon(Icons.calendar_today_outlined),
           ),
           BottomNavigationBarItem(
-              label: 'old-events'.tr, icon: const Icon(Icons.abc))
+            label: 'old-events'.tr,
+            icon: const Icon(
+              Icons.calendar_month_outlined,
+            ),
+          ),
         ],
       ),
       tabBuilder: (_, index) => CupertinoTabView(
@@ -31,7 +34,7 @@ class EventsPage extends StatelessWidget {
               SliverPadding(
                 padding:
                     const EdgeInsets.only(left: leftMargin, right: rightMargin),
-                sliver: SliverFillRemaining(child: pages[index]),
+                sliver: SliverToBoxAdapter(child: pages[index]),
               ),
             ],
           ),

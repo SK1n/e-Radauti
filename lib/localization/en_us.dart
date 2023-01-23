@@ -1,18 +1,9 @@
 Map<String, String> enUS = {
   "e-radauti": "e-Radauti",
   "app-radauti": "e-Raduti App",
-
-  ///
-  /// Not translated
-  ///
   "developed-by":
-      "Application developed voluntarily by the Radauțiul Civic Association",
+      "Application developed through the efforts of the Rădăutiul Civic Association",
   "welcome": "Welcome!",
-
-  /// app title
-  ///
-  ///FIREBASE AUTH CODES
-  ///
   "weak-password": "The password is weak. Please provide a better password",
   "user-not-found": "We couldn't an account with the given credentials",
   "invalid-email": "The email is invalid",
@@ -26,10 +17,6 @@ Map<String, String> enUS = {
   "user-mismatch":
       "The credential given does not correspond to the current user",
   "expired-action-code": "The code has expired",
-
-  ///
-  ///SECTION TITLES
-  ///
   "my-account": "My account",
   "report-problem": "Report a problem",
   "local-administration": "Local administration",
@@ -40,17 +27,9 @@ Map<String, String> enUS = {
   "transport": "Transport",
   "volunteering": "Volunteering",
   "settings": "Settings",
-
-  ///
-  ///FIREBASE AUTH
-  ///
   "sign-out": "Sign out",
   "log-in": "Log in",
   "reset-password": "Reset password",
-
-  ///
-  ///REPORT A PROBLEM
-  ///
   "send-report": "SEND REPORT",
   "name-surname": "Name and surname",
   "institution": "Institution",
@@ -90,10 +69,6 @@ Map<String, String> enUS = {
   "ocolul-silvic-marginea": "Ocolul Silvic Marginea",
   "dsp-suceava": "DSP Suceava",
   "radautiul-civic-association": "Radautiul Civic Association",
-
-  ///
-  ///LOCAL COUNCIL
-  ///
   "lead": "Government",
   "lead-info": "Informations about mayor, deputy and secretary",
   "local-council": "Local council",
@@ -118,18 +93,10 @@ Map<String, String> enUS = {
   "order": "Order",
   "see-order": "See order",
   "open-link": "Open Link",
-
-  ///
-  ///EVENTS
-  ///
   "new-events": "New events",
   "old-events": "Past events",
   "start-date": "Start date",
   "end-date": "End date",
-
-  ///
-  ///USEFULL NUMBERS
-  ///
   "inconveniences": "Inconvenience",
   "inconveniences-info":
       "Contact details for information or complaints about water, sewerage or utility services",
@@ -150,10 +117,6 @@ Map<String, String> enUS = {
   "poliția-animalelor": "Animal police",
   "protectia-mediului": "Environmental protection",
   "garda-de-mediu-suceava": "Suceava Environmental Guard",
-
-  ///
-  ///ANNOUNCES
-  ///
   "local-announces": "Local announces",
   "local-announces-info":
       "Announcements from major institutions\nAnnouncements from local services",
@@ -161,10 +124,6 @@ Map<String, String> enUS = {
   "jobs-info": "Jobs ads taken from www.eradauti.ro",
   "real-estate": "Real estate",
   "real-estate-info": "Real estate ads taken from www.eradauti.ro",
-
-  ///
-  ///AIR QUALITY
-  ///
   "graphs": "Graphics",
   "centru-radauti": "Air quality in Radauti",
   "bună": "Good",
@@ -239,7 +198,6 @@ Map<String, String> enUS = {
   "selected-value": "Selected value",
   "selected-value-is": "Selected value is",
   "value-date": "At the date of",
-
   "cabbies": "Cabbies",
   "cabbies-description": "List of authorized taxi drivers from Radauti",
   "trains": "Trains",
@@ -249,31 +207,33 @@ Map<String, String> enUS = {
   "departure": "Departure",
   "arrival": "Arrival",
   "select": "-  Select  -",
-
-  ///
-  ///VOLUNTEERING
-  ///
-  "radautiul-civic":
-      "Radautiul Civic\nPhone: 0741975076\nradautiulcivic@gmail.com\nhttps://www.radautiulcivic.ro",
-  "toast-master":
-      "Toastmasters Radauti\nPhone: 0740757280\nradautitm@gmail.com\nhttps://www.facebook.com/radautitoastmasters",
-  "club-eco":
-      "Club Eco Montan\nPhone: 0746814430\nclubulecomontan@gmail.com\nhttps://www.facebook.com/ClubulEcoMontanBucovinaRadauti",
-  "bafi": "BAFI\nPhone: 0755403224\nasociatia@bafi.ro\nhttp://www.bafi.ro",
-  "door-to-home":
-      "Door to Home Association\nPhone: 0230562751\ninfo@doortohome.ro\nhttp://doortohome.ro",
-  "maria-ward":
-      "Maria Ward Association\nPhone: 0757114181\ncentrul.mariaward@gmail.com\nhttps://centrulsocialmariaward.org",
-  "umania":
-      "Umania Association\nioanadeliar@gmail.com\nhttps://www.facebook.com/umania.ffs",
-
-  ///
-  ///TRANSPORT
-  ///
-
-  ///
-  ///APP TEXT
-  ///
+  "radautiul-civic": "Radautiul Civic",
+  "radautiul-civic-phone": "Phone: 0741975076",
+  "radautiul-civic-email": "Email: radautiulcivic@gmail.com",
+  "radautiul-civic-site": "https://www.radautiulcivic.ro",
+  "toast-master": "Toastmasters Radauti",
+  "toast-master-phone": "Phone: 0740757280",
+  "toast-master-email": "radautitm@gmail.com",
+  "toast-master-site": "https://www.facebook.com/radautitoastmasters",
+  "club-eco": "Club Eco Montan",
+  "club-eco-phone": "Phone: 0746814430",
+  "club-eco-email": "clubulecomontan@gmail.com",
+  "club-eco-site": "https://www.facebook.com/ClubulEcoMontanBucovinaRadauti",
+  "bafi": "BAFI",
+  "bafi-phone": "Phone: 0755403224",
+  "bafi-email": "asociatia@bafi.ro",
+  "bafi-site": "http://www.bafi.ro",
+  "door-to-home": "Door to Home Association",
+  "door-to-home-phone": "Phone: 0230562751",
+  "door-to-home-email": "info@doortohome.ro",
+  "door-to-home-site": "http://doortohome.ro",
+  "maria-ward": "Maria Ward Association",
+  "maria-ward-phone": "Phone: 0757114181",
+  "maria-ward-email": "centrul.mariaward@gmail.com",
+  "maria-ward-site": "https://centrulsocialmariaward.org",
+  "umania": "Umania Association",
+  "umania-email": "ioanadeliar@gmail.com",
+  "umania-site": "https://www.facebook.com/umania.ffs",
   "about-us": "About Us",
   "privacy": "Privacy",
   "partners": "Partners",
@@ -320,7 +280,6 @@ Map<String, String> enUS = {
   "child-privacy-description":
       "These services are not intended for persons under the age of 13. We do not knowingly collect personally identifiable information from children under 13. If we discover that a child under 13 has provided us with personal information, we will immediately delete it from our servers. If you are a parent or guardian, or if you are aware that we have been provided with personal information from your child, please contact us as soon as possible so that we can take the necessary steps.",
   "security": "Security",
-
   "security-description":
       'We appreciate your trust when you provide us with personal information. That\'s why we try to use commercially acceptable means to protect it. However, you should note that no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee its absolute security.'
           '\nLinks to other sites or to other service providers'
@@ -331,11 +290,9 @@ Map<String, String> enUS = {
   "service-providers": "Service providers",
   "service-providers-description":
       "We may employ third-party companies and individuals for the following reasons:\n- to facilitate our own service\n- to provide users with third-party services (e.g. recycling)\n- to provide the service on our behalf\n- to perform services related to our service\n n- to be assisted to analyze how our service is used",
-
   "cookies": "Cookies",
   "cookies-description":
       "Cookies are files that contain small amounts of data that are used as a unique anonymous identifier. They are sent to the browser from the website you visit and are stored in the internal memory of the device. This service does not use cookies explicitly. However, the application may use third-party code and bookstores that use cookies to collect information and improve their services. You have the option to both accept and refuse these cookies and more, know when cookies are sent to your device. If you refuse to use them, you will only be able to use certain parts of the services.",
-
   "google-play-services": "Google Play services",
   "google-play-services-description":
       "We inform you that every time you use the application, information and data from the phone are collected by third-party products and transmitted in case of errors in log data. Log data may contain information such as your Internet Protocol (\"IP\") address, device name, operating system version, application configuration when you use our tools, date and time of application use, and other statistical data.",
@@ -362,12 +319,9 @@ Map<String, String> enUS = {
       "The report has been sent successfully\nYou will be notified by email in the following days",
   "permissions-text":
       "To be able to enjoy all the functionalities of e-Rădăuți, the application needs the following permissions, which we ask you to activate\nThese permissions can be changed later in the settings.",
-
   "forgot-password": "I forgot the password",
   "or-log-in-as": "Or log in as",
   "send-mail": "Send email",
-  //not translated
-
   "new-password-match": "The password doesn't match",
   "create-new-account": "Create a new account",
   "password": "Password",

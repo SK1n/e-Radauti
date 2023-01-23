@@ -4,7 +4,6 @@ import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/menu_list_tile.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 
 class TransportPage extends StatelessWidget {
@@ -36,11 +35,6 @@ class TransportPage extends StatelessWidget {
                     title: 'trains'.tr,
                     subtitle: 'trains-description'.tr,
                     route: Routes.train,
-                  ),
-                  MenuListTile(
-                    title: 'minibuses'.tr,
-                    subtitle: 'minibuses-description'.tr,
-                    route: Routes.bus,
                   ),
                 ],
               ),

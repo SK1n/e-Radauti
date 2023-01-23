@@ -1,21 +1,13 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/data/models/local_announcements/local_announcements_item_model.dart';
-import 'package:flutterapperadauti/data/models/local_announcements/local_announcements_model.dart';
 import 'package:flutterapperadauti/modules/air_quality/views/air_quality_center_view.dart';
-import 'package:flutterapperadauti/modules/announcements/views/local_announcements_item.dart';
 import 'package:flutterapperadauti/modules/menu/big_menu_item.dart';
 import 'package:flutterapperadauti/modules/menu/small_menu_item.dart';
-import 'package:flutterapperadauti/modules/report_a_problem/views/report_problem_map.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/services/cloud_messaging_service.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/navigation_bar_widget.dart';
 import 'package:get/get.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -30,7 +22,6 @@ class _MenuScreenState extends State<MenuScreen> with GetDataFirebase {
   void initState() {
     CloudMessagingService cloudMessagingService = CloudMessagingService();
     Get.lazyPut(() => cloudMessagingService);
-
     super.initState();
   }
 
