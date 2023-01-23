@@ -8,7 +8,6 @@ import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 
 class LeadersPage extends StatelessWidget with GetDataFirebase, GetImageUrl {

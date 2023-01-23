@@ -5,7 +5,6 @@ import 'package:flutterapperadauti/modules/account/controllers/sign_in_controlle
 import 'package:flutterapperadauti/modules/account/widgets/sign_up_text_widget.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/const.dart';
-import 'package:flutterapperadauti/utils/error_texts.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';

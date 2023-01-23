@@ -7,7 +7,6 @@ import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 
 class PublicInstitutionsPage extends StatelessWidget with GetDataFirebase {

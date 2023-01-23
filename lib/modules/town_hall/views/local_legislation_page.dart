@@ -5,7 +5,6 @@ import 'package:flutterapperadauti/modules/town_hall/views/local_legislation_ite
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 import 'package:searchbar_animation/searchbar_animation.dart';

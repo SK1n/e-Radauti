@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutterapperadauti/modules/settings/views/notification_settings.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/const.dart';

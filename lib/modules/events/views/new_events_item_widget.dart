@@ -36,6 +36,8 @@ class NewEventsItemWidget extends StatelessWidget with GetImageUrl {
           return ExpandableNotifier(
             child: ScrollOnExpand(
               child: ExpandablePanel(
+                theme: const ExpandableThemeData(
+                    animationDuration: Duration(seconds: 1)),
                 collapsed: NewEventsCollapsedWidget(
                   imageUrl: snapshot as String,
                   headline: data!.headline,

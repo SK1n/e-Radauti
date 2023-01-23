@@ -7,8 +7,6 @@ import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/linearicons_free_icons.dart';
 import 'package:fluttericon/meteocons_icons.dart';
-import 'package:fluttericon/rpg_awesome_icons.dart';
-import 'package:fluttericon/typicons_icons.dart';
 import 'dart:math' as math;
 import 'package:get/get.dart';
 

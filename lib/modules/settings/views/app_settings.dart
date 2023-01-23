@@ -8,7 +8,6 @@ import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/dark_mode_switch.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 
 class AppSettings extends StatefulWidget {

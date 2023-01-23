@@ -4,7 +4,6 @@ import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/menu_list_tile.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 
 class TransportPage extends StatelessWidget {

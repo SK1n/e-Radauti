@@ -4,7 +4,6 @@ import 'package:flutterapperadauti/modules/events/views/new_events_page.dart';
 import 'package:flutterapperadauti/modules/events/views/old_events_page.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 
 class EventsPage extends StatelessWidget {

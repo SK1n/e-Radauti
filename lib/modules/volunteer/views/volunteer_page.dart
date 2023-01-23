@@ -2,13 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/volunteer/views/volunteer_widget.dart';
 import 'package:flutterapperadauti/utils/const.dart';
-import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:get/get.dart';
-import 'package:selectable_autolink_text/selectable_autolink_text.dart';
 
 class VolunteerPage extends StatelessWidget {
   const VolunteerPage({super.key});

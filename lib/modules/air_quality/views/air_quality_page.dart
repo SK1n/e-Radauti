@@ -4,7 +4,6 @@ import 'package:flutterapperadauti/modules/air_quality/views/air_quality.dart';
 import 'package:flutterapperadauti/modules/air_quality/views/air_quality_charts_page.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:get/get.dart';
 

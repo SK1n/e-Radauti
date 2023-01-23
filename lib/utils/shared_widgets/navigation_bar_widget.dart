@@ -1,4 +1,3 @@
-import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/controllers/navigation_bar_controller.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';

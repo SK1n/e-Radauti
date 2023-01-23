@@ -9,8 +9,20 @@ class NewEventsCollapsedWidget extends StatelessWidget {
   const NewEventsCollapsedWidget(
       {super.key, this.imageUrl, this.headline, this.timestamp});
 
+  getImageSize() {}
+
   @override
   Widget build(BuildContext context) {
+    Image image = Image.network(
+      imageUrl.toString(),
+    );
+    Size size = const Size(0, 0);
+    image.image
+        .resolve(const ImageConfiguration())
+        .addListener(ImageStreamListener((image, synchronousCall) {
+      var img = image.image;
+      size = Size(img.width.toDouble(), img.height.toDouble());
+    }));
     return ExpandableButton(
       child: Card(
         child: Column(
@@ -19,16 +31,15 @@ class NewEventsCollapsedWidget extends StatelessWidget {
               alignment: Alignment.bottomLeft,
               children: [
                 SizedBox(
-                  width: Get.width,
+                  width: size.width > Get.width ? Get.width : size.width,
                   child: Image.network(
                     imageUrl.toString(),
                     scale: 1.0,
                     fit: BoxFit.fitWidth,
-                    height: 200,
                   ),
                 ),
                 Container(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Get.theme.cardColor,
                   child: ListTile(
                     tileColor: Colors.white,
                     title: Text(
