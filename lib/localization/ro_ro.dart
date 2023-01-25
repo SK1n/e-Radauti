@@ -304,8 +304,4 @@ Map<String, String> roRO = {
   'proceed': 'Vrei sa continui?',
   'next': 'Următorul',
   'back': 'Înapoi',
-  'air-quality-short': 'Aer',
-  'local-administration-short': 'Informații',
-  'usefull-numbers-short': 'Numere',
-  'report-problem-short': 'Raport',
 };
