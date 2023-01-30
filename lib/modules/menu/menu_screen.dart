@@ -40,7 +40,7 @@ class _MenuScreenState extends State<MenuScreen> with GetDataFirebase {
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  const AirQualityCenterView(),
+                  //const AirQualityCenterView(),
                   GridView.count(
                     physics: const NeverScrollableScrollPhysics(),
                     crossAxisCount: 2,

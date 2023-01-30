@@ -86,7 +86,7 @@ Map<String, String> roRO = {
   'email:': 'E-mail:',
   'local-councillor': 'consilier local',
   'order': 'Ședința din data de:',
-  'see-order': 'Vezi ordinea',
+  'see-order': 'Vezi ordinea de zi',
   'open-link': 'Deschide link-ul',
   'new-events': 'Evenimente noi',
   'old-events': 'Evenimente trecute',
@@ -269,7 +269,7 @@ Map<String, String> roRO = {
   'current-password': 'Parola actuală',
   're-type-password': 'Reintroduceți parola nouă',
   'public-announcements': 'Anunțuri publice',
-  'map-title': 'Harta rapoartelor din Rădăuți',
+  'map-title': 'Harta sesizărilor din Rădăuți',
   'guest': 'Utilizați aplicația acum cu statutul de Invitat',
   'report-sent':
       'Raportul a fost trimis cu succes\nVeți fi anunțat prin e-mail în următoarele zile',

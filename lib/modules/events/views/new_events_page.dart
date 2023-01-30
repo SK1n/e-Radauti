@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
 import 'package:flutterapperadauti/data/models/events/new_events_model.dart';
@@ -16,7 +17,7 @@ class NewEventsPage extends StatelessWidget {
       child: Futuristic(
         initialBuilder: (_, __) => Container(),
         futureBuilder: () => controller.getData(
-          //  collection: kDebugMode ? 'test' : 'collection',
+          collection: kDebugMode ? 'test' : 'collection',
           convert: NewEventsModel.fromJson,
           document: 'Events',
         ),
