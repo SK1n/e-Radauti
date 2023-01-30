@@ -1,5 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
 import 'package:get/get.dart';
 
 class OldEventsCollapsedWidget extends StatelessWidget {
@@ -16,37 +17,36 @@ class OldEventsCollapsedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ExpandableButton(
       child: Card(
-        child: Column(
+        elevation: 5,
+        child: Stack(
+          alignment: Alignment.bottomLeft,
           children: [
-            Stack(
-              alignment: Alignment.bottomLeft,
-              children: [
-                SizedBox(
-                  width: Get.width,
-                  child: Image.network(
-                    imageUrl.toString(),
-                    scale: 1.0,
-                    fit: BoxFit.fitWidth,
-                    height: 200,
-                  ),
-                ),
-                Container(
-                  color: Get.theme.primaryColor.withOpacity(0.9),
-                  child: ListTile(
-                    title: Text(
-                      timestamp!,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.white),
-                    ),
-                  ),
-                ),
-              ],
+            ImageWidget(
+              link: imageUrl,
+              fit: BoxFit.fitWidth,
+              width: Get.width,
+              height: 300,
             ),
-            ListTile(
-              title: Text(
-                '$headline',
-                softWrap: true,
-                maxLines: 3,
+            Container(
+              color: Get.theme.primaryColor.withOpacity(0.9),
+              width: Get.width,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(
+                      headline!,
+                      style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                    Text(
+                      timestamp!,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

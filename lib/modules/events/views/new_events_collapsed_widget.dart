@@ -1,5 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
 import 'package:get/get.dart';
 
 class NewEventsCollapsedWidget extends StatelessWidget {
@@ -9,52 +10,40 @@ class NewEventsCollapsedWidget extends StatelessWidget {
   const NewEventsCollapsedWidget(
       {super.key, this.imageUrl, this.headline, this.timestamp});
 
-  getImageSize() {}
-
   @override
   Widget build(BuildContext context) {
-    Image image = Image.network(
-      imageUrl.toString(),
-    );
-    Size size = const Size(0, 0);
-    image.image
-        .resolve(const ImageConfiguration())
-        .addListener(ImageStreamListener((image, synchronousCall) {
-      var img = image.image;
-      size = Size(img.width.toDouble(), img.height.toDouble());
-    }));
     return ExpandableButton(
       child: Card(
-        child: Column(
+        elevation: 5,
+        child: Stack(
+          alignment: Alignment.bottomLeft,
           children: [
-            Stack(
-              alignment: Alignment.bottomLeft,
-              children: [
-                SizedBox(
-                  width: size.width > Get.width ? Get.width : size.width,
-                  child: Image.network(
-                    imageUrl.toString(),
-                    scale: 1.0,
-                    fit: BoxFit.fitWidth,
-                  ),
-                ),
-                Container(
-                  color: Get.theme.cardColor,
-                  child: ListTile(
-                    tileColor: Colors.white,
-                    title: Text(
-                      timestamp!,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-              ],
+            ImageWidget(
+              link: imageUrl,
+              fit: BoxFit.fitWidth,
+              width: Get.width,
+              height: 300,
             ),
-            ListTile(
-              title: Text(
-                '$headline',
-                softWrap: true,
-                maxLines: 3,
+            Container(
+              color: Get.theme.primaryColor.withOpacity(0.9),
+              width: Get.width,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(
+                      headline!,
+                      style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                    Text(
+                      timestamp!,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

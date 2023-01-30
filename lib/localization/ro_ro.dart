@@ -40,7 +40,7 @@ Map<String, String> roRO = {
   'add-location': 'Adăugați locația curentă',
   'images': 'Imagini',
   'send': 'TRIMITE',
-  'required-field': 'Acest căsuță este obligatorie. Vă rugăm să o completați.',
+  'required-field': 'Acest câmp este obligatoriu. Vă rugăm să-l completați.',
   'only-numbers-field': 'Acest câmp trebuie să conțină numai numere',
   'wrong-number-format':
       'Format greșit al numărului de telefon\n      \nAcceptăm următoarele:\n      \n+40213-564-864\n      \n+40213.564.864\n      \n+40213 564 864\n      \n0213-564-864\n      \n0712456789',
@@ -86,7 +86,7 @@ Map<String, String> roRO = {
   'email:': 'E-mail:',
   'local-councillor': 'consilier local',
   'order': 'Ședința din data de:',
-  'see-order': 'Vezi ordinea',
+  'see-order': 'Vezi ordinea de zi',
   'open-link': 'Deschide link-ul',
   'new-events': 'Evenimente noi',
   'old-events': 'Evenimente trecute',
@@ -269,7 +269,7 @@ Map<String, String> roRO = {
   'current-password': 'Parola actuală',
   're-type-password': 'Reintroduceți parola nouă',
   'public-announcements': 'Anunțuri publice',
-  'map-title': 'Harta rapoartelor din Rădăuți',
+  'map-title': 'Harta sesizărilor din Rădăuți',
   'guest': 'Utilizați aplicația acum cu statutul de Invitat',
   'report-sent':
       'Raportul a fost trimis cu succes\nVeți fi anunțat prin e-mail în următoarele zile',
