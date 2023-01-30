@@ -40,7 +40,7 @@ Map<String, String> roRO = {
   'add-location': 'Adăugați locația curentă',
   'images': 'Imagini',
   'send': 'TRIMITE',
-  'required-field': 'Acest câmp este obligatoriu. Vă rugăm să o completați.',
+  'required-field': 'Acest câmp este obligatoriu. Vă rugăm să-l completați.',
   'only-numbers-field': 'Acest câmp trebuie să conțină numai numere',
   'wrong-number-format':
       'Format greșit al numărului de telefon\n      \nAcceptăm următoarele:\n      \n+40213-564-864\n      \n+40213.564.864\n      \n+40213 564 864\n      \n0213-564-864\n      \n0712456789',
