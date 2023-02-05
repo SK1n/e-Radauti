@@ -17,7 +17,7 @@ class NewEventsPage extends StatelessWidget {
       child: Futuristic(
         initialBuilder: (_, __) => Container(),
         futureBuilder: () => controller.getData(
-          collection: !kDebugMode ? 'test' : 'collection',
+          collection: kDebugMode ? 'test' : 'collection',
           convert: NewEventsModel.fromJson,
           document: 'Events',
         ),
