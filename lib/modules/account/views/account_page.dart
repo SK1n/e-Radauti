@@ -49,11 +49,9 @@ class AccountPage extends StatelessWidget {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Obx(
-                                  () => Text(
-                                    controller.userData.value.name ?? "",
-                                    style: Get.textTheme.headlineSmall,
-                                  ),
+                                child: Text(
+                                  controller.getDisplayName() ?? "",
+                                  style: Get.textTheme.headlineSmall,
                                 ),
                               ),
                               const Divider(),
@@ -78,55 +76,6 @@ class AccountPage extends StatelessWidget {
                                       }
                                     },
                                     child: Text('update-name'.tr)),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Obx(
-                                  () => Text(
-                                    controller.userData.value.phoneNumber ?? "",
-                                    style: Get.textTheme.headlineSmall,
-                                  ),
-                                ),
-                              ),
-                              const Divider(),
-                              FormBuilderTextField(
-                                keyboardType: TextInputType.number,
-                                decoration: InputDecoration(
-                                    prefixIcon: const Icon(FontAwesome.info),
-                                    label: Text('display-phone-number'.tr)),
-                                name: 'display-phone-number',
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.match(
-                                      r'^(\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\s|\.|\-)?([0-9]{3}(\s|\.|\-|)){2}$',
-                                      errorText: 'wrong-number-format'.tr),
-                                ]),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: FilledButton(
-                                    style: TextButton.styleFrom(
-                                        minimumSize: Size(Get.width, 40)),
-                                    onPressed: () async {
-                                      if (formKey.currentState!
-                                          .fields['display-phone-number']!
-                                          .validate()) {
-                                        await controller.updatePhoneNumber(
-                                            formKey
-                                                .currentState!
-                                                .fields['display-phone-number']!
-                                                .value);
-                                      }
-                                    },
-                                    child: Text('update-phone-number'.tr)),
                               )
                             ],
                           ),

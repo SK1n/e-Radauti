@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
 import 'package:flutterapperadauti/data/models/events/new_events_model.dart';
 import 'package:flutterapperadauti/modules/events/controllers/events_controller.dart';
-import 'package:flutterapperadauti/modules/events/views/new_events_item_widget.dart';
+import 'package:flutterapperadauti/modules/events/views/events_item_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 
@@ -34,7 +34,7 @@ class NewEventsPage extends StatelessWidget {
               shrinkWrap: true,
               itemCount: list!.length,
               itemBuilder: (BuildContext context, int item) {
-                return NewEventsItemWidget(
+                return EventsItemWidget(
                   data: list[item],
                 );
               });

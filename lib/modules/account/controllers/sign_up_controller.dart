@@ -9,29 +9,17 @@ class SignUpController extends GetxController with UploadDataFirebase {
       String name) async {
     EasyLoading.show();
     try {
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailAddress,
         password: password,
-      )
-          .then((value) async {
-        EasyLoading.dismiss();
-        await uploadData(
-          uid: value.user!.uid,
-          data: {
-            "phone_number": phoneNumber,
-            "email": emailAddress,
-            "verified_email": false,
-            "name": name,
-          },
-        );
-        Get.defaultDialog(
-          barrierDismissible: false,
-          title: 'success'.tr,
-          middleText: 'user-created'.trParams({"name": value.user!.email!}),
-          onConfirm: () => Get.back(closeOverlays: true),
-        );
-      });
+      );
+      EasyLoading.dismiss();
+      Get.defaultDialog(
+        barrierDismissible: false,
+        title: 'success'.tr,
+        middleText: 'user-created'.trParams({"name": name}),
+        onConfirm: () => Get.back(closeOverlays: true),
+      );
     } on FirebaseAuthException catch (e) {
       EasyLoading.dismiss();
       Get.defaultDialog(

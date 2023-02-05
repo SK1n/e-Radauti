@@ -3,16 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
 import 'package:get/get.dart';
 
-class OldEventsCollapsedWidget extends StatelessWidget {
+class EventsCollapsedWidget extends StatelessWidget {
   final String? imageUrl;
   final String? headline;
   final String? timestamp;
-  const OldEventsCollapsedWidget({
-    super.key,
-    this.imageUrl,
-    this.headline,
-    this.timestamp,
-  });
+  const EventsCollapsedWidget(
+      {super.key, this.imageUrl, this.headline, this.timestamp});
+
   @override
   Widget build(BuildContext context) {
     return ExpandableButton(
@@ -23,7 +20,7 @@ class OldEventsCollapsedWidget extends StatelessWidget {
           children: [
             ImageWidget(
               link: imageUrl,
-              fit: BoxFit.fitWidth,
+              fit: BoxFit.fill,
               width: Get.width,
               height: 300,
             ),

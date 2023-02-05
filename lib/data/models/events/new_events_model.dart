@@ -5,6 +5,7 @@ part 'new_events_model.g.dart';
 
 @JsonSerializable()
 class NewEventsModel {
+  @JsonKey(name: 'events')
   final List<EventsListModel>? events;
 
   const NewEventsModel({this.events});
