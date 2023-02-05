@@ -34,16 +34,14 @@ class LocalAnnouncementsPage extends StatelessWidget with GetDataFirebase {
                   List<LocalAnnouncementsItemModel>? items = data.items;
                   return ListView.builder(
                       shrinkWrap: true,
+                      reverse: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: items?.length ?? 0,
                       itemBuilder: (BuildContext context, int index) {
                         var data = items![index];
                         return LocalAnnouncementsItem(
-                            url: data.url,
-                            date: data.date,
-                            host: data.host,
-                            title: data.title,
-                            content: data.description);
+                          data: data,
+                        );
                       });
                 },
                 initialBuilder: (_, __) => Container(),

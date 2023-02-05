@@ -1,8 +1,8 @@
 import 'package:card_loading/card_loading.dart';
 import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
 import 'package:flutterapperadauti/modules/events/controllers/events_controller.dart';
-import 'package:flutterapperadauti/modules/events/views/new_events_collapsed_widget.dart';
-import 'package:flutterapperadauti/modules/events/views/new_events_expanded_widget.dart';
+import 'package:flutterapperadauti/modules/events/views/events_collapsed_widget.dart';
+import 'package:flutterapperadauti/modules/events/views/events_expanded_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
 import 'package:get/get.dart';
@@ -10,9 +10,9 @@ import 'package:get/get.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
-class NewEventsItemWidget extends StatelessWidget with GetImageUrl {
+class EventsItemWidget extends StatelessWidget with GetImageUrl {
   final EventsListModel? data;
-  const NewEventsItemWidget({
+  const EventsItemWidget({
     super.key,
     this.data,
   });
@@ -38,14 +38,14 @@ class NewEventsItemWidget extends StatelessWidget with GetImageUrl {
               child: ExpandablePanel(
                 theme: const ExpandableThemeData(
                     animationDuration: Duration(seconds: 1)),
-                collapsed: NewEventsCollapsedWidget(
+                collapsed: EventsCollapsedWidget(
                   imageUrl: snapshot as String,
                   headline: data!.headline,
                   timestamp: eventsNewController.convertTimestampToDate(
                     data!.start!.toInt(),
                   ),
                 ),
-                expanded: NewEventsExpandedWidget(
+                expanded: EventsExpandedWidget(
                   description: data!.description,
                   location: data!.location,
                   street: data!.street,

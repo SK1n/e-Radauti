@@ -14,9 +14,20 @@ class LocalAnnouncementsItemModel {
   final String? host;
   @JsonKey(name: 'title')
   final String? title;
+  @JsonKey(name: 'author')
+  final String? author;
+  @JsonKey(name: "author_email")
+  final String? authorEmail;
 
   const LocalAnnouncementsItemModel(
-      this.url, this.date, this.description, this.host, this.title);
+    this.url,
+    this.date,
+    this.description,
+    this.host,
+    this.title,
+    this.author,
+    this.authorEmail,
+  );
 
   factory LocalAnnouncementsItemModel.fromJson(Map<String, dynamic> json) =>
       _$LocalAnnouncementsItemModelFromJson(json);

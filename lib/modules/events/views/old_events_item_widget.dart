@@ -1,9 +1,8 @@
 import 'package:card_loading/card_loading.dart';
 import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
 import 'package:flutterapperadauti/modules/events/controllers/events_controller.dart';
-import 'package:flutterapperadauti/modules/events/views/old_events_collapsed_widget.dart';
-import 'package:flutterapperadauti/modules/events/views/old_events_expanded_widget.dart';
-
+import 'package:flutterapperadauti/modules/events/views/events_collapsed_widget.dart';
+import 'package:flutterapperadauti/modules/events/views/events_expanded_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
 import 'package:get/get.dart';
@@ -37,14 +36,14 @@ class OldEventsItemWidget extends StatelessWidget with GetImageUrl {
           return ExpandableNotifier(
             child: ScrollOnExpand(
               child: ExpandablePanel(
-                collapsed: OldEventsCollapsedWidget(
+                collapsed: EventsCollapsedWidget(
                   imageUrl: snapshot as String,
                   headline: data!.headline,
                   timestamp: eventsController.convertTimestampToDate(
                     data!.start!.toInt(),
                   ),
                 ),
-                expanded: OldEventsExpandedWidget(
+                expanded: EventsExpandedWidget(
                   description: data!.description,
                   location: data!.location,
                   street: data!.street,
