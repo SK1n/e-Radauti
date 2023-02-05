@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/data/models/local_announcements/local_announcements_item_model.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
@@ -7,29 +8,22 @@ import 'package:selectable_autolink_text/selectable_autolink_text.dart';
 
 class LocalAnnouncementsItem extends StatelessWidget
     with GetImageUrl, UrlLauncher {
-  final String? url;
-  final String? content;
-  final String? title;
-  final String? host;
-  final String? date;
+  final LocalAnnouncementsItemModel data;
   const LocalAnnouncementsItem({
     super.key,
-    this.url,
-    required this.content,
-    required this.title,
-    required this.host,
-    required this.date,
+    required this.data,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 5,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Futuristic(
             initialBuilder: (_, __) => Container(),
-            futureBuilder: () => getImageUrl(url!),
+            futureBuilder: () => getImageUrl(data.url!),
             dataBuilder: (_, snapshot) => SizedBox(
               width: Get.width,
               child: Image.network(
@@ -40,34 +34,49 @@ class LocalAnnouncementsItem extends StatelessWidget
               ),
             ),
           ),
-          Center(
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Text(
-              "${title!}\n ${date ?? ""}",
-              textAlign: TextAlign.center,
+              data.title!,
               style: const TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          Center(
-            child: Text(
-              host ?? "",
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
+          Visibility(
+            replacement: Container(),
+            visible: data.date != null,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                data.date ?? "",
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SelectableAutoLinkText(
-              content ?? "  ",
+              data.description ?? "",
               onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
               linkStyle: const TextStyle(color: Colors.pinkAccent),
               onTap: (link) async {
                 await launchUrl(link);
               },
+            ),
+          ),
+          Visibility(
+            replacement: Container(),
+            visible: data.author != null,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "${'author'.tr} : ${data.author}",
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         ],

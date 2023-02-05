@@ -347,4 +347,12 @@ Map<String, String> enUS = {
   "proceed": "Do you want to proceed?",
   "next": "Next",
   "back": "Back",
+  'author': 'Author',
+  'pm': "@value PM2.5 μg/m³",
+  'co': '@value CO2',
+  'wind-spd': "@value m/s",
+  'pm-wind-time': "PM2.5 vs Wind vs Time",
+  'hm-temp-time': "Humidity vs Temperature vs Time",
+  'celsius': '@value °C',
+  'hm': 'Humidity',
 };

@@ -4,7 +4,7 @@ import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:get/get.dart';
 import 'package:selectable_autolink_text/selectable_autolink_text.dart';
 
-class NewEventsExpandedWidget extends StatelessWidget with UrlLauncher {
+class EventsExpandedWidget extends StatelessWidget with UrlLauncher {
   final String? imageUrl;
   final String? headline;
   final String? host;
@@ -14,7 +14,7 @@ class NewEventsExpandedWidget extends StatelessWidget with UrlLauncher {
   final String? street;
   final String? description;
   final String? link;
-  const NewEventsExpandedWidget({
+  const EventsExpandedWidget({
     super.key,
     this.imageUrl,
     this.headline,
@@ -41,8 +41,8 @@ class NewEventsExpandedWidget extends StatelessWidget with UrlLauncher {
                   child: Image.network(
                     imageUrl.toString(),
                     scale: 1.0,
-                    fit: BoxFit.fitWidth,
-                    height: 200,
+                    fit: BoxFit.fill,
+                    height: 300,
                   ),
                 ),
               ],

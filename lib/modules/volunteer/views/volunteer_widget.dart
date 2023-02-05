@@ -27,6 +27,7 @@ class VolunteerWidget extends StatelessWidget with UrlLauncher {
           children: [
             ImageWidget.asset(
               link: path,
+              height: 50,
               fit: BoxFit.scaleDown,
             ),
             SelectableAutoLinkText(

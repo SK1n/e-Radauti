@@ -9,7 +9,7 @@ class ImageWidget extends StatelessWidget {
     super.key,
     required link,
     this.width,
-    this.height = 200,
+    this.height,
     this.fit = BoxFit.cover,
   }) : image = CachedNetworkImageProvider(
           link != null
@@ -21,7 +21,7 @@ class ImageWidget extends StatelessWidget {
     super.key,
     required link,
     this.width,
-    this.height = 80.0,
+    this.height,
     this.fit = BoxFit.fitWidth,
   }) : image = AssetImage(link!);
 
