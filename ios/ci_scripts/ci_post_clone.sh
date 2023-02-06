@@ -24,6 +24,6 @@ echo "🟩 Install CocoaPods via Homebrew"
 time HOMEBREW_NO_AUTO_UPDATE=1 brew install cocoapods
 
 echo "🟩 Install CocoaPods dependencies..."
-time cd ios && && rm Podfile.lock && pod install
+time cd ios && rm Podfile.lock && pod install
 
 exit 0
