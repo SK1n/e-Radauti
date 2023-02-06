@@ -11,8 +11,7 @@ echo "🟩 Navigate from ($PWD) to ($CI_WORKSPACE)"
 cd $CI_WORKSPACE
 
 echo "🟩 Install Flutter"
-time git clone https://github.com/flutter/flutter.git -b stable 
-$HOME/flutter
+git clone https://github.com/flutter/flutter.git -b stable $HOME/flutter
 export PATH="$PATH:$HOME/flutter/bin"
 
 echo "🟩 Flutter Precache"
