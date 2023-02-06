@@ -7,7 +7,7 @@ echo "🟩 Navigate from ($PWD) to ($CI_WORKSPACE)"
 cd $CI_WORKSPACE
 
 echo "🟩 Install Flutter"
-time git clone https://github.com/flutter/flutter.git -b stable 
+time git clone https://github.com/flutter/flutter.git -b beta 
 $HOME/flutter
 export PATH="$PATH:$HOME/flutter/bin"
 
@@ -24,6 +24,7 @@ echo "🟩 Install CocoaPods via Homebrew"
 time HOMEBREW_NO_AUTO_UPDATE=1 brew install cocoapods
 
 echo "🟩 Install CocoaPods dependencies..."
-time cd ios && rm Podfile.lock && pod install
+time cd ios
+time pod deintegrate && pod install
 
 exit 0
