@@ -6,7 +6,6 @@ set -e
 set -x
 
 # by default, the execution directory of this script is the ci_scripts 
-directory
 # CI_WORKSPACE is the directory of your cloned repo
 echo "🟩 Navigate from ($PWD) to ($CI_WORKSPACE)"
 cd $CI_WORKSPACE
