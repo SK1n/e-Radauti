@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/air_quality/views/air_quality.dart';
 import 'package:flutterapperadauti/modules/air_quality/views/air_quality_charts_page.dart';
 import 'package:flutterapperadauti/utils/const.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:get/get.dart';
 
@@ -29,18 +29,17 @@ class AirQualityPage extends StatelessWidget {
         ],
       ),
       tabBuilder: (_, index) => CupertinoTabView(
-        builder: (_) => CupertinoPageScaffold(
-          child: CustomScrollView(
-            slivers: [
-              AppBarWidget(content: 'air-quality'.tr),
-              SliverPadding(
-                padding:
-                    const EdgeInsets.only(left: leftMargin, right: rightMargin),
-                sliver:
-                    SliverToBoxAdapter(child: SafeArea(child: pages[index])),
-              ),
-            ],
+        builder: (_) => CustomCupertinoPageScaffold(
+          navBarMiddle: 'air-quality'.tr,
+          navBarLeading: InkWell(
+            child: const Icon(CupertinoIcons.back),
+            onTap: () => Get.back(),
           ),
+          slivers: [
+            SliverToBoxAdapter(
+              child: pages[index],
+            ),
+          ],
         ),
       ),
     );

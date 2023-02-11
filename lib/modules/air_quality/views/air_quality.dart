@@ -52,7 +52,7 @@ class AirQuality extends StatelessWidget with GetDataFirebase {
                             'assets/wind/direction_${Get.isDarkMode ? 'white' : 'black'}.png'),
                       ),
                       label: Text(
-                        '${"direction"} ${item.direction!.tr}',
+                        '${"direction".tr} ${item.direction!.tr}',
                         maxLines: 2,
                         style: const TextStyle(fontSize: 16.0),
                       ),

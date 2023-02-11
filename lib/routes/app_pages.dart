@@ -1,5 +1,4 @@
 import 'package:flutterapperadauti/bindings/account_bindings.dart';
-import 'package:flutterapperadauti/bindings/navigation_bar_bindings.dart';
 import 'package:flutterapperadauti/modules/account/views/account_page.dart';
 import 'package:flutterapperadauti/modules/account/views/update_password_page.dart';
 import 'package:flutterapperadauti/modules/air_quality/bindings/air_quality_bindings.dart';
@@ -18,7 +17,9 @@ import 'package:flutterapperadauti/modules/account/bindings/sign_up_bindings.dar
 import 'package:flutterapperadauti/modules/account/views/sign_in_page.dart';
 import 'package:flutterapperadauti/modules/account/views/reset_password_page.dart';
 import 'package:flutterapperadauti/modules/account/views/sign_up_page.dart';
-import 'package:flutterapperadauti/modules/menu/menu_screen.dart';
+import 'package:flutterapperadauti/modules/home_page/bindings/home_page_binding.dart';
+import 'package:flutterapperadauti/modules/home_page/controllers/home_page_controller.dart';
+import 'package:flutterapperadauti/modules/home_page/views/menu_screen.dart';
 import 'package:flutterapperadauti/modules/onboard/bindings/onboard_bindings.dart';
 import 'package:flutterapperadauti/modules/onboard/views/permissions_page.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/bindings/form_binding.dart';
@@ -82,9 +83,7 @@ class AppPages {
         page: () => const MenuScreen(),
         preventDuplicates: true,
         bindings: [
-          NavigationBarBinding(),
-          NoticeProblemMapBinding(),
-          AirQualityBindings(),
+          HomePageBinding(),
         ],
         children: [
           GetPage(

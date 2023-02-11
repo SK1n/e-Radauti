@@ -355,4 +355,5 @@ Map<String, String> enUS = {
   'hm-temp-time': "Humidity vs Temperature vs Time",
   'celsius': '@value °C',
   'hm': 'Humidity',
+  'limit-pm': 'PM2.5 legal limit'
 };
