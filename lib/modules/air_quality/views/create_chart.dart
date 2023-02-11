@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/data/models/air_quality_charts/air_quality_graph_color_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -33,7 +34,7 @@ class CreateChart extends StatelessWidget {
             title: AxisTitle(text: "time".tr),
             majorGridLines: const MajorGridLines(width: 0),
             dateFormat: DateFormat(dateFormat),
-            interval: 1,
+            interval: 2,
           ),
           primaryYAxis: NumericAxis(
             interval: 5,
@@ -60,6 +61,11 @@ class CreateChart extends StatelessWidget {
 class ChartSampleData {
   final double yValue;
   final DateTime x;
+  final AirQualityGraphColorModel? color;
 
-  ChartSampleData({required this.x, required this.yValue});
+  ChartSampleData({
+    required this.x,
+    required this.yValue,
+    this.color,
+  });
 }

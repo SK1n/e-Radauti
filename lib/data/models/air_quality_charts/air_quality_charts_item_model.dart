@@ -1,3 +1,4 @@
+import 'package:flutterapperadauti/data/models/air_quality_charts/air_quality_graph_color_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'air_quality_charts_item_model.g.dart';
@@ -38,7 +39,8 @@ class AirQualityChartsItemModel {
   final num roMeteoWindSpeed;
   @JsonKey(name: 'timestamp')
   final String timestamp;
-
+  @JsonKey(name: 'center_pm_color')
+  final AirQualityGraphColorModel centerPmColor;
   const AirQualityChartsItemModel(
     this.centerCo,
     this.centerHm,
@@ -57,6 +59,7 @@ class AirQualityChartsItemModel {
     this.roMeteoWindDirection,
     this.roMeteoWindSpeed,
     this.timestamp,
+    this.centerPmColor,
   );
 
   factory AirQualityChartsItemModel.fromJson(Map<String, dynamic> json) =>

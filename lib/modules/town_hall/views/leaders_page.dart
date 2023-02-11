@@ -5,9 +5,9 @@ import 'package:flutterapperadauti/modules/town_hall/views/leaders_item.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:get/get.dart';
 
 class LeadersPage extends StatelessWidget with GetDataFirebase, GetImageUrl {
@@ -15,45 +15,41 @@ class LeadersPage extends StatelessWidget with GetDataFirebase, GetImageUrl {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-        child: CustomScrollView(
+    return CustomCupertinoPageScaffold(
+      navBarMiddle: 'local-administration'.tr,
       slivers: [
-        AppBarWidget(
-          content: 'local-administration'.tr,
-          leading: Icons.location_city,
-        ),
-        SliverPadding(
-          padding: const EdgeInsets.only(left: leftMargin, right: rightMargin),
-          sliver: SliverList(
-              delegate: SliverChildListDelegate([
-            Futuristic(
-              initialBuilder: (_, __) => Container(),
-              futureBuilder: () =>
-                  getData(document: 'Leaders', convert: LeadersModel.fromJson),
-              dataBuilder: (context, snapshot) {
-                LeadersModel data = snapshot as LeadersModel;
-                List<LeadersItemModel>? items = data.items;
+        SliverList(
+          delegate: SliverChildListDelegate(
+            [
+              Futuristic(
+                initialBuilder: (_, __) => Container(),
+                futureBuilder: () => getData(
+                    document: 'Leaders', convert: LeadersModel.fromJson),
+                dataBuilder: (context, snapshot) {
+                  LeadersModel data = snapshot as LeadersModel;
+                  List<LeadersItemModel>? items = data.items;
 
-                return ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: items?.length,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (BuildContext context, int index) =>
-                        LeaderCard(
-                          name: items![index].name,
-                          wealth: items[index].wealth,
-                          interests: items[index].interests,
-                          function: items[index].function,
-                          email: items[index].email,
-                          location: items[index].location,
-                          urlFb: items[index].urlFb,
-                          urlImg: items[index].urlImg,
-                        ));
-              },
-            ),
-          ])),
-        )
+                  return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: items?.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (BuildContext context, int index) =>
+                          LeaderCard(
+                            name: items![index].name,
+                            wealth: items[index].wealth,
+                            interests: items[index].interests,
+                            function: items[index].function,
+                            email: items[index].email,
+                            location: items[index].location,
+                            urlFb: items[index].urlFb,
+                            urlImg: items[index].urlImg,
+                          ));
+                },
+              ),
+            ],
+          ),
+        ),
       ],
-    ));
+    );
   }
 }

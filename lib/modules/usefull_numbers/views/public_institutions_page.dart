@@ -5,8 +5,8 @@ import 'package:flutterapperadauti/data/models/public_institutions/public_instit
 import 'package:flutterapperadauti/modules/usefull_numbers/views/usefull_numbers_widget.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
 import 'package:get/get.dart';
 
 class PublicInstitutionsPage extends StatelessWidget with GetDataFirebase {
@@ -14,47 +14,35 @@ class PublicInstitutionsPage extends StatelessWidget with GetDataFirebase {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child: CustomScrollView(
-        slivers: [
-          AppBarWidget(
-            content: 'local-institutions'.tr,
-            leading: Icons.perm_phone_msg,
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.only(
-              left: leftMargin,
-              right: rightMargin,
-            ),
-            sliver: SliverToBoxAdapter(
-              child: Futuristic(
-                initialBuilder: (_, __) => Container(),
-                futureBuilder: () => getData(
-                    document: 'Numbers',
-                    convert: PublicInstitutionsModel.fromJson),
-                dataBuilder: (context, snapshot) {
-                  PublicInstitutionsModel data =
-                      snapshot as PublicInstitutionsModel;
-                  List<PublicInstitutionsItemModel>? items = data.items;
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: items!.length,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (BuildContext context, int index) {
-                      var data = items[index];
-                      return UsefullNumbersWidget(
-                        title: data.title,
-                        phone: data.phoneNumbers,
-                        email: data.emails,
-                      );
-                    },
+    return CustomCupertinoPageScaffold(
+      navBarMiddle: 'local-institutions'.tr,
+      slivers: [
+        SliverToBoxAdapter(
+          child: Futuristic(
+            initialBuilder: (_, __) => Container(),
+            futureBuilder: () => getData(
+                document: 'Numbers', convert: PublicInstitutionsModel.fromJson),
+            dataBuilder: (context, snapshot) {
+              PublicInstitutionsModel data =
+                  snapshot as PublicInstitutionsModel;
+              List<PublicInstitutionsItemModel>? items = data.items;
+              return ListView.builder(
+                shrinkWrap: true,
+                itemCount: items!.length,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (BuildContext context, int index) {
+                  var data = items[index];
+                  return UsefullNumbersWidget(
+                    title: data.title,
+                    phone: data.phoneNumbers,
+                    email: data.emails,
                   );
                 },
-              ),
-            ),
+              );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutterapperadauti/data/clients/local_legislation_client.dart';
 import 'package:flutterapperadauti/data/models/local_legislation/local_legislation_model.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,6 @@ class LocalLegislationController extends GetxController {
 
   Future getData(int year) async {
     _data = await client.getData(year);
-
     allResults = _data.items;
   }
 

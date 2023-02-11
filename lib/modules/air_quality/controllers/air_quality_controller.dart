@@ -15,6 +15,7 @@ class AirQualityController extends GetxController with GetDataFirebase {
   List<ChartSampleData> dataChartCoVsTime = [];
   List<ChartSampleData> dataChartTempVsTimeCenter = [];
   List<ChartSampleData> dataChartHumidityCenter = [];
+  List<ChartSampleData> recommendedPmValue = [];
 
   Future getDataCharts() async {
     var data = await getData(
@@ -29,6 +30,7 @@ class AirQualityController extends GetxController with GetDataFirebase {
         ChartSampleData(
           x: tempDate,
           yValue: item.centerPm.toDouble(),
+          color: item.centerPmColor,
         ),
       );
       dataChartPmVsTimeDornesti.add(
@@ -65,6 +67,12 @@ class AirQualityController extends GetxController with GetDataFirebase {
         ChartSampleData(
           x: tempDate,
           yValue: item.centerHm.toDouble(),
+        ),
+      );
+      recommendedPmValue.add(
+        ChartSampleData(
+          x: tempDate,
+          yValue: 20,
         ),
       );
     }

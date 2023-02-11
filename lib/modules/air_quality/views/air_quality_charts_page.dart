@@ -24,6 +24,14 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                   xValueMapper: (ChartSampleData data, _) => data.x,
                   yValueMapper: (ChartSampleData data, _) => data.yValue,
                   color: const Color.fromRGBO(242, 117, 7, 1),
+                  // change the line color based on valu
+                  // TODO: find a way to represend the line in legend
+                  // pointColorMapper: (data, index) => Color.fromARGB(
+                  //   255,
+                  //   data.color!.r.toInt(),
+                  //   data.color!.g.toInt(),
+                  //   data.color!.b.toInt(),
+                  // ),
                   legendIconType: LegendIconType.circle,
                   width: 3,
                 ),
@@ -36,16 +44,29 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                   legendIconType: LegendIconType.circle,
                   width: 3,
                 ),
+                LineSeries(
+                  name: 'limit-pm'.tr,
+                  dashArray: <double>[15, 3, 3, 3],
+                  dataSource: airQualityController.recommendedPmValue,
+                  xValueMapper: (ChartSampleData data, _) => data.x,
+                  yValueMapper: (ChartSampleData data, _) => data.yValue,
+                  color: Color.fromARGB(255, 86, 26, 104),
+                  isVisibleInLegend: true,
+                  width: 1,
+                ),
               ],
               interactiveTooltipFormat:
                   'point.x : ${'pm'.trParams({"value": 'point.y'})}',
               axisTitle: 'pm'.trParams({"value": ""}),
               chartTitle: 'pm-time',
               legend: Legend(
+                isResponsive: true,
                 isVisible: true,
+                alignment: ChartAlignment.center,
                 position: LegendPosition.bottom,
-                overflowMode: LegendItemOverflowMode.wrap,
+                overflowMode: LegendItemOverflowMode.scroll,
                 orientation: LegendItemOrientation.vertical,
+                shouldAlwaysShowScrollbar: true,
               ),
             ),
             CreateChart(

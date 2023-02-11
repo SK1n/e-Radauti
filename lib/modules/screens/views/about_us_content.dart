@@ -11,19 +11,16 @@ class AboutUsContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverPadding(
-          padding: const EdgeInsets.all(8.0),
-          sliver: SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                ImageWidget.asset(
-                  link: "assets/images/CoverAboutPage.png",
-                  height: 150,
-                ),
-                LinkableText.big("radautiul-civic-association".tr),
-                LinkableText("about-us-content-description".tr),
-              ],
-            ),
+        SliverList(
+          delegate: SliverChildListDelegate(
+            [
+              ImageWidget.asset(
+                link: "assets/images/CoverAboutPage.png",
+                height: 150,
+              ),
+              LinkableText.big("radautiul-civic-association".tr),
+              LinkableText("about-us-content-description".tr),
+            ],
           ),
         ),
       ],

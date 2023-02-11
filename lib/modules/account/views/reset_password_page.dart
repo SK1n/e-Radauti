@@ -15,75 +15,71 @@ class ResetPasswordPage extends StatelessWidget {
     return CupertinoPageScaffold(
       child: CustomScrollView(
         slivers: [
-          SliverPadding(
-            padding: const EdgeInsets.all(20.0),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: Stack(
-                      alignment: AlignmentDirectional.centerStart,
-                      children: [
-                        InkWell(
-                          onTap: () => Get.back(),
-                          child: const Icon(
-                            Icons.arrow_back,
-                          ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: Stack(
+                    alignment: AlignmentDirectional.centerStart,
+                    children: [
+                      InkWell(
+                        onTap: () => Get.back(),
+                        child: const Icon(
+                          Icons.arrow_back,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  FormBuilder(
-                    key: formKey,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: Get.height / 10,
+                ),
+                FormBuilder(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: Get.height / 10,
+                      ),
+                      Text(
+                        'reset-password'.tr,
+                        style: Get.textTheme.headlineLarge,
+                      ),
+                      FormBuilderTextField(
+                        name: 'email',
+                        initialValue: '',
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        decoration: InputDecoration(hintText: 'email'.tr),
+                        validator: FormBuilderValidators.compose(
+                          [
+                            FormBuilderValidators.required(
+                                errorText: 'required-field'.tr),
+                            FormBuilderValidators.email(
+                                errorText: 'email-format'.tr),
+                          ],
                         ),
-                        Text(
-                          'reset-password'.tr,
-                          style: Get.textTheme.headlineLarge,
-                        ),
-                        FormBuilderTextField(
-                          name: 'email',
-                          initialValue: '',
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          decoration: InputDecoration(hintText: 'email'.tr),
-                          validator: FormBuilderValidators.compose(
-                            [
-                              FormBuilderValidators.required(
-                                  errorText: 'required-field'.tr),
-                              FormBuilderValidators.email(
-                                  errorText: 'email-format'.tr),
-                            ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: FilledButton.icon(
+                          onPressed: () async {
+                            formKey.currentState!.save();
+                            if (formKey.currentState!.validate()) {
+                              await resetPasswordController.forgotPassword(
+                                  formKey.currentState!.fields['email']!.value);
+                            }
+                          },
+                          icon: const Icon(Icons.send),
+                          style: TextButton.styleFrom(
+                              minimumSize: Size(Get.width, 50),
+                              backgroundColor: Colors.orange),
+                          label: Text(
+                            'send-mail'.tr.toUpperCase(),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: FilledButton.icon(
-                            onPressed: () async {
-                              formKey.currentState!.save();
-                              if (formKey.currentState!.validate()) {
-                                await resetPasswordController.forgotPassword(
-                                    formKey
-                                        .currentState!.fields['email']!.value);
-                              }
-                            },
-                            icon: const Icon(Icons.send),
-                            style: TextButton.styleFrom(
-                                minimumSize: Size(Get.width, 50),
-                                backgroundColor: Colors.orange),
-                            label: Text(
-                              'send-mail'.tr.toUpperCase(),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
