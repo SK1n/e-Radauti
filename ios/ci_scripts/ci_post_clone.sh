@@ -27,7 +27,7 @@ echo "🟩 Install Flutter Dependencies"
 time flutter pub get
 
 echo "🟩 Generate json related files"
-time flutter pub run build_runner build --delete-conflicting-files
+time flutter pub run build_runner build --delete-conflicting-outputs
 
 echo "🟩 Install CocoaPods via Homebrew"
 time HOMEBREW_NO_AUTO_UPDATE=1 brew install cocoapods
