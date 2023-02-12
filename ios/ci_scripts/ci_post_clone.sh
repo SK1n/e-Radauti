@@ -14,7 +14,7 @@ echo "✔ Install Flutter"
 git clone https://github.com/flutter/flutter.git -b stable $HOME/flutter
 export PATH="$PATH:$HOME/flutter/bin"
 echo "✔ Set FLUTTER_GIT_URL "
-export FLUTTER_GIT_URL="ssh://git@github.com/flutter/flutter.git"
+export FLUTTER_GIT_URL="http://github.com/flutter/flutter.git"
 
 echo "✔ Flutter Precache"
 time flutter precache --ios
