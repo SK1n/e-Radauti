@@ -7,14 +7,16 @@ set -x
 
 # by default, the execution directory of this script is the ci_scripts 
 # CI_WORKSPACE is the directory of your cloned repo
-echo "🟩 Navigate from ($PWD) to ($CI_WORKSPACE)"
+echo "✔ Navigate from ($PWD) to ($CI_WORKSPACE)"
 cd $CI_WORKSPACE
 
-echo "🟩 Install Flutter"
+echo "✔ Install Flutter"
 git clone https://github.com/flutter/flutter.git -b stable $HOME/flutter
 export PATH="$PATH:$HOME/flutter/bin"
+echo "✔ Set FLUTTER_GIT_URL "
+export FLUTTER_GIT_URL="ssh://git@github.com/flutter/flutter.git"
 
-echo "🟩 Flutter Precache"
+echo "✔ Flutter Precache"
 time flutter precache --ios
 
 echo "🟩 Switching to channel beta"
