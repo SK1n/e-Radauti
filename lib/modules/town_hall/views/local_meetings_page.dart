@@ -5,7 +5,7 @@ import 'package:flutterapperadauti/data/models/local_meetings/local_meetings_mod
 import 'package:flutterapperadauti/modules/town_hall/views/local_meetings_item.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 
@@ -14,44 +14,33 @@ class LocalMeetingsPage extends StatelessWidget with GetDataFirebase {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child: CustomScrollView(
-        slivers: [
-          AppBarWidget(
-            content: 'local-council-meetings'.tr,
-            leading: Icons.location_city,
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.only(
-              left: leftMargin,
-              right: rightMargin,
-            ),
-            sliver: SliverToBoxAdapter(
-              child: Futuristic(
-                initialBuilder: (_, __) => Container(),
-                futureBuilder: () => getData(
-                    convert: LocalMeetingsModel.fromJson,
-                    document: 'CouncilMeetings'),
-                dataBuilder: (BuildContext context, snapshot) {
-                  LocalMeetingsModel data = snapshot as LocalMeetingsModel;
-                  List<LocalMeetingsItemModel>? items = data.items;
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (BuildContext context, int index) {
-                      return LocalMeetingsItem(
-                        data: items[index],
-                        isFirst: index == 0 ? true : false,
-                      );
-                    },
-                    itemCount: items.length,
+    return CustomCupertinoPageScaffold(
+      navBarMiddle: 'local-council-meetings'.tr,
+      slivers: [
+        SliverToBoxAdapter(
+          child: Futuristic(
+            initialBuilder: (_, __) => Container(),
+            futureBuilder: () => getData(
+                convert: LocalMeetingsModel.fromJson,
+                document: 'CouncilMeetings'),
+            dataBuilder: (BuildContext context, snapshot) {
+              LocalMeetingsModel data = snapshot as LocalMeetingsModel;
+              List<LocalMeetingsItemModel>? items = data.items;
+              return ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (BuildContext context, int index) {
+                  return LocalMeetingsItem(
+                    data: items[index],
+                    isFirst: index == 0 ? true : false,
                   );
                 },
-              ),
-            ),
+                itemCount: items.length,
+              );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

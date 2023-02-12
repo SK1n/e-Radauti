@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/views/report_problem_map.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/views/report_problem_form.dart';
 import 'package:flutterapperadauti/utils/const.dart';
-
-import 'package:flutterapperadauti/utils/shared_widgets/app_bar_widget.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
 import 'package:get/get.dart';
 
 class ReportProblemPage extends StatelessWidget {
@@ -12,27 +11,18 @@ class ReportProblemPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child: CustomScrollView(
-        slivers: [
-          AppBarWidget(
-            leading: Icons.camera,
-            content: 'report-problem'.tr,
+    return CustomCupertinoPageScaffold(
+      navBarMiddle: 'report-problem'.tr,
+      slivers: [
+        SliverList(
+          delegate: SliverChildListDelegate(
+            [
+              const ReportProblemMap(),
+              const ReportProblemForm(),
+            ],
           ),
-          SliverPadding(
-            padding:
-                const EdgeInsets.only(left: leftMargin, right: rightMargin),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  const ReportProblemMap(),
-                  const ReportProblemForm(),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -4,5 +4,5 @@ const String eRadautiLink =
     'https://www.eradauti.ro/api/context?pathname=/anunturi/';
 const String eRadautiFurnitureLink = '${eRadautiLink}imobiliare-19';
 const String eRadautiJobsLink = '${eRadautiLink}locuri-de-munca-20';
-const double leftMargin = 30;
-const double rightMargin = 15;
+const double leftMargin = 20;
+const double rightMargin = 10;
