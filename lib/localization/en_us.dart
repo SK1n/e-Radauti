@@ -165,6 +165,7 @@ Map<String, String> enUS = {
   "NbV": "NbW",
   "m-s": "m/s",
   "mBar": "mBar",
+  'radauti-center': 'Rădăuți - Center',
   "radauti-iesire-dornesti": "Radauti - Dornest Exit",
   "device-location?": "Where is the device installed?",
   "device-location":

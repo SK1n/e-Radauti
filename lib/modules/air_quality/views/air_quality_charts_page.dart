@@ -19,7 +19,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
             CreateChart(
               data: [
                 LineSeries(
-                  name: 'centru-radauti'.tr,
+                  name: 'radauti-center'.tr,
                   dataSource: airQualityController.dataChartPmVsTimeCenter,
                   xValueMapper: (ChartSampleData data, _) => data.x,
                   yValueMapper: (ChartSampleData data, _) => data.yValue,

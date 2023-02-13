@@ -161,6 +161,7 @@ Map<String, String> roRO = {
   'NbV': 'NbV',
   'm-s': 'm/s',
   'mBar': 'mBar',
+  'radauti-center': 'Rădăuți - centru',
   'radauti-iesire-dornesti': 'Rădăuți - Ieșire Dornești',
   'device-location?': 'Unde este instalat dispozitivul?',
   'device-location':
