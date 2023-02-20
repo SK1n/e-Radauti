@@ -22,6 +22,8 @@ time flutter precache --ios
 echo "🟩 Switching to channel beta"
 time flutter channel beta
 time flutter upgrade
+time flutter downgrade 3.7.3
+time flutter --version
 
 echo "🟩 Install Flutter Dependencies"
 time flutter pub get
