@@ -16,6 +16,7 @@ To get started with the e-Radauti application, follow these steps:
 3. Get the project dependencies: `flutter pub get`.
 4. Generate the JSON-related files with [build_runner](https://pub.dev/packages/build_runner): `flutter pub run build_runner build --delete-conflicting-outputs`.
 
+That's it! You're now ready to use the e-Radauti application.
 
 ## Current Flutter Version
 
@@ -24,5 +25,5 @@ To get started with the e-Radauti application, follow these steps:
     Engine • revision 45c5586f2a
     Tools • Dart 2.19.0 (build 2.19.0-444.6.beta) • DevTools 2.20.1
 
-That's it! You're now ready to use the e-Radauti application.
+
 
