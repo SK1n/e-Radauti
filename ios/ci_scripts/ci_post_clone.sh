@@ -10,14 +10,17 @@ set -x
 echo "✔ Navigate from ($PWD) to ($CI_WORKSPACE)"
 cd $CI_WORKSPACE
 
-echo "✔ Install Flutter"
-git clone https://github.com/flutter/flutter.git -b stable $HOME/flutter
+echo "✔ Install Flutter 3.7.0-1.5.pre"
+cd $HOME
+wget https://storage.googleapis.com/flutter_infra_release/releases/beta/macos/flutter_macos_3.7.0-1.5.pre-beta.zip
+unzip $HOME/flutter_macos_3.7.0-1.5.pre-beta.zip
 export PATH="$PATH:$HOME/flutter/bin"
 echo "✔ Set FLUTTER_GIT_URL "
 export FLUTTER_GIT_URL="http://github.com/flutter/flutter.git"
 
 echo "✔ Flutter Precache"
 time flutter precache --ios
+cd $CI_WORKSPACE
 
 echo "🟩 Switching to channel beta"
 time flutter channel beta
