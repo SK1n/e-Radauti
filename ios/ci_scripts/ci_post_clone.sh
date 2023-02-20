@@ -3,7 +3,6 @@
 # fail if any command fails
 set -e
 # debug log
-set -x
 
 # by default, the execution directory of this script is the ci_scripts 
 # CI_WORKSPACE is the directory of your cloned repo
