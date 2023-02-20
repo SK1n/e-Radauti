@@ -47,6 +47,7 @@ class CustomCupertinoPageScaffold extends StatelessWidget {
           padding: const EdgeInsets.only(
             left: leftMargin,
             right: rightMargin,
+            top: topMargin,
           ),
           child: CustomScrollView(
             slivers: slivers,

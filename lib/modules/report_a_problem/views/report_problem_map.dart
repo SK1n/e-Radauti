@@ -32,6 +32,7 @@ class ReportProblemMap extends StatelessWidget with GetDataFirebase {
         return Padding(
           padding: const EdgeInsets.only(bottom: 20),
           child: ExpandableNotifier(
+            initialExpanded: true,
             child: ScrollOnExpand(
               child: Card(
                 elevation: 5,
