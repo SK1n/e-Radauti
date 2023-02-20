@@ -28,7 +28,7 @@ dependencies:
   flutter_inappwebview: ^5.3.2
   flutter_loadingindicator: ^1.0.1
   flutter_local_notifications: ^9.4.0
-  flutter_localization: ^0.1.9
+  flutter_localization: ^0.1.10
   flutter_map: ^2.2.0
   flutter_map_marker_cluster: ^0.5.0
   flutter_speed_dial: ^6.0.0
