@@ -17,9 +17,9 @@ echo "Download flutter"
 
 time curl https://storage.googleapis.com/flutter_infra_release/releases/beta/macos/flutter_macos_3.7.0-1.5.pre-beta.zip
 
-echo "unzip flutter"
+echo "🟩 UNZIP FLUTTER"
 
-time unzip $HOME/flutter_macos_3.7.0-1.5.pre-beta.zip
+time unzip -q $HOME/flutter_macos_3.7.0-1.5.pre-beta.zip -d $HOME
 
 export PATH="$PATH:$HOME/flutter/bin"
 echo "✔ Set FLUTTER_GIT_URL "
