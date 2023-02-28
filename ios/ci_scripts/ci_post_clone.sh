@@ -14,7 +14,7 @@ mkdir -p "$FLUTTER_DIR"
 
 # Download Flutter using git
 echo "🟩🟩 Cloning Flutter $FLUTTER_VERSION... 🟩🟩"
-time git clone --depth 1 --branch $FLUTTER_VERSION $FLUTTER_GIT_URL "$FLUTTER_DIR/flutter"
+git clone --depth 1 --branch $FLUTTER_VERSION $FLUTTER_GIT_URL "$FLUTTER_DIR/flutter"
 
 # Set up environment variables
 export PATH="$PATH:$FLUTTER_DIR/flutter/bin"
@@ -25,23 +25,24 @@ export FLUTTER_GIT_URL="http://github.com/flutter/flutter.git"
 
 # Run ios precache
 echo "🟩🟩 Running flutter precache --ios... 🟩🟩"
+flutter precache --ios
 
 # Install CocoaPods
 echo "🟩🟩 Installing CocoaPods... 🟩🟩"
 export HOMEBREW_NO_ENV_HINTS=1
-time HOMEBREW_NO_AUTO_UPDATE=1 brew install cocoapods
+HOMEBREW_NO_AUTO_UPDATE=1 brew install cocoapods
 
 # Run Flutter doctor to verify installation
 echo "🟩🟩 Running Flutter doctor... 🟩🟩"
-time flutter doctor
+flutter doctor
 
 # Run flutter pub get
 echo "🟩🟩 Running flutter pub get... 🟩🟩"
-time flutter pub get
+flutter pub get
 
 # Generate code for serialization, deserialization, and dependency injection using the build_runner package
 echo "🟩🟩 Genereting files for serialization, deserialization and dependency injections... 🟩🟩"
-time flutter pub run build_runner build --delete-conflicting-outputs
+flutter pub run build_runner build --delete-conflicting-outputs
 
 
 # Run pod install
