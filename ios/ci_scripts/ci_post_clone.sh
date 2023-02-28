@@ -1,52 +1,48 @@
-#!/bin/sh
+#!/bin/bash
 
-# fail if any command fails
-set -e
-# debug log
+set -eo pipefail
 
-# by default, the execution directory of this script is the ci_scripts 
-# CI_WORKSPACE is the directory of your cloned repo
+FLUTTER_VERSION="3.7.0-1.5.pre"
+FLUTTER_GIT_URL="https://github.com/flutter/flutter.git"
+
 echo "✔ Navigate from ($PWD) to ($CI_WORKSPACE)"
 cd $CI_WORKSPACE
 
-echo "✔ Install Flutter 3.7.0-1.5.pre"
+# Set up directories
+FLUTTER_DIR="$HOME/flutter"
+mkdir -p "$FLUTTER_DIR"
 
-cd $HOME
+# Download Flutter using git
+echo "Cloning Flutter $FLUTTER_VERSION..."
+time git clone --depth 1 --branch $FLUTTER_VERSION $FLUTTER_GIT_URL "$FLUTTER_DIR/flutter"
 
-echo "Download flutter"
+# Set up environment variables
+export PATH="$PATH:$FLUTTER_DIR/flutter/bin"
 
-time curl https://storage.googleapis.com/flutter_infra_release/releases/beta/macos/flutter_macos_3.7.0-1.5.pre-beta.zip
-
-echo "🟩 UNZIP FLUTTER"
-
-time unzip -q $HOME/flutter_macos_3.7.0-1.5.pre-beta.zip -d $HOME
-
-export PATH="$PATH:$HOME/flutter/bin"
-echo "✔ Set FLUTTER_GIT_URL "
+# Set the Flutter Git url env variable
+echo "Set FLUTTER_GIT_URL"
 export FLUTTER_GIT_URL="http://github.com/flutter/flutter.git"
 
-echo "✔ Flutter Precache"
-time flutter precache --ios
-cd $CI_WORKSPACE
+# Run Flutter doctor to verify installation
+echo "Running Flutter doctor..."
+time flutter doctor
 
-echo "🟩 Switching to channel beta"
-time flutter channel beta
-time flutter upgrade
-time flutter downgrade 3.7.3
-time flutter --version
-
-echo "🟩 Install Flutter Dependencies"
-time flutter pub get
-
-echo "🟩 Generate json related files"
-time flutter pub run build_runner build --delete-conflicting-outputs
-
-echo "🟩 Install CocoaPods via Homebrew"
+# Install CocoaPods
+echo "Installing CocoaPods..."
 time HOMEBREW_NO_AUTO_UPDATE=1 brew install cocoapods
 
-echo "🟩 Install CocoaPods dependencies..."
-time cd ios
-time pod deintegrate
-time pod install 
+# Generate code for serialization, deserialization, and dependency injection using the build_runner package
+echo " Genereting files for serialization, deserialization and dependency injections..."
+time flutter pub run build_runner build --delete-conflicting-outputs
 
-exit 0
+# Run flutter pub get
+echo "Running flutter pub get..."
+time flutter pub get
+
+# Run pod install
+echo "Running pod install..."
+cd ios/
+pod install
+cd ..
+
+echo "Setup complete!"
