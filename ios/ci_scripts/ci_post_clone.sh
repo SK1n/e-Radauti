@@ -23,21 +23,23 @@ export PATH="$PATH:$FLUTTER_DIR/flutter/bin"
 echo "Set FLUTTER_GIT_URL"
 export FLUTTER_GIT_URL="http://github.com/flutter/flutter.git"
 
+# Install CocoaPods
+echo "Installing CocoaPods..."
+export HOMEBREW_NO_ENV_HINTS=1
+time HOMEBREW_NO_AUTO_UPDATE=1 brew install cocoapods
+
 # Run Flutter doctor to verify installation
 echo "Running Flutter doctor..."
 time flutter doctor
 
-# Install CocoaPods
-echo "Installing CocoaPods..."
-time HOMEBREW_NO_AUTO_UPDATE=1 brew install cocoapods
+# Run flutter pub get
+echo "Running flutter pub get..."
+time flutter pub get
 
 # Generate code for serialization, deserialization, and dependency injection using the build_runner package
 echo " Genereting files for serialization, deserialization and dependency injections..."
 time flutter pub run build_runner build --delete-conflicting-outputs
 
-# Run flutter pub get
-echo "Running flutter pub get..."
-time flutter pub get
 
 # Run pod install
 echo "Running pod install..."
