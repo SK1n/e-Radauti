@@ -36,7 +36,7 @@ class VolunteerWidget extends StatelessWidget with UrlLauncher {
               onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
               linkStyle: const TextStyle(color: Colors.pinkAccent),
               onTap: (link) async {
-                await launchUrl(link);
+                await launchUrlS(link);
               },
             ),
             phone != null
@@ -46,7 +46,7 @@ class VolunteerWidget extends StatelessWidget with UrlLauncher {
                     onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
                     linkStyle: const TextStyle(color: Colors.pinkAccent),
                     onTap: (link) async {
-                      await launchUrl('tel:$link');
+                      await launchUrlS('tel:$link');
                     },
                   )
                 : Container(),
@@ -56,7 +56,7 @@ class VolunteerWidget extends StatelessWidget with UrlLauncher {
               onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
               linkStyle: const TextStyle(color: Colors.pinkAccent),
               onTap: (link) async {
-                await launchUrl('mailto:$link');
+                await launchUrlS('mailto:$link');
               },
             ),
             SelectableAutoLinkText(
@@ -65,7 +65,7 @@ class VolunteerWidget extends StatelessWidget with UrlLauncher {
               onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
               linkStyle: const TextStyle(color: Colors.pinkAccent),
               onTap: (link) async {
-                await launchUrl(link);
+                await launchUrlS(link);
               },
             ),
           ],

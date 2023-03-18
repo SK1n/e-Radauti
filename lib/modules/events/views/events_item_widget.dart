@@ -6,7 +6,6 @@ import 'package:flutterapperadauti/modules/events/views/events_expanded_widget.d
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
 import 'package:get/get.dart';
-
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +32,13 @@ class EventsItemWidget extends StatelessWidget with GetImageUrl {
           );
         },
         dataBuilder: (_, snapshot) {
+          DateTime currentTime = DateTime.now();
+          DateTime eventStartTime = DateTime.fromMillisecondsSinceEpoch(
+              (data!.start! * 1000).toInt());
+          DateTime eventEndTime =
+              DateTime.fromMillisecondsSinceEpoch((data!.end! * 1000).toInt());
+          bool isEventActive = currentTime.isAfter(eventStartTime) &&
+              currentTime.isBefore(eventEndTime);
           return ExpandableNotifier(
             child: ScrollOnExpand(
               child: ExpandablePanel(
@@ -44,6 +50,7 @@ class EventsItemWidget extends StatelessWidget with GetImageUrl {
                   timestamp: eventsNewController.convertTimestampToDate(
                     data!.start!.toInt(),
                   ),
+                  isActive: isEventActive,
                 ),
                 expanded: EventsExpandedWidget(
                   description: data!.description,
@@ -57,6 +64,7 @@ class EventsItemWidget extends StatelessWidget with GetImageUrl {
                   end: eventsNewController.convertTimestampToDate(
                     data!.end!.toInt(),
                   ),
+                  isActive: isEventActive,
                 ),
               ),
             ),

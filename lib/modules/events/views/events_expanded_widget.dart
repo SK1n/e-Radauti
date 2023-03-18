@@ -14,6 +14,7 @@ class EventsExpandedWidget extends StatelessWidget with UrlLauncher {
   final String? street;
   final String? description;
   final String? link;
+  final bool isActive;
   const EventsExpandedWidget({
     super.key,
     this.imageUrl,
@@ -25,6 +26,7 @@ class EventsExpandedWidget extends StatelessWidget with UrlLauncher {
     this.street,
     this.description,
     this.link,
+    this.isActive = false,
   });
 
   @override
@@ -33,6 +35,11 @@ class EventsExpandedWidget extends StatelessWidget with UrlLauncher {
       child: Card(
         child: Column(
           children: [
+            Container(
+              color: Colors.green,
+              width: double.infinity,
+              height: isActive ? 20 : 0,
+            ),
             Stack(
               alignment: Alignment.bottomCenter,
               children: [
@@ -54,7 +61,6 @@ class EventsExpandedWidget extends StatelessWidget with UrlLauncher {
                 maxLines: 3,
               ),
             ),
-            //sendNotifSwitchListTile(fetchData, sendNotif),
             ListTile(
               leading: const Icon(
                 Icons.people,
@@ -93,7 +99,7 @@ class EventsExpandedWidget extends StatelessWidget with UrlLauncher {
                 onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
                 linkStyle: const TextStyle(color: Colors.pinkAccent),
                 onTap: (link) async {
-                  await launchUrl(link);
+                  await launchUrlS(link);
                 },
               ),
             )

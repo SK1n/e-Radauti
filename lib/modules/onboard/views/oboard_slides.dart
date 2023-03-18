@@ -29,7 +29,7 @@ class OnboardSlides extends StatelessWidget with UrlLauncher {
         ),
         SelectableText(
           'www.radautiulcivic.ro',
-          onTap: () => launchUrl('https://www.radautiulcivic.ro'),
+          onTap: () => launchUrlS('https://www.radautiulcivic.ro'),
         ),
       ],
     );

@@ -56,7 +56,7 @@ class ConfidentialItem extends UrlLauncher {
         fontSize: 15,
       ),
       recognizer: TapGestureRecognizer()
-        ..onTap = () async => await launchUrl(link),
+        ..onTap = () async => await launchUrlS(link),
     );
   }
 

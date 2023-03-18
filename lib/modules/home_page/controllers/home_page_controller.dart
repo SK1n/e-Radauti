@@ -1,15 +1,12 @@
-import 'dart:math';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 
 class HomePageController extends GetxController {
-  Logger _logger = Logger();
+  final Logger _logger = Logger();
   @override
   void onReady() async {
-    FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
     await setupInteractedMessage();
     super.onReady();
   }

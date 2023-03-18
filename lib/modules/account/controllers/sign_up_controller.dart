@@ -9,10 +9,15 @@ class SignUpController extends GetxController with UploadDataFirebase {
       String name) async {
     EasyLoading.show();
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailAddress,
-        password: password,
-      );
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            email: emailAddress,
+            password: password,
+          )
+          .then(
+            (value) async => await FirebaseAuth.instance.currentUser!
+                .updateDisplayName(name),
+          );
       EasyLoading.dismiss();
       Get.defaultDialog(
         barrierDismissible: false,

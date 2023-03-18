@@ -1,8 +1,7 @@
-import 'dart:math';
-
-import 'package:flutterapperadauti/data/models/air_quality_charts/air_quality_charts_item_model.dart';
-import 'package:flutterapperadauti/data/models/air_quality_charts/air_quality_charts_model.dart';
-import 'package:flutterapperadauti/modules/air_quality/views/create_chart.dart';
+import 'package:flutterapperadauti/data/models/air_quality/air_quality_item_model.dart';
+import 'package:flutterapperadauti/data/models/air_quality/air_quality_model.dart';
+import 'package:flutterapperadauti/modules/air_quality/views/charts/create_chart.dart';
+import 'package:flutterapperadauti/utils/assets.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -19,18 +18,18 @@ class AirQualityController extends GetxController with GetDataFirebase {
 
   Future getDataCharts() async {
     var data = await getData(
-      convert: AirQualityChartsModel.fromJson,
+      convert: AirQualityModel.fromJson,
       document: 'AirDatabase3',
     );
-    List<AirQualityChartsItemModel>? items = data.items;
+    List<AirQualityItemModel>? items = data.items;
     for (int index = 0; index <= items!.length - 1; index++) {
-      AirQualityChartsItemModel item = items[index];
-      DateTime tempDate = DateFormat('dd/MM/yyyy HH:mm').parse(item.timestamp);
+      AirQualityItemModel item = items[index];
+      DateTime tempDate = DateFormat('dd/MM/yyyy HH:mm').parse(item.dateTime);
       dataChartPmVsTimeCenter.add(
         ChartSampleData(
           x: tempDate,
           yValue: item.centerPm.toDouble(),
-          color: item.centerPmColor,
+          color: item.centerColor,
         ),
       );
       dataChartPmVsTimeDornesti.add(
@@ -75,6 +74,34 @@ class AirQualityController extends GetxController with GetDataFirebase {
           yValue: 20,
         ),
       );
+    }
+  }
+
+  Future getAirQualityCurrent() async {
+    AirQualityModel airQualityModel = await getData(
+      document: 'AirDatabase3',
+      convert: AirQualityModel.fromJson,
+    );
+    List<AirQualityItemModel> items = airQualityModel.items;
+    return items.last;
+  }
+
+  String bindQualityImage(int image) {
+    switch (image) {
+      case 0:
+        return Assets.assetsFacesBuna;
+      case 1:
+        return Assets.assetsFacesAcceptabila;
+      case 2:
+        return Assets.assetsFacesModerata;
+      case 3:
+        return Assets.assetsFacesRea;
+      case 4:
+        return Assets.assetsFacesFoarteRea;
+      case 5:
+        return Assets.assetsFacesExtremDeRea;
+      default:
+        return Assets.assetsFacesExtremDeRea;
     }
   }
 }

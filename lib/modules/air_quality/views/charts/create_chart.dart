@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/data/models/air_quality_charts/air_quality_graph_color_model.dart';
+import 'package:flutterapperadauti/data/models/air_quality/air_quality_color_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -61,7 +61,7 @@ class CreateChart extends StatelessWidget {
 class ChartSampleData {
   final double yValue;
   final DateTime x;
-  final AirQualityGraphColorModel? color;
+  final AirQualityColorModel? color;
 
   ChartSampleData({
     required this.x,

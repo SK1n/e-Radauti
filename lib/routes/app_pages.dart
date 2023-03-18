@@ -18,7 +18,6 @@ import 'package:flutterapperadauti/modules/account/views/sign_in_page.dart';
 import 'package:flutterapperadauti/modules/account/views/reset_password_page.dart';
 import 'package:flutterapperadauti/modules/account/views/sign_up_page.dart';
 import 'package:flutterapperadauti/modules/home_page/bindings/home_page_binding.dart';
-import 'package:flutterapperadauti/modules/home_page/controllers/home_page_controller.dart';
 import 'package:flutterapperadauti/modules/home_page/views/menu_screen.dart';
 import 'package:flutterapperadauti/modules/onboard/bindings/onboard_bindings.dart';
 import 'package:flutterapperadauti/modules/onboard/views/permissions_page.dart';

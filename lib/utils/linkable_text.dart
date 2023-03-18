@@ -23,7 +23,7 @@ class LinkableText extends StatelessWidget with UrlLauncher {
         linkStyle: const TextStyle(color: Colors.pinkAccent),
         style: textStyle,
         onTap: (link) async {
-          await launchUrl(link);
+          await launchUrlS(link);
         },
       ),
     );

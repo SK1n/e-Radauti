@@ -59,7 +59,7 @@ class _LocalMeetingsItemState extends State<LocalMeetingsItem>
                 TextButton(
                   onPressed: () async {
                     debugPrint(widget.data.pdfLink!);
-                    await launchUrl(widget.data.pdfLink!);
+                    await launchUrlS(widget.data.pdfLink!);
                   },
                   child: Text('see-order'.tr),
                 ),

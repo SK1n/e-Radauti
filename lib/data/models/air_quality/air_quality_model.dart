@@ -6,9 +6,9 @@ part 'air_quality_model.g.dart';
 @JsonSerializable()
 class AirQualityModel {
   @JsonKey(name: 'air')
-  final List<AirQualityItemModel>? item;
+  final List<AirQualityItemModel> items;
 
-  const AirQualityModel(this.item);
+  const AirQualityModel(this.items);
 
   factory AirQualityModel.fromJson(Map<String, dynamic> json) =>
       _$AirQualityModelFromJson(json);

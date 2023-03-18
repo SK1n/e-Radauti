@@ -67,14 +67,16 @@ class LeaderCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                     InkWell(
                       child: const Icon(Entypo.facebook),
                       onTap: () async {
-                        await launchUrl(urlFb!);
+                        await launchUrlS(urlFb!);
                       },
                     ),
                     email != null
                         ? InkWell(
                             child: const Icon(Entypo.mail),
                             onTap: () async {
-                              await launchUrl('mailto:$email');
+                              final Uri emailUri =
+                                  Uri(scheme: 'mailto', path: email);
+                              await launchUrlUri(emailUri);
                             },
                           )
                         : Container(),
@@ -88,7 +90,7 @@ class LeaderCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                 ),
                 InkWell(
                   onTap: () async {
-                    await launchUrl(wealth!);
+                    await launchUrlS(wealth!);
                   },
                   child: Text(
                     'wealth-declaration'.tr,
@@ -99,7 +101,7 @@ class LeaderCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                 ),
                 InkWell(
                   onTap: () async {
-                    await launchUrl(interests!);
+                    await launchUrlS(interests!);
                   },
                   child: Text(
                     'declaration-interests'.tr,

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/local_meetings/local_meetings_item_model.dart';
 import 'package:flutterapperadauti/data/models/local_meetings/local_meetings_model.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/local_meetings_item.dart';
-import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';

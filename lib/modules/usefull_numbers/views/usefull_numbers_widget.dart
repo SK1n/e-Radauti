@@ -45,7 +45,7 @@ class UsefullNumbersWidget extends StatelessWidget with UrlLauncher {
                             leading: const Icon(Entypo.phone),
                             title: Text('${phone![item]}'),
                             onTap: () async {
-                              await launchUrl('tel:${phone![item]}');
+                              await launchUrlS('tel:${phone![item]}');
                             },
                           ),
                           const Divider(
@@ -68,7 +68,7 @@ class UsefullNumbersWidget extends StatelessWidget with UrlLauncher {
                             leading: const Icon(Entypo.mail),
                             title: Text('${email![item]}'),
                             onTap: () async {
-                              await launchUrl('mailto:${email![item]}');
+                              await launchUrlS('mailto:${email![item]}');
                             },
                           ),
                           const Divider(

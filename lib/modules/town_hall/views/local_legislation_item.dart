@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 
 class LocalLegislationItem extends StatelessWidget with UrlLauncher {
   final String? title;
@@ -23,7 +24,9 @@ class LocalLegislationItem extends StatelessWidget with UrlLauncher {
           ),
           TextButton(
             onPressed: () async {
-              await launchUrl(link!);
+              Logger logger = Logger();
+              logger.d(link);
+              await launchUrlS(link!);
             },
             child: Text('open-link'.tr.toUpperCase()),
           )

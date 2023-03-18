@@ -5,7 +5,6 @@ import 'package:flutterapperadauti/controllers/account_controller.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 
 class AccountPage extends StatelessWidget {
@@ -96,7 +95,7 @@ class AccountPage extends StatelessWidget {
                           minimumSize: Size(Get.width, 40),
                         ),
                         onPressed: () => Get.defaultDialog(
-                          title: "Do you really want to sign out?",
+                          title: "sign-out-text".tr,
                           middleText: '',
                           onConfirm: () => controller.signOut(),
                           textConfirm: 'yes'.tr,

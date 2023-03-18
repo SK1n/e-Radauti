@@ -26,7 +26,7 @@ Map<String, String> roRO = {
   'transport': 'Transport',
   'volunteering': 'Voluntariat',
   'settings': 'Setări',
-  'sign-out': 'Sign out',
+  'sign-out': 'Deconectează-te',
   'log-in': 'Autentificare',
   'reset-password': 'Resetează parola',
   'send-report': 'TRIMITE SESIZARE',
@@ -178,7 +178,7 @@ Map<String, String> roRO = {
   'color-meaning-red-dark': 'Nivelul PM2.5 este extrem de rău (75 - 800 μg/m³)',
   'what-does-the-law-say?': 'Ce spune legea despre calitatea aerului?',
   'what-does-the-law-say':
-      'În România, principala lege care oferă informații substanțiale pe tema calității aerului este Legea nr. 104 din 2011. Culorile și scara de concentrație din această cerere sunt aliniate cu Ordinul nr. 1.818 din 2 octombrie 2020 și are în vedere prevederile art. 87 alin. (2) din Legea nr. 104/2011 privind calitatea aerului înconjurător, cu modificările ulterioare în temeiul art. 57 alin. (1), (4) și (5) din Ordonanța de urgență a Guvernului nr. 57/2019 privind Codul administrativ, cu modificările și completările ulterioare, și ale art. 13 alin. (4) din Hotărârea Guvernului nr. 43/2020 privind organizarea și funcționarea Ministerului Mediului, Apelor și Pădurilor',
+      'În România, principala lege care oferă informații substanțiale pe tema calității aerului este Legea nr. 104 din 2011. Culorile și scara de concentrație din această cerere sunt aliniate cu Ordinul nr. 1.818 din 2 octombrie 2020 și are în vedere prevederile art. 87 alin. (2) din Legea nr. 104/2011 privind calitatea aerului înconjurător, cu modificările ulterioare în temeiul art. 57 alin. (1), (4) și (5) din Ordonanța de urgență a Guvernului nr. 57/2019 privind Codul administrativ, cu modificările și completările ulterioare, și ale art. 13 alin. (4) din Hotărârea Guvernului nr. 43/2020 privind organizarea și funcționarea Ministerului Mediului, Apelor și Pădurilor.',
   'where-to-find-more-info?': 'Unde pot găsi mai multe informații?',
   'where-to-find-more-info':
       'Echipa Rădăuțiul Civic a construit o pagină specială pentru o descriere detaliată a parametrilor de calitate a aerului (http://calitateaer.radautiulcivic.ro). Pagina conține grafice care arată cum evoluează în timp concentrația de PM2,5, CO2, umiditatea relativă, viteza și direcția vântului, temperatura și presiunea atmosferică.',
@@ -299,7 +299,7 @@ Map<String, String> roRO = {
       'Nu am putut deschide acest link, vă rugăm să încercați din nou',
   'redirected-eradauti': 'Veți fi redirecționat către www.eradauti.ro',
   'cancel': 'Anulare',
-  'yes': 'da',
+  'yes': 'Da',
   'no': 'Nu',
   'all': 'Toate',
   'proceed': 'Vrei să continui?',
@@ -314,4 +314,5 @@ Map<String, String> roRO = {
   'celsius': '°C',
   'hm': "Umiditate",
   'limit-pm': 'Limita legală de PM2,5',
+  "sign-out-text": "Doriți să vă deconectați?"
 };

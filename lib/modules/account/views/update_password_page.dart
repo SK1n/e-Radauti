@@ -26,6 +26,7 @@ class UpdatePasswordPage extends StatelessWidget {
                   child: FormBuilderTextField(
                     name: 'oldPassword',
                     initialValue: "",
+                    obscureText: true,
                     decoration: InputDecoration(
                         label: Text("current-password".tr),
                         prefixIcon: const Icon(Icons.shield)),
@@ -44,6 +45,7 @@ class UpdatePasswordPage extends StatelessWidget {
                   child: FormBuilderTextField(
                     name: 'newPassword',
                     initialValue: "",
+                    obscureText: true,
                     onChanged: (value) {
                       controller.newPassword = value;
                     },
@@ -66,6 +68,7 @@ class UpdatePasswordPage extends StatelessWidget {
                           label: Text("re-type-password".tr),
                           prefixIcon: const Icon(Icons.key),
                         ),
+                        obscureText: true,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: FormBuilderValidators.compose(
                           [

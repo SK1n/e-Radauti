@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/taxi/taxi_item_model.dart';
 import 'package:flutterapperadauti/data/models/taxi/taxi_model.dart';
 import 'package:flutterapperadauti/modules/transport/views/taxi_item.dart';
-import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';

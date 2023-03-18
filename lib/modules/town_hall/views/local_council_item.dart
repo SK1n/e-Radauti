@@ -68,7 +68,7 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                                 height: 20,
                                 child: InkWell(
                                   onTap: () async {
-                                    await launchUrl('tel:$phoneNumber');
+                                    await launchUrlS('tel:$phoneNumber');
                                   },
                                   child: Text(
                                     '${"tel".tr}: $phoneNumber',
@@ -80,7 +80,7 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                             : Container(),
                         InkWell(
                           onTap: () async {
-                            await launchUrl('mailto:$email');
+                            await launchUrlS('mailto:$email');
                           },
                           child: SizedBox(
                             width: Get.width - 110,

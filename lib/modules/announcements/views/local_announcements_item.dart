@@ -61,7 +61,7 @@ class LocalAnnouncementsItem extends StatelessWidget
               onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
               linkStyle: const TextStyle(color: Colors.pinkAccent),
               onTap: (link) async {
-                await launchUrl(link);
+                await launchUrlS(link);
               },
             ),
           ),

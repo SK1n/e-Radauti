@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutterapperadauti/data/clients/local_legislation_client.dart';
 import 'package:flutterapperadauti/data/models/local_legislation/local_legislation_model.dart';
 import 'package:get/get.dart';

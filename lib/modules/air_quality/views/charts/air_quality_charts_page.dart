@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/air_quality/controllers/air_quality_controller.dart';
-import 'package:flutterapperadauti/modules/air_quality/views/create_chart.dart';
+import 'package:flutterapperadauti/modules/air_quality/views/charts/create_chart.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
@@ -24,8 +24,8 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                   xValueMapper: (ChartSampleData data, _) => data.x,
                   yValueMapper: (ChartSampleData data, _) => data.yValue,
                   color: const Color.fromRGBO(242, 117, 7, 1),
-                  // change the line color based on valu
-                  // TODO: find a way to represend the line in legend
+                  // change the line color based on value
+                  // TODO: find a way to represent the line in legend
                   // pointColorMapper: (data, index) => Color.fromARGB(
                   //   255,
                   //   data.color!.r.toInt(),
@@ -50,7 +50,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                   dataSource: airQualityController.recommendedPmValue,
                   xValueMapper: (ChartSampleData data, _) => data.x,
                   yValueMapper: (ChartSampleData data, _) => data.yValue,
-                  color: Color.fromARGB(255, 86, 26, 104),
+                  color: const Color.fromARGB(255, 86, 26, 104),
                   isVisibleInLegend: true,
                   width: 1,
                 ),

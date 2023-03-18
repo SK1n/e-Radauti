@@ -30,7 +30,7 @@ class SignInController extends GetxController {
       Get.defaultDialog(
         barrierDismissible: false,
         title: 'Oops',
-        middleText: e.code,
+        middleText: e.code.tr,
         onConfirm: () => Get.back(),
       );
     }
