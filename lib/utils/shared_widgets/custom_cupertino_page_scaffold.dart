@@ -28,9 +28,6 @@ class CustomCupertinoPageScaffold extends StatelessWidget {
         leading: navBarLeading,
         middle: AutoSizeText(
           navBarMiddle,
-          style: TextStyle(
-            color: Get.theme.appBarTheme.foregroundColor,
-          ),
         ),
         trailing: navBarTrailing ??
             InkWell(

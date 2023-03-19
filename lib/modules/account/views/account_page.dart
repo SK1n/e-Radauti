@@ -31,50 +31,36 @@ class AccountPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(top: 8.0),
                       child: Text(
-                        "${controller.getEmail()}",
-                        style: Get.textTheme.headlineSmall,
+                        "email-value".trParams(
+                          {
+                            "email": controller.getEmail(),
+                          },
+                        ),
+                        style: const TextStyle(fontSize: 30),
                       ),
                     ),
-                    Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                controller.getDisplayName() ?? "",
-                                style: Get.textTheme.headlineSmall,
-                              ),
-                            ),
-                            const Divider(),
-                            FormBuilderTextField(
-                              decoration: InputDecoration(
-                                  prefixIcon: const Icon(FontAwesome.info),
-                                  label: Text('display-name'.tr)),
-                              name: 'display_name',
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: FilledButton(
-                                  style: TextButton.styleFrom(
-                                      minimumSize: Size(Get.width, 40)),
-                                  onPressed: () async {
-                                    if (formKey
-                                        .currentState!.fields['display_name']!
-                                        .validate()) {
-                                      await controller.updateDisplayName(formKey
-                                          .currentState!
-                                          .fields['display_name']!
-                                          .value);
-                                    }
-                                  },
-                                  child: Text('update-name'.tr)),
-                            )
-                          ],
+                    Obx(
+                      () => Text(
+                        "username".trParams(
+                          {
+                            "name": controller.username,
+                          },
                         ),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 30),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: FilledButton.icon(
+                        style: TextButton.styleFrom(
+                          minimumSize: Size(Get.width, 40),
+                        ),
+                        onPressed: () => Get.toNamed(Routes.updateName),
+                        icon: const Icon(Icons.person),
+                        label: Text('update-name'.tr),
                       ),
                     ),
                     Padding(
@@ -84,7 +70,7 @@ class AccountPage extends StatelessWidget {
                           minimumSize: Size(Get.width, 40),
                         ),
                         onPressed: () => Get.toNamed(Routes.updatePassword),
-                        icon: const Icon(Icons.logout),
+                        icon: const Icon(Icons.key),
                         label: Text('update-password'.tr),
                       ),
                     ),

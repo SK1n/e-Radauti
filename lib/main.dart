@@ -127,21 +127,22 @@ Future<void> main() async {
 // you use a lower version, some properties may not be supported. In
 // that case you can also remove them after copying the theme to your app.
       theme: FlexThemeData.light(
-        scheme: FlexScheme.blueWhale,
-        surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
-        blendLevel: 9,
-        subThemesData: const FlexSubThemesData(
-          blendOnLevel: 10,
-          blendOnColors: false,
-          inputDecoratorIsFilled: false,
-          inputDecoratorBorderType: FlexInputBorderType.underline,
-        ),
-        visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        useMaterial3: true,
-        swapLegacyOnMaterial3: true,
-        // To use the playground font, add GoogleFonts package and uncomment
-        // fontFamily: GoogleFonts.notoSans().fontFamily,
-      ),
+          scheme: FlexScheme.blueWhale,
+          surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+          blendLevel: 9,
+          subThemesData: const FlexSubThemesData(
+            blendOnLevel: 10,
+            blendOnColors: false,
+            inputDecoratorIsFilled: false,
+            inputDecoratorBorderType: FlexInputBorderType.underline,
+          ),
+          visualDensity: FlexColorScheme.comfortablePlatformDensity,
+          useMaterial3: true,
+          swapLegacyOnMaterial3: true,
+          extensions: []
+          // To use the playground font, add GoogleFonts package and uncomment
+          // fontFamily: GoogleFonts.notoSans().fontFamily,
+          ),
       darkTheme: FlexThemeData.dark(
         scheme: FlexScheme.blueWhale,
         surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,

@@ -12,6 +12,14 @@ class AccountController extends GetxController
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   late SharedPreferences _sharedPreferences;
 
+  // final _username = _firebaseAuth.currentUser!.displayName.obs;
+  // get username => _username.value;
+  // set username(value) => _username.value = value;
+
+  final _username = ''.obs;
+  get username => _username.value;
+  set username(value) => _username.value = value;
+
   final _newPassword = ''.obs;
   get newPassword => _newPassword.value;
   set newPassword(value) => _newPassword.value = value;
@@ -31,6 +39,7 @@ class AccountController extends GetxController
           ),
         ),
       );
+      username = displayName;
     } catch (e) {
       EasyLoading.dismiss();
       Get.defaultDialog(
@@ -42,10 +51,13 @@ class AccountController extends GetxController
     }
   }
 
+  setInitialUsername() {
+    username = _firebaseAuth.currentUser!.displayName;
+  }
+
   getPassword() => _sharedPreferences.getString("password");
   getPhoneNumber() => _firebaseAuth.currentUser!.phoneNumber;
 
-  getDisplayName() => _firebaseAuth.currentUser!.displayName;
   getEmail() => _firebaseAuth.currentUser?.email;
   getVerified() => _firebaseAuth.currentUser?.emailVerified;
 
@@ -80,6 +92,7 @@ class AccountController extends GetxController
     if (Get.currentRoute != Routes.reportProblem) {
       if (!isAnnonymous()) {
         _sharedPreferences = await SharedPreferences.getInstance();
+        setInitialUsername();
       } else {
         Get.offAndToNamed(Routes.signIn);
       }

@@ -27,9 +27,8 @@ class ReportProblemForm extends StatelessWidget {
                 label: Text("${'name-surname'.tr} *"),
                 floatingLabelAlignment: FloatingLabelAlignment.start,
               ),
-              initialValue: accountController.getDisplayName(),
+              initialValue: accountController.username,
               name: 'name',
-              autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.required(errorText: 'required-field'.tr)
               ]),
@@ -61,7 +60,6 @@ class ReportProblemForm extends StatelessWidget {
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.required(errorText: 'required-field'.tr)
               ]),
-              autovalidateMode: AutovalidateMode.onUserInteraction,
             ),
           ),
           Padding(

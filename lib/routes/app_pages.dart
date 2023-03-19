@@ -1,5 +1,6 @@
 import 'package:flutterapperadauti/bindings/account_bindings.dart';
 import 'package:flutterapperadauti/modules/account/views/account_page.dart';
+import 'package:flutterapperadauti/modules/account/views/update_name_page.dart';
 import 'package:flutterapperadauti/modules/account/views/update_password_page.dart';
 import 'package:flutterapperadauti/modules/air_quality/bindings/air_quality_bindings.dart';
 import 'package:flutterapperadauti/modules/announcements/bindings/get_e_radauti_data_bindings.dart';
@@ -92,6 +93,13 @@ class AppPages {
                 AccountBinding(),
               ],
               children: [
+                GetPage(
+                  name: _Paths.updateName,
+                  page: () => const UpdateNamePage(),
+                  bindings: [
+                    AccountBinding(),
+                  ],
+                ),
                 GetPage(
                   name: _Paths.updatePassword,
                   page: () => const UpdatePasswordPage(),

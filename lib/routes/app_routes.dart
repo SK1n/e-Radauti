@@ -38,6 +38,7 @@ abstract class Routes {
   static const resetPassword = signIn + _Paths.resetPassword;
   static const account = home + _Paths.account;
   static const updatePassword = account + _Paths.updatePassword;
+  static const updateName = account + _Paths.updateName;
   static const permissionsPage = onboard + _Paths.permissionsPage;
 }
 
@@ -77,6 +78,7 @@ abstract class _Paths {
   static const resetPassword = '/reset_password';
   static const account = '/account';
   static const updatePassword = "/update_password";
+  static const updateName = "/update_name";
   static const permissionsPage = "/permissions_page";
   static const localAnnouncements = '/localAnnouncements';
 }
