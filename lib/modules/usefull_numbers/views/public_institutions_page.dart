@@ -4,7 +4,7 @@ import 'package:flutterapperadauti/data/models/public_institutions/public_instit
 import 'package:flutterapperadauti/data/models/public_institutions/public_institutions_model.dart';
 import 'package:flutterapperadauti/modules/usefull_numbers/views/usefull_numbers_widget.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +13,7 @@ class PublicInstitutionsPage extends StatelessWidget with GetDataFirebase {
 
   @override
   Widget build(BuildContext context) {
-    return CustomCupertinoPageScaffold(
+    return CustomPageScaffold(
       navBarMiddle: 'local-institutions'.tr,
       slivers: [
         SliverToBoxAdapter(

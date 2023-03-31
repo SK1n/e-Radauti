@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:get/get.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
@@ -9,7 +9,7 @@ class TimelineRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var arguments = Get.arguments;
-    return CustomCupertinoPageScaffold(
+    return CustomPageScaffold(
       navBarMiddle: '${arguments[0]}',
       slivers: [
         SliverToBoxAdapter(

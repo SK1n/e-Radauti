@@ -4,7 +4,7 @@ import 'package:flutterapperadauti/data/models/local_announcements/local_announc
 import 'package:flutterapperadauti/data/models/local_announcements/local_announcements_model.dart';
 import 'package:flutterapperadauti/modules/announcements/views/local_announcements_item.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +12,7 @@ class LocalAnnouncementsPage extends StatelessWidget with GetDataFirebase {
   const LocalAnnouncementsPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return CustomCupertinoPageScaffold(
+    return CustomPageScaffold(
       navBarMiddle: 'local-announces'.tr,
       slivers: [
         SliverToBoxAdapter(

@@ -2,43 +2,40 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/const.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 
 import '../../routes/app_pages.dart';
 
-class CustomCupertinoPageScaffold extends StatelessWidget {
+class CustomPageScaffold extends StatelessWidget {
   final List<Widget> slivers;
   final String navBarMiddle;
   final Widget? navBarTrailing;
   final Widget? navBarLeading;
-  const CustomCupertinoPageScaffold({
+  final PreferredSizeWidget? bottom;
+  const CustomPageScaffold({
     super.key,
     required this.slivers,
     this.navBarMiddle = '',
     this.navBarTrailing,
     this.navBarLeading,
+    this.bottom,
   });
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
+    return Scaffold(
       backgroundColor: Colors.grey[200],
-      navigationBar: CupertinoNavigationBar(
-        backgroundColor: Get.theme.appBarTheme.backgroundColor,
-        automaticallyImplyLeading: true,
+      endDrawer: const NavDrawer(),
+      appBar: AppBar(
         leading: navBarLeading,
-        middle: AutoSizeText(
+        title: AutoSizeText(
           navBarMiddle,
         ),
-        trailing: navBarTrailing ??
-            InkWell(
-              onTap: () => Get.toNamed(Routes.account),
-              child: const Icon(
-                CupertinoIcons.profile_circled,
-              ),
-            ),
+        bottom: bottom,
+        centerTitle: true,
       ),
-      child: SafeArea(
+      body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(
             left: leftMargin,

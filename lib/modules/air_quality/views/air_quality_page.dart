@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/air_quality/views/current_air_quality/current_air_quality_page.dart';
 import 'package:flutterapperadauti/modules/air_quality/views/charts/air_quality_charts_page.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:get/get.dart';
 
@@ -31,7 +31,7 @@ class AirQualityPage extends StatelessWidget {
         ],
       ),
       tabBuilder: (_, index) => CupertinoTabView(
-        builder: (_) => CustomCupertinoPageScaffold(
+        builder: (_) => CustomPageScaffold(
           navBarMiddle: 'air-quality'.tr,
           navBarLeading: InkWell(
             child: const Icon(CupertinoIcons.back),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutterapperadauti/modules/account/controllers/sign_up_controller.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +15,7 @@ class SignUpPage extends StatelessWidget {
     final GlobalKey<FormBuilderState> formKey = GlobalKey();
     final SignUpController signUpController = Get.find();
     final String email = Get.parameters['email'].toString();
-    return CustomCupertinoPageScaffold(
+    return CustomPageScaffold(
       navBarMiddle: 'create-new-account'.tr,
       navBarTrailing: InkWell(
         onTap: () => Get.toNamed(

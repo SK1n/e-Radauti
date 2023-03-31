@@ -15,21 +15,25 @@ class OldEventsPage extends StatelessWidget {
 
     return Futuristic(
       initialBuilder: (_, __) => Container(),
-      futureBuilder: () => eventsController.getData(
-          convert: OldEventsModel.fromJson, document: 'OldEvents'),
+      futureBuilder: () => eventsController.getOldEventsList(),
       dataBuilder: (BuildContext context, snapshot) {
-        OldEventsModel data = snapshot as OldEventsModel;
-        List<EventsListModel>? list = data.events!
-          ..sort((e1, e2) => e2.start!.compareTo(e1.start!));
-        return ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: 30,
-            itemBuilder: (BuildContext context, int item) {
-              return EventsItemWidget(
-                list[item],
-              );
-            });
+        List<EventsListModel> data = snapshot as List<EventsListModel>;
+
+        return CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 30,
+                  itemBuilder: (BuildContext context, int item) {
+                    return EventsItemWidget(
+                      data[item],
+                    );
+                  }),
+            ),
+          ],
+        );
       },
     );
   }

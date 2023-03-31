@@ -5,7 +5,7 @@ import 'package:flutterapperadauti/data/models/taxi/taxi_model.dart';
 import 'package:flutterapperadauti/modules/transport/views/taxi_item.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +14,7 @@ class TaxiPage extends StatelessWidget with GetImageUrl, GetDataFirebase {
 
   @override
   Widget build(BuildContext context) {
-    return CustomCupertinoPageScaffold(
+    return CustomPageScaffold(
       navBarMiddle: 'cabbies'.tr,
       slivers: [
         SliverToBoxAdapter(

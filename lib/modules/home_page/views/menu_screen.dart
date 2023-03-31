@@ -4,7 +4,7 @@ import 'package:flutterapperadauti/modules/home_page/views/big_menu_item.dart';
 import 'package:flutterapperadauti/modules/home_page/views/small_menu_item.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:get/get.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -22,7 +22,7 @@ class _MenuScreenState extends State<MenuScreen> with GetDataFirebase {
 
   @override
   Widget build(BuildContext context) {
-    return CustomCupertinoPageScaffold(
+    return CustomPageScaffold(
       navBarMiddle: 'e-radauti'.tr,
       slivers: [
         SliverList(

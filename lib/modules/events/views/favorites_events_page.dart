@@ -8,8 +8,8 @@ import 'package:flutterapperadauti/modules/events/views/events_item_widget.dart'
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 
-class EventsFavorites extends StatelessWidget {
-  const EventsFavorites({super.key});
+class FavoritesEventsPage extends StatelessWidget {
+  const FavoritesEventsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +19,22 @@ class EventsFavorites extends StatelessWidget {
       initialBuilder: (_, __) => Container(),
       dataBuilder: (context, snapshot) {
         List<EventsListModel> data = snapshot as List<EventsListModel>;
-        return ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: data.length,
-            itemBuilder: (BuildContext context, int item) {
-              return EventsItemWidget(
-                data[item],
-              );
-            });
+        return CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: data.length,
+                itemBuilder: (BuildContext context, int item) {
+                  return EventsItemWidget(
+                    data[item],
+                  );
+                },
+              ),
+            ),
+          ],
+        );
       },
     );
   }

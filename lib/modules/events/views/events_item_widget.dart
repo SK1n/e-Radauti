@@ -1,8 +1,6 @@
 import 'package:card_loading/card_loading.dart';
 import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
 import 'package:flutterapperadauti/modules/events/controllers/events_controller.dart';
-import 'package:flutterapperadauti/modules/events/views/events_collapsed_widget.dart';
-import 'package:flutterapperadauti/modules/events/views/events_expanded_widget.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
@@ -54,13 +52,6 @@ class EventsItemWidget extends StatelessWidget with GetImageUrl {
         );
       },
       dataBuilder: (_, snapshot) {
-        // DateTime currentTime = DateTime.now();
-        // DateTime eventStartTime = DateTime.fromMillisecondsSinceEpoch(
-        //     (data!.start! * 1000).toInt());
-        // DateTime eventEndTime =
-        //     DateTime.fromMillisecondsSinceEpoch((data!.end! * 1000).toInt());
-        // bool isEventActive = currentTime.isAfter(eventStartTime) &&
-        //     currentTime.isBefore(eventEndTime);
         return Padding(
           padding: const EdgeInsets.only(top: topMargin),
           child: InkWell(
@@ -72,6 +63,10 @@ class EventsItemWidget extends StatelessWidget with GetImageUrl {
               ],
             ),
             child: Card(
+              shape: RoundedRectangleBorder(
+                side: const BorderSide(color: Colors.black12, width: 1),
+                borderRadius: BorderRadius.circular(30),
+              ),
               color: Colors.white,
               child: SizedBox(
                 width: Get.width,
@@ -136,7 +131,7 @@ class EventsItemWidget extends StatelessWidget with GetImageUrl {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 10, bottom: 10),
-                      child: OutlinedButton(
+                      child: FilledButton(
                         onPressed: () => Get.toNamed(
                           Routes.eventsDetails,
                           arguments: [

@@ -134,16 +134,18 @@ Future<void> main() async {
         scheme: FlexScheme.bahamaBlue,
         surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
         blendLevel: 9,
+        appBarStyle: FlexAppBarStyle.background,
         subThemesData: const FlexSubThemesData(
           blendOnLevel: 10,
           blendOnColors: false,
           cardRadius: 30.0,
         ),
+
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         useMaterial3: true,
         swapLegacyOnMaterial3: true,
         // To use the playground font, add GoogleFonts package and uncomment
-        fontFamily: GoogleFonts.roboto().fontFamily,
+        // fontFamily: GoogleFonts.notoSans().fontFamily,
       ),
       darkTheme: FlexThemeData.dark(
         scheme: FlexScheme.bahamaBlue,
@@ -157,7 +159,7 @@ Future<void> main() async {
         useMaterial3: true,
         swapLegacyOnMaterial3: true,
         // To use the Playground font, add GoogleFonts package and uncomment
-        fontFamily: GoogleFonts.roboto().fontFamily,
+        // fontFamily: GoogleFonts.notoSans().fontFamily,
       ),
 // If you do not have a themeMode switch, uncomment this line
 // to let the device system mode control the theme mode:

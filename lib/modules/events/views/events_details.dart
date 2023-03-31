@@ -7,7 +7,7 @@ import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
 import 'package:flutterapperadauti/modules/events/controllers/events_controller.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
 import 'package:fluttericon/elusive_icons.dart';
@@ -35,7 +35,7 @@ class EventsDetails extends StatelessWidget with UrlLauncher {
     final EventsListModel data = Get.arguments[0];
     final String imageLink = Get.arguments[1];
     final EventsController eventsController = Get.find();
-    return CustomCupertinoPageScaffold(
+    return CustomPageScaffold(
       slivers: [
         SliverToBoxAdapter(
           child: SizedBox(

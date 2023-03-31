@@ -95,7 +95,7 @@ Map<String, String> enUS = {
   "order": "Order",
   "see-order": "See order",
   "open-link": "Open Link",
-  "new-events": "New events",
+  "new-events": "Future events",
   "old-events": "Past events",
   "start-date": "Start date",
   "end-date": "End date",
@@ -362,5 +362,8 @@ Map<String, String> enUS = {
   "sign-out-text": "Do you want to sign out?",
   'save-event': 'Add to favorites',
   'remove-event': 'Remove from favorites',
+  'favorites-events': 'Your events',
   'see-details': 'More details',
+  'useful-information': 'Useful information',
+  'home': 'Home'
 };

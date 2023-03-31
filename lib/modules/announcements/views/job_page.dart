@@ -6,7 +6,7 @@ import 'package:flutterapperadauti/data/models/e_radauti_website/records_model.d
 import 'package:flutterapperadauti/modules/announcements/controllers/get_e_radauti_data_controller.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +16,7 @@ class JobPage extends StatelessWidget with UrlLauncher {
   Widget build(BuildContext context) {
     final GetERadautiDataController controller = Get.find();
     ChromeSafariBrowser browser = ChromeSafariBrowser();
-    return CustomCupertinoPageScaffold(
+    return CustomPageScaffold(
       navBarMiddle: 'announces'.tr,
       slivers: [
         SliverToBoxAdapter(

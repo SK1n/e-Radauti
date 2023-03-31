@@ -84,6 +84,7 @@ flutter_icons:
 flutter:
     assets:
         - assets/
+        - assets/drawer/
         - assets/faces/
         - assets/buttons/
         - assets/images/

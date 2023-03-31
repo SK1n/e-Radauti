@@ -17,7 +17,7 @@ class EventsListModel {
   @JsonKey(name: 'URL')
   final String url;
   @primaryKey
-  final int id;
+  final int? id;
 
   const EventsListModel(
     this.category,
