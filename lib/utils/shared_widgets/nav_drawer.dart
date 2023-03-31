@@ -21,6 +21,7 @@ class NavDrawer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
+                  // TODO: make dynamic data for name and email :::>
                   Text('Luis Scripcaru'),
                   Text(
                     'luis.scripcaru@outlook.com',
