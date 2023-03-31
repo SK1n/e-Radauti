@@ -359,5 +359,8 @@ Map<String, String> enUS = {
   'celsius': '@value °C',
   'hm': 'Humidity',
   'limit-pm': 'PM2.5 legal limit',
-  "sign-out-text": "Do you want to sign out?"
+  "sign-out-text": "Do you want to sign out?",
+  'save-event': 'Add to favorites',
+  'remove-event': 'Remove from favorites',
+  'see-details': 'More details',
 };

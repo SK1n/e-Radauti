@@ -1,33 +1,31 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
-import 'package:flutterapperadauti/data/models/events/old_events_model.dart';
 import 'package:flutterapperadauti/modules/events/controllers/events_controller.dart';
+import 'package:flutterapperadauti/modules/events/views/events_details.dart';
 import 'package:flutterapperadauti/modules/events/views/events_item_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 
-class OldEventsPage extends StatelessWidget {
-  const OldEventsPage({super.key});
+class EventsFavorites extends StatelessWidget {
+  const EventsFavorites({super.key});
+
   @override
   Widget build(BuildContext context) {
     final EventsController eventsController = Get.find();
-
     return Futuristic(
+      futureBuilder: () => eventsController.getFavoritesEvents(),
       initialBuilder: (_, __) => Container(),
-      futureBuilder: () => eventsController.getData(
-          convert: OldEventsModel.fromJson, document: 'OldEvents'),
-      dataBuilder: (BuildContext context, snapshot) {
-        OldEventsModel data = snapshot as OldEventsModel;
-        List<EventsListModel>? list = data.events!
-          ..sort((e1, e2) => e2.start!.compareTo(e1.start!));
+      dataBuilder: (context, snapshot) {
+        List<EventsListModel> data = snapshot as List<EventsListModel>;
         return ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: 30,
+            itemCount: data.length,
             itemBuilder: (BuildContext context, int item) {
               return EventsItemWidget(
-                list[item],
+                data[item],
               );
             });
       },

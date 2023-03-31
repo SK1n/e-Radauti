@@ -23,7 +23,7 @@ class NewEventsPage extends StatelessWidget {
               itemCount: list.length,
               itemBuilder: (BuildContext context, int item) {
                 return EventsItemWidget(
-                  data: list[item],
+                  list[item],
                 );
               });
         },

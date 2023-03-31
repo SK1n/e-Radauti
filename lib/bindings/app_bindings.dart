@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
+import 'package:flutterapperadauti/controllers/dao_controller.dart';
 import 'package:get/get.dart';
 
 class AppBindings implements Bindings {
@@ -12,5 +13,6 @@ class AppBindings implements Bindings {
       ..backgroundColor = Colors.white
       ..indicatorColor = Colors.pinkAccent
       ..textColor = Colors.white;
+    Get.lazyPut(() => DaoController());
   }
 }

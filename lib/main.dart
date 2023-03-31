@@ -6,6 +6,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutterapperadauti/bindings/app_bindings.dart';
+import 'package:flutterapperadauti/controllers/dao_controller.dart';
 import 'package:flutterapperadauti/controllers/dark_mode_switch_controller.dart';
 import 'package:flutterapperadauti/localization/languages.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
@@ -14,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/is_first_run.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -98,6 +100,8 @@ Future<void> main() async {
   final User? isSignedIn = FirebaseAuth.instance.currentUser;
   darkModeSwitchController.getThemeStatus();
 
+  DaoController daoController = Get.put(DaoController());
+
   runApp(
     GetMaterialApp(
       title: 'e-Rădăuți',
@@ -122,42 +126,42 @@ Future<void> main() async {
               : Routes.signIn,
       initialBinding: AppBindings(),
       translations: Languages(),
-// This theme was made for FlexColorScheme version 6.1.1. Make sure
+      // This theme was made for FlexColorScheme version 6.1.1. Make sure
 // you use same or higher version, but still same major version. If
 // you use a lower version, some properties may not be supported. In
 // that case you can also remove them after copying the theme to your app.
       theme: FlexThemeData.light(
-          scheme: FlexScheme.blueWhale,
-          surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
-          blendLevel: 9,
-          subThemesData: const FlexSubThemesData(
-            blendOnLevel: 10,
-            blendOnColors: false,
-            inputDecoratorIsFilled: false,
-            inputDecoratorBorderType: FlexInputBorderType.underline,
-          ),
-          visualDensity: FlexColorScheme.comfortablePlatformDensity,
-          useMaterial3: true,
-          swapLegacyOnMaterial3: true,
-          extensions: []
-          // To use the playground font, add GoogleFonts package and uncomment
-          // fontFamily: GoogleFonts.notoSans().fontFamily,
-          ),
+        scheme: FlexScheme.bahamaBlue,
+        surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+        blendLevel: 9,
+        subThemesData: const FlexSubThemesData(
+          blendOnLevel: 10,
+          blendOnColors: false,
+          cardRadius: 30.0,
+        ),
+        visualDensity: FlexColorScheme.comfortablePlatformDensity,
+        useMaterial3: true,
+        swapLegacyOnMaterial3: true,
+        // To use the playground font, add GoogleFonts package and uncomment
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
       darkTheme: FlexThemeData.dark(
-        scheme: FlexScheme.blueWhale,
+        scheme: FlexScheme.bahamaBlue,
         surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
         blendLevel: 15,
         subThemesData: const FlexSubThemesData(
           blendOnLevel: 20,
-          inputDecoratorIsFilled: false,
-          inputDecoratorBorderType: FlexInputBorderType.underline,
+          cardRadius: 30.0,
         ),
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         useMaterial3: true,
         swapLegacyOnMaterial3: true,
         // To use the Playground font, add GoogleFonts package and uncomment
-        // fontFamily: GoogleFonts.notoSans().fontFamily,
+        fontFamily: GoogleFonts.roboto().fontFamily,
       ),
+// If you do not have a themeMode switch, uncomment this line
+// to let the device system mode control the theme mode:
+// themeMode: ThemeMode.system,
 
       themeMode: ThemeMode.light,
       navigatorKey: Get.key,

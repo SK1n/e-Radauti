@@ -22,6 +22,7 @@ class CustomCupertinoPageScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
+      backgroundColor: Colors.grey[200],
       navigationBar: CupertinoNavigationBar(
         backgroundColor: Get.theme.appBarTheme.backgroundColor,
         automaticallyImplyLeading: true,

@@ -316,5 +316,8 @@ Map<String, String> roRO = {
   'celsius': '°C',
   'hm': "Umiditate",
   'limit-pm': 'Limita legală de PM2,5',
-  "sign-out-text": "Doriți să vă deconectați?"
+  "sign-out-text": "Doriți să vă deconectați?",
+  'save-event': 'Salvează evenimentul',
+  'remove-event': 'Șterge evenimentul',
+  'see-details': 'Vezi detalii',
 };

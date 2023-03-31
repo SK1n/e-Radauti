@@ -8,17 +8,17 @@ abstract class GetDataFirebase {
     required Function convert,
   }) async {
     if (!EasyLoading.isShow) {
-      EasyLoading.show();
+      // EasyLoading.show();
     }
     CollectionReference collectionReference =
         FirebaseFirestore.instance.collection(collection!);
     DocumentReference documentReference = collectionReference.doc(document);
     try {
       DocumentSnapshot snapshot = await documentReference.get();
-      EasyLoading.dismiss();
+      //EasyLoading.dismiss();
       return convert(snapshot.data());
     } on Exception {
-      EasyLoading.dismiss();
+      // EasyLoading.dismiss();
 
       rethrow;
     }
