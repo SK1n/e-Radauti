@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/modules/home_page/views/big_menu_item.dart';
-import 'package:flutterapperadauti/modules/home_page/views/small_menu_item.dart';
+import 'package:flutterapperadauti/modules/home/views/big_menu_item.dart';
+import 'package:flutterapperadauti/modules/home/views/small_menu_item.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
@@ -17,6 +17,7 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> with GetDataFirebase {
   @override
   void initState() {
+    debugPrint("HOME SCREEN");
     super.initState();
   }
 

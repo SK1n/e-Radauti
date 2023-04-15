@@ -1,4 +1,4 @@
-import 'package:flex_color_scheme/flex_color_scheme.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/controllers/location_controller.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/controllers/form_controller.dart';
@@ -26,9 +26,6 @@ class LocationSwitch extends StatelessWidget {
       child: Obx(
         () => SwitchListTile(
           dense: true,
-          tileColor: Get.isDarkMode
-              ? FlexColor.darkScaffoldBackground
-              : FlexColor.lightScaffoldBackground,
           secondary: const Icon(FontAwesome.pin),
           title: Text('add-location'.tr),
           isThreeLine: false,

@@ -279,12 +279,12 @@ Map<String, String> roRO = {
       'Raportul a fost trimis cu succes\nVeți fi anunțat prin e-mail în următoarele zile',
   'permissions-text':
       'Pentru a vă putea bucura de toate funcționalitățile e-Rădăuți, aplicația are nevoie de următoarele permisiuni, pe care vă rugăm să le activați\nAceste permisiuni pot fi modificate mai târziu în setări.',
-  'forgot-password': 'Am uitat parola',
+  'forgot-password': 'Ai uitat parola?',
   'or-log-in-as': 'Sau conectați-vă ca',
   'send-mail': 'Trimite email',
   'new-password-match': 'Parola nu se potrivește',
   'create-new-account': 'Creați un cont nou',
-  'password': 'Parola',
+  'password': 'Parolă',
   'success': 'Succes',
   'success-sign-in': 'Ați fost autentificat cu succes',
   'user-created': 'Utilizatorul @name a fost creat',
@@ -316,5 +316,7 @@ Map<String, String> roRO = {
   'celsius': '°C',
   'hm': "Umiditate",
   'limit-pm': 'Limita legală de PM2,5',
-  "sign-out-text": "Doriți să vă deconectați?"
+  "sign-out-text": "Doriți să vă deconectați?",
+  "email-address": "Adresă de email",
+  "remember-me": "Ține-mă conectat",
 };

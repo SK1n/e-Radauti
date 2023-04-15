@@ -83,7 +83,7 @@ class AccountController extends GetxController
     !EasyLoading.isShow ? EasyLoading.show() : DoNothingAction();
     await _firebaseAuth.signOut().then((value) {
       EasyLoading.isShow ? EasyLoading.dismiss() : DoNothingAction();
-      Get.offAllNamed(Routes.signIn);
+      Get.offAllNamed(Routes.logIn);
     });
   }
 
@@ -94,7 +94,7 @@ class AccountController extends GetxController
         _sharedPreferences = await SharedPreferences.getInstance();
         setInitialUsername();
       } else {
-        Get.offAndToNamed(Routes.signIn);
+        Get.rootDelegate.offAndToNamed(Routes.logIn);
       }
     }
     super.onReady();

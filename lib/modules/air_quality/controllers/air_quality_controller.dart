@@ -89,19 +89,19 @@ class AirQualityController extends GetxController with GetDataFirebase {
   String bindQualityImage(int image) {
     switch (image) {
       case 0:
-        return Assets.assetsFacesBuna;
+        return Assets.facesBuna;
       case 1:
-        return Assets.assetsFacesAcceptabila;
+        return Assets.facesAcceptabila;
       case 2:
-        return Assets.assetsFacesModerata;
+        return Assets.facesModerata;
       case 3:
-        return Assets.assetsFacesRea;
+        return Assets.facesRea;
       case 4:
-        return Assets.assetsFacesFoarteRea;
+        return Assets.facesFoarteRea;
       case 5:
-        return Assets.assetsFacesExtremDeRea;
+        return Assets.facesExtremDeRea;
       default:
-        return Assets.assetsFacesExtremDeRea;
+        return Assets.facesExtremDeRea;
     }
   }
 }

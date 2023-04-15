@@ -26,7 +26,7 @@ class PermissionsPage extends StatelessWidget {
               const NotificationSettings(),
               FilledButton(
                 onPressed: () => Get.offAllNamed(
-                  Routes.signIn,
+                  Routes.logIn,
                 ),
                 child: Text(
                   'next'.tr,

@@ -1,4 +1,5 @@
 import 'package:flutterapperadauti/bindings/account_bindings.dart';
+import 'package:flutterapperadauti/middlewares/auth_middleware.dart';
 import 'package:flutterapperadauti/modules/account/views/account_page.dart';
 import 'package:flutterapperadauti/modules/account/views/update_name_page.dart';
 import 'package:flutterapperadauti/modules/account/views/update_password_page.dart';
@@ -15,11 +16,11 @@ import 'package:flutterapperadauti/modules/events/views/events_page.dart';
 import 'package:flutterapperadauti/modules/account/bindings/reset_password_bindings.dart';
 import 'package:flutterapperadauti/modules/account/bindings/sign_in_bindings.dart';
 import 'package:flutterapperadauti/modules/account/bindings/sign_up_bindings.dart';
-import 'package:flutterapperadauti/modules/account/views/sign_in_page.dart';
+import 'package:flutterapperadauti/modules/login/views/login_page.dart';
 import 'package:flutterapperadauti/modules/account/views/reset_password_page.dart';
 import 'package:flutterapperadauti/modules/account/views/sign_up_page.dart';
-import 'package:flutterapperadauti/modules/home_page/bindings/home_page_binding.dart';
-import 'package:flutterapperadauti/modules/home_page/views/menu_screen.dart';
+import 'package:flutterapperadauti/modules/home/bindings/home_page_binding.dart';
+import 'package:flutterapperadauti/modules/home/views/menu_screen.dart';
 import 'package:flutterapperadauti/modules/onboard/bindings/onboard_bindings.dart';
 import 'package:flutterapperadauti/modules/onboard/views/permissions_page.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/bindings/form_binding.dart';
@@ -57,7 +58,10 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.signIn,
-      page: () => const SignInPage(),
+      page: () => const LoginPage(),
+      middlewares: [
+        AuthMiddleware(),
+      ],
       bindings: [
         SignInBinding(),
       ],

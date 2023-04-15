@@ -2,7 +2,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutterapperadauti/bindings/app_bindings.dart';
@@ -99,7 +98,7 @@ Future<void> main() async {
   darkModeSwitchController.getThemeStatus();
 
   runApp(
-    GetMaterialApp(
+    GetMaterialApp.router(
       title: 'e-Rădăuți',
       debugShowCheckedModeBanner: true,
       builder: EasyLoading.init(),
@@ -115,52 +114,12 @@ Future<void> main() async {
       ],
       fallbackLocale: const Locale('en', 'US'),
       locale: const Locale('ro', "RO"),
-      initialRoute: isFirstRun
-          ? Routes.onboard
-          : isSignedIn != null
-              ? Routes.home
-              : Routes.signIn,
+      routeInformationParser: GetInformationParser(
+        initialRoute: Routes.logIn,
+      ),
       initialBinding: AppBindings(),
       translations: Languages(),
-// This theme was made for FlexColorScheme version 6.1.1. Make sure
-// you use same or higher version, but still same major version. If
-// you use a lower version, some properties may not be supported. In
-// that case you can also remove them after copying the theme to your app.
-      theme: FlexThemeData.light(
-          scheme: FlexScheme.blueWhale,
-          surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
-          blendLevel: 9,
-          subThemesData: const FlexSubThemesData(
-            blendOnLevel: 10,
-            blendOnColors: false,
-            inputDecoratorIsFilled: false,
-            inputDecoratorBorderType: FlexInputBorderType.underline,
-          ),
-          visualDensity: FlexColorScheme.comfortablePlatformDensity,
-          useMaterial3: true,
-          swapLegacyOnMaterial3: true,
-          extensions: []
-          // To use the playground font, add GoogleFonts package and uncomment
-          // fontFamily: GoogleFonts.notoSans().fontFamily,
-          ),
-      darkTheme: FlexThemeData.dark(
-        scheme: FlexScheme.blueWhale,
-        surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
-        blendLevel: 15,
-        subThemesData: const FlexSubThemesData(
-          blendOnLevel: 20,
-          inputDecoratorIsFilled: false,
-          inputDecoratorBorderType: FlexInputBorderType.underline,
-        ),
-        visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        useMaterial3: true,
-        swapLegacyOnMaterial3: true,
-        // To use the Playground font, add GoogleFonts package and uncomment
-        // fontFamily: GoogleFonts.notoSans().fontFamily,
-      ),
-
       themeMode: ThemeMode.light,
-      navigatorKey: Get.key,
     ),
   );
 }

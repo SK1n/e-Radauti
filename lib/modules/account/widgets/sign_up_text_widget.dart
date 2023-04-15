@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignUpTextWidget extends StatelessWidget {
+class TextBetweenLines extends StatelessWidget {
   final String text;
-  const SignUpTextWidget({super.key, required this.text});
+  const TextBetweenLines({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding:
+          const EdgeInsets.only(left: 8.0, right: 8.0, top: 30, bottom: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

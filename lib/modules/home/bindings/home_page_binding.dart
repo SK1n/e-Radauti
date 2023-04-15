@@ -1,4 +1,4 @@
-import 'package:flutterapperadauti/modules/home_page/controllers/home_page_controller.dart';
+import 'package:flutterapperadauti/modules/home/controllers/home_page_controller.dart';
 import 'package:get/get.dart';
 
 class HomePageBinding implements Bindings {
