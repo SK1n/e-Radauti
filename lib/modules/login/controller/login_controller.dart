@@ -2,13 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
-import 'package:flutterapperadauti/repositories/user_repository.dart';
+import 'package:flutterapperadauti/repositories/firebase_repository.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LoginController extends GetxController with UserRepository {
+class LoginController extends GetxController with FirebaseRepository {
   final formKey = GlobalKey<FormBuilderState>();
   String _email = "";
   String _password = "";

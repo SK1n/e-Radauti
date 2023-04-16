@@ -3,7 +3,7 @@ Map<String, String> roRO = {
   'app-radauti': 'Aplicația e-Rădăuți',
   'developed-by':
       'Aplicație dezvoltată prin efortul Asociației Rădăuțiul Civic',
-  'welcome': 'Bine ati venit!',
+  'welcome': 'Bine ai venit!',
   'weak-password': 'Parola este slabă. Vă rugăm să furnizați o parolă mai bună',
   'user-not-found': 'Nu am putut crea un cont cu informațiile primite',
   'invalid-email': 'E-mailul este invalid',
@@ -27,7 +27,7 @@ Map<String, String> roRO = {
   'volunteering': 'Voluntariat',
   'settings': 'Setări',
   'sign-out': 'Deconectează-te',
-  'log-in': 'Autentificare',
+  'log-in': 'Intră în cont',
   'reset-password': 'Resetează parola',
   'send-report': 'TRIMITE SESIZARE',
   'name-surname': 'Numele și prenumele',
@@ -274,7 +274,7 @@ Map<String, String> roRO = {
   're-type-password': 'Reintroduceți parola nouă',
   'public-announcements': 'Anunțuri publice',
   'map-title': 'Harta rapoartelor din Rădăuți',
-  'guest': 'Utilizați aplicația acum cu statutul de Invitat',
+  'guest': 'Continuă ca vizitator',
   'report-sent':
       'Raportul a fost trimis cu succes\nVeți fi anunțat prin e-mail în următoarele zile',
   'permissions-text':
@@ -283,7 +283,7 @@ Map<String, String> roRO = {
   'or-log-in-as': 'Sau conectați-vă ca',
   'send-mail': 'Trimite email',
   'new-password-match': 'Parola nu se potrivește',
-  'create-new-account': 'Creați un cont nou',
+  'create-new-account': 'Creează-ți cont',
   'password': 'Parolă',
   'success': 'Succes',
   'success-sign-in': 'Ați fost autentificat cu succes',
@@ -319,4 +319,6 @@ Map<String, String> roRO = {
   "sign-out-text": "Doriți să vă deconectați?",
   "email-address": "Adresă de email",
   "remember-me": "Ține-mă conectat",
+  "register-account": "Vrei să te înregistrezi în aplicație? ",
+  "or": "Sau",
 };

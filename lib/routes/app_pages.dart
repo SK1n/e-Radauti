@@ -6,6 +6,7 @@ import 'package:flutterapperadauti/modules/account/views/update_password_page.da
 import 'package:flutterapperadauti/modules/air_quality/bindings/air_quality_bindings.dart';
 import 'package:flutterapperadauti/modules/announcements/bindings/get_e_radauti_data_bindings.dart';
 import 'package:flutterapperadauti/modules/announcements/views/local_announcements_page.dart';
+import 'package:flutterapperadauti/modules/create_account/views/create_account_page.dart';
 import 'package:flutterapperadauti/modules/events/bindings/events_bindings.dart';
 import 'package:flutterapperadauti/bindings/notifications_switch_bindings.dart';
 import 'package:flutterapperadauti/modules/air_quality/views/air_quality_page.dart';
@@ -68,7 +69,7 @@ class AppPages {
       children: [
         GetPage(
           name: _Paths.signUp,
-          page: () => const SignUpPage(),
+          page: () => const CreateAccountPage(),
           bindings: [
             SignUpBinding(),
           ],

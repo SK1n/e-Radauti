@@ -34,7 +34,7 @@ abstract class Routes {
   static const notifications = settings + _Paths.notifications;
   static const onboard = _Paths.onboard;
   static const logIn = _Paths.signIn;
-  static const signUp = logIn + _Paths.signUp;
+  static const createAccount = logIn + _Paths.signUp;
   static const resetPassword = logIn + _Paths.resetPassword;
   static const account = home + _Paths.account;
   static const updatePassword = account + _Paths.updatePassword;

@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/repositories/user_repository.dart';
+import 'package:flutterapperadauti/repositories/firebase_repository.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../routes/app_pages.dart';
 
-class AuthMiddleware extends GetMiddleware with UserRepository {
+class AuthMiddleware extends GetMiddleware with FirebaseRepository {
   @override
   Future<GetNavConfig?> redirectDelegate(GetNavConfig route) async {
     final prefs = await SharedPreferences.getInstance();
@@ -35,7 +35,7 @@ class AuthMiddleware extends GetMiddleware with UserRepository {
       return null;
     } else {
       // Redirect to the login screen
-      return GetNavConfig.fromRoute(Routes.logIn);
+      return route;
     }
   }
 }

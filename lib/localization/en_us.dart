@@ -324,6 +324,7 @@ Map<String, String> enUS = {
       "To be able to enjoy all the functionalities of e-Rădăuți, the application needs the following permissions, which we ask you to activate\nThese permissions can be changed later in the settings.",
   "forgot-password": "I forgot the password",
   "or-log-in-as": "Or log in as",
+  "or": "Or",
   "send-mail": "Send email",
   "new-password-match": "The password doesn't match",
   "create-new-account": "Create a new account",
@@ -362,4 +363,5 @@ Map<String, String> enUS = {
   "sign-out-text": "Do you want to sign out?",
   "email-address": "Email address",
   "remember-me": "Remember me",
+  "register-account": "Do you want to register in the app? ",
 };

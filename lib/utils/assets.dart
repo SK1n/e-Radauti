@@ -27,7 +27,7 @@ class Assets {
 
   /// Assets for buttonsReport
   /// buttons/report, buttons/report
-  static const String buttonsReport = "assets/buttons/report.svg";
+  static const String buttonsReport = "assets/buttons/report.png";
 
   /// Assets for buttonsTownhall
   /// buttons/townhall

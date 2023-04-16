@@ -7,8 +7,8 @@ import 'package:flutterapperadauti/modules/login/controller/login_controller.dar
 import 'package:flutterapperadauti/modules/account/widgets/sign_up_text_widget.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/assets.dart';
+import 'package:flutterapperadauti/utils/extensions/outside_hint_text_field.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/hint_text_field.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/components/button/gf_button.dart';
@@ -34,16 +34,16 @@ class LoginPage extends GetView<LoginController> {
                   height: 100,
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(bottom: 20),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
                 child: Text(
-                  'Bine ai venit!',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                  'welcome'.tr,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 30),
                 ),
               ),
-              HintTextField(
+              FormBuilderTextField(
                 name: 'email',
-                hint: 'email-address',
                 validator: FormBuilderValidators.compose(
                   [
                     FormBuilderValidators.required(
@@ -51,9 +51,8 @@ class LoginPage extends GetView<LoginController> {
                     FormBuilderValidators.email(errorText: 'email-format'.tr),
                   ],
                 ),
-              ),
-              HintTextField(
-                hint: 'password',
+              ).outside('email-address'),
+              FormBuilderTextField(
                 name: 'password',
                 validator: FormBuilderValidators.compose(
                   [
@@ -62,7 +61,7 @@ class LoginPage extends GetView<LoginController> {
                     ),
                   ],
                 ),
-              ),
+              ).outside('password'),
               Padding(
                 padding: const EdgeInsets.only(left: 10, right: 15),
                 child: Row(
@@ -87,17 +86,17 @@ class LoginPage extends GetView<LoginController> {
               ),
               GFButton(
                 onPressed: () {},
-                text: "Intră în cont",
+                text: "log-in".tr,
                 shape: GFButtonShape.pills,
                 color: CColors.violet,
                 size: GFSize.LARGE,
                 blockButton: true,
                 fullWidthButton: true,
               ),
-              TextBetweenLines(text: 'sau'.tr.toUpperCase()),
+              TextBetweenLines(text: 'or'.tr.toUpperCase()),
               GFButton(
                 onPressed: () {},
-                text: 'Continuă ca vizitator',
+                text: 'guest'.tr,
                 shape: GFButtonShape.pills,
                 color: CColors.lightBlue,
                 size: GFSize.LARGE,
@@ -109,21 +108,21 @@ class LoginPage extends GetView<LoginController> {
                 padding: const EdgeInsets.only(top: 20),
                 child: RichText(
                   text: TextSpan(
-                    text: 'Vrei să te înregistrezi în aplicație? ',
+                    text: 'register-account'.tr,
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                     ),
                     children: [
                       TextSpan(
-                        text: 'Creează-ți cont',
+                        text: 'create-new-account'.tr,
                         style: const TextStyle(
                           color: Colors.blue,
                           fontSize: 16,
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            // handle onTap event
+                            Get.rootDelegate.toNamed(Routes.createAccount);
                           },
                       ),
                     ],

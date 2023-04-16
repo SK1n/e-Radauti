@@ -28,6 +28,10 @@ class AssetImages {
   /// buttons/pollution
   static AssetImage get buttonsPollution => AssetImage(Assets.buttonsPollution);
 
+  /// Assets for buttonsReport
+  /// buttons/report, buttons/report
+  static AssetImage get buttonsReport => AssetImage(Assets.buttonsReport);
+
   /// Assets for buttonsTownhall
   /// buttons/townhall
   static AssetImage get buttonsTownhall => AssetImage(Assets.buttonsTownhall);

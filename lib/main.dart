@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutterapperadauti/bindings/app_bindings.dart';
@@ -89,14 +90,14 @@ Future<void> main() async {
     sound: true,
   );
 
-  bool isFirstRun = await IsFirstRun.isFirstRun();
-
   final DarkModeSwitchController darkModeSwitchController =
       Get.put(DarkModeSwitchController());
 
-  final User? isSignedIn = FirebaseAuth.instance.currentUser;
   darkModeSwitchController.getThemeStatus();
-
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.dark,
+  ));
   runApp(
     GetMaterialApp.router(
       title: 'e-Rădăuți',
@@ -112,6 +113,7 @@ Future<void> main() async {
         Locale('en', 'US'),
         Locale('ro', 'RO'),
       ],
+      defaultTransition: Transition.cupertino,
       fallbackLocale: const Locale('en', 'US'),
       locale: const Locale('ro', "RO"),
       routeInformationParser: GetInformationParser(
