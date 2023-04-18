@@ -99,7 +99,7 @@ Future<void> main() async {
     statusBarIconBrightness: Brightness.dark,
   ));
   runApp(
-    GetMaterialApp.router(
+    GetMaterialApp(
       title: 'e-Rădăuți',
       debugShowCheckedModeBanner: true,
       builder: EasyLoading.init(),
@@ -116,9 +116,7 @@ Future<void> main() async {
       defaultTransition: Transition.cupertino,
       fallbackLocale: const Locale('en', 'US'),
       locale: const Locale('ro', "RO"),
-      routeInformationParser: GetInformationParser(
-        initialRoute: Routes.logIn,
-      ),
+      initialRoute: Routes.logIn,
       initialBinding: AppBindings(),
       translations: Languages(),
       themeMode: ThemeMode.light,

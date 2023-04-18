@@ -26,6 +26,7 @@ class SignUpController extends GetxController with FirebaseRepository {
       _password = formKey.currentState!.fields['password']!.value;
       _name = formKey.currentState!.fields['name']!.value;
       final UserCredential authCredential = await signUp(_email, _password);
+      setDisplayName(_name);
       await addUser(
         authCredential.user!.uid,
         UserModel(
@@ -42,7 +43,7 @@ class SignUpController extends GetxController with FirebaseRepository {
         ),
       );
       EasyLoading.showSuccess('user-created'.trParams({'name': _name}));
-      Get.rootDelegate.popRoute();
+      Get.back();
     } on FirebaseAuthException catch (e) {
       Get.snackbar(
         'Error',

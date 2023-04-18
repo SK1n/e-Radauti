@@ -49,6 +49,10 @@ class FirebaseRepository {
     }
   }
 
+  Future<void> signInAnonymously() async {
+    await _auth.signInAnonymously();
+  }
+
   bool isSignedIn() {
     return _auth.currentUser != null;
   }
@@ -66,6 +70,14 @@ class FirebaseRepository {
   Future<UserModel> getUserDoc(String uid) async {
     final snapshot = await _firestore.collection('users').doc(uid).get();
     return UserModel.fromJson(snapshot.data()!);
+  }
+
+  String? getAvatarUrl() {
+    return _auth.currentUser!.photoURL;
+  }
+
+  Future<void> setDisplayName(String name) async {
+    _auth.currentUser?.updateDisplayName(name);
   }
 
   Future<String> uploadImage(String path, String fileName) async {

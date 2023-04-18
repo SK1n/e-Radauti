@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_drawer.dart';
+import 'package:get/get.dart';
+import 'package:getwidget/getwidget.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget body;
@@ -11,8 +12,11 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: Colors.white,
+      endDrawer: const AppDrawer(),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -22,6 +26,12 @@ class AppScaffold extends StatelessWidget {
         ),
         automaticallyImplyLeading: true,
         foregroundColor: Colors.black,
+        actions: [
+          InkWell(
+            child: const Icon(Icons.menu),
+            onTap: () => scaffoldKey.currentState!.openEndDrawer(),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Padding(

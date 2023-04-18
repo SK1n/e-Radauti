@@ -1,6 +1,7 @@
 Map<String, String> roRO = {
   'e-radauti': 'e-Rădăuți',
   'app-radauti': 'Aplicația e-Rădăuți',
+  'home': 'Acasă',
   'developed-by':
       'Aplicație dezvoltată prin efortul Asociației Rădăuțiul Civic',
   'welcome': 'Bine ai venit!',
@@ -20,9 +21,10 @@ Map<String, String> roRO = {
   'report-problem': 'Raportează o problemă',
   'local-administration': 'Administrație locală',
   'events': 'Evenimente',
+  'usefull-info': 'Informații utile',
   'usefull-numbers': 'Numere de telefon utile',
   'announces': 'Anunțuri',
-  'air-quality': 'Calitatea aerului',
+  ' -quality': 'Calitatea aerului',
   'transport': 'Transport',
   'volunteering': 'Voluntariat',
   'settings': 'Setări',
@@ -56,6 +58,7 @@ Map<String, String> roRO = {
   'illegal-constructions': 'Construcții ilegale',
   'safety': 'Siguranță',
   'infrastructure-streets': "Infrastructură (străzi, trotuare)",
+  'air-quality': 'Calitatea aerului',
   'air-quality-pollution': 'Calitatea aerului și poluarea',
   'radauti-city-hall': 'Primăria Radauti',
   'comunal-services': 'Servicii Comunale',
@@ -288,7 +291,8 @@ Map<String, String> roRO = {
   'success': 'Succes',
   'success-sign-in': 'Ați fost autentificat cu succes',
   'user-created': 'Utilizatorul @name a fost creat',
-  'reset-password-email': 'Un e-mail a fost trimis la @email',
+  'reset-password-email':
+      'Un e-mail a fost trimis la @email pentru resetarea parolei',
   'success-name-update': 'Ați setat cu succes numele la: @name',
   'display-name': 'Introduceți un nume nou',
   'update-name': 'Actualizați numele',

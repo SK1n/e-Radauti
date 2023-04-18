@@ -94,7 +94,7 @@ class AccountController extends GetxController
         _sharedPreferences = await SharedPreferences.getInstance();
         setInitialUsername();
       } else {
-        Get.rootDelegate.offAndToNamed(Routes.logIn);
+        Get.offAndToNamed(Routes.logIn);
       }
     }
     super.onReady();

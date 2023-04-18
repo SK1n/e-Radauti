@@ -1,6 +1,7 @@
 Map<String, String> enUS = {
   "e-radauti": "e-Radauti",
   "app-radauti": "e-Raduti App",
+  'home': 'Home',
   "developed-by":
       "Application developed through the efforts of the Rădăutiul Civic Association",
   "welcome": "Welcome!",
@@ -21,6 +22,7 @@ Map<String, String> enUS = {
   "report-problem": "Report a problem",
   "local-administration": "Local administration",
   "events": "Events",
+  'usefull-info': 'Useful information',
   "usefull-numbers": "Usefull numbers",
   "announces": "Announces",
   "air-quality": "Air quality",

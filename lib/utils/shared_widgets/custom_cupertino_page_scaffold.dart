@@ -31,7 +31,7 @@ class CustomCupertinoPageScaffold extends StatelessWidget {
         ),
         trailing: navBarTrailing ??
             InkWell(
-              onTap: () => Get.rootDelegate.toNamed(Routes.account),
+              onTap: () => Get.toNamed(Routes.account),
               child: const Icon(
                 CupertinoIcons.profile_circled,
               ),

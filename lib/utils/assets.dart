@@ -41,6 +41,30 @@ class Assets {
   /// buttons/volunteering
   static const String buttonsVolunteering = "assets/buttons/volunteering.png";
 
+  /// Assets for drawerAirQualityIcon
+  /// drawer/air_quality_icon
+  static const String drawerAirQualityIcon = "assets/drawer/air_quality_icon.png";
+
+  /// Assets for drawerEventsIcon
+  /// drawer/events_icon
+  static const String drawerEventsIcon = "assets/drawer/events_icon.png";
+
+  /// Assets for drawerHomeIcon
+  /// drawer/home_icon
+  static const String drawerHomeIcon = "assets/drawer/home_icon.png";
+
+  /// Assets for drawerLocalAdministrationIcon
+  /// drawer/local_administration_icon
+  static const String drawerLocalAdministrationIcon = "assets/drawer/local_administration_icon.png";
+
+  /// Assets for drawerReportProblemIcon
+  /// drawer/report_problem_icon
+  static const String drawerReportProblemIcon = "assets/drawer/report_problem_icon.png";
+
+  /// Assets for drawerUsefullInfoIcon
+  /// drawer/usefull_info_icon
+  static const String drawerUsefullInfoIcon = "assets/drawer/usefull_info_icon.png";
+
   /// Assets for facesAcceptabila
   /// faces/acceptabila
   static const String facesAcceptabila = "assets/faces/acceptabila.png";

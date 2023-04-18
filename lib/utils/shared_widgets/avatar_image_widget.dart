@@ -9,7 +9,8 @@ class AvatarImageWidget extends StatelessWidget {
   AvatarImageWidget(
       {super.key, required link, this.width, this.height, required this.fit})
       : image = CachedNetworkImageProvider(
-          link!,
+          link ??
+              'https://firebasestorage.googleapis.com/v0/b/eradauti-nativ.appspot.com/o/5856.jpg?alt=media&token=934a054e-0902-4aa6-b7d0-59cf7ea7469c',
         );
 
   AvatarImageWidget.asset({

@@ -36,6 +36,7 @@ dependencies:
     fluttericon: ^2.0.0
     form_builder_image_picker: ^3.1.0
     form_builder_validators: ^8.1.0
+    flutter_secure_storage: ^8.0.0
     geolocator: ^9.0.1
     get: ^4.6.5
     google_sign_in: ^5.4.2
@@ -80,6 +81,7 @@ flutter_icons:
 flutter:
     assets:
         - assets/buttons/
+        - assets/drawer/
         - assets/faces/
         - assets/images/
         - assets/images/volunteer/

@@ -44,6 +44,30 @@ class AssetImages {
   /// buttons/volunteering
   static AssetImage get buttonsVolunteering => AssetImage(Assets.buttonsVolunteering);
 
+  /// Assets for drawerAirQualityIcon
+  /// drawer/air_quality_icon
+  static AssetImage get drawerAirQualityIcon => AssetImage(Assets.drawerAirQualityIcon);
+
+  /// Assets for drawerEventsIcon
+  /// drawer/events_icon
+  static AssetImage get drawerEventsIcon => AssetImage(Assets.drawerEventsIcon);
+
+  /// Assets for drawerHomeIcon
+  /// drawer/home_icon
+  static AssetImage get drawerHomeIcon => AssetImage(Assets.drawerHomeIcon);
+
+  /// Assets for drawerLocalAdministrationIcon
+  /// drawer/local_administration_icon
+  static AssetImage get drawerLocalAdministrationIcon => AssetImage(Assets.drawerLocalAdministrationIcon);
+
+  /// Assets for drawerReportProblemIcon
+  /// drawer/report_problem_icon
+  static AssetImage get drawerReportProblemIcon => AssetImage(Assets.drawerReportProblemIcon);
+
+  /// Assets for drawerUsefullInfoIcon
+  /// drawer/usefull_info_icon
+  static AssetImage get drawerUsefullInfoIcon => AssetImage(Assets.drawerUsefullInfoIcon);
+
   /// Assets for facesAcceptabila
   /// faces/acceptabila
   static AssetImage get facesAcceptabila => AssetImage(Assets.facesAcceptabila);

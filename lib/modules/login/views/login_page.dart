@@ -8,7 +8,7 @@ import 'package:flutterapperadauti/modules/account/widgets/sign_up_text_widget.d
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/assets.dart';
 import 'package:flutterapperadauti/utils/extensions/outside_hint_text_field.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_scaffold.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/components/button/gf_button.dart';
@@ -54,6 +54,7 @@ class LoginPage extends GetView<LoginController> {
               ).outside('email-address'),
               FormBuilderTextField(
                 name: 'password',
+                obscureText: true,
                 validator: FormBuilderValidators.compose(
                   [
                     FormBuilderValidators.required(
@@ -80,12 +81,21 @@ class LoginPage extends GetView<LoginController> {
                         'forgot-password'.tr,
                         style: const TextStyle(color: Colors.blue),
                       ),
-                    )
+                      onTap: () {
+                        Get.toNamed(
+                          Routes.resetPassword,
+                          arguments: controller
+                              .formKey.currentState!.fields['email']!.value,
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
               GFButton(
-                onPressed: () {},
+                onPressed: () async {
+                  await controller.login();
+                },
                 text: "log-in".tr,
                 shape: GFButtonShape.pills,
                 color: CColors.violet,
@@ -122,7 +132,7 @@ class LoginPage extends GetView<LoginController> {
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            Get.rootDelegate.toNamed(Routes.createAccount);
+                            Get.toNamed(Routes.createAccount);
                           },
                       ),
                     ],

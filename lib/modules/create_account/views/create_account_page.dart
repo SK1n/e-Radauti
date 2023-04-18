@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutterapperadauti/core/colors/c_colors.dart';
-import 'package:flutterapperadauti/modules/account/controllers/sign_up_controller.dart';
+import 'package:flutterapperadauti/modules/create_account/controllers/sign_up_controller.dart';
 import 'package:flutterapperadauti/utils/extensions/outside_hint_text_field.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_scaffold.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';

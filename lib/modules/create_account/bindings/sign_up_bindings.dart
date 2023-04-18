@@ -1,4 +1,4 @@
-import 'package:flutterapperadauti/modules/account/controllers/sign_up_controller.dart';
+import 'package:flutterapperadauti/modules/create_account/controllers/sign_up_controller.dart';
 import 'package:get/get.dart';
 
 class SignUpBinding implements Bindings {
