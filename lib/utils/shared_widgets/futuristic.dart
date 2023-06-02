@@ -2,8 +2,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
-import 'package:get/get.dart';
 
 /// A widget that makes it easy to execute a [Future] from a StatelessWidget.
 class Futuristic<T> extends StatefulWidget {
@@ -41,17 +39,17 @@ class Futuristic<T> extends StatefulWidget {
   /// Call [VoidCallback] to start executing the [Future] again.
   final Function(Object, VoidCallback)? onError;
 
-  const Futuristic(
-      {Key? key,
-      required this.futureBuilder,
-      this.autoStart = true,
-      required this.initialBuilder,
-      this.busyBuilder,
-      this.errorBuilder,
-      this.dataBuilder,
-      this.onData,
-      this.onError})
-      : super(key: key);
+  const Futuristic({
+    Key? key,
+    required this.futureBuilder,
+    this.autoStart = true,
+    required this.initialBuilder,
+    this.busyBuilder,
+    this.errorBuilder,
+    this.dataBuilder,
+    this.onData,
+    this.onError
+  }) : super(key: key);
 
   @override
   FuturisticState<T> createState() => FuturisticState<T>();
@@ -72,15 +70,15 @@ class FuturisticState<T> extends State<Futuristic<T>> {
   Widget build(BuildContext context) {
     return FutureBuilder<T>(
       future: _future,
-      builder: (context, snapshot) {
+      builder: (_context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
-            return _handleInitial(context);
+            return _handleInitial(_context);
           case ConnectionState.waiting:
           case ConnectionState.active:
-            return _handleBusy(context);
+            return _handleBusy(_context);
           case ConnectionState.done:
-            return _handleSnapshot(context, snapshot);
+            return _handleSnapshot(_context, snapshot);
           default:
             return _defaultWidget();
         }
@@ -101,23 +99,7 @@ class FuturisticState<T> extends State<Futuristic<T>> {
 
   Widget _handleError(BuildContext context, Object error) {
     if (widget.errorBuilder != null) {
-      if (EasyLoading.isShow) {
-        EasyLoading.dismiss();
-      }
-      return Card(
-        child: Column(
-          children: [
-            Text('${'error'.tr}$error'),
-            FilledButton.icon(
-              onPressed: () => _execute(),
-              icon: const Icon(Icons.error),
-              label: Text(
-                'please-retry'.tr,
-              ),
-            ),
-          ],
-        ),
-      );
+      return widget.errorBuilder!(context, error, _execute);
     }
     return _handleInitial(context);
   }
@@ -131,7 +113,7 @@ class FuturisticState<T> extends State<Futuristic<T>> {
 
   Widget _handleBusy(BuildContext context) {
     if (widget.busyBuilder == null) {
-      return Container();
+      return _defaultBusyWidget();
     }
     return widget.busyBuilder!(context);
   }
@@ -156,6 +138,8 @@ class FuturisticState<T> extends State<Futuristic<T>> {
   }
 
   bool _isActive() => mounted && (ModalRoute.of(context)?.isActive ?? true);
+
+  Widget _defaultBusyWidget() => const Center(child: CircularProgressIndicator());
 
   Widget _defaultWidget() => const SizedBox.shrink();
 }

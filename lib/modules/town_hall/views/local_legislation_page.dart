@@ -6,7 +6,6 @@ import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
-import 'package:searchbar_animation/searchbar_animation.dart';
 
 class LocalLegislationPage extends StatelessWidget with UrlLauncher {
   const LocalLegislationPage({super.key});
@@ -28,54 +27,54 @@ class LocalLegislationPage extends StatelessWidget with UrlLauncher {
                 dataBuilder: (context, snap) {
                   return Column(
                     children: [
-                      SearchBarAnimation(
-                          searchBoxColour: Get.isDarkMode
-                              ? context.theme.canvasColor
-                              : Colors.white,
-                          textEditingController: textEditingController,
-                          searchBoxBorderColour: Get.isDarkMode
-                              ? context.theme.canvasColor
-                              : Colors.white,
-                          isOriginalAnimation: true,
-                          cursorColour:
-                              Get.isDarkMode ? Colors.white : Colors.black,
-                          enteredTextStyle: TextStyle(
-                              color:
-                                  Get.isDarkMode ? Colors.white : Colors.black),
-                          hintText: '',
-                          trailingWidget: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 8.0),
-                                child: Obx(
-                                  () => InkWell(
-                                      onTap: () {
-                                        if (controller.filter.isNotEmpty) {
-                                          textEditingController.clear();
-                                          controller.filter = '';
-                                          controller.filterResults();
-                                        }
-                                      },
-                                      child: Icon(
-                                        Icons.close,
-                                        color: controller.filter.isEmpty
-                                            ? Colors.transparent
-                                            : context.theme.iconTheme.color,
-                                      )),
-                                ),
-                              ),
-                              InkWell(
-                                  onTap: () {
-                                    controller.filter =
-                                        textEditingController.text;
-                                    controller.filterResults();
-                                  },
-                                  child: const Icon(Icons.search)),
-                            ],
-                          ),
-                          secondaryButtonWidget: const Icon(Icons.arrow_back),
-                          buttonWidget: const Icon(Icons.search)),
+                      // SearchBarAnimation(
+                      //     searchBoxColour: Get.isDarkMode
+                      //         ? context.theme.canvasColor
+                      //         : Colors.white,
+                      //     textEditingController: textEditingController,
+                      //     searchBoxBorderColour: Get.isDarkMode
+                      //         ? context.theme.canvasColor
+                      //         : Colors.white,
+                      //     isOriginalAnimation: true,
+                      //     cursorColour:
+                      //         Get.isDarkMode ? Colors.white : Colors.black,
+                      //     enteredTextStyle: TextStyle(
+                      //         color:
+                      //             Get.isDarkMode ? Colors.white : Colors.black),
+                      //     hintText: '',
+                      //     trailingWidget: Row(
+                      //       mainAxisSize: MainAxisSize.min,
+                      //       children: [
+                      //         Padding(
+                      //           padding: const EdgeInsets.only(right: 8.0),
+                      //           child: Obx(
+                      //             () => InkWell(
+                      //                 onTap: () {
+                      //                   if (controller.filter.isNotEmpty) {
+                      //                     textEditingController.clear();
+                      //                     controller.filter = '';
+                      //                     controller.filterResults();
+                      //                   }
+                      //                 },
+                      //                 child: Icon(
+                      //                   Icons.close,
+                      //                   color: controller.filter.isEmpty
+                      //                       ? Colors.transparent
+                      //                       : context.theme.iconTheme.color,
+                      //                 )),
+                      //           ),
+                      //         ),
+                      //         InkWell(
+                      //             onTap: () {
+                      //               controller.filter =
+                      //                   textEditingController.text;
+                      //               controller.filterResults();
+                      //             },
+                      //             child: const Icon(Icons.search)),
+                      //       ],
+                      //     ),
+                      //     secondaryButtonWidget: const Icon(Icons.arrow_back),
+                      //     buttonWidget: const Icon(Icons.search)),
                       Obx(
                         () => controller.allResults.length != 0
                             ? ListView.builder(

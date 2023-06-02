@@ -1,6 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,7 +22,6 @@ class NotificationsSwitchController extends GetxController {
   notificationsEnabled() => topics.containsValue(true);
 
   setSubscription(String key, bool value) async {
-    EasyLoading.show();
     try {
       await prefs.setBool(key, value);
       value
@@ -32,9 +30,7 @@ class NotificationsSwitchController extends GetxController {
       Logger().d("Subscribed to $key: $value");
       topics.update(key, (v) => value);
       topics.refresh();
-      EasyLoading.dismiss();
     } catch (e) {
-      EasyLoading.dismiss();
       Get.defaultDialog(
         title: 'error'.tr,
         middleText: "$e\n${"please-retry".tr}",
@@ -52,7 +48,6 @@ class NotificationsSwitchController extends GetxController {
 
   @override
   void onInit() async {
-    EasyLoading.show();
     prefs = await SharedPreferences.getInstance();
     topics.value = {
       "announces": prefs.getBool("announces") ?? false,
@@ -61,7 +56,6 @@ class NotificationsSwitchController extends GetxController {
       "report-problem": prefs.getBool("report-problem") ?? false,
       "local-council": prefs.getBool("local-council") ?? false,
     };
-    EasyLoading.dismiss();
     super.onInit();
   }
 }

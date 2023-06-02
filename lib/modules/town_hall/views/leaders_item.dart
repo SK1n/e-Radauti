@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
@@ -52,7 +51,7 @@ class LeaderCard extends StatelessWidget with GetImageUrl, UrlLauncher {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AutoSizeText(
+                Text(
                   '$name',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),

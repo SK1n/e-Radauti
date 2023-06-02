@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_drawer.dart';
-import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget body;

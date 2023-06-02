@@ -1,8 +1,8 @@
-import 'package:card_loading/card_loading.dart';
 import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
 import 'package:flutterapperadauti/modules/events/controllers/events_controller.dart';
 import 'package:flutterapperadauti/modules/events/views/events_collapsed_widget.dart';
 import 'package:flutterapperadauti/modules/events/views/events_expanded_widget.dart';
+import 'package:flutterapperadauti/utils/loading_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
 import 'package:get/get.dart';
@@ -22,15 +22,7 @@ class EventsItemWidget extends StatelessWidget with GetImageUrl {
     return Futuristic(
         initialBuilder: (_, __) => Container(),
         futureBuilder: () => getImageUrl(data!.url),
-        busyBuilder: (_) {
-          return const CardLoading(
-            height: 200,
-            margin: EdgeInsets.only(bottom: 20),
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
-          );
-        },
+        // busyBuilder: (_) => const LoadingWidget(),
         dataBuilder: (_, snapshot) {
           DateTime currentTime = DateTime.now();
           DateTime eventStartTime = DateTime.fromMillisecondsSinceEpoch(

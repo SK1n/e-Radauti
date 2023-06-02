@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/data/models/user/user_model.dart';
 import 'package:flutterapperadauti/repositories/firebase_repository.dart';
 import 'package:get/get.dart';
@@ -21,7 +20,6 @@ class SignUpController extends GetxController with FirebaseRepository {
       if (!formKey.currentState!.validate()) {
         return;
       }
-      EasyLoading.show();
       _email = formKey.currentState!.fields['email']!.value;
       _password = formKey.currentState!.fields['password']!.value;
       _name = formKey.currentState!.fields['name']!.value;
@@ -42,7 +40,6 @@ class SignUpController extends GetxController with FirebaseRepository {
           false,
         ),
       );
-      EasyLoading.showSuccess('user-created'.trParams({'name': _name}));
       Get.back();
     } on FirebaseAuthException catch (e) {
       Get.snackbar(
@@ -51,13 +48,11 @@ class SignUpController extends GetxController with FirebaseRepository {
         duration: const Duration(seconds: 5),
       );
     } finally {
-      EasyLoading.dismiss();
     }
   }
 
   Future createAccount(String emailAddress, String password, String phoneNumber,
       String name) async {
-    EasyLoading.show();
     try {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
@@ -68,7 +63,6 @@ class SignUpController extends GetxController with FirebaseRepository {
             (value) async => await FirebaseAuth.instance.currentUser!
                 .updateDisplayName(name),
           );
-      EasyLoading.dismiss();
       Get.defaultDialog(
         barrierDismissible: false,
         title: 'success'.tr,
@@ -76,7 +70,6 @@ class SignUpController extends GetxController with FirebaseRepository {
         onConfirm: () => Get.back(closeOverlays: true),
       );
     } on FirebaseAuthException catch (e) {
-      EasyLoading.dismiss();
       Get.defaultDialog(
         barrierDismissible: false,
         title: e.code.tr,

@@ -1,4 +1,4 @@
-import 'package:auto_size_text/auto_size_text.dart';
+
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:get/get.dart';
@@ -39,7 +39,7 @@ class ColorLegendWidget extends StatelessWidget {
         Expanded(
           child: SizedBox(
             width: Get.width,
-            child: AutoSizeText(
+            child: Text(
               text,
               maxLines: 2,
             ),

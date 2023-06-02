@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/helpers/upload_data_firebase.dart';
@@ -26,9 +25,7 @@ class AccountController extends GetxController
 
   updateDisplayName(String displayName) async {
     try {
-      EasyLoading.show();
       await _firebaseAuth.currentUser!.updateDisplayName(displayName);
-      EasyLoading.dismiss();
       Get.defaultDialog(
         barrierDismissible: false,
         title: 'success'.tr,
@@ -41,7 +38,6 @@ class AccountController extends GetxController
       );
       username = displayName;
     } catch (e) {
-      EasyLoading.dismiss();
       Get.defaultDialog(
         barrierDismissible: false,
         title: 'error'.tr,
@@ -80,9 +76,7 @@ class AccountController extends GetxController
 
   isSignedIn() => _firebaseAuth.currentUser != null;
   signOut() async {
-    !EasyLoading.isShow ? EasyLoading.show() : DoNothingAction();
     await _firebaseAuth.signOut().then((value) {
-      EasyLoading.isShow ? EasyLoading.dismiss() : DoNothingAction();
       Get.offAllNamed(Routes.logIn);
     });
   }

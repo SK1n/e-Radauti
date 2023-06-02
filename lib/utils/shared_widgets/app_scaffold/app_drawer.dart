@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_drawer_controller.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/avatar_image_widget.dart';
@@ -84,9 +83,7 @@ class AppDrawer extends StatelessWidget {
                 ListTile(
                   title: Text('sign-out'.tr),
                   onTap: () async {
-                    EasyLoading.show();
                     await controller.signOut();
-                    EasyLoading.dismiss();
                   },
                 ),
               ],

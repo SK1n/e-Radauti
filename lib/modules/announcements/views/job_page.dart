@@ -1,4 +1,4 @@
-import 'package:auto_size_text/auto_size_text.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -35,7 +35,7 @@ class JobPage extends StatelessWidget with UrlLauncher {
                     padding: const EdgeInsets.only(top: 5),
                     width: MediaQuery.of(context).size.width,
                     child: FilledButton(
-                      child: AutoSizeText(
+                      child: Text(
                         data.title.toString().toUpperCase(),
                         textAlign: TextAlign.center,
                       ),

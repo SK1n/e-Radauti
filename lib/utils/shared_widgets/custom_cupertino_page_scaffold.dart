@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/const.dart';
@@ -26,9 +25,7 @@ class CustomCupertinoPageScaffold extends StatelessWidget {
         backgroundColor: Get.theme.appBarTheme.backgroundColor,
         automaticallyImplyLeading: true,
         leading: navBarLeading,
-        middle: AutoSizeText(
-          navBarMiddle,
-        ),
+        middle: Text(navBarMiddle),
         trailing: navBarTrailing ??
             InkWell(
               onTap: () => Get.toNamed(Routes.account),

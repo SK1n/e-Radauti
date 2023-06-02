@@ -1,13 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutterapperadauti/repositories/firebase_repository.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController with FirebaseRepository {
   final formKey = GlobalKey<FormBuilderState>();
@@ -18,7 +15,7 @@ class LoginController extends GetxController with FirebaseRepository {
   Future<void> login() async {
     formKey.currentState!.save();
     if (formKey.currentState!.validate()) {
-      EasyLoading.show();
+    
       _email = formKey.currentState!.fields['email']!.value;
       _password = formKey.currentState!.fields['password']!.value;
       rememberMe = formKey.currentState!.fields['rememberme']?.value ?? false;
@@ -37,7 +34,6 @@ class LoginController extends GetxController with FirebaseRepository {
           duration: const Duration(seconds: 5),
         );
       } finally {
-        EasyLoading.dismiss();
       }
     }
   }
@@ -56,11 +52,9 @@ class LoginController extends GetxController with FirebaseRepository {
 
   Future<void> loginAsGuest() async {
     try {
-      EasyLoading.show();
       await signInAnonymously();
       Get.offAllNamed(Routes.home);
     } finally {
-      EasyLoading.dismiss();
     }
   }
 

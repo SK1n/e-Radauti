@@ -1,9 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutterapperadauti/bindings/app_bindings.dart';
 import 'package:flutterapperadauti/controllers/dark_mode_switch_controller.dart';
@@ -11,7 +9,6 @@ import 'package:flutterapperadauti/localization/languages.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/utils/is_first_run.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
@@ -80,7 +77,7 @@ Future<void> main() async {
   await setupFlutterNotifications();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
-  NotificationSettings settings = await messaging.requestPermission(
+ await messaging.requestPermission(
     alert: true,
     announcement: false,
     badge: true,
@@ -102,7 +99,6 @@ Future<void> main() async {
     GetMaterialApp(
       title: 'e-Rădăuți',
       debugShowCheckedModeBanner: true,
-      builder: EasyLoading.init(),
       getPages: AppPages.routes,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

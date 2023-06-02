@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/home/views/big_menu_item.dart';
 import 'package:flutterapperadauti/modules/home/views/small_menu_item.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
-import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_scaffold.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
 import 'package:get/get.dart';
 
 class MenuScreen extends StatelessWidget {

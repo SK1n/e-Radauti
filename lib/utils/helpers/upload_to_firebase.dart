@@ -5,7 +5,6 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
 import 'package:get/get.dart';
 
 abstract class UploadToFirebase {
@@ -19,10 +18,9 @@ abstract class UploadToFirebase {
         FirebaseFirestore.instance.collection(collection!);
     DocumentReference documentReference = collectionReference.doc(document);
     try {
-      !EasyLoading.isShow ? EasyLoading.show() : DoNothingAction();
       await documentReference.update({
         array!: FieldValue.arrayUnion(jsonDecode(data))
-      }).whenComplete(() => EasyLoading.showSuccess('report-sent'.tr));
+      });
     } catch (e) {
       rethrow;
     }
@@ -33,7 +31,7 @@ abstract class UploadToFirebase {
     Reference ref = storage.ref().child(
         '$path/${DateTime.now().millisecondsSinceEpoch.toString() + Random().nextInt(3000).toString()}');
     try {
-      !EasyLoading.isShow ? EasyLoading.show() : DoNothingAction();
+    
       UploadTask uploadTask;
       File newFile = File(file.path);
       uploadTask = ref.putFile(newFile);

@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
@@ -51,7 +50,7 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AutoSizeText(
+                        Text(
                           name!,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
@@ -59,7 +58,7 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                         ),
                         SizedBox(
                           height: 20,
-                          child: AutoSizeText(
+                          child: Text(
                             function!.toLowerCase().replaceAll(" ", "-").tr,
                           ),
                         ),
@@ -84,7 +83,7 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                           },
                           child: SizedBox(
                             width: Get.width - 110,
-                            child: AutoSizeText(
+                            child: Text(
                               '$email',
                               style: const TextStyle(color: Colors.blueAccent),
                             ),

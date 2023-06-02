@@ -15,6 +15,7 @@ class EventsController extends GetxController with GetDataFirebase {
   }
 
   Future<List<EventsListModel>> getEventsList() async {
+    await Future.delayed(const Duration(seconds: 10));
     NewEventsModel data = await getData(
       document: 'Events',
       convert: NewEventsModel.fromJson,
