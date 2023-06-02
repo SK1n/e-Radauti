@@ -26,13 +26,13 @@ dependencies:
     # CHARTS
     syncfusion_flutter_charts: ^20.1.48
 
-    # SHARED PREFF
+    # SHARED PREF
     shared_preferences: ^2.0.15
     flutter_secure_storage: ^8.0.0
 
     # FLUTTER MAP
-    flutter_map: ^2.2.0
-    flutter_map_marker_cluster: ^0.5.0
+    flutter_map: ^4.0.0
+    flutter_map_marker_cluster: ^1.1.1
 
     # LOCATION
     location: ^4.4.0
@@ -70,6 +70,7 @@ dependencies:
     selectable_autolink_text: ^2.6.0
     dio: ^4.0.6
     expandable: ^5.0.1
+    google_fonts: ^4.0.4
 
 
 
@@ -107,8 +108,3 @@ flutter:
         - assets/logo_images/
         - assets/wind/
     uses-material-design: true
-
-flutter_assets:
-    assets_path: assets/
-    output_path: lib/utils/
-    filename: assets.dart

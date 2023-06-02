@@ -26,14 +26,14 @@ class CustomPageScaffold extends StatelessWidget {
       endDrawer: const NavDrawer(),
       appBar: AppBar(
         leading: navBarLeading,
-        middle: Text(navBarMiddle),
-        trailing: navBarTrailing ??
+        title: Text(navBarMiddle),
+        actions: [navBarTrailing ??
             InkWell(
               onTap: () => Get.toNamed(Routes.account),
               child: const Icon(
                 CupertinoIcons.profile_circled,
               ),
-            ),
+            ),]
       ),
       body: SafeArea(
         child: Padding(
