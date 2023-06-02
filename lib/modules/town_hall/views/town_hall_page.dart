@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/menu_list_tile.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +9,7 @@ class TownHallMain extends StatelessWidget {
   const TownHallMain({super.key});
   @override
   Widget build(BuildContext context) {
-    return CustomCupertinoPageScaffold(
+    return CustomPageScaffold(
       navBarMiddle: 'local-administration'.tr,
       slivers: [
         SliverList(

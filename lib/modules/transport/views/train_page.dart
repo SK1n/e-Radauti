@@ -4,7 +4,7 @@ import 'package:flutterapperadauti/data/models/train/train_item_model.dart';
 import 'package:flutterapperadauti/data/models/train/train_model.dart';
 import 'package:flutterapperadauti/modules/transport/views/train_list_tile.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +12,7 @@ class TrainPage extends StatelessWidget with GetDataFirebase {
   const TrainPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return CustomCupertinoPageScaffold(
+    return CustomPageScaffold(
       navBarMiddle: 'trains'.tr,
       slivers: [
         SliverToBoxAdapter(

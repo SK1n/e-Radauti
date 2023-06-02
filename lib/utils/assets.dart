@@ -61,9 +61,36 @@ class Assets {
   /// drawer/report_problem_icon
   static const String drawerReportProblemIcon = "assets/drawer/report_problem_icon.png";
 
-  /// Assets for drawerUsefullInfoIcon
-  /// drawer/usefull_info_icon
-  static const String drawerUsefullInfoIcon = "assets/drawer/usefull_info_icon.png";
+  /// Assets for assetsDrawerAirQuality
+  /// assets/drawer/air-quality.png
+  static const String assetsDrawerAirQuality = "assets/drawer/air-quality.png";
+
+  /// Assets for assetsDrawerEvents
+  /// assets/drawer/events.png
+  static const String assetsDrawerEvents = "assets/drawer/events.png";
+
+  /// Assets for assetsDrawerHome
+  /// assets/drawer/home.png
+  static const String assetsDrawerHome = "assets/drawer/home.png";
+
+  /// Assets for assetsDrawerLocalAdministration
+  /// assets/drawer/local-administration.png
+  static const String assetsDrawerLocalAdministration =
+      "assets/drawer/local-administration.png";
+
+  /// Assets for assetsDrawerReportProblem
+  /// assets/drawer/report-problem.png
+  static const String assetsDrawerReportProblem =
+      "assets/drawer/report-problem.png";
+
+  /// Assets for assetsDrawerUsefullInfo
+  /// assets/drawer/usefull-info.png
+  static const String assetsDrawerUsefullInfo =
+      "assets/drawer/usefull-info.png";
+
+  /// Assets for assetsFacesAcceptabilă
+  /// assets/faces/Acceptabilă.png
+  static const String assetsFacesAcceptabila = "assets/faces/Acceptabilă.png";
 
   /// Assets for facesAcceptabila
   /// faces/acceptabila

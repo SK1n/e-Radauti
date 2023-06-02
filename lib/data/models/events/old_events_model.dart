@@ -6,9 +6,9 @@ part 'old_events_model.g.dart';
 @JsonSerializable()
 class OldEventsModel {
   @JsonKey(name: 'oldEvents')
-  final List<EventsListModel>? events;
+  final List<EventsListModel> events;
 
-  const OldEventsModel({this.events});
+  const OldEventsModel(this.events);
 
   factory OldEventsModel.fromJson(Map<String, dynamic> json) =>
       _$OldEventsModelFromJson(json);

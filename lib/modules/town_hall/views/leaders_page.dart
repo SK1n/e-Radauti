@@ -4,7 +4,7 @@ import 'package:flutterapperadauti/data/models/leaders/leaders_model.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/leaders_item.dart';
 import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +14,7 @@ class LeadersPage extends StatelessWidget with GetDataFirebase, GetImageUrl {
 
   @override
   Widget build(BuildContext context) {
-    return CustomCupertinoPageScaffold(
+    return CustomPageScaffold(
       navBarMiddle: 'local-administration'.tr,
       slivers: [
         SliverList(

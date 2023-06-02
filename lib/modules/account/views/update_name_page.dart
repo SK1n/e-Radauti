@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutterapperadauti/controllers/account_controller.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +12,7 @@ class UpdateNamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final AccountController controller = Get.find();
     final GlobalKey<FormBuilderState> formKey = GlobalKey();
-    return CustomCupertinoPageScaffold(navBarMiddle: 'my-account'.tr, slivers: [
+    return CustomPageScaffold(navBarMiddle: 'my-account'.tr, slivers: [
       SliverToBoxAdapter(
         child: FormBuilder(
           key: formKey,

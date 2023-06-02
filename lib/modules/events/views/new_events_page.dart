@@ -12,24 +12,27 @@ class NewEventsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final EventsController controller = Get.find();
-    return SafeArea(
-      child: Futuristic(
-        initialBuilder: (_, __) => Container(),
-        futureBuilder: () => controller.getEventsList(),
-       
-        dataBuilder: (BuildContext context, snapshot) {
-          List<EventsListModel> list = snapshot as List<EventsListModel>;
-          return ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: list.length,
-              itemBuilder: (BuildContext context, int item) {
-                return EventsItemWidget(
-                  data: list[item],
-                );
-              });
-        },
-      ),
+    return Futuristic(
+      initialBuilder: (_, __) => Container(),
+      futureBuilder: () => controller.getNewEventsList(),
+      dataBuilder: (BuildContext context, snapshot) {
+        List<EventsListModel> list = snapshot as List<EventsListModel>;
+        return CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: list.length,
+                  itemBuilder: (BuildContext context, int item) {
+                    return EventsItemWidget(
+                      list[item],
+                    );
+                  }),
+            ),
+          ],
+        );
+      },
     );
   }
 }

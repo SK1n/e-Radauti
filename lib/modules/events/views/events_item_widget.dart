@@ -1,19 +1,33 @@
 import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
 import 'package:flutterapperadauti/modules/events/controllers/events_controller.dart';
-import 'package:flutterapperadauti/modules/events/views/events_collapsed_widget.dart';
-import 'package:flutterapperadauti/modules/events/views/events_expanded_widget.dart';
-import 'package:flutterapperadauti/utils/loading_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
 import 'package:get/get.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+extension TimestampToDate on num {
+  String get getDate {
+    DateFormat format = DateFormat('dd MMMM yyyy', 'ro');
+    return format
+        .format(DateTime.fromMillisecondsSinceEpoch(toInt() * 1000))
+        .toUpperCase();
+  }
+
+  String get getHour {
+    DateFormat format = DateFormat('HH:mm', 'ro');
+    return format
+        .format(DateTime.fromMillisecondsSinceEpoch(toInt() * 1000))
+        .toUpperCase();
+  }
+}
 
 class EventsItemWidget extends StatelessWidget with GetImageUrl {
-  final EventsListModel? data;
-  const EventsItemWidget({
+  final EventsListModel data;
+  const EventsItemWidget(
+    this.data, {
     super.key,
-    this.data,
   });
 
   @override
@@ -60,7 +74,9 @@ class EventsItemWidget extends StatelessWidget with GetImageUrl {
                 ),
               ),
             ),
-          );
-        });
+          
+        );
+      },
+    );
   }
 }

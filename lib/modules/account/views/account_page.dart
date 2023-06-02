@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutterapperadauti/controllers/account_controller.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:get/get.dart';
 
 class AccountPage extends StatelessWidget {
@@ -13,7 +13,7 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final AccountController controller = Get.find();
     final GlobalKey<FormBuilderState> formKey = GlobalKey();
-    return CustomCupertinoPageScaffold(
+    return CustomPageScaffold(
       navBarMiddle: 'my-account'.tr,
       navBarTrailing: InkWell(
         onTap: () => Get.toNamed(Routes.settings),

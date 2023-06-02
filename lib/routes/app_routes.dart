@@ -11,6 +11,7 @@ abstract class Routes {
   static const localCouncil = townHall + _Paths.localCouncil;
   static const localLegislation = townHall + _Paths.localLegislation;
   static const events = home + _Paths.events;
+  static const eventsDetails = events + _Paths.eventsDetails;
   static const announcements = home + _Paths.announcements;
   static const jobs = announcements + _Paths.jobs;
   static const furniture = announcements + _Paths.furniture;
@@ -67,6 +68,7 @@ abstract class _Paths {
   static const volunteer = '/volunteer';
   static const air = '/air';
   static const events = '/events';
+  static const eventsDetails = '/events_details';
   static const localLegislation = '/local_legislation';
   static const announcements = '/announcements';
   static const jobs = '/jobs';

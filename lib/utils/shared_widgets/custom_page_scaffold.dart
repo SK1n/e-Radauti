@@ -1,29 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/const.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/nav_drawer.dart';
 import 'package:get/get.dart';
-
-import '../../routes/app_pages.dart';
-
-class CustomCupertinoPageScaffold extends StatelessWidget {
+class CustomPageScaffold extends StatelessWidget {
   final List<Widget> slivers;
   final String navBarMiddle;
   final Widget? navBarTrailing;
   final Widget? navBarLeading;
-  const CustomCupertinoPageScaffold({
+  final PreferredSizeWidget? bottom;
+  const CustomPageScaffold({
     super.key,
     required this.slivers,
     this.navBarMiddle = '',
     this.navBarTrailing,
     this.navBarLeading,
+    this.bottom,
   });
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        backgroundColor: Get.theme.appBarTheme.backgroundColor,
-        automaticallyImplyLeading: true,
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      endDrawer: const NavDrawer(),
+      appBar: AppBar(
         leading: navBarLeading,
         middle: Text(navBarMiddle),
         trailing: navBarTrailing ??
@@ -34,7 +35,7 @@ class CustomCupertinoPageScaffold extends StatelessWidget {
               ),
             ),
       ),
-      child: SafeArea(
+      body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(
             left: leftMargin,

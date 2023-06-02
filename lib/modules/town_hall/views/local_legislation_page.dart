@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/town_hall/controllers/local_legislation_controller.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/local_legislation_item.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/custom_cupertino_page_scaffold.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +15,7 @@ class LocalLegislationPage extends StatelessWidget with UrlLauncher {
     final LocalLegislationController controller = Get.find();
     final TextEditingController textEditingController = TextEditingController();
 
-    return CustomCupertinoPageScaffold(
+    return CustomPageScaffold(
       navBarMiddle: 'local-council-decisions'.tr,
       slivers: [
         SliverList(

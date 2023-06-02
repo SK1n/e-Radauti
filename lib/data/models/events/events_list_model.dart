@@ -1,21 +1,25 @@
+import 'package:floor/floor.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'events_list_model.g.dart';
 
 @JsonSerializable()
+@Entity()
 class EventsListModel {
-  String? category;
-  String? description;
-  String? headline;
-  String? location;
-  String? host;
-  String? street;
-  num? start;
-  num? end;
+  final String category;
+  final String description;
+  final String headline;
+  final String location;
+  final String host;
+  final String street;
+  final int start;
+  final int end;
   @JsonKey(name: 'URL')
-  String? url;
+  final String url;
+  @primaryKey
+  final int? id;
 
-  EventsListModel({
+  const EventsListModel(
     this.category,
     this.description,
     this.headline,
@@ -24,7 +28,9 @@ class EventsListModel {
     this.street,
     this.start,
     this.end,
-  });
+    this.url,
+    this.id,
+  );
 
   factory EventsListModel.fromJson(Map<String, dynamic> json) =>
       _$EventsListModelFromJson(json);
