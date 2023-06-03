@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/modules/air_quality/controllers/air_quality_controller.dart';
 import 'package:flutterapperadauti/modules/air_quality/views/charts/create_chart.dart';
-import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
+class AirQualityChartsPage extends GetView<AirQualityController> {
   const AirQualityChartsPage({super.key});
   @override
   Widget build(BuildContext context) {
-    final AirQualityController airQualityController = Get.find();
     return Futuristic(
-      futureBuilder: () => airQualityController.getDataCharts(),
+      futureBuilder: () => controller.getDataCharts(),
       dataBuilder: (context, snapshot) {
         return Column(
           children: [
@@ -20,7 +18,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
               data: [
                 LineSeries(
                   name: 'radauti-center'.tr,
-                  dataSource: airQualityController.dataChartPmVsTimeCenter,
+                  dataSource: controller.dataChartPmVsTimeCenter,
                   xValueMapper: (ChartSampleData data, _) => data.x,
                   yValueMapper: (ChartSampleData data, _) => data.yValue,
                   color: const Color.fromRGBO(242, 117, 7, 1),
@@ -37,7 +35,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                 ),
                 LineSeries(
                   name: 'radauti-iesire-dornesti'.tr,
-                  dataSource: airQualityController.dataChartPmVsTimeDornesti,
+                  dataSource: controller.dataChartPmVsTimeDornesti,
                   xValueMapper: (ChartSampleData data, _) => data.x,
                   yValueMapper: (ChartSampleData data, _) => data.yValue,
                   color: const Color.fromARGB(255, 26, 168, 45),
@@ -47,7 +45,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                 LineSeries(
                   name: 'limit-pm'.tr,
                   dashArray: <double>[15, 3, 3, 3],
-                  dataSource: airQualityController.recommendedPmValue,
+                  dataSource: controller.recommendedPmValue,
                   xValueMapper: (ChartSampleData data, _) => data.x,
                   yValueMapper: (ChartSampleData data, _) => data.yValue,
                   color: const Color.fromARGB(255, 86, 26, 104),
@@ -72,7 +70,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
             CreateChart(
               data: [
                 LineSeries(
-                  dataSource: airQualityController.dataChartCoVsTime,
+                  dataSource: controller.dataChartCoVsTime,
                   xValueMapper: (ChartSampleData data, _) => data.x,
                   yValueMapper: (ChartSampleData data, _) => data.yValue,
                   color: const Color.fromRGBO(242, 117, 7, 1),
@@ -90,7 +88,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
               data: [
                 LineSeries(
                   name: 'pm'.trParams({"value": ""}),
-                  dataSource: airQualityController.dataChartPmVsTimeCenter,
+                  dataSource: controller.dataChartPmVsTimeCenter,
                   xValueMapper: (ChartSampleData data, _) => data.x,
                   yValueMapper: (ChartSampleData data, _) => data.yValue,
                   color: const Color.fromRGBO(242, 117, 7, 1),
@@ -99,7 +97,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                 ),
                 LineSeries(
                   name: 'wind-speed'.tr,
-                  dataSource: airQualityController.dataChartWindVsTimeCenter,
+                  dataSource: controller.dataChartWindVsTimeCenter,
                   xValueMapper: (ChartSampleData data, _) => data.x,
                   yValueMapper: (ChartSampleData data, _) => data.yValue,
                   color: Colors.green,
@@ -125,7 +123,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
               data: [
                 LineSeries(
                   name: 'hm'.tr,
-                  dataSource: airQualityController.dataChartHumidityCenter,
+                  dataSource: controller.dataChartHumidityCenter,
                   xValueMapper: (ChartSampleData data, _) => data.x,
                   yValueMapper: (ChartSampleData data, _) => data.yValue,
                   color: const Color.fromRGBO(242, 117, 7, 1),
@@ -134,7 +132,7 @@ class AirQualityChartsPage extends StatelessWidget with GetDataFirebase {
                 ),
                 LineSeries(
                   name: 'temperature'.tr,
-                  dataSource: airQualityController.dataChartTempVsTimeCenter,
+                  dataSource: controller.dataChartTempVsTimeCenter,
                   xValueMapper: (ChartSampleData data, _) => data.x,
                   yValueMapper: (ChartSampleData data, _) => data.yValue,
                   color: Colors.green,

@@ -21,128 +21,130 @@ class LoginPage extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      body: SliverToBoxAdapter(
-        child: FormBuilder(
-          key: controller.formKey,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Image.asset(
-                  Assets.logoImagesRc,
-                  width: 100,
-                  height: 100,
+      slivers: [
+        SliverToBoxAdapter(
+          child: FormBuilder(
+            key: controller.formKey,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Image.asset(
+                    Assets.logoImagesRc,
+                    width: 100,
+                    height: 100,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: Text(
-                  'welcome'.tr,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 30),
-                ),
-              ),
-              FormBuilderTextField(
-                name: 'email',
-                validator: FormBuilderValidators.compose(
-                  [
-                    FormBuilderValidators.required(
-                        errorText: 'required-field'.tr),
-                    FormBuilderValidators.email(errorText: 'email-format'.tr),
-                  ],
-                ),
-              ).outside('email-address'),
-              FormBuilderTextField(
-                name: 'password',
-                obscureText: true,
-                validator: FormBuilderValidators.compose(
-                  [
-                    FormBuilderValidators.required(
-                      errorText: 'required-field'.tr,
-                    ),
-                  ],
-                ),
-              ).outside('password'),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 15),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: FormBuilderCheckbox(
-                        name: "rememberme",
-                        title: Text(
-                          'remember-me'.tr,
-                          textAlign: TextAlign.start,
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      child: Text(
-                        'forgot-password'.tr,
-                        style: const TextStyle(color: Colors.blue),
-                      ),
-                      onTap: () {
-                        Get.toNamed(
-                          Routes.resetPassword,
-                          arguments: controller
-                              .formKey.currentState!.fields['email']!.value,
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              GFButton(
-                onPressed: () async {
-                  await controller.login();
-                },
-                text: "log-in".tr,
-                shape: GFButtonShape.pills,
-                color: CColors.violet,
-                size: GFSize.LARGE,
-                blockButton: true,
-                fullWidthButton: true,
-              ),
-              TextBetweenLines(text: 'or'.tr.toUpperCase()),
-              GFButton(
-                onPressed: () {},
-                text: 'guest'.tr,
-                shape: GFButtonShape.pills,
-                color: CColors.lightBlue,
-                size: GFSize.LARGE,
-                blockButton: true,
-                textColor: Colors.blue,
-                fullWidthButton: true,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: RichText(
-                  text: TextSpan(
-                    text: 'register-account'.tr,
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Text(
+                    'welcome'.tr,
                     style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
+                        fontWeight: FontWeight.bold, fontSize: 30),
+                  ),
+                ),
+                FormBuilderTextField(
+                  name: 'email',
+                  validator: FormBuilderValidators.compose(
+                    [
+                      FormBuilderValidators.required(
+                          errorText: 'required-field'.tr),
+                      FormBuilderValidators.email(errorText: 'email-format'.tr),
+                    ],
+                  ),
+                ).outside('email-address'),
+                FormBuilderTextField(
+                  name: 'password',
+                  obscureText: true,
+                  validator: FormBuilderValidators.compose(
+                    [
+                      FormBuilderValidators.required(
+                        errorText: 'required-field'.tr,
+                      ),
+                    ],
+                  ),
+                ).outside('password'),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 15),
+                  child: Row(
                     children: [
-                      TextSpan(
-                        text: 'create-new-account'.tr,
-                        style: const TextStyle(
-                          color: Colors.blue,
-                          fontSize: 16,
+                      Expanded(
+                        child: FormBuilderCheckbox(
+                          name: "rememberme",
+                          title: Text(
+                            'remember-me'.tr,
+                            textAlign: TextAlign.start,
+                          ),
                         ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Get.toNamed(Routes.createAccount);
-                          },
+                      ),
+                      InkWell(
+                        child: Text(
+                          'forgot-password'.tr,
+                          style: const TextStyle(color: Colors.blue),
+                        ),
+                        onTap: () {
+                          Get.toNamed(
+                            Routes.resetPassword,
+                            arguments: controller
+                                .formKey.currentState!.fields['email']!.value,
+                          );
+                        },
                       ),
                     ],
                   ),
                 ),
-              ),
-            ],
+                GFButton(
+                  onPressed: () async {
+                    await controller.login();
+                  },
+                  text: "log-in".tr,
+                  shape: GFButtonShape.pills,
+                  color: CColors.violet,
+                  size: GFSize.LARGE,
+                  blockButton: true,
+                  fullWidthButton: true,
+                ),
+                TextBetweenLines(text: 'or'.tr.toUpperCase()),
+                GFButton(
+                  onPressed: () {},
+                  text: 'guest'.tr,
+                  shape: GFButtonShape.pills,
+                  color: CColors.lightBlue,
+                  size: GFSize.LARGE,
+                  blockButton: true,
+                  textColor: Colors.blue,
+                  fullWidthButton: true,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'register-account'.tr,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: 'create-new-account'.tr,
+                          style: const TextStyle(
+                            color: Colors.blue,
+                            fontSize: 16,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Get.toNamed(Routes.createAccount);
+                            },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

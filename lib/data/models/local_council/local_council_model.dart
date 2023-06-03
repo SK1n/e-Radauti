@@ -6,7 +6,7 @@ part 'local_council_model.g.dart';
 @JsonSerializable()
 class LocalCouncilModel {
   @JsonKey(name: 'localcouncil')
-  final List<LocalCouncilItemModel>? items;
+  final List<LocalCouncilItemModel> items;
 
   const LocalCouncilModel(this.items);
 

@@ -1,25 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
-import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
+import 'package:flutterapperadauti/data/models/local_council/local_council_item_model.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
 import 'package:get/get.dart';
 
-class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
-  final String? url;
-  final String? name;
-  final String? function;
-  final String? party;
-  final String? phoneNumber;
-  final String? email;
+class LocalCouncilCard extends StatelessWidget with UrlLauncher {
+  final LocalCouncilItemModel item;
   const LocalCouncilCard({
     super.key,
-    this.url,
-    this.name,
-    this.function,
-    this.party,
-    this.phoneNumber,
-    this.email,
+    required this.item,
   });
 
   @override
@@ -28,14 +17,10 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Futuristic(
-            initialBuilder: (_, __) => Container(),
-            futureBuilder: () => getImageUrl(url!),
-            dataBuilder: (_, snapshot) => ImageWidget(
-              link: snapshot as String,
-              width: 100,
-              height: 150,
-            ),
+          ImageWidget(
+            link: item.url,
+            width: 100,
+            height: 150,
           ),
           Expanded(
             child: Row(
@@ -51,7 +36,7 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          name!,
+                          item.name!,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -59,18 +44,21 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                         SizedBox(
                           height: 20,
                           child: Text(
-                            function!.toLowerCase().replaceAll(" ", "-").tr,
+                            item.function!
+                                .toLowerCase()
+                                .replaceAll(" ", "-")
+                                .tr,
                           ),
                         ),
-                        phoneNumber != null
+                        item.phoneNumber != null
                             ? SizedBox(
                                 height: 20,
                                 child: InkWell(
                                   onTap: () async {
-                                    await launchUrlS('tel:$phoneNumber');
+                                    await launchUrlS('tel:${item.phoneNumber}');
                                   },
                                   child: Text(
-                                    '${"tel".tr}: $phoneNumber',
+                                    '${"tel".tr}: ${item.phoneNumber}',
                                     style: const TextStyle(
                                         color: Colors.blueAccent),
                                   ),
@@ -79,12 +67,12 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                             : Container(),
                         InkWell(
                           onTap: () async {
-                            await launchUrlS('mailto:$email');
+                            await launchUrlS('mailto:${item.email}');
                           },
                           child: SizedBox(
                             width: Get.width - 110,
                             child: Text(
-                              '$email',
+                              '${item.email}',
                               style: const TextStyle(color: Colors.blueAccent),
                             ),
                           ),
@@ -95,7 +83,7 @@ class LocalCouncilCard extends StatelessWidget with GetImageUrl, UrlLauncher {
                 ),
                 Expanded(
                   child: Image.asset(
-                    'assets/images/$party.png',
+                    'assets/images/${item.party}.png',
                     fit: BoxFit.fitHeight,
                   ),
                 )

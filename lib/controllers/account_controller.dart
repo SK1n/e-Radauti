@@ -1,17 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
-import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
-import 'package:flutterapperadauti/utils/helpers/upload_data_firebase.dart';
+import 'package:flutterapperadauti/utils/base_controller.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AccountController extends GetxController
-    with GetDataFirebase, UploadDataFirebase {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+class AccountController extends BaseController {
   late SharedPreferences _sharedPreferences;
 
-  // final _username = _firebaseAuth.currentUser!.displayName.obs;
+  // final _username = fireRepo.auth.currentUser!.displayName.obs;
   // get username => _username.value;
   // set username(value) => _username.value = value;
 
@@ -25,7 +22,7 @@ class AccountController extends GetxController
 
   updateDisplayName(String displayName) async {
     try {
-      await _firebaseAuth.currentUser!.updateDisplayName(displayName);
+      await fireRepo.auth.currentUser!.updateDisplayName(displayName);
       Get.defaultDialog(
         barrierDismissible: false,
         title: 'success'.tr,
@@ -48,20 +45,20 @@ class AccountController extends GetxController
   }
 
   setInitialUsername() {
-    username = _firebaseAuth.currentUser!.displayName;
+    username = fireRepo.auth.currentUser!.displayName;
   }
 
   getPassword() => _sharedPreferences.getString("password");
-  getPhoneNumber() => _firebaseAuth.currentUser!.phoneNumber;
+  getPhoneNumber() => fireRepo.auth.currentUser!.phoneNumber;
 
-  getEmail() => _firebaseAuth.currentUser?.email;
-  getVerified() => _firebaseAuth.currentUser?.emailVerified;
+  getEmail() => fireRepo.auth.currentUser?.email;
+  getVerified() => fireRepo.auth.currentUser?.emailVerified;
 
-  isAnnonymous() => _firebaseAuth.currentUser?.isAnonymous;
+  isAnnonymous() => fireRepo.auth.currentUser?.isAnonymous;
 
   Future updatePassword(String newPassword) async {
     try {
-      await _firebaseAuth.currentUser!
+      await fireRepo.auth.currentUser!
           .updatePassword(newPassword)
           .then((value) => Get.back());
     } on FirebaseAuthException catch (exception) {
@@ -74,9 +71,9 @@ class AccountController extends GetxController
     }
   }
 
-  isSignedIn() => _firebaseAuth.currentUser != null;
+  isSignedIn() => fireRepo.auth.currentUser != null;
   signOut() async {
-    await _firebaseAuth.signOut().then((value) {
+    await fireRepo.auth.signOut().then((value) {
       Get.offAllNamed(Routes.logIn);
     });
   }

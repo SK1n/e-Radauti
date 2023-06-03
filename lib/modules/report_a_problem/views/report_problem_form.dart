@@ -3,18 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutterapperadauti/controllers/account_controller.dart';
-import 'package:flutterapperadauti/modules/report_a_problem/controllers/form_controller.dart';
+import 'package:flutterapperadauti/modules/report_a_problem/controllers/report_problem_controller.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/views/location_switch.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 
-class ReportProblemForm extends StatelessWidget {
+class ReportProblemForm extends GetView<ReportProblemController> {
   const ReportProblemForm({super.key});
   @override
   Widget build(BuildContext context) {
-    final NoticeProblemController controller =
-        Get.put(NoticeProblemController());
     final AccountController accountController = Get.find();
     return FormBuilder(
       key: controller.formKey,
@@ -35,16 +33,21 @@ class ReportProblemForm extends StatelessWidget {
             ),
           ),
           Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: FormBuilderDropdown(
-                  name: 'institution_email',
-                  decoration:
-                      InputDecoration(label: Text("${'institution'.tr} *")),
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(
-                        errorText: 'required-field'.tr)
-                  ]),
-                  items: controller.dropdowns)),
+            padding: const EdgeInsets.all(8.0),
+            child: FormBuilderDropdown(
+                name: 'institution_email',
+                decoration:
+                    InputDecoration(label: Text("${'institution'.tr} *")),
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.required(errorText: 'required-field'.tr),
+                ],),
+                items: controller.dropDown.entries.map((e) {
+                  return DropdownMenuItem(
+                    value: e.key,
+                    child: Text(e.value.tr),
+                  );
+                }).toList()),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FormBuilderDropdown(

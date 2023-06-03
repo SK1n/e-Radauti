@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:get/get.dart';
 
-class TaxiItem extends StatelessWidget with GetImageUrl, UrlLauncher {
-  final String? phone;
-  final String? url;
-  final String? plate;
-  final String? car;
-  final String? driver;
+class TaxiItem extends StatelessWidget with UrlLauncher {
+  final String phone;
+  final String url;
+  final String plate;
+  final String car;
+  final String driver;
 
-  const TaxiItem(
-      {super.key, this.phone, this.url, this.plate, this.car, this.driver});
+  const TaxiItem({
+    super.key,
+    required this.phone,
+    required this.url,
+    required this.plate,
+    required this.car,
+    required this.driver,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +29,11 @@ class TaxiItem extends StatelessWidget with GetImageUrl, UrlLauncher {
             child: SizedBox(
               height: 100,
               width: 100,
-              child: Futuristic(
-                initialBuilder: (_, __) => Container(),
-                futureBuilder: () => getImageUrl(url!),
-                dataBuilder: (_, snapshot) => SizedBox(
-                  width: Get.width,
-                  child: Image.network(
-                    snapshot as String,
-                    scale: 1.0,
-                    fit: BoxFit.fitWidth,
-                    height: 200,
-                  ),
-                ),
+              child: Image.network(
+                url,
+                scale: 1.0,
+                fit: BoxFit.fitWidth,
+                height: 200,
               ),
             ),
           ),

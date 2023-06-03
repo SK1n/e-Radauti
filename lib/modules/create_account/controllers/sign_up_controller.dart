@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutterapperadauti/data/models/user/user_model.dart';
-import 'package:flutterapperadauti/repositories/firebase_repository.dart';
+import 'package:flutterapperadauti/utils/base_controller.dart';
 import 'package:get/get.dart';
 
-class SignUpController extends GetxController with FirebaseRepository {
+class SignUpController extends BaseController {
   final formKey = GlobalKey<FormBuilderState>();
   String _email = "";
   String _password = "";
@@ -23,9 +23,10 @@ class SignUpController extends GetxController with FirebaseRepository {
       _email = formKey.currentState!.fields['email']!.value;
       _password = formKey.currentState!.fields['password']!.value;
       _name = formKey.currentState!.fields['name']!.value;
-      final UserCredential authCredential = await signUp(_email, _password);
-      setDisplayName(_name);
-      await addUser(
+      final UserCredential authCredential =
+          await fireRepo.signUp(_email, _password);
+      fireRepo.setDisplayName(_name);
+      await fireRepo.addUser(
         authCredential.user!.uid,
         UserModel(
           _email,
@@ -47,8 +48,7 @@ class SignUpController extends GetxController with FirebaseRepository {
         e.code.tr,
         duration: const Duration(seconds: 5),
       );
-    } finally {
-    }
+    } finally {}
   }
 
   Future createAccount(String emailAddress, String password, String phoneNumber,

@@ -1,9 +1,10 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutterapperadauti/utils/base_controller.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 
-class HomePageController extends GetxController {
+class HomePageController extends BaseController {
   final Logger _logger = Logger();
   @override
   void onReady() async {

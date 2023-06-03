@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/controllers/location_controller.dart';
-import 'package:flutterapperadauti/modules/report_a_problem/controllers/form_controller.dart';
+import 'package:flutterapperadauti/modules/report_a_problem/controllers/report_problem_controller.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:get/get.dart';
 
@@ -14,8 +13,8 @@ class LocationSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     final LocationController locationController =
         Get.find<LocationController>();
-    final NoticeProblemController noticeProblemController =
-        Get.find<NoticeProblemController>();
+    final ReportProblemController noticeProblemController =
+        Get.find<ReportProblemController>();
     return Card(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(

@@ -2,21 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutterapperadauti/data/models/e_radauti_website/records_model.dart';
-import 'package:flutterapperadauti/modules/announcements/controllers/get_e_radauti_data_controller.dart';
+import 'package:flutterapperadauti/modules/announcements/controllers/announcements_controller.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
-import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:get/get.dart';
 
-class FurniturePage extends StatelessWidget with UrlLauncher {
+class FurniturePage extends GetView<AnnouncementsController> {
   const FurniturePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     ChromeSafariBrowser browser = ChromeSafariBrowser();
-    final GetERadautiDataController controller = Get.find();
-
     return CustomPageScaffold(
       navBarMiddle: 'announces'.tr,
       slivers: [
@@ -24,7 +21,7 @@ class FurniturePage extends StatelessWidget with UrlLauncher {
           child: Futuristic(
             initialBuilder: (_, __) => Container(),
             futureBuilder: () async =>
-                await controller.getData(eRadautiFurnitureLink),
+                await controller.getERadautiData(eRadautiFurnitureLink),
             dataBuilder: (_, snapshot) {
               List<RecordsModel>? items = snapshot as List<RecordsModel>;
               return ListView.builder(

@@ -1,19 +1,18 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/controllers/dao_controller.dart';
-import 'package:flutterapperadauti/dao/app_database.dart';
-import 'package:flutterapperadauti/dao/events_dao.dart';
 import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
 import 'package:flutterapperadauti/data/models/events/new_events_model.dart';
 import 'package:flutterapperadauti/data/models/events/old_events_model.dart';
-import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
+import 'package:flutterapperadauti/utils/base_controller.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class EventsController extends GetxController
-    with GetDataFirebase, GetSingleTickerProviderStateMixin {
+class EventsController extends BaseController
+    with GetSingleTickerProviderStateMixin {
   final DaoController daoController = Get.find();
   late final TabController tabController;
 
@@ -29,8 +28,9 @@ class EventsController extends GetxController
   }
 
   Future<List<EventsListModel>> getNewEventsList() async {
-    NewEventsModel data = await getData(
-      document: 'Events',
+    DocumentReference dr = fireRepo.firestore.doc('collection/Events');
+    NewEventsModel data = await fireRepo.getDocument(
+      document: dr,
       convert: NewEventsModel.fromJson,
     );
     List<EventsListModel> sortedList = data.events;
@@ -39,8 +39,9 @@ class EventsController extends GetxController
   }
 
   Future<List<EventsListModel>> getOldEventsList() async {
-    OldEventsModel data = await getData(
-      document: 'OldEvents',
+    DocumentReference dr = fireRepo.firestore.doc('collection/OldEvents');
+    OldEventsModel data = await fireRepo.getDocument(
+      document: dr,
       convert: OldEventsModel.fromJson,
     );
     List<EventsListModel> sortedList = data.events;

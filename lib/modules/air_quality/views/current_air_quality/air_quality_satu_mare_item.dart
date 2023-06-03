@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/air_quality/air_quality_item_model.dart';
 import 'package:flutterapperadauti/modules/air_quality/controllers/air_quality_controller.dart';
 import 'package:flutterapperadauti/utils/extensions/text_luminance.dart';
-import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/meteocons_icons.dart';
 import 'dart:math' as math;
 import 'package:get/get.dart';
 
-class AirQualitySatuMare extends StatelessWidget with GetDataFirebase {
+class AirQualitySatuMare extends StatelessWidget {
   final AirQualityItemModel data;
   const AirQualitySatuMare(this.data, {super.key});
 

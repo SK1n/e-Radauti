@@ -23,7 +23,7 @@ extension TimestampToDate on num {
   }
 }
 
-class EventsItemWidget extends StatelessWidget with GetImageUrl {
+class EventsItemWidget extends StatelessWidget {
   final EventsListModel data;
   const EventsItemWidget(
     this.data, {
@@ -32,51 +32,52 @@ class EventsItemWidget extends StatelessWidget with GetImageUrl {
 
   @override
   Widget build(BuildContext context) {
-    final EventsController eventsNewController = Get.find();
-    return Futuristic(
-        initialBuilder: (_, __) => Container(),
-        futureBuilder: () => getImageUrl(data!.url),
-        // busyBuilder: (_) => const LoadingWidget(),
-        dataBuilder: (_, snapshot) {
-          DateTime currentTime = DateTime.now();
-          DateTime eventStartTime = DateTime.fromMillisecondsSinceEpoch(
-              (data!.start! * 1000).toInt());
-          DateTime eventEndTime =
-              DateTime.fromMillisecondsSinceEpoch((data!.end! * 1000).toInt());
-          bool isEventActive = currentTime.isAfter(eventStartTime) &&
-              currentTime.isBefore(eventEndTime);
-          return ExpandableNotifier(
-            child: ScrollOnExpand(
-              child: ExpandablePanel(
-                theme: const ExpandableThemeData(
-                    animationDuration: Duration(seconds: 1)),
-                collapsed: EventsCollapsedWidget(
-                  imageUrl: snapshot as String,
-                  headline: data!.headline,
-                  timestamp: eventsNewController.convertTimestampToDate(
-                    data!.start!.toInt(),
-                  ),
-                  isActive: isEventActive,
-                ),
-                expanded: EventsExpandedWidget(
-                  description: data!.description,
-                  location: data!.location,
-                  street: data!.street,
-                  imageUrl: snapshot,
-                  headline: data!.headline,
-                  host: data!.host,
-                  start: eventsNewController
-                      .convertTimestampToDate(data!.start!.toInt()),
-                  end: eventsNewController.convertTimestampToDate(
-                    data!.end!.toInt(),
-                  ),
-                  isActive: isEventActive,
-                ),
-              ),
-            ),
-          
-        );
-      },
-    );
+    return Container();
+    // return Futuristic(
+    // initialBuilder: (_, __) => Container(),
+    // futureBuilder: () => data.url,
+    // busyBuilder: (_) => const LoadingWidget(),
+    // dataBuilder: (_, snapshot) {
+    // DateTime currentTime = DateTime.now();
+    // DateTime eventStartTime = DateTime.fromMillisecondsSinceEpoch(
+    //     (data!.start! * 1000).toInt());
+    // DateTime eventEndTime =
+    //     DateTime.fromMillisecondsSinceEpoch((data!.end! * 1000).toInt());
+    // bool isEventActive = currentTime.isAfter(eventStartTime) &&
+    //     currentTime.isBefore(eventEndTime);
+    //     return Container();
+    //   return ExpandableNotifier(
+    //     child: ScrollOnExpand(
+    //       child: ExpandablePanel(
+    //         theme: const ExpandableThemeData(
+    //             animationDuration: Duration(seconds: 1)),
+    //         collapsed: EventsCollapsedWidget(
+    //           imageUrl: snapshot as String,
+    //           headline: data!.headline,
+    //           timestamp: eventsNewController.convertTimestampToDate(
+    //             data!.start!.toInt(),
+    //           ),
+    //           isActive: isEventActive,
+    //         ),
+    //         expanded: EventsExpandedWidget(
+    //           description: data!.description,
+    //           location: data!.location,
+    //           street: data!.street,
+    //           imageUrl: snapshot,
+    //           headline: data!.headline,
+    //           host: data!.host,
+    //           start: eventsNewController
+    //               .convertTimestampToDate(data!.start!.toInt()),
+    //           end: eventsNewController.convertTimestampToDate(
+    //             data!.end!.toInt(),
+    //           ),
+    //           isActive: isEventActive,
+    //         ),
+    //       ),
+    //     ),
+
+    // );
+    // },
+    // );
   }
 }

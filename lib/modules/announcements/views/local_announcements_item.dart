@@ -6,8 +6,7 @@ import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:get/get.dart';
 import 'package:selectable_autolink_text/selectable_autolink_text.dart';
 
-class LocalAnnouncementsItem extends StatelessWidget
-    with GetImageUrl, UrlLauncher {
+class LocalAnnouncementsItem extends StatelessWidget with UrlLauncher {
   final LocalAnnouncementsItemModel data;
   const LocalAnnouncementsItem({
     super.key,
@@ -21,17 +20,13 @@ class LocalAnnouncementsItem extends StatelessWidget
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Futuristic(
-            initialBuilder: (_, __) => Container(),
-            futureBuilder: () => getImageUrl(data.url!),
-            dataBuilder: (_, snapshot) => SizedBox(
-              width: Get.width,
-              child: Image.network(
-                snapshot as String,
-                scale: 1.0,
-                fit: BoxFit.fitWidth,
-                height: 200,
-              ),
+          SizedBox(
+            width: Get.width,
+            child: Image.network(
+              data.url,
+              scale: 1.0,
+              fit: BoxFit.fitWidth,
+              height: 200,
             ),
           ),
           Padding(

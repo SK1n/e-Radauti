@@ -18,92 +18,94 @@ class CreateAccountPage extends GetView<SignUpController> {
   Widget build(BuildContext context) {
     return AppScaffold(
       appBarTitle: "create-new-account".tr.toUpperCase(),
-      body: SliverToBoxAdapter(
-        child: FormBuilder(
-          key: controller.formKey,
-          child: Column(
-            children: [
-              FormBuilderTextField(
-                name: 'email',
-                keyboardType: TextInputType.emailAddress,
-                validator: FormBuilderValidators.compose(
-                  [
-                    FormBuilderValidators.required(
-                        errorText: 'required-field'.tr),
-                    FormBuilderValidators.email(errorText: 'email-format'.tr),
-                  ],
-                ),
-              ).outside('email'),
-              FormBuilderTextField(
-                name: 'phone_number',
-                keyboardType: TextInputType.phone,
-                validator: FormBuilderValidators.compose(
-                  [
-                    FormBuilderValidators.match(
-                        r'^(\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\s|\.|\-)?([0-9]{3}(\s|\.|\-|)){2}$',
-                        errorText: 'wrong-number-format'.tr),
-                    FormBuilderValidators.required(
-                        errorText: 'required-field'.tr),
-                  ],
-                ),
-              ).outside('phone-number'),
-              FormBuilderTextField(
-                name: 'name',
-                keyboardType: TextInputType.name,
-                validator: FormBuilderValidators.compose(
-                  [
-                    FormBuilderValidators.required(
-                        errorText: 'required-field'.tr),
-                  ],
-                ),
-              ).outside('name-surname'),
-              Obx(
-                () => FormBuilderTextField(
-                  name: 'password',
+      slivers: [
+        SliverToBoxAdapter(
+          child: FormBuilder(
+            key: controller.formKey,
+            child: Column(
+              children: [
+                FormBuilderTextField(
+                  name: 'email',
+                  keyboardType: TextInputType.emailAddress,
+                  validator: FormBuilderValidators.compose(
+                    [
+                      FormBuilderValidators.required(
+                          errorText: 'required-field'.tr),
+                      FormBuilderValidators.email(errorText: 'email-format'.tr),
+                    ],
+                  ),
+                ).outside('email'),
+                FormBuilderTextField(
+                  name: 'phone_number',
+                  keyboardType: TextInputType.phone,
+                  validator: FormBuilderValidators.compose(
+                    [
+                      FormBuilderValidators.match(
+                          r'^(\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\s|\.|\-)?([0-9]{3}(\s|\.|\-|)){2}$',
+                          errorText: 'wrong-number-format'.tr),
+                      FormBuilderValidators.required(
+                          errorText: 'required-field'.tr),
+                    ],
+                  ),
+                ).outside('phone-number'),
+                FormBuilderTextField(
+                  name: 'name',
+                  keyboardType: TextInputType.name,
                   validator: FormBuilderValidators.compose(
                     [
                       FormBuilderValidators.required(
                           errorText: 'required-field'.tr),
                     ],
                   ),
-                  obscureText: controller.obscurePassword,
-                  decoration: InputDecoration(
-                      suffixIcon: InkWell(
-                          onTap: () {
-                            controller.obscurePassword =
-                                !controller.obscurePassword;
-                          },
-                          child: Visibility(
-                            replacement: const Icon(
-                              FontAwesome5.eye_slash,
-                              color: Colors.black,
-                            ),
-                            visible: !controller.obscurePassword,
-                            child: const Icon(
-                              FontAwesome5.eye,
-                              color: Colors.black,
-                            ),
-                          ))),
-                ).outside('password'),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              GFButton(
-                onPressed: () async {
-                  await controller.createAcc();
-                },
-                text: "create-new-account".tr,
-                shape: GFButtonShape.pills,
-                color: CColors.violet,
-                size: GFSize.LARGE,
-                blockButton: true,
-                fullWidthButton: true,
-              ),
-            ],
+                ).outside('name-surname'),
+                Obx(
+                  () => FormBuilderTextField(
+                    name: 'password',
+                    validator: FormBuilderValidators.compose(
+                      [
+                        FormBuilderValidators.required(
+                            errorText: 'required-field'.tr),
+                      ],
+                    ),
+                    obscureText: controller.obscurePassword,
+                    decoration: InputDecoration(
+                        suffixIcon: InkWell(
+                            onTap: () {
+                              controller.obscurePassword =
+                                  !controller.obscurePassword;
+                            },
+                            child: Visibility(
+                              replacement: const Icon(
+                                FontAwesome5.eye_slash,
+                                color: Colors.black,
+                              ),
+                              visible: !controller.obscurePassword,
+                              child: const Icon(
+                                FontAwesome5.eye,
+                                color: Colors.black,
+                              ),
+                            ))),
+                  ).outside('password'),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                GFButton(
+                  onPressed: () async {
+                    await controller.createAcc();
+                  },
+                  text: "create-new-account".tr,
+                  shape: GFButtonShape.pills,
+                  color: CColors.violet,
+                  size: GFSize.LARGE,
+                  blockButton: true,
+                  fullWidthButton: true,
+                ),
+              ],
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

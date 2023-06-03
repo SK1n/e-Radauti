@@ -16,6 +16,8 @@ analyzer:
     invalid_annotation_target: ignore
     unnecessary_import: ignore
     always_use_package_imports: ignore
+  enable-experiment:
+    - records
 
 dart_code_metrics:
   metrics:
@@ -25,7 +27,7 @@ dart_code_metrics:
     number-of-methods: 10
     technical-debt:
       threshold: 1
-      todo-cost: 100
+
       ignore-cost: 50
       ignore-for-file-cost: 200
       as-dynamic-cost: 300

@@ -1,8 +1,8 @@
 import 'package:flutterapperadauti/dao/app_database.dart';
 import 'package:flutterapperadauti/dao/events_dao.dart';
-import 'package:get/get.dart';
+import 'package:flutterapperadauti/utils/base_controller.dart';
 
-class DaoController extends GetxController {
+class DaoController extends BaseController {
   late final AppDatabase database;
   late final EventsDao eventsDao;
 

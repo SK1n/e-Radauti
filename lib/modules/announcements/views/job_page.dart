@@ -1,20 +1,18 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutterapperadauti/data/models/e_radauti_website/records_model.dart';
-import 'package:flutterapperadauti/modules/announcements/controllers/get_e_radauti_data_controller.dart';
+import 'package:flutterapperadauti/modules/announcements/controllers/announcements_controller.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 
-class JobPage extends StatelessWidget with UrlLauncher {
+class JobPage extends GetView<AnnouncementsController> {
   const JobPage({super.key});
   @override
   Widget build(BuildContext context) {
-    final GetERadautiDataController controller = Get.find();
     ChromeSafariBrowser browser = ChromeSafariBrowser();
     return CustomPageScaffold(
       navBarMiddle: 'announces'.tr,
@@ -22,7 +20,7 @@ class JobPage extends StatelessWidget with UrlLauncher {
         SliverToBoxAdapter(
           child: Futuristic(
             initialBuilder: (_, __) => Container(),
-            futureBuilder: () => controller.getData(eRadautiJobsLink),
+            futureBuilder: () => controller.getERadautiData(eRadautiJobsLink),
             dataBuilder: (_, snapshot) {
               List<RecordsModel>? items = snapshot as List<RecordsModel>;
               return ListView.builder(

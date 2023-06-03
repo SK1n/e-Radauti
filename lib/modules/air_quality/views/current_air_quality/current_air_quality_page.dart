@@ -7,13 +7,12 @@ import 'package:flutterapperadauti/modules/air_quality/views/legend/air_quality_
 import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
 import 'package:get/get.dart';
 
-class CurrentAirQualityPage extends StatelessWidget {
+class CurrentAirQualityPage extends GetView<AirQualityController> {
   const CurrentAirQualityPage({super.key});
   @override
   Widget build(BuildContext context) {
-    final AirQualityController airQualityController = Get.find();
     return Futuristic(
-      futureBuilder: () => airQualityController.getAirQualityCurrent(),
+      futureBuilder: () => controller.getAirQualityCurrent(),
       dataBuilder: (context, snapshot) {
         AirQualityItemModel data = snapshot as AirQualityItemModel;
         return Column(

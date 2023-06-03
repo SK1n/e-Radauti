@@ -95,17 +95,7 @@ class _LocalMeetingsItemState extends State<LocalMeetingsItem>
      ''',
       // ignore: deprecated_member_use
       webViewJs: true,
-      factoryBuilder: () => MyWidgetFactory(),
+      factoryBuilder: () => WidgetFactory(),
     );
   }
-}
-
-class MyWidgetFactory extends WidgetFactory {
-  // optional: override getter to configure how WebViews are built
-  @override
-  bool get webViewMediaPlaybackAlwaysAllow => true;
-  @override
-  String? get webViewUserAgent => 'My app';
-  @override
-  bool get webView => true;
 }

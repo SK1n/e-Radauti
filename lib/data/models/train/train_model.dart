@@ -6,11 +6,11 @@ part 'train_model.g.dart';
 @JsonSerializable()
 class TrainModel {
   @JsonKey(name: 'train')
-  final List<TrainItemModel>? items;
+  final List<TrainItemModel>? trains;
   factory TrainModel.fromJson(Map<String, dynamic> json) =>
       _$TrainModelFromJson(json);
 
-  const TrainModel(this.items);
+  const TrainModel(this.trains);
 
   Map<String, dynamic> toJson() => _$TrainModelToJson(this);
 }

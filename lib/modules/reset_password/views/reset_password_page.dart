@@ -19,37 +19,39 @@ class ResetPasswordPage extends GetView<ResetPasswordController> {
     final String? email = Get.arguments as String?;
     return AppScaffold(
       appBarTitle: 'reset-password'.tr.toUpperCase(),
-      body: SliverToBoxAdapter(
-        child: FormBuilder(
-          key: controller.formKey,
-          child: Column(
-            children: [
-              FormBuilderTextField(
-                name: 'email',
-                initialValue: email,
-                validator: FormBuilderValidators.compose(
-                  [
-                    FormBuilderValidators.required(
-                        errorText: 'required-field'.tr),
-                    FormBuilderValidators.email(errorText: 'email-format'.tr),
-                  ],
+      slivers: [
+        SliverToBoxAdapter(
+          child: FormBuilder(
+            key: controller.formKey,
+            child: Column(
+              children: [
+                FormBuilderTextField(
+                  name: 'email',
+                  initialValue: email,
+                  validator: FormBuilderValidators.compose(
+                    [
+                      FormBuilderValidators.required(
+                          errorText: 'required-field'.tr),
+                      FormBuilderValidators.email(errorText: 'email-format'.tr),
+                    ],
+                  ),
+                ).outside('email-address'),
+                GFButton(
+                  onPressed: () async {
+                    await controller.sendEmailResetPassword();
+                  },
+                  text: "send-mail".tr,
+                  shape: GFButtonShape.pills,
+                  color: CColors.violet,
+                  size: GFSize.LARGE,
+                  blockButton: true,
+                  fullWidthButton: true,
                 ),
-              ).outside('email-address'),
-              GFButton(
-                onPressed: () async {
-                  await controller.sendEmailResetPassword();
-                },
-                text: "send-mail".tr,
-                shape: GFButtonShape.pills,
-                color: CColors.violet,
-                size: GFSize.LARGE,
-                blockButton: true,
-                fullWidthButton: true,
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

@@ -6,6 +6,9 @@ class LoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Lottie.asset('assets/logo_images/radautiul_civic_logo.json');
+    return SizedBox(
+      width: 100,
+      height: 100,
+      child: Lottie.asset('assets/logo_images/radautiul_civic_logo.json'));
   }
 }

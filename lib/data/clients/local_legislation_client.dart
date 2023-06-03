@@ -5,8 +5,8 @@ import 'package:flutterapperadauti/data/models/local_legislation/local_legislati
 import 'package:flutterapperadauti/data/models/local_legislation/local_legislation_model.dart';
 import 'package:html/parser.dart' show parse;
 
-class LocalLegislationClient {
-  const LocalLegislationClient();
+class TownHallClient {
+  const TownHallClient();
 
   Future<LocalLegislationModel> getData(int year) async {
     int currentYear = DateTime.now().year;

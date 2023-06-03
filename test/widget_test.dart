@@ -9,7 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutterapperadauti/data/clients/local_legislation_client.dart';
 
 void main() async {
-  LocalLegislationClient client = const LocalLegislationClient();
+  TownHallClient client = const TownHallClient();
   test('LocalLegislationClient',
       () async => expectLater(await client.getData(2022), contains('2022')));
 }

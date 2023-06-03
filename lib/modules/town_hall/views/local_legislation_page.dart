@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/modules/town_hall/controllers/local_legislation_controller.dart';
+import 'package:flutterapperadauti/modules/town_hall/controllers/town_hall_controller.dart';
 import 'package:flutterapperadauti/modules/town_hall/views/local_legislation_item.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
@@ -12,7 +12,7 @@ class LocalLegislationPage extends StatelessWidget with UrlLauncher {
 
   @override
   Widget build(BuildContext context) {
-    final LocalLegislationController controller = Get.find();
+    final TownHallController controller = Get.find();
     final TextEditingController textEditingController = TextEditingController();
 
     return CustomPageScaffold(

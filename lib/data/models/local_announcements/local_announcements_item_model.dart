@@ -5,7 +5,7 @@ part 'local_announcements_item_model.g.dart';
 @JsonSerializable()
 class LocalAnnouncementsItemModel {
   @JsonKey(name: 'URL')
-  final String? url;
+  String url;
   @JsonKey(name: 'date')
   final String? date;
   @JsonKey(name: 'description')
@@ -19,7 +19,7 @@ class LocalAnnouncementsItemModel {
   @JsonKey(name: "author_email")
   final String? authorEmail;
 
-  const LocalAnnouncementsItemModel(
+  LocalAnnouncementsItemModel(
     this.url,
     this.date,
     this.description,

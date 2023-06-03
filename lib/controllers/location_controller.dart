@@ -1,7 +1,8 @@
+import 'package:flutterapperadauti/utils/base_controller.dart';
 import 'package:get/get.dart';
 import 'package:location/location.dart';
 
-class LocationController extends GetxController {
+class LocationController extends BaseController {
   var location = Location();
   bool? _serviceEnabled;
   dynamic enabled = true.obs;

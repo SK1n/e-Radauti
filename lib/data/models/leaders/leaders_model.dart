@@ -6,9 +6,9 @@ part 'leaders_model.g.dart';
 @JsonSerializable()
 class LeadersModel {
   @JsonKey(name: 'leaders')
-  final List<LeadersItemModel>? items;
+  final List<LeadersItemModel> items;
 
-  const LeadersModel({this.items});
+  const LeadersModel(this.items);
 
   factory LeadersModel.fromJson(Map<String, dynamic> json) =>
       _$LeadersModelFromJson(json);

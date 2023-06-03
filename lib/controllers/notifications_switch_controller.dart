@@ -1,10 +1,11 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/utils/base_controller.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class NotificationsSwitchController extends GetxController {
+class NotificationsSwitchController extends BaseController {
   final topics = {
     "announces": false,
     "events": false,

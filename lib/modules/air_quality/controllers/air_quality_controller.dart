@@ -1,12 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutterapperadauti/data/models/air_quality/air_quality_item_model.dart';
 import 'package:flutterapperadauti/data/models/air_quality/air_quality_model.dart';
 import 'package:flutterapperadauti/modules/air_quality/views/charts/create_chart.dart';
+import 'package:flutterapperadauti/repositories/firebase_repository.dart';
 import 'package:flutterapperadauti/utils/assets.dart';
-import 'package:flutterapperadauti/utils/helpers/get_data_firebase.dart';
-import 'package:get/get.dart';
+import 'package:flutterapperadauti/utils/base_controller.dart';
 import 'package:intl/intl.dart';
 
-class AirQualityController extends GetxController with GetDataFirebase {
+class AirQualityController extends BaseController {
+  final FirebaseRepository _fireRepo;
+  AirQualityController(this._fireRepo);
+
   List<ChartSampleData> dataChartPmVsTimeCenter = [];
   List<ChartSampleData> dataChartPmVsTimeDornesti = [];
   List<ChartSampleData> dataChartWindVsTimeCenter = [];
@@ -17,9 +21,10 @@ class AirQualityController extends GetxController with GetDataFirebase {
   List<ChartSampleData> recommendedPmValue = [];
 
   Future getDataCharts() async {
-    var data = await getData(
+    DocumentReference dr = _fireRepo.firestore.doc('collection/AirDatabase3');
+    var data = await _fireRepo.getDocument(
       convert: AirQualityModel.fromJson,
-      document: 'AirDatabase3',
+      document: dr,
     );
     List<AirQualityItemModel>? items = data.items;
     for (int index = 0; index <= items!.length - 1; index++) {
@@ -78,9 +83,10 @@ class AirQualityController extends GetxController with GetDataFirebase {
   }
 
   Future getAirQualityCurrent() async {
-    AirQualityModel airQualityModel = await getData(
-      document: 'AirDatabase3',
+    DocumentReference dr = _fireRepo.firestore.doc('collection/AirDatabase3');
+    AirQualityModel airQualityModel = await _fireRepo.getDocument(
       convert: AirQualityModel.fromJson,
+      document: dr,
     );
     List<AirQualityItemModel> items = airQualityModel.items;
     return items.last;

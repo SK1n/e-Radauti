@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/utils/base_controller.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class DarkModeSwitchController extends GetxController {
+class DarkModeSwitchController extends BaseController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   final RxBool isLightTheme = false.obs;

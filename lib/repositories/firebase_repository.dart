@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,89 +8,132 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutterapperadauti/data/models/user/user_model.dart';
 
 class FirebaseRepository {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
   Future<UserCredential> signUp(String email, String password) async {
-    return await _auth.createUserWithEmailAndPassword(
+    return await auth.createUserWithEmailAndPassword(
         email: email, password: password);
   }
 
   Future<UserCredential> signIn(String email, String password) async {
-    return await _auth.signInWithEmailAndPassword(
+    return await auth.signInWithEmailAndPassword(
         email: email, password: password);
   }
 
   Future<void> signOut() async {
-    await _auth.signOut();
+    await auth.signOut();
   }
 
   Future<void> resetPassword(String email) async {
-    await _auth.sendPasswordResetEmail(email: email);
+    await auth.sendPasswordResetEmail(email: email);
   }
 
   Future<void> updateEmail(String email) async {
-    final user = _auth.currentUser;
+    final user = auth.currentUser;
     if (user != null) {
       await user.updateEmail(email);
     }
   }
 
   Future<void> updatePassword(String password) async {
-    final user = _auth.currentUser;
+    final user = auth.currentUser;
     if (user != null) {
       await user.updatePassword(password);
     }
   }
 
   Future<void> deleteAccount() async {
-    final user = _auth.currentUser;
+    final user = auth.currentUser;
     if (user != null) {
       await user.delete();
     }
   }
 
   Future<void> signInAnonymously() async {
-    await _auth.signInAnonymously();
+    await auth.signInAnonymously();
   }
 
   bool isSignedIn() {
-    return _auth.currentUser != null;
+    return auth.currentUser != null;
   }
 
-  bool get isAnonymous => _auth.currentUser!.isAnonymous;
+  bool get isAnonymous => auth.currentUser!.isAnonymous;
 
   User? getUser() {
-    return _auth.currentUser;
+    return auth.currentUser;
   }
 
   Future<void> addUser(String uid, UserModel userModel) async {
-    await _firestore.collection('users').doc(uid).set(userModel.toJson());
+    await firestore.collection('users').doc(uid).set(userModel.toJson());
   }
 
   Future<UserModel> getUserDoc(String uid) async {
-    final snapshot = await _firestore.collection('users').doc(uid).get();
+    final snapshot = await firestore.collection('users').doc(uid).get();
     return UserModel.fromJson(snapshot.data()!);
   }
 
   String? getAvatarUrl() {
-    return _auth.currentUser!.photoURL;
+    return auth.currentUser!.photoURL;
   }
 
   Future<void> setDisplayName(String name) async {
-    _auth.currentUser?.updateDisplayName(name);
-  }
-
-  Future<String> uploadImage(String path, String fileName) async {
-    final Reference reference = _storage.ref().child(path).child(fileName);
-    final UploadTask uploadTask = reference.putFile(File(fileName));
-    final TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
-    return taskSnapshot.ref.getDownloadURL();
+    auth.currentUser?.updateDisplayName(name);
   }
 
   Future<void> deleteImage(String url) async {
     final Reference reference = _storage.refFromURL(url);
     await reference.delete();
+  }
+
+  Future<dynamic> getDocument({
+    required DocumentReference document,
+    required Function convert,
+  }) async {
+    try {
+      await convert(document.get());
+    } on Exception {
+      rethrow;
+    }
+  }
+
+  Future<String> getImageUrl(String path) async {
+    return await _storage.refFromURL(path).getDownloadURL();
+  }
+
+  Future<String> uploadImageToFirebase({String? path, dynamic file}) async {
+    FirebaseStorage storage = FirebaseStorage.instance;
+    Reference ref = storage.ref().child(
+        '$path/${DateTime.now().millisecondsSinceEpoch.toString() + Random().nextInt(3000).toString()}');
+    try {
+      UploadTask uploadTask;
+      File newFile = File(file.path);
+      uploadTask = ref.putFile(newFile);
+      var link = await (await uploadTask).ref.getDownloadURL();
+      return link;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> uploadDataToFirebase({
+    String? collection,
+    String? document,
+    dynamic data,
+    String? array,
+  }) async {
+    CollectionReference collectionReference =
+        FirebaseFirestore.instance.collection(collection!);
+    DocumentReference documentReference = collectionReference.doc(document);
+    try {
+      await documentReference.update(
+        {
+          array!: FieldValue.arrayUnion(jsonDecode(data)),
+        },
+      );
+    } catch (e) {
+      rethrow;
+    }
   }
 }

@@ -6,9 +6,9 @@ part 'taxi_model.g.dart';
 @JsonSerializable()
 class TaxiModel {
   @JsonKey(name: 'taxi')
-  final List<TaxiItemModel>? items;
+  final List<TaxiItemModel> taxis;
 
-  const TaxiModel(this.items);
+  const TaxiModel(this.taxis);
 
   factory TaxiModel.fromJson(Map<String, dynamic> json) =>
       _$TaxiModelFromJson(json);

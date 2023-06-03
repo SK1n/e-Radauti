@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_drawer.dart';
 
 class AppScaffold extends StatelessWidget {
-  final Widget body;
+  final List<Widget> slivers;
   final PreferredSizeWidget? appBar;
   final String appBarTitle;
   const AppScaffold(
-      {super.key, required this.body, this.appBar, this.appBarTitle = ''});
+      {super.key, required this.slivers, this.appBar, this.appBarTitle = ''});
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +35,7 @@ class AppScaffold extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: CustomScrollView(
-            slivers: [
-              body,
-            ],
+            slivers: slivers,
           ),
         ),
       ),

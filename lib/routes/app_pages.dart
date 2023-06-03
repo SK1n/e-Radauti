@@ -3,7 +3,7 @@ import 'package:flutterapperadauti/modules/account/views/account_page.dart';
 import 'package:flutterapperadauti/modules/account/views/update_name_page.dart';
 import 'package:flutterapperadauti/modules/account/views/update_password_page.dart';
 import 'package:flutterapperadauti/modules/air_quality/bindings/air_quality_bindings.dart';
-import 'package:flutterapperadauti/modules/announcements/bindings/get_e_radauti_data_bindings.dart';
+import 'package:flutterapperadauti/modules/announcements/bindings/announcements_binding.dart';
 import 'package:flutterapperadauti/modules/announcements/views/local_announcements_page.dart';
 import 'package:flutterapperadauti/modules/create_account/views/create_account_page.dart';
 import 'package:flutterapperadauti/modules/events/bindings/events_bindings.dart';
@@ -23,9 +23,8 @@ import 'package:flutterapperadauti/modules/home/bindings/home_page_binding.dart'
 import 'package:flutterapperadauti/modules/home/views/menu_screen.dart';
 import 'package:flutterapperadauti/modules/onboard/bindings/onboard_bindings.dart';
 import 'package:flutterapperadauti/modules/onboard/views/permissions_page.dart';
-import 'package:flutterapperadauti/modules/report_a_problem/bindings/form_binding.dart';
+import 'package:flutterapperadauti/modules/report_a_problem/bindings/report_problem_binding.dart';
 import 'package:flutterapperadauti/modules/report_a_problem/views/report_problem_page.dart';
-import 'package:flutterapperadauti/modules/report_a_problem/bindings/notice_problem_map_bindings.dart';
 import 'package:flutterapperadauti/modules/onboard/views/onboard_page.dart';
 import 'package:flutterapperadauti/modules/screens/views/about_us_page.dart';
 import 'package:flutterapperadauti/modules/screens/views/confidential_page.dart';
@@ -43,7 +42,7 @@ import 'package:flutterapperadauti/modules/transport/views/taxi_page.dart';
 import 'package:flutterapperadauti/modules/transport/views/train_page.dart';
 import 'package:flutterapperadauti/modules/transport/views/timeline_route.dart';
 import 'package:flutterapperadauti/modules/usefull_numbers/views/local_authorities_page.dart';
-import 'package:flutterapperadauti/modules/usefull_numbers/views/local_disturbance_page.dart';
+import 'package:flutterapperadauti/modules/usefull_numbers/views/local_upsets_page.dart';
 import 'package:flutterapperadauti/modules/usefull_numbers/views/usefull_numbers_page.dart';
 import 'package:flutterapperadauti/modules/usefull_numbers/views/public_institutions_page.dart';
 import 'package:flutterapperadauti/modules/volunteer/views/volunteer_page.dart';
@@ -165,9 +164,7 @@ class AppPages {
             name: _Paths.reportProblem,
             page: () => const ReportProblemPage(),
             bindings: [
-              NoticeProblemFormBindings(),
-              NoticeProblemMapBinding(),
-              AccountBinding()
+              ReportProblemBinding(),
             ],
             preventDuplicates: true,
           ),
@@ -187,28 +184,26 @@ class AppPages {
             ],
           ),
           GetPage(
-              name: _Paths.announcements,
-              page: () => const AnnouncementsPage(),
-              children: [
-                GetPage(
-                  name: _Paths.jobs,
-                  page: () => const JobPage(),
-                  bindings: [
-                    GetERadautiDataBinding(),
-                  ],
-                ),
-                GetPage(
-                  name: _Paths.localAnnouncements,
-                  page: () => const LocalAnnouncementsPage(),
-                ),
-                GetPage(
-                  name: _Paths.furniture,
-                  page: () => const FurniturePage(),
-                  bindings: [
-                    GetERadautiDataBinding(),
-                  ],
-                ),
-              ]),
+            name: _Paths.announcements,
+            page: () => const AnnouncementsPage(),
+            bindings: [
+              AnnouncementsBinding(),
+            ],
+            children: [
+              GetPage(
+                name: _Paths.jobs,
+                page: () => const JobPage(),
+              ),
+              GetPage(
+                name: _Paths.localAnnouncements,
+                page: () => const LocalAnnouncementsPage(),
+              ),
+              GetPage(
+                name: _Paths.furniture,
+                page: () => const FurniturePage(),
+              ),
+            ],
+          ),
           GetPage(
               name: _Paths.townHall,
               page: () => const TownHallMain(),

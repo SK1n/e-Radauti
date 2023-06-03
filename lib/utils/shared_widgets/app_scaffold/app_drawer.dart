@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutterapperadauti/repositories/firebase_repository.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_drawer_controller.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/avatar_image_widget.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +10,7 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AppDrawerController());
+    final FirebaseRepository fireRepo = FirebaseRepository();
     return GFDrawer(
       child: SafeArea(
         child: Column(
@@ -63,14 +63,8 @@ class AppDrawer extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 GFListTile(
-                  avatar: AvatarImageWidget(
-                    fit: BoxFit.contain,
-                    link: controller.getAvatarUrl(),
-                    width: 50,
-                    height: 50,
-                  ),
-                  title: Text(controller.getUser()?.displayName ?? ''),
-                  subTitle: Text(controller.getUser()?.email ?? ''),
+                  title: Text(fireRepo.getUser()?.displayName ?? ''),
+                  subTitle: Text(fireRepo.getUser()?.email ?? ''),
                 ),
                 ListTile(
                   title: Text('my-account'.tr),
@@ -83,7 +77,21 @@ class AppDrawer extends StatelessWidget {
                 ListTile(
                   title: Text('sign-out'.tr),
                   onTap: () async {
-                    await controller.signOut();
+                    try {
+                      await fireRepo.signOut();
+                      Get.offAllNamed(Routes.logIn);
+                      const FlutterSecureStorage storage =
+                          FlutterSecureStorage();
+                      storage.delete(key: 'user_email');
+                      storage.delete(key: 'user_password');
+                    } catch (e) {
+                      Get.defaultDialog(
+                        title: 'error'.tr,
+                        middleText: 'please-retry'.tr,
+                        textConfirm: 'Ok',
+                        onConfirm: () => Get.back(),
+                      );
+                    }
                   },
                 ),
               ],
