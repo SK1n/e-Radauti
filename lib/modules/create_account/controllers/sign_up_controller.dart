@@ -28,18 +28,8 @@ class SignUpController extends BaseController {
       fireRepo.setDisplayName(_name);
       await fireRepo.addUser(
         authCredential.user!.uid,
-        UserModel(
-          _email,
-          _name,
-          "",
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-        ),
+        UserModel(_email, _name, "", false, false, false, false, false, false,
+            false, []),
       );
       Get.back();
     } on FirebaseAuthException catch (e) {

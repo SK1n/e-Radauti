@@ -1,3 +1,4 @@
+import 'package:flutterapperadauti/data/models/notice_problem_map/markers_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_model.g.dart';
@@ -24,6 +25,8 @@ class UserModel {
   final bool accessAnnouncements;
   @JsonKey(name: "admin", defaultValue: false)
   final bool admin;
+  @JsonKey(name: 'reports', defaultValue: [])
+  final List<MarkersModel> reports;
 
   const UserModel(
     this.email,
@@ -36,6 +39,7 @@ class UserModel {
     this.accessNotifications,
     this.accessAnnouncements,
     this.admin,
+    this.reports,
   );
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

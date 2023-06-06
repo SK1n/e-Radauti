@@ -27,7 +27,12 @@ class DarkModeSwitchController extends BaseController {
 
   @override
   void onInit() {
-    getThemeStatus();
     super.onInit();
+  }
+
+  @override
+  void onReady() async {
+    super.onReady();
+    await getThemeStatus();
   }
 }

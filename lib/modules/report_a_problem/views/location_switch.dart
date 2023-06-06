@@ -28,17 +28,17 @@ class LocationSwitch extends StatelessWidget {
           secondary: const Icon(FontAwesome.pin),
           title: Text('add-location'.tr),
           isThreeLine: false,
-          value: noticeProblemController.useLocation.value,
+          value: false,
           onChanged: (value) {
-            if (value) {
-              locationController.checkServiceEnabled();
-              locationController.checkPermissionGranted().then(
-                    (value) =>
-                        noticeProblemController.useLocation.value = value,
-                  );
-            } else {
-              noticeProblemController.useLocation.value = false;
-            }
+            // if (value) {
+            //   locationController.checkServiceEnabled();
+            //   locationController.checkPermissionGranted().then(
+            //         (value) =>
+            //             noticeProblemController.useLocation.value = value,
+            //       );
+            // } else {
+            //   noticeProblemController.useLocation.value = false;
+            // }
           },
         ),
       ),

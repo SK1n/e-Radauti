@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/data/models/user/user_model.dart';
 
 class FirebaseRepository {
@@ -65,6 +66,10 @@ class FirebaseRepository {
     return auth.currentUser;
   }
 
+  String getUID() {
+    return getUser()!.uid;
+  }
+
   Future<void> addUser(String uid, UserModel userModel) async {
     await firestore.collection('users').doc(uid).set(userModel.toJson());
   }
@@ -92,7 +97,8 @@ class FirebaseRepository {
     required Function convert,
   }) async {
     try {
-      await convert(document.get());
+      DocumentSnapshot ds = await document.get();
+      return convert(ds.data());
     } on Exception {
       rethrow;
     }

@@ -1,9 +1,11 @@
-import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
-import 'package:flutterapperadauti/modules/events/controllers/events_controller.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/futuristic.dart';
-import 'package:flutterapperadauti/utils/helpers/get_image_url.dart';
+import 'package:flutterapperadauti/data/models/events/events_item_model.dart';
+import 'package:flutterapperadauti/modules/events/controllers/new_events_controller.dart';
+import 'package:flutterapperadauti/routes/app_pages.dart';
+import 'package:flutterapperadauti/utils/const.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
 import 'package:get/get.dart';
-import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -23,8 +25,8 @@ extension TimestampToDate on num {
   }
 }
 
-class EventsItemWidget extends StatelessWidget {
-  final EventsListModel data;
+class EventsItemWidget extends GetView<NewEventsController> {
+  final EventsItemModel data;
   const EventsItemWidget(
     this.data, {
     super.key,
@@ -32,52 +34,101 @@ class EventsItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
-    // return Futuristic(
-    // initialBuilder: (_, __) => Container(),
-    // futureBuilder: () => data.url,
-    // busyBuilder: (_) => const LoadingWidget(),
-    // dataBuilder: (_, snapshot) {
-    // DateTime currentTime = DateTime.now();
-    // DateTime eventStartTime = DateTime.fromMillisecondsSinceEpoch(
-    //     (data!.start! * 1000).toInt());
-    // DateTime eventEndTime =
-    //     DateTime.fromMillisecondsSinceEpoch((data!.end! * 1000).toInt());
-    // bool isEventActive = currentTime.isAfter(eventStartTime) &&
-    //     currentTime.isBefore(eventEndTime);
-    //     return Container();
-    //   return ExpandableNotifier(
-    //     child: ScrollOnExpand(
-    //       child: ExpandablePanel(
-    //         theme: const ExpandableThemeData(
-    //             animationDuration: Duration(seconds: 1)),
-    //         collapsed: EventsCollapsedWidget(
-    //           imageUrl: snapshot as String,
-    //           headline: data!.headline,
-    //           timestamp: eventsNewController.convertTimestampToDate(
-    //             data!.start!.toInt(),
-    //           ),
-    //           isActive: isEventActive,
-    //         ),
-    //         expanded: EventsExpandedWidget(
-    //           description: data!.description,
-    //           location: data!.location,
-    //           street: data!.street,
-    //           imageUrl: snapshot,
-    //           headline: data!.headline,
-    //           host: data!.host,
-    //           start: eventsNewController
-    //               .convertTimestampToDate(data!.start!.toInt()),
-    //           end: eventsNewController.convertTimestampToDate(
-    //             data!.end!.toInt(),
-    //           ),
-    //           isActive: isEventActive,
-    //         ),
-    //       ),
-    //     ),
-
-    // );
-    // },
-    // );
+    return Padding(
+      padding: const EdgeInsets.only(top: topMargin),
+      child: InkWell(
+        onTap: () => Get.toNamed(
+          Routes.eventsDetails,
+          arguments: [
+            data,
+            data.url,
+          ],
+        ),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(color: Colors.black12, width: 1),
+            borderRadius: BorderRadius.circular(30),
+          ),
+          color: Colors.white,
+          child: SizedBox(
+            width: Get.width,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(
+                  height: 200,
+                  child: ImageWidget(
+                    link: data.url,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(18),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        data.headline,
+                        style: GoogleFonts.inter(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            FontAwesome5.calendar_alt,
+                            size: 14,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: leftMargin),
+                            child: Text(
+                              data.start.getDate,
+                              style: const TextStyle(fontSize: 14),
+                            ),
+                          )
+                        ],
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            FontAwesome5.clock,
+                            size: 14,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: leftMargin),
+                            child: Text(
+                              data.start.getHour,
+                              style: const TextStyle(fontSize: 14),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10, bottom: 10),
+                  child: FilledButton(
+                    onPressed: () => Get.toNamed(
+                      Routes.eventsDetails,
+                      arguments: [
+                        data,
+                        data.url,
+                      ],
+                    ),
+                    child: Text(
+                      'see-details'.tr,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

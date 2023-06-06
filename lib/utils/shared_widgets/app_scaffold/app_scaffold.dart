@@ -1,41 +1,62 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_drawer.dart';
 
 class AppScaffold extends StatelessWidget {
-  final List<Widget> slivers;
-  final PreferredSizeWidget? appBar;
+  const AppScaffold({
+    super.key,
+    required this.appBarTitle,
+    required this.slivers,
+  });
   final String appBarTitle;
-  const AppScaffold(
-      {super.key, required this.slivers, this.appBar, this.appBarTitle = ''});
-
+  final List<Widget> slivers;
   @override
   Widget build(BuildContext context) {
-    final scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Colors.white,
       endDrawer: const AppDrawer(),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text(
-          appBarTitle,
-          style: const TextStyle(color: Colors.blue),
-        ),
-        automaticallyImplyLeading: true,
-        foregroundColor: Colors.black,
-        actions: [
-          InkWell(
-            child: const Icon(Icons.menu),
-            onTap: () => scaffoldKey.currentState!.openEndDrawer(),
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: CustomScrollView(
-            slivers: slivers,
+      body: NestedScrollView(
+        headerSliverBuilder: (
+          BuildContext context,
+          bool innerBoxIsScrolled,
+        ) {
+          return <Widget>[
+            SliverOverlapAbsorber(
+              handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+              sliver: SliverAppBar(
+                title: Text(appBarTitle),
+                centerTitle: true,
+                pinned: true,
+                //floating: true,
+                //expandedHeight: 150.0,
+                forceElevated: innerBoxIsScrolled,
+              ),
+            ),
+          ];
+        },
+        body: SafeArea(
+          top: false,
+          bottom: false,
+          child: Builder(
+            builder: (context) {
+              return CustomScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                slivers: [
+                  SliverOverlapInjector(
+                    handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
+                      context,
+                    ),
+                  ),
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) => Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: slivers[index]),
+                      childCount: slivers.length,
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ),

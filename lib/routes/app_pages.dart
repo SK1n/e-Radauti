@@ -1,3 +1,4 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutterapperadauti/bindings/account_bindings.dart';
 import 'package:flutterapperadauti/modules/account/views/account_page.dart';
 import 'package:flutterapperadauti/modules/account/views/update_name_page.dart';
@@ -14,6 +15,7 @@ import 'package:flutterapperadauti/modules/announcements/views/furniture_page.da
 import 'package:flutterapperadauti/modules/announcements/views/job_page.dart';
 import 'package:flutterapperadauti/modules/events/views/events_details.dart';
 import 'package:flutterapperadauti/modules/events/views/events_page.dart';
+import 'package:flutterapperadauti/modules/report_a_problem/views/report_preview.dart';
 import 'package:flutterapperadauti/modules/reset_password/bindings/reset_password_bindings.dart';
 import 'package:flutterapperadauti/modules/create_account/bindings/sign_up_bindings.dart';
 import 'package:flutterapperadauti/modules/login/bindings/login_binding.dart';
@@ -166,6 +168,12 @@ class AppPages {
             bindings: [
               ReportProblemBinding(),
             ],
+            children: [
+              GetPage(
+                name: _Paths.previewReport,
+                page: () => const ReportPreview(),
+              )
+            ],
             preventDuplicates: true,
           ),
           GetPage(
@@ -176,11 +184,9 @@ class AppPages {
             ],
             children: [
               GetPage(
-                  name: _Paths.eventsDetails,
-                  page: () => const EventsDetails(),
-                  bindings: [
-                    EventsBindings(),
-                  ]),
+                name: _Paths.eventsDetails,
+                page: () => const EventsDetails(),
+              ),
             ],
           ),
           GetPage(

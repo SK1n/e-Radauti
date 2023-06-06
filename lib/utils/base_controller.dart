@@ -1,7 +1,7 @@
 import 'package:flutterapperadauti/repositories/firebase_repository.dart';
 import 'package:get/get.dart';
 
-abstract class BaseController extends GetxController {
+abstract class BaseController<T> extends StateController<T> {
   final FirebaseRepository fireRepo = FirebaseRepository();
   final _isLoading = false.obs;
   get isLoading => _isLoading.value;

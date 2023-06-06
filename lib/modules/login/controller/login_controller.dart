@@ -54,15 +54,4 @@ class LoginController extends BaseController {
       Get.offAllNamed(Routes.home);
     } finally {}
   }
-
-  @override
-  void onReady() async {
-    super.onReady();
-    const storage = FlutterSecureStorage();
-    String? email = await storage.read(key: 'user_email');
-    String? password = await storage.read(key: 'user_password');
-    if (email != null && password != null) {
-      Get.offAllNamed(Routes.home);
-    }
-  }
 }

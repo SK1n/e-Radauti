@@ -371,4 +371,11 @@ Map<String, String> enUS = {
   'favorites-events': 'Your events',
   'see-details': 'More details',
   'useful-information': 'Useful information',
+  'form': 'Form',
+  'report-map': 'Reports map',
+  'my-reports': 'My reports',
+  'empty-reports': 'We didn\'t find any report. Please try again later.',
+  'empty-events': 'We couldn\'t find any events. Please try again later.',
+  'empty-favorites-events': 'You don\'t have any events saved.',
+  'report-date': 'Report date',
 };

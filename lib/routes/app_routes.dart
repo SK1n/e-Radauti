@@ -41,6 +41,7 @@ abstract class Routes {
   static const updatePassword = account + _Paths.updatePassword;
   static const updateName = account + _Paths.updateName;
   static const permissionsPage = onboard + _Paths.permissionsPage;
+  static const previewReport = reportProblem + _Paths.previewReport;
 }
 
 abstract class _Paths {
@@ -83,4 +84,5 @@ abstract class _Paths {
   static const updateName = "/update_name";
   static const permissionsPage = "/permissions_page";
   static const localAnnouncements = '/localAnnouncements';
+  static const previewReport = '/preview_report';
 }

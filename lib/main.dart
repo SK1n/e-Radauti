@@ -3,7 +3,9 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutterapperadauti/bindings/app_bindings.dart';
+import 'package:flutterapperadauti/controllers/dao_controller.dart';
 import 'package:flutterapperadauti/controllers/dark_mode_switch_controller.dart';
 import 'package:flutterapperadauti/localization/languages.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
@@ -77,7 +79,7 @@ Future<void> main() async {
   await setupFlutterNotifications();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
- await messaging.requestPermission(
+  await messaging.requestPermission(
     alert: true,
     announcement: false,
     badge: true,
@@ -87,14 +89,18 @@ Future<void> main() async {
     sound: true,
   );
 
-  final DarkModeSwitchController darkModeSwitchController =
-      Get.put(DarkModeSwitchController());
+  // final DarkModeSwitchController darkModeSwitchController =
+  //     Get.put(DarkModeSwitchController());
 
-  darkModeSwitchController.getThemeStatus();
+  // darkModeSwitchController.getThemeStatus();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark,
   ));
+  FlutterSecureStorage storage = const FlutterSecureStorage();
+  String? email = await storage.read(key: 'user_email');
+  // ignore: unused_local_variable
+  DaoController daoController = Get.put(DaoController());
   runApp(
     GetMaterialApp(
       title: 'e-Rădăuți',
@@ -112,9 +118,9 @@ Future<void> main() async {
       defaultTransition: Transition.cupertino,
       fallbackLocale: const Locale('en', 'US'),
       locale: const Locale('ro', "RO"),
-      initialRoute: Routes.logIn,
-      initialBinding: AppBindings(),
+      initialRoute: email == null ? Routes.logIn : Routes.home,
       translations: Languages(),
+      theme: ThemeData(useMaterial3: true),
       themeMode: ThemeMode.light,
     ),
   );

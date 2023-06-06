@@ -1,6 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/data/models/events/events_list_model.dart';
-import 'package:flutterapperadauti/modules/events/controllers/events_controller.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutterapperadauti/controllers/dao_controller.dart';
+import 'package:flutterapperadauti/dao/app_database.dart';
+import 'package:flutterapperadauti/data/models/events/events_item_model.dart';
+import 'package:flutterapperadauti/modules/events/controllers/favorites_events_controller.dart';
+import 'package:flutterapperadauti/modules/events/controllers/new_events_controller.dart';
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:flutterapperadauti/utils/helpers/launch_url_helper.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/custom_page_scaffold.dart';
@@ -23,14 +30,34 @@ extension Timestamp on num {
   }
 }
 
-class EventsDetails extends StatelessWidget with UrlLauncher {
+class EventsDetails extends StatefulWidget with UrlLauncher {
   const EventsDetails({super.key});
 
   @override
+  State<EventsDetails> createState() => _EventsDetailsState();
+}
+
+class _EventsDetailsState extends State<EventsDetails> with UrlLauncher {
+  final DaoController daoController = Get.find();
+  final EventsItemModel data = Get.arguments[0];
+  bool eventExists = false;
+  @override
+  void initState() {
+    checkIfEventIsFavorite();
+    super.initState();
+  }
+
+  Future<void> checkIfEventIsFavorite() async {
+    if (await daoController.eventExists(data, data.id!) ?? false) {
+      eventExists = true;
+      setState(() {});
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final EventsListModel data = Get.arguments[0];
-    final String imageLink = Get.arguments[1];
-    final EventsController eventsController = Get.find();
+    final DaoController daoController = Get.find();
+    final FavoritesEventsController controller = Get.find();
     return CustomPageScaffold(
       slivers: [
         SliverToBoxAdapter(
@@ -42,7 +69,7 @@ class EventsDetails extends StatelessWidget with UrlLauncher {
                 SizedBox(
                   height: 300,
                   child: ImageWidget(
-                    link: imageLink,
+                    link: data.url,
                     fit: BoxFit.fitWidth,
                   ),
                 ),
@@ -108,46 +135,37 @@ class EventsDetails extends StatelessWidget with UrlLauncher {
                           ],
                         ),
                       ),
-                      Futuristic(
-                        initialBuilder: (_, __) => Container(),
-                        futureBuilder: () =>
-                            eventsController.eventIsFavorite(data),
-                        dataBuilder: (context, snapshot) {
-                          Logger logger = Logger();
-                          eventsController.eventExists = snapshot as bool;
-                          logger.d(data.toJson());
-                          logger.d(snapshot);
-                          return Obx(
-                            () => Padding(
-                              padding: const EdgeInsets.only(top: topMargin),
-                              child: Visibility(
-                                replacement: FilledButton.icon(
-                                  icon: const Icon(
-                                    FontAwesome5.star,
-                                    size: 14,
-                                  ),
-                                  label: Text('remove-event'.tr),
-                                  onPressed: () async {
-                                    await eventsController.removeEvent(data);
-                                    eventsController.eventExists = false;
-                                  },
-                                ),
-                                visible: !eventsController.eventExists,
-                                child: FilledButton.icon(
-                                  icon: const Icon(
-                                    FontAwesome5.star,
-                                    size: 14,
-                                  ),
-                                  label: Text('save-event'.tr),
-                                  onPressed: () async {
-                                    await eventsController.insertEvent(data);
-                                    eventsController.eventExists = true;
-                                  },
-                                ),
-                              ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: topMargin),
+                        child: Visibility(
+                          replacement: FilledButton.icon(
+                            icon: const Icon(
+                              FontAwesome5.star,
+                              size: 14,
                             ),
-                          );
-                        },
+                            label: Text('remove-event'.tr),
+                            onPressed: () async {
+                              await daoController.remove(data);
+                              eventExists = false;
+                              controller.getFavoritesEvents();
+                              setState(() {});
+                            },
+                          ),
+                          visible: !eventExists,
+                          child: FilledButton.icon(
+                            icon: const Icon(
+                              FontAwesome5.star,
+                              size: 14,
+                            ),
+                            label: Text('save-event'.tr),
+                            onPressed: () async {
+                              await daoController.insert(data);
+                              eventExists = true;
+                              controller.getFavoritesEvents();
+                              setState(() {});
+                            },
+                          ),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: topMargin),

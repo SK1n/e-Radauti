@@ -330,4 +330,11 @@ Map<String, String> roRO = {
   'favorites-events': 'Evenimentele tale',
   'see-details': 'Vezi detalii',
   'useful-information': 'Informații utile',
+  'form': 'Formular',
+  'report-map': 'Hartă sesizari',
+  'my-reports': 'Sesizările tale',
+  'empty-reports': 'Nu am găsit nici o sesizare.',
+  'empty-events': 'Nu am găsit nici un eveniment. Vă rugă să reveniti.',
+  'empty-favorites-events': 'Nu ați salvat nici un eveniment.',
+  'report-date': 'Data sesizării',
 };
