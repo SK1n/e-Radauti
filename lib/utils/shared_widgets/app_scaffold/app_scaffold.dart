@@ -26,8 +26,8 @@ class AppScaffold extends StatelessWidget {
                 title: Text(appBarTitle),
                 centerTitle: true,
                 pinned: true,
-                //floating: true,
-                //expandedHeight: 150.0,
+                floating: true,
+                expandedHeight: 150.0,
                 forceElevated: innerBoxIsScrolled,
               ),
             ),
@@ -39,7 +39,7 @@ class AppScaffold extends StatelessWidget {
           child: Builder(
             builder: (context) {
               return CustomScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
+                //physics: const AlwaysScrollableScrollPhysics(),
                 slivers: [
                   SliverOverlapInjector(
                     handle: NestedScrollView.sliverOverlapAbsorberHandleFor(

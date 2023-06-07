@@ -4,38 +4,42 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutterapperadauti/bindings/app_bindings.dart';
 import 'package:flutterapperadauti/controllers/dao_controller.dart';
-import 'package:flutterapperadauti/controllers/dark_mode_switch_controller.dart';
-import 'package:flutterapperadauti/localization/languages.dart';
-import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:injectable/injectable.dart';
 
-@pragma('vm:entry-point')
+import 'app/i18n/strings.g.dart';
+import 'app/injection.dart';
+import 'app/router/auto_router.dart';
+
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in the background, such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
   await Firebase.initializeApp();
-  await setupFlutterNotifications();
+  print('Handling a background message ${message.messageId}');
 }
 
-late AndroidNotificationChannel channel;
+AndroidNotificationChannel channel = const AndroidNotificationChannel(
+  'high_importance_channel', // id
+  'High Importance Notifications', // title
+  description:
+      'This channel is used for important notifications.', // description
+  importance: Importance.high,
+);
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
-bool isFlutterLocalNotificationsInitialized = false;
-Future<void> setupFlutterNotifications() async {
-  if (isFlutterLocalNotificationsInitialized) {
-    return;
-  }
-  channel = const AndroidNotificationChannel(
-    'high_importance_channel', // id
-    'High Importance Notifications', // title
-    description:
-        'This channel is used for important notifications.', // description
-    importance: Importance.high,
-  );
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-  flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
@@ -47,52 +51,7 @@ Future<void> setupFlutterNotifications() async {
     badge: true,
     sound: true,
   );
-  isFlutterLocalNotificationsInitialized = true;
-}
 
-void showFlutterNotification(RemoteMessage message) {
-  RemoteNotification? notification = message.notification;
-  AndroidNotification? android = message.notification?.android;
-  if (notification != null && android != null) {
-    flutterLocalNotificationsPlugin.show(
-      notification.hashCode,
-      notification.title,
-      notification.body,
-      NotificationDetails(
-        android: AndroidNotificationDetails(
-          channel.id,
-          channel.name,
-          channelDescription: channel.description,
-          icon: 'app_logo_final',
-        ),
-      ),
-    );
-  }
-}
-
-late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
-
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  await setupFlutterNotifications();
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
-
-  await messaging.requestPermission(
-    alert: true,
-    announcement: false,
-    badge: true,
-    carPlay: false,
-    criticalAlert: false,
-    provisional: false,
-    sound: true,
-  );
-
-  // final DarkModeSwitchController darkModeSwitchController =
-  //     Get.put(DarkModeSwitchController());
-
-  // darkModeSwitchController.getThemeStatus();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark,
@@ -101,27 +60,35 @@ Future<void> main() async {
   String? email = await storage.read(key: 'user_email');
   // ignore: unused_local_variable
   DaoController daoController = Get.put(DaoController());
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await configureDependencies(Environment.dev);
+  final appRouter = AppRouter();
   runApp(
-    GetMaterialApp(
-      title: 'e-Rădăuți',
-      debugShowCheckedModeBanner: true,
-      getPages: AppPages.routes,
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('ro', 'RO'),
-      ],
-      defaultTransition: Transition.cupertino,
-      fallbackLocale: const Locale('en', 'US'),
-      locale: const Locale('ro', "RO"),
-      initialRoute: email == null ? Routes.logIn : Routes.home,
-      translations: Languages(),
-      theme: ThemeData(useMaterial3: true),
-      themeMode: ThemeMode.light,
+    TranslationProvider(
+      child: MaterialApp.router(
+        title: 'e-Rădăuți',
+        debugShowCheckedModeBanner: true,
+        //getPages: AppPages.routes,
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        routerConfig: appRouter.config(),
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale('ro', 'RO'),
+        ],
+        //defaultTransition: Transition.cupertino,
+        // fallbackLocale: const Locale('en', 'US'),
+        locale: const Locale('ro', "RO"),
+        //initialRoute: email == null ? Routes.logIn : Routes.home,
+        //translations: Languages(),
+        theme: ThemeData(useMaterial3: true),
+        themeMode: ThemeMode.light,
+      ),
     ),
   );
 }

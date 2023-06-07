@@ -25,10 +25,10 @@ class TextBetweenLines extends StatelessWidget {
               ),
             ),
           ),
-          Text(
-            text,
-            style: Get.textTheme.labelSmall,
-          ),
+          // Text(
+          //   text,
+          //   style: Get.textTheme.labelSmall,
+          // ),
           Expanded(
             child: SizedBox(
               height: 5.0,

@@ -1,0 +1,26 @@
+{
+    "singInScreen": {
+        "title": "Log in",
+        "emailTextField": "Adresă de email",
+        "passwordTextField": "Parolă",
+        "logInButton": "Log in",
+        "welcome": "Bine ai venit!",
+        "wrongEmailPassword": "Datele sunt invalide!",
+        "serverError": "Eroare de server\nIncercati din nou mai tarziu!"
+    },
+    "buttons": {
+        "log_in": "Log in"
+    },
+    "formats": {
+        "onlyNumbersField": "Acest câmp trebuie să conțină numai numere",
+        "wrongNumberFormat": "Format greșit al numărului de telefon\n   \nAcceptăm următoarele:\n   \n+40213-564-864\n   \n+40213.564.864\n   \n+40213 564 864\n   \n0213-564-864\n   \n0712456789",
+        "minimum50": "Această căsuță trebuie să conțină mai mult de 50 de caractere",
+        "emailFormat": "Format de e-mail greșit!\nde ex. aaa@bb.ccc",
+        "strongerPassword": "Parola este slabă. Vă rugăm să furnizați o parolă mai bună",
+        "requiredField": "Acest căsuță este obligatorie. Vă rugăm să o completați."
+    },
+    "locales(map)": {
+        "en": "Engleza",
+        "ro": "Romana"
+    }
+}
