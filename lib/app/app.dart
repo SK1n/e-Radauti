@@ -3,6 +3,7 @@ import 'package:firestore_repository/firestore_repository.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutterapperadauti/app/bloc/app_bloc.dart';
 import 'package:flutterapperadauti/app/router/routes.dart';
 import 'package:storage_repository/storage_repository.dart';
@@ -54,6 +55,15 @@ class AppView extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('ro', 'RO'),
+      ],
       home: FlowBuilder<AppStatus>(
         state: context.select((AppBloc bloc) => bloc.state.status),
         onGeneratePages: onGenerateAppViewPages,

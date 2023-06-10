@@ -10,6 +10,8 @@ environment:
 dependencies:
     flutter:
         sdk: flutter
+    flutter_localizations:
+        sdk: flutter
 
     # FIREBASE + NOTIFICATIONS
     cloud_firestore: ^4.8.0
@@ -66,7 +68,6 @@ dependencies:
     json_annotation: ^4.8.1
 
     # OTHER
-    flutter_localization: ^0.1.11
     timeline_tile: ^2.0.0
     url_launcher: ^6.0.20
     getwidget: ^3.0.1
@@ -86,6 +87,7 @@ dependencies:
     flow_builder: ^0.0.9
     slang_flutter: ^3.18.0
     formz: ^0.6.0
+ 
 
     # LOCAL
     authentication_repository:

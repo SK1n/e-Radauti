@@ -101,7 +101,6 @@ class FirestoreRepository {
   /// Throws and [FirestoreException] if an exception occurs
   Future<NewEventsModel> getDataFromDocumentArray({
     required String path,
-    required String array,
     required Function converter,
   }) async {
     try {
@@ -109,7 +108,6 @@ class FirestoreRepository {
       log.d(converter(snapshot.data()));
       return converter(snapshot.data());
     } on FirebaseException catch (e) {
-      log.e(e);
       throw FirestoreException(e.message ?? "Unknown error");
     } catch (_) {
       throw const FirestoreException();

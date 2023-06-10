@@ -4,6 +4,10 @@ sealed class EventsEvent {
   const EventsEvent();
 }
 
-final class GetEvents extends EventsEvent {
-  const GetEvents();
+final class GetNewEvents extends EventsEvent {
+  const GetNewEvents();
+}
+
+final class GetOldEvents extends EventsEvent {
+  const GetOldEvents();
 }

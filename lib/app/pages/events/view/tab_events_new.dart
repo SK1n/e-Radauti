@@ -1,10 +1,6 @@
-import 'dart:html';
-
 import 'package:firestore_repository/firestore_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/pages/events/bloc/events_bloc.dart';
-import 'package:flutterapperadauti/app/pages/events/bloc/events_bloc.dart';
 import 'package:flutterapperadauti/app/pages/events/bloc/events_bloc.dart';
 import 'package:flutterapperadauti/app/pages/events/view/item_event.dart';
 import 'package:flutterapperadauti/utils/loading_widget.dart';
@@ -20,7 +16,7 @@ class TabEventsNew extends StatelessWidget {
       create: (context) => EventsBloc(
         context.read<FirestoreRepository>(),
         context.read<StorageRepository>(),
-      )..add(const GetEvents()),
+      )..add(const GetNewEvents()),
       child: BlocListener<EventsBloc, EventsState>(
         listener: (context, state) {},
         child: BlocBuilder<EventsBloc, EventsState>(
@@ -39,7 +35,7 @@ class TabEventsNew extends StatelessWidget {
                 child: ErrWidget(
                   error: state.errorMessage ?? '',
                   retry: () async => context.read<EventsBloc>().add(
-                        const GetEvents(),
+                        const GetNewEvents(),
                       ),
                 ),
               );
