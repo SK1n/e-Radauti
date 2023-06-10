@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutterapperadauti/app/app.dart';
 import 'package:flutterapperadauti/app/bloc_observer.dart';
 import 'package:flutterapperadauti/app/i18n/strings.g.dart';
+import 'package:storage_repository/storage_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,6 +16,7 @@ Future<void> main() async {
 
   final authenticationRepository = AuthenticationRepository();
   final firestoreRepository = FirestoreRepository();
+  final storageRepository = StorageRepository();
   await authenticationRepository.user.first;
 
   runApp(
@@ -22,6 +24,7 @@ Future<void> main() async {
       child: App(
         authenticationRepository: authenticationRepository,
         firestoreRepository: firestoreRepository,
+        storageRepository: storageRepository,
       ),
     ),
   );
