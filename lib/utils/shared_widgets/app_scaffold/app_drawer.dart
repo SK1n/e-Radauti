@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/bloc/app_bloc.dart';
 import 'package:flutterapperadauti/repositories/firebase_repository.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:getwidget/getwidget.dart';
@@ -76,23 +77,8 @@ class AppDrawer extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text('sign-out'.tr),
-                  onTap: () async {
-                    try {
-                      await fireRepo.signOut();
-                      Get.offAllNamed(Routes.logIn);
-                      const FlutterSecureStorage storage =
-                          FlutterSecureStorage();
-                      storage.delete(key: 'user_email');
-                      storage.delete(key: 'user_password');
-                    } catch (e) {
-                      Get.defaultDialog(
-                        title: 'error'.tr,
-                        middleText: 'please-retry'.tr,
-                        textConfirm: 'Ok',
-                        onConfirm: () => Get.back(),
-                      );
-                    }
-                  },
+                  onTap: () =>
+                      context.read<AppBloc>().add(const AppLogoutRequested()),
                 ),
               ],
             ),

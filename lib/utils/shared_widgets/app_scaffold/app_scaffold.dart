@@ -7,13 +7,15 @@ class AppScaffold extends StatelessWidget {
     super.key,
     required this.appBarTitle,
     required this.slivers,
+    this.showDrawerButton = true,
   });
   final String appBarTitle;
   final List<Widget> slivers;
+  final bool showDrawerButton;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: const AppDrawer(),
+      endDrawer: showDrawerButton ? const AppDrawer() : null,
       body: NestedScrollView(
         headerSliverBuilder: (
           BuildContext context,
@@ -25,9 +27,6 @@ class AppScaffold extends StatelessWidget {
               sliver: SliverAppBar(
                 title: Text(appBarTitle),
                 centerTitle: true,
-                pinned: true,
-                floating: true,
-                expandedHeight: 150.0,
                 forceElevated: innerBoxIsScrolled,
               ),
             ),
