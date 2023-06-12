@@ -12,18 +12,14 @@ class ReportProblemFormTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => ReportProblemCubit()
-            ..usernameChanged(
-              context.read<AuthenticationRepository>().currentUser.name ?? "",
-            )
-            ..emailChanged(
-              context.read<AuthenticationRepository>().currentUser.email ?? "",
-            ),
+    return BlocProvider.value(
+      value: ReportProblemCubit()
+        ..usernameChanged(
+          context.read<AuthenticationRepository>().currentUser.name ?? "",
+        )
+        ..emailChanged(
+          context.read<AuthenticationRepository>().currentUser.email ?? "",
         ),
-      ],
       child: BlocListener<ReportProblemCubit, ReportProblemState>(
         listener: (context, state) {},
         child: SliverToBoxAdapter(
@@ -54,6 +50,7 @@ class _UsernameInput extends StatelessWidget {
           onChanged: (username) =>
               context.read<ReportProblemCubit>().usernameChanged(username),
           hint: t.reportProblem.usernameTextField,
+          initialValue: state.username.value,
           errorText: state.username.displayError != null
               ? t.formats.requiredField
               : null,
@@ -137,6 +134,7 @@ class _EmailInput extends StatelessWidget {
           onChanged: (email) =>
               context.read<ReportProblemCubit>().emailChanged(email),
           hint: t.reportProblem.emailTextField,
+          initialValue: state.email.value,
           errorText:
               state.email.displayError != null ? t.formats.emailFormat : null,
         );
@@ -152,6 +150,8 @@ class _SubjectInput extends StatelessWidget {
       buildWhen: (previous, current) => previous.subject != current.subject,
       builder: (context, state) {
         return BorderTextFormField(
+          initialValue:
+              context.read<AuthenticationRepository>().currentUser.username,
           onChanged: (subject) =>
               context.read<ReportProblemCubit>().subjectChanged(subject),
           hint: t.reportProblem.subjectTextField,
