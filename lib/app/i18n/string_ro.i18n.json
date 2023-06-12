@@ -21,14 +21,48 @@
         "confirmPassword": "Confirmă parola",
         "createAccountButton": "Creează-ți cont"
     },
-    "forgot_password": {
+    "forgotPassword": {
         "title": "Resetează parola",
         "emailTextField": "Adresă de email",
         "resetPasswordButton": "Resetează parola"
     },
     "events": {
         "title": "Evenimente",
-        "seeDetails": "Vezi detalii"
+        "seeDetails": "Vezi detalii",
+        "newEventsTabTitle": "Viitoare",
+        "oldEventsTabTitle": "Evenimente trecute",
+        "favoritesEventsTabTitle": "Evenimentele tale",
+        "addToFavorites": "Adaugă la favorite",
+        "removeFromFavorites": "Șterge de la favorite",
+        "startDate": "Data de început: $date",
+        "endDate": "Data de încheiere: $date"
+    },
+    "reportProblem": {
+        "radautiCityHall": "Primăria Radauti",
+        "comunalServices": "Servicii Comunale",
+        "acetRadauti": "ACET Rădăuți",
+        "suceavaCountyCouncil": "Consiliul Județean Suceava",
+        "suceavaEnvironmentalGuard": "Garda de Mediu Suceava",
+        "suceavaForestGuard": "Garda Forestieră Suceava",
+        "dspSuceava": "DSP Suceava",
+        "ocolulSilvicMarginea": "Ocolul Silvic Marginea",
+        "radautiulCivicAssociation": "Asociația Rădăuțiul Civic",
+        "institutionTextField": "Instituţie",
+        "usernameTextField": "Numele și prenumele",
+        "categoryTextField": "Categorie",
+        "emailTextField": "Adresă de email",
+        "subjectTextField": "Subiect",
+        "descriptionTextField": "Descriere",
+        "phoneNumber": "Număr de telefon",
+        "infrastructure": "Infrastructură",
+        "utilitiesProblem": "Probleme cu utilitățile",
+        "uncollectedGarbage": "Gunoi neridicat",
+        "infrastructureStreets": "Infrastructură (străzi, trotuare)",
+        "illegalConstructions": "Construcții ilegale",
+        "airQualityPollution": "Calitatea aerului și poluarea",
+        "safety": "Siguranță",
+        "other": "Other",
+        "submitButton": "Trimite"
     },
     "buttons": {
         "log_in": "Log in"

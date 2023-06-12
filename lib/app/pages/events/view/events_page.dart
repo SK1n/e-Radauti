@@ -16,15 +16,15 @@ class EventsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': 'new-events',
+        'text': t.events.newEventsTabTitle,
         'widget': const TabEventsNew(),
       },
       {
-        'text': 'old-events',
+        'text': t.events.oldEventsTabTitle,
         'widget': const TabEventsOld(),
       },
       {
-        'text': 'favorites-events',
+        'text': t.events.favoritesEventsTabTitle,
         'widget': const TabEventsFavorites(),
       }
     ];

@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 
-class BorderTextFormField extends StatelessWidget {
+class BorderTextDropDown extends StatelessWidget {
   final String hint;
-  final Function(String value) onChanged;
-  final String? initialValue;
   final String? errorText;
-  final TextInputType? keyboardType;
-  final bool? obscureText;
-  const BorderTextFormField({
+  final Function(String? value) onChanged;
+  final Map<String, String> items;
+  const BorderTextDropDown({
     super.key,
     required this.hint,
     required this.onChanged,
-    this.obscureText,
-    this.keyboardType,
-    this.initialValue,
+    required this.items,
     this.errorText,
   });
 
@@ -31,17 +27,18 @@ class BorderTextFormField extends StatelessWidget {
               style: const TextStyle(fontSize: 14),
             ),
           ),
-          TextFormField(
-            initialValue: initialValue,
-            onChanged: onChanged,
-            keyboardType: keyboardType,
-            maxLines: 5,
-            minLines: 1,
-            obscureText: obscureText ?? false,
+          DropdownButtonFormField(
             decoration: InputDecoration(
               border: const OutlineInputBorder(),
               errorText: errorText,
             ),
+            items: items.entries
+                .map((entry) => DropdownMenuItem(
+                      value: entry.key,
+                      child: Text(entry.value),
+                    ))
+                .toList(),
+            onChanged: onChanged,
           )
         ],
       ),

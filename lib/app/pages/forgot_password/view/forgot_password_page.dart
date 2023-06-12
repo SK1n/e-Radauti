@@ -18,7 +18,7 @@ class ForgotPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBarTitle: t.forgot_password.title,
+      appBarTitle: t.forgotPassword.title,
       showDrawerButton: false,
       slivers: [
         BlocProvider(

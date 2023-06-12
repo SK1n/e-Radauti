@@ -21,14 +21,48 @@
         "confirmPassword": "Confirm password",
         "createAccountButton": "Create account"
     },
-    "forgot_password": {
+    "forgotPassword": {
         "title": "Reset password",
         "emailTextField": "Email address",
         "resetPasswordButton": "Reset password"
     },
     "events": {
         "title": "Events",
-        "seeDetails": "See details"
+        "seeDetails": "See details",
+        "newEventsTabTitle": "Soon",
+        "oldEventsTabTitle": "Past events",
+        "favoritesEventsTabTitle": "Your events",
+        "addToFavorites": "Add to favorites",
+        "removeFromFavorites": "Remove from favorites",
+        "startDate": "Start date: $date",
+        "endDate": "End date: $date"
+    },
+    "reportProblem": {
+        "radautiCityHall": "Radauti city hall",
+        "comunalServices": "Comunal services",
+        "acetRadauti": "ACET Radauti",
+        "suceavaCountyCouncil": "Suceava County Council",
+        "suceavaEnvironmentalGuard": "Suceava Environmental Guard",
+        "suceavaForestGuard": "Suceava Forest Guard",
+        "dspSuceava": "DSP Suceava",
+        "ocolulSilvicMarginea": "Ocolul Silvic Marginea",
+        "radautiulCivicAssociation": "Radautiul Civic Association",
+        "institutionTextField": "Institution",
+        "usernameTextField": "Name and surname",
+        "categoryTextField": "Category",
+        "emailTextField": "Email address",
+        "subjectTextField": "Subject",
+        "descriptionTextField": "Description",
+        "phoneNumber": "Phone number",
+        "infrastructure": "Infrastructure",
+        "utilitiesProblem": "Utilities problems",
+        "uncollectedGarbage": "Uncollected garbage",
+        "infrastructureStreets": "Infrastructure (streets)",
+        "illegalConstructions": "Illegal constructions",
+        "airQualityPollution": "Air quality and pollution",
+        "safety": "Safety",
+        "other": "Other",
+        "submitButton": "Send"
     },
     "buttons": {
         "log_in": "Log in"

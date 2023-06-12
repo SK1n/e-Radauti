@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/app/pages/events/view/events_page.dart';
+import 'package:flutterapperadauti/app/pages/report_problem/view/report_problem_page.dart';
 import 'package:flutterapperadauti/modules/home/views/big_menu_item.dart';
 import 'package:flutterapperadauti/modules/home/views/small_menu_item.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
@@ -26,7 +27,8 @@ class HomePage extends StatelessWidget {
               title: 'report-problem'.tr,
               image: 'assets/buttons/report.png',
               bckImg: 1,
-              onTap: () => Get.toNamed(Routes.reportProblem),
+              onTap: () =>
+                  Navigator.of(context).push(ReportProblemPage.route()),
             ),
             BigMenuItem(
               title: 'events'.tr,

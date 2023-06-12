@@ -3,7 +3,7 @@ import 'package:formz/formz.dart';
 /// Validation errors for the [Dropdown] [FormzInput].
 enum DropdownValidationError {
   /// Dropdown is empty error.
-  empty
+  invalid
 }
 
 /// {@template dropdown}
@@ -18,6 +18,6 @@ class Dropdown extends FormzInput<String, DropdownValidationError> {
 
   @override
   DropdownValidationError? validator(String? value) {
-    return value?.isNotEmpty == true ? null : DropdownValidationError.empty;
+    return value?.isNotEmpty == true ? null : DropdownValidationError.invalid;
   }
 }

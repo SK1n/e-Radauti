@@ -59,7 +59,7 @@ class _EmailInput extends StatelessWidget {
           onChanged: (email) =>
               context.read<ForgotPasswordCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
-          hint: t.forgot_password.emailTextField,
+          hint: t.forgotPassword.emailTextField,
           errorText:
               state.email.displayError != null ? t.formats.emailFormat : null,
         );
@@ -88,7 +88,7 @@ class _ResetPasswordButton extends StatelessWidget {
                           .read<ForgotPasswordCubit>()
                           .sendPasswordResetEmail()
                       : null,
-                  child: Text(t.forgot_password.resetPasswordButton),
+                  child: Text(t.forgotPassword.resetPasswordButton),
                 ),
               );
       },

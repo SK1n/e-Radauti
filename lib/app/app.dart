@@ -1,5 +1,6 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:firestore_repository/firestore_repository.dart';
+import 'package:floor_repository/floor_repository.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,14 +14,17 @@ class App extends StatelessWidget {
     required AuthenticationRepository authenticationRepository,
     required FirestoreRepository firestoreRepository,
     required StorageRepository storageRepository,
+    required FloorRepository floorRepository,
     super.key,
   })  : _authenticationRepository = authenticationRepository,
         _firestoreRepository = firestoreRepository,
-        _storageRepository = storageRepository;
+        _storageRepository = storageRepository,
+        _floorRepository = floorRepository;
 
   final AuthenticationRepository _authenticationRepository;
   final FirestoreRepository _firestoreRepository;
   final StorageRepository _storageRepository;
+  final FloorRepository _floorRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +38,9 @@ class App extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => _storageRepository,
+        ),
+        RepositoryProvider(
+          create: (context) => _floorRepository,
         ),
       ],
       child: BlocProvider(

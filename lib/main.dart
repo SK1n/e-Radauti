@@ -2,6 +2,7 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firestore_repository/firestore_repository.dart';
+import 'package:floor_repository/floor_repository.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutterapperadauti/app/app.dart';
 import 'package:flutterapperadauti/app/bloc_observer.dart';
@@ -17,6 +18,7 @@ Future<void> main() async {
   final authenticationRepository = AuthenticationRepository();
   final firestoreRepository = FirestoreRepository();
   final storageRepository = StorageRepository();
+  final floorRepository = FloorRepository();
   await authenticationRepository.user.first;
 
   runApp(
@@ -25,6 +27,7 @@ Future<void> main() async {
         authenticationRepository: authenticationRepository,
         firestoreRepository: firestoreRepository,
         storageRepository: storageRepository,
+        floorRepository: floorRepository,
       ),
     ),
   );

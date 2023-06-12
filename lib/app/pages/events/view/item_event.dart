@@ -36,94 +36,79 @@ class ItemEvent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: topMargin),
-      child: InkWell(
-        onTap: () => Get.toNamed(
-          Routes.eventsDetails,
-          arguments: [
-            data,
-            data.url,
-          ],
+      child: Card(
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(color: Colors.black12, width: 1),
+          borderRadius: BorderRadius.circular(30),
         ),
-        child: Card(
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(color: Colors.black12, width: 1),
-            borderRadius: BorderRadius.circular(30),
-          ),
-          color: Colors.white,
-          child: SizedBox(
-            width: Get.width,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                SizedBox(
-                  height: 200,
-                  child: ImageWidget(
-                    link: data.url,
-                    fit: BoxFit.fitWidth,
-                  ),
+        color: Colors.white,
+        child: SizedBox(
+          width: Get.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              SizedBox(
+                height: 200,
+                child: ImageWidget(
+                  link: data.url,
+                  fit: BoxFit.fitWidth,
                 ),
-                Container(
-                  margin: const EdgeInsets.all(18),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        data.headline,
-                        style: GoogleFonts.inter(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
+              ),
+              Container(
+                margin: const EdgeInsets.all(18),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      data.headline,
+                      style: GoogleFonts.inter(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          FontAwesome5.calendar_alt,
+                          size: 14,
                         ),
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            FontAwesome5.calendar_alt,
-                            size: 14,
+                        Padding(
+                          padding: const EdgeInsets.only(left: leftMargin),
+                          child: Text(
+                            data.start.getDate,
+                            style: const TextStyle(fontSize: 14),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: leftMargin),
-                            child: Text(
-                              data.start.getDate,
-                              style: const TextStyle(fontSize: 14),
-                            ),
-                          )
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            FontAwesome5.clock,
-                            size: 14,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: leftMargin),
-                            child: Text(
-                              data.start.getHour,
-                              style: const TextStyle(fontSize: 14),
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 10, bottom: 10),
-                  child: FilledButton(
-                    onPressed: () => Get.toNamed(
-                      Routes.eventsDetails,
-                      arguments: [
-                        data,
-                        data.url,
+                        )
                       ],
                     ),
-                    child: Text(t.events.seeDetails),
-                  ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          FontAwesome5.clock,
+                          size: 14,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: leftMargin),
+                          child: Text(
+                            data.start.getHour,
+                            style: const TextStyle(fontSize: 14),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 10, bottom: 10),
+                child: FilledButton(
+                  onPressed: () {},
+                  child: Text(t.events.seeDetails),
+                ),
+              ),
+            ],
           ),
         ),
       ),

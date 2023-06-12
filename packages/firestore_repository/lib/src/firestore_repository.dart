@@ -1,7 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firestore_repository/src/models/events/events_item_model.dart';
-import 'package:firestore_repository/src/models/events/new_events_model.dart';
-import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 enum FirestoreRepositoryStatus {
@@ -99,17 +96,17 @@ class FirestoreRepository {
   /// [array] the array where the list of objects are in the document
   ///
   /// Throws and [FirestoreException] if an exception occurs
-  Future<NewEventsModel> getDataFromDocumentArray({
+  Future<dynamic> getDataFromDocumentArray({
     required String path,
     required Function converter,
   }) async {
     try {
       var snapshot = await _firebaseFirestore.doc(path).get();
-      log.d(converter(snapshot.data()));
       return converter(snapshot.data());
     } on FirebaseException catch (e) {
       throw FirestoreException(e.message ?? "Unknown error");
-    } catch (_) {
+    } catch (error) {
+      log.e(error.toString());
       throw const FirestoreException();
     }
   }

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firestore_repository/firestore_repository.dart';
+import 'package:floor_repository/floor_repository.dart';
 import 'package:storage_repository/storage_repository.dart';
 
 part 'events_event.dart';
@@ -9,9 +10,11 @@ part 'events_state.dart';
 class EventsBloc extends Bloc<EventsEvent, EventsState> {
   final FirestoreRepository _firestoreRepository;
   final StorageRepository _storageRepository;
+  final FloorRepository _floorRepository;
   EventsBloc(
     this._firestoreRepository,
     this._storageRepository,
+    this._floorRepository,
   ) : super(const EventsState()) {
     on<GetNewEvents>(
       (event, emit) async {

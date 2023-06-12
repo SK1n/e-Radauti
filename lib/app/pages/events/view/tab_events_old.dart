@@ -1,4 +1,5 @@
 import 'package:firestore_repository/firestore_repository.dart';
+import 'package:floor_repository/floor_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterapperadauti/app/pages/events/bloc/events_bloc.dart';
@@ -17,6 +18,7 @@ class TabEventsOld extends StatelessWidget {
       create: (context) => EventsBloc(
         context.read<FirestoreRepository>(),
         context.read<StorageRepository>(),
+        context.read<FloorRepository>(),
       )..add(const GetOldEvents()),
       child: BlocListener<EventsBloc, EventsState>(
         listener: (context, state) {},
