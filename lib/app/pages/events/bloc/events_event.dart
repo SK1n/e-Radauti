@@ -11,3 +11,7 @@ final class GetNewEvents extends EventsEvent {
 final class GetOldEvents extends EventsEvent {
   const GetOldEvents();
 }
+
+final class GetFavoriteEvents extends EventsEvent {
+  const GetFavoriteEvents();
+}

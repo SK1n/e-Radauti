@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class BorderTextDropDown extends StatelessWidget {
+class BorderDropdownButtonFormField extends StatelessWidget {
   final String hint;
   final String? errorText;
   final Function(String? value) onChanged;
   final Map<String, String> items;
-  const BorderTextDropDown({
+  const BorderDropdownButtonFormField({
     super.key,
     required this.hint,
     required this.onChanged,

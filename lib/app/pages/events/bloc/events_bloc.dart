@@ -1,11 +1,18 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firestore_repository/firestore_repository.dart';
+import 'package:floor/floor.dart';
 import 'package:floor_repository/floor_repository.dart';
+import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:logger/logger.dart';
 import 'package:storage_repository/storage_repository.dart';
 
 part 'events_event.dart';
 part 'events_state.dart';
+part 'events_bloc.freezed.dart';
 
 class EventsBloc extends Bloc<EventsEvent, EventsState> {
   final FirestoreRepository _firestoreRepository;
@@ -19,105 +26,68 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     on<GetNewEvents>(
       (event, emit) async {
         try {
-          emit(state.copyWith(status: FirestoreRepositoryStatus.inProgress));
-          var result = await _firestoreRepository.getDataFromDocumentArray(
-            path: 'collection/Events',
-            converter: NewEventsModel.fromJson,
-          );
-          List<EventsItemModel> list = result.list;
-          List<EventsItemModel> listWithDownloadUrls = [];
-          String tempDownloadUrl;
-          for (EventsItemModel item in list) {
-            tempDownloadUrl =
-                await _storageRepository.getFileDownloadUrl(item.url);
-            EventsItemModel tempItem = EventsItemModel(
-              item.category,
-              item.description,
-              item.headline,
-              item.location,
-              item.host,
-              item.street,
-              item.start,
-              item.end,
-              tempDownloadUrl,
-              item.id,
-            );
-            listWithDownloadUrls.add(tempItem);
-          }
+          emit(state.copyWith(status: FirestoreSubmissionStatus.inProgress));
+          var result =
+              await _firestoreRepository.fetchDocument('collection/Events');
+          NewEventsModel data = NewEventsModel.fromJson(result.data() ?? {});
+          List<EventsItemModel> list = data.list;
+          final updatedEvents = await Future.wait(list.map((event) async {
+            final tempDownloadUrl =
+                await _storageRepository.getFileDownloadUrl(event.url);
+            return event.copyWith(url: tempDownloadUrl);
+          }));
           emit(state.copyWith(
-            status: FirestoreRepositoryStatus.success,
-            events: listWithDownloadUrls,
+            status: FirestoreSubmissionStatus.success,
+            events: updatedEvents,
           ));
-        } on FirestoreException catch (e) {
+        } catch (e) {
           emit(
             state.copyWith(
-              errorMessage: e.message,
-              status: FirestoreRepositoryStatus.failure,
+              status: FirestoreSubmissionStatus.failure,
             ),
           );
-        } on StorageException catch (e) {
-          emit(
-            state.copyWith(
-              errorMessage: e.message,
-              status: FirestoreRepositoryStatus.failure,
-            ),
-          );
-        } catch (_) {
-          emit(state.copyWith(status: FirestoreRepositoryStatus.failure));
         }
       },
     );
 
     on<GetOldEvents>(
       (event, emit) async {
+        emit(state.copyWith(status: FirestoreSubmissionStatus.inProgress));
         try {
-          emit(state.copyWith(status: FirestoreRepositoryStatus.inProgress));
-          var result = await _firestoreRepository.getDataFromDocumentArray(
-            path: 'collection/OldEvents',
-            converter: OldEventsModel.fromJson,
-          );
-          List<EventsItemModel> list = result.list;
-          List<EventsItemModel> listWithDownloadUrls = [];
-          String tempDownloadUrl;
-          for (EventsItemModel item in list) {
-            tempDownloadUrl =
-                await _storageRepository.getFileDownloadUrl(item.url);
-            EventsItemModel tempItem = EventsItemModel(
-              item.category,
-              item.description,
-              item.headline,
-              item.location,
-              item.host,
-              item.street,
-              item.start,
-              item.end,
-              tempDownloadUrl,
-              item.id,
-            );
-            listWithDownloadUrls.add(tempItem);
-          }
+          var result =
+              await _firestoreRepository.fetchDocument('collection/OldEvents');
+          OldEventsModel data = OldEventsModel.fromJson(result.data() ?? {});
+          List<EventsItemModel> list = data.list;
+
+          final updatedEvents = await Future.wait(
+              list.sublist(list.length - 10).map((event) async {
+            final tempDownloadUrl =
+                await _storageRepository.getFileDownloadUrl(event.url);
+            return event.copyWith(url: tempDownloadUrl);
+          }));
           emit(state.copyWith(
-            status: FirestoreRepositoryStatus.success,
-            events: listWithDownloadUrls,
+            status: FirestoreSubmissionStatus.success,
+            events: updatedEvents,
           ));
-        } on FirestoreException catch (e) {
+        } catch (e) {
           emit(
             state.copyWith(
-              errorMessage: e.message,
-              status: FirestoreRepositoryStatus.failure,
+              status: FirestoreSubmissionStatus.failure,
             ),
           );
-        } on StorageException catch (e) {
-          emit(
-            state.copyWith(
-              errorMessage: e.message,
-              status: FirestoreRepositoryStatus.failure,
-            ),
-          );
-        } catch (_) {
-          emit(state.copyWith(status: FirestoreRepositoryStatus.failure));
         }
       },
     );
+    on<GetFavoriteEvents>((event, emit) async {
+      try {
+        emit(state.copyWith(floorStatus: FloorRepositoryStatus.inProgress));
+        final events = await _floorRepository.getFavoritesEvents();
+        emit(state.copyWith(
+            events: events, floorStatus: FloorRepositoryStatus.success));
+      } catch (e) {
+        debugPrint(e.toString());
+        emit(state.copyWith(floorStatus: FloorRepositoryStatus.failure));
+      }
+    });
   }
 }

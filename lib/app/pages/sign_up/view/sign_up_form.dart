@@ -49,7 +49,7 @@ class _EmailInput extends StatelessWidget {
           keyboardType: TextInputType.emailAddress,
           hint: t.createAccount.emailTextField,
           errorText:
-              state.email.displayError != null ? t.formats.emailFormat : null,
+              state.email.displayError != null ? t.formats.invalidEmail : null,
         );
       },
     );
@@ -127,7 +127,7 @@ class _PhoneNumberInput extends StatelessWidget {
           keyboardType: TextInputType.phone,
           hint: t.createAccount.phoneNumberTextField,
           errorText: state.phoneNumber.displayError != null
-              ? t.formats.wrongNumberFormat
+              ? t.formats.invalidPhoneNumber
               : null,
           onChanged: (phoneNumber) =>
               context.read<SignUpCubit>().phoneNumberChanged(phoneNumber),

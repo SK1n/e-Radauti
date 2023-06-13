@@ -1,9 +1,13 @@
+import 'package:firestore_repository/firestore_repository.dart';
 import 'package:floor_repository/floor_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/pages/events/cubit/favorite_events_cubit.dart';
+import 'package:flutterapperadauti/app/i18n/strings.g.dart';
+import 'package:flutterapperadauti/app/pages/events/bloc/events_bloc.dart';
 import 'package:flutterapperadauti/utils/loading_widget.dart';
+import 'package:flutterapperadauti/utils/shared_widgets/empty_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/err_widget.dart';
+import 'package:storage_repository/storage_repository.dart';
 
 import 'event_details_page.dart';
 import 'item_event.dart';
@@ -13,28 +17,30 @@ class TabEventsFavorites extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<FavoriteEventsCubit>(
-      create: (context) => FavoriteEventsCubit(
+    return BlocProvider<EventsBloc>(
+      create: (context) => EventsBloc(
+        context.read<FirestoreRepository>(),
+        context.read<StorageRepository>(),
         context.read<FloorRepository>(),
-      )..getSavedEvents(),
-      child: BlocListener<FavoriteEventsCubit, FavoriteEventsState>(
+      )..add(const GetFavoriteEvents()),
+      child: BlocListener<EventsBloc, EventsState>(
         listener: (context, state) {},
-        child: BlocBuilder<FavoriteEventsCubit, FavoriteEventsState>(
+        child: BlocBuilder<EventsBloc, EventsState>(
           builder: (context, state) {
-            if (state.status.isInProgress) {
+            if (state.floorStatus.isInProgress) {
               return const SliverToBoxAdapter(child: LoadingWidget());
-            } else if (state.status.isSuccess) {
+            } else if (state.floorStatus.isSuccess) {
+              if (state.events?.isEmpty ?? true) {
+                return SliverToBoxAdapter(
+                  child: EmptyWidget(
+                    text: t.events.emptyFavorites,
+                  ),
+                );
+              }
               return SliverList.builder(
                 itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () => Navigator.of(context).push(
-                      EventDetailsPage.route(
-                        state.events![index],
-                      ),
-                    ),
-                    child: ItemEvent(
-                      state.events![index],
-                    ),
+                  return ItemEvent(
+                    state.events![index],
                   );
                 },
                 itemCount: state.events?.length ?? 0,
@@ -44,7 +50,7 @@ class TabEventsFavorites extends StatelessWidget {
                 child: ErrWidget(
                   error: state.errorMessage ?? '',
                   retry: () async =>
-                      context.read<FavoriteEventsCubit>().getSavedEvents(),
+                      context.read<EventsBloc>().add(const GetFavoriteEvents()),
                 ),
               );
             }

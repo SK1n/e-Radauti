@@ -35,7 +35,9 @@
         "addToFavorites": "Add to favorites",
         "removeFromFavorites": "Remove from favorites",
         "startDate": "Start date: $date",
-        "endDate": "End date: $date"
+        "endDate": "End date: $date",
+        "emptyFavorites": "You don't have any events marked as favorite!",
+        "emptyEvents": "We couldn't find any events. Please try again later!"
     },
     "reportProblem": {
         "radautiCityHall": "Radauti city hall",
@@ -47,13 +49,15 @@
         "dspSuceava": "DSP Suceava",
         "ocolulSilvicMarginea": "Ocolul Silvic Marginea",
         "radautiulCivicAssociation": "Radautiul Civic Association",
-        "institutionTextField": "Institution",
+        "institutionDropdown": "Institution",
         "usernameTextField": "Name and surname",
-        "categoryTextField": "Category",
+        "categoryDropdown": "Category",
         "emailTextField": "Email address",
         "subjectTextField": "Subject",
         "descriptionTextField": "Description",
-        "phoneNumber": "Phone number",
+        "locationSwitch": "Add location",
+        "imagePicker": "Take a photo or upload one",
+        "phoneNumberTextField": "Phone number",
         "infrastructure": "Infrastructure",
         "utilitiesProblem": "Utilities problems",
         "uncollectedGarbage": "Uncollected garbage",
@@ -68,9 +72,9 @@
         "log_in": "Log in"
     },
     "formats": {
-        "emailFormat": "Wrong email format! e.g aaa@bb.ccc!",
+        "invalidEmail": "Wrong email format! e.g aaa@bb.ccc!",
         "onlyNumbersField": "This field should contain only numbers!",
-        "wrongNumberFormat": "Wrong phone number format\nWe accept the following:\n+40213-564-864\n+40213.564.864\n+40213 564 864\n0213-564-864\n0712456789",
+        "invalidPhoneNumber": "Wrong phone number format\nWe accept the following:\n+40213-564-864\n+40213.564.864\n+40213 564 864\n0213-564-864\n0712456789",
         "minimum50": "This field should contain more than 50 characters!",
         "strongerPassword": "Please use a stronger password!",
         "requiredField": "This field is required. Please fill in the field!",

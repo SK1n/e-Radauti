@@ -63,7 +63,7 @@ class _EmailInput extends StatelessWidget {
           onChanged: (email) => context.read<LoginCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
           errorText:
-              state.email.displayError != null ? t.formats.emailFormat : null,
+              state.email.displayError != null ? t.formats.invalidEmail : null,
           hint: t.singInScreen.emailTextField,
         );
       },

@@ -35,7 +35,9 @@
         "addToFavorites": "Adaugă la favorite",
         "removeFromFavorites": "Șterge de la favorite",
         "startDate": "Data de început: $date",
-        "endDate": "Data de încheiere: $date"
+        "endDate": "Data de încheiere: $date",
+        "emptyFavorites": "Nu aveți niciun eveniment marcat ca favorit!",
+        "emptyEvents": "Nu am putut găsi niciun eveniment. Vă rugăm să încercați din nou mai târziu!"
     },
     "reportProblem": {
         "radautiCityHall": "Primăria Radauti",
@@ -47,13 +49,15 @@
         "dspSuceava": "DSP Suceava",
         "ocolulSilvicMarginea": "Ocolul Silvic Marginea",
         "radautiulCivicAssociation": "Asociația Rădăuțiul Civic",
-        "institutionTextField": "Instituţie",
+        "institutionDropdown": "Instituţie",
         "usernameTextField": "Numele și prenumele",
-        "categoryTextField": "Categorie",
+        "categoryDropdown": "Categorie",
         "emailTextField": "Adresă de email",
         "subjectTextField": "Subiect",
         "descriptionTextField": "Descriere",
-        "phoneNumber": "Număr de telefon",
+        "locationSwitch": "Adaugă locația",
+        "imagePicker": "Fă o fotografie sau încarcă una",
+        "phoneNumberTextField": "Număr de telefon",
         "infrastructure": "Infrastructură",
         "utilitiesProblem": "Probleme cu utilitățile",
         "uncollectedGarbage": "Gunoi neridicat",
@@ -69,9 +73,9 @@
     },
     "formats": {
         "onlyNumbersField": "Acest câmp trebuie să conțină numai numere",
-        "wrongNumberFormat": "Format greșit al numărului de telefon\n   \nAcceptăm următoarele:\n   \n+40213-564-864\n   \n+40213.564.864\n   \n+40213 564 864\n   \n0213-564-864\n   \n0712456789",
+        "invalidPhoneNumber": "Format greșit al numărului de telefon\n   \nAcceptăm următoarele:\n   \n+40213-564-864\n   \n+40213.564.864\n   \n+40213 564 864\n   \n0213-564-864\n   \n0712456789",
         "minimum50": "Această căsuță trebuie să conțină mai mult de 50 de caractere!",
-        "emailFormat": "Format de e-mail greșit! de ex. aaa@bb.ccc!",
+        "invalidEmail": "Format de e-mail greșit! de ex. aaa@bb.ccc!",
         "strongerPassword": "Parola este slabă. Vă rugăm să furnizați o parolă mai bună!",
         "requiredField": "Acestă căsuță este obligatorie. Vă rugăm să o completați!",
         "confirmPassword": "Parolele nu se potrivesc!"

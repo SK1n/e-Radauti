@@ -61,7 +61,7 @@ class _EmailInput extends StatelessWidget {
           keyboardType: TextInputType.emailAddress,
           hint: t.forgotPassword.emailTextField,
           errorText:
-              state.email.displayError != null ? t.formats.emailFormat : null,
+              state.email.displayError != null ? t.formats.invalidEmail : null,
         );
       },
     );
