@@ -62,10 +62,10 @@ class StorageRepository {
 
   Logger log = Logger();
 
-  Future<List<String>> uploadFiles(String path, List<File> files) async {
+  Future<List<String>> uploadFiles(String path, List<dynamic>? files) async {
     try {
       List<String> downloadFilesLink = [];
-      for (File file in files) {
+      for (dynamic file in files!) {
         Reference ref = _firebaseStorage.ref().child(
             '$path/${DateTime.now().millisecondsSinceEpoch.toString() + Random().nextInt(3000).toString()}');
         UploadTask uploadTask;

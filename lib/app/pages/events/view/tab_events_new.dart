@@ -26,46 +26,39 @@ class _TabEventsNewState extends State<TabEventsNew>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return BlocProvider<EventsBloc>(
-      create: (context) => EventsBloc(
-        context.read<FirestoreRepository>(),
-        context.read<StorageRepository>(),
-        context.read<FloorRepository>(),
-      )..add(const GetNewEvents()),
-      child: BlocListener<EventsBloc, EventsState>(
-        listener: (context, state) {},
-        child: BlocBuilder<EventsBloc, EventsState>(
-          builder: (context, state) {
-            if (state.status.isInProgress) {
-              return const SliverToBoxAdapter(child: LoadingWidget());
-            } else if (state.status.isSuccess) {
-              if (state.events?.isEmpty ?? true) {
-                return SliverToBoxAdapter(
-                  child: EmptyWidget(
-                    text: t.events.emptyEvents,
-                  ),
-                );
-              }
-              return SliverList.builder(
-                itemBuilder: (context, index) {
-                  return ItemEvent(
-                    state.events![index],
-                  );
-                },
-                itemCount: state.events?.length ?? 0,
-              );
-            } else {
+    return BlocListener<EventsBloc, EventsState>(
+      listener: (context, state) {},
+      child: BlocBuilder<EventsBloc, EventsState>(
+        builder: (context, state) {
+          if (state.newEventsStatus.isInProgress) {
+            return const SliverToBoxAdapter(child: LoadingWidget());
+          } else if (state.newEventsStatus.isSuccess) {
+            if (state.newEvents?.isEmpty ?? true) {
               return SliverToBoxAdapter(
-                child: ErrWidget(
-                  error: state.errorMessage ?? '',
-                  retry: () async => context.read<EventsBloc>().add(
-                        const GetNewEvents(),
-                      ),
+                child: EmptyWidget(
+                  text: t.events.emptyEvents,
                 ),
               );
             }
-          },
-        ),
+            return SliverList.builder(
+              itemBuilder: (context, index) {
+                return ItemEvent(
+                  state.newEvents![index],
+                );
+              },
+              itemCount: state.newEvents?.length ?? 0,
+            );
+          } else {
+            return SliverToBoxAdapter(
+              child: ErrWidget(
+                error: state.errorMessage ?? '',
+                retry: () async => context.read<EventsBloc>().add(
+                      const GetNewEvents(),
+                    ),
+              ),
+            );
+          }
+        },
       ),
     );
   }

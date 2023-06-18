@@ -1,4 +1,36 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:floor/floor.dart';
+
+enum FirestoreRepositoryStatus {
+  /// The function has not yet been started.
+  initial,
+
+  /// The function is in the process.
+  inProgress,
+
+  /// The function ended successfully.
+  success,
+
+  /// The function ended with failed.
+  failure,
+
+  /// The function has been canceled.
+  canceled
+}
+
+extension FirestoreReposityStatusX on FirestoreRepositoryStatus {
+  bool get isInitial => this == FirestoreRepositoryStatus.initial;
+
+  bool get isInProgress => this == FirestoreRepositoryStatus.inProgress;
+
+  bool get isSuccess => this == FirestoreRepositoryStatus.success;
+
+  bool get isFailure => this == FirestoreRepositoryStatus.failure;
+
+  bool get isCanceled => this == FirestoreRepositoryStatus.canceled;
+
+  bool get isInProgressOrSuccess => isInProgress || isSuccess;
+}
 
 /// Thrown during the Firestore document fetch process if a failure occurs.
 class FirestoreFetchFailure implements Exception {
@@ -112,7 +144,7 @@ class FirestoreRepository {
     try {
       final docRef = _firestore.doc(path);
       final snapshot = await docRef.get();
-      final currentArray = snapshot.get('arrayField') as List<dynamic>;
+      final currentArray = snapshot.get(arrayField) as List<dynamic>;
 
       final updatedArray = List<dynamic>.from(currentArray);
 

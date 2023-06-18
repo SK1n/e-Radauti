@@ -35,7 +35,11 @@ class BorderTextFormField extends StatelessWidget {
             initialValue: initialValue,
             onChanged: onChanged,
             keyboardType: keyboardType,
-            maxLines: 5,
+            maxLines: obscureText != null
+                ? obscureText!
+                    ? 1
+                    : 5
+                : 1,
             minLines: 1,
             obscureText: obscureText ?? false,
             decoration: InputDecoration(

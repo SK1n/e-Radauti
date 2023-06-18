@@ -1,4 +1,5 @@
 import 'package:authentication_repository/authentication_repository.dart';
+import 'package:firestore_repository/firestore_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterapperadauti/app/cubit/location_cubit.dart';
@@ -6,52 +7,84 @@ import 'package:flutterapperadauti/app/i18n/strings.g.dart';
 import 'package:flutterapperadauti/app/pages/report_problem/cubit/report_problem_cubit.dart';
 import 'package:flutterapperadauti/app/utils/widgets/border_dropdown_button_form_field.dart';
 import 'package:flutterapperadauti/app/utils/widgets/border_text_form_field.dart';
+import 'package:flutterapperadauti/utils/loading_widget.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
+import 'package:geolocator/geolocator.dart';
 
 class ReportProblemFormTab extends StatelessWidget {
   const ReportProblemFormTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider.value(
-          value: ReportProblemCubit(locationCubit: LocationCubit())
-            ..usernameChanged(
-              context.read<AuthenticationRepository>().currentUser.name ?? "",
-            )
-            ..emailChanged(
-              context.read<AuthenticationRepository>().currentUser.email ?? "",
-            ),
-        ),
-        BlocProvider(
-          create: (context) => LocationCubit(),
-        ),
-      ],
-      child: BlocListener<ReportProblemCubit, ReportProblemState>(
-        listener: (context, state) {
-          if (state.formzStatus.isFailure) {
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(SnackBar(content: Text(state.errorMessage)));
-          }
-        },
-        child: SliverToBoxAdapter(
-          child: Column(
-            children: [
-              _UsernameInput(),
-              _EmailInput(),
-              _PhoneNumberInput(),
-              _CategoryDropdown(),
-              _InstitutionDropdown(),
-              _SubjectInput(),
-              _DescriptionInput(),
-              _LocationSwitch(),
-              _ImagePickerField(),
-            ],
-          ),
+    return BlocListener<ReportProblemCubit, ReportProblemState>(
+      listener: (context, state) async {
+        if (state.formzStatus.isFailure) {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              SnackBar(
+                content:
+                    Text(state.errorMessage ?? t.reportProblem.sentFailure),
+              ),
+            );
+        } else if (state.formzStatus.isSuccess) {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              SnackBar(
+                content: Text(t.reportProblem.sentSuccessfully),
+              ),
+            );
+        }
+        if (state.positionState.isDenied) {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              SnackBar(
+                content: Text(
+                  t.reportProblem.positionSwitch.denied,
+                ),
+              ),
+            );
+          await Geolocator.requestPermission();
+        } else if (state.positionState.isDeniedForever) {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              SnackBar(
+                content: Text(
+                  t.reportProblem.positionSwitch.deniedForever,
+                ),
+              ),
+            );
+        } else if (state.positionState.isDisabled) {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              SnackBar(
+                content: Text(
+                  t.reportProblem.positionSwitch.disabled,
+                ),
+              ),
+            );
+        }
+      },
+      child: SliverToBoxAdapter(
+        child: Column(
+          children: [
+            _UsernameInput(),
+            _EmailInput(),
+            _PhoneNumberInput(),
+            _CategoryDropdown(),
+            _InstitutionDropdown(),
+            _SubjectInput(),
+            _DescriptionInput(),
+            _LocationSwitch(),
+            _ImagePickerField(),
+            _SendButton(),
+          ],
         ),
       ),
     );
@@ -181,6 +214,17 @@ class _InstitutionDropdown extends StatelessWidget {
     }
   }
 }
+
+final Map<String, String> _category = {
+  t.reportProblem.infrastructure: t.reportProblem.infrastructure,
+  t.reportProblem.utilitiesProblem: t.reportProblem.utilitiesProblem,
+  t.reportProblem.uncollectedGarbage: t.reportProblem.uncollectedGarbage,
+  t.reportProblem.infrastructureStreets: t.reportProblem.infrastructureStreets,
+  t.reportProblem.illegalConstructions: t.reportProblem.illegalConstructions,
+  t.reportProblem.airQualityPollution: t.reportProblem.airQualityPollution,
+  t.reportProblem.safety: t.reportProblem.safety,
+  t.reportProblem.other: t.reportProblem.other,
+};
 
 class _CategoryDropdown extends StatelessWidget {
   @override
@@ -363,5 +407,34 @@ class _ImagePickerField extends StatelessWidget {
       default:
         return null;
     }
+  }
+}
+
+class _SendButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ReportProblemCubit, ReportProblemState>(
+      builder: (context, state) {
+        return state.formzStatus.isInProgress
+            ? const LoadingWidget()
+            : Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: FilledButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    onPressed: () => context
+                        .read<ReportProblemCubit>()
+                        .sendReport(_category),
+                    child: Text(t.reportProblem.submitButton),
+                  ),
+                ),
+              );
+      },
+    );
   }
 }

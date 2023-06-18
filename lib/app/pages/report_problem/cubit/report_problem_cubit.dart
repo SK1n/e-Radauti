@@ -1,17 +1,35 @@
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
-import 'package:flutterapperadauti/app/cubit/location_cubit.dart';
+import 'package:firestore_repository/firestore_repository.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:flutterapperadauti/app/pages/report_problem/view/report_problem_report_page.dart';
+import 'package:fluttericon/entypo_icons.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:fluttericon/octicons_icons.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:logger/logger.dart';
+import 'package:storage_repository/storage_repository.dart';
+import 'package:latlong2/latlong.dart' as latLng;
 
 part 'report_problem_state.dart';
 part 'report_problem_cubit.freezed.dart';
 
 class ReportProblemCubit extends Cubit<ReportProblemState> {
-  final LocationCubit locationCubit;
-  ReportProblemCubit({required this.locationCubit})
-      : super(ReportProblemState.initial());
+  final StorageRepository _storageRepository;
+  final FirestoreRepository _firestoreRepository;
+  final AuthenticationRepository _authRepository;
+  ReportProblemCubit({
+    required StorageRepository storageRepository,
+    required FirestoreRepository firestoreRepository,
+    required AuthenticationRepository authRepository,
+  })  : _storageRepository = storageRepository,
+        _firestoreRepository = firestoreRepository,
+        _authRepository = authRepository,
+        super(ReportProblemState.initial());
 
   void usernameChanged(String value) {
     final username = Username.dirty(value);
@@ -145,22 +163,36 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
     try {
       final locationEnabled = GenericInput<bool>.dirty(value);
       if (value) {
-        Position position = await _determinePosition();
+        await _determinePosition();
         emit(
           state.copyWith(
-            position: position,
             locationEnabled: locationEnabled,
             formzStatus: FormzSubmissionStatus.initial,
-            isValid: Formz.validate([
-              state.locationEnabled,
-              locationEnabled,
-            ]),
+            isValid: Formz.validate(
+              [
+                state.locationEnabled,
+                locationEnabled,
+              ],
+            ),
+          ),
+        );
+      } else {
+        emit(
+          state.copyWith(
+            position: null,
+            locationEnabled: locationEnabled,
+            formzStatus: FormzSubmissionStatus.initial,
+            isValid: Formz.validate(
+              [
+                state.locationEnabled,
+                locationEnabled,
+              ],
+            ),
           ),
         );
       }
     } catch (_) {
       const locationEnabled = GenericInput<bool>.dirty(false);
-      Future.delayed(const Duration(seconds: 2));
       emit(
         state.copyWith(
           locationEnabled: locationEnabled,
@@ -175,40 +207,180 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
     }
   }
 
-  Future<Position> _determinePosition() async {
+  void sendReport(Map<String, String> category) async {
+    if (!state.isValid) {
+      return;
+    }
+    try {
+      emit(
+        state.copyWith(
+          formzStatus: FormzSubmissionStatus.inProgress,
+        ),
+      );
+      List<String> urls = [];
+      DateTime time = DateTime.now();
+      urls.addAll(await _storageRepository.uploadFiles(
+          'Notice_A_Problem', state.imagePicker.value));
+      Map<String, dynamic> item = ReportProblemItemModel(
+        category: state.category.value,
+        description: state.description.value,
+        email: state.email.value,
+        index: category.values.toList().indexOf(state.category.value),
+        institution: getInstitution(state.institution.value),
+        institutionEmail: state.institution.value,
+        name: state.username.value,
+        phone: state.phoneNumber.value,
+        status: "In lucru",
+        lat: state.locationEnabled.value ? state.position!.latitude : null,
+        long: state.locationEnabled.value ? state.position!.longitude : null,
+        subject: state.subject.value,
+        url: urls,
+        createdAt: time.toUtc().toString(),
+      ).toJson();
+      await _firestoreRepository
+          .updateArrayField('test/Events', 'events', elementsToAdd: [item]);
+
+      subjectChanged('');
+      descriptionChanged('');
+      institutionChanged('');
+      categoryChanged('');
+      phoneNumberChanged('');
+      imagePickerChanged([]);
+      locationChanged(false);
+      emit(state.copyWith(formzStatus: FormzSubmissionStatus.success));
+    } catch (e) {
+      emit(state.copyWith(formzStatus: FormzSubmissionStatus.failure));
+    }
+  }
+
+  void getReports() async {
+    try {
+      emit(state.copyWith(
+          firestoreStatus: FirestoreRepositoryStatus.inProgress));
+      var userUID = _authRepository.currentUser.id;
+      Logger log = Logger();
+      log.d(_authRepository.currentUser.email);
+
+      var result = await _firestoreRepository.fetchDocument('users/$userUID');
+      ReportProblemModel data = ReportProblemModel.fromJson(
+        result.data() ?? {},
+      );
+      emit(state.copyWith(
+        firestoreStatus: FirestoreRepositoryStatus.success,
+        myReportsData: data.markers,
+      ));
+    } on FirestoreFetchFailure catch (e) {
+      emit(state.copyWith(
+          firestoreStatus: FirestoreRepositoryStatus.failure,
+          errorMessage: e.message));
+    }
+  }
+
+  String getInstitution(String email) => switch (email) {
+        'relatiipublice@primariaradauti.ro' => 'Primăria Radauti',
+        'office@serviciicomunale.ro' => 'Servicii Comunale',
+        'agentia.radauti@acetsv.ro' => 'ACET Rădăuți',
+        'contact@cjsuceava.ro' => 'Consiliul Județean Suceava',
+        'cjsuceava@gnm.ro' => 'Garda de Mediu Suceava',
+        'gardaforestiera.suceava@gmail.com' => 'Garda Forestieră Suceava',
+        'dspsv@dspsv.ro' => 'DSP Suceava',
+        'marginea@suceava.rosilva.ro' => 'Ocolul Silvic Marginea',
+        'radautiulcivic@gmail.com' => 'Asociația Rădăuțiul Civic',
+        _ => 'Asociația Rădăuțiul Civic'
+      };
+
+  _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
 
-    // Test if location services are enabled.
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
-      return Future.error('Location services are disabled.');
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
-        return Future.error('Location permissions are denied');
+    try {
+      emit(state.copyWith(positionState: PositionState.initial));
+      serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        emit(state.copyWith(positionState: PositionState.disabled));
       }
-    }
 
-    if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
-    }
+      permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          emit(state.copyWith(positionState: PositionState.denied));
+          throw Exception();
+        }
+      }
 
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
-    return await Geolocator.getCurrentPosition();
+      if (permission == LocationPermission.deniedForever) {
+        emit(state.copyWith(positionState: PositionState.deniedForever));
+        throw Exception();
+      }
+      Position position = await Geolocator.getCurrentPosition();
+      emit(
+        state.copyWith(
+          positionState: PositionState.success,
+          position: position,
+        ),
+      );
+    } on Exception {
+      rethrow;
+    }
   }
+
+  void getMarkers() async {
+    try {
+      emit(state.copyWith(
+          firestoreStatus: FirestoreRepositoryStatus.inProgress));
+      var result =
+          await _firestoreRepository.fetchDocument('collection/Markers');
+      ReportProblemMarkerModel data =
+          ReportProblemMarkerModel.fromJson(result.data() ?? {});
+
+      List<Marker> markers = [];
+      for (ReportProblemItemModel item in data.markers ?? {}) {
+        if (item.lat != null && item.long != null) {
+          markers.add(
+            Marker(
+              point: latLng.LatLng(item.lat as double, item.long as double),
+              builder: (BuildContext context) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.of(context)
+                        .push(ReportProblemReportPage.route(data: item));
+                  },
+                  child: SizedBox(
+                    width: 40,
+                    height: 40,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        _icon.entries.elementAt(item.index).value,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          );
+        }
+      }
+
+      emit(state.copyWith(
+        firestoreStatus: FirestoreRepositoryStatus.success,
+        markersData: markers,
+      ));
+    } on FirestoreFetchFailure catch (e) {
+      emit(state.copyWith(
+          firestoreStatus: FirestoreRepositoryStatus.failure,
+          errorMessage: e.message));
+    }
+  }
+
+  final Map<int, IconData> _icon = {
+    0: Entypo.dot_3,
+    1: Entypo.trash,
+    2: FontAwesome5.road,
+    3: Entypo.lamp,
+    4: Entypo.home,
+    5: Octicons.shield_check,
+    6: Icons.blur_circular
+  };
 }

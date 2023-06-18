@@ -66,7 +66,27 @@
         "airQualityPollution": "Calitatea aerului și poluarea",
         "safety": "Siguranță",
         "other": "Other",
-        "submitButton": "Trimite"
+        "submitButton": "Trimite",
+        "sentFailure": "Ceva n-a mers bine. Vă rugăm să încercați din nou mai târziu!",
+        "sentSuccessfully": "Raportul a fost trimis cu succes!",
+        "reportPage": {
+            "subject": "Subiect: $value",
+            "description": "Descriere: $value",
+            "category": "Categoria: $value",
+            "institution": "Institutia: $value",
+            "institutionEmail": "Email: $value",
+            "sentBy": "Trimis de $value"
+        },
+        "formTab": "Formular",
+        "mapTab": "Harta sesizărilor",
+        "myReportsTab": "Rapoartele mele",
+        "title": "Report a problem",
+        "emptyMyReports": "Nu ati facut nici o sesizare!",
+        "positionSwitch": {
+            "denied": "Se solicită permisiuni...",
+            "deniedForever": "Permisiunile pentru locație sunt refuzate definitiv, nu putem solicita permisiuni.",
+            "disabled": "Serviciile de localizare sunt dezactivate"
+        }
     },
     "buttons": {
         "log_in": "Log in"

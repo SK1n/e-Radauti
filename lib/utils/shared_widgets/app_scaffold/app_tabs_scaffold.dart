@@ -48,22 +48,25 @@ class AppTabsScaffold extends StatelessWidget {
               return SafeArea(
                 top: false,
                 bottom: false,
-                child: Builder(
-                  builder: (context) {
-                    return CustomScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      key: PageStorageKey<String>(e['text']),
-                      slivers: [
-                        SliverOverlapInjector(
-                          handle:
-                              NestedScrollView.sliverOverlapAbsorberHandleFor(
-                            context,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Builder(
+                    builder: (context) {
+                      return CustomScrollView(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        key: PageStorageKey<String>(e['text']),
+                        slivers: [
+                          SliverOverlapInjector(
+                            handle:
+                                NestedScrollView.sliverOverlapAbsorberHandleFor(
+                              context,
+                            ),
                           ),
-                        ),
-                        e['widget'],
-                      ],
-                    );
-                  },
+                          e['widget'],
+                        ],
+                      );
+                    },
+                  ),
                 ),
               );
             }).toList(),

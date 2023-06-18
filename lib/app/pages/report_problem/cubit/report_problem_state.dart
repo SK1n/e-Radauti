@@ -1,5 +1,21 @@
 part of 'report_problem_cubit.dart';
 
+enum PositionState {
+  success,
+  initial,
+  denied,
+  deniedForever,
+  disabled,
+}
+
+extension PositionStateX on PositionState {
+  bool get isSuccess => this == PositionState.success;
+  bool get isDenied => this == PositionState.denied;
+  bool get isDeniedForever => this == PositionState.deniedForever;
+  bool get isInitial => this == PositionState.initial;
+  bool get isDisabled => this == PositionState.disabled;
+}
+
 @freezed
 class ReportProblemState with _$ReportProblemState {
   const factory ReportProblemState({
@@ -14,8 +30,13 @@ class ReportProblemState with _$ReportProblemState {
     required ImagePicker imagePicker,
     required bool isValid,
     required FormzSubmissionStatus formzStatus,
-    required String errorMessage,
+    required StorageRepositoryStatus storageStatus,
+    required FirestoreRepositoryStatus firestoreStatus,
+    required List<ReportProblemItemModel>? myReportsData,
+    required List<Marker>? markersData,
+    required String? errorMessage,
     required Position? position,
+    required PositionState positionState,
   }) = _ReportProblemState;
 
   factory ReportProblemState.initial() => ReportProblemState(
@@ -31,6 +52,11 @@ class ReportProblemState with _$ReportProblemState {
         isValid: false,
         errorMessage: "Sorry something went wrong",
         formzStatus: FormzSubmissionStatus.initial,
+        myReportsData: [],
+        markersData: [],
         position: null,
+        storageStatus: StorageRepositoryStatus.initial,
+        firestoreStatus: FirestoreRepositoryStatus.initial,
+        positionState: PositionState.initial,
       );
 }

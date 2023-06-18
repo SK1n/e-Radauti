@@ -9,7 +9,6 @@ import 'package:flutterapperadauti/utils/shared_widgets/empty_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/err_widget.dart';
 import 'package:storage_repository/storage_repository.dart';
 
-import 'event_details_page.dart';
 import 'item_event.dart';
 
 class TabEventsFavorites extends StatelessWidget {
@@ -30,7 +29,7 @@ class TabEventsFavorites extends StatelessWidget {
             if (state.floorStatus.isInProgress) {
               return const SliverToBoxAdapter(child: LoadingWidget());
             } else if (state.floorStatus.isSuccess) {
-              if (state.events?.isEmpty ?? true) {
+              if (state.favoritesEvents?.isEmpty ?? true) {
                 return SliverToBoxAdapter(
                   child: EmptyWidget(
                     text: t.events.emptyFavorites,
@@ -40,10 +39,10 @@ class TabEventsFavorites extends StatelessWidget {
               return SliverList.builder(
                 itemBuilder: (context, index) {
                   return ItemEvent(
-                    state.events![index],
+                    state.favoritesEvents![index],
                   );
                 },
-                itemCount: state.events?.length ?? 0,
+                itemCount: state.favoritesEvents?.length ?? 0,
               );
             } else {
               return SliverToBoxAdapter(

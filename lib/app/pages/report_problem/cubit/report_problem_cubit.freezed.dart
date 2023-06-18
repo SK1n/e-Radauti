@@ -27,8 +27,16 @@ mixin _$ReportProblemState {
   ImagePicker get imagePicker => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
   FormzSubmissionStatus get formzStatus => throw _privateConstructorUsedError;
-  String get errorMessage => throw _privateConstructorUsedError;
+  StorageRepositoryStatus get storageStatus =>
+      throw _privateConstructorUsedError;
+  FirestoreRepositoryStatus get firestoreStatus =>
+      throw _privateConstructorUsedError;
+  List<ReportProblemItemModel>? get myReportsData =>
+      throw _privateConstructorUsedError;
+  List<Marker>? get markersData => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
   Position? get position => throw _privateConstructorUsedError;
+  PositionState get positionState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ReportProblemStateCopyWith<ReportProblemState> get copyWith =>
@@ -53,8 +61,13 @@ abstract class $ReportProblemStateCopyWith<$Res> {
       ImagePicker imagePicker,
       bool isValid,
       FormzSubmissionStatus formzStatus,
-      String errorMessage,
-      Position? position});
+      StorageRepositoryStatus storageStatus,
+      FirestoreRepositoryStatus firestoreStatus,
+      List<ReportProblemItemModel>? myReportsData,
+      List<Marker>? markersData,
+      String? errorMessage,
+      Position? position,
+      PositionState positionState});
 }
 
 /// @nodoc
@@ -81,8 +94,13 @@ class _$ReportProblemStateCopyWithImpl<$Res, $Val extends ReportProblemState>
     Object? imagePicker = null,
     Object? isValid = null,
     Object? formzStatus = null,
-    Object? errorMessage = null,
+    Object? storageStatus = null,
+    Object? firestoreStatus = null,
+    Object? myReportsData = freezed,
+    Object? markersData = freezed,
+    Object? errorMessage = freezed,
     Object? position = freezed,
+    Object? positionState = null,
   }) {
     return _then(_value.copyWith(
       username: null == username
@@ -129,14 +147,34 @@ class _$ReportProblemStateCopyWithImpl<$Res, $Val extends ReportProblemState>
           ? _value.formzStatus
           : formzStatus // ignore: cast_nullable_to_non_nullable
               as FormzSubmissionStatus,
-      errorMessage: null == errorMessage
+      storageStatus: null == storageStatus
+          ? _value.storageStatus
+          : storageStatus // ignore: cast_nullable_to_non_nullable
+              as StorageRepositoryStatus,
+      firestoreStatus: null == firestoreStatus
+          ? _value.firestoreStatus
+          : firestoreStatus // ignore: cast_nullable_to_non_nullable
+              as FirestoreRepositoryStatus,
+      myReportsData: freezed == myReportsData
+          ? _value.myReportsData
+          : myReportsData // ignore: cast_nullable_to_non_nullable
+              as List<ReportProblemItemModel>?,
+      markersData: freezed == markersData
+          ? _value.markersData
+          : markersData // ignore: cast_nullable_to_non_nullable
+              as List<Marker>?,
+      errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       position: freezed == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as Position?,
+      positionState: null == positionState
+          ? _value.positionState
+          : positionState // ignore: cast_nullable_to_non_nullable
+              as PositionState,
     ) as $Val);
   }
 }
@@ -161,8 +199,13 @@ abstract class _$$_ReportProblemStateCopyWith<$Res>
       ImagePicker imagePicker,
       bool isValid,
       FormzSubmissionStatus formzStatus,
-      String errorMessage,
-      Position? position});
+      StorageRepositoryStatus storageStatus,
+      FirestoreRepositoryStatus firestoreStatus,
+      List<ReportProblemItemModel>? myReportsData,
+      List<Marker>? markersData,
+      String? errorMessage,
+      Position? position,
+      PositionState positionState});
 }
 
 /// @nodoc
@@ -187,8 +230,13 @@ class __$$_ReportProblemStateCopyWithImpl<$Res>
     Object? imagePicker = null,
     Object? isValid = null,
     Object? formzStatus = null,
-    Object? errorMessage = null,
+    Object? storageStatus = null,
+    Object? firestoreStatus = null,
+    Object? myReportsData = freezed,
+    Object? markersData = freezed,
+    Object? errorMessage = freezed,
     Object? position = freezed,
+    Object? positionState = null,
   }) {
     return _then(_$_ReportProblemState(
       username: null == username
@@ -235,14 +283,34 @@ class __$$_ReportProblemStateCopyWithImpl<$Res>
           ? _value.formzStatus
           : formzStatus // ignore: cast_nullable_to_non_nullable
               as FormzSubmissionStatus,
-      errorMessage: null == errorMessage
+      storageStatus: null == storageStatus
+          ? _value.storageStatus
+          : storageStatus // ignore: cast_nullable_to_non_nullable
+              as StorageRepositoryStatus,
+      firestoreStatus: null == firestoreStatus
+          ? _value.firestoreStatus
+          : firestoreStatus // ignore: cast_nullable_to_non_nullable
+              as FirestoreRepositoryStatus,
+      myReportsData: freezed == myReportsData
+          ? _value._myReportsData
+          : myReportsData // ignore: cast_nullable_to_non_nullable
+              as List<ReportProblemItemModel>?,
+      markersData: freezed == markersData
+          ? _value._markersData
+          : markersData // ignore: cast_nullable_to_non_nullable
+              as List<Marker>?,
+      errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       position: freezed == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as Position?,
+      positionState: null == positionState
+          ? _value.positionState
+          : positionState // ignore: cast_nullable_to_non_nullable
+              as PositionState,
     ));
   }
 }
@@ -262,8 +330,15 @@ class _$_ReportProblemState implements _ReportProblemState {
       required this.imagePicker,
       required this.isValid,
       required this.formzStatus,
+      required this.storageStatus,
+      required this.firestoreStatus,
+      required final List<ReportProblemItemModel>? myReportsData,
+      required final List<Marker>? markersData,
       required this.errorMessage,
-      required this.position});
+      required this.position,
+      required this.positionState})
+      : _myReportsData = myReportsData,
+        _markersData = markersData;
 
   @override
   final Username username;
@@ -288,13 +363,39 @@ class _$_ReportProblemState implements _ReportProblemState {
   @override
   final FormzSubmissionStatus formzStatus;
   @override
-  final String errorMessage;
+  final StorageRepositoryStatus storageStatus;
+  @override
+  final FirestoreRepositoryStatus firestoreStatus;
+  final List<ReportProblemItemModel>? _myReportsData;
+  @override
+  List<ReportProblemItemModel>? get myReportsData {
+    final value = _myReportsData;
+    if (value == null) return null;
+    if (_myReportsData is EqualUnmodifiableListView) return _myReportsData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<Marker>? _markersData;
+  @override
+  List<Marker>? get markersData {
+    final value = _markersData;
+    if (value == null) return null;
+    if (_markersData is EqualUnmodifiableListView) return _markersData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final String? errorMessage;
   @override
   final Position? position;
+  @override
+  final PositionState positionState;
 
   @override
   String toString() {
-    return 'ReportProblemState(username: $username, email: $email, subject: $subject, description: $description, institution: $institution, category: $category, phoneNumber: $phoneNumber, locationEnabled: $locationEnabled, imagePicker: $imagePicker, isValid: $isValid, formzStatus: $formzStatus, errorMessage: $errorMessage, position: $position)';
+    return 'ReportProblemState(username: $username, email: $email, subject: $subject, description: $description, institution: $institution, category: $category, phoneNumber: $phoneNumber, locationEnabled: $locationEnabled, imagePicker: $imagePicker, isValid: $isValid, formzStatus: $formzStatus, storageStatus: $storageStatus, firestoreStatus: $firestoreStatus, myReportsData: $myReportsData, markersData: $markersData, errorMessage: $errorMessage, position: $position, positionState: $positionState)';
   }
 
   @override
@@ -321,10 +422,20 @@ class _$_ReportProblemState implements _ReportProblemState {
             (identical(other.isValid, isValid) || other.isValid == isValid) &&
             (identical(other.formzStatus, formzStatus) ||
                 other.formzStatus == formzStatus) &&
+            (identical(other.storageStatus, storageStatus) ||
+                other.storageStatus == storageStatus) &&
+            (identical(other.firestoreStatus, firestoreStatus) ||
+                other.firestoreStatus == firestoreStatus) &&
+            const DeepCollectionEquality()
+                .equals(other._myReportsData, _myReportsData) &&
+            const DeepCollectionEquality()
+                .equals(other._markersData, _markersData) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.position, position) ||
-                other.position == position));
+                other.position == position) &&
+            (identical(other.positionState, positionState) ||
+                other.positionState == positionState));
   }
 
   @override
@@ -341,8 +452,13 @@ class _$_ReportProblemState implements _ReportProblemState {
       imagePicker,
       isValid,
       formzStatus,
+      storageStatus,
+      firestoreStatus,
+      const DeepCollectionEquality().hash(_myReportsData),
+      const DeepCollectionEquality().hash(_markersData),
       errorMessage,
-      position);
+      position,
+      positionState);
 
   @JsonKey(ignore: true)
   @override
@@ -365,8 +481,13 @@ abstract class _ReportProblemState implements ReportProblemState {
       required final ImagePicker imagePicker,
       required final bool isValid,
       required final FormzSubmissionStatus formzStatus,
-      required final String errorMessage,
-      required final Position? position}) = _$_ReportProblemState;
+      required final StorageRepositoryStatus storageStatus,
+      required final FirestoreRepositoryStatus firestoreStatus,
+      required final List<ReportProblemItemModel>? myReportsData,
+      required final List<Marker>? markersData,
+      required final String? errorMessage,
+      required final Position? position,
+      required final PositionState positionState}) = _$_ReportProblemState;
 
   @override
   Username get username;
@@ -391,9 +512,19 @@ abstract class _ReportProblemState implements ReportProblemState {
   @override
   FormzSubmissionStatus get formzStatus;
   @override
-  String get errorMessage;
+  StorageRepositoryStatus get storageStatus;
+  @override
+  FirestoreRepositoryStatus get firestoreStatus;
+  @override
+  List<ReportProblemItemModel>? get myReportsData;
+  @override
+  List<Marker>? get markersData;
+  @override
+  String? get errorMessage;
   @override
   Position? get position;
+  @override
+  PositionState get positionState;
   @override
   @JsonKey(ignore: true)
   _$$_ReportProblemStateCopyWith<_$_ReportProblemState> get copyWith =>

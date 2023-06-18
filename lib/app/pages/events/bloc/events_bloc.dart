@@ -26,7 +26,8 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     on<GetNewEvents>(
       (event, emit) async {
         try {
-          emit(state.copyWith(status: FirestoreSubmissionStatus.inProgress));
+          emit(state.copyWith(
+              newEventsStatus: FirestoreSubmissionStatus.inProgress));
           var result =
               await _firestoreRepository.fetchDocument('collection/Events');
           NewEventsModel data = NewEventsModel.fromJson(result.data() ?? {});
@@ -37,13 +38,13 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
             return event.copyWith(url: tempDownloadUrl);
           }));
           emit(state.copyWith(
-            status: FirestoreSubmissionStatus.success,
-            events: updatedEvents,
+            newEventsStatus: FirestoreSubmissionStatus.success,
+            newEvents: updatedEvents,
           ));
         } catch (e) {
           emit(
             state.copyWith(
-              status: FirestoreSubmissionStatus.failure,
+              newEventsStatus: FirestoreSubmissionStatus.failure,
             ),
           );
         }
@@ -52,7 +53,8 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
 
     on<GetOldEvents>(
       (event, emit) async {
-        emit(state.copyWith(status: FirestoreSubmissionStatus.inProgress));
+        emit(state.copyWith(
+            oldEventsStatus: FirestoreSubmissionStatus.inProgress));
         try {
           var result =
               await _firestoreRepository.fetchDocument('collection/OldEvents');
@@ -66,13 +68,13 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
             return event.copyWith(url: tempDownloadUrl);
           }));
           emit(state.copyWith(
-            status: FirestoreSubmissionStatus.success,
-            events: updatedEvents,
+            oldEventsStatus: FirestoreSubmissionStatus.success,
+            oldEvents: updatedEvents,
           ));
         } catch (e) {
           emit(
             state.copyWith(
-              status: FirestoreSubmissionStatus.failure,
+              oldEventsStatus: FirestoreSubmissionStatus.failure,
             ),
           );
         }
@@ -83,7 +85,8 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
         emit(state.copyWith(floorStatus: FloorRepositoryStatus.inProgress));
         final events = await _floorRepository.getFavoritesEvents();
         emit(state.copyWith(
-            events: events, floorStatus: FloorRepositoryStatus.success));
+            favoritesEvents: events,
+            floorStatus: FloorRepositoryStatus.success));
       } catch (e) {
         debugPrint(e.toString());
         emit(state.copyWith(floorStatus: FloorRepositoryStatus.failure));
