@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/app/pages/air_quality/view/air_quality_page.dart';
 import 'package:flutterapperadauti/app/pages/events/view/events_page.dart';
 import 'package:flutterapperadauti/app/pages/report_problem/view/report_problem_page.dart';
 import 'package:flutterapperadauti/modules/home/views/big_menu_item.dart';
@@ -46,7 +47,7 @@ class HomePage extends StatelessWidget {
               title: 'air-quality'.tr,
               image: 'assets/buttons/pollution.png',
               bckImg: 4,
-              onTap: () => Get.toNamed(Routes.air),
+              onTap: () => Navigator.of(context).push(AirQualityPage.route()),
             ),
           ],
         ),

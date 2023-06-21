@@ -94,7 +94,7 @@ class _LocalMeetingsItemState extends State<LocalMeetingsItem>
             allowfullscreen=false&autoplay=true&href=$url" </iframe>
      ''',
       // ignore: deprecated_member_use
-      webViewJs: true,
+      //webViewJs: true,
       factoryBuilder: () => WidgetFactory(),
     );
   }

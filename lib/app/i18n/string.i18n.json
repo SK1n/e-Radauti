@@ -88,6 +88,15 @@
             "disabled": "Location services are disabled"
         }
     },
+    "local_administration": {
+        "title": "Local Administration"
+    },
+    "airQuality": {
+        "title": "Air quality",
+        "airQualityTab": "Air quality",
+        "chartsTab": "Charts",
+        "aboutTab": "About the project"
+    },
     "buttons": {
         "log_in": "Log in"
     },

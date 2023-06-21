@@ -237,8 +237,11 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
         url: urls,
         createdAt: time.toUtc().toString(),
       ).toJson();
-      await _firestoreRepository
-          .updateArrayField('test/Events', 'events', elementsToAdd: [item]);
+      await _firestoreRepository.updateArrayField(
+        'collection/Markers',
+        'markers',
+        elementsToAdd: [item],
+      );
 
       subjectChanged('');
       descriptionChanged('');

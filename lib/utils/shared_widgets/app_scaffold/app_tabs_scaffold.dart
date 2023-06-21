@@ -30,8 +30,8 @@ class AppTabsScaffold extends StatelessWidget {
                 sliver: SliverAppBar(
                   title: Text(appBarTitle),
                   pinned: true,
-                  floating: true,
-                  expandedHeight: 150.0,
+                  //floating: true,
+                  // expandedHeight: 150.0,
                   forceElevated: innerBoxIsScrolled,
                   bottom: TabBar(
                     indicatorPadding: const EdgeInsets.all(8.0),
@@ -53,7 +53,7 @@ class AppTabsScaffold extends StatelessWidget {
                   child: Builder(
                     builder: (context) {
                       return CustomScrollView(
-                        physics: const AlwaysScrollableScrollPhysics(),
+                        physics: const ClampingScrollPhysics(),
                         key: PageStorageKey<String>(e['text']),
                         slivers: [
                           SliverOverlapInjector(

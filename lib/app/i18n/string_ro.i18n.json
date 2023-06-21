@@ -88,6 +88,15 @@
             "disabled": "Serviciile de localizare sunt dezactivate"
         }
     },
+    "local_administration": {
+        "title": "Administrație Locală"
+    },
+    "airQuality": {
+        "title": "Calitatea aerului",
+        "airQualityTab": "Calitatea aerului",
+        "chartsTab": "Grafice",
+        "aboutTab": "Despre proiect"
+    },
     "buttons": {
         "log_in": "Log in"
     },
