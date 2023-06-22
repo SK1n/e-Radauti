@@ -85,6 +85,7 @@ dependencies:
     slang_flutter: ^3.18.0
     formz: ^0.6.0
     flutter_html: ^3.0.0-alpha.6
+    auto_route: ^7.4.0
  
 
     # LOCAL
@@ -111,6 +112,7 @@ dev_dependencies:
     flutter_native_splash: ^2.1.6
     floor_generator: ^1.4.2
     injectable_generator: ^2.1.6
+    auto_route_generator: ^7.1.1
     freezed: ^2.3.5
     slang_build_runner: ^3.18.0
     json_serializable: ^6.7.0
