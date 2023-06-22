@@ -39,6 +39,13 @@ class QualityTab extends StatelessWidget {
                       'https://calitateaer.radautiulcivic.ro/wp-content/uploads/2023/06/Calitatea_aerului_e-Radauti_App.html'),
                 ),
                 onWebViewCreated: (controller) {},
+                // onLoadStop: (controller, url) async {
+                //   await webViewController?.evaluateJavascript(
+                //     source:
+                //         'document.getElementById("heatmap-container").style.height="400px";'
+                //         'document.getElementById("heatmap").style.height="100%";',
+                //   );
+                // },
               ),
             );
           }
