@@ -3,9 +3,10 @@ import 'package:floor_repository/floor_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/i18n/strings.g.dart';
+
 import 'package:flutterapperadauti/app/pages/events/cubit/event_details_cubit.dart';
 import 'package:flutterapperadauti/app/pages/events/view/item_event.dart';
+import 'package:flutterapperadauti/i18n/strings.g.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
 import 'package:fluttericon/elusive_icons.dart';

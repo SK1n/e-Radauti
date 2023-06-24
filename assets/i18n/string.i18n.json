@@ -88,8 +88,14 @@
             "disabled": "Location services are disabled"
         }
     },
-    "local_administration": {
-        "title": "Local Administration"
+    "localAdministration": {
+        "title": "Local Administration",
+        "newsTab": "News",
+        "localCouncilTab": "Local council",
+        "localCouncilTeam": "Local Council Team",
+        "localCouncilLive": "Local Council Meetings",
+        "localCouncilDecisions": "Local Council Decisions",
+        "emptyLocalDecisions": "We couldn't find any decisions, please try again later!"
     },
     "airQuality": {
         "title": "Air quality",

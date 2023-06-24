@@ -1,5 +1,6 @@
 import 'package:firestore_repository/firestore_repository.dart';
-import 'package:flutterapperadauti/app/i18n/strings.g.dart';
+import 'package:flutterapperadauti/i18n/strings.g.dart';
+
 import 'package:flutterapperadauti/utils/const.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:google_fonts/google_fonts.dart';

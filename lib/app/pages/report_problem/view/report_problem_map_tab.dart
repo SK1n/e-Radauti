@@ -5,7 +5,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 // ignore: depend_on_referenced_packages
 import 'package:latlong2/latlong.dart' as latLng;
-import 'package:flutterapperadauti/app/i18n/strings.g.dart';
+
 import 'package:flutterapperadauti/app/pages/report_problem/cubit/report_problem_cubit.dart';
 import 'package:flutterapperadauti/utils/loading_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/empty_widget.dart';

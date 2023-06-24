@@ -1,20 +1,22 @@
+import 'dart:isolate';
+
 import 'package:dio/dio.dart';
 import 'package:html/parser.dart' show parse;
 import 'package:local_administration/src/models/decision_model.dart';
 import 'package:logger/logger.dart';
 
-enum NewsState {
+enum PageState {
   initial,
   inProgress,
   success,
   failure,
 }
 
-extension NewsX on NewsState {
-  bool get isInitial => this == NewsState.initial;
-  bool get isInProgress => this == NewsState.inProgress;
-  bool get isSuccess => this == NewsState.success;
-  bool get isFalure => this == NewsState.failure;
+extension PageStateX on PageState {
+  bool get isInitial => this == PageState.initial;
+  bool get isInProgress => this == PageState.inProgress;
+  bool get isSuccess => this == PageState.success;
+  bool get isFalure => this == PageState.failure;
 }
 
 class LocalAdministrationException implements Exception {
@@ -76,7 +78,7 @@ class LocalAdministrationRepository {
     }
   }
 
-  Future<void> getDecisions() async {
+  Future<List<DecisionModel>> getDecisions() async {
     try {
       Dio dio = Dio();
       List<DecisionModel> elements = [];
@@ -87,7 +89,7 @@ class LocalAdministrationRepository {
           var document = parse(response.data);
           var rawElements = document.querySelectorAll("div.entry-content ol a");
           for (var element in rawElements) {
-            var title = element.text.replaceAll(RegExp(r'\s+'), '').trim();
+            var title = element.text.replaceAll(RegExp('/\\s+/g'), '').trim();
             var link = element.attributes['href'];
             elements.add(
               DecisionModel(
@@ -121,6 +123,7 @@ class LocalAdministrationRepository {
             'https://primariaradauti.ro/monitorul-oficial-local/hotarari-cl/anul-${2011 + year}/');
         parseResponseData(response, '${2011 + year}');
       }
+      return elements;
     } on LocalAdministrationException catch (e) {
       throw LocalAdministrationException(e.message);
     }

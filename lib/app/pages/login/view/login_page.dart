@@ -3,10 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/i18n/strings.g.dart';
+
 import 'package:flutterapperadauti/app/pages/login/cubit/login_cubit.dart';
 import 'package:flutterapperadauti/app/pages/login/view/login_form.dart';
 import 'package:flutterapperadauti/app/pages/sign_up/view/sign_up_page.dart';
+import 'package:flutterapperadauti/i18n/strings.g.dart';
 import 'package:flutterapperadauti/modules/login/controller/login_controller.dart';
 import 'package:flutterapperadauti/utils/assets.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_scaffold.dart';
@@ -19,7 +20,6 @@ class LoginPage extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    final t = context.t;
     return AppScaffold(
       slivers: [
         Image.asset(

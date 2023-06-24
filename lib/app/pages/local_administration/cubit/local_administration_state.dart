@@ -3,18 +3,28 @@ part of 'local_administration_cubit.dart';
 @freezed
 class LocalAdministrationState with _$LocalAdministrationState {
   const factory LocalAdministrationState({
-    required NewsState newsState,
+    //Latest NEWS
+    required PageState newsState,
     required DecisionModel latestDecision,
-    String? message,
+    required String? errorMessageNews,
+    //Local decisions
+    required PageState localDecisionState,
+    required List<DecisionModel> localDecisions,
+    required List<DecisionModel> fillteredLocalDecisions,
+    required String? errorMessageLocalDecisions,
   }) = _LocalAdministrationState;
 
   factory LocalAdministrationState.initial() => const LocalAdministrationState(
-        newsState: NewsState.initial,
+        newsState: PageState.initial,
         latestDecision: DecisionModel(
           title: '',
           url: '',
           year: '',
         ),
-        message: '',
+        errorMessageNews: '',
+        localDecisionState: PageState.initial,
+        localDecisions: [],
+        fillteredLocalDecisions: [],
+        errorMessageLocalDecisions: '',
       );
 }

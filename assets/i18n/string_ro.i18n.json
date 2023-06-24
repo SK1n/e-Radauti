@@ -88,8 +88,14 @@
             "disabled": "Serviciile de localizare sunt dezactivate"
         }
     },
-    "local_administration": {
-        "title": "Administrație Locală"
+    "localAdministration": {
+        "title": "Administrație Locală",
+        "newsTab": "Noutăți",
+        "localCouncilTab": "Consiliul local",
+        "localCouncilTeam": "Echipă Consiliu Local",
+        "localCouncilLive": "Ședințe de Consiliu Local",
+        "localCouncilDecisions": "Hotărârile Consiliului Local",
+        "emptyLocalDecisions": "Nu am putut găsi nicio hotărâre, vă rugăm să încercați din nou mai târziu!"
     },
     "airQuality": {
         "title": "Calitatea aerului",

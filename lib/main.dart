@@ -6,7 +6,9 @@ import 'package:floor_repository/floor_repository.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutterapperadauti/app/app.dart';
 import 'package:flutterapperadauti/app/bloc_observer.dart';
-import 'package:flutterapperadauti/app/i18n/strings.g.dart';
+import 'package:flutterapperadauti/i18n/strings.g.dart';
+import 'package:flutterapperadauti/app/pages/local_administration/cubit/local_administration_cubit.dart';
+import 'package:local_administration/local_administration.dart';
 import 'package:storage_repository/storage_repository.dart';
 
 Future<void> main() async {
@@ -19,6 +21,7 @@ Future<void> main() async {
   final firestoreRepository = FirestoreRepository();
   final storageRepository = StorageRepository();
   final floorRepository = FloorRepository();
+  final localAdministrationRepository = LocalAdministrationRepository();
   await authenticationRepository.user.first;
 
   runApp(
@@ -28,6 +31,7 @@ Future<void> main() async {
         firestoreRepository: firestoreRepository,
         storageRepository: storageRepository,
         floorRepository: floorRepository,
+        localAdministrationRepository: localAdministrationRepository,
       ),
     ),
   );

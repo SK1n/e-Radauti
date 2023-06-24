@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutterapperadauti/app/bloc/app_bloc.dart';
 import 'package:flutterapperadauti/app/router/routes.dart';
+import 'package:local_administration/local_administration.dart';
 import 'package:storage_repository/storage_repository.dart';
 
 class App extends StatelessWidget {
@@ -15,16 +16,19 @@ class App extends StatelessWidget {
     required FirestoreRepository firestoreRepository,
     required StorageRepository storageRepository,
     required FloorRepository floorRepository,
+    required LocalAdministrationRepository localAdministrationRepository,
     super.key,
   })  : _authenticationRepository = authenticationRepository,
         _firestoreRepository = firestoreRepository,
         _storageRepository = storageRepository,
-        _floorRepository = floorRepository;
+        _floorRepository = floorRepository,
+        _localAdministrationRepository = localAdministrationRepository;
 
   final AuthenticationRepository _authenticationRepository;
   final FirestoreRepository _firestoreRepository;
   final StorageRepository _storageRepository;
   final FloorRepository _floorRepository;
+  final LocalAdministrationRepository _localAdministrationRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +46,9 @@ class App extends StatelessWidget {
         RepositoryProvider(
           create: (context) => _floorRepository,
         ),
+        RepositoryProvider(
+          create: (context) => _localAdministrationRepository,
+        )
       ],
       child: BlocProvider(
         create: (_) => AppBloc(

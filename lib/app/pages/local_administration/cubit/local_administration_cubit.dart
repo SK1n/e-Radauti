@@ -14,22 +14,56 @@ class LocalAdministrationCubit extends Cubit<LocalAdministrationState> {
           LocalAdministrationState.initial(),
         );
 
-  void getLatestDecision() async {
+  void getLastDecision() async {
     try {
+      emit(state.copyWith(newsState: PageState.inProgress));
       DecisionModel data = await _administrationRepository.getLatestDecision();
       emit(
         state.copyWith(
-          newsState: NewsState.success,
+          newsState: PageState.success,
           latestDecision: data,
         ),
       );
     } on LocalAdministrationException catch (e) {
       emit(
         state.copyWith(
-          newsState: NewsState.failure,
-          message: e.message,
+          newsState: PageState.failure,
+          errorMessageNews: e.message,
         ),
       );
     }
+  }
+
+  void getDecisions() async {
+    try {
+      emit(state.copyWith(localDecisionState: PageState.inProgress));
+      List<DecisionModel> data = await _administrationRepository.getDecisions();
+      emit(
+        state.copyWith(
+          localDecisionState: PageState.success,
+          localDecisions: data,
+        ),
+      );
+    } on LocalAdministrationException catch (e) {
+      emit(
+        state.copyWith(
+          localDecisionState: PageState.failure,
+          errorMessageLocalDecisions: e.message,
+        ),
+      );
+    }
+  }
+
+  void filterLocalDecisions(String query) {
+    emit(state.copyWith(localDecisionState: PageState.inProgress));
+    var data = state.localDecisions
+        .where((element) => element.title.toLowerCase() == query.toLowerCase())
+        .toList();
+    emit(
+      state.copyWith(
+        localDecisionState: PageState.success,
+        fillteredLocalDecisions: data,
+      ),
+    );
   }
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutterapperadauti/app/i18n/strings.g.dart';
 import 'package:flutterapperadauti/app/pages/forgot_password/cubit/forgot_password_cubit.dart';
 import 'package:flutterapperadauti/app/utils/widgets/border_text_form_field.dart';
+import 'package:flutterapperadauti/i18n/strings.g.dart';
 import 'package:flutterapperadauti/utils/loading_widget.dart';
 import 'package:formz/formz.dart';
 
@@ -59,7 +59,7 @@ class _EmailInput extends StatelessWidget {
           onChanged: (email) =>
               context.read<ForgotPasswordCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
-          hint: t.forgotPassword.emailTextField,
+          hint: context.t.forgotPassword.emailTextField,
           errorText:
               state.email.displayError != null ? t.formats.invalidEmail : null,
         );

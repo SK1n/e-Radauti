@@ -85,6 +85,7 @@ dependencies:
     slang_flutter: ^3.18.0
     formz: ^0.6.0
     flutter_html: ^3.0.0-alpha.6
+    flutter_cached_pdfview: ^0.4.1
  
 
     # LOCAL
@@ -133,6 +134,8 @@ flutter_icons:
 
 flutter:
     assets:
+        - assets/
+        - assets/local_administration/
         - assets/buttons/
         - assets/drawer/
         - assets/faces/
