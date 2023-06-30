@@ -1,16 +1,12 @@
-import 'package:authentication_repository/authentication_repository.dart';
-import 'package:firestore_repository/firestore_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/cubit/location_cubit.dart';
-
+import 'package:flutterapperadauti/app/form_inputs/report_problem_form.dart';
 import 'package:flutterapperadauti/app/pages/report_problem/cubit/report_problem_cubit.dart';
 import 'package:flutterapperadauti/app/utils/widgets/border_dropdown_button_form_field.dart';
 import 'package:flutterapperadauti/app/utils/widgets/border_text_form_field.dart';
 import 'package:flutterapperadauti/i18n/strings.g.dart';
 import 'package:flutterapperadauti/utils/loading_widget.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
-import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -72,9 +68,9 @@ class ReportProblemFormTab extends StatelessWidget {
             );
         }
       },
-      child: SliverToBoxAdapter(
-        child: Column(
-          children: [
+      child: SliverList(
+        delegate: SliverChildListDelegate(
+          [
             _UsernameInput(),
             _EmailInput(),
             _PhoneNumberInput(),

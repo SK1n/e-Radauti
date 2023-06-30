@@ -1,5 +1,6 @@
 part of 'forgot_password_cubit.dart';
 
+//TODO: change to use freezed
 final class ForgotPasswordState extends Equatable {
   const ForgotPasswordState({
     this.email = const Email.pure(),

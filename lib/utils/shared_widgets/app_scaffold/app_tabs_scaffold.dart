@@ -7,11 +7,13 @@ class AppTabsScaffold extends StatelessWidget {
     super.key,
     required this.tabs,
     required this.appBarTitle,
+    this.expandedHeight,
     this.appBar,
   });
   final PreferredSizeWidget? appBar;
   final String appBarTitle;
   final List<Map<String, dynamic>> tabs;
+  final double? expandedHeight;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -30,8 +32,8 @@ class AppTabsScaffold extends StatelessWidget {
                 sliver: SliverAppBar(
                   title: Text(appBarTitle),
                   pinned: true,
-                  //floating: true,
-                  // expandedHeight: 150.0,
+                  floating: expandedHeight != null ? true : false,
+                  expandedHeight: expandedHeight,
                   forceElevated: innerBoxIsScrolled,
                   bottom: TabBar(
                     indicatorPadding: const EdgeInsets.all(8.0),
@@ -43,7 +45,7 @@ class AppTabsScaffold extends StatelessWidget {
             ];
           },
           body: TabBarView(
-            physics: const NeverScrollableScrollPhysics(),
+            physics: const AlwaysScrollableScrollPhysics(),
             children: tabs.map((e) {
               return SafeArea(
                 top: false,
@@ -53,7 +55,7 @@ class AppTabsScaffold extends StatelessWidget {
                   child: Builder(
                     builder: (context) {
                       return CustomScrollView(
-                        physics: const ClampingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         key: PageStorageKey<String>(e['text']),
                         slivers: [
                           SliverOverlapInjector(

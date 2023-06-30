@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutterapperadauti/data/models/events/events_item_model.dart';
+import 'package:flutterapperadauti/data/models/events/events_item_model2.dart';
 import 'package:flutterapperadauti/data/models/events/old_events_model.dart';
 import 'package:flutterapperadauti/utils/base_controller.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 
-class OldEventsController extends BaseController<List<EventsItemModel>> {
+class OldEventsController extends BaseController<List<EventsItemModel2>> {
   Future<void> getEvents() async {
     change(GetStatus.loading());
     futurize(() async {
@@ -13,9 +13,9 @@ class OldEventsController extends BaseController<List<EventsItemModel>> {
         document: dr,
         convert: OldEventsModel.fromJson,
       );
-      List<EventsItemModel> sortedList =
+      List<EventsItemModel2> sortedList =
           data.events.sublist(data.events.length - 11, data.events.length - 1);
-      for (EventsItemModel item in sortedList) {
+      for (EventsItemModel2 item in sortedList) {
         item.url = await fireRepo.getImageUrl(item.url);
       }
 

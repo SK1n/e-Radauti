@@ -47,7 +47,5 @@ app.*.map.json
 flutter_run.txt
 
 
-#ignore generated file
-**/*.g.dart
 
 android\key.properties

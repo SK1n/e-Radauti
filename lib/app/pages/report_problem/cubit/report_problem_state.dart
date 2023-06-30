@@ -30,8 +30,8 @@ class ReportProblemState with _$ReportProblemState {
     required ImagePicker imagePicker,
     required bool isValid,
     required FormzSubmissionStatus formzStatus,
-    required StorageRepositoryStatus storageStatus,
-    required FirestoreRepositoryStatus firestoreStatus,
+    required PageState storageStatus,
+    required PageState firestoreStatus,
     required List<ReportProblemItemModel>? myReportsData,
     required List<Marker>? markersData,
     required String? errorMessage,
@@ -55,8 +55,8 @@ class ReportProblemState with _$ReportProblemState {
         myReportsData: [],
         markersData: [],
         position: null,
-        storageStatus: StorageRepositoryStatus.initial,
-        firestoreStatus: FirestoreRepositoryStatus.initial,
+        storageStatus: PageState.initial,
+        firestoreStatus: PageState.initial,
         positionState: PositionState.initial,
       );
 }

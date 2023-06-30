@@ -27,10 +27,8 @@ mixin _$ReportProblemState {
   ImagePicker get imagePicker => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
   FormzSubmissionStatus get formzStatus => throw _privateConstructorUsedError;
-  StorageRepositoryStatus get storageStatus =>
-      throw _privateConstructorUsedError;
-  FirestoreRepositoryStatus get firestoreStatus =>
-      throw _privateConstructorUsedError;
+  PageState get storageStatus => throw _privateConstructorUsedError;
+  PageState get firestoreStatus => throw _privateConstructorUsedError;
   List<ReportProblemItemModel>? get myReportsData =>
       throw _privateConstructorUsedError;
   List<Marker>? get markersData => throw _privateConstructorUsedError;
@@ -61,8 +59,8 @@ abstract class $ReportProblemStateCopyWith<$Res> {
       ImagePicker imagePicker,
       bool isValid,
       FormzSubmissionStatus formzStatus,
-      StorageRepositoryStatus storageStatus,
-      FirestoreRepositoryStatus firestoreStatus,
+      PageState storageStatus,
+      PageState firestoreStatus,
       List<ReportProblemItemModel>? myReportsData,
       List<Marker>? markersData,
       String? errorMessage,
@@ -150,11 +148,11 @@ class _$ReportProblemStateCopyWithImpl<$Res, $Val extends ReportProblemState>
       storageStatus: null == storageStatus
           ? _value.storageStatus
           : storageStatus // ignore: cast_nullable_to_non_nullable
-              as StorageRepositoryStatus,
+              as PageState,
       firestoreStatus: null == firestoreStatus
           ? _value.firestoreStatus
           : firestoreStatus // ignore: cast_nullable_to_non_nullable
-              as FirestoreRepositoryStatus,
+              as PageState,
       myReportsData: freezed == myReportsData
           ? _value.myReportsData
           : myReportsData // ignore: cast_nullable_to_non_nullable
@@ -199,8 +197,8 @@ abstract class _$$_ReportProblemStateCopyWith<$Res>
       ImagePicker imagePicker,
       bool isValid,
       FormzSubmissionStatus formzStatus,
-      StorageRepositoryStatus storageStatus,
-      FirestoreRepositoryStatus firestoreStatus,
+      PageState storageStatus,
+      PageState firestoreStatus,
       List<ReportProblemItemModel>? myReportsData,
       List<Marker>? markersData,
       String? errorMessage,
@@ -286,11 +284,11 @@ class __$$_ReportProblemStateCopyWithImpl<$Res>
       storageStatus: null == storageStatus
           ? _value.storageStatus
           : storageStatus // ignore: cast_nullable_to_non_nullable
-              as StorageRepositoryStatus,
+              as PageState,
       firestoreStatus: null == firestoreStatus
           ? _value.firestoreStatus
           : firestoreStatus // ignore: cast_nullable_to_non_nullable
-              as FirestoreRepositoryStatus,
+              as PageState,
       myReportsData: freezed == myReportsData
           ? _value._myReportsData
           : myReportsData // ignore: cast_nullable_to_non_nullable
@@ -363,9 +361,9 @@ class _$_ReportProblemState implements _ReportProblemState {
   @override
   final FormzSubmissionStatus formzStatus;
   @override
-  final StorageRepositoryStatus storageStatus;
+  final PageState storageStatus;
   @override
-  final FirestoreRepositoryStatus firestoreStatus;
+  final PageState firestoreStatus;
   final List<ReportProblemItemModel>? _myReportsData;
   @override
   List<ReportProblemItemModel>? get myReportsData {
@@ -481,8 +479,8 @@ abstract class _ReportProblemState implements ReportProblemState {
       required final ImagePicker imagePicker,
       required final bool isValid,
       required final FormzSubmissionStatus formzStatus,
-      required final StorageRepositoryStatus storageStatus,
-      required final FirestoreRepositoryStatus firestoreStatus,
+      required final PageState storageStatus,
+      required final PageState firestoreStatus,
       required final List<ReportProblemItemModel>? myReportsData,
       required final List<Marker>? markersData,
       required final String? errorMessage,
@@ -512,9 +510,9 @@ abstract class _ReportProblemState implements ReportProblemState {
   @override
   FormzSubmissionStatus get formzStatus;
   @override
-  StorageRepositoryStatus get storageStatus;
+  PageState get storageStatus;
   @override
-  FirestoreRepositoryStatus get firestoreStatus;
+  PageState get firestoreStatus;
   @override
   List<ReportProblemItemModel>? get myReportsData;
   @override

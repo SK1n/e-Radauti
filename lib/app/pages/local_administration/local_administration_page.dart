@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/repository/local_administration/local_administration_repository.dart';
 import 'package:flutterapperadauti/i18n/strings.g.dart';
 import 'package:flutterapperadauti/app/pages/local_administration/cubit/local_administration_cubit.dart';
 import 'package:flutterapperadauti/app/pages/local_administration/tab_local_council.dart';
 import 'package:flutterapperadauti/app/pages/local_administration/tab_news_page.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_tabs_scaffold.dart';
-import 'package:local_administration/local_administration.dart';
 
 class LocalAdministrationPage extends StatelessWidget {
   const LocalAdministrationPage({super.key});

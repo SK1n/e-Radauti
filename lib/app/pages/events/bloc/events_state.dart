@@ -4,13 +4,11 @@ part of 'events_bloc.dart';
 class EventsState with _$EventsState {
   const factory EventsState({
     List<EventsItemModel>? newEvents,
-    @Default(FirestoreSubmissionStatus.initial)
-    FirestoreSubmissionStatus newEventsStatus,
+    @Default(PageState.initial) PageState newEventsStatus,
     List<EventsItemModel>? oldEvents,
-    @Default(FirestoreSubmissionStatus.initial)
-    FirestoreSubmissionStatus oldEventsStatus,
+    @Default(PageState.initial) PageState oldEventsStatus,
     List<EventsItemModel>? favoritesEvents,
-    @Default(FloorRepositoryStatus.initial) FloorRepositoryStatus floorStatus,
+    @Default(PageState.initial) PageState floorStatus,
     String? errorMessage,
   }) = _EventsState;
 }

@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutterapperadauti/controllers/dao_controller.dart';
-import 'package:flutterapperadauti/dao/app_database.dart';
-import 'package:flutterapperadauti/data/models/events/events_item_model.dart';
+import 'package:flutterapperadauti/data/models/events/events_item_model2.dart';
 import 'package:flutterapperadauti/modules/events/controllers/favorites_events_controller.dart';
 import 'package:flutterapperadauti/modules/events/controllers/new_events_controller.dart';
 import 'package:flutterapperadauti/utils/const.dart';
@@ -39,7 +38,7 @@ class EventsDetails extends StatefulWidget with UrlLauncher {
 
 class _EventsDetailsState extends State<EventsDetails> with UrlLauncher {
   final DaoController daoController = Get.find();
-  final EventsItemModel data = Get.arguments[0];
+  final EventsItemModel2 data = Get.arguments[0];
   bool eventExists = false;
   @override
   void initState() {
@@ -48,10 +47,10 @@ class _EventsDetailsState extends State<EventsDetails> with UrlLauncher {
   }
 
   Future<void> checkIfEventIsFavorite() async {
-    if (await daoController.eventExists(data, data.id!) ?? false) {
-      eventExists = true;
-      setState(() {});
-    }
+    // if (await daoController.eventExists(data, data.id!) ?? false) {
+    //   eventExists = true;
+    //   setState(() {});
+    // }
   }
 
   @override
@@ -145,7 +144,7 @@ class _EventsDetailsState extends State<EventsDetails> with UrlLauncher {
                             ),
                             label: Text('remove-event'.tr),
                             onPressed: () async {
-                              await daoController.remove(data);
+                              // await daoController.remove(data);
                               eventExists = false;
                               controller.getFavoritesEvents();
                               setState(() {});
@@ -159,7 +158,7 @@ class _EventsDetailsState extends State<EventsDetails> with UrlLauncher {
                             ),
                             label: Text('save-event'.tr),
                             onPressed: () async {
-                              await daoController.insert(data);
+                              //  await daoController.insert(data);
                               eventExists = true;
                               controller.getFavoritesEvents();
                               setState(() {});

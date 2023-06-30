@@ -1,7 +1,8 @@
-import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:form_inputs/form_inputs.dart';
+import 'package:flutterapperadauti/app/form_inputs/email.dart';
+import 'package:flutterapperadauti/app/form_inputs/password.dart';
+import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
 import 'package:formz/formz.dart';
 
 part 'login_state.dart';

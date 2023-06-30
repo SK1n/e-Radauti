@@ -1,14 +1,13 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:firestore_repository/firestore_repository.dart';
-import 'package:floor/floor.dart';
-import 'package:floor_repository/floor_repository.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutterapperadauti/app/models/events/events_item_model.dart';
+import 'package:flutterapperadauti/app/models/events/new_events_model.dart';
+import 'package:flutterapperadauti/app/models/events/old_events_model.dart';
+import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
+import 'package:flutterapperadauti/app/repository/floor/floor_repository.dart';
+import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
+import 'package:flutterapperadauti/app/utils/page_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:logger/logger.dart';
-import 'package:storage_repository/storage_repository.dart';
 
 part 'events_event.dart';
 part 'events_state.dart';
@@ -26,8 +25,7 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     on<GetNewEvents>(
       (event, emit) async {
         try {
-          emit(state.copyWith(
-              newEventsStatus: FirestoreSubmissionStatus.inProgress));
+          emit(state.copyWith(newEventsStatus: PageState.inProgress));
           var result =
               await _firestoreRepository.fetchDocument('collection/Events');
           NewEventsModel data = NewEventsModel.fromJson(result.data() ?? {});
@@ -38,13 +36,13 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
             return event.copyWith(url: tempDownloadUrl);
           }));
           emit(state.copyWith(
-            newEventsStatus: FirestoreSubmissionStatus.success,
+            newEventsStatus: PageState.success,
             newEvents: updatedEvents,
           ));
         } catch (e) {
           emit(
             state.copyWith(
-              newEventsStatus: FirestoreSubmissionStatus.failure,
+              newEventsStatus: PageState.failure,
             ),
           );
         }
@@ -53,8 +51,7 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
 
     on<GetOldEvents>(
       (event, emit) async {
-        emit(state.copyWith(
-            oldEventsStatus: FirestoreSubmissionStatus.inProgress));
+        emit(state.copyWith(oldEventsStatus: PageState.inProgress));
         try {
           var result =
               await _firestoreRepository.fetchDocument('collection/OldEvents');
@@ -68,13 +65,13 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
             return event.copyWith(url: tempDownloadUrl);
           }));
           emit(state.copyWith(
-            oldEventsStatus: FirestoreSubmissionStatus.success,
+            oldEventsStatus: PageState.success,
             oldEvents: updatedEvents,
           ));
         } catch (e) {
           emit(
             state.copyWith(
-              oldEventsStatus: FirestoreSubmissionStatus.failure,
+              oldEventsStatus: PageState.failure,
             ),
           );
         }
@@ -82,14 +79,13 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     );
     on<GetFavoriteEvents>((event, emit) async {
       try {
-        emit(state.copyWith(floorStatus: FloorRepositoryStatus.inProgress));
+        emit(state.copyWith(floorStatus: PageState.inProgress));
         final events = await _floorRepository.getFavoritesEvents();
         emit(state.copyWith(
-            favoritesEvents: events,
-            floorStatus: FloorRepositoryStatus.success));
+            favoritesEvents: events, floorStatus: PageState.success));
       } catch (e) {
         debugPrint(e.toString());
-        emit(state.copyWith(floorStatus: FloorRepositoryStatus.failure));
+        emit(state.copyWith(floorStatus: PageState.failure));
       }
     });
   }

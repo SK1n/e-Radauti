@@ -1,11 +1,9 @@
-import 'package:firestore_repository/firestore_repository.dart';
-import 'package:floor_repository/floor_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutterapperadauti/app/models/events/events_item_model.dart';
 import 'package:flutterapperadauti/app/pages/events/cubit/event_details_cubit.dart';
-import 'package:flutterapperadauti/app/pages/events/view/item_event.dart';
+import 'package:flutterapperadauti/app/repository/floor/floor_repository.dart';
 import 'package:flutterapperadauti/i18n/strings.g.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_scaffold.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';

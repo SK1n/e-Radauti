@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/app/models/local_administration/decision_model.dart';
 import 'package:flutterapperadauti/app/pages/local_administration/preview_pdf.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:local_administration/local_administration.dart';
 
 class ItemLocalDecision extends StatelessWidget {
   final DecisionModel item;
@@ -23,7 +23,7 @@ class ItemLocalDecision extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                item.title,
+                '[${item.year}] ${item.title}',
                 softWrap: true,
               ),
             ),

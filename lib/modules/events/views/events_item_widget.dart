@@ -1,4 +1,4 @@
-import 'package:flutterapperadauti/data/models/events/events_item_model.dart';
+import 'package:flutterapperadauti/data/models/events/events_item_model2.dart';
 import 'package:flutterapperadauti/modules/events/controllers/new_events_controller.dart';
 import 'package:flutterapperadauti/routes/app_pages.dart';
 import 'package:flutterapperadauti/utils/const.dart';
@@ -26,7 +26,7 @@ extension TimestampToDate on num {
 }
 
 class EventsItemWidget extends GetView<NewEventsController> {
-  final EventsItemModel data;
+  final EventsItemModel2 data;
   const EventsItemWidget(
     this.data, {
     super.key,

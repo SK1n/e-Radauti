@@ -1,15 +1,14 @@
-import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firestore_repository/firestore_repository.dart';
-import 'package:floor_repository/floor_repository.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutterapperadauti/app/app.dart';
 import 'package:flutterapperadauti/app/bloc_observer.dart';
+import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
+import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
+import 'package:flutterapperadauti/app/repository/floor/floor_repository.dart';
+import 'package:flutterapperadauti/app/repository/local_administration/local_administration_repository.dart';
+import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
 import 'package:flutterapperadauti/i18n/strings.g.dart';
-import 'package:flutterapperadauti/app/pages/local_administration/cubit/local_administration_cubit.dart';
-import 'package:local_administration/local_administration.dart';
-import 'package:storage_repository/storage_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,14 +1,14 @@
-import 'package:authentication_repository/authentication_repository.dart';
-import 'package:firestore_repository/firestore_repository.dart';
-import 'package:floor_repository/floor_repository.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutterapperadauti/app/bloc/app_bloc.dart';
+import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
+import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
+import 'package:flutterapperadauti/app/repository/floor/floor_repository.dart';
+import 'package:flutterapperadauti/app/repository/local_administration/local_administration_repository.dart';
+import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
 import 'package:flutterapperadauti/app/router/routes.dart';
-import 'package:local_administration/local_administration.dart';
-import 'package:storage_repository/storage_repository.dart';
 
 class App extends StatelessWidget {
   const App({

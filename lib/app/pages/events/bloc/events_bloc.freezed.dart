@@ -17,14 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$EventsState {
   List<EventsItemModel>? get newEvents => throw _privateConstructorUsedError;
-  FirestoreSubmissionStatus get newEventsStatus =>
-      throw _privateConstructorUsedError;
+  PageState get newEventsStatus => throw _privateConstructorUsedError;
   List<EventsItemModel>? get oldEvents => throw _privateConstructorUsedError;
-  FirestoreSubmissionStatus get oldEventsStatus =>
-      throw _privateConstructorUsedError;
+  PageState get oldEventsStatus => throw _privateConstructorUsedError;
   List<EventsItemModel>? get favoritesEvents =>
       throw _privateConstructorUsedError;
-  FloorRepositoryStatus get floorStatus => throw _privateConstructorUsedError;
+  PageState get floorStatus => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,11 +38,11 @@ abstract class $EventsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<EventsItemModel>? newEvents,
-      FirestoreSubmissionStatus newEventsStatus,
+      PageState newEventsStatus,
       List<EventsItemModel>? oldEvents,
-      FirestoreSubmissionStatus oldEventsStatus,
+      PageState oldEventsStatus,
       List<EventsItemModel>? favoritesEvents,
-      FloorRepositoryStatus floorStatus,
+      PageState floorStatus,
       String? errorMessage});
 }
 
@@ -77,7 +75,7 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
       newEventsStatus: null == newEventsStatus
           ? _value.newEventsStatus
           : newEventsStatus // ignore: cast_nullable_to_non_nullable
-              as FirestoreSubmissionStatus,
+              as PageState,
       oldEvents: freezed == oldEvents
           ? _value.oldEvents
           : oldEvents // ignore: cast_nullable_to_non_nullable
@@ -85,7 +83,7 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
       oldEventsStatus: null == oldEventsStatus
           ? _value.oldEventsStatus
           : oldEventsStatus // ignore: cast_nullable_to_non_nullable
-              as FirestoreSubmissionStatus,
+              as PageState,
       favoritesEvents: freezed == favoritesEvents
           ? _value.favoritesEvents
           : favoritesEvents // ignore: cast_nullable_to_non_nullable
@@ -93,7 +91,7 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
       floorStatus: null == floorStatus
           ? _value.floorStatus
           : floorStatus // ignore: cast_nullable_to_non_nullable
-              as FloorRepositoryStatus,
+              as PageState,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -112,11 +110,11 @@ abstract class _$$_EventsStateCopyWith<$Res>
   @useResult
   $Res call(
       {List<EventsItemModel>? newEvents,
-      FirestoreSubmissionStatus newEventsStatus,
+      PageState newEventsStatus,
       List<EventsItemModel>? oldEvents,
-      FirestoreSubmissionStatus oldEventsStatus,
+      PageState oldEventsStatus,
       List<EventsItemModel>? favoritesEvents,
-      FloorRepositoryStatus floorStatus,
+      PageState floorStatus,
       String? errorMessage});
 }
 
@@ -147,7 +145,7 @@ class __$$_EventsStateCopyWithImpl<$Res>
       newEventsStatus: null == newEventsStatus
           ? _value.newEventsStatus
           : newEventsStatus // ignore: cast_nullable_to_non_nullable
-              as FirestoreSubmissionStatus,
+              as PageState,
       oldEvents: freezed == oldEvents
           ? _value._oldEvents
           : oldEvents // ignore: cast_nullable_to_non_nullable
@@ -155,7 +153,7 @@ class __$$_EventsStateCopyWithImpl<$Res>
       oldEventsStatus: null == oldEventsStatus
           ? _value.oldEventsStatus
           : oldEventsStatus // ignore: cast_nullable_to_non_nullable
-              as FirestoreSubmissionStatus,
+              as PageState,
       favoritesEvents: freezed == favoritesEvents
           ? _value._favoritesEvents
           : favoritesEvents // ignore: cast_nullable_to_non_nullable
@@ -163,7 +161,7 @@ class __$$_EventsStateCopyWithImpl<$Res>
       floorStatus: null == floorStatus
           ? _value.floorStatus
           : floorStatus // ignore: cast_nullable_to_non_nullable
-              as FloorRepositoryStatus,
+              as PageState,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -177,11 +175,11 @@ class __$$_EventsStateCopyWithImpl<$Res>
 class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
   const _$_EventsState(
       {final List<EventsItemModel>? newEvents,
-      this.newEventsStatus = FirestoreSubmissionStatus.initial,
+      this.newEventsStatus = PageState.initial,
       final List<EventsItemModel>? oldEvents,
-      this.oldEventsStatus = FirestoreSubmissionStatus.initial,
+      this.oldEventsStatus = PageState.initial,
       final List<EventsItemModel>? favoritesEvents,
-      this.floorStatus = FloorRepositoryStatus.initial,
+      this.floorStatus = PageState.initial,
       this.errorMessage})
       : _newEvents = newEvents,
         _oldEvents = oldEvents,
@@ -199,7 +197,7 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
 
   @override
   @JsonKey()
-  final FirestoreSubmissionStatus newEventsStatus;
+  final PageState newEventsStatus;
   final List<EventsItemModel>? _oldEvents;
   @override
   List<EventsItemModel>? get oldEvents {
@@ -212,7 +210,7 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
 
   @override
   @JsonKey()
-  final FirestoreSubmissionStatus oldEventsStatus;
+  final PageState oldEventsStatus;
   final List<EventsItemModel>? _favoritesEvents;
   @override
   List<EventsItemModel>? get favoritesEvents {
@@ -225,7 +223,7 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
 
   @override
   @JsonKey()
-  final FloorRepositoryStatus floorStatus;
+  final PageState floorStatus;
   @override
   final String? errorMessage;
 
@@ -290,25 +288,25 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
 abstract class _EventsState implements EventsState {
   const factory _EventsState(
       {final List<EventsItemModel>? newEvents,
-      final FirestoreSubmissionStatus newEventsStatus,
+      final PageState newEventsStatus,
       final List<EventsItemModel>? oldEvents,
-      final FirestoreSubmissionStatus oldEventsStatus,
+      final PageState oldEventsStatus,
       final List<EventsItemModel>? favoritesEvents,
-      final FloorRepositoryStatus floorStatus,
+      final PageState floorStatus,
       final String? errorMessage}) = _$_EventsState;
 
   @override
   List<EventsItemModel>? get newEvents;
   @override
-  FirestoreSubmissionStatus get newEventsStatus;
+  PageState get newEventsStatus;
   @override
   List<EventsItemModel>? get oldEvents;
   @override
-  FirestoreSubmissionStatus get oldEventsStatus;
+  PageState get oldEventsStatus;
   @override
   List<EventsItemModel>? get favoritesEvents;
   @override
-  FloorRepositoryStatus get floorStatus;
+  PageState get floorStatus;
   @override
   String? get errorMessage;
   @override

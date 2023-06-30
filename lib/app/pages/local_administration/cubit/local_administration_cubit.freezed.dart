@@ -25,7 +25,9 @@ mixin _$LocalAdministrationState {
   List<DecisionModel> get localDecisions => throw _privateConstructorUsedError;
   List<DecisionModel> get fillteredLocalDecisions =>
       throw _privateConstructorUsedError;
-  String? get errorMessageLocalDecisions => throw _privateConstructorUsedError;
+  String? get errorMessageLocalDecisions =>
+      throw _privateConstructorUsedError; //Local council
+  PageState get localCouncilTeamState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LocalAdministrationStateCopyWith<LocalAdministrationState> get copyWith =>
@@ -45,7 +47,8 @@ abstract class $LocalAdministrationStateCopyWith<$Res> {
       PageState localDecisionState,
       List<DecisionModel> localDecisions,
       List<DecisionModel> fillteredLocalDecisions,
-      String? errorMessageLocalDecisions});
+      String? errorMessageLocalDecisions,
+      PageState localCouncilTeamState});
 
   $DecisionModelCopyWith<$Res> get latestDecision;
 }
@@ -71,6 +74,7 @@ class _$LocalAdministrationStateCopyWithImpl<$Res,
     Object? localDecisions = null,
     Object? fillteredLocalDecisions = null,
     Object? errorMessageLocalDecisions = freezed,
+    Object? localCouncilTeamState = null,
   }) {
     return _then(_value.copyWith(
       newsState: null == newsState
@@ -101,6 +105,10 @@ class _$LocalAdministrationStateCopyWithImpl<$Res,
           ? _value.errorMessageLocalDecisions
           : errorMessageLocalDecisions // ignore: cast_nullable_to_non_nullable
               as String?,
+      localCouncilTeamState: null == localCouncilTeamState
+          ? _value.localCouncilTeamState
+          : localCouncilTeamState // ignore: cast_nullable_to_non_nullable
+              as PageState,
     ) as $Val);
   }
 
@@ -129,7 +137,8 @@ abstract class _$$_LocalAdministrationStateCopyWith<$Res>
       PageState localDecisionState,
       List<DecisionModel> localDecisions,
       List<DecisionModel> fillteredLocalDecisions,
-      String? errorMessageLocalDecisions});
+      String? errorMessageLocalDecisions,
+      PageState localCouncilTeamState});
 
   @override
   $DecisionModelCopyWith<$Res> get latestDecision;
@@ -154,6 +163,7 @@ class __$$_LocalAdministrationStateCopyWithImpl<$Res>
     Object? localDecisions = null,
     Object? fillteredLocalDecisions = null,
     Object? errorMessageLocalDecisions = freezed,
+    Object? localCouncilTeamState = null,
   }) {
     return _then(_$_LocalAdministrationState(
       newsState: null == newsState
@@ -184,6 +194,10 @@ class __$$_LocalAdministrationStateCopyWithImpl<$Res>
           ? _value.errorMessageLocalDecisions
           : errorMessageLocalDecisions // ignore: cast_nullable_to_non_nullable
               as String?,
+      localCouncilTeamState: null == localCouncilTeamState
+          ? _value.localCouncilTeamState
+          : localCouncilTeamState // ignore: cast_nullable_to_non_nullable
+              as PageState,
     ));
   }
 }
@@ -198,7 +212,8 @@ class _$_LocalAdministrationState implements _LocalAdministrationState {
       required this.localDecisionState,
       required final List<DecisionModel> localDecisions,
       required final List<DecisionModel> fillteredLocalDecisions,
-      required this.errorMessageLocalDecisions})
+      required this.errorMessageLocalDecisions,
+      required this.localCouncilTeamState})
       : _localDecisions = localDecisions,
         _fillteredLocalDecisions = fillteredLocalDecisions;
 
@@ -231,10 +246,13 @@ class _$_LocalAdministrationState implements _LocalAdministrationState {
 
   @override
   final String? errorMessageLocalDecisions;
+//Local council
+  @override
+  final PageState localCouncilTeamState;
 
   @override
   String toString() {
-    return 'LocalAdministrationState(newsState: $newsState, latestDecision: $latestDecision, errorMessageNews: $errorMessageNews, localDecisionState: $localDecisionState, localDecisions: $localDecisions, fillteredLocalDecisions: $fillteredLocalDecisions, errorMessageLocalDecisions: $errorMessageLocalDecisions)';
+    return 'LocalAdministrationState(newsState: $newsState, latestDecision: $latestDecision, errorMessageNews: $errorMessageNews, localDecisionState: $localDecisionState, localDecisions: $localDecisions, fillteredLocalDecisions: $fillteredLocalDecisions, errorMessageLocalDecisions: $errorMessageLocalDecisions, localCouncilTeamState: $localCouncilTeamState)';
   }
 
   @override
@@ -257,7 +275,9 @@ class _$_LocalAdministrationState implements _LocalAdministrationState {
             (identical(other.errorMessageLocalDecisions,
                     errorMessageLocalDecisions) ||
                 other.errorMessageLocalDecisions ==
-                    errorMessageLocalDecisions));
+                    errorMessageLocalDecisions) &&
+            (identical(other.localCouncilTeamState, localCouncilTeamState) ||
+                other.localCouncilTeamState == localCouncilTeamState));
   }
 
   @override
@@ -269,7 +289,8 @@ class _$_LocalAdministrationState implements _LocalAdministrationState {
       localDecisionState,
       const DeepCollectionEquality().hash(_localDecisions),
       const DeepCollectionEquality().hash(_fillteredLocalDecisions),
-      errorMessageLocalDecisions);
+      errorMessageLocalDecisions,
+      localCouncilTeamState);
 
   @JsonKey(ignore: true)
   @override
@@ -287,7 +308,8 @@ abstract class _LocalAdministrationState implements LocalAdministrationState {
           required final PageState localDecisionState,
           required final List<DecisionModel> localDecisions,
           required final List<DecisionModel> fillteredLocalDecisions,
-          required final String? errorMessageLocalDecisions}) =
+          required final String? errorMessageLocalDecisions,
+          required final PageState localCouncilTeamState}) =
       _$_LocalAdministrationState;
 
   @override //Latest NEWS
@@ -304,6 +326,8 @@ abstract class _LocalAdministrationState implements LocalAdministrationState {
   List<DecisionModel> get fillteredLocalDecisions;
   @override
   String? get errorMessageLocalDecisions;
+  @override //Local council
+  PageState get localCouncilTeamState;
   @override
   @JsonKey(ignore: true)
   _$$_LocalAdministrationStateCopyWith<_$_LocalAdministrationState>

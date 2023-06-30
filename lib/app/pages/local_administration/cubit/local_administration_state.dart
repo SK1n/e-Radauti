@@ -12,6 +12,10 @@ class LocalAdministrationState with _$LocalAdministrationState {
     required List<DecisionModel> localDecisions,
     required List<DecisionModel> fillteredLocalDecisions,
     required String? errorMessageLocalDecisions,
+    //Local council
+    required PageState localCouncilTeamState,
+    // required List
+    // required List
   }) = _LocalAdministrationState;
 
   factory LocalAdministrationState.initial() => const LocalAdministrationState(
@@ -26,5 +30,6 @@ class LocalAdministrationState with _$LocalAdministrationState {
         localDecisions: [],
         fillteredLocalDecisions: [],
         errorMessageLocalDecisions: '',
+        localCouncilTeamState: PageState.initial,
       );
 }

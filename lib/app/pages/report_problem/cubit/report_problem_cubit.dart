@@ -1,18 +1,22 @@
-import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
-import 'package:firestore_repository/firestore_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutterapperadauti/app/form_inputs/report_problem_form.dart';
+import 'package:flutterapperadauti/app/models/report_problem/report_problem_item_model.dart';
+import 'package:flutterapperadauti/app/models/report_problem/report_problem_marker_model.dart';
+import 'package:flutterapperadauti/app/models/report_problem/report_problem_model.dart';
 import 'package:flutterapperadauti/app/pages/report_problem/view/report_problem_report_page.dart';
+import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
+import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
+import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
+import 'package:flutterapperadauti/app/utils/page_state.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/octicons_icons.dart';
-import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:logger/logger.dart';
-import 'package:storage_repository/storage_repository.dart';
 import 'package:latlong2/latlong.dart' as latLng;
 
 part 'report_problem_state.dart';
@@ -258,8 +262,7 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
 
   void getReports() async {
     try {
-      emit(state.copyWith(
-          firestoreStatus: FirestoreRepositoryStatus.inProgress));
+      emit(state.copyWith(firestoreStatus: PageState.inProgress));
       var userUID = _authRepository.currentUser.id;
       Logger log = Logger();
       log.d(_authRepository.currentUser.email);
@@ -269,13 +272,12 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
         result.data() ?? {},
       );
       emit(state.copyWith(
-        firestoreStatus: FirestoreRepositoryStatus.success,
+        firestoreStatus: PageState.success,
         myReportsData: data.markers,
       ));
     } on FirestoreFetchFailure catch (e) {
       emit(state.copyWith(
-          firestoreStatus: FirestoreRepositoryStatus.failure,
-          errorMessage: e.message));
+          firestoreStatus: PageState.failure, errorMessage: e.message));
     }
   }
 
@@ -330,8 +332,7 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
 
   void getMarkers() async {
     try {
-      emit(state.copyWith(
-          firestoreStatus: FirestoreRepositoryStatus.inProgress));
+      emit(state.copyWith(firestoreStatus: PageState.inProgress));
       var result =
           await _firestoreRepository.fetchDocument('collection/Markers');
       ReportProblemMarkerModel data =
@@ -367,13 +368,12 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
       }
 
       emit(state.copyWith(
-        firestoreStatus: FirestoreRepositoryStatus.success,
+        firestoreStatus: PageState.success,
         markersData: markers,
       ));
     } on FirestoreFetchFailure catch (e) {
       emit(state.copyWith(
-          firestoreStatus: FirestoreRepositoryStatus.failure,
-          errorMessage: e.message));
+          firestoreStatus: PageState.failure, errorMessage: e.message));
     }
   }
 

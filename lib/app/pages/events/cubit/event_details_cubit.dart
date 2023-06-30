@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:firestore_repository/firestore_repository.dart';
-import 'package:floor_repository/floor_repository.dart';
+import 'package:flutterapperadauti/app/models/events/events_item_model.dart';
+import 'package:flutterapperadauti/app/repository/floor/floor_repository.dart';
 
 part 'event_details_state.dart';
 

@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutterapperadauti/app/models/local_administration/decision_model.dart';
+import 'package:flutterapperadauti/app/repository/local_administration/local_administration_repository.dart';
+import 'package:flutterapperadauti/app/utils/page_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:local_administration/local_administration.dart';
+import 'package:logger/logger.dart';
 
 part 'local_administration_state.dart';
 part 'local_administration_cubit.freezed.dart';
@@ -57,13 +60,19 @@ class LocalAdministrationCubit extends Cubit<LocalAdministrationState> {
   void filterLocalDecisions(String query) {
     emit(state.copyWith(localDecisionState: PageState.inProgress));
     var data = state.localDecisions
-        .where((element) => element.title.toLowerCase() == query.toLowerCase())
+        .where((element) => element.title.toLowerCase().contains(query))
         .toList();
+    Logger log = Logger();
+    log.d(data);
     emit(
       state.copyWith(
         localDecisionState: PageState.success,
         fillteredLocalDecisions: data,
       ),
     );
+  }
+
+  void removeFilter() {
+    emit(state.copyWith(fillteredLocalDecisions: []));
   }
 }

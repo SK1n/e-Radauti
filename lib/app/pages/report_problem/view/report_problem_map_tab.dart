@@ -1,14 +1,12 @@
-import 'package:firestore_repository/firestore_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
-// ignore: depend_on_referenced_packages
-import 'package:latlong2/latlong.dart' as latLng;
+import 'package:flutterapperadauti/app/utils/page_state.dart';
+import 'package:latlong2/latlong.dart' as lat_lng;
 
 import 'package:flutterapperadauti/app/pages/report_problem/cubit/report_problem_cubit.dart';
 import 'package:flutterapperadauti/utils/loading_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/empty_widget.dart';
 import 'package:flutterapperadauti/utils/shared_widgets/err_widget.dart';
 
 class ReportProblemMapTab extends StatelessWidget {
@@ -28,7 +26,7 @@ class ReportProblemMapTab extends StatelessWidget {
               child: FlutterMap(
                 options: MapOptions(
                   zoom: 12.0,
-                  center: latLng.LatLng(47.843876, 25.916276),
+                  center: lat_lng.LatLng(47.843876, 25.916276),
                 ),
                 children: [
                   TileLayer(
