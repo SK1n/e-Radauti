@@ -94,8 +94,13 @@
         "localCouncilTab": "Consiliul local",
         "localCouncilTeam": "Echipă Consiliu Local",
         "localCouncilLive": "Ședințe de Consiliu Local",
+        "search": "Search...",
         "localCouncilDecisions": "Hotărârile Consiliului Local",
-        "emptyLocalDecisions": "Nu am putut găsi nicio hotărâre, vă rugăm să încercați din nou mai târziu!"
+        "localCouncilLeaders": "Leaders",
+        "emptyLocalDecisions": "Nu am putut găsi nicio hotărâre, vă rugăm să încercați din nou mai târziu!",
+        "seeMore": "Vezi mai mult",
+        "wealth": "Declarația de avere",
+        "interests": "Declarație de interese"
     },
     "airQuality": {
         "title": "Calitatea aerului",

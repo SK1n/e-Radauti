@@ -21,13 +21,13 @@ class TabNewsPage extends StatelessWidget {
           } else if (state.newsState.isSuccess) {
             return SliverToBoxAdapter(
               child: ItemLocalDecision(
-                item: state.latestDecision,
+                item: state.latestDecision!,
               ),
             );
           } else {
             return SliverToBoxAdapter(
               child: ErrWidget(
-                  error: state.errorMessageNews ?? '',
+                  error: state.errorMessageNews,
                   retry: () async => context.read<LocalAdministrationCubit>()
                     ..getLastDecision()),
             );

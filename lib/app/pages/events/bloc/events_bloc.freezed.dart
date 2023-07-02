@@ -18,12 +18,14 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventsState {
   List<EventsItemModel>? get newEvents => throw _privateConstructorUsedError;
   PageState get newEventsStatus => throw _privateConstructorUsedError;
+  String? get errorMessageNew => throw _privateConstructorUsedError;
   List<EventsItemModel>? get oldEvents => throw _privateConstructorUsedError;
   PageState get oldEventsStatus => throw _privateConstructorUsedError;
-  List<EventsItemModel>? get favoritesEvents =>
+  String? get errorMessageOld => throw _privateConstructorUsedError;
+  List<EventsItemModel>? get favoriteEvents =>
       throw _privateConstructorUsedError;
-  PageState get floorStatus => throw _privateConstructorUsedError;
-  String? get errorMessage => throw _privateConstructorUsedError;
+  PageState get favoriteStatus => throw _privateConstructorUsedError;
+  String? get errorMessageFavorites => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventsStateCopyWith<EventsState> get copyWith =>
@@ -39,11 +41,13 @@ abstract class $EventsStateCopyWith<$Res> {
   $Res call(
       {List<EventsItemModel>? newEvents,
       PageState newEventsStatus,
+      String? errorMessageNew,
       List<EventsItemModel>? oldEvents,
       PageState oldEventsStatus,
-      List<EventsItemModel>? favoritesEvents,
-      PageState floorStatus,
-      String? errorMessage});
+      String? errorMessageOld,
+      List<EventsItemModel>? favoriteEvents,
+      PageState favoriteStatus,
+      String? errorMessageFavorites});
 }
 
 /// @nodoc
@@ -61,11 +65,13 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
   $Res call({
     Object? newEvents = freezed,
     Object? newEventsStatus = null,
+    Object? errorMessageNew = freezed,
     Object? oldEvents = freezed,
     Object? oldEventsStatus = null,
-    Object? favoritesEvents = freezed,
-    Object? floorStatus = null,
-    Object? errorMessage = freezed,
+    Object? errorMessageOld = freezed,
+    Object? favoriteEvents = freezed,
+    Object? favoriteStatus = null,
+    Object? errorMessageFavorites = freezed,
   }) {
     return _then(_value.copyWith(
       newEvents: freezed == newEvents
@@ -76,6 +82,10 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
           ? _value.newEventsStatus
           : newEventsStatus // ignore: cast_nullable_to_non_nullable
               as PageState,
+      errorMessageNew: freezed == errorMessageNew
+          ? _value.errorMessageNew
+          : errorMessageNew // ignore: cast_nullable_to_non_nullable
+              as String?,
       oldEvents: freezed == oldEvents
           ? _value.oldEvents
           : oldEvents // ignore: cast_nullable_to_non_nullable
@@ -84,17 +94,21 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
           ? _value.oldEventsStatus
           : oldEventsStatus // ignore: cast_nullable_to_non_nullable
               as PageState,
-      favoritesEvents: freezed == favoritesEvents
-          ? _value.favoritesEvents
-          : favoritesEvents // ignore: cast_nullable_to_non_nullable
+      errorMessageOld: freezed == errorMessageOld
+          ? _value.errorMessageOld
+          : errorMessageOld // ignore: cast_nullable_to_non_nullable
+              as String?,
+      favoriteEvents: freezed == favoriteEvents
+          ? _value.favoriteEvents
+          : favoriteEvents // ignore: cast_nullable_to_non_nullable
               as List<EventsItemModel>?,
-      floorStatus: null == floorStatus
-          ? _value.floorStatus
-          : floorStatus // ignore: cast_nullable_to_non_nullable
+      favoriteStatus: null == favoriteStatus
+          ? _value.favoriteStatus
+          : favoriteStatus // ignore: cast_nullable_to_non_nullable
               as PageState,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
+      errorMessageFavorites: freezed == errorMessageFavorites
+          ? _value.errorMessageFavorites
+          : errorMessageFavorites // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -111,11 +125,13 @@ abstract class _$$_EventsStateCopyWith<$Res>
   $Res call(
       {List<EventsItemModel>? newEvents,
       PageState newEventsStatus,
+      String? errorMessageNew,
       List<EventsItemModel>? oldEvents,
       PageState oldEventsStatus,
-      List<EventsItemModel>? favoritesEvents,
-      PageState floorStatus,
-      String? errorMessage});
+      String? errorMessageOld,
+      List<EventsItemModel>? favoriteEvents,
+      PageState favoriteStatus,
+      String? errorMessageFavorites});
 }
 
 /// @nodoc
@@ -131,11 +147,13 @@ class __$$_EventsStateCopyWithImpl<$Res>
   $Res call({
     Object? newEvents = freezed,
     Object? newEventsStatus = null,
+    Object? errorMessageNew = freezed,
     Object? oldEvents = freezed,
     Object? oldEventsStatus = null,
-    Object? favoritesEvents = freezed,
-    Object? floorStatus = null,
-    Object? errorMessage = freezed,
+    Object? errorMessageOld = freezed,
+    Object? favoriteEvents = freezed,
+    Object? favoriteStatus = null,
+    Object? errorMessageFavorites = freezed,
   }) {
     return _then(_$_EventsState(
       newEvents: freezed == newEvents
@@ -146,6 +164,10 @@ class __$$_EventsStateCopyWithImpl<$Res>
           ? _value.newEventsStatus
           : newEventsStatus // ignore: cast_nullable_to_non_nullable
               as PageState,
+      errorMessageNew: freezed == errorMessageNew
+          ? _value.errorMessageNew
+          : errorMessageNew // ignore: cast_nullable_to_non_nullable
+              as String?,
       oldEvents: freezed == oldEvents
           ? _value._oldEvents
           : oldEvents // ignore: cast_nullable_to_non_nullable
@@ -154,17 +176,21 @@ class __$$_EventsStateCopyWithImpl<$Res>
           ? _value.oldEventsStatus
           : oldEventsStatus // ignore: cast_nullable_to_non_nullable
               as PageState,
-      favoritesEvents: freezed == favoritesEvents
-          ? _value._favoritesEvents
-          : favoritesEvents // ignore: cast_nullable_to_non_nullable
+      errorMessageOld: freezed == errorMessageOld
+          ? _value.errorMessageOld
+          : errorMessageOld // ignore: cast_nullable_to_non_nullable
+              as String?,
+      favoriteEvents: freezed == favoriteEvents
+          ? _value._favoriteEvents
+          : favoriteEvents // ignore: cast_nullable_to_non_nullable
               as List<EventsItemModel>?,
-      floorStatus: null == floorStatus
-          ? _value.floorStatus
-          : floorStatus // ignore: cast_nullable_to_non_nullable
+      favoriteStatus: null == favoriteStatus
+          ? _value.favoriteStatus
+          : favoriteStatus // ignore: cast_nullable_to_non_nullable
               as PageState,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
+      errorMessageFavorites: freezed == errorMessageFavorites
+          ? _value.errorMessageFavorites
+          : errorMessageFavorites // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -176,14 +202,16 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
   const _$_EventsState(
       {final List<EventsItemModel>? newEvents,
       this.newEventsStatus = PageState.initial,
+      this.errorMessageNew,
       final List<EventsItemModel>? oldEvents,
       this.oldEventsStatus = PageState.initial,
-      final List<EventsItemModel>? favoritesEvents,
-      this.floorStatus = PageState.initial,
-      this.errorMessage})
+      this.errorMessageOld,
+      final List<EventsItemModel>? favoriteEvents,
+      this.favoriteStatus = PageState.initial,
+      this.errorMessageFavorites})
       : _newEvents = newEvents,
         _oldEvents = oldEvents,
-        _favoritesEvents = favoritesEvents;
+        _favoriteEvents = favoriteEvents;
 
   final List<EventsItemModel>? _newEvents;
   @override
@@ -198,6 +226,8 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
   @override
   @JsonKey()
   final PageState newEventsStatus;
+  @override
+  final String? errorMessageNew;
   final List<EventsItemModel>? _oldEvents;
   @override
   List<EventsItemModel>? get oldEvents {
@@ -211,25 +241,27 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
   @override
   @JsonKey()
   final PageState oldEventsStatus;
-  final List<EventsItemModel>? _favoritesEvents;
   @override
-  List<EventsItemModel>? get favoritesEvents {
-    final value = _favoritesEvents;
+  final String? errorMessageOld;
+  final List<EventsItemModel>? _favoriteEvents;
+  @override
+  List<EventsItemModel>? get favoriteEvents {
+    final value = _favoriteEvents;
     if (value == null) return null;
-    if (_favoritesEvents is EqualUnmodifiableListView) return _favoritesEvents;
+    if (_favoriteEvents is EqualUnmodifiableListView) return _favoriteEvents;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
   @override
   @JsonKey()
-  final PageState floorStatus;
+  final PageState favoriteStatus;
   @override
-  final String? errorMessage;
+  final String? errorMessageFavorites;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'EventsState(newEvents: $newEvents, newEventsStatus: $newEventsStatus, oldEvents: $oldEvents, oldEventsStatus: $oldEventsStatus, favoritesEvents: $favoritesEvents, floorStatus: $floorStatus, errorMessage: $errorMessage)';
+    return 'EventsState(newEvents: $newEvents, newEventsStatus: $newEventsStatus, errorMessageNew: $errorMessageNew, oldEvents: $oldEvents, oldEventsStatus: $oldEventsStatus, errorMessageOld: $errorMessageOld, favoriteEvents: $favoriteEvents, favoriteStatus: $favoriteStatus, errorMessageFavorites: $errorMessageFavorites)';
   }
 
   @override
@@ -239,11 +271,14 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
       ..add(DiagnosticsProperty('type', 'EventsState'))
       ..add(DiagnosticsProperty('newEvents', newEvents))
       ..add(DiagnosticsProperty('newEventsStatus', newEventsStatus))
+      ..add(DiagnosticsProperty('errorMessageNew', errorMessageNew))
       ..add(DiagnosticsProperty('oldEvents', oldEvents))
       ..add(DiagnosticsProperty('oldEventsStatus', oldEventsStatus))
-      ..add(DiagnosticsProperty('favoritesEvents', favoritesEvents))
-      ..add(DiagnosticsProperty('floorStatus', floorStatus))
-      ..add(DiagnosticsProperty('errorMessage', errorMessage));
+      ..add(DiagnosticsProperty('errorMessageOld', errorMessageOld))
+      ..add(DiagnosticsProperty('favoriteEvents', favoriteEvents))
+      ..add(DiagnosticsProperty('favoriteStatus', favoriteStatus))
+      ..add(
+          DiagnosticsProperty('errorMessageFavorites', errorMessageFavorites));
   }
 
   @override
@@ -255,16 +290,20 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
                 .equals(other._newEvents, _newEvents) &&
             (identical(other.newEventsStatus, newEventsStatus) ||
                 other.newEventsStatus == newEventsStatus) &&
+            (identical(other.errorMessageNew, errorMessageNew) ||
+                other.errorMessageNew == errorMessageNew) &&
             const DeepCollectionEquality()
                 .equals(other._oldEvents, _oldEvents) &&
             (identical(other.oldEventsStatus, oldEventsStatus) ||
                 other.oldEventsStatus == oldEventsStatus) &&
+            (identical(other.errorMessageOld, errorMessageOld) ||
+                other.errorMessageOld == errorMessageOld) &&
             const DeepCollectionEquality()
-                .equals(other._favoritesEvents, _favoritesEvents) &&
-            (identical(other.floorStatus, floorStatus) ||
-                other.floorStatus == floorStatus) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                .equals(other._favoriteEvents, _favoriteEvents) &&
+            (identical(other.favoriteStatus, favoriteStatus) ||
+                other.favoriteStatus == favoriteStatus) &&
+            (identical(other.errorMessageFavorites, errorMessageFavorites) ||
+                other.errorMessageFavorites == errorMessageFavorites));
   }
 
   @override
@@ -272,11 +311,13 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
       runtimeType,
       const DeepCollectionEquality().hash(_newEvents),
       newEventsStatus,
+      errorMessageNew,
       const DeepCollectionEquality().hash(_oldEvents),
       oldEventsStatus,
-      const DeepCollectionEquality().hash(_favoritesEvents),
-      floorStatus,
-      errorMessage);
+      errorMessageOld,
+      const DeepCollectionEquality().hash(_favoriteEvents),
+      favoriteStatus,
+      errorMessageFavorites);
 
   @JsonKey(ignore: true)
   @override
@@ -289,26 +330,32 @@ abstract class _EventsState implements EventsState {
   const factory _EventsState(
       {final List<EventsItemModel>? newEvents,
       final PageState newEventsStatus,
+      final String? errorMessageNew,
       final List<EventsItemModel>? oldEvents,
       final PageState oldEventsStatus,
-      final List<EventsItemModel>? favoritesEvents,
-      final PageState floorStatus,
-      final String? errorMessage}) = _$_EventsState;
+      final String? errorMessageOld,
+      final List<EventsItemModel>? favoriteEvents,
+      final PageState favoriteStatus,
+      final String? errorMessageFavorites}) = _$_EventsState;
 
   @override
   List<EventsItemModel>? get newEvents;
   @override
   PageState get newEventsStatus;
   @override
+  String? get errorMessageNew;
+  @override
   List<EventsItemModel>? get oldEvents;
   @override
   PageState get oldEventsStatus;
   @override
-  List<EventsItemModel>? get favoritesEvents;
+  String? get errorMessageOld;
   @override
-  PageState get floorStatus;
+  List<EventsItemModel>? get favoriteEvents;
   @override
-  String? get errorMessage;
+  PageState get favoriteStatus;
+  @override
+  String? get errorMessageFavorites;
   @override
   @JsonKey(ignore: true)
   _$$_EventsStateCopyWith<_$_EventsState> get copyWith =>

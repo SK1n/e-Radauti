@@ -20,9 +20,6 @@ class AppBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     super.onChange(bloc, change);
-    final Logger log = Logger();
-    log.d("CURRENT STATE\n\n${change.currentState}");
-    log.d("NEXT STATE\n\n${change.nextState}");
   }
 
   @override
@@ -31,7 +28,5 @@ class AppBlocObserver extends BlocObserver {
     Transition<dynamic, dynamic> transition,
   ) {
     super.onTransition(bloc, transition);
-    final Logger log = Logger();
-    log.d(transition);
   }
 }

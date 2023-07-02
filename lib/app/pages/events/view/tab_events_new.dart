@@ -47,7 +47,7 @@ class _TabEventsNewState extends State<TabEventsNew>
           } else {
             return SliverToBoxAdapter(
               child: ErrWidget(
-                error: state.errorMessage ?? '',
+                error: state.errorMessageNew ?? '',
                 retry: () async => context.read<EventsBloc>().add(
                       const GetNewEvents(),
                     ),

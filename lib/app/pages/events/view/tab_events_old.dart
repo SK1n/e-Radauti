@@ -46,7 +46,7 @@ class _TabEventsOldState extends State<TabEventsOld>
           } else {
             return SliverToBoxAdapter(
               child: ErrWidget(
-                error: state.errorMessage ?? '',
+                error: state.errorMessageOld ?? '',
                 retry: () async => context.read<EventsBloc>().add(
                       const GetOldEvents(),
                     ),

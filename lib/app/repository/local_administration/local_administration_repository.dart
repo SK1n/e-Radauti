@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutterapperadauti/app/models/local_administration/decision_model.dart';
-import 'package:flutterapperadauti/app/models/local_administration/local_council_model.dart';
-import 'package:flutterapperadauti/app/repository/local_administration/i_local_administration.dart';
+import 'package:html/parser.dart' show parse;
+
+part 'i_local_administration.dart';
 
 class LocalAdministrationException implements Exception {
   const LocalAdministrationException([
@@ -32,21 +33,6 @@ class LocalAdministrationRepository extends ILocalAdministration {
   final ILocalAdministration _repo;
   LocalAdministrationRepository({ILocalAdministration? repo})
       : _repo = repo ?? ILocalAdministration();
-
-  @override
-  Future<List<LocalCouncilModel>> getLocalCouncil() async {
-    try {
-      return _repo.getLocalCouncil();
-    } on DioException catch (e) {
-      throw LocalAdministrationException(
-        'Exception: ${e.message}\nCode : ${e.hashCode}',
-      );
-    } on LocalAdministrationException {
-      rethrow;
-    } catch (e) {
-      throw const LocalAdministrationException();
-    }
-  }
 
   @override
   Future<List<DecisionModel>> getDecisions() async {

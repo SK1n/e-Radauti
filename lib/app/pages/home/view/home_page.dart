@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/app/pages/air_quality/view/air_quality_page.dart';
 import 'package:flutterapperadauti/app/pages/events/view/events_page.dart';
-import 'package:flutterapperadauti/app/pages/local_administration/local_administration_page.dart';
-
+import 'package:flutterapperadauti/app/pages/local_administration/page_local_administration.dart';
 import 'package:flutterapperadauti/app/pages/report_problem/view/report_problem_page.dart';
 import 'package:flutterapperadauti/modules/home/views/big_menu_item.dart';
 import 'package:flutterapperadauti/modules/home/views/small_menu_item.dart';
@@ -44,7 +43,7 @@ class HomePage extends StatelessWidget {
               image: 'assets/buttons/townhall.png',
               bckImg: 3,
               onTap: () =>
-                  Navigator.of(context).push(LocalAdministrationPage.route()),
+                  Navigator.of(context).push(PageLocalAdministration.route()),
             ),
             BigMenuItem(
               title: 'air-quality'.tr,

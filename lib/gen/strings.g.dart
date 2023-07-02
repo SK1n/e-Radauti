@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 2
-/// Strings: 192 (96 per locale)
+/// Strings: 202 (101 per locale)
 ///
-/// Built on 2023-06-30 at 17:51 UTC
+/// Built on 2023-07-02 at 20:13 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -288,7 +288,12 @@ class _StringsLocalAdministrationEn {
 	String get localCouncilTeam => 'Local Council Team';
 	String get localCouncilLive => 'Local Council Meetings';
 	String get localCouncilDecisions => 'Local Council Decisions';
+	String get search => 'Search...';
+	String get localCouncilLeaders => 'Leaders';
 	String get emptyLocalDecisions => 'We couldn\'t find any decisions, please try again later!';
+	String get seeMore => 'See more';
+	String get wealth => 'Wealth declaration';
+	String get interests => 'Declaration of interests';
 }
 
 // Path: airQuality
@@ -522,8 +527,13 @@ class _StringsLocalAdministrationRo implements _StringsLocalAdministrationEn {
 	@override String get localCouncilTab => 'Consiliul local';
 	@override String get localCouncilTeam => 'Echipă Consiliu Local';
 	@override String get localCouncilLive => 'Ședințe de Consiliu Local';
+	@override String get search => 'Search...';
 	@override String get localCouncilDecisions => 'Hotărârile Consiliului Local';
+	@override String get localCouncilLeaders => 'Leaders';
 	@override String get emptyLocalDecisions => 'Nu am putut găsi nicio hotărâre, vă rugăm să încercați din nou mai târziu!';
+	@override String get seeMore => 'Vezi mai mult';
+	@override String get wealth => 'Declarația de avere';
+	@override String get interests => 'Declarație de interese';
 }
 
 // Path: airQuality
@@ -679,7 +689,12 @@ extension on _StringsEn {
 			case 'localAdministration.localCouncilTeam': return 'Local Council Team';
 			case 'localAdministration.localCouncilLive': return 'Local Council Meetings';
 			case 'localAdministration.localCouncilDecisions': return 'Local Council Decisions';
+			case 'localAdministration.search': return 'Search...';
+			case 'localAdministration.localCouncilLeaders': return 'Leaders';
 			case 'localAdministration.emptyLocalDecisions': return 'We couldn\'t find any decisions, please try again later!';
+			case 'localAdministration.seeMore': return 'See more';
+			case 'localAdministration.wealth': return 'Wealth declaration';
+			case 'localAdministration.interests': return 'Declaration of interests';
 			case 'airQuality.title': return 'Air quality';
 			case 'airQuality.airQualityTab': return 'Air quality';
 			case 'airQuality.chartsTab': return 'Charts';
@@ -782,8 +797,13 @@ extension on _StringsRo {
 			case 'localAdministration.localCouncilTab': return 'Consiliul local';
 			case 'localAdministration.localCouncilTeam': return 'Echipă Consiliu Local';
 			case 'localAdministration.localCouncilLive': return 'Ședințe de Consiliu Local';
+			case 'localAdministration.search': return 'Search...';
 			case 'localAdministration.localCouncilDecisions': return 'Hotărârile Consiliului Local';
+			case 'localAdministration.localCouncilLeaders': return 'Leaders';
 			case 'localAdministration.emptyLocalDecisions': return 'Nu am putut găsi nicio hotărâre, vă rugăm să încercați din nou mai târziu!';
+			case 'localAdministration.seeMore': return 'Vezi mai mult';
+			case 'localAdministration.wealth': return 'Declarația de avere';
+			case 'localAdministration.interests': return 'Declarație de interese';
 			case 'airQuality.title': return 'Calitatea aerului';
 			case 'airQuality.airQualityTab': return 'Calitatea aerului';
 			case 'airQuality.chartsTab': return 'Grafice';

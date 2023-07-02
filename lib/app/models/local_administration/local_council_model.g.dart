@@ -8,27 +8,37 @@ part of 'local_council_model.dart';
 
 _$_LocalCouncilModel _$$_LocalCouncilModelFromJson(Map<String, dynamic> json) =>
     _$_LocalCouncilModel(
-      name: json['name'] as String,
-      imageUrl: json['imageUrl'] as String,
-      party: json['party'] as String,
-      wealth:
-          (json['wealth'] as List<dynamic>).map((e) => e as String).toList(),
-      interests:
-          (json['interests'] as List<dynamic>).map((e) => e as String).toList(),
-      email: json['email'] as String?,
-      phoneNumber: json['phoneNumber'] as String?,
-      fbUrl: json['fbUrl'] as String,
+      items: (json['localcouncil'] as List<dynamic>?)
+              ?.map((e) =>
+                  LocalCouncilItemModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$$_LocalCouncilModelToJson(
         _$_LocalCouncilModel instance) =>
     <String, dynamic>{
+      'localcouncil': instance.items,
+    };
+
+_$_LocalCouncilItemModel _$$_LocalCouncilItemModelFromJson(
+        Map<String, dynamic> json) =>
+    _$_LocalCouncilItemModel(
+      name: json['name'] as String? ?? '',
+      imageUrl: json['url'] as String? ?? '',
+      party: json['party'] as String? ?? '',
+      email: json['email'] as String? ?? '',
+      tel: json['phone_number'] as String? ?? '',
+      function: json['function'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$$_LocalCouncilItemModelToJson(
+        _$_LocalCouncilItemModel instance) =>
+    <String, dynamic>{
       'name': instance.name,
-      'imageUrl': instance.imageUrl,
+      'url': instance.imageUrl,
       'party': instance.party,
-      'wealth': instance.wealth,
-      'interests': instance.interests,
       'email': instance.email,
-      'phoneNumber': instance.phoneNumber,
-      'fbUrl': instance.fbUrl,
+      'phone_number': instance.tel,
+      'function': instance.function,
     };

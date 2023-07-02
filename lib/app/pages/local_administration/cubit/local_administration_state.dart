@@ -4,32 +4,17 @@ part of 'local_administration_cubit.dart';
 class LocalAdministrationState with _$LocalAdministrationState {
   const factory LocalAdministrationState({
     //Latest NEWS
-    required PageState newsState,
-    required DecisionModel latestDecision,
-    required String? errorMessageNews,
+    @Default(PageState.initial) PageState newsState,
+    DecisionModel? latestDecision,
+    @Default('') String errorMessageNews,
     //Local decisions
-    required PageState localDecisionState,
-    required List<DecisionModel> localDecisions,
-    required List<DecisionModel> fillteredLocalDecisions,
-    required String? errorMessageLocalDecisions,
-    //Local council
-    required PageState localCouncilTeamState,
-    // required List
-    // required List
+    @Default(PageState.initial) PageState localDecisionState,
+    @Default([]) List<DecisionModel> localDecisions,
+    @Default([]) List<DecisionModel> fillteredLocalDecisions,
+    @Default('') String errorMessageLocalDecisions,
+    // Local council team
+    @Default(PageState.initial) PageState localCouncilTeamState,
+    @Default([]) List<LocalCouncilItemModel> localCouncilTeamList,
+    @Default('') String errorMessageLocalCouncilTeam,
   }) = _LocalAdministrationState;
-
-  factory LocalAdministrationState.initial() => const LocalAdministrationState(
-        newsState: PageState.initial,
-        latestDecision: DecisionModel(
-          title: '',
-          url: '',
-          year: '',
-        ),
-        errorMessageNews: '',
-        localDecisionState: PageState.initial,
-        localDecisions: [],
-        fillteredLocalDecisions: [],
-        errorMessageLocalDecisions: '',
-        localCouncilTeamState: PageState.initial,
-      );
 }

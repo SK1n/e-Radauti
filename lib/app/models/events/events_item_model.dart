@@ -8,9 +8,7 @@ part 'events_item_model.g.dart';
 @freezed
 class EventsItemModel with _$EventsItemModel {
   @JsonSerializable(explicitToJson: true)
-  @Entity()
   const factory EventsItemModel({
-    @PrimaryKey() int? id,
     required String category,
     required String description,
     required String headline,
@@ -19,6 +17,7 @@ class EventsItemModel with _$EventsItemModel {
     required String street,
     required int start,
     required int end,
+    int? id,
     @JsonKey(name: 'URL') required String url,
   }) = _EventsItemModel;
 

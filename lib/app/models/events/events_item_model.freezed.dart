@@ -20,8 +20,6 @@ EventsItemModel _$EventsItemModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$EventsItemModel {
-  @PrimaryKey()
-  int? get id => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get headline => throw _privateConstructorUsedError;
@@ -30,6 +28,7 @@ mixin _$EventsItemModel {
   String get street => throw _privateConstructorUsedError;
   int get start => throw _privateConstructorUsedError;
   int get end => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'URL')
   String get url => throw _privateConstructorUsedError;
 
@@ -46,8 +45,7 @@ abstract class $EventsItemModelCopyWith<$Res> {
       _$EventsItemModelCopyWithImpl<$Res, EventsItemModel>;
   @useResult
   $Res call(
-      {@PrimaryKey() int? id,
-      String category,
+      {String category,
       String description,
       String headline,
       String location,
@@ -55,6 +53,7 @@ abstract class $EventsItemModelCopyWith<$Res> {
       String street,
       int start,
       int end,
+      int? id,
       @JsonKey(name: 'URL') String url});
 }
 
@@ -71,7 +70,6 @@ class _$EventsItemModelCopyWithImpl<$Res, $Val extends EventsItemModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
     Object? category = null,
     Object? description = null,
     Object? headline = null,
@@ -80,13 +78,10 @@ class _$EventsItemModelCopyWithImpl<$Res, $Val extends EventsItemModel>
     Object? street = null,
     Object? start = null,
     Object? end = null,
+    Object? id = freezed,
     Object? url = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -119,6 +114,10 @@ class _$EventsItemModelCopyWithImpl<$Res, $Val extends EventsItemModel>
           ? _value.end
           : end // ignore: cast_nullable_to_non_nullable
               as int,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -136,8 +135,7 @@ abstract class _$$_EventsItemModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@PrimaryKey() int? id,
-      String category,
+      {String category,
       String description,
       String headline,
       String location,
@@ -145,6 +143,7 @@ abstract class _$$_EventsItemModelCopyWith<$Res>
       String street,
       int start,
       int end,
+      int? id,
       @JsonKey(name: 'URL') String url});
 }
 
@@ -159,7 +158,6 @@ class __$$_EventsItemModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
     Object? category = null,
     Object? description = null,
     Object? headline = null,
@@ -168,13 +166,10 @@ class __$$_EventsItemModelCopyWithImpl<$Res>
     Object? street = null,
     Object? start = null,
     Object? end = null,
+    Object? id = freezed,
     Object? url = null,
   }) {
     return _then(_$_EventsItemModel(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -207,6 +202,10 @@ class __$$_EventsItemModelCopyWithImpl<$Res>
           ? _value.end
           : end // ignore: cast_nullable_to_non_nullable
               as int,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -218,11 +217,9 @@ class __$$_EventsItemModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-@Entity()
 class _$_EventsItemModel implements _EventsItemModel {
   const _$_EventsItemModel(
-      {@PrimaryKey() this.id,
-      required this.category,
+      {required this.category,
       required this.description,
       required this.headline,
       required this.location,
@@ -230,14 +227,12 @@ class _$_EventsItemModel implements _EventsItemModel {
       required this.street,
       required this.start,
       required this.end,
+      this.id,
       @JsonKey(name: 'URL') required this.url});
 
   factory _$_EventsItemModel.fromJson(Map<String, dynamic> json) =>
       _$$_EventsItemModelFromJson(json);
 
-  @override
-  @PrimaryKey()
-  final int? id;
   @override
   final String category;
   @override
@@ -255,12 +250,14 @@ class _$_EventsItemModel implements _EventsItemModel {
   @override
   final int end;
   @override
+  final int? id;
+  @override
   @JsonKey(name: 'URL')
   final String url;
 
   @override
   String toString() {
-    return 'EventsItemModel(id: $id, category: $category, description: $description, headline: $headline, location: $location, host: $host, street: $street, start: $start, end: $end, url: $url)';
+    return 'EventsItemModel(category: $category, description: $description, headline: $headline, location: $location, host: $host, street: $street, start: $start, end: $end, id: $id, url: $url)';
   }
 
   @override
@@ -268,7 +265,6 @@ class _$_EventsItemModel implements _EventsItemModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventsItemModel &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.description, description) ||
@@ -281,13 +277,14 @@ class _$_EventsItemModel implements _EventsItemModel {
             (identical(other.street, street) || other.street == street) &&
             (identical(other.start, start) || other.start == start) &&
             (identical(other.end, end) || other.end == end) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.url, url) || other.url == url));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, category, description,
-      headline, location, host, street, start, end, url);
+  int get hashCode => Object.hash(runtimeType, category, description, headline,
+      location, host, street, start, end, id, url);
 
   @JsonKey(ignore: true)
   @override
@@ -305,8 +302,7 @@ class _$_EventsItemModel implements _EventsItemModel {
 
 abstract class _EventsItemModel implements EventsItemModel {
   const factory _EventsItemModel(
-      {@PrimaryKey() final int? id,
-      required final String category,
+      {required final String category,
       required final String description,
       required final String headline,
       required final String location,
@@ -314,14 +310,12 @@ abstract class _EventsItemModel implements EventsItemModel {
       required final String street,
       required final int start,
       required final int end,
+      final int? id,
       @JsonKey(name: 'URL') required final String url}) = _$_EventsItemModel;
 
   factory _EventsItemModel.fromJson(Map<String, dynamic> json) =
       _$_EventsItemModel.fromJson;
 
-  @override
-  @PrimaryKey()
-  int? get id;
   @override
   String get category;
   @override
@@ -338,6 +332,8 @@ abstract class _EventsItemModel implements EventsItemModel {
   int get start;
   @override
   int get end;
+  @override
+  int? get id;
   @override
   @JsonKey(name: 'URL')
   String get url;

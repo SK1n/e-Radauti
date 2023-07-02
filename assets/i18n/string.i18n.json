@@ -95,7 +95,12 @@
         "localCouncilTeam": "Local Council Team",
         "localCouncilLive": "Local Council Meetings",
         "localCouncilDecisions": "Local Council Decisions",
-        "emptyLocalDecisions": "We couldn't find any decisions, please try again later!"
+        "search": "Search...",
+        "localCouncilLeaders": "Leaders",
+        "emptyLocalDecisions": "We couldn't find any decisions, please try again later!",
+        "seeMore": "See more",
+        "wealth": "Wealth declaration",
+        "interests": "Declaration of interests"
     },
     "airQuality": {
         "title": "Air quality",

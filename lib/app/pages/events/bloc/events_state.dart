@@ -5,10 +5,12 @@ class EventsState with _$EventsState {
   const factory EventsState({
     List<EventsItemModel>? newEvents,
     @Default(PageState.initial) PageState newEventsStatus,
+    String? errorMessageNew,
     List<EventsItemModel>? oldEvents,
     @Default(PageState.initial) PageState oldEventsStatus,
-    List<EventsItemModel>? favoritesEvents,
-    @Default(PageState.initial) PageState floorStatus,
-    String? errorMessage,
+    String? errorMessageOld,
+    List<EventsItemModel>? favoriteEvents,
+    @Default(PageState.initial) PageState favoriteStatus,
+    String? errorMessageFavorites,
   }) = _EventsState;
 }

@@ -1,10 +1,13 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutterapperadauti/app/models/events/events_item_model.dart';
 import 'package:flutterapperadauti/app/models/events/new_events_model.dart';
 import 'package:flutterapperadauti/app/models/events/old_events_model.dart';
+import 'package:flutterapperadauti/app/models/user.dart';
+import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
 import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
-import 'package:flutterapperadauti/app/repository/floor/floor_repository.dart';
 import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
 import 'package:flutterapperadauti/app/utils/page_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -16,11 +19,11 @@ part 'events_bloc.freezed.dart';
 class EventsBloc extends Bloc<EventsEvent, EventsState> {
   final FirestoreRepository _firestoreRepository;
   final StorageRepository _storageRepository;
-  final FloorRepository _floorRepository;
+  final AuthenticationRepository _authenticationRepository;
   EventsBloc(
     this._firestoreRepository,
     this._storageRepository,
-    this._floorRepository,
+    this._authenticationRepository,
   ) : super(const EventsState()) {
     on<GetNewEvents>(
       (event, emit) async {
@@ -42,8 +45,8 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
         } catch (e) {
           emit(
             state.copyWith(
-              newEventsStatus: PageState.failure,
-            ),
+                newEventsStatus: PageState.failure,
+                errorMessageNew: e.toString()),
           );
         }
       },
@@ -72,21 +75,58 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
           emit(
             state.copyWith(
               oldEventsStatus: PageState.failure,
+              errorMessageOld: e.toString(),
             ),
           );
         }
       },
     );
-    on<GetFavoriteEvents>((event, emit) async {
-      try {
-        emit(state.copyWith(floorStatus: PageState.inProgress));
-        final events = await _floorRepository.getFavoritesEvents();
-        emit(state.copyWith(
-            favoritesEvents: events, floorStatus: PageState.success));
-      } catch (e) {
-        debugPrint(e.toString());
-        emit(state.copyWith(floorStatus: PageState.failure));
-      }
+
+    on<GetFavoriteEvents>(
+      (event, emit) async {
+        User user = _authenticationRepository.currentUser;
+        String path = 'users/${user.id}';
+        emit(state.copyWith(favoriteStatus: PageState.inProgress));
+        await emit.onEach(
+          _firestoreRepository.getFavoriteEvents(
+            path,
+          ),
+          onData: (data) {
+            NewEventsModel favEvents =
+                NewEventsModel.fromJson(data.data() ?? {});
+            return add(EmitFavoriteEventsChanges(favEvents.list));
+          },
+          onError: (error, stackTrace) => emit(
+            state.copyWith(
+              favoriteStatus: PageState.failure,
+              errorMessageOld: error.toString(),
+            ),
+          ),
+        );
+      },
+    );
+    on<EmitFavoriteEventsChanges>(
+      (event, emit) => emit(
+        state.copyWith(
+          favoriteEvents: event.items,
+          favoriteStatus: PageState.success,
+        ),
+      ),
+    );
+    on<AddToFavorite>((event, emit) {
+      User user = _authenticationRepository.currentUser;
+      _firestoreRepository.updateArrayField('users/${user.id}', 'events',
+          elementsToAdd: [event.item]);
     });
+    on<RemoveFromFavorite>((event, emit) {
+      User user = _authenticationRepository.currentUser;
+      _firestoreRepository.updateArrayField('users/${user.id}', 'events',
+          elementsToRemove: [event.item]);
+    });
+  }
+
+  @override
+  void onChange(Change<EventsState> change) {
+    super.onChange(change);
   }
 }

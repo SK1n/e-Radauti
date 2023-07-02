@@ -5,7 +5,6 @@ import 'package:flutterapperadauti/app/app.dart';
 import 'package:flutterapperadauti/app/bloc_observer.dart';
 import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
 import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
-import 'package:flutterapperadauti/app/repository/floor/floor_repository.dart';
 import 'package:flutterapperadauti/app/repository/local_administration/local_administration_repository.dart';
 import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
 import 'package:flutterapperadauti/i18n/strings.g.dart';
@@ -19,7 +18,6 @@ Future<void> main() async {
   final authenticationRepository = AuthenticationRepository();
   final firestoreRepository = FirestoreRepository();
   final storageRepository = StorageRepository();
-  final floorRepository = FloorRepository();
   final localAdministrationRepository = LocalAdministrationRepository();
   await authenticationRepository.user.first;
 
@@ -29,7 +27,6 @@ Future<void> main() async {
         authenticationRepository: authenticationRepository,
         firestoreRepository: firestoreRepository,
         storageRepository: storageRepository,
-        floorRepository: floorRepository,
         localAdministrationRepository: localAdministrationRepository,
       ),
     ),

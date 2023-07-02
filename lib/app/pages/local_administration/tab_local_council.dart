@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/app/pages/local_administration/decisions_page.dart';
+import 'package:flutterapperadauti/app/pages/local_administration/page_decisions.dart';
+import 'package:flutterapperadauti/app/pages/local_administration/page_local_council_team.dart';
 import 'package:flutterapperadauti/i18n/strings.g.dart';
 
 class TabLocalCouncil extends StatelessWidget {
@@ -18,6 +19,8 @@ class TabLocalCouncil extends StatelessWidget {
                     'assets/local_administration/local_council_team.png'),
                 title: Text(context.t.localAdministration.localCouncilTeam),
                 trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () =>
+                    Navigator.of(context).push(PageLocalCouncilTeam.route()),
               ),
             ),
           ),
@@ -41,7 +44,7 @@ class TabLocalCouncil extends StatelessWidget {
                 title:
                     Text(context.t.localAdministration.localCouncilDecisions),
                 trailing: const Icon(Icons.arrow_forward_ios),
-                onTap: () => Navigator.of(context).push(DecisionsPage.route()),
+                onTap: () => Navigator.of(context).push(PageDecisions.route()),
               ),
             ),
           ),

@@ -20,14 +20,8 @@ LocalCouncilModel _$LocalCouncilModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LocalCouncilModel {
-  String get name => throw _privateConstructorUsedError;
-  String get imageUrl => throw _privateConstructorUsedError;
-  String get party => throw _privateConstructorUsedError;
-  List<String> get wealth => throw _privateConstructorUsedError;
-  List<String> get interests => throw _privateConstructorUsedError;
-  String? get email => throw _privateConstructorUsedError;
-  String? get phoneNumber => throw _privateConstructorUsedError;
-  String get fbUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'localcouncil', defaultValue: [])
+  List<LocalCouncilItemModel> get items => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,14 +36,8 @@ abstract class $LocalCouncilModelCopyWith<$Res> {
       _$LocalCouncilModelCopyWithImpl<$Res, LocalCouncilModel>;
   @useResult
   $Res call(
-      {String name,
-      String imageUrl,
-      String party,
-      List<String> wealth,
-      List<String> interests,
-      String? email,
-      String? phoneNumber,
-      String fbUrl});
+      {@JsonKey(name: 'localcouncil', defaultValue: [])
+          List<LocalCouncilItemModel> items});
 }
 
 /// @nodoc
@@ -65,48 +53,13 @@ class _$LocalCouncilModelCopyWithImpl<$Res, $Val extends LocalCouncilModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? imageUrl = null,
-    Object? party = null,
-    Object? wealth = null,
-    Object? interests = null,
-    Object? email = freezed,
-    Object? phoneNumber = freezed,
-    Object? fbUrl = null,
+    Object? items = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      party: null == party
-          ? _value.party
-          : party // ignore: cast_nullable_to_non_nullable
-              as String,
-      wealth: null == wealth
-          ? _value.wealth
-          : wealth // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      interests: null == interests
-          ? _value.interests
-          : interests // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneNumber: freezed == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fbUrl: null == fbUrl
-          ? _value.fbUrl
-          : fbUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<LocalCouncilItemModel>,
     ) as $Val);
   }
 }
@@ -120,14 +73,8 @@ abstract class _$$_LocalCouncilModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name,
-      String imageUrl,
-      String party,
-      List<String> wealth,
-      List<String> interests,
-      String? email,
-      String? phoneNumber,
-      String fbUrl});
+      {@JsonKey(name: 'localcouncil', defaultValue: [])
+          List<LocalCouncilItemModel> items});
 }
 
 /// @nodoc
@@ -141,48 +88,13 @@ class __$$_LocalCouncilModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? imageUrl = null,
-    Object? party = null,
-    Object? wealth = null,
-    Object? interests = null,
-    Object? email = freezed,
-    Object? phoneNumber = freezed,
-    Object? fbUrl = null,
+    Object? items = null,
   }) {
     return _then(_$_LocalCouncilModel(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      party: null == party
-          ? _value.party
-          : party // ignore: cast_nullable_to_non_nullable
-              as String,
-      wealth: null == wealth
-          ? _value._wealth
-          : wealth // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      interests: null == interests
-          ? _value._interests
-          : interests // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneNumber: freezed == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fbUrl: null == fbUrl
-          ? _value.fbUrl
-          : fbUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<LocalCouncilItemModel>,
     ));
   }
 }
@@ -191,52 +103,25 @@ class __$$_LocalCouncilModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_LocalCouncilModel implements _LocalCouncilModel {
   const _$_LocalCouncilModel(
-      {required this.name,
-      required this.imageUrl,
-      required this.party,
-      required final List<String> wealth,
-      required final List<String> interests,
-      required this.email,
-      required this.phoneNumber,
-      required this.fbUrl})
-      : _wealth = wealth,
-        _interests = interests;
+      {@JsonKey(name: 'localcouncil', defaultValue: [])
+          required final List<LocalCouncilItemModel> items})
+      : _items = items;
 
   factory _$_LocalCouncilModel.fromJson(Map<String, dynamic> json) =>
       _$$_LocalCouncilModelFromJson(json);
 
+  final List<LocalCouncilItemModel> _items;
   @override
-  final String name;
-  @override
-  final String imageUrl;
-  @override
-  final String party;
-  final List<String> _wealth;
-  @override
-  List<String> get wealth {
-    if (_wealth is EqualUnmodifiableListView) return _wealth;
+  @JsonKey(name: 'localcouncil', defaultValue: [])
+  List<LocalCouncilItemModel> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_wealth);
+    return EqualUnmodifiableListView(_items);
   }
-
-  final List<String> _interests;
-  @override
-  List<String> get interests {
-    if (_interests is EqualUnmodifiableListView) return _interests;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_interests);
-  }
-
-  @override
-  final String? email;
-  @override
-  final String? phoneNumber;
-  @override
-  final String fbUrl;
 
   @override
   String toString() {
-    return 'LocalCouncilModel(name: $name, imageUrl: $imageUrl, party: $party, wealth: $wealth, interests: $interests, email: $email, phoneNumber: $phoneNumber, fbUrl: $fbUrl)';
+    return 'LocalCouncilModel(items: $items)';
   }
 
   @override
@@ -244,31 +129,13 @@ class _$_LocalCouncilModel implements _LocalCouncilModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LocalCouncilModel &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
-            (identical(other.party, party) || other.party == party) &&
-            const DeepCollectionEquality().equals(other._wealth, _wealth) &&
-            const DeepCollectionEquality()
-                .equals(other._interests, _interests) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.fbUrl, fbUrl) || other.fbUrl == fbUrl));
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      name,
-      imageUrl,
-      party,
-      const DeepCollectionEquality().hash(_wealth),
-      const DeepCollectionEquality().hash(_interests),
-      email,
-      phoneNumber,
-      fbUrl);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
   @JsonKey(ignore: true)
   @override
@@ -287,36 +154,288 @@ class _$_LocalCouncilModel implements _LocalCouncilModel {
 
 abstract class _LocalCouncilModel implements LocalCouncilModel {
   const factory _LocalCouncilModel(
-      {required final String name,
-      required final String imageUrl,
-      required final String party,
-      required final List<String> wealth,
-      required final List<String> interests,
-      required final String? email,
-      required final String? phoneNumber,
-      required final String fbUrl}) = _$_LocalCouncilModel;
+          {@JsonKey(name: 'localcouncil', defaultValue: [])
+              required final List<LocalCouncilItemModel> items}) =
+      _$_LocalCouncilModel;
 
   factory _LocalCouncilModel.fromJson(Map<String, dynamic> json) =
       _$_LocalCouncilModel.fromJson;
 
   @override
-  String get name;
-  @override
-  String get imageUrl;
-  @override
-  String get party;
-  @override
-  List<String> get wealth;
-  @override
-  List<String> get interests;
-  @override
-  String? get email;
-  @override
-  String? get phoneNumber;
-  @override
-  String get fbUrl;
+  @JsonKey(name: 'localcouncil', defaultValue: [])
+  List<LocalCouncilItemModel> get items;
   @override
   @JsonKey(ignore: true)
   _$$_LocalCouncilModelCopyWith<_$_LocalCouncilModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+LocalCouncilItemModel _$LocalCouncilItemModelFromJson(
+    Map<String, dynamic> json) {
+  return _LocalCouncilItemModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LocalCouncilItemModel {
+  @JsonKey(name: 'name', defaultValue: '')
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'url', defaultValue: '')
+  String get imageUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'party', defaultValue: '')
+  String get party => throw _privateConstructorUsedError;
+  @JsonKey(name: 'email', defaultValue: '')
+  String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'phone_number', defaultValue: '')
+  String get tel => throw _privateConstructorUsedError;
+  @JsonKey(name: 'function', defaultValue: '')
+  String get function => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LocalCouncilItemModelCopyWith<LocalCouncilItemModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LocalCouncilItemModelCopyWith<$Res> {
+  factory $LocalCouncilItemModelCopyWith(LocalCouncilItemModel value,
+          $Res Function(LocalCouncilItemModel) then) =
+      _$LocalCouncilItemModelCopyWithImpl<$Res, LocalCouncilItemModel>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'name', defaultValue: '') String name,
+      @JsonKey(name: 'url', defaultValue: '') String imageUrl,
+      @JsonKey(name: 'party', defaultValue: '') String party,
+      @JsonKey(name: 'email', defaultValue: '') String email,
+      @JsonKey(name: 'phone_number', defaultValue: '') String tel,
+      @JsonKey(name: 'function', defaultValue: '') String function});
+}
+
+/// @nodoc
+class _$LocalCouncilItemModelCopyWithImpl<$Res,
+        $Val extends LocalCouncilItemModel>
+    implements $LocalCouncilItemModelCopyWith<$Res> {
+  _$LocalCouncilItemModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? imageUrl = null,
+    Object? party = null,
+    Object? email = null,
+    Object? tel = null,
+    Object? function = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      party: null == party
+          ? _value.party
+          : party // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      tel: null == tel
+          ? _value.tel
+          : tel // ignore: cast_nullable_to_non_nullable
+              as String,
+      function: null == function
+          ? _value.function
+          : function // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_LocalCouncilItemModelCopyWith<$Res>
+    implements $LocalCouncilItemModelCopyWith<$Res> {
+  factory _$$_LocalCouncilItemModelCopyWith(_$_LocalCouncilItemModel value,
+          $Res Function(_$_LocalCouncilItemModel) then) =
+      __$$_LocalCouncilItemModelCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'name', defaultValue: '') String name,
+      @JsonKey(name: 'url', defaultValue: '') String imageUrl,
+      @JsonKey(name: 'party', defaultValue: '') String party,
+      @JsonKey(name: 'email', defaultValue: '') String email,
+      @JsonKey(name: 'phone_number', defaultValue: '') String tel,
+      @JsonKey(name: 'function', defaultValue: '') String function});
+}
+
+/// @nodoc
+class __$$_LocalCouncilItemModelCopyWithImpl<$Res>
+    extends _$LocalCouncilItemModelCopyWithImpl<$Res, _$_LocalCouncilItemModel>
+    implements _$$_LocalCouncilItemModelCopyWith<$Res> {
+  __$$_LocalCouncilItemModelCopyWithImpl(_$_LocalCouncilItemModel _value,
+      $Res Function(_$_LocalCouncilItemModel) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? imageUrl = null,
+    Object? party = null,
+    Object? email = null,
+    Object? tel = null,
+    Object? function = null,
+  }) {
+    return _then(_$_LocalCouncilItemModel(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      party: null == party
+          ? _value.party
+          : party // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      tel: null == tel
+          ? _value.tel
+          : tel // ignore: cast_nullable_to_non_nullable
+              as String,
+      function: null == function
+          ? _value.function
+          : function // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_LocalCouncilItemModel implements _LocalCouncilItemModel {
+  const _$_LocalCouncilItemModel(
+      {@JsonKey(name: 'name', defaultValue: '') required this.name,
+      @JsonKey(name: 'url', defaultValue: '') required this.imageUrl,
+      @JsonKey(name: 'party', defaultValue: '') required this.party,
+      @JsonKey(name: 'email', defaultValue: '') required this.email,
+      @JsonKey(name: 'phone_number', defaultValue: '') required this.tel,
+      @JsonKey(name: 'function', defaultValue: '') required this.function});
+
+  factory _$_LocalCouncilItemModel.fromJson(Map<String, dynamic> json) =>
+      _$$_LocalCouncilItemModelFromJson(json);
+
+  @override
+  @JsonKey(name: 'name', defaultValue: '')
+  final String name;
+  @override
+  @JsonKey(name: 'url', defaultValue: '')
+  final String imageUrl;
+  @override
+  @JsonKey(name: 'party', defaultValue: '')
+  final String party;
+  @override
+  @JsonKey(name: 'email', defaultValue: '')
+  final String email;
+  @override
+  @JsonKey(name: 'phone_number', defaultValue: '')
+  final String tel;
+  @override
+  @JsonKey(name: 'function', defaultValue: '')
+  final String function;
+
+  @override
+  String toString() {
+    return 'LocalCouncilItemModel(name: $name, imageUrl: $imageUrl, party: $party, email: $email, tel: $tel, function: $function)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LocalCouncilItemModel &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.party, party) || other.party == party) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.tel, tel) || other.tel == tel) &&
+            (identical(other.function, function) ||
+                other.function == function));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, name, imageUrl, party, email, tel, function);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LocalCouncilItemModelCopyWith<_$_LocalCouncilItemModel> get copyWith =>
+      __$$_LocalCouncilItemModelCopyWithImpl<_$_LocalCouncilItemModel>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LocalCouncilItemModelToJson(
+      this,
+    );
+  }
+}
+
+abstract class _LocalCouncilItemModel implements LocalCouncilItemModel {
+  const factory _LocalCouncilItemModel(
+      {@JsonKey(name: 'name', defaultValue: '')
+          required final String name,
+      @JsonKey(name: 'url', defaultValue: '')
+          required final String imageUrl,
+      @JsonKey(name: 'party', defaultValue: '')
+          required final String party,
+      @JsonKey(name: 'email', defaultValue: '')
+          required final String email,
+      @JsonKey(name: 'phone_number', defaultValue: '')
+          required final String tel,
+      @JsonKey(name: 'function', defaultValue: '')
+          required final String function}) = _$_LocalCouncilItemModel;
+
+  factory _LocalCouncilItemModel.fromJson(Map<String, dynamic> json) =
+      _$_LocalCouncilItemModel.fromJson;
+
+  @override
+  @JsonKey(name: 'name', defaultValue: '')
+  String get name;
+  @override
+  @JsonKey(name: 'url', defaultValue: '')
+  String get imageUrl;
+  @override
+  @JsonKey(name: 'party', defaultValue: '')
+  String get party;
+  @override
+  @JsonKey(name: 'email', defaultValue: '')
+  String get email;
+  @override
+  @JsonKey(name: 'phone_number', defaultValue: '')
+  String get tel;
+  @override
+  @JsonKey(name: 'function', defaultValue: '')
+  String get function;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LocalCouncilItemModelCopyWith<_$_LocalCouncilItemModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

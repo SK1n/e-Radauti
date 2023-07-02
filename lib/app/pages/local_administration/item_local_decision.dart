@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/app/models/local_administration/decision_model.dart';
-import 'package:flutterapperadauti/app/pages/local_administration/preview_pdf.dart';
+import 'package:flutterapperadauti/app/pages/local_administration/page_preview_pdf.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 
 class ItemLocalDecision extends StatelessWidget {
@@ -29,7 +29,7 @@ class ItemLocalDecision extends StatelessWidget {
             ),
             InkWell(
               onTap: () => Navigator.of(context).push(
-                PreviewPdf.route(
+                PagePreviewPdf.route(
                   item.url,
                 ),
               ),

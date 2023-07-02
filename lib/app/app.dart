@@ -5,7 +5,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutterapperadauti/app/bloc/app_bloc.dart';
 import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
 import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
-import 'package:flutterapperadauti/app/repository/floor/floor_repository.dart';
 import 'package:flutterapperadauti/app/repository/local_administration/local_administration_repository.dart';
 import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
 import 'package:flutterapperadauti/app/router/routes.dart';
@@ -15,19 +14,16 @@ class App extends StatelessWidget {
     required AuthenticationRepository authenticationRepository,
     required FirestoreRepository firestoreRepository,
     required StorageRepository storageRepository,
-    required FloorRepository floorRepository,
     required LocalAdministrationRepository localAdministrationRepository,
     super.key,
   })  : _authenticationRepository = authenticationRepository,
         _firestoreRepository = firestoreRepository,
         _storageRepository = storageRepository,
-        _floorRepository = floorRepository,
         _localAdministrationRepository = localAdministrationRepository;
 
   final AuthenticationRepository _authenticationRepository;
   final FirestoreRepository _firestoreRepository;
   final StorageRepository _storageRepository;
-  final FloorRepository _floorRepository;
   final LocalAdministrationRepository _localAdministrationRepository;
 
   @override
@@ -42,9 +38,6 @@ class App extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => _storageRepository,
-        ),
-        RepositoryProvider(
-          create: (context) => _floorRepository,
         ),
         RepositoryProvider(
           create: (context) => _localAdministrationRepository,
