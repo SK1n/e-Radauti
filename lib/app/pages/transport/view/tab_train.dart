@@ -9,7 +9,6 @@ import '../../../../gen/strings.g.dart';
 import '../../../utils/widgets/loading_widget.dart';
 import '../../../utils/widgets/empty_widget.dart';
 import '../../../utils/widgets/err_widget.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class TabTrain extends StatelessWidget {
   const TabTrain({super.key});
@@ -50,12 +49,12 @@ class TabTrain extends StatelessWidget {
                       subtitle: Text(
                         _getSubtitle(item),
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.inter(),
+                        style: TextStyle(),
                       ),
                       title: Text(
                         _getTitle(item),
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.inter(fontWeight: FontWeight.bold),
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       onTap: () => Navigator.of(context).push(
                         PageTrainDetails.route(item),

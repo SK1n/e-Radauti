@@ -9,7 +9,6 @@ import '../../../../gen/strings.g.dart';
 import '../../../utils/widgets/loading_widget.dart';
 import '../../../utils/scaffolds/app_sliver_scaffold.dart';
 import '../../../utils/widgets/image_widget.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class PageVolunteering extends StatelessWidget {
@@ -77,7 +76,7 @@ class _Item extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               item.name,
-              style: GoogleFonts.inter(
+              style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
                 color: const Color(0xFF1F2937),
@@ -92,7 +91,7 @@ class _Item extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 t.volunteering.webSite,
-                style: GoogleFonts.inter(
+                style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: const Color(0xFF458AFC),

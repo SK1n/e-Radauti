@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import '../../models/user.dart';
 import '../cache/cache.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
 
 /// {@template sign_up_with_email_and_password_failure}
@@ -155,14 +154,11 @@ class AuthenticationRepository {
   AuthenticationRepository({
     CacheClient? cache,
     firebase_auth.FirebaseAuth? firebaseAuth,
-    GoogleSignIn? googleSignIn,
   })  : _cache = cache ?? CacheClient(),
-        _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance,
-        _googleSignIn = googleSignIn ?? GoogleSignIn.standard();
+        _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance;
 
   final CacheClient _cache;
   final firebase_auth.FirebaseAuth _firebaseAuth;
-  final GoogleSignIn _googleSignIn;
 
   /// Whether or not the current environment is web
   /// Should only be overridden for testing purposes. Otherwise,
@@ -225,35 +221,6 @@ class AuthenticationRepository {
     }
   }
 
-  /// Starts the Sign In with Google Flow.
-  ///
-  /// Throws a [LogInWithGoogleFailure] if an exception occurs.
-  Future<void> logInWithGoogle() async {
-    try {
-      late final firebase_auth.AuthCredential credential;
-      if (isWeb) {
-        final googleProvider = firebase_auth.GoogleAuthProvider();
-        final userCredential = await _firebaseAuth.signInWithPopup(
-          googleProvider,
-        );
-        credential = userCredential.credential!;
-      } else {
-        final googleUser = await _googleSignIn.signIn();
-        final googleAuth = await googleUser!.authentication;
-        credential = firebase_auth.GoogleAuthProvider.credential(
-          accessToken: googleAuth.accessToken,
-          idToken: googleAuth.idToken,
-        );
-      }
-
-      await _firebaseAuth.signInWithCredential(credential);
-    } on firebase_auth.FirebaseAuthException catch (e) {
-      throw LogInWithGoogleFailure.fromCode(e.code);
-    } catch (_) {
-      throw const LogInWithGoogleFailure();
-    }
-  }
-
   /// Signs in with the provided [email] and [password].
   ///
   /// Throws a [LogInWithEmailAndPasswordFailure] if an exception occurs.
@@ -296,7 +263,6 @@ class AuthenticationRepository {
     try {
       await Future.wait([
         _firebaseAuth.signOut(),
-        _googleSignIn.signOut(),
       ]);
     } catch (_) {
       throw LogOutFailure();

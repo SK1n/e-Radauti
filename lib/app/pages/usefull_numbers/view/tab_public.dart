@@ -8,7 +8,7 @@ import '../../../../gen/strings.g.dart';
 import '../../../utils/widgets/loading_widget.dart';
 import '../../../utils/widgets/empty_widget.dart';
 import '../../../utils/widgets/err_widget.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:url_launcher/url_launcher_string.dart';
 
 class TabPublic extends StatelessWidget {
@@ -65,7 +65,7 @@ class _Item extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               _getTranslation(data.title),
-              style: GoogleFonts.inter(
+              style: TextStyle(
                 fontSize: 16.0,
               ),
             ),

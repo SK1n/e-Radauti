@@ -11,7 +11,7 @@ import '../../utils/scaffolds/app_sliver_scaffold.dart';
 import '../../utils/widgets/empty_widget.dart';
 import '../../utils/widgets/err_widget.dart';
 import '../../utils/widgets/image_widget.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:url_launcher/url_launcher_string.dart';
 
 class PageLocalCouncilTeam extends StatelessWidget {
@@ -117,14 +117,14 @@ class _ItemCard extends StatelessWidget {
                         children: [
                           Text(
                             data.function,
-                            style: GoogleFonts.inter(
+                            style: TextStyle(
                               fontSize: 12,
                               color: const Color(0xFF434EA0),
                             ),
                           ),
                           Text(
                             '${data.firstname} ${data.surname}',
-                            style: GoogleFonts.inter(
+                            style: TextStyle(
                               fontSize: 16,
                               color: const Color(
                                 0xFF1F2937,

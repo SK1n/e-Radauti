@@ -1,11 +1,10 @@
-import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'tab_local_council_leaders.dart';
-import '../../../gen/strings.g.dart';
-import 'tab_local_council.dart';
-import '../../utils/scaffolds/app_tabs_scaffold.dart';
 
-@RoutePage()
+import '../../../gen/strings.g.dart';
+import '../../utils/scaffolds/app_tabs_scaffold.dart';
+import 'tab_local_council.dart';
+import 'tab_local_council_leaders.dart';
+
 class PageLocalAdministration extends StatelessWidget {
   const PageLocalAdministration({super.key});
 

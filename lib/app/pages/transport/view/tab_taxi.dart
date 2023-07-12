@@ -10,7 +10,7 @@ import '../../../utils/widgets/loading_widget.dart';
 import '../../../utils/widgets/empty_widget.dart';
 import '../../../utils/widgets/err_widget.dart';
 import '../../../utils/widgets/image_widget.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:url_launcher/url_launcher_string.dart';
 
 class TabTaxi extends StatelessWidget {
@@ -98,7 +98,7 @@ class _ItemCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20.0),
                 child: Text(
                   data.model,
-                  style: GoogleFonts.inter(
+                  style: TextStyle(
                     fontSize: 12,
                     color: const Color(0xFF434EA0),
                   ),
@@ -108,7 +108,7 @@ class _ItemCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20.0),
                 child: Text(
                   data.plate,
-                  style: GoogleFonts.inter(
+                  style: TextStyle(
                     fontSize: 12,
                     color: const Color(0xFF434EA0),
                   ),
@@ -118,7 +118,7 @@ class _ItemCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20.0),
                 child: Text(
                   data.name,
-                  style: GoogleFonts.inter(
+                  style: TextStyle(
                     fontSize: 16,
                     color: const Color(
                       0xFF1F2937,

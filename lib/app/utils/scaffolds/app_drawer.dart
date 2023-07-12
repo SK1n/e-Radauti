@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../gen/strings.g.dart';
 import '../../bloc/app_bloc.dart';
@@ -85,35 +84,35 @@ class AppDrawer extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(8.0),
                   width: MediaQuery.sizeOf(context).width,
-                  child: Row(
+                  child: const Row(
                     children: [
-                      const Flexible(
+                      Flexible(
                         child: CircleAvatar(
                           child: Text(''),
                           //  fireRepo.getUser()?.displayName!.getIcon() ?? ''),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               '',
                               //  fireRepo.getUser()?.displayName ?? '',
-                              style: GoogleFonts.inter(
+                              style: TextStyle(
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.w500,
-                                color: const Color(0xFF374151),
+                                color: Color(0xFF374151),
                               ),
                             ),
                             Text(
                               '',
                               // fireRepo.getUser()?.email ?? '',
-                              style: GoogleFonts.inter(
+                              style: TextStyle(
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.w500,
-                                color: const Color(0xFF6B7280),
+                                color: Color(0xFF6B7280),
                               ),
                             )
                           ],

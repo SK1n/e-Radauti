@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../app_constants.dart';
-import 'package:get/get.dart';
 import 'package:octo_image/octo_image.dart';
 
 class ImageWidget extends StatelessWidget {
@@ -42,7 +41,7 @@ class ImageWidget extends StatelessWidget {
       ),
       imageBuilder: imageBuilder,
       height: height,
-      width: width ?? Get.width,
+      width: width ?? MediaQuery.sizeOf(context).width,
       errorBuilder: OctoError.icon(color: Colors.red),
       fit: fit,
     );

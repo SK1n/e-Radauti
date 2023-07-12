@@ -8,7 +8,7 @@ import '../../../utils/widgets/err_widget.dart';
 import '../../../../gen/strings.g.dart';
 import '../../../utils/widgets/loading_widget.dart';
 import '../../../utils/widgets/empty_widget.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:url_launcher/url_launcher_string.dart';
 
 class TabJobsAnnouncement extends StatelessWidget {
@@ -64,7 +64,7 @@ class _Item extends StatelessWidget {
             children: [
               Text(
                 item.title,
-                style: GoogleFonts.inter(
+                style: TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w500,
                   color: const Color(0xFF1F2937),
@@ -74,7 +74,7 @@ class _Item extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 1.0),
                 child: Text(
                   t.announcements.posted_at(value: item.dateCreated.format()),
-                  style: GoogleFonts.inter(
+                  style: TextStyle(
                     fontSize: 12.0,
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF6B7280),
@@ -87,7 +87,7 @@ class _Item extends StatelessWidget {
                   item.rawContent,
                   maxLines: 10,
                   overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.inter(
+                  style: TextStyle(
                     fontSize: 14.0,
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF6B7280),
@@ -106,7 +106,7 @@ class _Item extends StatelessWidget {
                   },
                   child: Text(
                     t.announcements.seeDetails,
-                    style: GoogleFonts.inter(
+                    style: TextStyle(
                       fontSize: 14.0,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFF458AFC),

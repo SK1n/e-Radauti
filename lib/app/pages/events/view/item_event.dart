@@ -2,9 +2,8 @@ import '../../../models/events/events_item_model.dart';
 import '../../../utils/extensions/timestamp_to_date.dart';
 import '../../../../gen/strings.g.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import '../../../utils/widgets/image_widget.dart';
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 import 'event_details_page.dart';
@@ -30,7 +29,7 @@ class ItemEvent extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
           ),
           child: SizedBox(
-            width: Get.width,
+            width: MediaQuery.sizeOf(context).width,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -54,7 +53,7 @@ class ItemEvent extends StatelessWidget {
                     children: [
                       Text(
                         data.headline,
-                        style: GoogleFonts.inter(
+                        style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                         ),

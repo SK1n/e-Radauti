@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 class EmptyWidget extends StatelessWidget {
@@ -23,7 +22,6 @@ class EmptyWidget extends StatelessWidget {
           ),
           Text(
             text,
-            style: GoogleFonts.inter(),
           ),
         ],
       ),

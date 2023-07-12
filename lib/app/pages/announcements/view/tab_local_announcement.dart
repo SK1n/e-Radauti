@@ -8,7 +8,6 @@ import '../../../../gen/strings.g.dart';
 import '../../../utils/widgets/loading_widget.dart';
 import '../../../utils/widgets/empty_widget.dart';
 import '../../../utils/widgets/err_widget.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class TabLocalAnnouncement extends StatelessWidget {
   const TabLocalAnnouncement({super.key});
@@ -64,7 +63,7 @@ class _Item extends StatelessWidget {
             children: [
               Text(
                 item.title,
-                style: GoogleFonts.inter(
+                style: TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w500,
                   color: const Color(0xFF1F2937),
@@ -72,7 +71,7 @@ class _Item extends StatelessWidget {
               ),
               Text(
                 t.announcements.posted_at(value: item.dateCreated.getDate),
-                style: GoogleFonts.inter(
+                style: TextStyle(
                   fontSize: 12.0,
                   fontWeight: FontWeight.w400,
                   color: const Color(0xFF6B7280),
@@ -84,7 +83,7 @@ class _Item extends StatelessWidget {
                   item.description,
                   maxLines: 10,
                   overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.inter(
+                  style: TextStyle(
                     fontSize: 14.0,
                     fontWeight: FontWeight.w500,
                     color: const Color(0xFF6B7280),

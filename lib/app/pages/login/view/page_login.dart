@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,6 @@ import '../../../repository/authentication/authentication_repository.dart';
 import '../../../../gen/strings.g.dart';
 import '../../../utils/scaffolds/app_scaffold.dart';
 
-@RoutePage()
 class PageLogin extends StatelessWidget {
   const PageLogin({super.key});
 

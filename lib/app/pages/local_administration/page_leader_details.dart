@@ -4,7 +4,7 @@ import 'page_preview_pdf.dart';
 import '../../../gen/strings.g.dart';
 import '../../utils/scaffolds/app_scaffold.dart';
 import '../../utils/widgets/image_widget.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:url_launcher/url_launcher_string.dart';
 
 class PageLeadersDetails extends StatelessWidget {
@@ -39,7 +39,7 @@ class PageLeadersDetails extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20.0),
                 child: Text(
                   data.function,
-                  style: GoogleFonts.inter(
+                  style: TextStyle(
                     fontSize: 12,
                     color: const Color(0xFF434EA0),
                   ),
@@ -49,7 +49,7 @@ class PageLeadersDetails extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20.0),
                 child: Text(
                   '${data.firstName} ${data.surname}',
-                  style: GoogleFonts.inter(
+                  style: TextStyle(
                     fontSize: 16,
                     color: const Color(
                       0xFF1F2937,
@@ -62,7 +62,7 @@ class PageLeadersDetails extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 20.0),
                       child: Text(
                         data.location,
-                        style: GoogleFonts.inter(
+                        style: TextStyle(
                           fontSize: 14,
                           color: const Color(
                             0xFF1F2937,

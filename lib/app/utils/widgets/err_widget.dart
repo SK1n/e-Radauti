@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:getwidget/components/button/gf_button.dart';
 import 'package:getwidget/shape/gf_button_shape.dart';
 import 'package:getwidget/size/gf_size.dart';
@@ -17,7 +16,7 @@ class ErrWidget extends StatelessWidget {
         Text(error),
         GFButton(
           onPressed: retry,
-          text: 'retry'.tr,
+          text: 'retry',
           shape: GFButtonShape.pills,
           // color: CColors.lightBlue,
           size: GFSize.LARGE,

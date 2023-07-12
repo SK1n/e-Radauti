@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,10 +18,7 @@ import '../../../../gen/strings.g.dart';
 import '../../../utils/widgets/loading_widget.dart';
 import '../../../utils/scaffolds/app_scaffold.dart';
 import '../../../utils/widgets/empty_widget.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-@RoutePage()
 class PageHome extends StatefulWidget {
   const PageHome({super.key});
   static Page<void> page() =>
@@ -74,7 +70,7 @@ class _PageHomeState extends State<PageHome> {
         ..getNextEvent()
         ..isUserAnnonymous(),
       child: AppScaffold(
-        appBarTitle: 'e-radauti'.tr,
+        appBarTitle: 'e-Radauti',
         slivers: [
           BlocConsumer<HomeCubit, HomeState>(
             listener: (context, state) {},
@@ -126,7 +122,7 @@ class _PageHomeState extends State<PageHome> {
                                         child: Center(
                                           child: RichText(
                                             text: TextSpan(
-                                              style: GoogleFonts.inter(
+                                              style: TextStyle(
                                                 fontSize: 18,
                                                 color: Colors.black,
                                                 // fontWeight: FontWeight.bold,
@@ -138,7 +134,7 @@ class _PageHomeState extends State<PageHome> {
                                                 TextSpan(
                                                   text: state.numsOfReports
                                                       .toString(),
-                                                  style: GoogleFonts.inter(
+                                                  style: TextStyle(
                                                     fontSize: 40,
                                                     fontWeight: FontWeight.bold,
                                                   ),

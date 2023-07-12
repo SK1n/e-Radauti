@@ -11,8 +11,7 @@ import '../../../utils/widgets/image_widget.dart';
 import '../../../../gen/strings.g.dart';
 import 'package:fluttericon/elusive_icons.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:intl/intl.dart';
 import 'package:selectable_autolink_text/selectable_autolink_text.dart';
 
@@ -72,7 +71,7 @@ class EventDetailsPage extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 10),
                           child: Text(
                             '${event.location}\n${event.street}',
-                            style: GoogleFonts.roboto(fontSize: 14),
+                            style: TextStyle(fontSize: 14),
                           ),
                         )
                       ],
@@ -91,7 +90,7 @@ class EventDetailsPage extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 10),
                           child: Text(
                             t.events.startDate(date: event.start.date),
-                            style: GoogleFonts.roboto(fontSize: 14),
+                            style: TextStyle(fontSize: 14),
                           ),
                         )
                       ],
@@ -110,7 +109,9 @@ class EventDetailsPage extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 10),
                           child: Text(
                             t.events.endDate(date: event.end.date),
-                            style: GoogleFonts.roboto(fontSize: 14),
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
                           ),
                         )
                       ],
@@ -153,7 +154,7 @@ class EventDetailsPage extends StatelessWidget {
                     child: SelectableAutoLinkText(
                       event.description,
                       onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
-                      linkStyle: TextStyle(color: context.theme.primaryColor),
+                      linkStyle: const TextStyle(color: Colors.pink),
                       onTap: (link) async {
                         // await launchUrlS(link);
                       },
