@@ -16,37 +16,22 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+// Last Decision
+  PageState get dmState => throw _privateConstructorUsedError;
+  DecisionModel? get dmData => throw _privateConstructorUsedError;
+  String get dmErrorMessage => throw _privateConstructorUsedError; //Next Event
+  PageState get eventState => throw _privateConstructorUsedError;
+  EventsItemModel? get eventData => throw _privateConstructorUsedError;
+  String get eventError =>
+      throw _privateConstructorUsedError; // Nums of reports
+  PageState get numsOfReportsState => throw _privateConstructorUsedError;
+  dynamic get numsOfReports => throw _privateConstructorUsedError;
+  String get numsOfReportsError =>
+      throw _privateConstructorUsedError; // Is user annonymous
+  dynamic get isAnnonymous => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HomeStateCopyWith<HomeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -54,6 +39,21 @@ mixin _$HomeState {
 abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
+  @useResult
+  $Res call(
+      {PageState dmState,
+      DecisionModel? dmData,
+      String dmErrorMessage,
+      PageState eventState,
+      EventsItemModel? eventData,
+      String eventError,
+      PageState numsOfReportsState,
+      dynamic numsOfReports,
+      String numsOfReportsError,
+      dynamic isAnnonymous});
+
+  $DecisionModelCopyWith<$Res>? get dmData;
+  $EventsItemModelCopyWith<$Res>? get eventData;
 }
 
 /// @nodoc
@@ -65,99 +65,312 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dmState = null,
+    Object? dmData = freezed,
+    Object? dmErrorMessage = null,
+    Object? eventState = null,
+    Object? eventData = freezed,
+    Object? eventError = null,
+    Object? numsOfReportsState = null,
+    Object? numsOfReports = freezed,
+    Object? numsOfReportsError = null,
+    Object? isAnnonymous = freezed,
+  }) {
+    return _then(_value.copyWith(
+      dmState: null == dmState
+          ? _value.dmState
+          : dmState // ignore: cast_nullable_to_non_nullable
+              as PageState,
+      dmData: freezed == dmData
+          ? _value.dmData
+          : dmData // ignore: cast_nullable_to_non_nullable
+              as DecisionModel?,
+      dmErrorMessage: null == dmErrorMessage
+          ? _value.dmErrorMessage
+          : dmErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+      eventState: null == eventState
+          ? _value.eventState
+          : eventState // ignore: cast_nullable_to_non_nullable
+              as PageState,
+      eventData: freezed == eventData
+          ? _value.eventData
+          : eventData // ignore: cast_nullable_to_non_nullable
+              as EventsItemModel?,
+      eventError: null == eventError
+          ? _value.eventError
+          : eventError // ignore: cast_nullable_to_non_nullable
+              as String,
+      numsOfReportsState: null == numsOfReportsState
+          ? _value.numsOfReportsState
+          : numsOfReportsState // ignore: cast_nullable_to_non_nullable
+              as PageState,
+      numsOfReports: freezed == numsOfReports
+          ? _value.numsOfReports
+          : numsOfReports // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      numsOfReportsError: null == numsOfReportsError
+          ? _value.numsOfReportsError
+          : numsOfReportsError // ignore: cast_nullable_to_non_nullable
+              as String,
+      isAnnonymous: freezed == isAnnonymous
+          ? _value.isAnnonymous
+          : isAnnonymous // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DecisionModelCopyWith<$Res>? get dmData {
+    if (_value.dmData == null) {
+      return null;
+    }
+
+    return $DecisionModelCopyWith<$Res>(_value.dmData!, (value) {
+      return _then(_value.copyWith(dmData: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EventsItemModelCopyWith<$Res>? get eventData {
+    if (_value.eventData == null) {
+      return null;
+    }
+
+    return $EventsItemModelCopyWith<$Res>(_value.eventData!, (value) {
+      return _then(_value.copyWith(eventData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+  factory _$$_HomeStateCopyWith(
+          _$_HomeState value, $Res Function(_$_HomeState) then) =
+      __$$_HomeStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {PageState dmState,
+      DecisionModel? dmData,
+      String dmErrorMessage,
+      PageState eventState,
+      EventsItemModel? eventData,
+      String eventError,
+      PageState numsOfReportsState,
+      dynamic numsOfReports,
+      String numsOfReportsError,
+      dynamic isAnnonymous});
+
+  @override
+  $DecisionModelCopyWith<$Res>? get dmData;
+  @override
+  $EventsItemModelCopyWith<$Res>? get eventData;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$_HomeStateCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$_HomeState>
+    implements _$$_HomeStateCopyWith<$Res> {
+  __$$_HomeStateCopyWithImpl(
+      _$_HomeState _value, $Res Function(_$_HomeState) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dmState = null,
+    Object? dmData = freezed,
+    Object? dmErrorMessage = null,
+    Object? eventState = null,
+    Object? eventData = freezed,
+    Object? eventError = null,
+    Object? numsOfReportsState = null,
+    Object? numsOfReports = freezed,
+    Object? numsOfReportsError = null,
+    Object? isAnnonymous = freezed,
+  }) {
+    return _then(_$_HomeState(
+      dmState: null == dmState
+          ? _value.dmState
+          : dmState // ignore: cast_nullable_to_non_nullable
+              as PageState,
+      dmData: freezed == dmData
+          ? _value.dmData
+          : dmData // ignore: cast_nullable_to_non_nullable
+              as DecisionModel?,
+      dmErrorMessage: null == dmErrorMessage
+          ? _value.dmErrorMessage
+          : dmErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+      eventState: null == eventState
+          ? _value.eventState
+          : eventState // ignore: cast_nullable_to_non_nullable
+              as PageState,
+      eventData: freezed == eventData
+          ? _value.eventData
+          : eventData // ignore: cast_nullable_to_non_nullable
+              as EventsItemModel?,
+      eventError: null == eventError
+          ? _value.eventError
+          : eventError // ignore: cast_nullable_to_non_nullable
+              as String,
+      numsOfReportsState: null == numsOfReportsState
+          ? _value.numsOfReportsState
+          : numsOfReportsState // ignore: cast_nullable_to_non_nullable
+              as PageState,
+      numsOfReports:
+          freezed == numsOfReports ? _value.numsOfReports! : numsOfReports,
+      numsOfReportsError: null == numsOfReportsError
+          ? _value.numsOfReportsError
+          : numsOfReportsError // ignore: cast_nullable_to_non_nullable
+              as String,
+      isAnnonymous:
+          freezed == isAnnonymous ? _value.isAnnonymous! : isAnnonymous,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_HomeState implements _HomeState {
+  const _$_HomeState(
+      {this.dmState = PageState.initial,
+      this.dmData,
+      this.dmErrorMessage = '',
+      this.eventState = PageState.initial,
+      this.eventData,
+      this.eventError = '',
+      this.numsOfReportsState = PageState.initial,
+      this.numsOfReports = 0,
+      this.numsOfReportsError = '',
+      this.isAnnonymous = false});
+
+// Last Decision
+  @override
+  @JsonKey()
+  final PageState dmState;
+  @override
+  final DecisionModel? dmData;
+  @override
+  @JsonKey()
+  final String dmErrorMessage;
+//Next Event
+  @override
+  @JsonKey()
+  final PageState eventState;
+  @override
+  final EventsItemModel? eventData;
+  @override
+  @JsonKey()
+  final String eventError;
+// Nums of reports
+  @override
+  @JsonKey()
+  final PageState numsOfReportsState;
+  @override
+  @JsonKey()
+  final dynamic numsOfReports;
+  @override
+  @JsonKey()
+  final String numsOfReportsError;
+// Is user annonymous
+  @override
+  @JsonKey()
+  final dynamic isAnnonymous;
 
   @override
   String toString() {
-    return 'HomeState.initial()';
+    return 'HomeState(dmState: $dmState, dmData: $dmData, dmErrorMessage: $dmErrorMessage, eventState: $eventState, eventData: $eventData, eventError: $eventError, numsOfReportsState: $numsOfReportsState, numsOfReports: $numsOfReports, numsOfReportsError: $numsOfReportsError, isAnnonymous: $isAnnonymous)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType &&
+            other is _$_HomeState &&
+            (identical(other.dmState, dmState) || other.dmState == dmState) &&
+            (identical(other.dmData, dmData) || other.dmData == dmData) &&
+            (identical(other.dmErrorMessage, dmErrorMessage) ||
+                other.dmErrorMessage == dmErrorMessage) &&
+            (identical(other.eventState, eventState) ||
+                other.eventState == eventState) &&
+            (identical(other.eventData, eventData) ||
+                other.eventData == eventData) &&
+            (identical(other.eventError, eventError) ||
+                other.eventError == eventError) &&
+            (identical(other.numsOfReportsState, numsOfReportsState) ||
+                other.numsOfReportsState == numsOfReportsState) &&
+            const DeepCollectionEquality()
+                .equals(other.numsOfReports, numsOfReports) &&
+            (identical(other.numsOfReportsError, numsOfReportsError) ||
+                other.numsOfReportsError == numsOfReportsError) &&
+            const DeepCollectionEquality()
+                .equals(other.isAnnonymous, isAnnonymous));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      dmState,
+      dmData,
+      dmErrorMessage,
+      eventState,
+      eventData,
+      eventError,
+      numsOfReportsState,
+      const DeepCollectionEquality().hash(numsOfReports),
+      numsOfReportsError,
+      const DeepCollectionEquality().hash(isAnnonymous));
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
+      __$$_HomeStateCopyWithImpl<_$_HomeState>(this, _$identity);
 }
 
-abstract class _Initial implements HomeState {
-  const factory _Initial() = _$_Initial;
+abstract class _HomeState implements HomeState {
+  const factory _HomeState(
+      {final PageState dmState,
+      final DecisionModel? dmData,
+      final String dmErrorMessage,
+      final PageState eventState,
+      final EventsItemModel? eventData,
+      final String eventError,
+      final PageState numsOfReportsState,
+      final dynamic numsOfReports,
+      final String numsOfReportsError,
+      final dynamic isAnnonymous}) = _$_HomeState;
+
+  @override // Last Decision
+  PageState get dmState;
+  @override
+  DecisionModel? get dmData;
+  @override
+  String get dmErrorMessage;
+  @override //Next Event
+  PageState get eventState;
+  @override
+  EventsItemModel? get eventData;
+  @override
+  String get eventError;
+  @override // Nums of reports
+  PageState get numsOfReportsState;
+  @override
+  dynamic get numsOfReports;
+  @override
+  String get numsOfReportsError;
+  @override // Is user annonymous
+  dynamic get isAnnonymous;
+  @override
+  @JsonKey(ignore: true)
+  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

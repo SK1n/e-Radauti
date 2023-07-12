@@ -1,23 +1,21 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:flutterapperadauti/app/form_inputs/report_problem_form.dart';
-import 'package:flutterapperadauti/app/models/report_problem/report_problem_item_model.dart';
-import 'package:flutterapperadauti/app/models/report_problem/report_problem_marker_model.dart';
-import 'package:flutterapperadauti/app/models/report_problem/report_problem_model.dart';
-import 'package:flutterapperadauti/app/pages/report_problem/view/report_problem_report_page.dart';
-import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
-import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
-import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
-import 'package:flutterapperadauti/app/utils/page_state.dart';
+import '../../../form_inputs/report_problem_form.dart';
+import '../../../models/report_problem/report_problem_marker_model.dart';
+import '../../../models/report_problem/report_problem_user_model.dart';
+import '../view/report_problem_report_page.dart';
+import '../../../repository/authentication/authentication_repository.dart';
+import '../../../repository/firestore/firestore_repository.dart';
+import '../../../repository/storage/storage_repository.dart';
+import '../../../utils/page_state.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/octicons_icons.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:logger/logger.dart';
-import 'package:latlong2/latlong.dart' as latLng;
+import 'package:latlong2/latlong.dart' as lat_lng;
 
 part 'report_problem_state.dart';
 part 'report_problem_cubit.freezed.dart';
@@ -225,7 +223,7 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
       DateTime time = DateTime.now();
       urls.addAll(await _storageRepository.uploadFiles(
           'Notice_A_Problem', state.imagePicker.value));
-      Map<String, dynamic> item = ReportProblemItemModel(
+      Map<String, dynamic> item = ReportProblemMarkerItemModel(
         category: state.category.value,
         description: state.description.value,
         email: state.email.value,
@@ -264,11 +262,8 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
     try {
       emit(state.copyWith(firestoreStatus: PageState.inProgress));
       var userUID = _authRepository.currentUser.id;
-      Logger log = Logger();
-      log.d(_authRepository.currentUser.email);
-
       var result = await _firestoreRepository.fetchDocument('users/$userUID');
-      ReportProblemModel data = ReportProblemModel.fromJson(
+      ReportProblemUserModel data = ReportProblemUserModel.fromJson(
         result.data() ?? {},
       );
       emit(state.copyWith(
@@ -335,15 +330,15 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
       emit(state.copyWith(firestoreStatus: PageState.inProgress));
       var result =
           await _firestoreRepository.fetchDocument('collection/Markers');
-      ReportProblemMarkerModel data =
-          ReportProblemMarkerModel.fromJson(result.data() ?? {});
+      ReportProblemUserModel data =
+          ReportProblemUserModel.fromJson(result.data() ?? {});
 
       List<Marker> markers = [];
-      for (ReportProblemItemModel item in data.markers ?? {}) {
+      for (ReportProblemUserItemModel item in data.markers) {
         if (item.lat != null && item.long != null) {
           markers.add(
             Marker(
-              point: latLng.LatLng(item.lat as double, item.long as double),
+              point: lat_lng.LatLng(item.lat as double, item.long as double),
               builder: (BuildContext context) {
                 return InkWell(
                   onTap: () {

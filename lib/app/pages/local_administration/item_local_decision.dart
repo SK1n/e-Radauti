@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/app/models/local_administration/decision_model.dart';
-import 'package:flutterapperadauti/app/pages/local_administration/page_preview_pdf.dart';
+import '../../models/local_administration/decision_model.dart';
+import 'page_preview_pdf.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 
 class ItemLocalDecision extends StatelessWidget {
@@ -10,9 +10,8 @@ class ItemLocalDecision extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
       shape: RoundedRectangleBorder(
-        side: const BorderSide(color: Colors.black12, width: 1),
+        side: const BorderSide(color: Colors.black12, width: 0),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Padding(

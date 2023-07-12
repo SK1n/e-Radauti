@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/app/models/local_administration/local_council_leaders_model.dart';
-import 'package:flutterapperadauti/app/pages/local_administration/page_preview_pdf.dart';
-import 'package:flutterapperadauti/gen/strings.g.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_scaffold.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
+import '../../models/local_administration/local_council_leaders_model.dart';
+import 'page_preview_pdf.dart';
+import '../../../gen/strings.g.dart';
+import '../../utils/scaffolds/app_scaffold.dart';
+import '../../utils/widgets/image_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -48,7 +48,7 @@ class PageLeadersDetails extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 20.0),
                 child: Text(
-                  data.name,
+                  '${data.firstName} ${data.surname}',
                   style: GoogleFonts.inter(
                     fontSize: 16,
                     color: const Color(

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/pages/report_problem/cubit/report_problem_cubit.dart';
-import 'package:flutterapperadauti/app/pages/report_problem/view/report_problem_form_tab.dart';
-import 'package:flutterapperadauti/app/pages/report_problem/view/report_problem_map_tab.dart';
-import 'package:flutterapperadauti/app/pages/report_problem/view/report_problem_my_reports_tab.dart';
-import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
-import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
-import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
-import 'package:flutterapperadauti/i18n/strings.g.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_tabs_scaffold.dart';
+import '../cubit/report_problem_cubit.dart';
+import 'report_problem_form_tab.dart';
+import 'report_problem_map_tab.dart';
+import 'report_problem_my_reports_tab.dart';
+import '../../../repository/authentication/authentication_repository.dart';
+import '../../../repository/firestore/firestore_repository.dart';
+import '../../../repository/storage/storage_repository.dart';
+import '../../../../gen/strings.g.dart';
+import '../../../utils/scaffolds/app_tabs_scaffold.dart';
 
 class ReportProblemPage extends StatelessWidget {
   const ReportProblemPage({super.key});

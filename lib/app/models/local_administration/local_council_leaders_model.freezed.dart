@@ -182,8 +182,10 @@ LocalCouncilLeadersItemModel _$LocalCouncilLeadersItemModelFromJson(
 
 /// @nodoc
 mixin _$LocalCouncilLeadersItemModel {
-  @JsonKey(name: 'name', defaultValue: '')
-  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'first_name', defaultValue: '')
+  String get firstName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'surname', defaultValue: '')
+  String get surname => throw _privateConstructorUsedError;
   @JsonKey(name: 'url_img', defaultValue: '')
   String get imageUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'url_fb', defaultValue: '')
@@ -214,7 +216,8 @@ abstract class $LocalCouncilLeadersItemModelCopyWith<$Res> {
           LocalCouncilLeadersItemModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'name', defaultValue: '') String name,
+      {@JsonKey(name: 'first_name', defaultValue: '') String firstName,
+      @JsonKey(name: 'surname', defaultValue: '') String surname,
       @JsonKey(name: 'url_img', defaultValue: '') String imageUrl,
       @JsonKey(name: 'url_fb', defaultValue: '') String fbUrl,
       @JsonKey(name: 'email', defaultValue: '') String email,
@@ -238,7 +241,8 @@ class _$LocalCouncilLeadersItemModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? firstName = null,
+    Object? surname = null,
     Object? imageUrl = null,
     Object? fbUrl = null,
     Object? email = null,
@@ -248,9 +252,13 @@ class _$LocalCouncilLeadersItemModelCopyWithImpl<$Res,
     Object? location = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      surname: null == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
               as String,
       imageUrl: null == imageUrl
           ? _value.imageUrl
@@ -294,7 +302,8 @@ abstract class _$$_LocalCouncilLeadersItemModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'name', defaultValue: '') String name,
+      {@JsonKey(name: 'first_name', defaultValue: '') String firstName,
+      @JsonKey(name: 'surname', defaultValue: '') String surname,
       @JsonKey(name: 'url_img', defaultValue: '') String imageUrl,
       @JsonKey(name: 'url_fb', defaultValue: '') String fbUrl,
       @JsonKey(name: 'email', defaultValue: '') String email,
@@ -317,7 +326,8 @@ class __$$_LocalCouncilLeadersItemModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? firstName = null,
+    Object? surname = null,
     Object? imageUrl = null,
     Object? fbUrl = null,
     Object? email = null,
@@ -327,9 +337,13 @@ class __$$_LocalCouncilLeadersItemModelCopyWithImpl<$Res>
     Object? location = null,
   }) {
     return _then(_$_LocalCouncilLeadersItemModel(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      surname: null == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
               as String,
       imageUrl: null == imageUrl
           ? _value.imageUrl
@@ -367,7 +381,8 @@ class __$$_LocalCouncilLeadersItemModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_LocalCouncilLeadersItemModel implements _LocalCouncilLeadersItemModel {
   const _$_LocalCouncilLeadersItemModel(
-      {@JsonKey(name: 'name', defaultValue: '') required this.name,
+      {@JsonKey(name: 'first_name', defaultValue: '') required this.firstName,
+      @JsonKey(name: 'surname', defaultValue: '') required this.surname,
       @JsonKey(name: 'url_img', defaultValue: '') required this.imageUrl,
       @JsonKey(name: 'url_fb', defaultValue: '') required this.fbUrl,
       @JsonKey(name: 'email', defaultValue: '') required this.email,
@@ -380,8 +395,11 @@ class _$_LocalCouncilLeadersItemModel implements _LocalCouncilLeadersItemModel {
       _$$_LocalCouncilLeadersItemModelFromJson(json);
 
   @override
-  @JsonKey(name: 'name', defaultValue: '')
-  final String name;
+  @JsonKey(name: 'first_name', defaultValue: '')
+  final String firstName;
+  @override
+  @JsonKey(name: 'surname', defaultValue: '')
+  final String surname;
   @override
   @JsonKey(name: 'url_img', defaultValue: '')
   final String imageUrl;
@@ -406,7 +424,7 @@ class _$_LocalCouncilLeadersItemModel implements _LocalCouncilLeadersItemModel {
 
   @override
   String toString() {
-    return 'LocalCouncilLeadersItemModel(name: $name, imageUrl: $imageUrl, fbUrl: $fbUrl, email: $email, function: $function, interests: $interests, wealth: $wealth, location: $location)';
+    return 'LocalCouncilLeadersItemModel(firstName: $firstName, surname: $surname, imageUrl: $imageUrl, fbUrl: $fbUrl, email: $email, function: $function, interests: $interests, wealth: $wealth, location: $location)';
   }
 
   @override
@@ -414,7 +432,9 @@ class _$_LocalCouncilLeadersItemModel implements _LocalCouncilLeadersItemModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LocalCouncilLeadersItemModel &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.surname, surname) || other.surname == surname) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.fbUrl, fbUrl) || other.fbUrl == fbUrl) &&
@@ -430,8 +450,8 @@ class _$_LocalCouncilLeadersItemModel implements _LocalCouncilLeadersItemModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, imageUrl, fbUrl, email,
-      function, interests, wealth, location);
+  int get hashCode => Object.hash(runtimeType, firstName, surname, imageUrl,
+      fbUrl, email, function, interests, wealth, location);
 
   @JsonKey(ignore: true)
   @override
@@ -451,8 +471,10 @@ class _$_LocalCouncilLeadersItemModel implements _LocalCouncilLeadersItemModel {
 abstract class _LocalCouncilLeadersItemModel
     implements LocalCouncilLeadersItemModel {
   const factory _LocalCouncilLeadersItemModel(
-      {@JsonKey(name: 'name', defaultValue: '')
-          required final String name,
+      {@JsonKey(name: 'first_name', defaultValue: '')
+          required final String firstName,
+      @JsonKey(name: 'surname', defaultValue: '')
+          required final String surname,
       @JsonKey(name: 'url_img', defaultValue: '')
           required final String imageUrl,
       @JsonKey(name: 'url_fb', defaultValue: '')
@@ -472,8 +494,11 @@ abstract class _LocalCouncilLeadersItemModel
       _$_LocalCouncilLeadersItemModel.fromJson;
 
   @override
-  @JsonKey(name: 'name', defaultValue: '')
-  String get name;
+  @JsonKey(name: 'first_name', defaultValue: '')
+  String get firstName;
+  @override
+  @JsonKey(name: 'surname', defaultValue: '')
+  String get surname;
   @override
   @JsonKey(name: 'url_img', defaultValue: '')
   String get imageUrl;

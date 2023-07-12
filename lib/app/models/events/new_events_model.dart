@@ -8,7 +8,8 @@ part 'new_events_model.g.dart';
 @freezed
 class NewEventsModel with _$NewEventsModel {
   const factory NewEventsModel(
-      @JsonKey(name: 'events') List<EventsItemModel> list) = _NewEventsModel;
+    @JsonKey(name: 'events', defaultValue: []) List<EventsItemModel> list,
+  ) = _NewEventsModel;
 
   factory NewEventsModel.fromJson(Map<String, dynamic> json) =>
       _$NewEventsModelFromJson(json);

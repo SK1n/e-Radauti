@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:flutterapperadauti/app/pages/forgot_password/cubit/forgot_password_cubit.dart';
-import 'package:flutterapperadauti/app/utils/widgets/border_text_form_field.dart';
-import 'package:flutterapperadauti/i18n/strings.g.dart';
-import 'package:flutterapperadauti/utils/loading_widget.dart';
 import 'package:formz/formz.dart';
+
+import '../../../../gen/strings.g.dart';
+import '../../../utils/widgets/border_text_form_field.dart';
+import '../../../utils/widgets/loading_widget.dart';
+import '../cubit/forgot_password_cubit.dart';
 
 class ForgotPasswordForm extends StatelessWidget {
   final String? email;

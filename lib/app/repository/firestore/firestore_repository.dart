@@ -2,9 +2,6 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutterapperadauti/app/models/events/events_item_model.dart';
-import 'package:flutterapperadauti/app/models/events/new_events_model.dart';
-import 'package:logger/logger.dart';
 
 /// Thrown during the Firestore document fetch process if a failure occurs.
 class FirestoreFetchFailure implements Exception {
@@ -91,13 +88,6 @@ class FirestoreRepository {
 
   Stream<DocumentSnapshot> fetchDocumentStream(String path) {
     return FirebaseFirestore.instance.doc(path).snapshots();
-  }
-
-  Future<List<EventsItemModel>> _getFavoriteEvents(
-      String path, Function converter) async {
-    var document = await fetchDocument(path);
-    var favoriteEvents = converter(document.data()) as NewEventsModel;
-    return favoriteEvents.list;
   }
 
   /// Creates a new document in Firestore at the specified [path] with the given [data].

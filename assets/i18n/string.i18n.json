@@ -106,10 +106,61 @@
         "title": "Air quality",
         "airQualityTab": "Air quality",
         "chartsTab": "Charts",
-        "aboutTab": "About the project"
+        "mapTab": "Map"
+    },
+    "usefullNumbers": {
+        "title": "Phone numbers",
+        "publicTab": "Local institutions",
+        "authoritiesTab": "Local authorities",
+        "upsetsTab": "Upsets",
+        "empty": "We couldn't find any phone number.",
+        "hospital": "Municipal hospital",
+        "townhall": "Town hall",
+        "animals": "Animal shelter",
+        "police": "Local police",
+        "consumerProtection": "Consumer protection",
+        "childProtection": "Child protection",
+        "animalProtection": "Animal protection",
+        "environmentProtection": "Environment protection",
+        "suceavaEnvironmentalGuard": "Suceava Environmental Guard",
+        "comunalServices": "Comunal services",
+        "acet": "ACET"
+    },
+    "transport": {
+        "title": "Transport",
+        "taxiTab": "Taxi",
+        "trainTab": "Train",
+        "emptyTaxi": "We couldn't find any taxi!",
+        "emptyTrain": "We couldn't find any train!"
+    },
+    "volunteering": {
+        "title": "Volunteering",
+        "webSite": "Website"
+    },
+    "announcements": {
+        "title": "Announcements",
+        "posted_at": "posted at: $value",
+        "tabLocal": "Local",
+        "emptyAnnouncements": "We couldn't find any announcement!",
+        "tabFurniture": "Furniture",
+        "tabJobs": "Jobs",
+        "seeDetails": "See details ->"
+    },
+    "drawer": {
+        "reportProblem": "@:reportProblem.title",
+        "localAdministration": "@:localAdministration.title",
+        "airQuality": "@:airQuality.title",
+        "events": "@:events.title",
+        "transport": "@:transport.title",
+        "volunteering": "@:volunteering.title",
+        "announcements": "@:announcements.title",
+        "signOut": "Sign out"
     },
     "buttons": {
         "log_in": "Log in"
+    },
+    "home": {
+        "newEvents": "Upcoming events will appear here!"
     },
     "formats": {
         "invalidEmail": "Wrong email format! e.g aaa@bb.ccc!",

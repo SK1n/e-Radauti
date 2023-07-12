@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutterapperadauti/app/form_inputs/confirmed_password.dart';
-import 'package:flutterapperadauti/app/form_inputs/password_sign_up.dart';
-import 'package:flutterapperadauti/app/form_inputs/report_problem_form.dart';
-import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
+import '../../../form_inputs/confirmed_password.dart';
+import '../../../form_inputs/password_sign_up.dart';
+import '../../../form_inputs/report_problem_form.dart';
+import '../../../repository/authentication/authentication_repository.dart';
 import 'package:formz/formz.dart';
 
 part 'sign_up_state.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/app/bloc/app_bloc.dart';
-import 'package:flutterapperadauti/app/pages/home/view/home_page.dart';
-import 'package:flutterapperadauti/app/pages/login/view/login_page.dart';
+import '../bloc/app_bloc.dart';
+import '../pages/home/view/page_home.dart';
+import '../pages/login/view/page_login.dart';
 
 List<Page<dynamic>> onGenerateAppViewPages(
   AppStatus state,
@@ -9,8 +9,8 @@ List<Page<dynamic>> onGenerateAppViewPages(
 ) {
   switch (state) {
     case AppStatus.authenticated:
-      return [HomePage.page()];
+      return [PageHome.page()];
     case AppStatus.unauthenticated:
-      return [LoginPage.page()];
+      return [PageLogin.page()];
   }
 }

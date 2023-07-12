@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutterapperadauti/app/models/local_administration/decision_model.dart';
-import 'package:flutterapperadauti/app/repository/local_administration/local_administration_repository.dart';
-import 'package:flutterapperadauti/app/utils/page_state.dart';
+import '../../../../models/local_administration/decision_model.dart';
+import '../../../../repository/local_administration/local_administration_repository.dart';
+import '../../../../utils/page_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'local_decisions_state.dart';

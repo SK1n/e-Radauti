@@ -106,10 +106,61 @@
         "title": "Calitatea aerului",
         "airQualityTab": "Calitatea aerului",
         "chartsTab": "Grafice",
-        "aboutTab": "Despre proiect"
+        "mapTab": "Hartă"
+    },
+    "usefullNumbers": {
+        "title": "Numere de telefon",
+        "publicTab": "Instituții locale",
+        "authoritiesTab": "Autorități locale",
+        "upsetsTab": "Deranjamente",
+        "empty": "Nu am putut găsi nici un număr de telefon.",
+        "hospital": "Spitalul Municipal",
+        "townhall": "Primărie",
+        "animals": "Adăpostul de animale",
+        "police": "Poliția Locală",
+        "consumerProtection": "Protecția consumatorului",
+        "childProtection": "Protecția copilului",
+        "animalProtection": "Protecția animalelor",
+        "environmentProtection": "Protecția mediului",
+        "suceavaEnvironmentalGuard": "Garda de Mediu Suceava",
+        "comunalServices": "Servicii Comunale",
+        "acet": "ACET"
+    },
+    "transport": {
+        "title": "Transport",
+        "taxiTab": "Taxi",
+        "trainTab": "Trenuri",
+        "emptyTaxi": "Nu am putut găsi nici un taxiu!",
+        "emptyTrain": "Nu am putut găsi nici un tren!"
+    },
+    "volunteering": {
+        "title": "Voluntariat",
+        "webSite": "Pagină web"
+    },
+    "announcements": {
+        "title": "Anunțuri",
+        "posted_at": "postat în: $value",
+        "tabLocal": "Locale",
+        "emptyAnnouncements": "Nu am găsit nici un anunț!",
+        "tabFurniture": "Imobiliare",
+        "tabJobs": "Locuri de muncă",
+        "seeDetails": "Vezi detalii ->"
+    },
+    "drawer": {
+        "reportProblem": "@:reportProblem.title",
+        "localAdministration": "@:localAdministration.title",
+        "airQuality": "@:airQuality.title",
+        "events": "@:events.title",
+        "transport": "@:transport.title",
+        "volunteering": "@:volunteering.title",
+        "announcements": "@:announcements.title",
+        "signOut": "Delogare"
     },
     "buttons": {
         "log_in": "Log in"
+    },
+    "home": {
+        "newEvents": "Evenimentele următoare vor apărea aici!"
     },
     "formats": {
         "onlyNumbersField": "Acest câmp trebuie să conțină numai numere",

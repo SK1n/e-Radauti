@@ -1,3 +1,0 @@
-class Cstring {
-  Cstring._();
-}

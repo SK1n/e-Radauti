@@ -178,7 +178,9 @@ LocalCouncilItemModel _$LocalCouncilItemModelFromJson(
 /// @nodoc
 mixin _$LocalCouncilItemModel {
   @JsonKey(name: 'name', defaultValue: '')
-  String get name => throw _privateConstructorUsedError;
+  String get firstname => throw _privateConstructorUsedError;
+  @JsonKey(name: 'surname', defaultValue: '')
+  String get surname => throw _privateConstructorUsedError;
   @JsonKey(name: 'url', defaultValue: '')
   String get imageUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'party', defaultValue: '')
@@ -203,7 +205,8 @@ abstract class $LocalCouncilItemModelCopyWith<$Res> {
       _$LocalCouncilItemModelCopyWithImpl<$Res, LocalCouncilItemModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'name', defaultValue: '') String name,
+      {@JsonKey(name: 'name', defaultValue: '') String firstname,
+      @JsonKey(name: 'surname', defaultValue: '') String surname,
       @JsonKey(name: 'url', defaultValue: '') String imageUrl,
       @JsonKey(name: 'party', defaultValue: '') String party,
       @JsonKey(name: 'email', defaultValue: '') String email,
@@ -225,7 +228,8 @@ class _$LocalCouncilItemModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? firstname = null,
+    Object? surname = null,
     Object? imageUrl = null,
     Object? party = null,
     Object? email = null,
@@ -233,9 +237,13 @@ class _$LocalCouncilItemModelCopyWithImpl<$Res,
     Object? function = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      firstname: null == firstname
+          ? _value.firstname
+          : firstname // ignore: cast_nullable_to_non_nullable
+              as String,
+      surname: null == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
               as String,
       imageUrl: null == imageUrl
           ? _value.imageUrl
@@ -270,7 +278,8 @@ abstract class _$$_LocalCouncilItemModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'name', defaultValue: '') String name,
+      {@JsonKey(name: 'name', defaultValue: '') String firstname,
+      @JsonKey(name: 'surname', defaultValue: '') String surname,
       @JsonKey(name: 'url', defaultValue: '') String imageUrl,
       @JsonKey(name: 'party', defaultValue: '') String party,
       @JsonKey(name: 'email', defaultValue: '') String email,
@@ -289,7 +298,8 @@ class __$$_LocalCouncilItemModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? firstname = null,
+    Object? surname = null,
     Object? imageUrl = null,
     Object? party = null,
     Object? email = null,
@@ -297,9 +307,13 @@ class __$$_LocalCouncilItemModelCopyWithImpl<$Res>
     Object? function = null,
   }) {
     return _then(_$_LocalCouncilItemModel(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      firstname: null == firstname
+          ? _value.firstname
+          : firstname // ignore: cast_nullable_to_non_nullable
+              as String,
+      surname: null == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
               as String,
       imageUrl: null == imageUrl
           ? _value.imageUrl
@@ -329,7 +343,8 @@ class __$$_LocalCouncilItemModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_LocalCouncilItemModel implements _LocalCouncilItemModel {
   const _$_LocalCouncilItemModel(
-      {@JsonKey(name: 'name', defaultValue: '') required this.name,
+      {@JsonKey(name: 'name', defaultValue: '') required this.firstname,
+      @JsonKey(name: 'surname', defaultValue: '') required this.surname,
       @JsonKey(name: 'url', defaultValue: '') required this.imageUrl,
       @JsonKey(name: 'party', defaultValue: '') required this.party,
       @JsonKey(name: 'email', defaultValue: '') required this.email,
@@ -341,7 +356,10 @@ class _$_LocalCouncilItemModel implements _LocalCouncilItemModel {
 
   @override
   @JsonKey(name: 'name', defaultValue: '')
-  final String name;
+  final String firstname;
+  @override
+  @JsonKey(name: 'surname', defaultValue: '')
+  final String surname;
   @override
   @JsonKey(name: 'url', defaultValue: '')
   final String imageUrl;
@@ -360,7 +378,7 @@ class _$_LocalCouncilItemModel implements _LocalCouncilItemModel {
 
   @override
   String toString() {
-    return 'LocalCouncilItemModel(name: $name, imageUrl: $imageUrl, party: $party, email: $email, tel: $tel, function: $function)';
+    return 'LocalCouncilItemModel(firstname: $firstname, surname: $surname, imageUrl: $imageUrl, party: $party, email: $email, tel: $tel, function: $function)';
   }
 
   @override
@@ -368,7 +386,9 @@ class _$_LocalCouncilItemModel implements _LocalCouncilItemModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LocalCouncilItemModel &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.firstname, firstname) ||
+                other.firstname == firstname) &&
+            (identical(other.surname, surname) || other.surname == surname) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.party, party) || other.party == party) &&
@@ -380,8 +400,8 @@ class _$_LocalCouncilItemModel implements _LocalCouncilItemModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, imageUrl, party, email, tel, function);
+  int get hashCode => Object.hash(
+      runtimeType, firstname, surname, imageUrl, party, email, tel, function);
 
   @JsonKey(ignore: true)
   @override
@@ -401,7 +421,9 @@ class _$_LocalCouncilItemModel implements _LocalCouncilItemModel {
 abstract class _LocalCouncilItemModel implements LocalCouncilItemModel {
   const factory _LocalCouncilItemModel(
       {@JsonKey(name: 'name', defaultValue: '')
-          required final String name,
+          required final String firstname,
+      @JsonKey(name: 'surname', defaultValue: '')
+          required final String surname,
       @JsonKey(name: 'url', defaultValue: '')
           required final String imageUrl,
       @JsonKey(name: 'party', defaultValue: '')
@@ -418,7 +440,10 @@ abstract class _LocalCouncilItemModel implements LocalCouncilItemModel {
 
   @override
   @JsonKey(name: 'name', defaultValue: '')
-  String get name;
+  String get firstname;
+  @override
+  @JsonKey(name: 'surname', defaultValue: '')
+  String get surname;
   @override
   @JsonKey(name: 'url', defaultValue: '')
   String get imageUrl;

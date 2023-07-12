@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/pages/local_administration/cubit/decisions/local_decisions_cubit.dart';
-import 'package:flutterapperadauti/app/pages/local_administration/cubit/local_administration_cubit.dart';
-import 'package:flutterapperadauti/app/pages/local_administration/item_local_decision.dart';
-import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
-import 'package:flutterapperadauti/app/repository/local_administration/local_administration_repository.dart';
-import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
-import 'package:flutterapperadauti/app/utils/page_state.dart';
-import 'package:flutterapperadauti/gen/strings.g.dart';
-import 'package:flutterapperadauti/utils/loading_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_sliver_scaffold.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/empty_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/err_widget.dart';
+import 'cubit/decisions/local_decisions_cubit.dart';
+import 'item_local_decision.dart';
+import '../../repository/local_administration/local_administration_repository.dart';
+import '../../utils/page_state.dart';
+import '../../utils/scaffolds/app_sliver_scaffold.dart';
+import '../../../gen/strings.g.dart';
+import '../../utils/widgets/loading_widget.dart';
+import '../../utils/widgets/empty_widget.dart';
+import '../../utils/widgets/err_widget.dart';
 
 class PageDecisions extends StatelessWidget {
   const PageDecisions({super.key});
@@ -29,7 +26,7 @@ class PageDecisions extends StatelessWidget {
             context.read<LocalAdministrationRepository>(),
       )..getDecisions(),
       child: AppSliverScaffold(
-        appBarTitle: context.t.localAdministration.localCouncilDecisions,
+        appBarTitle: t.localAdministration.localCouncilDecisions,
         slivers: [
           BlocListener<LocalDecisionsCubit, LocalDecisionsState>(
             listener: (context, state) {},

@@ -47,10 +47,18 @@ class StorageRepository {
     } on FirebaseException catch (e) {
       throw StorageException(e.message.toString());
     } catch (_) {
-      throw StorageException();
+      throw const StorageException();
     }
   }
 
-  Future<String> getFileDownloadUrl(String path) async =>
-      await FirebaseStorage.instance.refFromURL(path).getDownloadURL();
+  Future<String> getFileDownloadUrl(String path) async {
+    try {
+      return await FirebaseStorage.instance
+          .refFromURL(path)
+          .getDownloadURL()
+          .onError((error, stackTrace) => '');
+    } catch (e) {
+      return '';
+    }
+  }
 }

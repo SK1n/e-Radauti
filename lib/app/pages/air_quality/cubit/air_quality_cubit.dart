@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:http/http.dart' as http;
-import 'package:html/parser.dart' as parser;
 
-part 'air_quality_state.dart';
 part 'air_quality_cubit.freezed.dart';
+part 'air_quality_state.dart';
 
 class AirQualityCubit extends Cubit<AirQualityState> {
   AirQualityCubit() : super(const AirQualityState());
@@ -154,21 +152,21 @@ class AirQualityCubit extends Cubit<AirQualityState> {
 </html>''';
   void getQuality() async {
     try {
-      emit(state.copyWith(qualityStatus: QualityStatus.inProgress));
-      final response =
-          await http.get(Uri.parse('https://calitateaer.radautiulcivic.ro'));
-      if (response.statusCode == 200) {
-        final parsedHtml = parser.parse(response.body);
-        final tag = parsedHtml.querySelector('.styled-table')?.outerHtml;
-        emit(
-          state.copyWith(
-            qualityStatus: QualityStatus.success,
-            qualityHtml: html,
-          ),
-        );
-      } else {
-        throw Exception();
-      }
+      // emit(state.copyWith(qualityStatus: QualityStatus.inProgress));
+      // final response =
+      //     await http.get(Uri.parse('https://calitateaer.radautiulcivic.ro'));
+      // if (response.statusCode == 200) {
+      //   //  final parsedHtml = parser.parse(response.body);
+      //   // final tag = parsedHtml.querySelector('.styled-table')?.outerHtml;
+      //   emit(
+      //     state.copyWith(
+      //       qualityStatus: QualityStatus.success,
+      //       qualityHtml: html,
+      //     ),
+      //   );
+      // } else {
+      //   throw Exception();
+      // }
     } catch (e) {
       emit(state.copyWith(qualityStatus: QualityStatus.failure));
     }

@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 2
-/// Strings: 202 (101 per locale)
+/// Strings: 280 (140 per locale)
 ///
-/// Built on 2023-07-02 at 20:13 UTC
+/// Built on 2023-07-11 at 08:44 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -154,7 +154,13 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsReportProblemEn reportProblem = _StringsReportProblemEn._(_root);
 	late final _StringsLocalAdministrationEn localAdministration = _StringsLocalAdministrationEn._(_root);
 	late final _StringsAirQualityEn airQuality = _StringsAirQualityEn._(_root);
+	late final _StringsUsefullNumbersEn usefullNumbers = _StringsUsefullNumbersEn._(_root);
+	late final _StringsTransportEn transport = _StringsTransportEn._(_root);
+	late final _StringsVolunteeringEn volunteering = _StringsVolunteeringEn._(_root);
+	late final _StringsAnnouncementsEn announcements = _StringsAnnouncementsEn._(_root);
+	late final _StringsDrawerEn drawer = _StringsDrawerEn._(_root);
 	late final _StringsButtonsEn buttons = _StringsButtonsEn._(_root);
+	late final _StringsHomeEn home = _StringsHomeEn._(_root);
 	late final _StringsFormatsEn formats = _StringsFormatsEn._(_root);
 	Map<String, String> get locales => {
 		'en': 'English',
@@ -306,7 +312,90 @@ class _StringsAirQualityEn {
 	String get title => 'Air quality';
 	String get airQualityTab => 'Air quality';
 	String get chartsTab => 'Charts';
-	String get aboutTab => 'About the project';
+	String get mapTab => 'Map';
+}
+
+// Path: usefullNumbers
+class _StringsUsefullNumbersEn {
+	_StringsUsefullNumbersEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Phone numbers';
+	String get publicTab => 'Local institutions';
+	String get authoritiesTab => 'Local authorities';
+	String get upsetsTab => 'Upsets';
+	String get empty => 'We couldn\'t find any phone number.';
+	String get hospital => 'Municipal hospital';
+	String get townhall => 'Town hall';
+	String get animals => 'Animal shelter';
+	String get police => 'Local police';
+	String get consumerProtection => 'Consumer protection';
+	String get childProtection => 'Child protection';
+	String get animalProtection => 'Animal protection';
+	String get environmentProtection => 'Environment protection';
+	String get suceavaEnvironmentalGuard => 'Suceava Environmental Guard';
+	String get comunalServices => 'Comunal services';
+	String get acet => 'ACET';
+}
+
+// Path: transport
+class _StringsTransportEn {
+	_StringsTransportEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Transport';
+	String get taxiTab => 'Taxi';
+	String get trainTab => 'Train';
+	String get emptyTaxi => 'We couldn\'t find any taxi!';
+	String get emptyTrain => 'We couldn\'t find any train!';
+}
+
+// Path: volunteering
+class _StringsVolunteeringEn {
+	_StringsVolunteeringEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Volunteering';
+	String get webSite => 'Website';
+}
+
+// Path: announcements
+class _StringsAnnouncementsEn {
+	_StringsAnnouncementsEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Announcements';
+	String posted_at({required Object value}) => 'posted at: ${value}';
+	String get tabLocal => 'Local';
+	String get emptyAnnouncements => 'We couldn\'t find any announcement!';
+	String get tabFurniture => 'Furniture';
+	String get tabJobs => 'Jobs';
+	String get seeDetails => 'See details ->';
+}
+
+// Path: drawer
+class _StringsDrawerEn {
+	_StringsDrawerEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get reportProblem => '${_root.reportProblem.title}';
+	String get localAdministration => '${_root.localAdministration.title}';
+	String get airQuality => '${_root.airQuality.title}';
+	String get events => '${_root.events.title}';
+	String get transport => '${_root.transport.title}';
+	String get volunteering => '${_root.volunteering.title}';
+	String get announcements => '${_root.announcements.title}';
+	String get signOut => 'Sign out';
 }
 
 // Path: buttons
@@ -317,6 +406,16 @@ class _StringsButtonsEn {
 
 	// Translations
 	String get log_in => 'Log in';
+}
+
+// Path: home
+class _StringsHomeEn {
+	_StringsHomeEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get newEvents => 'Upcoming events will appear here!';
 }
 
 // Path: formats
@@ -394,7 +493,13 @@ class _StringsRo implements _StringsEn {
 	@override late final _StringsReportProblemRo reportProblem = _StringsReportProblemRo._(_root);
 	@override late final _StringsLocalAdministrationRo localAdministration = _StringsLocalAdministrationRo._(_root);
 	@override late final _StringsAirQualityRo airQuality = _StringsAirQualityRo._(_root);
+	@override late final _StringsUsefullNumbersRo usefullNumbers = _StringsUsefullNumbersRo._(_root);
+	@override late final _StringsTransportRo transport = _StringsTransportRo._(_root);
+	@override late final _StringsVolunteeringRo volunteering = _StringsVolunteeringRo._(_root);
+	@override late final _StringsAnnouncementsRo announcements = _StringsAnnouncementsRo._(_root);
+	@override late final _StringsDrawerRo drawer = _StringsDrawerRo._(_root);
 	@override late final _StringsButtonsRo buttons = _StringsButtonsRo._(_root);
+	@override late final _StringsHomeRo home = _StringsHomeRo._(_root);
 	@override late final _StringsFormatsRo formats = _StringsFormatsRo._(_root);
 	@override Map<String, String> get locales => {
 		'en': 'Engleză',
@@ -546,7 +651,90 @@ class _StringsAirQualityRo implements _StringsAirQualityEn {
 	@override String get title => 'Calitatea aerului';
 	@override String get airQualityTab => 'Calitatea aerului';
 	@override String get chartsTab => 'Grafice';
-	@override String get aboutTab => 'Despre proiect';
+	@override String get mapTab => 'Hartă';
+}
+
+// Path: usefullNumbers
+class _StringsUsefullNumbersRo implements _StringsUsefullNumbersEn {
+	_StringsUsefullNumbersRo._(this._root);
+
+	@override final _StringsRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Numere de telefon';
+	@override String get publicTab => 'Instituții locale';
+	@override String get authoritiesTab => 'Autorități locale';
+	@override String get upsetsTab => 'Deranjamente';
+	@override String get empty => 'Nu am putut găsi nici un număr de telefon.';
+	@override String get hospital => 'Spitalul Municipal';
+	@override String get townhall => 'Primărie';
+	@override String get animals => 'Adăpostul de animale';
+	@override String get police => 'Poliția Locală';
+	@override String get consumerProtection => 'Protecția consumatorului';
+	@override String get childProtection => 'Protecția copilului';
+	@override String get animalProtection => 'Protecția animalelor';
+	@override String get environmentProtection => 'Protecția mediului';
+	@override String get suceavaEnvironmentalGuard => 'Garda de Mediu Suceava';
+	@override String get comunalServices => 'Servicii Comunale';
+	@override String get acet => 'ACET';
+}
+
+// Path: transport
+class _StringsTransportRo implements _StringsTransportEn {
+	_StringsTransportRo._(this._root);
+
+	@override final _StringsRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Transport';
+	@override String get taxiTab => 'Taxi';
+	@override String get trainTab => 'Trenuri';
+	@override String get emptyTaxi => 'Nu am putut găsi nici un taxiu!';
+	@override String get emptyTrain => 'Nu am putut găsi nici un tren!';
+}
+
+// Path: volunteering
+class _StringsVolunteeringRo implements _StringsVolunteeringEn {
+	_StringsVolunteeringRo._(this._root);
+
+	@override final _StringsRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Voluntariat';
+	@override String get webSite => 'Pagină web';
+}
+
+// Path: announcements
+class _StringsAnnouncementsRo implements _StringsAnnouncementsEn {
+	_StringsAnnouncementsRo._(this._root);
+
+	@override final _StringsRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Anunțuri';
+	@override String posted_at({required Object value}) => 'postat în: ${value}';
+	@override String get tabLocal => 'Locale';
+	@override String get emptyAnnouncements => 'Nu am găsit nici un anunț!';
+	@override String get tabFurniture => 'Imobiliare';
+	@override String get tabJobs => 'Locuri de muncă';
+	@override String get seeDetails => 'Vezi detalii ->';
+}
+
+// Path: drawer
+class _StringsDrawerRo implements _StringsDrawerEn {
+	_StringsDrawerRo._(this._root);
+
+	@override final _StringsRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get reportProblem => '${_root.reportProblem.title}';
+	@override String get localAdministration => '${_root.localAdministration.title}';
+	@override String get airQuality => '${_root.airQuality.title}';
+	@override String get events => '${_root.events.title}';
+	@override String get transport => '${_root.transport.title}';
+	@override String get volunteering => '${_root.volunteering.title}';
+	@override String get announcements => '${_root.announcements.title}';
+	@override String get signOut => 'Delogare';
 }
 
 // Path: buttons
@@ -557,6 +745,16 @@ class _StringsButtonsRo implements _StringsButtonsEn {
 
 	// Translations
 	@override String get log_in => 'Log in';
+}
+
+// Path: home
+class _StringsHomeRo implements _StringsHomeEn {
+	_StringsHomeRo._(this._root);
+
+	@override final _StringsRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get newEvents => 'Evenimentele următoare vor apărea aici!';
 }
 
 // Path: formats
@@ -698,8 +896,47 @@ extension on _StringsEn {
 			case 'airQuality.title': return 'Air quality';
 			case 'airQuality.airQualityTab': return 'Air quality';
 			case 'airQuality.chartsTab': return 'Charts';
-			case 'airQuality.aboutTab': return 'About the project';
+			case 'airQuality.mapTab': return 'Map';
+			case 'usefullNumbers.title': return 'Phone numbers';
+			case 'usefullNumbers.publicTab': return 'Local institutions';
+			case 'usefullNumbers.authoritiesTab': return 'Local authorities';
+			case 'usefullNumbers.upsetsTab': return 'Upsets';
+			case 'usefullNumbers.empty': return 'We couldn\'t find any phone number.';
+			case 'usefullNumbers.hospital': return 'Municipal hospital';
+			case 'usefullNumbers.townhall': return 'Town hall';
+			case 'usefullNumbers.animals': return 'Animal shelter';
+			case 'usefullNumbers.police': return 'Local police';
+			case 'usefullNumbers.consumerProtection': return 'Consumer protection';
+			case 'usefullNumbers.childProtection': return 'Child protection';
+			case 'usefullNumbers.animalProtection': return 'Animal protection';
+			case 'usefullNumbers.environmentProtection': return 'Environment protection';
+			case 'usefullNumbers.suceavaEnvironmentalGuard': return 'Suceava Environmental Guard';
+			case 'usefullNumbers.comunalServices': return 'Comunal services';
+			case 'usefullNumbers.acet': return 'ACET';
+			case 'transport.title': return 'Transport';
+			case 'transport.taxiTab': return 'Taxi';
+			case 'transport.trainTab': return 'Train';
+			case 'transport.emptyTaxi': return 'We couldn\'t find any taxi!';
+			case 'transport.emptyTrain': return 'We couldn\'t find any train!';
+			case 'volunteering.title': return 'Volunteering';
+			case 'volunteering.webSite': return 'Website';
+			case 'announcements.title': return 'Announcements';
+			case 'announcements.posted_at': return ({required Object value}) => 'posted at: ${value}';
+			case 'announcements.tabLocal': return 'Local';
+			case 'announcements.emptyAnnouncements': return 'We couldn\'t find any announcement!';
+			case 'announcements.tabFurniture': return 'Furniture';
+			case 'announcements.tabJobs': return 'Jobs';
+			case 'announcements.seeDetails': return 'See details ->';
+			case 'drawer.reportProblem': return '${_root.reportProblem.title}';
+			case 'drawer.localAdministration': return '${_root.localAdministration.title}';
+			case 'drawer.airQuality': return '${_root.airQuality.title}';
+			case 'drawer.events': return '${_root.events.title}';
+			case 'drawer.transport': return '${_root.transport.title}';
+			case 'drawer.volunteering': return '${_root.volunteering.title}';
+			case 'drawer.announcements': return '${_root.announcements.title}';
+			case 'drawer.signOut': return 'Sign out';
 			case 'buttons.log_in': return 'Log in';
+			case 'home.newEvents': return 'Upcoming events will appear here!';
 			case 'formats.invalidEmail': return 'Wrong email format! e.g aaa@bb.ccc!';
 			case 'formats.onlyNumbersField': return 'This field should contain only numbers!';
 			case 'formats.invalidPhoneNumber': return 'Wrong phone number format\nWe accept the following:\n+40213-564-864\n+40213.564.864\n+40213 564 864\n0213-564-864\n0712456789';
@@ -807,8 +1044,47 @@ extension on _StringsRo {
 			case 'airQuality.title': return 'Calitatea aerului';
 			case 'airQuality.airQualityTab': return 'Calitatea aerului';
 			case 'airQuality.chartsTab': return 'Grafice';
-			case 'airQuality.aboutTab': return 'Despre proiect';
+			case 'airQuality.mapTab': return 'Hartă';
+			case 'usefullNumbers.title': return 'Numere de telefon';
+			case 'usefullNumbers.publicTab': return 'Instituții locale';
+			case 'usefullNumbers.authoritiesTab': return 'Autorități locale';
+			case 'usefullNumbers.upsetsTab': return 'Deranjamente';
+			case 'usefullNumbers.empty': return 'Nu am putut găsi nici un număr de telefon.';
+			case 'usefullNumbers.hospital': return 'Spitalul Municipal';
+			case 'usefullNumbers.townhall': return 'Primărie';
+			case 'usefullNumbers.animals': return 'Adăpostul de animale';
+			case 'usefullNumbers.police': return 'Poliția Locală';
+			case 'usefullNumbers.consumerProtection': return 'Protecția consumatorului';
+			case 'usefullNumbers.childProtection': return 'Protecția copilului';
+			case 'usefullNumbers.animalProtection': return 'Protecția animalelor';
+			case 'usefullNumbers.environmentProtection': return 'Protecția mediului';
+			case 'usefullNumbers.suceavaEnvironmentalGuard': return 'Garda de Mediu Suceava';
+			case 'usefullNumbers.comunalServices': return 'Servicii Comunale';
+			case 'usefullNumbers.acet': return 'ACET';
+			case 'transport.title': return 'Transport';
+			case 'transport.taxiTab': return 'Taxi';
+			case 'transport.trainTab': return 'Trenuri';
+			case 'transport.emptyTaxi': return 'Nu am putut găsi nici un taxiu!';
+			case 'transport.emptyTrain': return 'Nu am putut găsi nici un tren!';
+			case 'volunteering.title': return 'Voluntariat';
+			case 'volunteering.webSite': return 'Pagină web';
+			case 'announcements.title': return 'Anunțuri';
+			case 'announcements.posted_at': return ({required Object value}) => 'postat în: ${value}';
+			case 'announcements.tabLocal': return 'Locale';
+			case 'announcements.emptyAnnouncements': return 'Nu am găsit nici un anunț!';
+			case 'announcements.tabFurniture': return 'Imobiliare';
+			case 'announcements.tabJobs': return 'Locuri de muncă';
+			case 'announcements.seeDetails': return 'Vezi detalii ->';
+			case 'drawer.reportProblem': return '${_root.reportProblem.title}';
+			case 'drawer.localAdministration': return '${_root.localAdministration.title}';
+			case 'drawer.airQuality': return '${_root.airQuality.title}';
+			case 'drawer.events': return '${_root.events.title}';
+			case 'drawer.transport': return '${_root.transport.title}';
+			case 'drawer.volunteering': return '${_root.volunteering.title}';
+			case 'drawer.announcements': return '${_root.announcements.title}';
+			case 'drawer.signOut': return 'Delogare';
 			case 'buttons.log_in': return 'Log in';
+			case 'home.newEvents': return 'Evenimentele următoare vor apărea aici!';
 			case 'formats.onlyNumbersField': return 'Acest câmp trebuie să conțină numai numere';
 			case 'formats.invalidPhoneNumber': return 'Format greșit al numărului de telefon\n   \nAcceptăm următoarele:\n   \n+40213-564-864\n   \n+40213.564.864\n   \n+40213 564 864\n   \n0213-564-864\n   \n0712456789';
 			case 'formats.minimum50': return 'Această căsuță trebuie să conțină mai mult de 50 de caractere!';

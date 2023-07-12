@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
-import 'package:flutterapperadauti/app/utils/page_state.dart';
+import '../../../utils/page_state.dart';
 import 'package:latlong2/latlong.dart' as lat_lng;
 
-import 'package:flutterapperadauti/app/pages/report_problem/cubit/report_problem_cubit.dart';
-import 'package:flutterapperadauti/utils/loading_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/err_widget.dart';
+import '../cubit/report_problem_cubit.dart';
+import '../../../utils/widgets/loading_widget.dart';
+import '../../../utils/widgets/err_widget.dart';
 
 class ReportProblemMapTab extends StatelessWidget {
   const ReportProblemMapTab({super.key});

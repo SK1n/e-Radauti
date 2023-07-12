@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: non_constant_identifier_names
+
 part of 'local_council_model.dart';
 
 // **************************************************************************
@@ -24,7 +26,8 @@ Map<String, dynamic> _$$_LocalCouncilModelToJson(
 _$_LocalCouncilItemModel _$$_LocalCouncilItemModelFromJson(
         Map<String, dynamic> json) =>
     _$_LocalCouncilItemModel(
-      name: json['name'] as String? ?? '',
+      firstname: json['name'] as String? ?? '',
+      surname: json['surname'] as String? ?? '',
       imageUrl: json['url'] as String? ?? '',
       party: json['party'] as String? ?? '',
       email: json['email'] as String? ?? '',
@@ -35,7 +38,8 @@ _$_LocalCouncilItemModel _$$_LocalCouncilItemModelFromJson(
 Map<String, dynamic> _$$_LocalCouncilItemModelToJson(
         _$_LocalCouncilItemModel instance) =>
     <String, dynamic>{
-      'name': instance.name,
+      'name': instance.firstname,
+      'surname': instance.surname,
       'url': instance.imageUrl,
       'party': instance.party,
       'email': instance.email,

@@ -1,11 +1,12 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/pages/air_quality/cubit/air_quality_cubit.dart';
-import 'package:flutterapperadauti/app/pages/air_quality/view/quality_tab.dart';
-import 'package:flutterapperadauti/i18n/strings.g.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_tabs_scaffold.dart';
+import '../cubit/air_quality_cubit.dart';
+import 'quality_tab.dart';
+import 'tab_charts.dart';
+import 'tab_map.dart';
+import '../../../utils/scaffolds/app_tabs_scaffold.dart';
+import '../../../../gen/strings.g.dart';
 
 class AirQualityPage extends StatelessWidget {
   const AirQualityPage({super.key});
@@ -23,11 +24,11 @@ class AirQualityPage extends StatelessWidget {
       },
       {
         'text': t.airQuality.chartsTab,
-        'widget': const QualityTab(),
+        'widget': const TabCharts(),
       },
       {
-        'text': t.airQuality.aboutTab,
-        'widget': const QualityTab(),
+        'text': t.airQuality.mapTab,
+        'widget': const TabMap(),
       }
     ];
     return BlocProvider.value(

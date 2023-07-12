@@ -20,7 +20,7 @@ class Password extends FormzInput<String, PasswordValidationError> {
 
   @override
   PasswordValidationError? validator(String? value) {
-    if (_passwordRegExp.hasMatch(value ?? '') && '${value}'.length > 6) {
+    if (_passwordRegExp.hasMatch(value ?? '') && '$value'.length > 6) {
       return null;
     } else {
       return PasswordValidationError.invalid;

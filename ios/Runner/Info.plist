@@ -1,90 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>CFBundleDisplayName</key>
-	<string>e-Radauti</string>
-	<key>CFBundleExecutable</key>
-	<string>$(EXECUTABLE_NAME)</string>
-	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleName</key>
-	<string>flutterapperadauti</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>$(MARKETING_VERSION)</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
-	<key>ITS APP</key>
-	<string></string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>Aplicația nu acceseaza direct Apple Music dar unele pachete din ea cer o astfel de permisiune.</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Evenimentele din aplicație pot fi salvate direct în calendarul telefonului. Din acest motiv, aplicația are nevoie de acces la el.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Când se face o sesizare, există posibilitatea de a trimite fotografii, drept urmare, în cazul în care utilizatorul dorește să facă fotografia la fața locului, aplicația are nevoie de accesarea camerei.</string>
-	<key>NSContactsUsageDescription</key>
-	<string>Accesarea aplicației la agendă se face atunci când utilizatorul apelează un număr de telefon direct din aplicație sau pentru adăugarea unui număr noi din aplicație în telefon.</string>
-	<key>NSFileProviderDomainUsageDescription</key>
-	<string></string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>La sesizează o problemă, utilizatorul poate selecta să fie folosită locația de pe GPS. Din acest motiv, aplicația are nevoie să acceseze locația.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Deși aplicația cere această permisiune, aplicația nu folosește aceasta permisiune, unele pachete ar putea cere această permisiune.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>La sesizează o problemă, utilizatorul poate selecta să fie folosită locația de pe GPS. Din acest motiv, aplicația are nevoie să acceseze locația.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Deși aplicația nu folosește microfon-ul, unele pachete ar putea cere această permisiune.</string>
-	<key>NSMotionUsageDescription</key>
-	<string>Deși aplicația nu are nicăieri senzorii de mișcare, unele pachete ar putea cere această permisiune.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Când se face o sesizare, există posibilitatea de a trimite fotografii, drept urmare, aplicația are nevoie de accesarea fotografiilor din telefon.</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Deși aplicația nu are nicăieri opțiunea de a înregistra vocea, unele pachete ar putea cere această permisiune.</string>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>fetch</string>
-		<string>remote-notification</string>
-	</array>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
-	<key>UIStatusBarHidden</key>
-	<false/>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-	<key>kTCCServiceMediaLibrary</key>
-	<string>Aplicația nu acceseaza direct Apple Music dar unele pachete din ea cer o astfel de permisiune.</string>
-</dict>
+	<dict>
+		<key>CADisableMinimumFrameDurationOnPhone</key>
+		<true/>
+		<key>CFBundleDevelopmentRegion</key>
+		<string>$(DEVELOPMENT_LANGUAGE)</string>
+		<key>CFBundleDisplayName</key>
+		<string>e-Radauti</string>
+		<key>CFBundleExecutable</key>
+		<string>$(EXECUTABLE_NAME)</string>
+		<key>CFBundleIdentifier</key>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+		<key>CFBundleInfoDictionaryVersion</key>
+		<string>6.0</string>
+		<key>CFBundleName</key>
+		<string>flutterapperadauti</string>
+		<key>CFBundlePackageType</key>
+		<string>APPL</string>
+		<key>CFBundleShortVersionString</key>
+		<string>$(MARKETING_VERSION)</string>
+		<key>CFBundleSignature</key>
+		<string>????</string>
+		<key>CFBundleVersion</key>
+		<string>$(CURRENT_PROJECT_VERSION)</string>
+		<key>FirebaseAppDelegateProxyEnabled</key>
+		<false/>
+		<key>ITS APP</key>
+		<string></string>
+		<key>ITSAppUsesNonExemptEncryption</key>
+		<false/>
+		<key>LSApplicationCategoryType</key>
+		<string></string>
+		<key>LSRequiresIPhoneOS</key>
+		<true/>
+		<key>NSAppleMusicUsageDescription</key>
+		<string>Aplicația nu acceseaza direct Apple Music dar unele pachete din ea cer o astfel de permisiune.</string>
+		<key>NSCalendarsUsageDescription</key>
+		<string>Evenimentele din aplicație pot fi salvate direct în calendarul telefonului. Din acest motiv, aplicația are nevoie de acces la el.</string>
+		<key>NSCameraUsageDescription</key>
+		<string>Când se face o sesizare, există posibilitatea de a trimite fotografii, drept urmare, în cazul în care utilizatorul dorește să facă fotografia la fața locului, aplicația are nevoie de accesarea camerei.</string>
+		<key>NSContactsUsageDescription</key>
+		<string>Accesarea aplicației la agendă se face atunci când utilizatorul apelează un număr de telefon direct din aplicație sau pentru adăugarea unui număr noi din aplicație în telefon.</string>
+		<key>NSFileProviderDomainUsageDescription</key>
+		<string></string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>La sesizează o problemă, utilizatorul poate selecta să fie folosită locația de pe GPS. Din acest motiv, aplicația are nevoie să acceseze locația.</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>Deși aplicația cere această permisiune, aplicația nu folosește aceasta permisiune, unele pachete ar putea cere această permisiune.</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>La sesizează o problemă, utilizatorul poate selecta să fie folosită locația de pe GPS. Din acest motiv, aplicația are nevoie să acceseze locația.</string>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>Deși aplicația nu folosește microfon-ul, unele pachete ar putea cere această permisiune.</string>
+		<key>NSMotionUsageDescription</key>
+		<string>Deși aplicația nu are nicăieri senzorii de mișcare, unele pachete ar putea cere această permisiune.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Când se face o sesizare, există posibilitatea de a trimite fotografii, drept urmare, aplicația are nevoie de accesarea fotografiilor din telefon.</string>
+		<key>NSSpeechRecognitionUsageDescription</key>
+		<string>Deși aplicația nu are nicăieri opțiunea de a înregistra vocea, unele pachete ar putea cere această permisiune.</string>
+		<key>UIApplicationSupportsIndirectInputEvents</key>
+		<true/>
+		<key>UIBackgroundModes</key>
+		<array>
+			<string>fetch</string>
+			<string>remote-notification</string>
+		</array>
+		<key>UILaunchStoryboardName</key>
+		<string>LaunchScreen</string>
+		<key>UIMainStoryboardFile</key>
+		<string>Main</string>
+		<key>UIStatusBarHidden</key>
+		<false/>
+		<key>UISupportedInterfaceOrientations</key>
+		<array>
+			<string>UIInterfaceOrientationPortrait</string>
+		</array>
+		<key>UISupportedInterfaceOrientations~ipad</key>
+		<array>
+			<string>UIInterfaceOrientationPortrait</string>
+			<string>UIInterfaceOrientationPortraitUpsideDown</string>
+			<string>UIInterfaceOrientationLandscapeLeft</string>
+			<string>UIInterfaceOrientationLandscapeRight</string>
+		</array>
+		<key>UIViewControllerBasedStatusBarAppearance</key>
+		<false/>
+		<key>kTCCServiceMediaLibrary</key>
+		<string>Aplicația nu acceseaza direct Apple Music dar unele pachete din ea cer o astfel de permisiune.</string>
+	</dict>
 </plist>

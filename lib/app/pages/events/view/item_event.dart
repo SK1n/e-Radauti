@@ -1,30 +1,13 @@
-import 'package:flutterapperadauti/app/models/events/events_item_model.dart';
-import 'package:flutterapperadauti/i18n/strings.g.dart';
-import 'package:flutterapperadauti/utils/const.dart';
+import '../../../models/events/events_item_model.dart';
+import '../../../utils/extensions/timestamp_to_date.dart';
+import '../../../../gen/strings.g.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
+import '../../../utils/widgets/image_widget.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import 'event_details_page.dart';
-
-extension TimestampToDate on num {
-  String get getDate {
-    DateFormat format = DateFormat('dd MMMM yyyy', 'ro');
-    return format
-        .format(DateTime.fromMillisecondsSinceEpoch(toInt() * 1000))
-        .toUpperCase();
-  }
-
-  String get getHour {
-    DateFormat format = DateFormat('HH:mm', 'ro');
-    return format
-        .format(DateTime.fromMillisecondsSinceEpoch(toInt() * 1000))
-        .toUpperCase();
-  }
-}
 
 class ItemEvent extends StatelessWidget {
   final EventsItemModel data;
@@ -40,13 +23,12 @@ class ItemEvent extends StatelessWidget {
         EventDetailsPage.route(data),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: topMargin),
+        padding: const EdgeInsets.only(top: 20),
         child: Card(
           shape: RoundedRectangleBorder(
-            side: const BorderSide(color: Colors.black12, width: 1),
+            side: const BorderSide(color: Colors.black12, width: 0),
             borderRadius: BorderRadius.circular(30),
           ),
-          color: Colors.white,
           child: SizedBox(
             width: Get.width,
             child: Column(
@@ -85,7 +67,7 @@ class ItemEvent extends StatelessWidget {
                             size: 14,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: leftMargin),
+                            padding: const EdgeInsets.only(left: 20),
                             child: Text(
                               data.start.getDate,
                               style: const TextStyle(fontSize: 14),
@@ -101,7 +83,7 @@ class ItemEvent extends StatelessWidget {
                             size: 14,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: leftMargin),
+                            padding: const EdgeInsets.only(left: 20),
                             child: Text(
                               data.start.getHour,
                               style: const TextStyle(fontSize: 14),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/pages/events/bloc/events_bloc.dart';
-import 'package:flutterapperadauti/app/utils/page_state.dart';
-import 'package:flutterapperadauti/i18n/strings.g.dart';
-import 'package:flutterapperadauti/utils/loading_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/empty_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/err_widget.dart';
+import '../bloc/events_bloc.dart';
+import '../../../utils/page_state.dart';
+import '../../../../gen/strings.g.dart';
+import '../../../utils/widgets/loading_widget.dart';
+import '../../../utils/widgets/empty_widget.dart';
+import '../../../utils/widgets/err_widget.dart';
 
 import 'item_event.dart';
 
@@ -30,7 +30,7 @@ class _TabEventsOldState extends State<TabEventsOld>
           if (state.oldEventsStatus.isInProgress) {
             return const SliverToBoxAdapter(child: LoadingWidget());
           } else if (state.oldEventsStatus.isSuccess) {
-            if (state.oldEvents?.isEmpty ?? true) {
+            if (state.oldEvents.isEmpty) {
               return SliverToBoxAdapter(
                 child: EmptyWidget(
                   text: t.events.emptyEvents,
@@ -39,14 +39,14 @@ class _TabEventsOldState extends State<TabEventsOld>
             }
             return SliverList.builder(
               itemBuilder: (context, index) {
-                return ItemEvent(state.oldEvents![index]);
+                return ItemEvent(state.oldEvents[index]);
               },
-              itemCount: state.oldEvents?.length ?? 0,
+              itemCount: state.oldEvents.length,
             );
           } else {
             return SliverToBoxAdapter(
               child: ErrWidget(
-                error: state.errorMessageOld ?? '',
+                error: state.errorMessageOld,
                 retry: () async => context.read<EventsBloc>().add(
                       const GetOldEvents(),
                     ),

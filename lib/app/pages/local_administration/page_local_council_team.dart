@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/models/local_administration/local_council_model.dart';
-import 'package:flutterapperadauti/app/pages/local_administration/cubit/local_administration_cubit.dart';
-import 'package:flutterapperadauti/app/pages/local_administration/cubit/team/local_council_team_cubit.dart';
-import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
-import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
-import 'package:flutterapperadauti/app/utils/page_state.dart';
-import 'package:flutterapperadauti/gen/strings.g.dart';
-import 'package:flutterapperadauti/utils/loading_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_sliver_scaffold.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/empty_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/err_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
+import '../../models/local_administration/local_council_model.dart';
+import 'cubit/team/local_council_team_cubit.dart';
+import '../../repository/firestore/firestore_repository.dart';
+import '../../repository/storage/storage_repository.dart';
+import '../../utils/page_state.dart';
+import '../../../gen/strings.g.dart';
+import '../../utils/widgets/loading_widget.dart';
+import '../../utils/scaffolds/app_sliver_scaffold.dart';
+import '../../utils/widgets/empty_widget.dart';
+import '../../utils/widgets/err_widget.dart';
+import '../../utils/widgets/image_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -47,10 +46,8 @@ class PageLocalCouncilTeam extends StatelessWidget {
                 );
               } else if (state.data.isEmpty) {
                 return SliverToBoxAdapter(
-                  child: SliverToBoxAdapter(
-                    child: EmptyWidget(
-                      text: t.events.emptyFavorites,
-                    ),
+                  child: EmptyWidget(
+                    text: t.events.emptyFavorites,
                   ),
                 );
               } else {
@@ -126,7 +123,7 @@ class _ItemCard extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            data.name,
+                            '${data.firstname} ${data.surname}',
                             style: GoogleFonts.inter(
                               fontSize: 16,
                               color: const Color(
@@ -168,7 +165,7 @@ class _ItemCard extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset(
-                          'assets/images/${data.party}.png',
+                          'assets/images/${data.party.toLowerCase()}.png',
                         ),
                       ),
                     ),

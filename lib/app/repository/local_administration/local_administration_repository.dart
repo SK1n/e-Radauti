@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:dio/dio.dart';
 import 'package:flutterapperadauti/app/models/local_administration/decision_model.dart';
 import 'package:html/parser.dart' show parse;

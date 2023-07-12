@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/app/pages/local_administration/page_decisions.dart';
-import 'package:flutterapperadauti/app/pages/local_administration/page_local_council_team.dart';
-import 'package:flutterapperadauti/i18n/strings.g.dart';
+import 'page_decisions.dart';
+import 'page_local_council_team.dart';
+import '../../../gen/strings.g.dart';
 
 class TabLocalCouncil extends StatelessWidget {
   const TabLocalCouncil({super.key});

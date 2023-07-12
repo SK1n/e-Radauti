@@ -17,7 +17,8 @@ class LocalCouncilLeadersModel with _$LocalCouncilLeadersModel {
 @freezed
 class LocalCouncilLeadersItemModel with _$LocalCouncilLeadersItemModel {
   const factory LocalCouncilLeadersItemModel({
-    @JsonKey(name: 'name', defaultValue: '') required String name,
+    @JsonKey(name: 'first_name', defaultValue: '') required String firstName,
+    @JsonKey(name: 'surname', defaultValue: '') required String surname,
     @JsonKey(name: 'url_img', defaultValue: '') required String imageUrl,
     @JsonKey(name: 'url_fb', defaultValue: '') required String fbUrl,
     @JsonKey(name: 'email', defaultValue: '') required String email,

@@ -18,7 +18,7 @@ class PasswordSignUp extends FormzInput<String, PasswordSignUpValidationError> {
 
   @override
   PasswordSignUpValidationError? validator(String? value) {
-    if ('${value}'.length > 6) {
+    if ('$value'.length > 6) {
       return null;
     } else {
       return PasswordSignUpValidationError.invalid;

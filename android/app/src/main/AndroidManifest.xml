@@ -36,7 +36,7 @@
     <application
         android:label="e-Rădăuți"
         android:usesCleartextTraffic="true"
-        android:icon="@mipmap/app_logo_final">
+        android:icon="@mipmap/ic_launcher">
 
 
     <meta-data

@@ -2,14 +2,14 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutterapperadauti/app/models/events/events_item_model.dart';
-import 'package:flutterapperadauti/app/models/events/new_events_model.dart';
-import 'package:flutterapperadauti/app/models/events/old_events_model.dart';
-import 'package:flutterapperadauti/app/models/user.dart';
-import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
-import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
-import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
-import 'package:flutterapperadauti/app/utils/page_state.dart';
+import '../../../models/events/events_item_model.dart';
+import '../../../models/events/new_events_model.dart';
+import '../../../models/events/old_events_model.dart';
+import '../../../models/user.dart';
+import '../../../repository/authentication/authentication_repository.dart';
+import '../../../repository/firestore/firestore_repository.dart';
+import '../../../repository/storage/storage_repository.dart';
+import '../../../utils/page_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'events_event.dart';
@@ -61,8 +61,9 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
           OldEventsModel data = OldEventsModel.fromJson(result.data() ?? {});
           List<EventsItemModel> list = data.list;
 
-          final updatedEvents = await Future.wait(
-              list.sublist(list.length - 10).map((event) async {
+          final updatedEvents = await Future.wait(list
+              .sublist(list.length > 10 ? list.length - 10 : 0)
+              .map((event) async {
             final tempDownloadUrl =
                 await _storageRepository.getFileDownloadUrl(event.url);
             return event.copyWith(url: tempDownloadUrl);

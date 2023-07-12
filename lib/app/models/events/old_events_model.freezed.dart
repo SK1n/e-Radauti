@@ -20,7 +20,7 @@ OldEventsModel _$OldEventsModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OldEventsModel {
-  @JsonKey(name: 'oldEvents')
+  @JsonKey(name: 'oldEvents', defaultValue: [])
   List<EventsItemModel> get list => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,9 @@ abstract class $OldEventsModelCopyWith<$Res> {
           OldEventsModel value, $Res Function(OldEventsModel) then) =
       _$OldEventsModelCopyWithImpl<$Res, OldEventsModel>;
   @useResult
-  $Res call({@JsonKey(name: 'oldEvents') List<EventsItemModel> list});
+  $Res call(
+      {@JsonKey(name: 'oldEvents', defaultValue: [])
+          List<EventsItemModel> list});
 }
 
 /// @nodoc
@@ -70,7 +72,9 @@ abstract class _$$_OldEventsModelCopyWith<$Res>
       __$$_OldEventsModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'oldEvents') List<EventsItemModel> list});
+  $Res call(
+      {@JsonKey(name: 'oldEvents', defaultValue: [])
+          List<EventsItemModel> list});
 }
 
 /// @nodoc
@@ -99,7 +103,8 @@ class __$$_OldEventsModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_OldEventsModel implements _OldEventsModel {
   const _$_OldEventsModel(
-      @JsonKey(name: 'oldEvents') final List<EventsItemModel> list)
+      @JsonKey(name: 'oldEvents', defaultValue: [])
+          final List<EventsItemModel> list)
       : _list = list;
 
   factory _$_OldEventsModel.fromJson(Map<String, dynamic> json) =>
@@ -107,7 +112,7 @@ class _$_OldEventsModel implements _OldEventsModel {
 
   final List<EventsItemModel> _list;
   @override
-  @JsonKey(name: 'oldEvents')
+  @JsonKey(name: 'oldEvents', defaultValue: [])
   List<EventsItemModel> get list {
     if (_list is EqualUnmodifiableListView) return _list;
     // ignore: implicit_dynamic_type
@@ -148,14 +153,14 @@ class _$_OldEventsModel implements _OldEventsModel {
 
 abstract class _OldEventsModel implements OldEventsModel {
   const factory _OldEventsModel(
-          @JsonKey(name: 'oldEvents') final List<EventsItemModel> list) =
-      _$_OldEventsModel;
+      @JsonKey(name: 'oldEvents', defaultValue: [])
+          final List<EventsItemModel> list) = _$_OldEventsModel;
 
   factory _OldEventsModel.fromJson(Map<String, dynamic> json) =
       _$_OldEventsModel.fromJson;
 
   @override
-  @JsonKey(name: 'oldEvents')
+  @JsonKey(name: 'oldEvents', defaultValue: [])
   List<EventsItemModel> get list;
   @override
   @JsonKey(ignore: true)

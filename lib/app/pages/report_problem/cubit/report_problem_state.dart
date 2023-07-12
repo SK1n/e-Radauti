@@ -32,7 +32,7 @@ class ReportProblemState with _$ReportProblemState {
     required FormzSubmissionStatus formzStatus,
     required PageState storageStatus,
     required PageState firestoreStatus,
-    required List<ReportProblemItemModel>? myReportsData,
+    required List<ReportProblemUserItemModel> myReportsData,
     required List<Marker>? markersData,
     required String? errorMessage,
     required Position? position,

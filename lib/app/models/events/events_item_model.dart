@@ -1,24 +1,21 @@
-import 'package:floor/floor.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'events_item_model.freezed.dart';
 part 'events_item_model.g.dart';
 
 @freezed
 class EventsItemModel with _$EventsItemModel {
-  @JsonSerializable(explicitToJson: true)
   const factory EventsItemModel({
-    required String category,
-    required String description,
-    required String headline,
-    required String location,
-    required String host,
-    required String street,
-    required int start,
-    required int end,
-    int? id,
-    @JsonKey(name: 'URL') required String url,
+    @JsonKey(name: 'category', defaultValue: '') required String category,
+    @JsonKey(name: 'descriptiom', defaultValue: '') required String description,
+    @JsonKey(name: 'headline', defaultValue: '') required String headline,
+    @JsonKey(name: 'location', defaultValue: '') required String location,
+    @JsonKey(name: 'URL', defaultValue: '') required String url,
+    @JsonKey(name: 'host', defaultValue: '') required String host,
+    @JsonKey(name: 'street', defaultValue: '') required String street,
+    @JsonKey(name: 'start', defaultValue: 0) required int start,
+    @JsonKey(name: 'end', defaultValue: 0) required int end,
+    @JsonKey(name: 'id', defaultValue: 0) required int id,
   }) = _EventsItemModel;
 
   factory EventsItemModel.fromJson(Map<String, dynamic> json) =>

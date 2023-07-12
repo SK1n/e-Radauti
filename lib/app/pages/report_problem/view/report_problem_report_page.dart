@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:flutterapperadauti/app/models/report_problem/report_problem_item_model.dart';
-import 'package:flutterapperadauti/i18n/strings.g.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_scaffold.dart';
+import '../../../../gen/strings.g.dart';
+import '../../../utils/scaffolds/app_scaffold.dart';
 import 'package:latlong2/latlong.dart' as lat_lng;
+
+import '../../../models/report_problem/report_problem_user_model.dart';
 
 class ReportProblemReportPage extends StatelessWidget {
   const ReportProblemReportPage({super.key, required this.data});
-  final ReportProblemItemModel data;
-  static Route<void> route({required ReportProblemItemModel data}) {
+  final ReportProblemUserItemModel data;
+  static Route<void> route({required ReportProblemUserItemModel data}) {
     return MaterialPageRoute<void>(
         builder: (_) => ReportProblemReportPage(data: data));
   }

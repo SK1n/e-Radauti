@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/pages/events/bloc/events_bloc.dart';
-import 'package:flutterapperadauti/app/pages/events/view/tab_events_favorites.dart';
-import 'package:flutterapperadauti/app/pages/events/view/tab_events_new.dart';
-import 'package:flutterapperadauti/app/pages/events/view/tab_events_old.dart';
-import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
-import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
-import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
-import 'package:flutterapperadauti/i18n/strings.g.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_tabs_scaffold.dart';
+import '../bloc/events_bloc.dart';
+import 'tab_events_favorites.dart';
+import 'tab_events_new.dart';
+import 'tab_events_old.dart';
+import '../../../repository/authentication/authentication_repository.dart';
+import '../../../repository/firestore/firestore_repository.dart';
+import '../../../repository/storage/storage_repository.dart';
+import '../../../../gen/strings.g.dart';
+import '../../../utils/scaffolds/app_tabs_scaffold.dart';
 
 class EventsPage extends StatelessWidget {
   const EventsPage({super.key});

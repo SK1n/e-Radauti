@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutterapperadauti/app/models/user.dart';
-import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
+import '../models/user.dart';
+import '../repository/authentication/authentication_repository.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';

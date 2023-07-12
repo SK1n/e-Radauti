@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutterapperadauti/app/models/local_administration/local_council_model.dart';
-import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
-import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
-import 'package:flutterapperadauti/app/utils/page_state.dart';
+import '../../../../models/local_administration/local_council_model.dart';
+import '../../../../repository/firestore/firestore_repository.dart';
+import '../../../../repository/storage/storage_repository.dart';
+import '../../../../utils/page_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'local_council_team_state.dart';

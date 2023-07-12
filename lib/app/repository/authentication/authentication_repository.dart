@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutterapperadauti/app/models/user.dart';
-import 'package:flutterapperadauti/app/repository/cache/cache.dart';
+import '../../models/user.dart';
+import '../cache/cache.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
 

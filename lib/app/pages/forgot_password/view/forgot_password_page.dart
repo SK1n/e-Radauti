@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/pages/forgot_password/cubit/forgot_password_cubit.dart';
-import 'package:flutterapperadauti/app/pages/forgot_password/view/forgot_password_form.dart';
-import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
-import 'package:flutterapperadauti/i18n/strings.g.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_scaffold.dart';
+import '../cubit/forgot_password_cubit.dart';
+import 'forgot_password_form.dart';
+import '../../../repository/authentication/authentication_repository.dart';
+import '../../../../gen/strings.g.dart';
+import '../../../utils/scaffolds/app_scaffold.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   final String? email;
@@ -12,7 +12,9 @@ class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage(this.email, {super.key});
 
   static Route<void> route(String? email) {
-    return MaterialPageRoute<void>(builder: (_) => ForgotPasswordPage(email));
+    return MaterialPageRoute<void>(
+      builder: (_) => ForgotPasswordPage(email),
+    );
   }
 
   @override

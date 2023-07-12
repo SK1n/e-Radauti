@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/pages/events/bloc/events_bloc.dart';
-import 'package:flutterapperadauti/app/pages/events/view/item_event.dart';
-import 'package:flutterapperadauti/app/utils/page_state.dart';
-import 'package:flutterapperadauti/i18n/strings.g.dart';
-import 'package:flutterapperadauti/utils/loading_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/empty_widget.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/err_widget.dart';
+import '../bloc/events_bloc.dart';
+import 'item_event.dart';
+import '../../../utils/page_state.dart';
+import '../../../../gen/strings.g.dart';
+import '../../../utils/widgets/loading_widget.dart';
+import '../../../utils/widgets/empty_widget.dart';
+import '../../../utils/widgets/err_widget.dart';
 
 class TabEventsNew extends StatefulWidget {
   const TabEventsNew({super.key});
@@ -29,7 +29,7 @@ class _TabEventsNewState extends State<TabEventsNew>
           if (state.newEventsStatus.isInProgress) {
             return const SliverToBoxAdapter(child: LoadingWidget());
           } else if (state.newEventsStatus.isSuccess) {
-            if (state.newEvents?.isEmpty ?? true) {
+            if (state.newEvents.isEmpty) {
               return SliverToBoxAdapter(
                 child: EmptyWidget(
                   text: t.events.emptyEvents,
@@ -39,15 +39,15 @@ class _TabEventsNewState extends State<TabEventsNew>
             return SliverList.builder(
               itemBuilder: (context, index) {
                 return ItemEvent(
-                  state.newEvents![index],
+                  state.newEvents[index],
                 );
               },
-              itemCount: state.newEvents?.length ?? 0,
+              itemCount: state.newEvents.length,
             );
           } else {
             return SliverToBoxAdapter(
               child: ErrWidget(
-                error: state.errorMessageNew ?? '',
+                error: state.errorMessageNew,
                 retry: () async => context.read<EventsBloc>().add(
                       const GetNewEvents(),
                     ),

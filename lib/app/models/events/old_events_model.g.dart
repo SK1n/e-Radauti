@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: non_constant_identifier_names
+
 part of 'old_events_model.dart';
 
 // **************************************************************************
@@ -8,9 +10,10 @@ part of 'old_events_model.dart';
 
 _$_OldEventsModel _$$_OldEventsModelFromJson(Map<String, dynamic> json) =>
     _$_OldEventsModel(
-      (json['oldEvents'] as List<dynamic>)
-          .map((e) => EventsItemModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      (json['oldEvents'] as List<dynamic>?)
+              ?.map((e) => EventsItemModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$$_OldEventsModelToJson(_$_OldEventsModel instance) =>

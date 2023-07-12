@@ -17,7 +17,8 @@ class LocalCouncilModel with _$LocalCouncilModel {
 @freezed
 class LocalCouncilItemModel with _$LocalCouncilItemModel {
   const factory LocalCouncilItemModel({
-    @JsonKey(name: 'name', defaultValue: '') required String name,
+    @JsonKey(name: 'name', defaultValue: '') required String firstname,
+    @JsonKey(name: 'surname', defaultValue: '') required String surname,
     @JsonKey(name: 'url', defaultValue: '') required String imageUrl,
     @JsonKey(name: 'party', defaultValue: '') required String party,
     @JsonKey(name: 'email', defaultValue: '') required String email,

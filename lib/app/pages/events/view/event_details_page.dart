@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapperadauti/app/models/events/events_item_model.dart';
-import 'package:flutterapperadauti/app/pages/events/bloc/events_bloc.dart';
-import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
-import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
-import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
-import 'package:flutterapperadauti/i18n/strings.g.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/app_scaffold/app_scaffold.dart';
-import 'package:flutterapperadauti/utils/shared_widgets/image_widget.dart';
+import '../../../models/events/events_item_model.dart';
+import '../bloc/events_bloc.dart';
+import '../../../repository/authentication/authentication_repository.dart';
+import '../../../repository/firestore/firestore_repository.dart';
+import '../../../repository/storage/storage_repository.dart';
+import '../../../utils/scaffolds/app_scaffold.dart';
+import '../../../utils/widgets/image_widget.dart';
+import '../../../../gen/strings.g.dart';
 import 'package:fluttericon/elusive_icons.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:logger/logger.dart';
 import 'package:selectable_autolink_text/selectable_autolink_text.dart';
 
 extension on num {
@@ -42,7 +42,7 @@ class EventDetailsPage extends StatelessWidget {
         context.read<FirestoreRepository>(),
         context.read<StorageRepository>(),
         context.read<AuthenticationRepository>(),
-      )..add(GetFavoriteEvents()),
+      )..add(const GetFavoriteEvents()),
       child: AppScaffold(appBarTitle: event.headline, slivers: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,8 +121,7 @@ class EventDetailsPage extends StatelessWidget {
                     child: BlocConsumer<EventsBloc, EventsState>(
                       listener: (context, state) {},
                       builder: (context, state) {
-                        bool isFavorite =
-                            state.favoriteEvents?.contains(event) ?? false;
+                        bool isFavorite = state.favoriteEvents.contains(event);
                         return FilledButton.icon(
                           icon: Icon(
                             FontAwesome5.star,
@@ -154,7 +153,7 @@ class EventDetailsPage extends StatelessWidget {
                     child: SelectableAutoLinkText(
                       event.description,
                       onTransformDisplayLink: AutoLinkUtils.shrinkUrl,
-                      linkStyle: const TextStyle(color: Colors.pinkAccent),
+                      linkStyle: TextStyle(color: context.theme.primaryColor),
                       onTap: (link) async {
                         // await launchUrlS(link);
                       },
