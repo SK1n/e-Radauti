@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:logger/logger.dart';
 import '../../../models/events/events_item_model.dart';
 import '../../../models/events/new_events_model.dart';
 import '../../../models/local_administration/decision_model.dart';
@@ -55,11 +56,11 @@ class HomeCubit extends Cubit<HomeState> {
       var uid = _auth.currentUser!.uid;
       emit(state.copyWith(numsOfReportsState: PageState.inProgress));
 
-      var data = await _firestoreRepository.fetchDocument('user/$uid');
-      ReportProblemUserModel rpm =
+      var data = await _firestoreRepository.fetchDocument('users/$uid');
+      ReportProblemUserModel rpum =
           ReportProblemUserModel.fromJson(data.data() ?? {});
       emit(state.copyWith(
-          numsOfReports: rpm.markers.length,
+          numsOfReports: rpum.markers.length,
           numsOfReportsState: PageState.success));
     } catch (e) {
       emit(state.copyWith(numsOfReportsState: PageState.failure));

@@ -165,7 +165,7 @@ class _ItemCard extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset(
-                          'assets/images/${data.party.toLowerCase()}.png',
+                          'assets/local_administration/${data.party.toLowerCase()}.png',
                         ),
                       ),
                     ),

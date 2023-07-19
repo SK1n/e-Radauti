@@ -22,7 +22,7 @@ EventsItemModel _$EventsItemModelFromJson(Map<String, dynamic> json) {
 mixin _$EventsItemModel {
   @JsonKey(name: 'category', defaultValue: '')
   String get category => throw _privateConstructorUsedError;
-  @JsonKey(name: 'descriptiom', defaultValue: '')
+  @JsonKey(name: 'description', defaultValue: '')
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'headline', defaultValue: '')
   String get headline => throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ abstract class $EventsItemModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'category', defaultValue: '') String category,
-      @JsonKey(name: 'descriptiom', defaultValue: '') String description,
+      @JsonKey(name: 'description', defaultValue: '') String description,
       @JsonKey(name: 'headline', defaultValue: '') String headline,
       @JsonKey(name: 'location', defaultValue: '') String location,
       @JsonKey(name: 'URL', defaultValue: '') String url,
@@ -145,7 +145,7 @@ abstract class _$$_EventsItemModelCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'category', defaultValue: '') String category,
-      @JsonKey(name: 'descriptiom', defaultValue: '') String description,
+      @JsonKey(name: 'description', defaultValue: '') String description,
       @JsonKey(name: 'headline', defaultValue: '') String headline,
       @JsonKey(name: 'location', defaultValue: '') String location,
       @JsonKey(name: 'URL', defaultValue: '') String url,
@@ -228,7 +228,7 @@ class __$$_EventsItemModelCopyWithImpl<$Res>
 class _$_EventsItemModel implements _EventsItemModel {
   const _$_EventsItemModel(
       {@JsonKey(name: 'category', defaultValue: '') required this.category,
-      @JsonKey(name: 'descriptiom', defaultValue: '') required this.description,
+      @JsonKey(name: 'description', defaultValue: '') required this.description,
       @JsonKey(name: 'headline', defaultValue: '') required this.headline,
       @JsonKey(name: 'location', defaultValue: '') required this.location,
       @JsonKey(name: 'URL', defaultValue: '') required this.url,
@@ -245,7 +245,7 @@ class _$_EventsItemModel implements _EventsItemModel {
   @JsonKey(name: 'category', defaultValue: '')
   final String category;
   @override
-  @JsonKey(name: 'descriptiom', defaultValue: '')
+  @JsonKey(name: 'description', defaultValue: '')
   final String description;
   @override
   @JsonKey(name: 'headline', defaultValue: '')
@@ -321,7 +321,7 @@ abstract class _EventsItemModel implements EventsItemModel {
   const factory _EventsItemModel(
       {@JsonKey(name: 'category', defaultValue: '')
           required final String category,
-      @JsonKey(name: 'descriptiom', defaultValue: '')
+      @JsonKey(name: 'description', defaultValue: '')
           required final String description,
       @JsonKey(name: 'headline', defaultValue: '')
           required final String headline,
@@ -347,7 +347,7 @@ abstract class _EventsItemModel implements EventsItemModel {
   @JsonKey(name: 'category', defaultValue: '')
   String get category;
   @override
-  @JsonKey(name: 'descriptiom', defaultValue: '')
+  @JsonKey(name: 'description', defaultValue: '')
   String get description;
   @override
   @JsonKey(name: 'headline', defaultValue: '')

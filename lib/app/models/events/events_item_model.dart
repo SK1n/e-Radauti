@@ -7,7 +7,7 @@ part 'events_item_model.g.dart';
 class EventsItemModel with _$EventsItemModel {
   const factory EventsItemModel({
     @JsonKey(name: 'category', defaultValue: '') required String category,
-    @JsonKey(name: 'descriptiom', defaultValue: '') required String description,
+    @JsonKey(name: 'description', defaultValue: '') required String description,
     @JsonKey(name: 'headline', defaultValue: '') required String headline,
     @JsonKey(name: 'location', defaultValue: '') required String location,
     @JsonKey(name: 'URL', defaultValue: '') required String url,

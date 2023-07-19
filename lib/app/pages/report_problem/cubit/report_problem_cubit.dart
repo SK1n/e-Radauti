@@ -1,14 +1,15 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import '../../../form_inputs/report_problem_form.dart';
-import '../../../models/report_problem/report_problem_marker_model.dart';
-import '../../../models/report_problem/report_problem_user_model.dart';
-import '../view/report_problem_report_page.dart';
-import '../../../repository/authentication/authentication_repository.dart';
-import '../../../repository/firestore/firestore_repository.dart';
-import '../../../repository/storage/storage_repository.dart';
-import '../../../utils/page_state.dart';
+import 'package:flutterapperadauti/app/form_inputs/form_inputs.dart';
+import 'package:flutterapperadauti/app/form_inputs/report_problem_form.dart';
+import 'package:flutterapperadauti/app/models/report_problem/report_problem_marker_model.dart';
+import 'package:flutterapperadauti/app/models/report_problem/report_problem_user_model.dart';
+import 'package:flutterapperadauti/app/pages/report_problem/view/report_problem_report_page.dart';
+import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
+import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
+import 'package:flutterapperadauti/app/repository/storage/storage_repository.dart';
+import 'package:flutterapperadauti/app/utils/page_state.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/octicons_icons.dart';
@@ -34,228 +35,203 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
         super(ReportProblemState.initial());
 
   void usernameChanged(String value) {
-    final username = Username.dirty(value);
-    final isValid = Formz.validate([
-      state.username,
-      username,
-    ]);
-
+    final name = NameInput.dirty(value);
     emit(
       state.copyWith(
-        username: username,
+        form: state.form.copyWith(name: name),
         formzStatus: FormzSubmissionStatus.initial,
-        isValid: isValid,
       ),
     );
   }
 
   void subjectChanged(String value) {
-    final subject = Subject.dirty(value);
-    final isValid = Formz.validate([
-      state.subject,
-      subject,
-    ]);
-
+    final subject = SubjectInput.dirty(value);
     emit(
       state.copyWith(
-        subject: subject,
+        form: state.form.copyWith(subject: subject),
         formzStatus: FormzSubmissionStatus.initial,
-        isValid: isValid,
       ),
     );
   }
 
   void descriptionChanged(String value) {
-    final description = Description.dirty(value);
-    final isValid = Formz.validate([
-      state.description,
-      description,
-    ]);
+    final description = DescriptionInput.dirty(value);
 
     emit(
       state.copyWith(
-        description: description,
+        form: state.form.copyWith(description: description),
         formzStatus: FormzSubmissionStatus.initial,
-        isValid: isValid,
       ),
     );
   }
 
   void institutionChanged(String value) {
-    final institution = Institution.dirty(value);
-    final isValid = Formz.validate([
-      state.institution,
-      institution,
-    ]);
+    final institution = InstitutionInput.dirty(value);
 
     emit(
       state.copyWith(
-        institution: institution,
+        form: state.form.copyWith(institution: institution),
         formzStatus: FormzSubmissionStatus.initial,
-        isValid: isValid,
       ),
     );
   }
 
   void categoryChanged(String value) {
-    final category = Category.dirty(value);
-    final isValid = Formz.validate([
-      state.category,
-      category,
-    ]);
-
+    final category = CategoryInput.dirty(value);
     emit(
       state.copyWith(
-        category: category,
+        form: state.form.copyWith(category: category),
         formzStatus: FormzSubmissionStatus.initial,
-        isValid: isValid,
       ),
     );
   }
 
   void phoneNumberChanged(String value) {
-    final phoneNumber = PhoneNumber.dirty(value);
-    final isValid = Formz.validate([
-      state.phoneNumber,
-      phoneNumber,
-    ]);
-
+    final phone = PhoneInput.dirty(value);
     emit(
       state.copyWith(
-        phoneNumber: phoneNumber,
         formzStatus: FormzSubmissionStatus.initial,
-        isValid: isValid,
+        form: state.form.copyWith(phone: phone),
       ),
     );
   }
 
   void emailChanged(String value) {
-    final email = Email.dirty(value);
-    final isValid = Formz.validate([
-      state.email,
-      email,
-    ]);
-
+    final email = EmailInput.dirty(value);
     emit(
       state.copyWith(
-        email: email,
+        form: state.form.copyWith(email: email),
         formzStatus: FormzSubmissionStatus.initial,
-        isValid: isValid,
       ),
     );
   }
 
   void imagePickerChanged(List<dynamic>? value) {
-    final imagePicker = ImagePicker.dirty(value);
-    final isValid = Formz.validate([
-      state.imagePicker,
-      imagePicker,
-    ]);
-
+    final images = ImageInput.dirty(value ?? []);
     emit(
       state.copyWith(
-        imagePicker: imagePicker,
+        form: state.form.copyWith(images: images),
         formzStatus: FormzSubmissionStatus.initial,
-        isValid: isValid,
       ),
     );
   }
 
   void locationChanged(bool value) async {
-    try {
-      final locationEnabled = GenericInput<bool>.dirty(value);
-      if (value) {
-        await _determinePosition();
-        emit(
-          state.copyWith(
-            locationEnabled: locationEnabled,
-            formzStatus: FormzSubmissionStatus.initial,
-            isValid: Formz.validate(
-              [
-                state.locationEnabled,
-                locationEnabled,
-              ],
-            ),
-          ),
-        );
-      } else {
-        emit(
-          state.copyWith(
-            position: null,
-            locationEnabled: locationEnabled,
-            formzStatus: FormzSubmissionStatus.initial,
-            isValid: Formz.validate(
-              [
-                state.locationEnabled,
-                locationEnabled,
-              ],
-            ),
-          ),
-        );
-      }
-    } catch (_) {
-      const locationEnabled = GenericInput<bool>.dirty(false);
-      emit(
-        state.copyWith(
-          locationEnabled: locationEnabled,
+    final location = LocationInput.dirty(value);
+    if (!value) {
+      emit(state.copyWith(
+        position: null,
+        formzStatus: FormzSubmissionStatus.initial,
+        form: state.form.copyWith(location: location),
+      ));
+      return;
+    }
+    bool serviceEnabled;
+    LocationPermission permission;
+    emit(state.copyWith(positionState: PositionState.inProgress));
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+
+    if (!serviceEnabled) {
+      emit(state.copyWith(
+        positionState: PositionState.disabled,
+        form: state.form.copyWith(location: const LocationInput.dirty(false)),
+        formzStatus: FormzSubmissionStatus.initial,
+        position: null,
+      ));
+      return;
+    }
+    permission = await Geolocator.checkPermission();
+
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        emit(state.copyWith(
+          positionState: PositionState.denied,
+          form: state.form.copyWith(location: const LocationInput.dirty(false)),
+          formzStatus: FormzSubmissionStatus.initial,
           position: null,
-          formzStatus: FormzSubmissionStatus.failure,
-          isValid: Formz.validate([
-            state.locationEnabled,
-            locationEnabled,
-          ]),
-        ),
+        ));
+        return;
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      emit(state.copyWith(
+        positionState: PositionState.deniedForever,
+        form: state.form.copyWith(location: const LocationInput.dirty(false)),
+        position: null,
+        formzStatus: FormzSubmissionStatus.initial,
+      ));
+      return;
+    }
+    Position position;
+
+    try {
+      position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
       );
+      emit(state.copyWith(
+        positionState: PositionState.success,
+        form: state.form.copyWith(location: const LocationInput.dirty(true)),
+        position: position,
+        formzStatus: FormzSubmissionStatus.initial,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        positionState: PositionState.failure,
+        form: state.form.copyWith(location: const LocationInput.dirty(false)),
+        position: null,
+        formzStatus: FormzSubmissionStatus.initial,
+      ));
     }
   }
 
-  void sendReport(Map<String, String> category) async {
-    if (!state.isValid) {
-      return;
-    }
-    try {
-      emit(
-        state.copyWith(
-          formzStatus: FormzSubmissionStatus.inProgress,
-        ),
-      );
-      List<String> urls = [];
-      DateTime time = DateTime.now();
-      urls.addAll(await _storageRepository.uploadFiles(
-          'Notice_A_Problem', state.imagePicker.value));
-      Map<String, dynamic> item = ReportProblemMarkerItemModel(
-        category: state.category.value,
-        description: state.description.value,
-        email: state.email.value,
-        index: category.values.toList().indexOf(state.category.value),
-        institution: getInstitution(state.institution.value),
-        institutionEmail: state.institution.value,
-        name: state.username.value,
-        phone: state.phoneNumber.value,
-        status: "In lucru",
-        lat: state.locationEnabled.value ? state.position!.latitude : null,
-        long: state.locationEnabled.value ? state.position!.longitude : null,
-        subject: state.subject.value,
-        url: urls,
-        createdAt: time.toUtc().toString(),
-      ).toJson();
-      await _firestoreRepository.updateArrayField(
-        'collection/Markers',
-        'markers',
-        elementsToAdd: [item],
-      );
+  Future<void> sendReport(Map<String, String> category) async {
+    emit(
+      state.copyWith(
+        formzStatus: FormzSubmissionStatus.inProgress,
+      ),
+    );
 
-      subjectChanged('');
-      descriptionChanged('');
-      institutionChanged('');
-      categoryChanged('');
-      phoneNumberChanged('');
-      imagePickerChanged([]);
-      locationChanged(false);
-      emit(state.copyWith(formzStatus: FormzSubmissionStatus.success));
-    } catch (e) {
-      emit(state.copyWith(formzStatus: FormzSubmissionStatus.failure));
-    }
+    final form = state.form;
+    // try {
+    List<String> urls = [];
+    DateTime time = DateTime.now();
+    urls.addAll(await _storageRepository.uploadFiles(
+        'Notice_A_Problem', form.images.value));
+    ReportProblemMarkerItemModel item = ReportProblemMarkerItemModel(
+      category: form.category.value,
+      description: form.description.value,
+      email: form.email.value,
+      index: category.values.toList().indexOf(form.category.value),
+      institution: getInstitution(form.institution.value),
+      institutionEmail: form.institution.value,
+      name: form.name.value,
+      phone: form.phone.value,
+      status: "In lucru",
+      lat: form.location.value ? state.position!.latitude : null,
+      long: form.location.value ? state.position!.longitude : null,
+      subject: form.subject.value,
+      url: urls,
+      createdAt: time.toUtc().toString(),
+    );
+    await _firestoreRepository.updateArrayField(
+      'collection/Markers',
+      'markers',
+      elementsToAdd: [item],
+    );
+    String uid = _authRepository.currentUser.id;
+    await _firestoreRepository.updateArrayField(
+      'users/$uid',
+      'reports',
+      elementsToAdd: [item],
+    );
+    emit(
+      state.copyWith(
+        formzStatus: FormzSubmissionStatus.success,
+        form: state.form.clear(),
+      ),
+    );
   }
 
   void getReports() async {
@@ -288,42 +264,6 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
         'radautiulcivic@gmail.com' => 'Asociația Rădăuțiul Civic',
         _ => 'Asociația Rădăuțiul Civic'
       };
-
-  _determinePosition() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    try {
-      emit(state.copyWith(positionState: PositionState.initial));
-      serviceEnabled = await Geolocator.isLocationServiceEnabled();
-      if (!serviceEnabled) {
-        emit(state.copyWith(positionState: PositionState.disabled));
-      }
-
-      permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          emit(state.copyWith(positionState: PositionState.denied));
-          throw Exception();
-        }
-      }
-
-      if (permission == LocationPermission.deniedForever) {
-        emit(state.copyWith(positionState: PositionState.deniedForever));
-        throw Exception();
-      }
-      Position position = await Geolocator.getCurrentPosition();
-      emit(
-        state.copyWith(
-          positionState: PositionState.success,
-          position: position,
-        ),
-      );
-    } on Exception {
-      rethrow;
-    }
-  }
 
   void getMarkers() async {
     try {

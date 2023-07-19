@@ -2,6 +2,8 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
+import 'package:flutterapperadauti/gen/colors.gen.dart';
 
 import 'bloc/app_bloc.dart';
 import 'repository/authentication/authentication_repository.dart';
@@ -69,6 +71,22 @@ class AppView extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
+        iconTheme: const IconThemeData(size: 14.0, color: ColorName.iconColor),
+        filledButtonTheme: FilledButtonThemeData(
+          style: FilledButton.styleFrom(
+            backgroundColor: ColorName.plum,
+            textStyle: AppConstants.buttonTextStyle,
+          ),
+        ),
+        inputDecorationTheme: const InputDecorationTheme(
+            border: OutlineInputBorder(),
+            floatingLabelAlignment: FloatingLabelAlignment.start),
+        cardTheme: CardTheme(
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(color: Colors.black12, width: 0),
+            borderRadius: AppConstants.borderRadius,
+          ),
+        ),
         fontFamily: 'Inter',
       ),
       localizationsDelegates: const [

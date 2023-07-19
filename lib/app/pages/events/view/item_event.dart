@@ -1,3 +1,6 @@
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
+import 'package:flutterapperadauti/gen/colors.gen.dart';
+
 import '../../../models/events/events_item_model.dart';
 import '../../../utils/extensions/timestamp_to_date.dart';
 import '../../../../gen/strings.g.dart';
@@ -22,88 +25,78 @@ class ItemEvent extends StatelessWidget {
         EventDetailsPage.route(data),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 20),
+        padding: AppConstants.topDelimiter,
         child: Card(
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(color: Colors.black12, width: 0),
-            borderRadius: BorderRadius.circular(30),
-          ),
-          child: SizedBox(
-            width: MediaQuery.sizeOf(context).width,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                SizedBox(
-                  height: 200,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
-                    ),
-                    child: ImageWidget(
-                      link: data.url,
-                      fit: BoxFit.cover,
-                    ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              SizedBox(
+                height: 200,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: AppConstants.cardRadius,
+                    topRight: AppConstants.cardRadius,
+                  ),
+                  child: ImageWidget(
+                    link: data.url,
+                    fit: BoxFit.cover,
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.all(18),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        data.headline,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
+              ),
+              Container(
+                margin: AppConstants.innerCardPadding,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      data.headline,
+                      style: AppConstants.titleBigTextStyle,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          FontAwesome5.calendar_alt,
                         ),
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            FontAwesome5.calendar_alt,
-                            size: 14,
+                        Padding(
+                          padding: AppConstants.leftDelimiter,
+                          child: Text(
+                            data.start.getDate,
+                            style: AppConstants.textTextStyle,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: Text(
-                              data.start.getDate,
-                              style: const TextStyle(fontSize: 14),
-                            ),
-                          )
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            FontAwesome5.clock,
-                            size: 14,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: Text(
-                              data.start.getHour,
-                              style: const TextStyle(fontSize: 14),
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 10, bottom: 10),
-                  child: FilledButton(
-                    onPressed: () => Navigator.of(context).push(
-                      EventDetailsPage.route(data),
+                        )
+                      ],
                     ),
-                    child: Text(t.events.seeDetails),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          FontAwesome5.clock,
+                        ),
+                        Padding(
+                          padding: AppConstants.leftDelimiter,
+                          child: Text(
+                            data.start.getHour,
+                            style: AppConstants.textTextStyle,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: AppConstants.innerCardPadding,
+                child: FilledButton(
+                  onPressed: () => Navigator.of(context).push(
+                    EventDetailsPage.route(data),
+                  ),
+                  child: Text(
+                    t.events.seeDetails,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

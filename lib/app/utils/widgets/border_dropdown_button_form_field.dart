@@ -5,12 +5,14 @@ class BorderDropdownButtonFormField extends StatelessWidget {
   final String? errorText;
   final Function(String? value) onChanged;
   final Map<String, String> items;
+  final String? Function(String? value)? validator;
   const BorderDropdownButtonFormField({
     super.key,
     required this.hint,
     required this.onChanged,
     required this.items,
     this.errorText,
+    this.validator,
   });
 
   @override
@@ -32,6 +34,7 @@ class BorderDropdownButtonFormField extends StatelessWidget {
               border: const OutlineInputBorder(),
               errorText: errorText,
             ),
+            validator: validator,
             items: items.entries
                 .map((entry) => DropdownMenuItem(
                       value: entry.key,

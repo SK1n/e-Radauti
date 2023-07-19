@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
+import 'package:flutterapperadauti/gen/colors.gen.dart';
 import '../../../models/e_radauti_website/e_radauti_website_model.dart';
 import '../cubit/jobs/jobs_cubit.dart';
 import '../../../utils/extensions/format_date.dart';
@@ -64,22 +66,13 @@ class _Item extends StatelessWidget {
             children: [
               Text(
                 item.title,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w500,
-                  color: const Color(0xFF1F2937),
-                ),
+                style: AppConstants.titleBigTextStyle,
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 1.0),
                 child: Text(
-                  t.announcements.posted_at(value: item.dateCreated.format()),
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.w400,
-                    color: const Color(0xFF6B7280),
-                  ),
-                ),
+                    t.announcements.posted_at(value: item.dateCreated.format()),
+                    style: AppConstants.smallTextTextStyle),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
@@ -87,11 +80,7 @@ class _Item extends StatelessWidget {
                   item.rawContent,
                   maxLines: 10,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w400,
-                    color: const Color(0xFF6B7280),
-                  ),
+                  style: AppConstants.textTextStyle,
                 ),
               ),
               Padding(
@@ -99,18 +88,14 @@ class _Item extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () async {
                     String link =
-                        'https://www.eradauti.ro/anunturi/locuri-de-munca-20/${item.slug}-${item.id}';
+                        '${AppConstants.baseERadautiLink}${item.slug}-${item.id}';
                     if (await canLaunchUrlString(link)) {
                       await launchUrlString(link);
                     }
                   },
                   child: Text(
                     t.announcements.seeDetails,
-                    style: TextStyle(
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xFF458AFC),
-                    ),
+                    style: AppConstants.linkTextStyle,
                   ),
                 ),
               ),

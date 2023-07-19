@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/pages/forgot_password/cubit/forgot_password_cubit.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
+import 'package:flutterapperadauti/app/utils/widgets/loading_widget.dart';
+import 'package:flutterapperadauti/app/utils/widgets/widget_with_border.dart';
+import 'package:flutterapperadauti/gen/strings.g.dart';
 import 'package:formz/formz.dart';
-
-import '../../../../gen/strings.g.dart';
-import '../../../utils/widgets/border_text_form_field.dart';
-import '../../../utils/widgets/loading_widget.dart';
-import '../cubit/forgot_password_cubit.dart';
+import 'package:flutterapperadauti/app/form_inputs/form_inputs.dart';
 
 class ForgotPasswordForm extends StatelessWidget {
   final String? email;
@@ -54,14 +55,19 @@ class _EmailInput extends StatelessWidget {
     return BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
       buildWhen: (previous, current) => previous.email != current.email,
       builder: (context, state) {
-        return BorderTextFormField(
-          initialValue: email,
-          onChanged: (email) =>
-              context.read<ForgotPasswordCubit>().emailChanged(email),
-          keyboardType: TextInputType.emailAddress,
-          hint: context.t.forgotPassword.emailTextField,
-          errorText:
-              state.email.displayError != null ? t.formats.invalidEmail : null,
+        return Padding(
+          padding: AppConstants.innerCardPadding,
+          child: TextFormField(
+            initialValue: email,
+            onChanged: (email) =>
+                context.read<ForgotPasswordCubit>().emailChanged(email),
+            keyboardType: TextInputType.emailAddress,
+            validator: (_) => state.email.displayError?.text(),
+            decoration: InputDecoration(
+              errorText: state.email.error?.text(),
+              labelText: t.forgotPassword.emailTextField,
+            ),
+          ),
         );
       },
     );
@@ -75,7 +81,8 @@ class _ResetPasswordButton extends StatelessWidget {
       builder: (context, state) {
         return state.status.isInProgress
             ? const LoadingWidget()
-            : SizedBox(
+            : Container(
+                padding: AppConstants.innerCardPadding,
                 width: MediaQuery.of(context).size.width,
                 child: FilledButton(
                   style: ElevatedButton.styleFrom(

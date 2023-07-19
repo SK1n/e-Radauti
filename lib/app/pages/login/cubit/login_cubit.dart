@@ -1,8 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../form_inputs/email.dart';
-import '../../../form_inputs/password.dart';
-import '../../../repository/authentication/authentication_repository.dart';
+import 'package:flutterapperadauti/app/form_inputs/form_inputs.dart';
+import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
 import 'package:formz/formz.dart';
 
 part 'login_state.dart';
@@ -13,7 +12,7 @@ class LoginCubit extends Cubit<LoginState> {
   final AuthenticationRepository _authenticationRepository;
 
   void emailChanged(String value) {
-    final email = Email.dirty(value);
+    final email = EmailInput.dirty(value);
     emit(
       state.copyWith(
         email: email,
@@ -25,7 +24,7 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void passwordChanged(String value) {
-    final password = Password.dirty(value);
+    final password = PasswordInput.dirty(value);
     emit(
       state.copyWith(
         password: password,

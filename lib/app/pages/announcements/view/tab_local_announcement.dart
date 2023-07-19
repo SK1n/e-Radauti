@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../models/announcements/local_announcements_model.dart';
 import '../cubit/local/local_announcement_cubit.dart';
 import '../../../utils/extensions/timestamp_to_date.dart';
@@ -53,45 +54,30 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                item.title,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w500,
-                  color: const Color(0xFF1F2937),
-                ),
+    return Card(
+      child: Padding(
+        padding: AppConstants.innerCardPadding,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              item.title,
+              style: AppConstants.titleBigTextStyle,
+            ),
+            Text(
+              t.announcements.posted_at(value: item.dateCreated.getDate),
+              style: AppConstants.smallTextTextStyle,
+            ),
+            Padding(
+              padding: AppConstants.smallTopDelimiter,
+              child: Text(
+                item.description,
+                maxLines: AppConstants.textMaxLines,
+                overflow: TextOverflow.ellipsis,
+                style: AppConstants.textTextStyle,
               ),
-              Text(
-                t.announcements.posted_at(value: item.dateCreated.getDate),
-                style: TextStyle(
-                  fontSize: 12.0,
-                  fontWeight: FontWeight.w400,
-                  color: const Color(0xFF6B7280),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 5.0),
-                child: Text(
-                  item.description,
-                  maxLines: 10,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w500,
-                    color: const Color(0xFF6B7280),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

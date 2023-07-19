@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../cubit/login_cubit.dart';
 import 'login_form.dart';
 import '../../sign_up/view/sign_up_page.dart';
@@ -38,7 +39,7 @@ class PageLogin extends StatelessWidget {
           child: const LoginForm(),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 20),
+          padding: AppConstants.innerCardPadding,
           child: RichText(
             text: TextSpan(
               text: t.singInScreen.createAccount,

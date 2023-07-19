@@ -140,6 +140,10 @@ class $AssetsLogoImagesGen {
   AssetGenImage get appLogoTransparent =>
       const AssetGenImage('assets/logo_images/app_logo_transparent.png');
 
+  /// File path: assets/logo_images/prop_6.png
+  AssetGenImage get prop6 =>
+      const AssetGenImage('assets/logo_images/prop_6.png');
+
   /// File path: assets/logo_images/prop_6_transparent.png
   AssetGenImage get prop6Transparent =>
       const AssetGenImage('assets/logo_images/prop_6_transparent.png');
@@ -149,7 +153,7 @@ class $AssetsLogoImagesGen {
 
   /// List of all assets
   List<dynamic> get values =>
-      [thumbs, appLogo, appLogoTransparent, prop6Transparent, rc];
+      [thumbs, appLogo, appLogoTransparent, prop6, prop6Transparent, rc];
 }
 
 class $AssetsVolunteerGen {
@@ -203,11 +207,15 @@ class Assets {
   Assets._();
 
   static const $AssetsAnimationsGen animations = $AssetsAnimationsGen();
+  static const String colors = 'assets/colors.xml';
   static const $AssetsDrawerGen drawer = $AssetsDrawerGen();
   static const $AssetsLocalAdministrationGen localAdministration =
       $AssetsLocalAdministrationGen();
   static const $AssetsLogoImagesGen logoImages = $AssetsLogoImagesGen();
   static const $AssetsVolunteerGen volunteer = $AssetsVolunteerGen();
+
+  /// List of all assets
+  List<String> get values => [colors];
 }
 
 class AssetGenImage {

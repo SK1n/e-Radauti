@@ -1,9 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../form_inputs/confirmed_password.dart';
-import '../../../form_inputs/password_sign_up.dart';
-import '../../../form_inputs/report_problem_form.dart';
-import '../../../repository/authentication/authentication_repository.dart';
+import 'package:flutterapperadauti/app/form_inputs/form_inputs.dart';
+import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
 import 'package:formz/formz.dart';
 
 part 'sign_up_state.dart';
@@ -14,7 +12,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   final AuthenticationRepository _authenticationRepository;
 
   void emailChanged(String value) {
-    final email = Email.dirty(value);
+    final email = EmailInput.dirty(value);
     emit(
       state.copyWith(
         email: email,
@@ -26,7 +24,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   }
 
   void passwordChanged(String value) {
-    final password = PasswordSignUp.dirty(value);
+    final password = PasswordInput.dirty(value);
     emit(
       state.copyWith(
         password: password,
@@ -38,7 +36,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   }
 
   void usernameChanged(String value) {
-    final username = Username.dirty(value);
+    final username = NameInput.dirty(value);
     emit(
       state.copyWith(
         username: username,
@@ -50,7 +48,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   }
 
   void phoneNumberChanged(String value) {
-    final phoneNumber = PhoneNumber.dirty(value);
+    final phoneNumber = PhoneInput.dirty(value);
     emit(
       state.copyWith(
         phoneNumber: phoneNumber,
@@ -62,7 +60,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   }
 
   void confirmedPasswordChanged(String value) {
-    final confirmedPassword = ConfirmedPassword.dirty(
+    final confirmedPassword = ConfirmPasswordInput.dirty(
       password: state.password.value,
       value: value,
     );

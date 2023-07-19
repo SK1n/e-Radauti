@@ -2,7 +2,9 @@ part of 'report_problem_cubit.dart';
 
 enum PositionState {
   success,
+  failure,
   initial,
+  inProgress,
   denied,
   deniedForever,
   disabled,
@@ -10,24 +12,18 @@ enum PositionState {
 
 extension PositionStateX on PositionState {
   bool get isSuccess => this == PositionState.success;
+  bool get isInProgress => this == PositionState.inProgress;
   bool get isDenied => this == PositionState.denied;
   bool get isDeniedForever => this == PositionState.deniedForever;
   bool get isInitial => this == PositionState.initial;
   bool get isDisabled => this == PositionState.disabled;
+  bool get isFailure => this == PositionState.failure;
 }
 
 @freezed
 class ReportProblemState with _$ReportProblemState {
   const factory ReportProblemState({
-    required Username username,
-    required Email email,
-    required Subject subject,
-    required Description description,
-    required Institution institution,
-    required Category category,
-    required PhoneNumber phoneNumber,
-    required GenericInput<bool> locationEnabled,
-    required ImagePicker imagePicker,
+    required ReportProblemForm form,
     required bool isValid,
     required FormzSubmissionStatus formzStatus,
     required PageState storageStatus,
@@ -40,15 +36,7 @@ class ReportProblemState with _$ReportProblemState {
   }) = _ReportProblemState;
 
   factory ReportProblemState.initial() => ReportProblemState(
-        username: const Username.pure(),
-        email: const Email.pure(),
-        locationEnabled: const GenericInput<bool>.pure(false),
-        subject: const Subject.pure(),
-        description: const Description.pure(),
-        institution: const Institution.pure(),
-        category: const Category.pure(),
-        phoneNumber: const PhoneNumber.pure(),
-        imagePicker: ImagePicker.pure(),
+        form: ReportProblemForm(),
         isValid: false,
         errorMessage: "Sorry something went wrong",
         formzStatus: FormzSubmissionStatus.initial,

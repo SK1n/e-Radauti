@@ -3,13 +3,13 @@ part of 'forgot_password_cubit.dart';
 //TODO: change to use freezed
 final class ForgotPasswordState extends Equatable {
   const ForgotPasswordState({
-    this.email = const Email.pure(),
+    this.email = const EmailInput.pure(),
     this.status = FormzSubmissionStatus.initial,
     this.isValid = false,
     this.errorMessage,
   });
 
-  final Email email;
+  final EmailInput email;
   final FormzSubmissionStatus status;
   final bool isValid;
   final String? errorMessage;
@@ -18,7 +18,7 @@ final class ForgotPasswordState extends Equatable {
   List<Object?> get props => [email, status, isValid, errorMessage];
 
   ForgotPasswordState copyWith({
-    Email? email,
+    EmailInput? email,
     FormzSubmissionStatus? status,
     bool? isValid,
     String? errorMessage,

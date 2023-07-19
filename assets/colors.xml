@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="chefchaouenBlue">#458AFC</color>
+    <color name="russianVioler">#120032</color>
+    <color name="frenchGray">#B7B3C0</color>
+    <color name="plum">#9B5094</color>
+    <color name="earthYellow">#DB9D47</color>
+    <color name="titleColor">#374151</color>
+    <color name="textColor">#6B7280</color>
+    <color name="iconColor">#9CA3AF</color>
+</resources>

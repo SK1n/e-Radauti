@@ -16,15 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ReportProblemState {
-  Username get username => throw _privateConstructorUsedError;
-  Email get email => throw _privateConstructorUsedError;
-  Subject get subject => throw _privateConstructorUsedError;
-  Description get description => throw _privateConstructorUsedError;
-  Institution get institution => throw _privateConstructorUsedError;
-  Category get category => throw _privateConstructorUsedError;
-  PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
-  GenericInput<bool> get locationEnabled => throw _privateConstructorUsedError;
-  ImagePicker get imagePicker => throw _privateConstructorUsedError;
+  ReportProblemForm get form => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
   FormzSubmissionStatus get formzStatus => throw _privateConstructorUsedError;
   PageState get storageStatus => throw _privateConstructorUsedError;
@@ -48,15 +40,7 @@ abstract class $ReportProblemStateCopyWith<$Res> {
       _$ReportProblemStateCopyWithImpl<$Res, ReportProblemState>;
   @useResult
   $Res call(
-      {Username username,
-      Email email,
-      Subject subject,
-      Description description,
-      Institution institution,
-      Category category,
-      PhoneNumber phoneNumber,
-      GenericInput<bool> locationEnabled,
-      ImagePicker imagePicker,
+      {ReportProblemForm form,
       bool isValid,
       FormzSubmissionStatus formzStatus,
       PageState storageStatus,
@@ -81,15 +65,7 @@ class _$ReportProblemStateCopyWithImpl<$Res, $Val extends ReportProblemState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
-    Object? email = null,
-    Object? subject = null,
-    Object? description = null,
-    Object? institution = null,
-    Object? category = null,
-    Object? phoneNumber = null,
-    Object? locationEnabled = null,
-    Object? imagePicker = null,
+    Object? form = null,
     Object? isValid = null,
     Object? formzStatus = null,
     Object? storageStatus = null,
@@ -101,42 +77,10 @@ class _$ReportProblemStateCopyWithImpl<$Res, $Val extends ReportProblemState>
     Object? positionState = null,
   }) {
     return _then(_value.copyWith(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as Username,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as Email,
-      subject: null == subject
-          ? _value.subject
-          : subject // ignore: cast_nullable_to_non_nullable
-              as Subject,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as Description,
-      institution: null == institution
-          ? _value.institution
-          : institution // ignore: cast_nullable_to_non_nullable
-              as Institution,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as Category,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as PhoneNumber,
-      locationEnabled: null == locationEnabled
-          ? _value.locationEnabled
-          : locationEnabled // ignore: cast_nullable_to_non_nullable
-              as GenericInput<bool>,
-      imagePicker: null == imagePicker
-          ? _value.imagePicker
-          : imagePicker // ignore: cast_nullable_to_non_nullable
-              as ImagePicker,
+      form: null == form
+          ? _value.form
+          : form // ignore: cast_nullable_to_non_nullable
+              as ReportProblemForm,
       isValid: null == isValid
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
@@ -186,15 +130,7 @@ abstract class _$$_ReportProblemStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Username username,
-      Email email,
-      Subject subject,
-      Description description,
-      Institution institution,
-      Category category,
-      PhoneNumber phoneNumber,
-      GenericInput<bool> locationEnabled,
-      ImagePicker imagePicker,
+      {ReportProblemForm form,
       bool isValid,
       FormzSubmissionStatus formzStatus,
       PageState storageStatus,
@@ -217,15 +153,7 @@ class __$$_ReportProblemStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
-    Object? email = null,
-    Object? subject = null,
-    Object? description = null,
-    Object? institution = null,
-    Object? category = null,
-    Object? phoneNumber = null,
-    Object? locationEnabled = null,
-    Object? imagePicker = null,
+    Object? form = null,
     Object? isValid = null,
     Object? formzStatus = null,
     Object? storageStatus = null,
@@ -237,42 +165,10 @@ class __$$_ReportProblemStateCopyWithImpl<$Res>
     Object? positionState = null,
   }) {
     return _then(_$_ReportProblemState(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as Username,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as Email,
-      subject: null == subject
-          ? _value.subject
-          : subject // ignore: cast_nullable_to_non_nullable
-              as Subject,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as Description,
-      institution: null == institution
-          ? _value.institution
-          : institution // ignore: cast_nullable_to_non_nullable
-              as Institution,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as Category,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as PhoneNumber,
-      locationEnabled: null == locationEnabled
-          ? _value.locationEnabled
-          : locationEnabled // ignore: cast_nullable_to_non_nullable
-              as GenericInput<bool>,
-      imagePicker: null == imagePicker
-          ? _value.imagePicker
-          : imagePicker // ignore: cast_nullable_to_non_nullable
-              as ImagePicker,
+      form: null == form
+          ? _value.form
+          : form // ignore: cast_nullable_to_non_nullable
+              as ReportProblemForm,
       isValid: null == isValid
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
@@ -317,15 +213,7 @@ class __$$_ReportProblemStateCopyWithImpl<$Res>
 
 class _$_ReportProblemState implements _ReportProblemState {
   const _$_ReportProblemState(
-      {required this.username,
-      required this.email,
-      required this.subject,
-      required this.description,
-      required this.institution,
-      required this.category,
-      required this.phoneNumber,
-      required this.locationEnabled,
-      required this.imagePicker,
+      {required this.form,
       required this.isValid,
       required this.formzStatus,
       required this.storageStatus,
@@ -339,23 +227,7 @@ class _$_ReportProblemState implements _ReportProblemState {
         _markersData = markersData;
 
   @override
-  final Username username;
-  @override
-  final Email email;
-  @override
-  final Subject subject;
-  @override
-  final Description description;
-  @override
-  final Institution institution;
-  @override
-  final Category category;
-  @override
-  final PhoneNumber phoneNumber;
-  @override
-  final GenericInput<bool> locationEnabled;
-  @override
-  final ImagePicker imagePicker;
+  final ReportProblemForm form;
   @override
   final bool isValid;
   @override
@@ -391,7 +263,7 @@ class _$_ReportProblemState implements _ReportProblemState {
 
   @override
   String toString() {
-    return 'ReportProblemState(username: $username, email: $email, subject: $subject, description: $description, institution: $institution, category: $category, phoneNumber: $phoneNumber, locationEnabled: $locationEnabled, imagePicker: $imagePicker, isValid: $isValid, formzStatus: $formzStatus, storageStatus: $storageStatus, firestoreStatus: $firestoreStatus, myReportsData: $myReportsData, markersData: $markersData, errorMessage: $errorMessage, position: $position, positionState: $positionState)';
+    return 'ReportProblemState(form: $form, isValid: $isValid, formzStatus: $formzStatus, storageStatus: $storageStatus, firestoreStatus: $firestoreStatus, myReportsData: $myReportsData, markersData: $markersData, errorMessage: $errorMessage, position: $position, positionState: $positionState)';
   }
 
   @override
@@ -399,22 +271,7 @@ class _$_ReportProblemState implements _ReportProblemState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ReportProblemState &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.subject, subject) || other.subject == subject) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.institution, institution) ||
-                other.institution == institution) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.locationEnabled, locationEnabled) ||
-                other.locationEnabled == locationEnabled) &&
-            (identical(other.imagePicker, imagePicker) ||
-                other.imagePicker == imagePicker) &&
+            (identical(other.form, form) || other.form == form) &&
             (identical(other.isValid, isValid) || other.isValid == isValid) &&
             (identical(other.formzStatus, formzStatus) ||
                 other.formzStatus == formzStatus) &&
@@ -437,15 +294,7 @@ class _$_ReportProblemState implements _ReportProblemState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      username,
-      email,
-      subject,
-      description,
-      institution,
-      category,
-      phoneNumber,
-      locationEnabled,
-      imagePicker,
+      form,
       isValid,
       formzStatus,
       storageStatus,
@@ -466,15 +315,7 @@ class _$_ReportProblemState implements _ReportProblemState {
 
 abstract class _ReportProblemState implements ReportProblemState {
   const factory _ReportProblemState(
-      {required final Username username,
-      required final Email email,
-      required final Subject subject,
-      required final Description description,
-      required final Institution institution,
-      required final Category category,
-      required final PhoneNumber phoneNumber,
-      required final GenericInput<bool> locationEnabled,
-      required final ImagePicker imagePicker,
+      {required final ReportProblemForm form,
       required final bool isValid,
       required final FormzSubmissionStatus formzStatus,
       required final PageState storageStatus,
@@ -486,23 +327,7 @@ abstract class _ReportProblemState implements ReportProblemState {
       required final PositionState positionState}) = _$_ReportProblemState;
 
   @override
-  Username get username;
-  @override
-  Email get email;
-  @override
-  Subject get subject;
-  @override
-  Description get description;
-  @override
-  Institution get institution;
-  @override
-  Category get category;
-  @override
-  PhoneNumber get phoneNumber;
-  @override
-  GenericInput<bool> get locationEnabled;
-  @override
-  ImagePicker get imagePicker;
+  ReportProblemForm get form;
   @override
   bool get isValid;
   @override

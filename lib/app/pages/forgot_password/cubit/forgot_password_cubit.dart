@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../form_inputs/email.dart';
+import 'package:flutterapperadauti/app/form_inputs/form_inputs.dart';
 import '../../../repository/authentication/authentication_repository.dart';
 import 'package:formz/formz.dart';
 part 'forgot_password_state.dart';
@@ -12,7 +12,7 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
   final AuthenticationRepository _authenticationRepository;
 
   void emailChanged(String value) {
-    final email = Email.dirty(value);
+    final email = EmailInput.dirty(value);
     emit(
       state.copyWith(
         email: email,

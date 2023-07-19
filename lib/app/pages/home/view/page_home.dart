@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../air_quality/view/air_quality_page.dart';
 import '../../events/view/events_page.dart';
 import '../../events/view/item_event.dart';
@@ -68,6 +69,7 @@ class _PageHomeState extends State<PageHome> {
       )
         ..getLatestDecision()
         ..getNextEvent()
+        ..getNumsOfReports()
         ..isUserAnnonymous(),
       child: AppScaffold(
         appBarTitle: 'e-Radauti',
@@ -108,50 +110,56 @@ class _PageHomeState extends State<PageHome> {
                     ),
                     state.isAnnonymous
                         ? Container()
-                        : Expanded(
-                            child: GestureDetector(
-                              onTap: () => Navigator.of(context)
-                                  .push(ReportProblemPage.route()),
-                              child: Card(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Center(
-                                          child: RichText(
-                                            text: TextSpan(
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.black,
-                                                // fontWeight: FontWeight.bold,
+                        : BlocConsumer<HomeCubit, HomeState>(
+                            listener: (context, state) {},
+                            builder: (context, state) {
+                              return Expanded(
+                                child: GestureDetector(
+                                  onTap: () => Navigator.of(context)
+                                      .push(ReportProblemPage.route()),
+                                  child: Card(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                AppConstants.innerCardPadding,
+                                            child: Center(
+                                              child: RichText(
+                                                text: TextSpan(
+                                                  style: AppConstants
+                                                      .titleBigTextStyle,
+                                                  children: [
+                                                    const TextSpan(
+                                                      text: 'Aveti\n\n',
+                                                    ),
+                                                    TextSpan(
+                                                      text: state.numsOfReports
+                                                          .toString(),
+                                                      style: const TextStyle(
+                                                        fontSize: 40,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                    const TextSpan(
+                                                      text:
+                                                          '\n\nsesizari facute',
+                                                    )
+                                                  ],
+                                                ),
                                               ),
-                                              children: [
-                                                const TextSpan(
-                                                  text: 'Aveti\n\n',
-                                                ),
-                                                TextSpan(
-                                                  text: state.numsOfReports
-                                                      .toString(),
-                                                  style: TextStyle(
-                                                    fontSize: 40,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                const TextSpan(
-                                                  text: '\n\nsesizari facute',
-                                                )
-                                              ],
                                             ),
                                           ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
-                            ),
+                              );
+                            },
                           )
                   ],
                 ),

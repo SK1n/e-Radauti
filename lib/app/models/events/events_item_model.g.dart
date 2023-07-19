@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: non_constant_identifier_names
-
 part of 'events_item_model.dart';
 
 // **************************************************************************
@@ -11,7 +9,7 @@ part of 'events_item_model.dart';
 _$_EventsItemModel _$$_EventsItemModelFromJson(Map<String, dynamic> json) =>
     _$_EventsItemModel(
       category: json['category'] as String? ?? '',
-      description: json['descriptiom'] as String? ?? '',
+      description: json['description'] as String? ?? '',
       headline: json['headline'] as String? ?? '',
       location: json['location'] as String? ?? '',
       url: json['URL'] as String? ?? '',
@@ -25,7 +23,7 @@ _$_EventsItemModel _$$_EventsItemModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_EventsItemModelToJson(_$_EventsItemModel instance) =>
     <String, dynamic>{
       'category': instance.category,
-      'descriptiom': instance.description,
+      'description': instance.description,
       'headline': instance.headline,
       'location': instance.location,
       'URL': instance.url,

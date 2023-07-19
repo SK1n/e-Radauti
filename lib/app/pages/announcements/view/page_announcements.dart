@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../cubit/furniture/furniture_cubit.dart';
 import '../cubit/jobs/jobs_cubit.dart';
 import '../cubit/local/local_announcement_cubit.dart';
@@ -57,7 +58,7 @@ class PageAnnouncements extends StatelessWidget {
       ],
       child: AppTabsScaffold(
         tabs: tabs,
-        expandedHeight: 150.0,
+        expandedHeight: AppConstants.expandedHeight,
         appBarTitle: t.announcements.title,
       ),
     );

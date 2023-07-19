@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import 'package:getwidget/getwidget.dart';
 
 import '../../../gen/strings.g.dart';
@@ -18,6 +20,7 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //  final FirebaseRepository fireRepo = FirebaseRepository();
+
     return GFDrawer(
       child: SafeArea(
         child: Column(
@@ -82,38 +85,39 @@ class AppDrawer extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: AppConstants.innerCardPadding,
                   width: MediaQuery.sizeOf(context).width,
-                  child: const Row(
+                  child: Row(
                     children: [
                       Flexible(
                         child: CircleAvatar(
-                          child: Text(''),
-                          //  fireRepo.getUser()?.displayName!.getIcon() ?? ''),
+                          child: Text(
+                            context
+                                .read<AuthenticationRepository>()
+                                .currentUser
+                                .name!
+                                .getIcon(),
+                          ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: AppConstants.innerCardPadding,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '',
-                              //  fireRepo.getUser()?.displayName ?? '',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xFF374151),
-                              ),
+                              context
+                                  .read<AuthenticationRepository>()
+                                  .currentUser
+                                  .name!,
+                              style: AppConstants.titleBigTextStyle,
                             ),
                             Text(
-                              '',
-                              // fireRepo.getUser()?.email ?? '',
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xFF6B7280),
-                              ),
+                              context
+                                  .read<AuthenticationRepository>()
+                                  .currentUser
+                                  .email!,
+                              style: AppConstants.textTextStyle,
                             )
                           ],
                         ),
@@ -121,14 +125,6 @@ class AppDrawer extends StatelessWidget {
                     ],
                   ),
                 ),
-                // ListTile(
-                //   title: Text('my-account'.tr),
-                //   onTap: () => Get.toNamed(Routes.account),
-                // ),
-                // ListTile(
-                //   title: Text('settings'.tr),
-                //   onTap: () => Get.toNamed(Routes.settings),
-                // ),
                 ListTile(
                     title: Text(t.drawer.signOut),
                     onTap: () {
@@ -144,11 +140,11 @@ class AppDrawer extends StatelessWidget {
   }
 }
 
-// extension on String {
-//   String getIcon() {
-//     RegExp regex = RegExp(r'\b(\w)');
-//     Iterable<Match> matches = regex.allMatches(this);
-//     String firstLetters = matches.map((match) => match.group(1)).join();
-//     return firstLetters;
-//   }
-// }
+extension on String {
+  String getIcon() {
+    RegExp regex = RegExp(r'\b(\w)');
+    Iterable<Match> matches = regex.allMatches(this);
+    String firstLetters = matches.map((match) => match.group(1)).join();
+    return firstLetters;
+  }
+}

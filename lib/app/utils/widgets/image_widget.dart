@@ -37,7 +37,7 @@ class ImageWidget extends StatelessWidget {
     return OctoImage(
       image: image,
       placeholderBuilder: OctoPlaceholder.blurHash(
-        blurHash,
+        AppConstants.blurHash,
       ),
       imageBuilder: imageBuilder,
       height: height,

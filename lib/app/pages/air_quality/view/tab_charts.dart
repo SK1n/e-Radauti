@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 
 class TabCharts extends StatelessWidget {
   const TabCharts({super.key});
@@ -11,9 +12,9 @@ class TabCharts extends StatelessWidget {
       child: InAppWebView(
         initialUrlRequest: URLRequest(
           url: Uri.parse(
-              'https://calitateaer.radautiulcivic.ro/wp-content/uploads/2023/06/Calitatea_aerului_e-Radauti_Grafice_App.html'),
+            AppConstants.airQualityChartsLink,
+          ),
         ),
-        onWebViewCreated: (controller) {},
       ),
     );
   }

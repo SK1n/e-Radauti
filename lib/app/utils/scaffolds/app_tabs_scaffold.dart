@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import 'app_drawer.dart';
 
 class AppTabsScaffold extends StatelessWidget {
@@ -30,7 +31,10 @@ class AppTabsScaffold extends StatelessWidget {
                 handle:
                     NestedScrollView.sliverOverlapAbsorberHandleFor(context),
                 sliver: SliverAppBar(
-                  title: Text(appBarTitle),
+                  title: Text(
+                    appBarTitle,
+                    style: AppConstants.appBarTitleStyle,
+                  ),
                   pinned: true,
                   floating: expandedHeight != null ? true : false,
                   expandedHeight: expandedHeight,
@@ -38,6 +42,8 @@ class AppTabsScaffold extends StatelessWidget {
                   bottom: TabBar(
                     indicatorPadding: const EdgeInsets.all(8.0),
                     indicatorSize: TabBarIndicatorSize.tab,
+                    labelStyle: AppConstants.selectedTabStyle,
+                    unselectedLabelStyle: AppConstants.unselectedTabStyle,
                     tabs: tabs.map((e) => Tab(text: e['text'])).toList(),
                   ),
                 ),
