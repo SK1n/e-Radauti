@@ -1,0 +1,178 @@
+{
+    "singInScreen": {
+        "title": "Log in",
+        "emailTextField": "Adresă de email",
+        "passwordTextField": "Parolă",
+        "logInButton": "Log in",
+        "welcome": "Bine ai venit!",
+        "wrongEmailPassword": "Datele sunt invalide!",
+        "serverError": "Eroare de server\nIncercati din nou mai tarziu!",
+        "forgotPassword": "Ai uitat parola?",
+        "guest": "Continuă ca vizitator",
+        "createAccount": "Vrei să te înregistrezi în aplicație? ",
+        "createAccountButton": "Creează-ți cont!"
+    },
+    "createAccount": {
+        "title": "Creează-ți cont!",
+        "emailTextField": "Adresă de email",
+        "usernameTextField": "Numele și prenumele",
+        "phoneNumberTextField": "Număr de telefon",
+        "passwordTextField": "Parolă",
+        "confirmPassword": "Confirmă parola",
+        "createAccountButton": "Creează-ți cont"
+    },
+    "forgotPassword": {
+        "title": "Resetează parola",
+        "emailTextField": "Adresă de email",
+        "resetPasswordButton": "Resetează parola"
+    },
+    "events": {
+        "title": "Evenimente",
+        "seeDetails": "Vezi detalii",
+        "newEventsTabTitle": "Viitoare",
+        "oldEventsTabTitle": "Evenimente trecute",
+        "favoritesEventsTabTitle": "Evenimentele tale",
+        "addToFavorites": "Adaugă la favorite",
+        "removeFromFavorites": "Șterge de la favorite",
+        "startDate": "Data de început: $date",
+        "endDate": "Data de încheiere: $date",
+        "emptyFavorites": "Nu aveți niciun eveniment marcat ca favorit!",
+        "emptyEvents": "Nu am putut găsi niciun eveniment. Vă rugăm să încercați din nou mai târziu!"
+    },
+    "reportProblem": {
+        "radautiCityHall": "Primăria Radauti",
+        "comunalServices": "Servicii Comunale",
+        "acetRadauti": "ACET Rădăuți",
+        "suceavaCountyCouncil": "Consiliul Județean Suceava",
+        "suceavaEnvironmentalGuard": "Garda de Mediu Suceava",
+        "suceavaForestGuard": "Garda Forestieră Suceava",
+        "dspSuceava": "DSP Suceava",
+        "ocolulSilvicMarginea": "Ocolul Silvic Marginea",
+        "radautiulCivicAssociation": "Asociația Rădăuțiul Civic",
+        "institutionDropdown": "Instituţie",
+        "usernameTextField": "Numele și prenumele",
+        "categoryDropdown": "Categorie",
+        "emailTextField": "Adresă de email",
+        "subjectTextField": "Subiect",
+        "descriptionTextField": "Descriere",
+        "locationSwitch": "Adaugă locația",
+        "imagePicker": "Fă o fotografie sau încarcă una",
+        "phoneNumberTextField": "Număr de telefon",
+        "infrastructure": "Infrastructură",
+        "utilitiesProblem": "Probleme cu utilitățile",
+        "uncollectedGarbage": "Gunoi neridicat",
+        "infrastructureStreets": "Infrastructură (străzi, trotuare)",
+        "illegalConstructions": "Construcții ilegale",
+        "airQualityPollution": "Calitatea aerului și poluarea",
+        "safety": "Siguranță",
+        "other": "Other",
+        "submitButton": "Trimite",
+        "sentFailure": "Ceva n-a mers bine. Vă rugăm să încercați din nou mai târziu!",
+        "sentSuccessfully": "Raportul a fost trimis cu succes!",
+        "reportPage": {
+            "subject": "Subiect: $value",
+            "description": "Descriere: $value",
+            "category": "Categoria: $value",
+            "institution": "Institutia: $value",
+            "institutionEmail": "Email: $value",
+            "sentBy": "Trimis de $value"
+        },
+        "formTab": "Formular",
+        "mapTab": "Harta sesizărilor",
+        "myReportsTab": "Rapoartele mele",
+        "title": "Report a problem",
+        "emptyMyReports": "Nu ati facut nici o sesizare!",
+        "positionSwitch": {
+            "denied": "Se solicită permisiuni...",
+            "deniedForever": "Permisiunile pentru locație sunt refuzate definitiv, nu putem solicita permisiuni.",
+            "disabled": "Serviciile de localizare sunt dezactivate"
+        }
+    },
+    "localAdministration": {
+        "title": "Administrație Locală",
+        "newsTab": "Noutăți",
+        "localCouncilTab": "Consiliul local",
+        "localCouncilTeam": "Echipă Consiliu Local",
+        "localCouncilLive": "Ședințe de Consiliu Local",
+        "search": "Search...",
+        "localCouncilDecisions": "Hotărârile Consiliului Local",
+        "localCouncilLeaders": "Leaders",
+        "emptyLocalDecisions": "Nu am putut găsi nicio hotărâre, vă rugăm să încercați din nou mai târziu!",
+        "seeMore": "Vezi mai mult",
+        "wealth": "Declarația de avere",
+        "interests": "Declarație de interese"
+    },
+    "airQuality": {
+        "title": "Calitatea aerului",
+        "airQualityTab": "Calitatea aerului",
+        "chartsTab": "Grafice",
+        "mapTab": "Hartă"
+    },
+    "usefullNumbers": {
+        "title": "Numere de telefon",
+        "publicTab": "Instituții locale",
+        "authoritiesTab": "Autorități locale",
+        "upsetsTab": "Deranjamente",
+        "empty": "Nu am putut găsi nici un număr de telefon.",
+        "hospital": "Spitalul Municipal",
+        "townhall": "Primărie",
+        "animals": "Adăpostul de animale",
+        "police": "Poliția Locală",
+        "consumerProtection": "Protecția consumatorului",
+        "childProtection": "Protecția copilului",
+        "animalProtection": "Protecția animalelor",
+        "environmentProtection": "Protecția mediului",
+        "suceavaEnvironmentalGuard": "Garda de Mediu Suceava",
+        "comunalServices": "Servicii Comunale",
+        "acet": "ACET"
+    },
+    "transport": {
+        "title": "Transport",
+        "taxiTab": "Taxi",
+        "trainTab": "Trenuri",
+        "emptyTaxi": "Nu am putut găsi nici un taxiu!",
+        "emptyTrain": "Nu am putut găsi nici un tren!"
+    },
+    "volunteering": {
+        "title": "Voluntariat",
+        "webSite": "Pagină web"
+    },
+    "announcements": {
+        "title": "Anunțuri",
+        "posted_at": "postat în: $value",
+        "tabLocal": "Locale",
+        "emptyAnnouncements": "Nu am găsit nici un anunț!",
+        "tabFurniture": "Imobiliare",
+        "tabJobs": "Locuri de muncă",
+        "seeDetails": "Vezi detalii ->"
+    },
+    "drawer": {
+        "reportProblem": "@:reportProblem.title",
+        "localAdministration": "@:localAdministration.title",
+        "airQuality": "@:airQuality.title",
+        "events": "@:events.title",
+        "transport": "@:transport.title",
+        "volunteering": "@:volunteering.title",
+        "announcements": "@:announcements.title",
+        "signOut": "Delogare"
+    },
+    "buttons": {
+        "log_in": "Log in"
+    },
+    "home": {
+        "newEvents": "Evenimentele următoare vor apărea aici!"
+    },
+    "formats": {
+        "onlyNumbersField": "Acest câmp trebuie să conțină numai numere",
+        "invalidPhoneNumber": "Format greșit al numărului de telefon\n   \nAcceptăm următoarele:\n   \n+40213-564-864\n   \n+40213.564.864\n   \n+40213 564 864\n   \n0213-564-864\n   \n0712456789",
+        "minimum50": "Această căsuță trebuie să conțină mai mult de 50 de caractere!",
+        "invalidEmail": "Format de e-mail greșit! de ex. aaa@bb.ccc!",
+        "strongerPassword": "Parola este slabă. Vă rugăm să furnizați o parolă mai bună!",
+        "requiredField": "Acestă căsuță este obligatorie. Vă rugăm să o completați!",
+        "confirmPassword": "Parolele nu se potrivesc!"
+    },
+    "locales(map)": {
+        "en": "Engleză",
+        "ro": "Română"
+    }
+}

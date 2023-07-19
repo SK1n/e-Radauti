@@ -1,42 +1,42 @@
-// ignore_for_file: depend_on_referenced_packages
-
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:bloc/bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_loadingindicator/flutter_loadingindicator.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutterapperadauti/bindings/app_bindings.dart';
-import 'package:flutterapperadauti/controllers/dark_mode_switch_controller.dart';
-import 'package:flutterapperadauti/localization/languages.dart';
-import 'package:flutterapperadauti/routes/app_pages.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:flutterapperadauti/utils/is_first_run.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/get.dart';
+import 'app/app.dart';
+import 'app/bloc_observer.dart';
+import 'app/repository/authentication/authentication_repository.dart';
+import 'app/repository/e_radauti_website/e_radauti_website_repository.dart';
+import 'app/repository/firestore/firestore_repository.dart';
+import 'app/repository/local_administration/local_administration_repository.dart';
+import 'app/repository/storage/storage_repository.dart';
+import 'gen/strings.g.dart';
 
-@pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in the background, such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
   await Firebase.initializeApp();
-  await setupFlutterNotifications();
 }
 
-late AndroidNotificationChannel channel;
+AndroidNotificationChannel channel = const AndroidNotificationChannel(
+  'high_importance_channel', // id
+  'High Importance Notifications', // title
+  description:
+      'This channel is used for important notifications.', // description
+  importance: Importance.high,
+);
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
-bool isFlutterLocalNotificationsInitialized = false;
-Future<void> setupFlutterNotifications() async {
-  if (isFlutterLocalNotificationsInitialized) {
-    return;
-  }
-  channel = const AndroidNotificationChannel(
-    'high_importance_channel', // id
-    'High Importance Notifications', // title
-    description:
-        'This channel is used for important notifications.', // description
-    importance: Importance.high,
-  );
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-  flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
@@ -48,78 +48,28 @@ Future<void> setupFlutterNotifications() async {
     badge: true,
     sound: true,
   );
-  isFlutterLocalNotificationsInitialized = true;
-}
 
-void showFlutterNotification(RemoteMessage message) {
-  RemoteNotification? notification = message.notification;
-  AndroidNotification? android = message.notification?.android;
-  if (notification != null && android != null) {
-    flutterLocalNotificationsPlugin.show(
-      notification.hashCode,
-      notification.title,
-      notification.body,
-      NotificationDetails(
-        android: AndroidNotificationDetails(
-          channel.id,
-          channel.name,
-          channelDescription: channel.description,
-          icon: 'app_logo_final',
-        ),
-      ),
-    );
-  }
-}
-
-late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
-
-Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = const AppBlocObserver();
+
   await Firebase.initializeApp();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  await setupFlutterNotifications();
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
 
-  NotificationSettings settings = await messaging.requestPermission(
-    alert: true,
-    announcement: false,
-    badge: true,
-    carPlay: false,
-    criticalAlert: false,
-    provisional: false,
-    sound: true,
-  );
+  final authenticationRepository = AuthenticationRepository();
+  final firestoreRepository = FirestoreRepository();
+  final storageRepository = StorageRepository();
+  final localAdministrationRepository = LocalAdministrationRepository();
+  const eRadautiWebsiteRepository = ERadautiWebsiteRepository();
+  await authenticationRepository.user.first;
 
-  final DarkModeSwitchController darkModeSwitchController =
-      Get.put(DarkModeSwitchController());
-
-  darkModeSwitchController.getThemeStatus();
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.dark,
-  ));
   runApp(
-    GetMaterialApp(
-      title: 'e-Rădăuți',
-      debugShowCheckedModeBanner: true,
-      builder: EasyLoading.init(),
-      getPages: AppPages.routes,
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('ro', 'RO'),
-      ],
-      defaultTransition: Transition.cupertino,
-      fallbackLocale: const Locale('en', 'US'),
-      locale: const Locale('ro', "RO"),
-      initialRoute: Routes.logIn,
-      initialBinding: AppBindings(),
-      translations: Languages(),
-      themeMode: ThemeMode.light,
+    TranslationProvider(
+      child: App(
+        authenticationRepository: authenticationRepository,
+        firestoreRepository: firestoreRepository,
+        storageRepository: storageRepository,
+        localAdministrationRepository: localAdministrationRepository,
+        eRadautiWebsiteRepository: eRadautiWebsiteRepository,
+      ),
     ),
   );
 }

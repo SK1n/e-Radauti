@@ -11,8 +11,6 @@
     <uses-permission
         android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
 <queries>
@@ -38,7 +36,7 @@
     <application
         android:label="e-Rădăuți"
         android:usesCleartextTraffic="true"
-        android:icon="@mipmap/app_logo_final">
+        android:icon="@mipmap/ic_launcher">
 
 
     <meta-data
@@ -48,6 +46,7 @@
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
+            android:exported="true"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">

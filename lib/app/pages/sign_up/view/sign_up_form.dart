@@ -1,0 +1,194 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/pages/sign_up/cubit/sign_up_cubit.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
+import 'package:flutterapperadauti/app/utils/widgets/loading_widget.dart';
+import 'package:flutterapperadauti/app/utils/widgets/widget_with_border.dart';
+import 'package:flutterapperadauti/app/form_inputs/form_inputs.dart';
+import 'package:flutterapperadauti/gen/strings.g.dart';
+import 'package:formz/formz.dart';
+
+class SignUpForm extends StatelessWidget {
+  const SignUpForm({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<SignUpCubit, SignUpState>(
+      listener: (context, state) {
+        if (state.status.isSuccess) {
+          Navigator.of(context).pop();
+        } else if (state.status.isFailure) {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              SnackBar(content: Text(state.errorMessage ?? 'Sign Up Failure')),
+            );
+        }
+      },
+      child: Column(
+        children: [
+          _EmailInput(),
+          _UsernameInput(),
+          _PhoneNumberInput(),
+          _PasswordInput(),
+          _ConfirmedPasswordInput(),
+          _SignUpButton(),
+        ],
+      ),
+    );
+  }
+}
+
+class _EmailInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignUpCubit, SignUpState>(
+      buildWhen: (previous, current) => previous.email != current.email,
+      builder: (context, state) {
+        return Padding(
+          padding: AppConstants.innerCardPadding,
+          child: TextFormField(
+            onChanged: (email) =>
+                context.read<SignUpCubit>().emailChanged(email),
+            keyboardType: TextInputType.emailAddress,
+            validator: (_) => state.email.displayError?.text(),
+            decoration: InputDecoration(
+              errorText: state.email.error?.text(),
+              labelText: t.createAccount.emailTextField,
+            ),
+            // errorText:
+            //     state.email.displayError != null ? t.formats.invalidEmail : null,
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _ConfirmedPasswordInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignUpCubit, SignUpState>(
+      buildWhen: (previous, current) =>
+          previous.confirmedPassword != current.confirmedPassword,
+      builder: (context, state) {
+        return Padding(
+          padding: AppConstants.innerCardPadding,
+          child: TextFormField(
+            obscureText: true,
+            onChanged: (confirmedPassword) => context
+                .read<SignUpCubit>()
+                .confirmedPasswordChanged(confirmedPassword),
+            validator: (_) => state.confirmedPassword.displayError?.text(),
+            decoration: InputDecoration(
+              errorText: state.confirmedPassword.error?.text(),
+              labelText: t.createAccount.confirmPassword,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _PasswordInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignUpCubit, SignUpState>(
+      buildWhen: (previous, current) => previous.password != current.password,
+      builder: (context, state) {
+        return Padding(
+          padding: AppConstants.innerCardPadding,
+          child: TextFormField(
+            obscureText: true,
+            onChanged: (password) =>
+                context.read<SignUpCubit>().passwordChanged(password),
+            validator: (_) => state.password.displayError?.text(),
+            decoration: InputDecoration(
+              errorText: state.password.error?.text(),
+              labelText: t.createAccount.passwordTextField,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _UsernameInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignUpCubit, SignUpState>(
+      buildWhen: (previous, current) => previous.username != current.username,
+      builder: (context, state) {
+        return Padding(
+          padding: AppConstants.innerCardPadding,
+          child: TextFormField(
+            onChanged: (username) =>
+                context.read<SignUpCubit>().usernameChanged(username),
+            validator: (_) => state.username.displayError?.text(),
+            decoration: InputDecoration(
+              errorText: state.username.error?.text(),
+              labelText: t.createAccount.usernameTextField,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _PhoneNumberInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignUpCubit, SignUpState>(
+      buildWhen: (previous, current) =>
+          previous.phoneNumber != current.phoneNumber,
+      builder: (context, state) {
+        return Padding(
+          padding: AppConstants.innerCardPadding,
+          child: TextFormField(
+            keyboardType: TextInputType.phone,
+            onChanged: (phoneNumber) =>
+                context.read<SignUpCubit>().phoneNumberChanged(phoneNumber),
+            validator: (_) => state.phoneNumber.displayError?.text(),
+            decoration: InputDecoration(
+              errorText: state.phoneNumber.error?.text(),
+              labelText: t.createAccount.phoneNumberTextField,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _SignUpButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignUpCubit, SignUpState>(
+      builder: (context, state) {
+        return state.status.isInProgress
+            ? const LoadingWidget()
+            : Container(
+                padding: AppConstants.innerCardPadding,
+                width: MediaQuery.of(context).size.width,
+                child: FilledButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  onPressed: state.isValid
+                      ? () => context
+                          .read<SignUpCubit>()
+                          .createAccountWithEmailAndPassword()
+                      : null,
+                  child: Text(t.createAccount.createAccountButton),
+                ),
+              );
+      },
+    );
+  }
+}

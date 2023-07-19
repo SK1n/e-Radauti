@@ -1,0 +1,178 @@
+{
+    "singInScreen": {
+        "title": "Log in",
+        "emailTextField": "Email address",
+        "passwordTextField": "Password",
+        "logInButton": "Log in",
+        "welcome": "Welcome!",
+        "wrongEmailPassword": "The credentials are invalid!",
+        "serverError": "Server error\nPlease try again later!",
+        "forgotPassword": "I forgot the password",
+        "guest": "Use the app now with Guest status",
+        "createAccount": "Do you want to create an account? ",
+        "createAccountButton": "Create a new account!"
+    },
+    "createAccount": {
+        "title": "Create a new account!",
+        "emailTextField": "Email address",
+        "usernameTextField": "Name and surname",
+        "phoneNumberTextField": "Phone number",
+        "passwordTextField": "Password",
+        "confirmPassword": "Confirm password",
+        "createAccountButton": "Create account"
+    },
+    "forgotPassword": {
+        "title": "Reset password",
+        "emailTextField": "Email address",
+        "resetPasswordButton": "Reset password"
+    },
+    "events": {
+        "title": "Events",
+        "seeDetails": "See details",
+        "newEventsTabTitle": "Soon",
+        "oldEventsTabTitle": "Past events",
+        "favoritesEventsTabTitle": "Your events",
+        "addToFavorites": "Add to favorites",
+        "removeFromFavorites": "Remove from favorites",
+        "startDate": "Start date: $date",
+        "endDate": "End date: $date",
+        "emptyFavorites": "You don't have any events marked as favorite!",
+        "emptyEvents": "We couldn't find any events. Please try again later!"
+    },
+    "reportProblem": {
+        "radautiCityHall": "Radauti city hall",
+        "comunalServices": "Comunal services",
+        "acetRadauti": "ACET Radauti",
+        "suceavaCountyCouncil": "Suceava County Council",
+        "suceavaEnvironmentalGuard": "Suceava Environmental Guard",
+        "suceavaForestGuard": "Suceava Forest Guard",
+        "dspSuceava": "DSP Suceava",
+        "ocolulSilvicMarginea": "Ocolul Silvic Marginea",
+        "radautiulCivicAssociation": "Radautiul Civic Association",
+        "institutionDropdown": "Institution",
+        "usernameTextField": "Name and surname",
+        "categoryDropdown": "Category",
+        "emailTextField": "Email address",
+        "subjectTextField": "Subject",
+        "descriptionTextField": "Description",
+        "locationSwitch": "Add location",
+        "imagePicker": "Take a photo or upload one",
+        "phoneNumberTextField": "Phone number",
+        "infrastructure": "Infrastructure",
+        "utilitiesProblem": "Utilities problems",
+        "uncollectedGarbage": "Uncollected garbage",
+        "infrastructureStreets": "Infrastructure (streets)",
+        "illegalConstructions": "Illegal constructions",
+        "airQualityPollution": "Air quality and pollution",
+        "safety": "Safety",
+        "other": "Other",
+        "submitButton": "Send",
+        "sentSuccessfully": "The report was sent successfully!",
+        "sentFailure": "Something went wrong. Please try again later!",
+        "reportPage": {
+            "subject": "Subject: $value",
+            "description": "Description: $value",
+            "category": "Category: $value",
+            "institution": "Institution: $value",
+            "institutionEmail": "Email: $value",
+            "sentBy": "Sent by $value"
+        },
+        "formTab": "Form",
+        "mapTab": "Reports Map",
+        "myReportsTab": "My reports",
+        "title": "Report a problem",
+        "emptyMyReports": "You didn't make any reports!",
+        "positionSwitch": {
+            "denied": "Requesting permissions...",
+            "deniedForever": "Location permissions are permanently denied, we cannot request permissions.",
+            "disabled": "Location services are disabled"
+        }
+    },
+    "localAdministration": {
+        "title": "Local Administration",
+        "newsTab": "News",
+        "localCouncilTab": "Local council",
+        "localCouncilTeam": "Local Council Team",
+        "localCouncilLive": "Local Council Meetings",
+        "localCouncilDecisions": "Local Council Decisions",
+        "search": "Search...",
+        "localCouncilLeaders": "Leaders",
+        "emptyLocalDecisions": "We couldn't find any decisions, please try again later!",
+        "seeMore": "See more",
+        "wealth": "Wealth declaration",
+        "interests": "Declaration of interests"
+    },
+    "airQuality": {
+        "title": "Air quality",
+        "airQualityTab": "Air quality",
+        "chartsTab": "Charts",
+        "mapTab": "Map"
+    },
+    "usefullNumbers": {
+        "title": "Phone numbers",
+        "publicTab": "Local institutions",
+        "authoritiesTab": "Local authorities",
+        "upsetsTab": "Upsets",
+        "empty": "We couldn't find any phone number.",
+        "hospital": "Municipal hospital",
+        "townhall": "Town hall",
+        "animals": "Animal shelter",
+        "police": "Local police",
+        "consumerProtection": "Consumer protection",
+        "childProtection": "Child protection",
+        "animalProtection": "Animal protection",
+        "environmentProtection": "Environment protection",
+        "suceavaEnvironmentalGuard": "Suceava Environmental Guard",
+        "comunalServices": "Comunal services",
+        "acet": "ACET"
+    },
+    "transport": {
+        "title": "Transport",
+        "taxiTab": "Taxi",
+        "trainTab": "Train",
+        "emptyTaxi": "We couldn't find any taxi!",
+        "emptyTrain": "We couldn't find any train!"
+    },
+    "volunteering": {
+        "title": "Volunteering",
+        "webSite": "Website"
+    },
+    "announcements": {
+        "title": "Announcements",
+        "posted_at": "posted at: $value",
+        "tabLocal": "Local",
+        "emptyAnnouncements": "We couldn't find any announcement!",
+        "tabFurniture": "Furniture",
+        "tabJobs": "Jobs",
+        "seeDetails": "See details ->"
+    },
+    "drawer": {
+        "reportProblem": "@:reportProblem.title",
+        "localAdministration": "@:localAdministration.title",
+        "airQuality": "@:airQuality.title",
+        "events": "@:events.title",
+        "transport": "@:transport.title",
+        "volunteering": "@:volunteering.title",
+        "announcements": "@:announcements.title",
+        "signOut": "Sign out"
+    },
+    "buttons": {
+        "log_in": "Log in"
+    },
+    "home": {
+        "newEvents": "Upcoming events will appear here!"
+    },
+    "formats": {
+        "invalidEmail": "Wrong email format! e.g aaa@bb.ccc!",
+        "onlyNumbersField": "This field should contain only numbers!",
+        "invalidPhoneNumber": "Wrong phone number format\nWe accept the following:\n+40213-564-864\n+40213.564.864\n+40213 564 864\n0213-564-864\n0712456789",
+        "minimum50": "This field should contain more than 50 characters!",
+        "strongerPassword": "Please use a stronger password!",
+        "requiredField": "This field is required. Please fill in the field!",
+        "confirmPassword": "Password do no match!"
+    },
+    "locales(map)": {
+        "en": "English",
+        "ro": "Romanian"
+    }
+}
