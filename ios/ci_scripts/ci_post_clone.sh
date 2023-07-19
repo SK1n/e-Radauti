@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-FLUTTER_VERSION="3.7.0-1.5.pre"
+FLUTTER_VERSION="3.10.2"
 FLUTTER_GIT_URL="https://github.com/flutter/flutter.git"
 
 echo "🟩🟩 Navigate from ($PWD) to ($CI_WORKSPACE) 🟩🟩"
