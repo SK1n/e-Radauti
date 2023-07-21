@@ -48,7 +48,7 @@ flutter pub run build_runner build --delete-conflicting-outputs
 # Run pod install
 echo "🟩🟩 Running pod install... 🟩🟩"
 cd ios/
-pod install
+pod install --repo-update
 cd ..
 
 echo "🟩🟩🟩🟩 Setup complete! 🟩🟩🟩🟩"
