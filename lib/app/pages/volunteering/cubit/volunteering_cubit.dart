@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../models/volunteering/volunteering_model.dart';
 import '../../../repository/firestore/firestore_repository.dart';
 import '../../../repository/storage/storage_repository.dart';
@@ -21,8 +22,8 @@ class VolunteeringCubit extends Cubit<VolunteeringState> {
   void getData() async {
     try {
       emit(state.copyWith(state: PageState.inProgress));
-      var data =
-          await _firestoreRepository.fetchDocument('collection/Volunteering');
+      var data = await _firestoreRepository
+          .fetchDocument(AppConstants.pathVolunteering);
       VolunteeringModel vm = VolunteeringModel.fromJson(data.data() ?? {});
       List<VolunteeringItemModel> list = vm.items;
       final updatedList = await Future.wait(list.map((item) async {

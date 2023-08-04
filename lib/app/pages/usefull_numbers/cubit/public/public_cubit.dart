@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../../models/usefull_numbers/public/public_model.dart';
 import '../../../../repository/firestore/firestore_repository.dart';
 import '../../../../utils/page_state.dart';
@@ -12,12 +13,15 @@ class PublicCubit extends Cubit<PublicState> {
   PublicCubit({
     required FirestoreRepository firestoreRepository,
   })  : _firestoreRepository = firestoreRepository,
-        super(const PublicState());
+        super(const PublicState()) {
+    getData();
+  }
 
   void getData() async {
     try {
       emit(state.copyWith(state: PageState.inProgress));
-      var data = await _firestoreRepository.fetchDocument('collection/Numbers');
+      var data =
+          await _firestoreRepository.fetchDocument(AppConstants.pathNumbers);
       PublicModel am = PublicModel.fromJson(data.data() ?? {});
       emit(
         state.copyWith(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../../gen/strings.g.dart';
 import '../../../utils/scaffolds/app_scaffold.dart';
 import 'package:latlong2/latlong.dart' as lat_lng;
@@ -60,8 +61,7 @@ class ReportProblemReportPage extends StatelessWidget {
                   ),
                   children: [
                     TileLayer(
-                      urlTemplate:
-                          'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                      urlTemplate: AppConstants.mapUrlTemplate,
                       subdomains: const ['a', 'b', 'c'],
                     ),
                     MarkerLayer(

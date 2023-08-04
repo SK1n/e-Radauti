@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 
 import '../../../gen/strings.g.dart';
 import '../../utils/scaffolds/app_tabs_scaffold.dart';
@@ -27,7 +28,7 @@ class PageLocalAdministration extends StatelessWidget {
     ];
     return AppTabsScaffold(
       tabs: tabs,
-      expandedHeight: 150,
+      expandedHeight: AppConstants.expandedHeight,
       appBarTitle: t.localAdministration.title,
     );
   }

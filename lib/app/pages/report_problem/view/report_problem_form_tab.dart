@@ -73,8 +73,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
             ..hideCurrentSnackBar()
             ..showSnackBar(
               SnackBar(
-                content:
-                    Text(state.errorMessage ?? t.reportProblem.sentFailure),
+                content: Text(state.errorMessage),
               ),
             );
         } else if (state.formzStatus.isSuccess) {
@@ -135,7 +134,9 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                           .usernameChanged(username ?? ''),
                       initialValue: state.form.name.value,
                       decoration: InputDecoration(
-                          errorText: state.form.name.error?.text(),
+                          errorText: state.form.isPure
+                              ? null
+                              : state.form.name.error?.text(),
                           labelText: t.reportProblem.usernameTextField),
                     ),
                   ),
@@ -149,7 +150,9 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                       initialValue: state.form.email.value,
                       validator: (_) => state.form.email.displayError?.text(),
                       decoration: InputDecoration(
-                        labelText: t.reportProblem.emailTextField,
+                        labelText: state.form.isPure
+                            ? null
+                            : t.reportProblem.emailTextField,
                         errorText: state.form.email.error?.text(),
                       ),
                     ),
@@ -165,7 +168,9 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                       validator: (_) => state.form.phone.displayError?.text(),
                       decoration: InputDecoration(
                         labelText: t.reportProblem.phoneNumberTextField,
-                        errorText: state.form.phone.error?.text(),
+                        errorText: state.form.isPure
+                            ? null
+                            : state.form.phone.error?.text(),
                       ),
                     ),
                   ),
@@ -183,7 +188,9 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                           .read<ReportProblemCubit>()
                           .categoryChanged(category ?? ""),
                       decoration: InputDecoration(
-                          errorText: state.form.category.error?.text(),
+                          errorText: state.form.isPure
+                              ? null
+                              : state.form.category.error?.text(),
                           labelText: t.reportProblem.categoryDropdown),
                       validator: (_) =>
                           state.form.category.displayError?.text(),
@@ -203,7 +210,9 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                           .read<ReportProblemCubit>()
                           .institutionChanged(institution ?? ""),
                       decoration: InputDecoration(
-                        errorText: state.form.institution.error?.text(),
+                        errorText: state.form.isPure
+                            ? null
+                            : state.form.institution.error?.text(),
                         labelText: t.reportProblem.institutionDropdown,
                       ),
                       validator: (_) =>
@@ -220,7 +229,9 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                           .subjectChanged(subject ?? ''),
                       validator: (_) => state.form.subject.displayError?.text(),
                       decoration: InputDecoration(
-                        errorText: state.form.subject.error?.text(),
+                        errorText: state.form.isPure
+                            ? null
+                            : state.form.subject.error?.text(),
                         labelText: t.reportProblem.subjectTextField,
                       ),
                     ),
@@ -236,7 +247,9 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                       validator: (_) =>
                           state.form.description.displayError?.text(),
                       decoration: InputDecoration(
-                        errorText: state.form.description.error?.text(),
+                        errorText: state.form.isPure
+                            ? null
+                            : state.form.description.error?.text(),
                         labelText: t.reportProblem.descriptionTextField,
                       ),
                     ),
@@ -265,11 +278,14 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                       maxImages: 3,
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(),
-                        errorText: state.form.images.error?.text(),
+                        errorText: state.form.isPure
+                            ? null
+                            : state.form.images.error?.text(),
                         labelText: t.reportProblem.imagePicker,
                       ),
-                      validator: (value) =>
-                          state.form.images.displayError?.text(),
+                      validator: (value) => state.form.isPure
+                          ? null
+                          : state.form.images.displayError?.text(),
                       onChanged: (value) => context
                           .read<ReportProblemCubit>()
                           .imagePickerChanged(value),
@@ -282,11 +298,6 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                           child: SizedBox(
                             width: MediaQuery.of(context).size.width,
                             child: FilledButton(
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                              ),
                               onPressed: state.form.isValid
                                   ? () async {
                                       await context

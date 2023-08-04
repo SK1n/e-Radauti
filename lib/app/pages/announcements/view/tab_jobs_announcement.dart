@@ -56,51 +56,54 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
+    return Card(
+      child: Padding(
+        padding: AppConstants.innerCardPadding,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: AppConstants.leftDelimiter,
+              child: Text(
                 item.title,
                 style: AppConstants.titleBigTextStyle,
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 1.0),
-                child: Text(
-                    t.announcements.posted_at(value: item.dateCreated.format()),
-                    style: AppConstants.smallTextTextStyle),
+            ),
+            Padding(
+              padding: AppConstants.leftDelimiter,
+              child: Text(
+                t.announcements.posted_at(
+                  value: item.dateCreated.format(),
+                ),
+                style: AppConstants.smallTextTextStyle,
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
+            ),
+            Padding(
+              padding: AppConstants.innerCardPadding,
+              child: Text(
+                item.rawContent,
+                maxLines: 10,
+                overflow: TextOverflow.ellipsis,
+                style: AppConstants.textTextStyle,
+              ),
+            ),
+            Padding(
+              padding: AppConstants.innerCardPadding,
+              child: GestureDetector(
+                onTap: () async {
+                  String link =
+                      '${AppConstants.jobsSlug}${item.slug}-${item.id}';
+                  if (await canLaunchUrlString(link)) {
+                    await launchUrlString(link);
+                  }
+                },
                 child: Text(
-                  item.rawContent,
-                  maxLines: 10,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppConstants.textTextStyle,
+                  t.announcements.seeDetails,
+                  style: AppConstants.linkTextStyle,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: GestureDetector(
-                  onTap: () async {
-                    String link =
-                        '${AppConstants.baseERadautiLink}${item.slug}-${item.id}';
-                    if (await canLaunchUrlString(link)) {
-                      await launchUrlString(link);
-                    }
-                  },
-                  child: Text(
-                    t.announcements.seeDetails,
-                    style: AppConstants.linkTextStyle,
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

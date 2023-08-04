@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import 'tab_taxi.dart';
 import 'tab_train.dart';
 import '../../../../gen/strings.g.dart';
@@ -25,7 +26,7 @@ class PageTransport extends StatelessWidget {
     ];
     return AppTabsScaffold(
       tabs: tabs,
-      expandedHeight: 150,
+      expandedHeight: AppConstants.expandedHeight,
       appBarTitle: t.transport.title,
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../models/transport/train/train_model.dart';
 import '../../../utils/scaffolds/app_sliver_scaffold.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -38,12 +39,12 @@ class PageTrainDetails extends StatelessWidget {
               alignment: TimelineAlign.center,
               lineXY: 0.3,
               startChild: Container(
-                margin: const EdgeInsets.only(right: 10),
+                margin: AppConstants.leftDelimiter,
                 alignment: Alignment.centerRight,
                 child: Text(stations.aTime),
               ),
               endChild: Container(
-                padding: const EdgeInsets.only(left: 10),
+                padding: AppConstants.leftDelimiter,
                 alignment: Alignment.centerLeft,
                 constraints: const BoxConstraints(minHeight: 100),
                 child: Text(stations.aStation),

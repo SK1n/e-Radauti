@@ -255,6 +255,8 @@ class AuthenticationRepository {
     }
   }
 
+  bool isAnnonymous() => _firebaseAuth.currentUser!.isAnonymous;
+
   /// Signs out the current user which will emit
   /// [User.empty] from the [user] Stream.
   ///

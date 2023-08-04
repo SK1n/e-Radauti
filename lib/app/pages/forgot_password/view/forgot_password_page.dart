@@ -26,7 +26,7 @@ class ForgotPasswordPage extends StatelessWidget {
         BlocProvider(
           create: (context) => ForgotPasswordCubit(
             context.read<AuthenticationRepository>(),
-          ),
+          )..emailChanged(email!),
           child: ForgotPasswordForm(email),
         ),
       ],

@@ -12,5 +12,6 @@ class EventsState with _$EventsState {
     @Default([]) List<EventsItemModel> favoriteEvents,
     @Default(PageState.initial) PageState favoriteStatus,
     @Default('') String errorMessageFavorites,
+    @Default(false) bool isAnnonymous,
   }) = _EventsState;
 }

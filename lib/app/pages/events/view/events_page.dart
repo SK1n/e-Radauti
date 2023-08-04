@@ -33,18 +33,12 @@ class EventsPage extends StatelessWidget {
         'widget': const TabEventsFavorites(),
       }
     ];
-    // return AppTabsScaffold(
-    //   tabs: tabs,
-    //   appBarTitle: t.events.title,
-    // );
     return BlocProvider.value(
       value: EventsBloc(
         context.read<FirestoreRepository>(),
         context.read<StorageRepository>(),
         context.read<AuthenticationRepository>(),
-      )
-        ..add(const GetNewEvents())
-        ..add(const GetOldEvents()),
+      ),
       child: AppTabsScaffold(
         tabs: tabs,
         appBarTitle: t.events.title,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../models/local_administration/local_council_leaders_model.dart';
 import 'cubit/leaders/local_council_leaders_cubit.dart';
 import 'page_leader_details.dart';
@@ -23,7 +24,7 @@ class TabLocalCouncilLeaders extends StatelessWidget {
       value: LocalCouncilLeadersCubit(
         firestoreRepository: context.read<FirestoreRepository>(),
         storageRepository: context.read<StorageRepository>(),
-      )..getData(),
+      ),
       child: BlocConsumer<LocalCouncilLeadersCubit, LocalCouncilLeadersState>(
         builder: (context, state) {
           if (state.state.isInProgress) {
@@ -64,13 +65,9 @@ class _ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(10.0),
+    return Padding(
+      padding: AppConstants.innerCardPadding,
       child: Card(
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(color: Colors.black12, width: 1),
-          borderRadius: BorderRadius.circular(30),
-        ),
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(30),
@@ -97,29 +94,17 @@ class _ItemCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
-                child: Text(
-                  data.function,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: const Color(0xFF434EA0),
-                  ),
-                ),
+                padding: AppConstants.leftDelimiter,
+                child:
+                    Text(data.function, style: AppConstants.smallTextTextStyle),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
-                child: Text(
-                  '${data.firstName} ${data.surname}',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: const Color(
-                      0xFF1F2937,
-                    ),
-                  ),
-                ),
+                padding: AppConstants.leftDelimiter,
+                child: Text('${data.firstName} ${data.surname}',
+                    style: AppConstants.titleBigTextStyle),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
+                padding: AppConstants.leftDelimiter,
                 child: Row(
                   children: [
                     data.fbUrl.isNotEmpty
@@ -148,7 +133,7 @@ class _ItemCard extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: AppConstants.innerCardPadding,
                   child: FilledButton(
                     onPressed: () => Navigator.of(context)
                         .push(PageLeadersDetails.route(data)),

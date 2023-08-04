@@ -17,14 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ReportProblemState {
   ReportProblemForm get form => throw _privateConstructorUsedError;
-  bool get isValid => throw _privateConstructorUsedError;
   FormzSubmissionStatus get formzStatus => throw _privateConstructorUsedError;
   PageState get storageStatus => throw _privateConstructorUsedError;
   PageState get firestoreStatus => throw _privateConstructorUsedError;
   List<ReportProblemUserItemModel> get myReportsData =>
       throw _privateConstructorUsedError;
   List<Marker>? get markersData => throw _privateConstructorUsedError;
-  String? get errorMessage => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
   Position? get position => throw _privateConstructorUsedError;
   PositionState get positionState => throw _privateConstructorUsedError;
 
@@ -41,15 +40,16 @@ abstract class $ReportProblemStateCopyWith<$Res> {
   @useResult
   $Res call(
       {ReportProblemForm form,
-      bool isValid,
       FormzSubmissionStatus formzStatus,
       PageState storageStatus,
       PageState firestoreStatus,
       List<ReportProblemUserItemModel> myReportsData,
       List<Marker>? markersData,
-      String? errorMessage,
+      String errorMessage,
       Position? position,
       PositionState positionState});
+
+  $ReportProblemFormCopyWith<$Res> get form;
 }
 
 /// @nodoc
@@ -66,13 +66,12 @@ class _$ReportProblemStateCopyWithImpl<$Res, $Val extends ReportProblemState>
   @override
   $Res call({
     Object? form = null,
-    Object? isValid = null,
     Object? formzStatus = null,
     Object? storageStatus = null,
     Object? firestoreStatus = null,
     Object? myReportsData = null,
     Object? markersData = freezed,
-    Object? errorMessage = freezed,
+    Object? errorMessage = null,
     Object? position = freezed,
     Object? positionState = null,
   }) {
@@ -81,10 +80,6 @@ class _$ReportProblemStateCopyWithImpl<$Res, $Val extends ReportProblemState>
           ? _value.form
           : form // ignore: cast_nullable_to_non_nullable
               as ReportProblemForm,
-      isValid: null == isValid
-          ? _value.isValid
-          : isValid // ignore: cast_nullable_to_non_nullable
-              as bool,
       formzStatus: null == formzStatus
           ? _value.formzStatus
           : formzStatus // ignore: cast_nullable_to_non_nullable
@@ -105,10 +100,10 @@ class _$ReportProblemStateCopyWithImpl<$Res, $Val extends ReportProblemState>
           ? _value.markersData
           : markersData // ignore: cast_nullable_to_non_nullable
               as List<Marker>?,
-      errorMessage: freezed == errorMessage
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       position: freezed == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -118,6 +113,14 @@ class _$ReportProblemStateCopyWithImpl<$Res, $Val extends ReportProblemState>
           : positionState // ignore: cast_nullable_to_non_nullable
               as PositionState,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ReportProblemFormCopyWith<$Res> get form {
+    return $ReportProblemFormCopyWith<$Res>(_value.form, (value) {
+      return _then(_value.copyWith(form: value) as $Val);
+    });
   }
 }
 
@@ -131,15 +134,17 @@ abstract class _$$_ReportProblemStateCopyWith<$Res>
   @useResult
   $Res call(
       {ReportProblemForm form,
-      bool isValid,
       FormzSubmissionStatus formzStatus,
       PageState storageStatus,
       PageState firestoreStatus,
       List<ReportProblemUserItemModel> myReportsData,
       List<Marker>? markersData,
-      String? errorMessage,
+      String errorMessage,
       Position? position,
       PositionState positionState});
+
+  @override
+  $ReportProblemFormCopyWith<$Res> get form;
 }
 
 /// @nodoc
@@ -154,13 +159,12 @@ class __$$_ReportProblemStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? form = null,
-    Object? isValid = null,
     Object? formzStatus = null,
     Object? storageStatus = null,
     Object? firestoreStatus = null,
     Object? myReportsData = null,
     Object? markersData = freezed,
-    Object? errorMessage = freezed,
+    Object? errorMessage = null,
     Object? position = freezed,
     Object? positionState = null,
   }) {
@@ -169,10 +173,6 @@ class __$$_ReportProblemStateCopyWithImpl<$Res>
           ? _value.form
           : form // ignore: cast_nullable_to_non_nullable
               as ReportProblemForm,
-      isValid: null == isValid
-          ? _value.isValid
-          : isValid // ignore: cast_nullable_to_non_nullable
-              as bool,
       formzStatus: null == formzStatus
           ? _value.formzStatus
           : formzStatus // ignore: cast_nullable_to_non_nullable
@@ -193,10 +193,10 @@ class __$$_ReportProblemStateCopyWithImpl<$Res>
           ? _value._markersData
           : markersData // ignore: cast_nullable_to_non_nullable
               as List<Marker>?,
-      errorMessage: freezed == errorMessage
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       position: freezed == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -213,31 +213,33 @@ class __$$_ReportProblemStateCopyWithImpl<$Res>
 
 class _$_ReportProblemState implements _ReportProblemState {
   const _$_ReportProblemState(
-      {required this.form,
-      required this.isValid,
-      required this.formzStatus,
-      required this.storageStatus,
-      required this.firestoreStatus,
-      required final List<ReportProblemUserItemModel> myReportsData,
-      required final List<Marker>? markersData,
-      required this.errorMessage,
-      required this.position,
-      required this.positionState})
+      {this.form = const ReportProblemForm(),
+      this.formzStatus = FormzSubmissionStatus.initial,
+      this.storageStatus = PageState.initial,
+      this.firestoreStatus = PageState.initial,
+      final List<ReportProblemUserItemModel> myReportsData = const [],
+      final List<Marker>? markersData = const [],
+      this.errorMessage = '',
+      this.position,
+      this.positionState = PositionState.initial})
       : _myReportsData = myReportsData,
         _markersData = markersData;
 
   @override
+  @JsonKey()
   final ReportProblemForm form;
   @override
-  final bool isValid;
-  @override
+  @JsonKey()
   final FormzSubmissionStatus formzStatus;
   @override
+  @JsonKey()
   final PageState storageStatus;
   @override
+  @JsonKey()
   final PageState firestoreStatus;
   final List<ReportProblemUserItemModel> _myReportsData;
   @override
+  @JsonKey()
   List<ReportProblemUserItemModel> get myReportsData {
     if (_myReportsData is EqualUnmodifiableListView) return _myReportsData;
     // ignore: implicit_dynamic_type
@@ -246,6 +248,7 @@ class _$_ReportProblemState implements _ReportProblemState {
 
   final List<Marker>? _markersData;
   @override
+  @JsonKey()
   List<Marker>? get markersData {
     final value = _markersData;
     if (value == null) return null;
@@ -255,15 +258,17 @@ class _$_ReportProblemState implements _ReportProblemState {
   }
 
   @override
-  final String? errorMessage;
+  @JsonKey()
+  final String errorMessage;
   @override
   final Position? position;
   @override
+  @JsonKey()
   final PositionState positionState;
 
   @override
   String toString() {
-    return 'ReportProblemState(form: $form, isValid: $isValid, formzStatus: $formzStatus, storageStatus: $storageStatus, firestoreStatus: $firestoreStatus, myReportsData: $myReportsData, markersData: $markersData, errorMessage: $errorMessage, position: $position, positionState: $positionState)';
+    return 'ReportProblemState(form: $form, formzStatus: $formzStatus, storageStatus: $storageStatus, firestoreStatus: $firestoreStatus, myReportsData: $myReportsData, markersData: $markersData, errorMessage: $errorMessage, position: $position, positionState: $positionState)';
   }
 
   @override
@@ -272,7 +277,6 @@ class _$_ReportProblemState implements _ReportProblemState {
         (other.runtimeType == runtimeType &&
             other is _$_ReportProblemState &&
             (identical(other.form, form) || other.form == form) &&
-            (identical(other.isValid, isValid) || other.isValid == isValid) &&
             (identical(other.formzStatus, formzStatus) ||
                 other.formzStatus == formzStatus) &&
             (identical(other.storageStatus, storageStatus) ||
@@ -295,7 +299,6 @@ class _$_ReportProblemState implements _ReportProblemState {
   int get hashCode => Object.hash(
       runtimeType,
       form,
-      isValid,
       formzStatus,
       storageStatus,
       firestoreStatus,
@@ -315,21 +318,18 @@ class _$_ReportProblemState implements _ReportProblemState {
 
 abstract class _ReportProblemState implements ReportProblemState {
   const factory _ReportProblemState(
-      {required final ReportProblemForm form,
-      required final bool isValid,
-      required final FormzSubmissionStatus formzStatus,
-      required final PageState storageStatus,
-      required final PageState firestoreStatus,
-      required final List<ReportProblemUserItemModel> myReportsData,
-      required final List<Marker>? markersData,
-      required final String? errorMessage,
-      required final Position? position,
-      required final PositionState positionState}) = _$_ReportProblemState;
+      {final ReportProblemForm form,
+      final FormzSubmissionStatus formzStatus,
+      final PageState storageStatus,
+      final PageState firestoreStatus,
+      final List<ReportProblemUserItemModel> myReportsData,
+      final List<Marker>? markersData,
+      final String errorMessage,
+      final Position? position,
+      final PositionState positionState}) = _$_ReportProblemState;
 
   @override
   ReportProblemForm get form;
-  @override
-  bool get isValid;
   @override
   FormzSubmissionStatus get formzStatus;
   @override
@@ -341,7 +341,7 @@ abstract class _ReportProblemState implements ReportProblemState {
   @override
   List<Marker>? get markersData;
   @override
-  String? get errorMessage;
+  String get errorMessage;
   @override
   Position? get position;
   @override

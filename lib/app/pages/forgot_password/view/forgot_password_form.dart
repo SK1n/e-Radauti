@@ -3,10 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterapperadauti/app/pages/forgot_password/cubit/forgot_password_cubit.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import 'package:flutterapperadauti/app/utils/widgets/loading_widget.dart';
-import 'package:flutterapperadauti/app/utils/widgets/widget_with_border.dart';
 import 'package:flutterapperadauti/gen/strings.g.dart';
-import 'package:formz/formz.dart';
 import 'package:flutterapperadauti/app/form_inputs/form_inputs.dart';
+import 'package:formz/formz.dart';
 
 class ForgotPasswordForm extends StatelessWidget {
   final String? email;
@@ -21,17 +20,17 @@ class ForgotPasswordForm extends StatelessWidget {
             ..hideCurrentSnackBar()
             ..showSnackBar(
               SnackBar(
-                content:
-                    Text(state.errorMessage ?? 'Error sending reset email'),
+                content: Text(state.errorMessage),
               ),
             );
         } else if (state.status.isSuccess) {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              const SnackBar(
+              SnackBar(
                 content: Text(
-                    'We\'ve sent an email with steps to reset you\'r password'),
+                  t.forgotPassword.emailSent,
+                ),
               ),
             );
           Navigator.of(context).pop();
@@ -53,7 +52,8 @@ class _EmailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
-      buildWhen: (previous, current) => previous.email != current.email,
+      buildWhen: (previous, current) =>
+          previous.form.email != current.form.email,
       builder: (context, state) {
         return Padding(
           padding: AppConstants.innerCardPadding,
@@ -62,9 +62,10 @@ class _EmailInput extends StatelessWidget {
             onChanged: (email) =>
                 context.read<ForgotPasswordCubit>().emailChanged(email),
             keyboardType: TextInputType.emailAddress,
-            validator: (_) => state.email.displayError?.text(),
+            validator: (_) => state.form.email.displayError?.text(),
             decoration: InputDecoration(
-              errorText: state.email.error?.text(),
+              errorText:
+                  state.form.isPure ? null : state.form.email.error?.text(),
               labelText: t.forgotPassword.emailTextField,
             ),
           ),
@@ -90,7 +91,7 @@ class _ResetPasswordButton extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  onPressed: state.isValid
+                  onPressed: state.form.isValid
                       ? () => context
                           .read<ForgotPasswordCubit>()
                           .sendPasswordResetEmail()

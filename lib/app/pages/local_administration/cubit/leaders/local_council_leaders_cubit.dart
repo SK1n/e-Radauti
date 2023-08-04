@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../../models/local_administration/local_council_leaders_model.dart';
 import '../../../../repository/firestore/firestore_repository.dart';
 import '../../../../repository/storage/storage_repository.dart';
@@ -16,12 +17,15 @@ class LocalCouncilLeadersCubit extends Cubit<LocalCouncilLeadersState> {
     required StorageRepository storageRepository,
   })  : _firestoreRepository = firestoreRepository,
         _storageRepository = storageRepository,
-        super(const LocalCouncilLeadersState());
+        super(const LocalCouncilLeadersState()) {
+    getData();
+  }
 
   void getData() async {
     try {
       emit(state.copyWith(state: PageState.inProgress));
-      var data = await _firestoreRepository.fetchDocument('collection/Leaders');
+      var data =
+          await _firestoreRepository.fetchDocument(AppConstants.pathLeaders);
       LocalCouncilLeadersModel lclm =
           LocalCouncilLeadersModel.fromJson(data.data() ?? {});
       List<LocalCouncilLeadersItemModel> updatedList = [];

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../../models/local_administration/local_council_model.dart';
 import '../../../../repository/firestore/firestore_repository.dart';
 import '../../../../repository/storage/storage_repository.dart';
@@ -16,13 +17,15 @@ class LocalCouncilTeamCubit extends Cubit<LocalCouncilTeamState> {
     required StorageRepository storageRepository,
   })  : _firestoreRepository = firestoreRepository,
         _storageRepository = storageRepository,
-        super(const LocalCouncilTeamState());
+        super(const LocalCouncilTeamState()) {
+    getData();
+  }
 
   void getData() async {
     try {
       emit(state.copyWith(state: PageState.inProgress));
-      var data =
-          await _firestoreRepository.fetchDocument('collection/LocalCouncil');
+      var data = await _firestoreRepository
+          .fetchDocument(AppConstants.pathLocalCouncil);
       LocalCouncilModel lcm = LocalCouncilModel.fromJson(data.data() ?? {});
       List<LocalCouncilItemModel> updatedList = [];
 

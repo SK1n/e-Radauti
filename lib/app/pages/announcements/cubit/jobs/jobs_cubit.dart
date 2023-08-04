@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../../models/e_radauti_website/e_radauti_website_model.dart';
 import '../../../../repository/e_radauti_website/e_radauti_website_repository.dart';
 import '../../../../utils/page_state.dart';
@@ -12,13 +13,15 @@ class JobsCubit extends Cubit<JobsState> {
   JobsCubit({
     required ERadautiWebsiteRepository eRadautiWebsiteRepository,
   })  : _eRadautiWebsiteRepository = eRadautiWebsiteRepository,
-        super(const JobsState());
+        super(const JobsState()) {
+    getData();
+  }
 
   void getData() async {
     try {
       emit(state.copyWith(state: PageState.inProgress));
       ERadautiWebsiteModel data = await _eRadautiWebsiteRepository.fetchData(
-        'https://www.eradauti.ro/api/context?pathname=/anunturi/locuri-de-munca-20',
+        AppConstants.jobsLink,
       );
       emit(
         state.copyWith(

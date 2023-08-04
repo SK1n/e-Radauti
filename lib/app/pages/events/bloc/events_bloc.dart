@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../models/events/events_item_model.dart';
 import '../../../models/events/new_events_model.dart';
 import '../../../models/events/old_events_model.dart';
@@ -30,7 +31,7 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
         try {
           emit(state.copyWith(newEventsStatus: PageState.inProgress));
           var result =
-              await _firestoreRepository.fetchDocument('collection/Events');
+              await _firestoreRepository.fetchDocument(AppConstants.pathEvents);
           NewEventsModel data = NewEventsModel.fromJson(result.data() ?? {});
           List<EventsItemModel> list = data.list;
           final updatedEvents = await Future.wait(list.map((event) async {
@@ -56,8 +57,8 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
       (event, emit) async {
         emit(state.copyWith(oldEventsStatus: PageState.inProgress));
         try {
-          var result =
-              await _firestoreRepository.fetchDocument('collection/OldEvents');
+          var result = await _firestoreRepository
+              .fetchDocument(AppConstants.pathOldEvents);
           OldEventsModel data = OldEventsModel.fromJson(result.data() ?? {});
           List<EventsItemModel> list = data.list;
 
@@ -85,8 +86,12 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
 
     on<GetFavoriteEvents>(
       (event, emit) async {
+        if (_authenticationRepository.isAnnonymous()) {
+          emit(state.copyWith(isAnnonymous: true));
+          return;
+        }
         User user = _authenticationRepository.currentUser;
-        String path = 'users/${user.id}';
+        String path = '${AppConstants.firebaseUser}/${user.id}';
         emit(state.copyWith(favoriteStatus: PageState.inProgress));
         await emit.onEach(
           _firestoreRepository.getFavoriteEvents(
@@ -116,18 +121,19 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     );
     on<AddToFavorite>((event, emit) {
       User user = _authenticationRepository.currentUser;
-      _firestoreRepository.updateArrayField('users/${user.id}', 'events',
+      _firestoreRepository.updateArrayField(
+          '${AppConstants.firebaseUser}/${user.id}', 'events',
           elementsToAdd: [event.item]);
     });
     on<RemoveFromFavorite>((event, emit) {
       User user = _authenticationRepository.currentUser;
-      _firestoreRepository.updateArrayField('users/${user.id}', 'events',
+      _firestoreRepository.updateArrayField(
+          '${AppConstants.firebaseUser}/${user.id}', 'events',
           elementsToRemove: [event.item]);
     });
-  }
 
-  @override
-  void onChange(Change<EventsState> change) {
-    super.onChange(change);
+    add(const GetNewEvents());
+    add(const GetOldEvents());
+    add(const GetFavoriteEvents());
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/widgets/annonymous_widget.dart';
 import '../bloc/events_bloc.dart';
 import '../../../repository/authentication/authentication_repository.dart';
 import '../../../repository/firestore/firestore_repository.dart';
@@ -21,11 +22,14 @@ class TabEventsFavorites extends StatelessWidget {
         context.read<FirestoreRepository>(),
         context.read<StorageRepository>(),
         context.read<AuthenticationRepository>(),
-      )..add(const GetFavoriteEvents()),
+      ),
       child: BlocListener<EventsBloc, EventsState>(
         listener: (context, state) {},
         child: BlocBuilder<EventsBloc, EventsState>(
           builder: (context, state) {
+            if (state.isAnnonymous) {
+              return const SliverToBoxAdapter(child: AnnonymousWidget());
+            }
             if (state.favoriteStatus.isInProgress) {
               return const SliverToBoxAdapter(child: LoadingWidget());
             } else if (state.favoriteStatus.isSuccess) {

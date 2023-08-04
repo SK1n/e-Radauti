@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 2
-/// Strings: 280 (140 per locale)
+/// Strings: 296 (148 per locale)
 ///
-/// Built on 2023-07-19 at 19:20 UTC
+/// Built on 2023-08-04 at 14:21 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -161,6 +161,7 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsDrawerEn drawer = _StringsDrawerEn._(_root);
 	late final _StringsButtonsEn buttons = _StringsButtonsEn._(_root);
 	late final _StringsHomeEn home = _StringsHomeEn._(_root);
+	late final _StringsGuestScreenEn guestScreen = _StringsGuestScreenEn._(_root);
 	late final _StringsFormatsEn formats = _StringsFormatsEn._(_root);
 	Map<String, String> get locales => {
 		'en': 'English',
@@ -176,8 +177,8 @@ class _StringsSingInScreenEn {
 
 	// Translations
 	String get title => 'Log in';
-	String get emailTextField => 'Email address';
-	String get passwordTextField => 'Password';
+	String get emailTextField => 'Email address *';
+	String get passwordTextField => 'Password *';
 	String get logInButton => 'Log in';
 	String get welcome => 'Welcome!';
 	String get wrongEmailPassword => 'The credentials are invalid!';
@@ -196,11 +197,11 @@ class _StringsCreateAccountEn {
 
 	// Translations
 	String get title => 'Create a new account!';
-	String get emailTextField => 'Email address';
-	String get usernameTextField => 'Name and surname';
-	String get phoneNumberTextField => 'Phone number';
-	String get passwordTextField => 'Password';
-	String get confirmPassword => 'Confirm password';
+	String get emailTextField => 'Email address *';
+	String get usernameTextField => 'Name and surname *';
+	String get phoneNumberTextField => 'Phone number *';
+	String get passwordTextField => 'Password *';
+	String get confirmPassword => 'Confirm password *';
 	String get createAccountButton => 'Create account';
 }
 
@@ -212,8 +213,9 @@ class _StringsForgotPasswordEn {
 
 	// Translations
 	String get title => 'Reset password';
-	String get emailTextField => 'Email address';
+	String get emailTextField => 'Email address *';
 	String get resetPasswordButton => 'Reset password';
+	String get emailSent => 'We\'ve sent an email with steps to reset you\'r password';
 }
 
 // Path: events
@@ -252,15 +254,15 @@ class _StringsReportProblemEn {
 	String get dspSuceava => 'DSP Suceava';
 	String get ocolulSilvicMarginea => 'Ocolul Silvic Marginea';
 	String get radautiulCivicAssociation => 'Radautiul Civic Association';
-	String get institutionDropdown => 'Institution';
-	String get usernameTextField => 'Name and surname';
-	String get categoryDropdown => 'Category';
-	String get emailTextField => 'Email address';
-	String get subjectTextField => 'Subject';
-	String get descriptionTextField => 'Description';
+	String get institutionDropdown => 'Institution *';
+	String get usernameTextField => 'Name and surname *';
+	String get categoryDropdown => 'Category *';
+	String get emailTextField => 'Email address *';
+	String get subjectTextField => 'Subject *';
+	String get descriptionTextField => 'Description *';
 	String get locationSwitch => 'Add location';
-	String get imagePicker => 'Take a photo or upload one';
-	String get phoneNumberTextField => 'Phone number';
+	String get imagePicker => 'Take a photo or upload one *';
+	String get phoneNumberTextField => 'Phone number *';
 	String get infrastructure => 'Infrastructure';
 	String get utilitiesProblem => 'Utilities problems';
 	String get uncollectedGarbage => 'Uncollected garbage';
@@ -300,6 +302,7 @@ class _StringsLocalAdministrationEn {
 	String get seeMore => 'See more';
 	String get wealth => 'Wealth declaration';
 	String get interests => 'Declaration of interests';
+	String get seePdf => 'See PDF';
 }
 
 // Path: airQuality
@@ -395,6 +398,7 @@ class _StringsDrawerEn {
 	String get transport => '${_root.transport.title}';
 	String get volunteering => '${_root.volunteering.title}';
 	String get announcements => '${_root.announcements.title}';
+	String get usefullNumbers => '${_root.usefullNumbers.title}';
 	String get signOut => 'Sign out';
 }
 
@@ -406,6 +410,7 @@ class _StringsButtonsEn {
 
 	// Translations
 	String get log_in => 'Log in';
+	String get retry => 'Retry';
 }
 
 // Path: home
@@ -416,6 +421,19 @@ class _StringsHomeEn {
 
 	// Translations
 	String get newEvents => 'Upcoming events will appear here!';
+	String get reportsMade1 => 'You have\n\n';
+	String get reportsMade2 => '\n\nreports';
+}
+
+// Path: guestScreen
+class _StringsGuestScreenEn {
+	_StringsGuestScreenEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get description => 'You are on a guest account, please connect / create an account to continue!';
+	String get buttonText => 'Go to login / signup';
 }
 
 // Path: formats
@@ -500,6 +518,7 @@ class _StringsRo implements _StringsEn {
 	@override late final _StringsDrawerRo drawer = _StringsDrawerRo._(_root);
 	@override late final _StringsButtonsRo buttons = _StringsButtonsRo._(_root);
 	@override late final _StringsHomeRo home = _StringsHomeRo._(_root);
+	@override late final _StringsGuestScreenRo guestScreen = _StringsGuestScreenRo._(_root);
 	@override late final _StringsFormatsRo formats = _StringsFormatsRo._(_root);
 	@override Map<String, String> get locales => {
 		'en': 'Engleză',
@@ -515,8 +534,8 @@ class _StringsSingInScreenRo implements _StringsSingInScreenEn {
 
 	// Translations
 	@override String get title => 'Log in';
-	@override String get emailTextField => 'Adresă de email';
-	@override String get passwordTextField => 'Parolă';
+	@override String get emailTextField => 'Adresă de email *';
+	@override String get passwordTextField => 'Parolă *';
 	@override String get logInButton => 'Log in';
 	@override String get welcome => 'Bine ai venit!';
 	@override String get wrongEmailPassword => 'Datele sunt invalide!';
@@ -535,11 +554,11 @@ class _StringsCreateAccountRo implements _StringsCreateAccountEn {
 
 	// Translations
 	@override String get title => 'Creează-ți cont!';
-	@override String get emailTextField => 'Adresă de email';
-	@override String get usernameTextField => 'Numele și prenumele';
-	@override String get phoneNumberTextField => 'Număr de telefon';
-	@override String get passwordTextField => 'Parolă';
-	@override String get confirmPassword => 'Confirmă parola';
+	@override String get emailTextField => 'Adresă de email *';
+	@override String get usernameTextField => 'Numele și prenumele *';
+	@override String get phoneNumberTextField => 'Număr de telefon *';
+	@override String get passwordTextField => 'Parolă *';
+	@override String get confirmPassword => 'Confirmă parola *';
 	@override String get createAccountButton => 'Creează-ți cont';
 }
 
@@ -551,8 +570,9 @@ class _StringsForgotPasswordRo implements _StringsForgotPasswordEn {
 
 	// Translations
 	@override String get title => 'Resetează parola';
-	@override String get emailTextField => 'Adresă de email';
+	@override String get emailTextField => 'Adresă de email *';
 	@override String get resetPasswordButton => 'Resetează parola';
+	@override String get emailSent => 'Am trimis un e-mail cu pași pentru a vă reseta parola';
 }
 
 // Path: events
@@ -591,15 +611,15 @@ class _StringsReportProblemRo implements _StringsReportProblemEn {
 	@override String get dspSuceava => 'DSP Suceava';
 	@override String get ocolulSilvicMarginea => 'Ocolul Silvic Marginea';
 	@override String get radautiulCivicAssociation => 'Asociația Rădăuțiul Civic';
-	@override String get institutionDropdown => 'Instituţie';
-	@override String get usernameTextField => 'Numele și prenumele';
-	@override String get categoryDropdown => 'Categorie';
-	@override String get emailTextField => 'Adresă de email';
-	@override String get subjectTextField => 'Subiect';
-	@override String get descriptionTextField => 'Descriere';
+	@override String get institutionDropdown => 'Instituţie *';
+	@override String get usernameTextField => 'Numele și prenumele *';
+	@override String get categoryDropdown => 'Categorie *';
+	@override String get emailTextField => 'Adresă de email *';
+	@override String get subjectTextField => 'Subiect *';
+	@override String get descriptionTextField => 'Descriere *';
 	@override String get locationSwitch => 'Adaugă locația';
-	@override String get imagePicker => 'Fă o fotografie sau încarcă una';
-	@override String get phoneNumberTextField => 'Număr de telefon';
+	@override String get imagePicker => 'Fă o fotografie sau încarcă una *';
+	@override String get phoneNumberTextField => 'Număr de telefon *';
 	@override String get infrastructure => 'Infrastructură';
 	@override String get utilitiesProblem => 'Probleme cu utilitățile';
 	@override String get uncollectedGarbage => 'Gunoi neridicat';
@@ -639,6 +659,7 @@ class _StringsLocalAdministrationRo implements _StringsLocalAdministrationEn {
 	@override String get seeMore => 'Vezi mai mult';
 	@override String get wealth => 'Declarația de avere';
 	@override String get interests => 'Declarație de interese';
+	@override String get seePdf => 'Vizualizează PDF-ul';
 }
 
 // Path: airQuality
@@ -734,6 +755,7 @@ class _StringsDrawerRo implements _StringsDrawerEn {
 	@override String get transport => '${_root.transport.title}';
 	@override String get volunteering => '${_root.volunteering.title}';
 	@override String get announcements => '${_root.announcements.title}';
+	@override String get usefullNumbers => '${_root.usefullNumbers.title}';
 	@override String get signOut => 'Delogare';
 }
 
@@ -745,6 +767,7 @@ class _StringsButtonsRo implements _StringsButtonsEn {
 
 	// Translations
 	@override String get log_in => 'Log in';
+	@override String get retry => 'Reîncercați';
 }
 
 // Path: home
@@ -755,6 +778,19 @@ class _StringsHomeRo implements _StringsHomeEn {
 
 	// Translations
 	@override String get newEvents => 'Evenimentele următoare vor apărea aici!';
+	@override String get reportsMade1 => 'Aveți\n\n';
+	@override String get reportsMade2 => '\n\nsesizări făcute';
+}
+
+// Path: guestScreen
+class _StringsGuestScreenRo implements _StringsGuestScreenEn {
+	_StringsGuestScreenRo._(this._root);
+
+	@override final _StringsRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get description => 'Sunteți într-un cont de vizitator, vă rugăm să vă conectați / creați un cont pentru a continua!';
+	@override String get buttonText => 'Logare / Creare cont';
 }
 
 // Path: formats
@@ -807,8 +843,8 @@ extension on _StringsEn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'singInScreen.title': return 'Log in';
-			case 'singInScreen.emailTextField': return 'Email address';
-			case 'singInScreen.passwordTextField': return 'Password';
+			case 'singInScreen.emailTextField': return 'Email address *';
+			case 'singInScreen.passwordTextField': return 'Password *';
 			case 'singInScreen.logInButton': return 'Log in';
 			case 'singInScreen.welcome': return 'Welcome!';
 			case 'singInScreen.wrongEmailPassword': return 'The credentials are invalid!';
@@ -818,15 +854,16 @@ extension on _StringsEn {
 			case 'singInScreen.createAccount': return 'Do you want to create an account? ';
 			case 'singInScreen.createAccountButton': return 'Create a new account!';
 			case 'createAccount.title': return 'Create a new account!';
-			case 'createAccount.emailTextField': return 'Email address';
-			case 'createAccount.usernameTextField': return 'Name and surname';
-			case 'createAccount.phoneNumberTextField': return 'Phone number';
-			case 'createAccount.passwordTextField': return 'Password';
-			case 'createAccount.confirmPassword': return 'Confirm password';
+			case 'createAccount.emailTextField': return 'Email address *';
+			case 'createAccount.usernameTextField': return 'Name and surname *';
+			case 'createAccount.phoneNumberTextField': return 'Phone number *';
+			case 'createAccount.passwordTextField': return 'Password *';
+			case 'createAccount.confirmPassword': return 'Confirm password *';
 			case 'createAccount.createAccountButton': return 'Create account';
 			case 'forgotPassword.title': return 'Reset password';
-			case 'forgotPassword.emailTextField': return 'Email address';
+			case 'forgotPassword.emailTextField': return 'Email address *';
 			case 'forgotPassword.resetPasswordButton': return 'Reset password';
+			case 'forgotPassword.emailSent': return 'We\'ve sent an email with steps to reset you\'r password';
 			case 'events.title': return 'Events';
 			case 'events.seeDetails': return 'See details';
 			case 'events.newEventsTabTitle': return 'Soon';
@@ -847,15 +884,15 @@ extension on _StringsEn {
 			case 'reportProblem.dspSuceava': return 'DSP Suceava';
 			case 'reportProblem.ocolulSilvicMarginea': return 'Ocolul Silvic Marginea';
 			case 'reportProblem.radautiulCivicAssociation': return 'Radautiul Civic Association';
-			case 'reportProblem.institutionDropdown': return 'Institution';
-			case 'reportProblem.usernameTextField': return 'Name and surname';
-			case 'reportProblem.categoryDropdown': return 'Category';
-			case 'reportProblem.emailTextField': return 'Email address';
-			case 'reportProblem.subjectTextField': return 'Subject';
-			case 'reportProblem.descriptionTextField': return 'Description';
+			case 'reportProblem.institutionDropdown': return 'Institution *';
+			case 'reportProblem.usernameTextField': return 'Name and surname *';
+			case 'reportProblem.categoryDropdown': return 'Category *';
+			case 'reportProblem.emailTextField': return 'Email address *';
+			case 'reportProblem.subjectTextField': return 'Subject *';
+			case 'reportProblem.descriptionTextField': return 'Description *';
 			case 'reportProblem.locationSwitch': return 'Add location';
-			case 'reportProblem.imagePicker': return 'Take a photo or upload one';
-			case 'reportProblem.phoneNumberTextField': return 'Phone number';
+			case 'reportProblem.imagePicker': return 'Take a photo or upload one *';
+			case 'reportProblem.phoneNumberTextField': return 'Phone number *';
 			case 'reportProblem.infrastructure': return 'Infrastructure';
 			case 'reportProblem.utilitiesProblem': return 'Utilities problems';
 			case 'reportProblem.uncollectedGarbage': return 'Uncollected garbage';
@@ -893,6 +930,7 @@ extension on _StringsEn {
 			case 'localAdministration.seeMore': return 'See more';
 			case 'localAdministration.wealth': return 'Wealth declaration';
 			case 'localAdministration.interests': return 'Declaration of interests';
+			case 'localAdministration.seePdf': return 'See PDF';
 			case 'airQuality.title': return 'Air quality';
 			case 'airQuality.airQualityTab': return 'Air quality';
 			case 'airQuality.chartsTab': return 'Charts';
@@ -934,9 +972,15 @@ extension on _StringsEn {
 			case 'drawer.transport': return '${_root.transport.title}';
 			case 'drawer.volunteering': return '${_root.volunteering.title}';
 			case 'drawer.announcements': return '${_root.announcements.title}';
+			case 'drawer.usefullNumbers': return '${_root.usefullNumbers.title}';
 			case 'drawer.signOut': return 'Sign out';
 			case 'buttons.log_in': return 'Log in';
+			case 'buttons.retry': return 'Retry';
 			case 'home.newEvents': return 'Upcoming events will appear here!';
+			case 'home.reportsMade1': return 'You have\n\n';
+			case 'home.reportsMade2': return '\n\nreports';
+			case 'guestScreen.description': return 'You are on a guest account, please connect / create an account to continue!';
+			case 'guestScreen.buttonText': return 'Go to login / signup';
 			case 'formats.invalidEmail': return 'Wrong email format! e.g aaa@bb.ccc!';
 			case 'formats.onlyNumbersField': return 'This field should contain only numbers!';
 			case 'formats.invalidPhoneNumber': return 'Wrong phone number format\nWe accept the following:\n+40213-564-864\n+40213.564.864\n+40213 564 864\n0213-564-864\n0712456789';
@@ -955,8 +999,8 @@ extension on _StringsRo {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'singInScreen.title': return 'Log in';
-			case 'singInScreen.emailTextField': return 'Adresă de email';
-			case 'singInScreen.passwordTextField': return 'Parolă';
+			case 'singInScreen.emailTextField': return 'Adresă de email *';
+			case 'singInScreen.passwordTextField': return 'Parolă *';
 			case 'singInScreen.logInButton': return 'Log in';
 			case 'singInScreen.welcome': return 'Bine ai venit!';
 			case 'singInScreen.wrongEmailPassword': return 'Datele sunt invalide!';
@@ -966,15 +1010,16 @@ extension on _StringsRo {
 			case 'singInScreen.createAccount': return 'Vrei să te înregistrezi în aplicație? ';
 			case 'singInScreen.createAccountButton': return 'Creează-ți cont!';
 			case 'createAccount.title': return 'Creează-ți cont!';
-			case 'createAccount.emailTextField': return 'Adresă de email';
-			case 'createAccount.usernameTextField': return 'Numele și prenumele';
-			case 'createAccount.phoneNumberTextField': return 'Număr de telefon';
-			case 'createAccount.passwordTextField': return 'Parolă';
-			case 'createAccount.confirmPassword': return 'Confirmă parola';
+			case 'createAccount.emailTextField': return 'Adresă de email *';
+			case 'createAccount.usernameTextField': return 'Numele și prenumele *';
+			case 'createAccount.phoneNumberTextField': return 'Număr de telefon *';
+			case 'createAccount.passwordTextField': return 'Parolă *';
+			case 'createAccount.confirmPassword': return 'Confirmă parola *';
 			case 'createAccount.createAccountButton': return 'Creează-ți cont';
 			case 'forgotPassword.title': return 'Resetează parola';
-			case 'forgotPassword.emailTextField': return 'Adresă de email';
+			case 'forgotPassword.emailTextField': return 'Adresă de email *';
 			case 'forgotPassword.resetPasswordButton': return 'Resetează parola';
+			case 'forgotPassword.emailSent': return 'Am trimis un e-mail cu pași pentru a vă reseta parola';
 			case 'events.title': return 'Evenimente';
 			case 'events.seeDetails': return 'Vezi detalii';
 			case 'events.newEventsTabTitle': return 'Viitoare';
@@ -995,15 +1040,15 @@ extension on _StringsRo {
 			case 'reportProblem.dspSuceava': return 'DSP Suceava';
 			case 'reportProblem.ocolulSilvicMarginea': return 'Ocolul Silvic Marginea';
 			case 'reportProblem.radautiulCivicAssociation': return 'Asociația Rădăuțiul Civic';
-			case 'reportProblem.institutionDropdown': return 'Instituţie';
-			case 'reportProblem.usernameTextField': return 'Numele și prenumele';
-			case 'reportProblem.categoryDropdown': return 'Categorie';
-			case 'reportProblem.emailTextField': return 'Adresă de email';
-			case 'reportProblem.subjectTextField': return 'Subiect';
-			case 'reportProblem.descriptionTextField': return 'Descriere';
+			case 'reportProblem.institutionDropdown': return 'Instituţie *';
+			case 'reportProblem.usernameTextField': return 'Numele și prenumele *';
+			case 'reportProblem.categoryDropdown': return 'Categorie *';
+			case 'reportProblem.emailTextField': return 'Adresă de email *';
+			case 'reportProblem.subjectTextField': return 'Subiect *';
+			case 'reportProblem.descriptionTextField': return 'Descriere *';
 			case 'reportProblem.locationSwitch': return 'Adaugă locația';
-			case 'reportProblem.imagePicker': return 'Fă o fotografie sau încarcă una';
-			case 'reportProblem.phoneNumberTextField': return 'Număr de telefon';
+			case 'reportProblem.imagePicker': return 'Fă o fotografie sau încarcă una *';
+			case 'reportProblem.phoneNumberTextField': return 'Număr de telefon *';
 			case 'reportProblem.infrastructure': return 'Infrastructură';
 			case 'reportProblem.utilitiesProblem': return 'Probleme cu utilitățile';
 			case 'reportProblem.uncollectedGarbage': return 'Gunoi neridicat';
@@ -1041,6 +1086,7 @@ extension on _StringsRo {
 			case 'localAdministration.seeMore': return 'Vezi mai mult';
 			case 'localAdministration.wealth': return 'Declarația de avere';
 			case 'localAdministration.interests': return 'Declarație de interese';
+			case 'localAdministration.seePdf': return 'Vizualizează PDF-ul';
 			case 'airQuality.title': return 'Calitatea aerului';
 			case 'airQuality.airQualityTab': return 'Calitatea aerului';
 			case 'airQuality.chartsTab': return 'Grafice';
@@ -1082,9 +1128,15 @@ extension on _StringsRo {
 			case 'drawer.transport': return '${_root.transport.title}';
 			case 'drawer.volunteering': return '${_root.volunteering.title}';
 			case 'drawer.announcements': return '${_root.announcements.title}';
+			case 'drawer.usefullNumbers': return '${_root.usefullNumbers.title}';
 			case 'drawer.signOut': return 'Delogare';
 			case 'buttons.log_in': return 'Log in';
+			case 'buttons.retry': return 'Reîncercați';
 			case 'home.newEvents': return 'Evenimentele următoare vor apărea aici!';
+			case 'home.reportsMade1': return 'Aveți\n\n';
+			case 'home.reportsMade2': return '\n\nsesizări făcute';
+			case 'guestScreen.description': return 'Sunteți într-un cont de vizitator, vă rugăm să vă conectați / creați un cont pentru a continua!';
+			case 'guestScreen.buttonText': return 'Logare / Creare cont';
 			case 'formats.onlyNumbersField': return 'Acest câmp trebuie să conțină numai numere';
 			case 'formats.invalidPhoneNumber': return 'Format greșit al numărului de telefon\n   \nAcceptăm următoarele:\n   \n+40213-564-864\n   \n+40213.564.864\n   \n+40213 564 864\n   \n0213-564-864\n   \n0712456789';
 			case 'formats.minimum50': return 'Această căsuță trebuie să conțină mai mult de 50 de caractere!';

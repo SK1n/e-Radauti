@@ -12,7 +12,9 @@ class LocalDecisionsCubit extends Cubit<LocalDecisionsState> {
   LocalDecisionsCubit({
     required LocalAdministrationRepository localAdministrationRepository,
   })  : _localAdministrationRepository = localAdministrationRepository,
-        super(const LocalDecisionsState());
+        super(const LocalDecisionsState()) {
+    getDecisions();
+  }
 
   void getDecisions() async {
     try {

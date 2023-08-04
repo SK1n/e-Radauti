@@ -41,19 +41,19 @@ class PageAnnouncements extends StatelessWidget {
           create: (context) => LocalAnnouncementCubit(
             firestoreRepository: context.read<FirestoreRepository>(),
             storageRepository: context.read<StorageRepository>(),
-          )..getData(),
+          ),
         ),
         BlocProvider(
           create: (context) => FurnitureCubit(
             eRadautiWebsiteRepository:
                 context.read<ERadautiWebsiteRepository>(),
-          )..getData(),
+          ),
         ),
         BlocProvider(
           create: (context) => JobsCubit(
             eRadautiWebsiteRepository:
                 context.read<ERadautiWebsiteRepository>(),
-          )..getData(),
+          ),
         ),
       ],
       child: AppTabsScaffold(

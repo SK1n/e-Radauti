@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import 'page_decisions.dart';
 import 'page_local_council_team.dart';
 import '../../../gen/strings.g.dart';
@@ -12,7 +13,7 @@ class TabLocalCouncil extends StatelessWidget {
       delegate: SliverChildListDelegate(
         [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: AppConstants.innerCardPadding,
             child: Card(
               child: ListTile(
                 leading: Image.asset(
@@ -24,19 +25,8 @@ class TabLocalCouncil extends StatelessWidget {
               ),
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: Card(
-          //     child: ListTile(
-          //       leading: Image.asset(
-          //           'assets/local_administration/local_council_live.png'),
-          //       title: Text(context.t.localAdministration.localCouncilLive),
-          //       trailing: const Icon(Icons.arrow_forward_ios),
-          //     ),
-          //   ),
-          // ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: AppConstants.innerCardPadding,
             child: Card(
               child: ListTile(
                 leading: Image.asset(

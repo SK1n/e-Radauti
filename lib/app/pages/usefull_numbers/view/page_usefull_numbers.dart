@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../cubit/authorities/authorities_cubit.dart';
 import '../cubit/public/public_cubit.dart';
 import '../cubit/upsets/upsets_cubit.dart';
@@ -38,22 +39,22 @@ class PageUsefullNumbers extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthoritiesCubit(
             firestoreRepository: context.read<FirestoreRepository>(),
-          )..getData(),
+          ),
         ),
         BlocProvider(
           create: (context) => PublicCubit(
             firestoreRepository: context.read<FirestoreRepository>(),
-          )..getData(),
+          ),
         ),
         BlocProvider(
           create: (context) => UpsetsCubit(
             firestoreRepository: context.read<FirestoreRepository>(),
-          )..getData(),
+          ),
         ),
       ],
       child: AppTabsScaffold(
         tabs: tabs,
-        expandedHeight: 150.0,
+        expandedHeight: AppConstants.expandedHeight,
         appBarTitle: t.usefullNumbers.title,
       ),
     );

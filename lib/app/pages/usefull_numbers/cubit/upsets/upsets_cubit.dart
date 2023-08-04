@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../../models/usefull_numbers/upsets/upsets_model.dart';
 import '../../../../repository/firestore/firestore_repository.dart';
 import '../../../../utils/page_state.dart';
@@ -12,12 +13,15 @@ class UpsetsCubit extends Cubit<UpsetsState> {
   UpsetsCubit({
     required FirestoreRepository firestoreRepository,
   })  : _firestoreRepository = firestoreRepository,
-        super(const UpsetsState());
+        super(const UpsetsState()) {
+    getData();
+  }
 
   void getData() async {
     try {
       emit(state.copyWith(state: PageState.inProgress));
-      var data = await _firestoreRepository.fetchDocument('collection/Numbers');
+      var data =
+          await _firestoreRepository.fetchDocument(AppConstants.pathNumbers);
       UpsetsModel am = UpsetsModel.fromJson(data.data() ?? {});
       emit(
         state.copyWith(

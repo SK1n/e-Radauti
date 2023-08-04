@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import 'package:logger/logger.dart';
 import '../../../models/events/events_item_model.dart';
 import '../../../models/events/new_events_model.dart';
@@ -18,17 +20,30 @@ class HomeCubit extends Cubit<HomeState> {
   final FirestoreRepository _firestoreRepository;
   final LocalAdministrationRepository _localAdministrationRepository;
   final StorageRepository _storageRepository;
-  final FirebaseAuth _auth;
+  final AuthenticationRepository _authenticationRepository;
   HomeCubit({
     required FirestoreRepository firestoreRepository,
     required LocalAdministrationRepository localAdministrationRepository,
     required StorageRepository storageRepository,
-    FirebaseAuth? auth,
+    required AuthenticationRepository authenticationRepository,
   })  : _firestoreRepository = firestoreRepository,
         _localAdministrationRepository = localAdministrationRepository,
         _storageRepository = storageRepository,
-        _auth = auth ?? FirebaseAuth.instance,
-        super(const HomeState());
+        _authenticationRepository = authenticationRepository,
+        super(const HomeState()) {
+    getLatestDecision();
+    getNextEvent();
+    if (_authenticationRepository.isAnnonymous()) {
+      emit(
+        state.copyWith(
+          numsOfReports: 0,
+          isAnnonymous: _authenticationRepository.isAnnonymous(),
+        ),
+      );
+    } else {
+      getNumsOfReports();
+    }
+  }
 
   void getLatestDecision() async {
     try {
@@ -40,23 +55,13 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  void isUserAnnonymous() async {
-    if (_auth.currentUser!.isAnonymous) {
-      emit(state.copyWith(isAnnonymous: true));
-    } else {
-      emit(state.copyWith(isAnnonymous: false));
-    }
-  }
-
   void getNumsOfReports() async {
-    if (_auth.currentUser!.isAnonymous) {
-      return;
-    }
     try {
-      var uid = _auth.currentUser!.uid;
+      var uid = _authenticationRepository.currentUser.id;
       emit(state.copyWith(numsOfReportsState: PageState.inProgress));
 
-      var data = await _firestoreRepository.fetchDocument('users/$uid');
+      var data = await _firestoreRepository
+          .fetchDocument('${AppConstants.firebaseUser}/$uid');
       ReportProblemUserModel rpum =
           ReportProblemUserModel.fromJson(data.data() ?? {});
       emit(state.copyWith(
@@ -70,7 +75,8 @@ class HomeCubit extends Cubit<HomeState> {
   void getNextEvent() async {
     try {
       emit(state.copyWith(eventState: PageState.inProgress));
-      var data = await _firestoreRepository.fetchDocument('collection/Events');
+      var data =
+          await _firestoreRepository.fetchDocument(AppConstants.pathEvents);
       List<EventsItemModel> list = [];
       NewEventsModel newEventsModel =
           NewEventsModel.fromJson(data.data() ?? {});

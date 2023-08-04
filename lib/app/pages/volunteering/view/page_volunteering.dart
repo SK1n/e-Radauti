@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
+import 'package:flutterapperadauti/gen/colors.gen.dart';
 import '../../../models/volunteering/volunteering_model.dart';
 import '../cubit/volunteering_cubit.dart';
 import '../../../repository/firestore/firestore_repository.dart';
@@ -38,13 +40,18 @@ class PageVolunteering extends StatelessWidget {
               } else if (state.data.isEmpty) {
                 return SliverToBoxAdapter(child: Container());
               } else {
-                return SliverGrid.builder(
-                  itemBuilder: (context, index) {
-                    return _Item(item: state.data[index]);
-                  },
-                  itemCount: state.data.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
+                return SliverPadding(
+                  padding: AppConstants.innerCardPadding,
+                  sliver: SliverGrid.builder(
+                    itemBuilder: (context, index) {
+                      return _Item(item: state.data[index]);
+                    },
+                    itemCount: state.data.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                    ),
+                  ),
                 );
               }
             },
@@ -67,40 +74,27 @@ class _Item extends StatelessWidget {
         children: [
           Expanded(
               child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: AppConstants.smallInnerCardPadding,
             child: ImageWidget(
               link: item.image,
             ),
           )),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              item.name,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-                color: const Color(0xFF1F2937),
-              ),
-            ),
+            padding: AppConstants.smallInnerCardPadding,
+            child: Text(item.name, style: AppConstants.smallTextTextStyle),
           ),
           GestureDetector(
             onTap: () async {
               await launchUrlString(item.website);
             },
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                t.volunteering.webSite,
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  color: const Color(0xFF458AFC),
-                ),
-              ),
+              padding: AppConstants.smallInnerCardPadding,
+              child: Text(t.volunteering.webSite,
+                  style: AppConstants.linkTextStyle),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: AppConstants.smallInnerCardPadding,
             child: Row(
               children: [
                 item.phoneNumber.isNotEmpty
@@ -111,7 +105,7 @@ class _Item extends StatelessWidget {
                           },
                           child: const Icon(
                             Icons.phone,
-                            color: Color.fromRGBO(156, 163, 175, 1),
+                            color: ColorName.chefchaouenBlue,
                           ),
                         ),
                       )
@@ -124,7 +118,7 @@ class _Item extends StatelessWidget {
                           },
                           child: const Icon(
                             Icons.email,
-                            color: Color.fromRGBO(156, 163, 175, 1),
+                            color: ColorName.chefchaouenBlue,
                           ),
                         ),
                       )

@@ -84,7 +84,7 @@ class EventDetailsPage extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                  padding: AppConstants.topDelimiter,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -93,7 +93,7 @@ class EventDetailsPage extends StatelessWidget {
                         size: 14,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 10),
+                        padding: AppConstants.leftDelimiter,
                         child: Text(
                           t.events.startDate(date: event.start.date),
                           style: AppConstants.textTextStyle,
@@ -103,7 +103,7 @@ class EventDetailsPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                  padding: AppConstants.topDelimiter,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -112,7 +112,7 @@ class EventDetailsPage extends StatelessWidget {
                         size: 14,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 10),
+                        padding: AppConstants.leftDelimiter,
                         child: Text(
                           t.events.endDate(date: event.end.date),
                           style: AppConstants.textTextStyle,
@@ -164,7 +164,6 @@ class EventDetailsPage extends StatelessWidget {
                       if (await canLaunchUrlString(link)) {
                         await launchUrlString(link);
                       }
-                      // await launchUrlS(link);
                     },
                   ),
                 ),
