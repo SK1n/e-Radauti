@@ -31,7 +31,7 @@ class ItemLocalDecision extends StatelessWidget {
                     ),
                   ),
                   icon: const Icon(FontAwesome5.file_download),
-                  label: Text(t.localAdministration.seePdf),
+                  label: Text(context.t.localAdministration.seePdf),
                 ),
               ),
             ),

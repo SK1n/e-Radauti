@@ -27,7 +27,7 @@ class PageVolunteering extends StatelessWidget {
         storageRepository: context.read<StorageRepository>(),
       )..getData(),
       child: AppSliverScaffold(
-        appBarTitle: t.volunteering.title,
+        appBarTitle: context.t.volunteering.title,
         slivers: [
           BlocConsumer<VolunteeringCubit, VolunteeringState>(
             builder: (context, state) {
@@ -89,7 +89,7 @@ class _Item extends StatelessWidget {
             },
             child: Padding(
               padding: AppConstants.smallInnerCardPadding,
-              child: Text(t.volunteering.webSite,
+              child: Text(context.t.volunteering.webSite,
                   style: AppConstants.linkTextStyle),
             ),
           ),

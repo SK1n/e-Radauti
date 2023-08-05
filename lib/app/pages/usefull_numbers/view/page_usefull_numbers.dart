@@ -22,15 +22,15 @@ class PageUsefullNumbers extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': t.usefullNumbers.authoritiesTab,
+        'text': context.t.usefullNumbers.authoritiesTab,
         'widget': const TabAuthorities(),
       },
       {
-        'text': t.usefullNumbers.publicTab,
+        'text': context.t.usefullNumbers.publicTab,
         'widget': const TabPublic(),
       },
       {
-        'text': t.usefullNumbers.upsetsTab,
+        'text': context.t.usefullNumbers.upsetsTab,
         'widget': const TabUpsets(),
       }
     ];
@@ -55,7 +55,7 @@ class PageUsefullNumbers extends StatelessWidget {
       child: AppTabsScaffold(
         tabs: tabs,
         expandedHeight: AppConstants.expandedHeight,
-        appBarTitle: t.usefullNumbers.title,
+        appBarTitle: context.t.usefullNumbers.title,
       ),
     );
   }

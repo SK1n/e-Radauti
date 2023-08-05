@@ -31,7 +31,7 @@ class PageLocalCouncilTeam extends StatelessWidget {
           storageRepository: context.read<StorageRepository>())
         ..getData(),
       child: AppSliverScaffold(
-        appBarTitle: t.localAdministration.localCouncilTeam,
+        appBarTitle: context.t.localAdministration.localCouncilTeam,
         slivers: [
           BlocConsumer<LocalCouncilTeamCubit, LocalCouncilTeamState>(
             builder: (context, state) {
@@ -48,7 +48,7 @@ class PageLocalCouncilTeam extends StatelessWidget {
               } else if (state.data.isEmpty) {
                 return SliverToBoxAdapter(
                   child: EmptyWidget(
-                    text: t.events.emptyFavorites,
+                    text: context.t.events.emptyFavorites,
                   ),
                 );
               } else {

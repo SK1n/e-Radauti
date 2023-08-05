@@ -22,7 +22,8 @@ class TabLocalAnnouncement extends StatelessWidget {
         } else if (state.state.isSuccess) {
           if (state.data.isEmpty) {
             return SliverToBoxAdapter(
-              child: EmptyWidget(text: t.announcements.emptyAnnouncements),
+              child:
+                  EmptyWidget(text: context.t.announcements.emptyAnnouncements),
             );
           }
           return SliverList.builder(
@@ -65,7 +66,8 @@ class _Item extends StatelessWidget {
               style: AppConstants.titleBigTextStyle,
             ),
             Text(
-              t.announcements.posted_at(value: item.dateCreated.getDate),
+              context.t.announcements
+                  .posted_at(value: item.dateCreated.getDate),
               style: AppConstants.smallTextTextStyle,
             ),
             Padding(

@@ -16,18 +16,18 @@ class PageTransport extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': t.transport.taxiTab,
+        'text': context.t.transport.taxiTab,
         'widget': const TabTaxi(),
       },
       {
-        'text': t.transport.trainTab,
+        'text': context.t.transport.trainTab,
         'widget': const TabTrain(),
       }
     ];
     return AppTabsScaffold(
       tabs: tabs,
       expandedHeight: AppConstants.expandedHeight,
-      appBarTitle: t.transport.title,
+      appBarTitle: context.t.transport.title,
     );
   }
 }

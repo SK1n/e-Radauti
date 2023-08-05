@@ -137,7 +137,8 @@ class _PageHomeState extends State<PageHome> {
                                                       .titleBigTextStyle,
                                                   children: [
                                                     TextSpan(
-                                                      text: t.home.reportsMade1,
+                                                      text: context
+                                                          .t.home.reportsMade1,
                                                     ),
                                                     TextSpan(
                                                       text: state.numsOfReports
@@ -149,7 +150,8 @@ class _PageHomeState extends State<PageHome> {
                                                       ),
                                                     ),
                                                     TextSpan(
-                                                      text: t.home.reportsMade2,
+                                                      text: context
+                                                          .t.home.reportsMade2,
                                                     )
                                                   ],
                                                 ),
@@ -197,7 +199,7 @@ class _PageHomeState extends State<PageHome> {
                   return const LoadingWidget();
                 } else if (state.eventState.isFalure) {
                   return EmptyWidget(
-                    text: t.home.newEvents,
+                    text: context.t.home.newEvents,
                   );
                 } else if (state.eventData == null) {
                   return Container();

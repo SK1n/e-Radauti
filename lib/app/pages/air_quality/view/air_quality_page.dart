@@ -17,21 +17,21 @@ class AirQualityPage extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': t.airQuality.airQualityTab,
+        'text': context.t.airQuality.airQualityTab,
         'widget': const QualityTab(),
       },
       {
-        'text': t.airQuality.chartsTab,
+        'text': context.t.airQuality.chartsTab,
         'widget': const TabCharts(),
       },
       {
-        'text': t.airQuality.mapTab,
+        'text': context.t.airQuality.mapTab,
         'widget': const TabMap(),
       }
     ];
     return AppTabsScaffold(
       tabs: tabs,
-      appBarTitle: t.airQuality.title,
+      appBarTitle: context.t.airQuality.title,
     );
   }
 }

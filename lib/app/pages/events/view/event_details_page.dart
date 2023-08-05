@@ -95,7 +95,7 @@ class EventDetailsPage extends StatelessWidget {
                       Padding(
                         padding: AppConstants.leftDelimiter,
                         child: Text(
-                          t.events.startDate(date: event.start.date),
+                          context.t.events.startDate(date: event.start.date),
                           style: AppConstants.textTextStyle,
                         ),
                       )
@@ -114,7 +114,7 @@ class EventDetailsPage extends StatelessWidget {
                       Padding(
                         padding: AppConstants.leftDelimiter,
                         child: Text(
-                          t.events.endDate(date: event.end.date),
+                          context.t.events.endDate(date: event.end.date),
                           style: AppConstants.textTextStyle,
                         ),
                       )
@@ -135,8 +135,8 @@ class EventDetailsPage extends StatelessWidget {
                         ),
                         label: Text(
                           isFavorite
-                              ? t.events.removeFromFavorites
-                              : t.events.addToFavorites,
+                              ? context.t.events.removeFromFavorites
+                              : context.t.events.addToFavorites,
                         ),
                         onPressed: () async {
                           if (!isFavorite) {

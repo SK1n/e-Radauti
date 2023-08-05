@@ -23,15 +23,15 @@ class PageAnnouncements extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': t.announcements.tabLocal,
+        'text': context.t.announcements.tabLocal,
         'widget': const TabLocalAnnouncement(),
       },
       {
-        'text': t.announcements.tabJobs,
+        'text': context.t.announcements.tabJobs,
         'widget': const TabJobsAnnouncement(),
       },
       {
-        'text': t.announcements.tabFurniture,
+        'text': context.t.announcements.tabFurniture,
         'widget': const TabFurnitureAnnouncement(),
       },
     ];
@@ -59,7 +59,7 @@ class PageAnnouncements extends StatelessWidget {
       child: AppTabsScaffold(
         tabs: tabs,
         expandedHeight: AppConstants.expandedHeight,
-        appBarTitle: t.announcements.title,
+        appBarTitle: context.t.announcements.title,
       ),
     );
   }

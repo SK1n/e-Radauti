@@ -21,15 +21,15 @@ class EventsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': t.events.newEventsTabTitle,
+        'text': context.t.events.newEventsTabTitle,
         'widget': const TabEventsNew(),
       },
       {
-        'text': t.events.oldEventsTabTitle,
+        'text': context.t.events.oldEventsTabTitle,
         'widget': const TabEventsOld(),
       },
       {
-        'text': t.events.favoritesEventsTabTitle,
+        'text': context.t.events.favoritesEventsTabTitle,
         'widget': const TabEventsFavorites(),
       }
     ];
@@ -41,7 +41,7 @@ class EventsPage extends StatelessWidget {
       ),
       child: AppTabsScaffold(
         tabs: tabs,
-        appBarTitle: t.events.title,
+        appBarTitle: context.t.events.title,
       ),
     );
   }

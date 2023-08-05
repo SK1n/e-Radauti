@@ -25,7 +25,7 @@ class PageLogin extends StatelessWidget {
           child: Padding(
             padding: AppConstants.bottomDelimiter,
             child: Text(
-              t.singInScreen.welcome,
+              context.t.singInScreen.welcome,
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
           ),
@@ -39,11 +39,11 @@ class PageLogin extends StatelessWidget {
           padding: AppConstants.innerCardPadding,
           child: RichText(
             text: TextSpan(
-              text: t.singInScreen.createAccount,
+              text: context.t.singInScreen.createAccount,
               style: AppConstants.titleBigTextStyle,
               children: [
                 TextSpan(
-                  text: t.singInScreen.createAccountButton,
+                  text: context.t.singInScreen.createAccountButton,
                   style: AppConstants.linkTextStyle,
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
@@ -55,7 +55,7 @@ class PageLogin extends StatelessWidget {
           ),
         ),
       ],
-      appBarTitle: t.singInScreen.title,
+      appBarTitle: context.t.singInScreen.title,
       showDrawerButton: false,
     );
   }

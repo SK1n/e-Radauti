@@ -91,7 +91,7 @@ class ItemEvent extends StatelessWidget {
                     EventDetailsPage.route(data),
                   ),
                   child: Text(
-                    t.events.seeDetails,
+                    context.t.events.seeDetails,
                   ),
                 ),
               ),

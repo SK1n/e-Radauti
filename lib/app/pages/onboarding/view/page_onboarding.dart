@@ -27,7 +27,7 @@ class PageOnboarding extends StatelessWidget {
               context.read<AppBloc>().add(const AppLogoutRequested());
             },
             child: Text(
-              t.onboarding.next,
+              context.t.onboarding.next,
               style: AppConstants.linkTextStyle,
             ),
           )
@@ -42,7 +42,7 @@ class PageOnboarding extends StatelessWidget {
             padding: AppConstants.innerCardPadding,
             child: Center(
               child: Text(
-                t.onboarding.descrtiption,
+                context.t.onboarding.descrtiption,
                 textAlign: TextAlign.center,
                 style: AppConstants.textTextStyle,
               ),
@@ -54,7 +54,7 @@ class PageOnboarding extends StatelessWidget {
                 child: ListTile(
                   leading: const Icon(Icons.notification_add),
                   style: ListTileStyle.drawer,
-                  title: Text(t.onboarding.notifications),
+                  title: Text(context.t.onboarding.notifications),
                   trailing: Switch.adaptive(
                     value: state.notificationsEnabled,
                     onChanged: state.pageState.isInProgress
@@ -78,7 +78,7 @@ class PageOnboarding extends StatelessWidget {
                   ..showSnackBar(
                     SnackBar(
                       content: Text(
-                        t.onboarding.permissionsDenied,
+                        context.t.onboarding.permissionsDenied,
                       ),
                     ),
                   );

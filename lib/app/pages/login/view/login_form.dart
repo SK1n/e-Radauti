@@ -35,7 +35,7 @@ class LoginForm extends StatelessWidget {
             padding: AppConstants.innerCardPadding,
             child: InkWell(
               child: Text(
-                t.singInScreen.forgotPassword,
+                context.t.singInScreen.forgotPassword,
                 style: AppConstants.linkTextStyle,
               ),
               onTap: () {
@@ -72,7 +72,7 @@ class _EmailInput extends StatelessWidget {
             decoration: InputDecoration(
               errorText:
                   state.form.isPure ? null : state.form.email.error?.text(),
-              labelText: t.singInScreen.emailTextField,
+              labelText: context.t.singInScreen.emailTextField,
             ),
           ),
         );
@@ -98,7 +98,7 @@ class _PasswordInput extends StatelessWidget {
             decoration: InputDecoration(
               errorText:
                   state.form.isPure ? null : state.form.password.error?.text(),
-              labelText: t.singInScreen.passwordTextField,
+              labelText: context.t.singInScreen.passwordTextField,
             ),
           ),
         );
@@ -122,7 +122,7 @@ class _LoginButton extends StatelessWidget {
             onPressed: state.form.isValid
                 ? () => context.read<LoginCubit>().logInWithCredentials()
                 : null,
-            child: Text(t.singInScreen.logInButton),
+            child: Text(context.t.singInScreen.logInButton),
           ),
         );
       },
@@ -140,7 +140,7 @@ class _GuestLoginButton extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           child: FilledButton(
             onPressed: () => context.read<LoginCubit>().logInAnonymously(),
-            child: Text(t.singInScreen.guest),
+            child: Text(context.t.singInScreen.guest),
           ),
         );
       },

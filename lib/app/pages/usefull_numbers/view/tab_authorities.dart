@@ -31,7 +31,7 @@ class TabAuthorities extends StatelessWidget {
           if (state.data.isEmpty) {
             return SliverToBoxAdapter(
               child: EmptyWidget(
-                text: t.usefullNumbers.empty,
+                text: context.t.usefullNumbers.empty,
               ),
             );
           }

@@ -18,18 +18,18 @@ class PageLocalAdministration extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': t.localAdministration.localCouncilTab,
+        'text': context.t.localAdministration.localCouncilTab,
         'widget': const TabLocalCouncil(),
       },
       {
-        'text': t.localAdministration.localCouncilLeaders,
+        'text': context.t.localAdministration.localCouncilLeaders,
         'widget': const TabLocalCouncilLeaders(),
       }
     ];
     return AppTabsScaffold(
       tabs: tabs,
       expandedHeight: AppConstants.expandedHeight,
-      appBarTitle: t.localAdministration.title,
+      appBarTitle: context.t.localAdministration.title,
     );
   }
 }

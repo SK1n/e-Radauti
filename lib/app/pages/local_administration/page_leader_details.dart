@@ -20,7 +20,7 @@ class PageLeadersDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBarTitle: t.localAdministration.localCouncilLeaders,
+      appBarTitle: context.t.localAdministration.localCouncilLeaders,
       slivers: [
         Card(
           child: Column(
@@ -91,7 +91,7 @@ class PageLeadersDetails extends StatelessWidget {
                               data.wealth,
                             ),
                           ),
-                          child: Text(t.localAdministration.wealth),
+                          child: Text(context.t.localAdministration.wealth),
                         ),
                       ),
                     )
@@ -107,7 +107,7 @@ class PageLeadersDetails extends StatelessWidget {
                               data.interests,
                             ),
                           ),
-                          child: Text(t.localAdministration.interests),
+                          child: Text(context.t.localAdministration.interests),
                         ),
                       ),
                     )

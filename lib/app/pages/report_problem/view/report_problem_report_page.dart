@@ -21,32 +21,32 @@ class ReportProblemReportPage extends StatelessWidget {
       appBarTitle: data.subject,
       slivers: [
         Text(
-          t.reportProblem.reportPage.subject(
+          context.t.reportProblem.reportPage.subject(
             value: data.subject,
           ),
         ),
         Text(
-          t.reportProblem.reportPage.description(
+          context.t.reportProblem.reportPage.description(
             value: data.description,
           ),
         ),
         Text(
-          t.reportProblem.reportPage.category(
+          context.t.reportProblem.reportPage.category(
             value: data.category,
           ),
         ),
         Text(
-          t.reportProblem.reportPage.institution(
+          context.t.reportProblem.reportPage.institution(
             value: data.institution,
           ),
         ),
         Text(
-          t.reportProblem.reportPage.institutionEmail(
+          context.t.reportProblem.reportPage.institutionEmail(
             value: data.institutionEmail,
           ),
         ),
         Text(
-          t.reportProblem.reportPage.sentBy(
+          context.t.reportProblem.reportPage.sentBy(
             value: data.name,
           ),
         ),

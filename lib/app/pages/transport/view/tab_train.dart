@@ -34,7 +34,7 @@ class TabTrain extends StatelessWidget {
           } else if (state.data.isEmpty) {
             return SliverToBoxAdapter(
               child: EmptyWidget(
-                text: t.transport.emptyTrain,
+                text: context.t.transport.emptyTrain,
               ),
             );
           } else {

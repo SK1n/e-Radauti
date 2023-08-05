@@ -23,7 +23,7 @@ class ReportProblemMyReportsTab extends StatelessWidget {
             if (state.myReportsData.isEmpty) {
               return SliverToBoxAdapter(
                 child: EmptyWidget(
-                  text: t.reportProblem.emptyMyReports,
+                  text: context.t.reportProblem.emptyMyReports,
                 ),
               );
             }

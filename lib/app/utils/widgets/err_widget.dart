@@ -24,7 +24,7 @@ class ErrWidget extends StatelessWidget {
               child: FilledButton(
                 onPressed: retry,
                 child: Text(
-                  t.buttons.retry,
+                  context.t.buttons.retry,
                 ),
               ),
             ),

@@ -43,27 +43,35 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormBuilderState>();
     final Map<String, String> institutionsDropDowns = {
-      'relatiipublice@primariaradauti.ro': t.reportProblem.radautiCityHall,
-      'office@serviciicomunale.ro': t.reportProblem.comunalServices,
-      'agentia.radauti@acetsv.ro': t.reportProblem.acetRadauti,
-      'contact@cjsuceava.ro': t.reportProblem.suceavaCountyCouncil,
-      'cjsuceava@gnm.ro': t.reportProblem.suceavaEnvironmentalGuard,
-      'gardaforestiera.suceava@gmail.com': t.reportProblem.suceavaForestGuard,
-      'dspsv@dspsv.ro': t.reportProblem.dspSuceava,
-      'marginea@suceava.rosilva.ro': t.reportProblem.ocolulSilvicMarginea,
-      'radautiulcivic@gmail.com': t.reportProblem.radautiulCivicAssociation,
+      'relatiipublice@primariaradauti.ro':
+          context.t.reportProblem.radautiCityHall,
+      'office@serviciicomunale.ro': context.t.reportProblem.comunalServices,
+      'agentia.radauti@acetsv.ro': context.t.reportProblem.acetRadauti,
+      'contact@cjsuceava.ro': context.t.reportProblem.suceavaCountyCouncil,
+      'cjsuceava@gnm.ro': context.t.reportProblem.suceavaEnvironmentalGuard,
+      'gardaforestiera.suceava@gmail.com':
+          context.t.reportProblem.suceavaForestGuard,
+      'dspsv@dspsv.ro': context.t.reportProblem.dspSuceava,
+      'marginea@suceava.rosilva.ro':
+          context.t.reportProblem.ocolulSilvicMarginea,
+      'radautiulcivic@gmail.com':
+          context.t.reportProblem.radautiulCivicAssociation,
     };
     final Map<String, String> categoryDropDowns = {
-      t.reportProblem.infrastructure: t.reportProblem.infrastructure,
-      t.reportProblem.utilitiesProblem: t.reportProblem.utilitiesProblem,
-      t.reportProblem.uncollectedGarbage: t.reportProblem.uncollectedGarbage,
-      t.reportProblem.infrastructureStreets:
-          t.reportProblem.infrastructureStreets,
-      t.reportProblem.illegalConstructions:
-          t.reportProblem.illegalConstructions,
-      t.reportProblem.airQualityPollution: t.reportProblem.airQualityPollution,
-      t.reportProblem.safety: t.reportProblem.safety,
-      t.reportProblem.other: t.reportProblem.other,
+      context.t.reportProblem.infrastructure:
+          context.t.reportProblem.infrastructure,
+      context.t.reportProblem.utilitiesProblem:
+          context.t.reportProblem.utilitiesProblem,
+      context.t.reportProblem.uncollectedGarbage:
+          context.t.reportProblem.uncollectedGarbage,
+      context.t.reportProblem.infrastructureStreets:
+          context.t.reportProblem.infrastructureStreets,
+      context.t.reportProblem.illegalConstructions:
+          context.t.reportProblem.illegalConstructions,
+      context.t.reportProblem.airQualityPollution:
+          context.t.reportProblem.airQualityPollution,
+      context.t.reportProblem.safety: context.t.reportProblem.safety,
+      context.t.reportProblem.other: context.t.reportProblem.other,
     };
 
     return BlocListener<ReportProblemCubit, ReportProblemState>(
@@ -81,7 +89,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
             ..hideCurrentSnackBar()
             ..showSnackBar(
               SnackBar(
-                content: Text(t.reportProblem.sentSuccessfully),
+                content: Text(context.t.reportProblem.sentSuccessfully),
               ),
             );
         }
@@ -91,7 +99,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
             ..showSnackBar(
               SnackBar(
                 content: Text(
-                  t.reportProblem.positionSwitch.denied,
+                  context.t.reportProblem.positionSwitch.denied,
                 ),
               ),
             );
@@ -102,7 +110,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
             ..showSnackBar(
               SnackBar(
                 content: Text(
-                  t.reportProblem.positionSwitch.deniedForever,
+                  context.t.reportProblem.positionSwitch.deniedForever,
                 ),
               ),
             );
@@ -112,7 +120,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
             ..showSnackBar(
               SnackBar(
                 content: Text(
-                  t.reportProblem.positionSwitch.disabled,
+                  context.t.reportProblem.positionSwitch.disabled,
                 ),
               ),
             );
@@ -137,7 +145,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                           errorText: state.form.isPure
                               ? null
                               : state.form.name.error?.text(),
-                          labelText: t.reportProblem.usernameTextField),
+                          labelText: context.t.reportProblem.usernameTextField),
                     ),
                   ),
                   Padding(
@@ -152,7 +160,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                       decoration: InputDecoration(
                         labelText: state.form.isPure
                             ? null
-                            : t.reportProblem.emailTextField,
+                            : context.t.reportProblem.emailTextField,
                         errorText: state.form.email.error?.text(),
                       ),
                     ),
@@ -167,7 +175,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                           .phoneNumberChanged(phone ?? ''),
                       validator: (_) => state.form.phone.displayError?.text(),
                       decoration: InputDecoration(
-                        labelText: t.reportProblem.phoneNumberTextField,
+                        labelText: context.t.reportProblem.phoneNumberTextField,
                         errorText: state.form.isPure
                             ? null
                             : state.form.phone.error?.text(),
@@ -191,7 +199,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                           errorText: state.form.isPure
                               ? null
                               : state.form.category.error?.text(),
-                          labelText: t.reportProblem.categoryDropdown),
+                          labelText: context.t.reportProblem.categoryDropdown),
                       validator: (_) =>
                           state.form.category.displayError?.text(),
                     ),
@@ -213,7 +221,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                         errorText: state.form.isPure
                             ? null
                             : state.form.institution.error?.text(),
-                        labelText: t.reportProblem.institutionDropdown,
+                        labelText: context.t.reportProblem.institutionDropdown,
                       ),
                       validator: (_) =>
                           state.form.institution.displayError?.text(),
@@ -232,7 +240,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                         errorText: state.form.isPure
                             ? null
                             : state.form.subject.error?.text(),
-                        labelText: t.reportProblem.subjectTextField,
+                        labelText: context.t.reportProblem.subjectTextField,
                       ),
                     ),
                   ),
@@ -250,7 +258,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                         errorText: state.form.isPure
                             ? null
                             : state.form.description.error?.text(),
-                        labelText: t.reportProblem.descriptionTextField,
+                        labelText: context.t.reportProblem.descriptionTextField,
                       ),
                     ),
                   ),
@@ -260,7 +268,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                       name: 'location',
                       initialValue: state.form.location.value,
                       title: Text(
-                        t.reportProblem.locationSwitch,
+                        context.t.reportProblem.locationSwitch,
                       ),
                       onChanged: state.positionState.isInProgress
                           ? null
@@ -281,7 +289,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                         errorText: state.form.isPure
                             ? null
                             : state.form.images.error?.text(),
-                        labelText: t.reportProblem.imagePicker,
+                        labelText: context.t.reportProblem.imagePicker,
                       ),
                       validator: (value) => state.form.isPure
                           ? null
@@ -311,7 +319,7 @@ class _ReportProblemFormTabState extends State<ReportProblemFormTab> {
                                       descriptionController.clear();
                                     }
                                   : null,
-                              child: Text(t.reportProblem.submitButton),
+                              child: Text(context.t.reportProblem.submitButton),
                             ),
                           ),
                         ),

@@ -18,7 +18,7 @@ class AnnonymousWidget extends StatelessWidget {
             Container(
               padding: AppConstants.innerCardPadding,
               child: Text(
-                t.guestScreen.description,
+                context.t.guestScreen.description,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -32,7 +32,7 @@ class AnnonymousWidget extends StatelessWidget {
                 child: Padding(
                   padding: AppConstants.innerCardPadding,
                   child: Text(
-                    t.guestScreen.buttonText.toUpperCase(),
+                    context.t.guestScreen.buttonText.toUpperCase(),
                     textAlign: TextAlign.center,
                   ),
                 ),

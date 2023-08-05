@@ -40,7 +40,7 @@ class TabLocalCouncilLeaders extends StatelessWidget {
           } else if (state.data.isEmpty) {
             return SliverToBoxAdapter(
               child: EmptyWidget(
-                text: t.events.emptyFavorites,
+                text: context.t.events.emptyFavorites,
               ),
             );
           } else {
@@ -137,7 +137,7 @@ class _ItemCard extends StatelessWidget {
                   child: FilledButton(
                     onPressed: () => Navigator.of(context)
                         .push(PageLeadersDetails.route(data)),
-                    child: Text(t.localAdministration.seeMore),
+                    child: Text(context.t.localAdministration.seeMore),
                   ),
                 ),
               )

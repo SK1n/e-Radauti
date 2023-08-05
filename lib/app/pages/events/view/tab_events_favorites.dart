@@ -36,7 +36,7 @@ class TabEventsFavorites extends StatelessWidget {
               if (state.favoriteEvents.isEmpty) {
                 return SliverToBoxAdapter(
                   child: EmptyWidget(
-                    text: t.events.emptyFavorites,
+                    text: context.t.events.emptyFavorites,
                   ),
                 );
               }

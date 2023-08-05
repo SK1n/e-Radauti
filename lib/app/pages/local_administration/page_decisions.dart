@@ -27,7 +27,7 @@ class PageDecisions extends StatelessWidget {
             context.read<LocalAdministrationRepository>(),
       ),
       child: AppSliverScaffold(
-        appBarTitle: t.localAdministration.localCouncilDecisions,
+        appBarTitle: context.t.localAdministration.localCouncilDecisions,
         slivers: [
           BlocListener<LocalDecisionsCubit, LocalDecisionsState>(
             listener: (context, state) {},
@@ -38,7 +38,7 @@ class PageDecisions extends StatelessWidget {
                   sliver: SliverToBoxAdapter(
                     child: SearchBar(
                       controller: searchController,
-                      hintText: t.localAdministration.search,
+                      hintText: context.t.localAdministration.search,
                       trailing: [
                         state.dataFilter.isEmpty
                             ? IconButton(
@@ -79,7 +79,7 @@ class PageDecisions extends StatelessWidget {
                   if (state.data.isEmpty) {
                     return SliverToBoxAdapter(
                       child: EmptyWidget(
-                        text: t.localAdministration.emptyLocalDecisions,
+                        text: context.t.localAdministration.emptyLocalDecisions,
                       ),
                     );
                   }

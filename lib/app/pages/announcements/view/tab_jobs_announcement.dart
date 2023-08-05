@@ -24,7 +24,8 @@ class TabJobsAnnouncement extends StatelessWidget {
         } else if (state.state.isSuccess) {
           if (state.data.isEmpty) {
             return SliverToBoxAdapter(
-              child: EmptyWidget(text: t.announcements.emptyAnnouncements),
+              child:
+                  EmptyWidget(text: context.t.announcements.emptyAnnouncements),
             );
           }
           return SliverList.builder(
@@ -71,7 +72,7 @@ class _Item extends StatelessWidget {
             Padding(
               padding: AppConstants.leftDelimiter,
               child: Text(
-                t.announcements.posted_at(
+                context.t.announcements.posted_at(
                   value: item.dateCreated.format(),
                 ),
                 style: AppConstants.smallTextTextStyle,
@@ -97,7 +98,7 @@ class _Item extends StatelessWidget {
                   }
                 },
                 child: Text(
-                  t.announcements.seeDetails,
+                  context.t.announcements.seeDetails,
                   style: AppConstants.linkTextStyle,
                 ),
               ),

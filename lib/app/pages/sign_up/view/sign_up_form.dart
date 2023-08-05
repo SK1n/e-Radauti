@@ -56,7 +56,7 @@ class _EmailInput extends StatelessWidget {
             decoration: InputDecoration(
               errorText:
                   state.form.isPure ? null : state.form.email.error?.text(),
-              labelText: t.createAccount.emailTextField,
+              labelText: context.t.createAccount.emailTextField,
             ),
           ),
         );
@@ -84,7 +84,7 @@ class _ConfirmedPasswordInput extends StatelessWidget {
               errorText: state.form.isPure
                   ? null
                   : state.form.confirmPassword.error?.text(),
-              labelText: t.createAccount.confirmPassword,
+              labelText: context.t.createAccount.confirmPassword,
             ),
           ),
         );
@@ -110,7 +110,7 @@ class _PasswordInput extends StatelessWidget {
             decoration: InputDecoration(
               errorText:
                   state.form.isPure ? null : state.form.password.error?.text(),
-              labelText: t.createAccount.passwordTextField,
+              labelText: context.t.createAccount.passwordTextField,
             ),
           ),
         );
@@ -134,7 +134,7 @@ class _UsernameInput extends StatelessWidget {
             decoration: InputDecoration(
               errorText:
                   state.form.isPure ? null : state.form.name.error?.text(),
-              labelText: t.createAccount.usernameTextField,
+              labelText: context.t.createAccount.usernameTextField,
             ),
           ),
         );
@@ -160,7 +160,7 @@ class _PhoneNumberInput extends StatelessWidget {
             decoration: InputDecoration(
               errorText:
                   state.form.isPure ? null : state.form.phone.error?.text(),
-              labelText: t.createAccount.phoneNumberTextField,
+              labelText: context.t.createAccount.phoneNumberTextField,
             ),
           ),
         );
@@ -185,7 +185,7 @@ class _SignUpButton extends StatelessWidget {
                           .read<SignUpCubit>()
                           .createAccountWithEmailAndPassword()
                       : null,
-                  child: Text(t.createAccount.createAccountButton),
+                  child: Text(context.t.createAccount.createAccountButton),
                 ),
               );
       },

@@ -29,7 +29,7 @@ class ForgotPasswordForm extends StatelessWidget {
             ..showSnackBar(
               SnackBar(
                 content: Text(
-                  t.forgotPassword.emailSent,
+                  context.t.forgotPassword.emailSent,
                 ),
               ),
             );
@@ -66,7 +66,7 @@ class _EmailInput extends StatelessWidget {
             decoration: InputDecoration(
               errorText:
                   state.form.isPure ? null : state.form.email.error?.text(),
-              labelText: t.forgotPassword.emailTextField,
+              labelText: context.t.forgotPassword.emailTextField,
             ),
           ),
         );
@@ -96,7 +96,7 @@ class _ResetPasswordButton extends StatelessWidget {
                           .read<ForgotPasswordCubit>()
                           .sendPasswordResetEmail()
                       : null,
-                  child: Text(t.forgotPassword.resetPasswordButton),
+                  child: Text(context.t.forgotPassword.resetPasswordButton),
                 ),
               );
       },

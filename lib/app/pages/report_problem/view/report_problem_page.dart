@@ -22,15 +22,15 @@ class ReportProblemPage extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': t.reportProblem.formTab,
+        'text': context.t.reportProblem.formTab,
         'widget': const ReportProblemFormTab(),
       },
       {
-        'text': t.reportProblem.mapTab,
+        'text': context.t.reportProblem.mapTab,
         'widget': const ReportProblemMapTab(),
       },
       {
-        'text': t.reportProblem.myReportsTab,
+        'text': context.t.reportProblem.myReportsTab,
         'widget': const ReportProblemMyReportsTab(),
       }
     ];
@@ -42,7 +42,7 @@ class ReportProblemPage extends StatelessWidget {
       ),
       child: AppTabsScaffold(
           tabs: tabs,
-          appBarTitle: t.reportProblem.title,
+          appBarTitle: context.t.reportProblem.title,
           expandedHeight: AppConstants.expandedHeight),
     );
   }

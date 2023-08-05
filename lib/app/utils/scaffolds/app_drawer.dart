@@ -35,49 +35,49 @@ class AppDrawer extends StatelessWidget {
                 children: [
                   ListTile(
                     leading: Image.asset(Assets.drawer.reportProblemIcon.path),
-                    title: Text(t.drawer.reportProblem),
+                    title: Text(context.t.drawer.reportProblem),
                     onTap: () =>
                         Navigator.of(context).push(ReportProblemPage.route()),
                   ),
                   ListTile(
                     leading:
                         Image.asset(Assets.drawer.localAdministrationIcon.path),
-                    title: Text(t.drawer.localAdministration),
+                    title: Text(context.t.drawer.localAdministration),
                     onTap: () => Navigator.of(context)
                         .push(PageLocalAdministration.route()),
                   ),
                   ListTile(
                     leading: Image.asset(Assets.drawer.eventsIcon.path),
-                    title: Text(t.drawer.events),
+                    title: Text(context.t.drawer.events),
                     onTap: () => Navigator.of(context).push(EventsPage.route()),
                   ),
                   ListTile(
                     leading: Image.asset(Assets.drawer.publicTransport.path),
-                    title: Text(t.drawer.transport),
+                    title: Text(context.t.drawer.transport),
                     onTap: () =>
                         Navigator.of(context).push(PageTransport.route()),
                   ),
                   ListTile(
                     leading: Image.asset(Assets.drawer.airQualityIcon.path),
-                    title: Text(t.drawer.airQuality),
+                    title: Text(context.t.drawer.airQuality),
                     onTap: () =>
                         Navigator.of(context).push(AirQualityPage.route()),
                   ),
                   ListTile(
                     leading: Image.asset(Assets.drawer.teamIcon.path),
-                    title: Text(t.drawer.volunteering),
+                    title: Text(context.t.drawer.volunteering),
                     onTap: () =>
                         Navigator.of(context).push(PageVolunteering.route()),
                   ),
                   ListTile(
                     leading: Image.asset(Assets.drawer.announcementsIcon.path),
-                    title: Text(t.drawer.announcements),
+                    title: Text(context.t.drawer.announcements),
                     onTap: () =>
                         Navigator.of(context).push(PageAnnouncements.route()),
                   ),
                   ListTile(
                     leading: Image.asset(Assets.drawer.usefullInfoIcon.path),
-                    title: Text(t.drawer.usefullNumbers),
+                    title: Text(context.t.drawer.usefullNumbers),
                     onTap: () =>
                         Navigator.of(context).push(PageUsefullNumbers.route()),
                   ),
@@ -135,7 +135,7 @@ class AppDrawer extends StatelessWidget {
                         ),
                       ),
                 ListTile(
-                    title: Text(t.drawer.signOut),
+                    title: Text(context.t.drawer.signOut),
                     onTap: () {
                       context.read<AppBloc>().add(const AppLogoutRequested());
                       Navigator.of(context).popUntil((route) => route.isFirst);
