@@ -64,7 +64,6 @@ Future<void> main() async {
   const eRadautiWebsiteRepository = ERadautiWebsiteRepository();
 
   await authenticationRepository.user.first;
-  await IsFirstRun.reset();
   final bool isFirstRun = await IsFirstRun.isFirstRun();
   runApp(
     TranslationProvider(

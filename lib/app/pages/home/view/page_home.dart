@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutterapperadauti/app/pages/announcements/view/page_announcements.dart';
 import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../air_quality/view/air_quality_page.dart';
@@ -46,14 +47,14 @@ class _PageHomeState extends State<PageHome> {
 
   _goToRoute(String route) {
     switch (route) {
-      case 'events':
+      case AppConstants.eventsTopicKey:
         return Navigator.of(context).push(EventsPage.route());
-      case 'report_problem':
+      case AppConstants.reportProblemTopicKey:
         return Navigator.of(context).push(ReportProblemPage.route());
-      case 'air_quality':
+      case AppConstants.airQualityTopicKey:
         return Navigator.of(context).push(AirQualityPage.route());
-      case 'local_administation':
-        return Navigator.of(context).push(PageLocalAdministration.route());
+      case AppConstants.announcementsTopicKey:
+        return Navigator.of(context).push(PageAnnouncements.route());
       default:
         return;
     }
