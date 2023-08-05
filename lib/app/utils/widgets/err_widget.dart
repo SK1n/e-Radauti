@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import 'package:flutterapperadauti/gen/strings.g.dart';
-import 'package:getwidget/components/button/gf_button.dart';
-import 'package:getwidget/shape/gf_button_shape.dart';
-import 'package:getwidget/size/gf_size.dart';
 
 class ErrWidget extends StatelessWidget {
   final String error;

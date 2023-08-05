@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 2
-/// Strings: 296 (148 per locale)
+/// Strings: 304 (152 per locale)
 ///
-/// Built on 2023-08-05 at 13:07 UTC
+/// Built on 2023-08-05 at 16:52 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -161,6 +161,7 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsDrawerEn drawer = _StringsDrawerEn._(_root);
 	late final _StringsButtonsEn buttons = _StringsButtonsEn._(_root);
 	late final _StringsHomeEn home = _StringsHomeEn._(_root);
+	late final _StringsOnboardingEn onboarding = _StringsOnboardingEn._(_root);
 	late final _StringsGuestScreenEn guestScreen = _StringsGuestScreenEn._(_root);
 	late final _StringsFormatsEn formats = _StringsFormatsEn._(_root);
 	Map<String, String> get locales => {
@@ -425,6 +426,19 @@ class _StringsHomeEn {
 	String get reportsMade2 => '\n\nreports';
 }
 
+// Path: onboarding
+class _StringsOnboardingEn {
+	_StringsOnboardingEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get next => 'Next';
+	String get notifications => 'Notifications';
+	String get permissionsDenied => 'Permissions are denied, please activate them from settings';
+	String get descrtiption => 'Enable notifications to stay updated with the latest app updates and important information. You can disable notifications at any time if you prefer not to receive them.';
+}
+
 // Path: guestScreen
 class _StringsGuestScreenEn {
 	_StringsGuestScreenEn._(this._root);
@@ -518,6 +532,7 @@ class _StringsRo implements _StringsEn {
 	@override late final _StringsDrawerRo drawer = _StringsDrawerRo._(_root);
 	@override late final _StringsButtonsRo buttons = _StringsButtonsRo._(_root);
 	@override late final _StringsHomeRo home = _StringsHomeRo._(_root);
+	@override late final _StringsOnboardingRo onboarding = _StringsOnboardingRo._(_root);
 	@override late final _StringsGuestScreenRo guestScreen = _StringsGuestScreenRo._(_root);
 	@override late final _StringsFormatsRo formats = _StringsFormatsRo._(_root);
 	@override Map<String, String> get locales => {
@@ -782,6 +797,19 @@ class _StringsHomeRo implements _StringsHomeEn {
 	@override String get reportsMade2 => '\n\nsesizări făcute';
 }
 
+// Path: onboarding
+class _StringsOnboardingRo implements _StringsOnboardingEn {
+	_StringsOnboardingRo._(this._root);
+
+	@override final _StringsRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get next => 'Următorul';
+	@override String get notifications => 'Notificări';
+	@override String get permissionsDenied => 'Permisiunile sunt refuzate, vă rugăm să le activați din setări';
+	@override String get descrtiption => 'Activați notificările pentru a fi la curent cu cele mai recente actualizări ale aplicației și informații importante. Puteți dezactiva notificările în orice moment dacă nu doriți să le primiți.';
+}
+
 // Path: guestScreen
 class _StringsGuestScreenRo implements _StringsGuestScreenEn {
 	_StringsGuestScreenRo._(this._root);
@@ -979,6 +1007,10 @@ extension on _StringsEn {
 			case 'home.newEvents': return 'Upcoming events will appear here!';
 			case 'home.reportsMade1': return 'You have\n\n';
 			case 'home.reportsMade2': return '\n\nreports';
+			case 'onboarding.next': return 'Next';
+			case 'onboarding.notifications': return 'Notifications';
+			case 'onboarding.permissionsDenied': return 'Permissions are denied, please activate them from settings';
+			case 'onboarding.descrtiption': return 'Enable notifications to stay updated with the latest app updates and important information. You can disable notifications at any time if you prefer not to receive them.';
 			case 'guestScreen.description': return 'You are on a guest account, please connect / create an account to continue!';
 			case 'guestScreen.buttonText': return 'Go to login / signup';
 			case 'formats.invalidEmail': return 'Wrong email format! e.g aaa@bb.ccc!';
@@ -1135,6 +1167,10 @@ extension on _StringsRo {
 			case 'home.newEvents': return 'Evenimentele următoare vor apărea aici!';
 			case 'home.reportsMade1': return 'Aveți\n\n';
 			case 'home.reportsMade2': return '\n\nsesizări făcute';
+			case 'onboarding.next': return 'Următorul';
+			case 'onboarding.notifications': return 'Notificări';
+			case 'onboarding.permissionsDenied': return 'Permisiunile sunt refuzate, vă rugăm să le activați din setări';
+			case 'onboarding.descrtiption': return 'Activați notificările pentru a fi la curent cu cele mai recente actualizări ale aplicației și informații importante. Puteți dezactiva notificările în orice moment dacă nu doriți să le primiți.';
 			case 'guestScreen.description': return 'Sunteți într-un cont de vizitator, vă rugăm să vă conectați / creați un cont pentru a continua!';
 			case 'guestScreen.buttonText': return 'Logare / Creare cont';
 			case 'formats.onlyNumbersField': return 'Acest câmp trebuie să conțină numai numere';

@@ -168,6 +168,12 @@
         "reportsMade1": "You have\n\n",
         "reportsMade2": "\n\nreports"
     },
+    "onboarding": {
+        "next": "Next",
+        "notifications": "Notifications",
+        "permissionsDenied": "Permissions are denied, please activate them from settings",
+        "descrtiption": "Enable notifications to stay updated with the latest app updates and important information. You can disable notifications at any time if you prefer not to receive them."
+    },
     "guestScreen": {
         "description": "You are on a guest account, please connect / create an account to continue!",
         "buttonText": "Go to login / signup"

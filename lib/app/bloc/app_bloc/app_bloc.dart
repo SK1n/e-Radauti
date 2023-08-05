@@ -15,31 +15,42 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         super(
           isFirstRun
               ? const AppState.isFirstRun()
-              : authenticationRepository.currentUser.isNotEmpty
+              : (authenticationRepository.currentUser.isNotEmpty
                   ? AppState.authenticated(authenticationRepository.currentUser)
-                  : const AppState.unauthenticated(),
+                  : const AppState.unauthenticated()),
         ) {
     on<_AppUserChanged>(_onUserChanged);
     on<AppLogoutRequested>(_onLogoutRequested);
     _userSubscription = _authenticationRepository.user.listen(
       (user) => add(_AppUserChanged(user)),
     );
+    on<_IsFirstRun>(_isFirstRun);
   }
 
   final AuthenticationRepository _authenticationRepository;
   late final StreamSubscription<User> _userSubscription;
-  final bool isFirstRun;
+  bool isFirstRun;
 
   void _onUserChanged(_AppUserChanged event, Emitter<AppState> emit) {
     emit(
-      event.user.isNotEmpty
-          ? AppState.authenticated(event.user)
-          : const AppState.unauthenticated(),
+      isFirstRun
+          ? const AppState.isFirstRun()
+          : event.user.isNotEmpty
+              ? AppState.authenticated(event.user)
+              : const AppState.unauthenticated(),
+    );
+  }
+
+  void _isFirstRun(_IsFirstRun event, Emitter<AppState> emit) {
+    emit(
+      const AppState.isFirstRun(),
     );
   }
 
   void _onLogoutRequested(AppLogoutRequested event, Emitter<AppState> emit) {
     unawaited(_authenticationRepository.logOut());
+    isFirstRun = false;
+    emit(const AppState.unauthenticated());
   }
 
   @override

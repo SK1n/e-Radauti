@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutterapperadauti/app/form_inputs/form_inputs.dart';
 import 'package:flutterapperadauti/app/form_inputs/login_form.dart';
 import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';

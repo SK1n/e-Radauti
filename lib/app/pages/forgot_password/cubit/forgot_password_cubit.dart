@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutterapperadauti/app/form_inputs/forgot_password_form.dart';
 import 'package:flutterapperadauti/app/form_inputs/form_inputs.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

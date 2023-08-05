@@ -168,6 +168,12 @@
         "reportsMade1": "Aveți\n\n",
         "reportsMade2": "\n\nsesizări făcute"
     },
+    "onboarding": {
+        "next": "Următorul",
+        "notifications": "Notificări",
+        "permissionsDenied": "Permisiunile sunt refuzate, vă rugăm să le activați din setări",
+        "descrtiption": "Activați notificările pentru a fi la curent cu cele mai recente actualizări ale aplicației și informații importante. Puteți dezactiva notificările în orice moment dacă nu doriți să le primiți."
+    },
     "guestScreen": {
         "description": "Sunteți într-un cont de vizitator, vă rugăm să vă conectați / creați un cont pentru a continua!",
         "buttonText": "Logare / Creare cont"

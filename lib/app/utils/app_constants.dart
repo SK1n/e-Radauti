@@ -77,6 +77,10 @@ class AppConstants {
 
   static const EdgeInsets leftDelimiter = EdgeInsets.only(left: 15.0);
 
+  static const EdgeInsets rightDelimiter = EdgeInsets.only(right: 15.0);
+
+  static const EdgeInsets smallRightDelimiter = EdgeInsets.only(right: 10.0);
+
   static const EdgeInsets bottomDelimiter = EdgeInsets.only(bottom: 15.0);
 
   static const int textMaxLines = 10;
@@ -127,4 +131,11 @@ class AppConstants {
     fontWeight: FontWeight.w500,
     color: Colors.white,
   );
+
+  static const eventsTopicKey = 'EVENTS_TOPIC_KEY';
+  static const airQualityTopicKey = 'AIR_QUALITY_TOPIC_KEY';
+  static const reportProblemTopicKey = 'REPORT_PROBLEM_TOPIC_KEY';
+  static const volunteeringTopicKey = 'VOLUNTEERING_TOPIC_KEY';
+  static const announcementsTopicKey = 'ANNOUNCEMENTS_TOPIC_KEY';
+  static const notificationsEnabledKey = 'NOTIFICATIONS_ENABLED_KEY';
 }

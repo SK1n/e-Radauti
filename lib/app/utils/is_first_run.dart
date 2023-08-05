@@ -1,3 +1,4 @@
+import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class IsFirstRun {
@@ -10,6 +11,8 @@ class IsFirstRun {
     }
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isFirstRun;
+    Logger log = Logger();
+
     try {
       isFirstRun = prefs.getBool(_firstRunSettingsKey) ?? true;
     } on Exception {
@@ -17,6 +20,7 @@ class IsFirstRun {
     }
     await prefs.setBool(_firstRunSettingsKey, false);
     _isFirstRun ??= isFirstRun;
+    log.d(isFirstRun);
     return isFirstRun;
   }
 

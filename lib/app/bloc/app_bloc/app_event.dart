@@ -8,6 +8,10 @@ final class AppLogoutRequested extends AppEvent {
   const AppLogoutRequested();
 }
 
+final class _IsFirstRun extends AppEvent {
+  const _IsFirstRun();
+}
+
 final class _AppUserChanged extends AppEvent {
   const _AppUserChanged(this.user);
 

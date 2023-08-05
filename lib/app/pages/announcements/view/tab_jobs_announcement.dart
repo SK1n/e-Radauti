@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
-import 'package:flutterapperadauti/gen/colors.gen.dart';
 import '../../../models/e_radauti_website/e_radauti_website_model.dart';
 import '../cubit/jobs/jobs_cubit.dart';
 import '../../../utils/extensions/format_date.dart';

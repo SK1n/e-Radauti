@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutterapperadauti/app/bloc/app_bloc/app_bloc.dart';
+import 'package:flutterapperadauti/app/repository/notifications/notifications_repository.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
-import 'package:flutterapperadauti/app/utils/is_first_run.dart';
 import 'package:flutterapperadauti/gen/colors.gen.dart';
 
 import 'repository/authentication/authentication_repository.dart';
@@ -21,6 +21,7 @@ class App extends StatelessWidget {
     required StorageRepository storageRepository,
     required LocalAdministrationRepository localAdministrationRepository,
     required ERadautiWebsiteRepository eRadautiWebsiteRepository,
+    required NotificationsRepository notificationsRepository,
     required bool isFirstRun,
     super.key,
   })  : _authenticationRepository = authenticationRepository,
@@ -28,6 +29,7 @@ class App extends StatelessWidget {
         _storageRepository = storageRepository,
         _localAdministrationRepository = localAdministrationRepository,
         _eRadautiWebsiteRepository = eRadautiWebsiteRepository,
+        _notificationsRepository = notificationsRepository,
         _isFirstRun = isFirstRun;
 
   final AuthenticationRepository _authenticationRepository;
@@ -35,6 +37,7 @@ class App extends StatelessWidget {
   final StorageRepository _storageRepository;
   final LocalAdministrationRepository _localAdministrationRepository;
   final ERadautiWebsiteRepository _eRadautiWebsiteRepository;
+  final NotificationsRepository _notificationsRepository;
   final bool _isFirstRun;
 
   @override
@@ -55,6 +58,9 @@ class App extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => _eRadautiWebsiteRepository,
+        ),
+        RepositoryProvider(
+          create: (context) => _notificationsRepository,
         )
       ],
       child: BlocProvider(

@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutterapperadauti/app/repository/notifications/notifications_repository.dart';
 import 'package:flutterapperadauti/app/utils/is_first_run.dart';
 import 'app/app.dart';
 import 'app/bloc_observer.dart';
@@ -59,9 +60,10 @@ Future<void> main() async {
   final firestoreRepository = FirestoreRepository();
   final storageRepository = StorageRepository();
   final localAdministrationRepository = LocalAdministrationRepository();
+  final notificationsRepository = NotificationsRepository();
   const eRadautiWebsiteRepository = ERadautiWebsiteRepository();
-  await authenticationRepository.user.first;
 
+  await authenticationRepository.user.first;
   final bool isFirstRun = await IsFirstRun.isFirstRun();
   runApp(
     TranslationProvider(
@@ -71,6 +73,7 @@ Future<void> main() async {
         storageRepository: storageRepository,
         localAdministrationRepository: localAdministrationRepository,
         eRadautiWebsiteRepository: eRadautiWebsiteRepository,
+        notificationsRepository: notificationsRepository,
         isFirstRun: isFirstRun,
       ),
     ),

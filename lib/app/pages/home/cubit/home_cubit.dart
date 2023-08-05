@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
-import 'package:logger/logger.dart';
 import '../../../models/events/events_item_model.dart';
 import '../../../models/events/new_events_model.dart';
 import '../../../models/local_administration/decision_model.dart';

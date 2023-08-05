@@ -4,7 +4,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../utils/page_state.dart';
-import 'package:latlong2/latlong.dart' as lat_lng;
 
 import '../cubit/report_problem_cubit.dart';
 import '../../../utils/widgets/loading_widget.dart';
