@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutterapperadauti/app/pages/announcements/view/page_announcements.dart';
+import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../air_quality/view/air_quality_page.dart';
 import '../../events/view/events_page.dart';
@@ -45,14 +47,14 @@ class _PageHomeState extends State<PageHome> {
 
   _goToRoute(String route) {
     switch (route) {
-      case 'events':
+      case AppConstants.eventsTopicKey:
         return Navigator.of(context).push(EventsPage.route());
-      case 'report_problem':
+      case AppConstants.reportProblemTopicKey:
         return Navigator.of(context).push(ReportProblemPage.route());
-      case 'air_quality':
+      case AppConstants.airQualityTopicKey:
         return Navigator.of(context).push(AirQualityPage.route());
-      case 'local_administation':
-        return Navigator.of(context).push(PageLocalAdministration.route());
+      case AppConstants.announcementsTopicKey:
+        return Navigator.of(context).push(PageAnnouncements.route());
       default:
         return;
     }
@@ -66,11 +68,8 @@ class _PageHomeState extends State<PageHome> {
         localAdministrationRepository:
             context.read<LocalAdministrationRepository>(),
         storageRepository: context.read<StorageRepository>(),
-      )
-        ..getLatestDecision()
-        ..getNextEvent()
-        ..getNumsOfReports()
-        ..isUserAnnonymous(),
+        authenticationRepository: context.read<AuthenticationRepository>(),
+      ),
       child: AppScaffold(
         appBarTitle: 'e-Radauti',
         slivers: [
@@ -78,7 +77,7 @@ class _PageHomeState extends State<PageHome> {
             listener: (context, state) {},
             builder: (context, state) {
               return SizedBox(
-                height: 180,
+                height: 250,
                 child: Row(
                   children: [
                     Expanded(
@@ -87,6 +86,11 @@ class _PageHomeState extends State<PageHome> {
                         onTap: () =>
                             Navigator.of(context).push(AirQualityPage.route()),
                         child: Card(
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(
+                                color: Colors.black12, width: 0),
+                            borderRadius: AppConstants.borderRadius,
+                          ),
                           child: InAppWebView(
                             initialOptions: InAppWebViewGroupOptions(
                               android: AndroidInAppWebViewOptions(
@@ -102,7 +106,8 @@ class _PageHomeState extends State<PageHome> {
                             ),
                             initialUrlRequest: URLRequest(
                               url: Uri.parse(
-                                  'https://calitateaer.radautiulcivic.ro/wp-content/uploads/2023/07/Calitatea_aerului_e-Radauti_Widget_home.html'),
+                                AppConstants.airQualityWidgetLink,
+                              ),
                             ),
                           ),
                         ),
@@ -132,8 +137,9 @@ class _PageHomeState extends State<PageHome> {
                                                   style: AppConstants
                                                       .titleBigTextStyle,
                                                   children: [
-                                                    const TextSpan(
-                                                      text: 'Aveti\n\n',
+                                                    TextSpan(
+                                                      text: context
+                                                          .t.home.reportsMade1,
                                                     ),
                                                     TextSpan(
                                                       text: state.numsOfReports
@@ -144,9 +150,9 @@ class _PageHomeState extends State<PageHome> {
                                                             FontWeight.bold,
                                                       ),
                                                     ),
-                                                    const TextSpan(
-                                                      text:
-                                                          '\n\nsesizari facute',
+                                                    TextSpan(
+                                                      text: context
+                                                          .t.home.reportsMade2,
                                                     )
                                                   ],
                                                 ),
@@ -194,7 +200,7 @@ class _PageHomeState extends State<PageHome> {
                   return const LoadingWidget();
                 } else if (state.eventState.isFalure) {
                   return EmptyWidget(
-                    text: t.home.newEvents,
+                    text: context.t.home.newEvents,
                   );
                 } else if (state.eventData == null) {
                   return Container();

@@ -1,8 +1,8 @@
 {
     "singInScreen": {
         "title": "Log in",
-        "emailTextField": "Email address",
-        "passwordTextField": "Password",
+        "emailTextField": "Email address *",
+        "passwordTextField": "Password *",
         "logInButton": "Log in",
         "welcome": "Welcome!",
         "wrongEmailPassword": "The credentials are invalid!",
@@ -14,17 +14,18 @@
     },
     "createAccount": {
         "title": "Create a new account!",
-        "emailTextField": "Email address",
-        "usernameTextField": "Name and surname",
-        "phoneNumberTextField": "Phone number",
-        "passwordTextField": "Password",
-        "confirmPassword": "Confirm password",
+        "emailTextField": "Email address *",
+        "usernameTextField": "Name and surname *",
+        "phoneNumberTextField": "Phone number *",
+        "passwordTextField": "Password *",
+        "confirmPassword": "Confirm password *",
         "createAccountButton": "Create account"
     },
     "forgotPassword": {
         "title": "Reset password",
-        "emailTextField": "Email address",
-        "resetPasswordButton": "Reset password"
+        "emailTextField": "Email address *",
+        "resetPasswordButton": "Reset password",
+        "emailSent": "We've sent an email with steps to reset you'r password"
     },
     "events": {
         "title": "Events",
@@ -49,15 +50,15 @@
         "dspSuceava": "DSP Suceava",
         "ocolulSilvicMarginea": "Ocolul Silvic Marginea",
         "radautiulCivicAssociation": "Radautiul Civic Association",
-        "institutionDropdown": "Institution",
-        "usernameTextField": "Name and surname",
-        "categoryDropdown": "Category",
-        "emailTextField": "Email address",
-        "subjectTextField": "Subject",
-        "descriptionTextField": "Description",
+        "institutionDropdown": "Institution *",
+        "usernameTextField": "Name and surname *",
+        "categoryDropdown": "Category *",
+        "emailTextField": "Email address *",
+        "subjectTextField": "Subject *",
+        "descriptionTextField": "Description *",
         "locationSwitch": "Add location",
-        "imagePicker": "Take a photo or upload one",
-        "phoneNumberTextField": "Phone number",
+        "imagePicker": "Take a photo or upload one *",
+        "phoneNumberTextField": "Phone number *",
         "infrastructure": "Infrastructure",
         "utilitiesProblem": "Utilities problems",
         "uncollectedGarbage": "Uncollected garbage",
@@ -100,7 +101,8 @@
         "emptyLocalDecisions": "We couldn't find any decisions, please try again later!",
         "seeMore": "See more",
         "wealth": "Wealth declaration",
-        "interests": "Declaration of interests"
+        "interests": "Declaration of interests",
+        "seePdf": "See PDF"
     },
     "airQuality": {
         "title": "Air quality",
@@ -154,13 +156,27 @@
         "transport": "@:transport.title",
         "volunteering": "@:volunteering.title",
         "announcements": "@:announcements.title",
+        "usefullNumbers": "@:usefullNumbers.title",
         "signOut": "Sign out"
     },
     "buttons": {
-        "log_in": "Log in"
+        "log_in": "Log in",
+        "retry": "Retry"
     },
     "home": {
-        "newEvents": "Upcoming events will appear here!"
+        "newEvents": "Upcoming events will appear here!",
+        "reportsMade1": "You have\n\n",
+        "reportsMade2": "\n\nreports"
+    },
+    "onboarding": {
+        "next": "Next",
+        "notifications": "Notifications",
+        "permissionsDenied": "Permissions are denied, please activate them from settings",
+        "descrtiption": "Enable notifications to stay updated with the latest app updates and important information. You can disable notifications at any time if you prefer not to receive them."
+    },
+    "guestScreen": {
+        "description": "You are on a guest account, please connect / create an account to continue!",
+        "buttonText": "Go to login / signup"
     },
     "formats": {
         "invalidEmail": "Wrong email format! e.g aaa@bb.ccc!",

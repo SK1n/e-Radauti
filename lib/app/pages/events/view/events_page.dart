@@ -21,33 +21,27 @@ class EventsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': t.events.newEventsTabTitle,
+        'text': context.t.events.newEventsTabTitle,
         'widget': const TabEventsNew(),
       },
       {
-        'text': t.events.oldEventsTabTitle,
+        'text': context.t.events.oldEventsTabTitle,
         'widget': const TabEventsOld(),
       },
       {
-        'text': t.events.favoritesEventsTabTitle,
+        'text': context.t.events.favoritesEventsTabTitle,
         'widget': const TabEventsFavorites(),
       }
     ];
-    // return AppTabsScaffold(
-    //   tabs: tabs,
-    //   appBarTitle: t.events.title,
-    // );
     return BlocProvider.value(
       value: EventsBloc(
         context.read<FirestoreRepository>(),
         context.read<StorageRepository>(),
         context.read<AuthenticationRepository>(),
-      )
-        ..add(const GetNewEvents())
-        ..add(const GetOldEvents()),
+      ),
       child: AppTabsScaffold(
         tabs: tabs,
-        appBarTitle: t.events.title,
+        appBarTitle: context.t.events.title,
       ),
     );
   }

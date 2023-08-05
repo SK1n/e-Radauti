@@ -23,7 +23,7 @@ class ReportProblemMyReportsTab extends StatelessWidget {
             if (state.myReportsData.isEmpty) {
               return SliverToBoxAdapter(
                 child: EmptyWidget(
-                  text: t.reportProblem.emptyMyReports,
+                  text: context.t.reportProblem.emptyMyReports,
                 ),
               );
             }
@@ -45,7 +45,7 @@ class ReportProblemMyReportsTab extends StatelessWidget {
           } else {
             return SliverToBoxAdapter(
               child: ErrWidget(
-                  error: state.errorMessage ?? '',
+                  error: state.errorMessage,
                   retry: () async =>
                       context.read<ReportProblemCubit>().getReports()),
             );

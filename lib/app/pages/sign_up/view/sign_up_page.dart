@@ -16,7 +16,7 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBarTitle: t.createAccount.title,
+      appBarTitle: context.t.createAccount.title,
       showDrawerButton: false,
       slivers: [
         BlocProvider(

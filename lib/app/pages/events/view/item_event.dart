@@ -1,5 +1,4 @@
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
-import 'package:flutterapperadauti/gen/colors.gen.dart';
 
 import '../../../models/events/events_item_model.dart';
 import '../../../utils/extensions/timestamp_to_date.dart';
@@ -92,7 +91,7 @@ class ItemEvent extends StatelessWidget {
                     EventDetailsPage.route(data),
                   ),
                   child: Text(
-                    t.events.seeDetails,
+                    context.t.events.seeDetails,
                   ),
                 ),
               ),

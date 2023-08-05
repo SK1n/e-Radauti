@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 
 import '../../../gen/strings.g.dart';
 import '../../utils/scaffolds/app_tabs_scaffold.dart';
@@ -17,18 +18,18 @@ class PageLocalAdministration extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': t.localAdministration.localCouncilTab,
+        'text': context.t.localAdministration.localCouncilTab,
         'widget': const TabLocalCouncil(),
       },
       {
-        'text': t.localAdministration.localCouncilLeaders,
+        'text': context.t.localAdministration.localCouncilLeaders,
         'widget': const TabLocalCouncilLeaders(),
       }
     ];
     return AppTabsScaffold(
       tabs: tabs,
-      expandedHeight: 150,
-      appBarTitle: t.localAdministration.title,
+      expandedHeight: AppConstants.expandedHeight,
+      appBarTitle: context.t.localAdministration.title,
     );
   }
 }

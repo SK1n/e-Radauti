@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import 'app_drawer.dart';
 
 class AppScaffold extends StatelessWidget {
@@ -9,11 +10,13 @@ class AppScaffold extends StatelessWidget {
     required this.slivers,
     this.scrollPhysics,
     this.showDrawerButton = true,
+    this.actions,
   });
   final String appBarTitle;
   final List<Widget> slivers;
   final bool showDrawerButton;
   final ScrollPhysics? scrollPhysics;
+  final List<Widget>? actions;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +33,7 @@ class AppScaffold extends StatelessWidget {
                 title: Text(appBarTitle),
                 centerTitle: true,
                 forceElevated: innerBoxIsScrolled,
+                actions: actions,
               ),
             ),
           ];
@@ -50,7 +54,7 @@ class AppScaffold extends StatelessWidget {
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) => Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: AppConstants.smallInnerCardPadding,
                           child: slivers[index]),
                       childCount: slivers.length,
                     ),

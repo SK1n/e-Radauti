@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../models/transport/train/train_model.dart';
 import '../cubit/train/train_cubit.dart';
 import 'page_train_details.dart';
@@ -18,7 +19,7 @@ class TabTrain extends StatelessWidget {
     return BlocProvider.value(
       value: TrainCubit(
         firestoreRepository: context.read<FirestoreRepository>(),
-      )..getData(),
+      ),
       child: BlocConsumer<TrainCubit, TrainState>(
         builder: (context, state) {
           if (state.state.isInProgress) {
@@ -33,7 +34,7 @@ class TabTrain extends StatelessWidget {
           } else if (state.data.isEmpty) {
             return SliverToBoxAdapter(
               child: EmptyWidget(
-                text: t.transport.emptyTrain,
+                text: context.t.transport.emptyTrain,
               ),
             );
           } else {
@@ -41,7 +42,7 @@ class TabTrain extends StatelessWidget {
               itemBuilder: (context, index) {
                 var item = state.data[index];
                 return Padding(
-                  padding: const EdgeInsets.only(bottom: 15.0),
+                  padding: AppConstants.bottomDelimiter,
                   child: Card(
                     child: ListTile(
                       leading: const Icon(Icons.train),
@@ -49,12 +50,10 @@ class TabTrain extends StatelessWidget {
                       subtitle: Text(
                         _getSubtitle(item),
                         textAlign: TextAlign.center,
-                        style: TextStyle(),
                       ),
                       title: Text(
                         _getTitle(item),
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       onTap: () => Navigator.of(context).push(
                         PageTrainDetails.route(item),

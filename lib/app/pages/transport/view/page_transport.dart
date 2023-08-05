@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import 'tab_taxi.dart';
 import 'tab_train.dart';
 import '../../../../gen/strings.g.dart';
@@ -15,18 +16,18 @@ class PageTransport extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': t.transport.taxiTab,
+        'text': context.t.transport.taxiTab,
         'widget': const TabTaxi(),
       },
       {
-        'text': t.transport.trainTab,
+        'text': context.t.transport.trainTab,
         'widget': const TabTrain(),
       }
     ];
     return AppTabsScaffold(
       tabs: tabs,
-      expandedHeight: 150,
-      appBarTitle: t.transport.title,
+      expandedHeight: AppConstants.expandedHeight,
+      appBarTitle: context.t.transport.title,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapperadauti/gen/colors.gen.dart';
+import 'package:latlong2/latlong.dart' as lat_lng;
 
 class AppConstants {
   AppConstants._();
@@ -15,8 +16,50 @@ class AppConstants {
   static const String airQualityMapLink =
       'https://calitateaer.radautiulcivic.ro/wp-content/uploads/2023/06/Calitatea_aerului_e-Radauti_Harta_App.html';
 
-  static const String baseERadautiLink =
-      'https://www.eradauti.ro/anunturi/locuri-de-munca-20/';
+  static const String airQualityWidgetLink =
+      'https://calitateaer.radautiulcivic.ro/wp-content/uploads/2023/07/Calitatea_aerului_e-Radauti_Widget_home.html';
+
+  static const String baseERadautiLink = 'https://www.eradauti.ro/';
+
+  static const String furnitureLink =
+      '${baseERadautiLink}api/context?pathname=/anunturi/imobiliare-19';
+
+  static const String furnitureSlug =
+      '${baseERadautiLink}anunturi/imobiliare-19/';
+
+  static const String jobsLink =
+      '${baseERadautiLink}api/context?pathname=/anunturi/locuri-de-munca-20';
+
+  static const String jobsSlug =
+      '${baseERadautiLink}anunturi/locuri-de-munca-20/';
+
+  static const String mapUrlTemplate =
+      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+
+  static final lat_lng.LatLng centerRadauti =
+      lat_lng.LatLng(47.843876, 25.916276);
+
+  static const String firebaseCollection = 'collection/';
+
+  static const String firebaseUser = 'users';
+
+  static const String pathAnnouncements = '${firebaseCollection}Announcements';
+
+  static const String pathEvents = '${firebaseCollection}Events';
+
+  static const String pathOldEvents = '${firebaseCollection}OldEvents';
+
+  static const String pathLocalCouncil = '${firebaseCollection}LocalCouncil';
+
+  static const String pathLeaders = '${firebaseCollection}Leaders';
+
+  static const String pathTaxi = '${firebaseCollection}Taxi';
+
+  static const String pathTrain = '${firebaseCollection}Train';
+
+  static const String pathNumbers = '${firebaseCollection}Numbers';
+
+  static const String pathVolunteering = '${firebaseCollection}Volunteering';
 
   static const double expandedHeight = 150.0;
 
@@ -26,11 +69,19 @@ class AppConstants {
 
   static const EdgeInsets innerCardPadding = EdgeInsets.all(15.0);
 
-  static const EdgeInsets smallTopDelimiter = EdgeInsets.only(top: 5);
+  static const EdgeInsets smallInnerCardPadding = EdgeInsets.all(10.0);
 
-  static const EdgeInsets topDelimiter = EdgeInsets.only(top: 10);
+  static const EdgeInsets smallTopDelimiter = EdgeInsets.only(top: 5.0);
 
-  static const EdgeInsets leftDelimiter = EdgeInsets.only(left: 10);
+  static const EdgeInsets topDelimiter = EdgeInsets.only(top: 15.0);
+
+  static const EdgeInsets leftDelimiter = EdgeInsets.only(left: 15.0);
+
+  static const EdgeInsets rightDelimiter = EdgeInsets.only(right: 15.0);
+
+  static const EdgeInsets smallRightDelimiter = EdgeInsets.only(right: 10.0);
+
+  static const EdgeInsets bottomDelimiter = EdgeInsets.only(bottom: 15.0);
 
   static const int textMaxLines = 10;
 
@@ -80,4 +131,11 @@ class AppConstants {
     fontWeight: FontWeight.w500,
     color: Colors.white,
   );
+
+  static const eventsTopicKey = 'EVENTS_TOPIC_KEY';
+  static const airQualityTopicKey = 'AIR_QUALITY_TOPIC_KEY';
+  static const reportProblemTopicKey = 'REPORT_PROBLEM_TOPIC_KEY';
+  static const volunteeringTopicKey = 'VOLUNTEERING_TOPIC_KEY';
+  static const announcementsTopicKey = 'ANNOUNCEMENTS_TOPIC_KEY';
+  static const notificationsEnabledKey = 'NOTIFICATIONS_ENABLED_KEY';
 }

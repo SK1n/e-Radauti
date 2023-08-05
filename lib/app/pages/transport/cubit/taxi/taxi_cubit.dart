@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../../models/transport/taxi/taxi_model.dart';
 import '../../../../repository/firestore/firestore_repository.dart';
 import '../../../../repository/storage/storage_repository.dart';
@@ -16,12 +17,16 @@ class TaxiCubit extends Cubit<TaxiState> {
     required StorageRepository storageRepository,
   })  : _firestoreRepository = firestoreRepository,
         _storageRepository = storageRepository,
-        super(const TaxiState());
+        super(const TaxiState()) {
+    getData();
+  }
 
   void getData() async {
     try {
       emit(state.copyWith(state: PageState.inProgress));
-      var data = await _firestoreRepository.fetchDocument('collection/Taxi');
+      var data = await _firestoreRepository.fetchDocument(
+        AppConstants.pathTaxi,
+      );
       TaxiModel tm = TaxiModel.fromJson(data.data() ?? {});
       List<TaxiItemModel> updatedList = [];
 

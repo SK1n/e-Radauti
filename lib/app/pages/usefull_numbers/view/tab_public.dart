@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../models/usefull_numbers/public/public_model.dart';
 import '../cubit/authorities/authorities_cubit.dart';
 import '../cubit/public/public_cubit.dart';
@@ -16,7 +17,7 @@ class TabPublic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<PublicCubit, PublicState>(
+    return BlocBuilder<PublicCubit, PublicState>(
       builder: (context, state) {
         if (state.state.isInProgress) {
           return const SliverToBoxAdapter(child: LoadingWidget());
@@ -31,7 +32,7 @@ class TabPublic extends StatelessWidget {
           if (state.data.isEmpty) {
             return SliverToBoxAdapter(
               child: EmptyWidget(
-                text: t.usefullNumbers.empty,
+                text: context.t.usefullNumbers.empty,
               ),
             );
           }
@@ -45,7 +46,6 @@ class TabPublic extends StatelessWidget {
           );
         }
       },
-      listener: (context, state) {},
     );
   }
 }
@@ -57,18 +57,14 @@ class _Item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: AppConstants.innerCardPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              _getTranslation(data.title),
-              style: TextStyle(
-                fontSize: 16.0,
-              ),
-            ),
+            padding: AppConstants.innerCardPadding,
+            child: Text(_getTranslation(data.title),
+                style: AppConstants.titleBigTextStyle),
           ),
           for (String phone in data.phones) ...{
             Card(

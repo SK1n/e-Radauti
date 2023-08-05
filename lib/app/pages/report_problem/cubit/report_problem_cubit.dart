@@ -32,7 +32,12 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
   })  : _storageRepository = storageRepository,
         _firestoreRepository = firestoreRepository,
         _authRepository = authRepository,
-        super(ReportProblemState.initial());
+        super(const ReportProblemState()) {
+    usernameChanged(_authRepository.currentUser.name ?? "");
+    emailChanged(_authRepository.currentUser.email ?? "");
+    getMarkers();
+    getReports();
+  }
 
   void usernameChanged(String value) {
     final name = NameInput.dirty(value);

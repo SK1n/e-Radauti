@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../models/local_administration/local_council_model.dart';
 import 'cubit/team/local_council_team_cubit.dart';
 import '../../repository/firestore/firestore_repository.dart';
@@ -30,7 +31,7 @@ class PageLocalCouncilTeam extends StatelessWidget {
           storageRepository: context.read<StorageRepository>())
         ..getData(),
       child: AppSliverScaffold(
-        appBarTitle: t.localAdministration.localCouncilTeam,
+        appBarTitle: context.t.localAdministration.localCouncilTeam,
         slivers: [
           BlocConsumer<LocalCouncilTeamCubit, LocalCouncilTeamState>(
             builder: (context, state) {
@@ -47,7 +48,7 @@ class PageLocalCouncilTeam extends StatelessWidget {
               } else if (state.data.isEmpty) {
                 return SliverToBoxAdapter(
                   child: EmptyWidget(
-                    text: t.events.emptyFavorites,
+                    text: context.t.events.emptyFavorites,
                   ),
                 );
               } else {
@@ -74,13 +75,9 @@ class _ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(10.0),
+    return Padding(
+      padding: AppConstants.innerCardPadding,
       child: Card(
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(color: Colors.black12, width: 1),
-          borderRadius: BorderRadius.circular(30),
-        ),
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(30),
@@ -111,26 +108,14 @@ class _ItemCard extends StatelessWidget {
                   Expanded(
                     flex: 3,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
+                      padding: AppConstants.leftDelimiter,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            data.function,
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: const Color(0xFF434EA0),
-                            ),
-                          ),
-                          Text(
-                            '${data.firstname} ${data.surname}',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: const Color(
-                                0xFF1F2937,
-                              ),
-                            ),
-                          ),
+                          Text(data.function,
+                              style: AppConstants.smallTextTextStyle),
+                          Text('${data.firstname} ${data.surname}',
+                              style: AppConstants.titleBigTextStyle),
                           Row(
                             children: [
                               data.tel.isNotEmpty

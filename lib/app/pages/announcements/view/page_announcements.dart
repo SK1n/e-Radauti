@@ -23,15 +23,15 @@ class PageAnnouncements extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': t.announcements.tabLocal,
+        'text': context.t.announcements.tabLocal,
         'widget': const TabLocalAnnouncement(),
       },
       {
-        'text': t.announcements.tabJobs,
+        'text': context.t.announcements.tabJobs,
         'widget': const TabJobsAnnouncement(),
       },
       {
-        'text': t.announcements.tabFurniture,
+        'text': context.t.announcements.tabFurniture,
         'widget': const TabFurnitureAnnouncement(),
       },
     ];
@@ -41,25 +41,25 @@ class PageAnnouncements extends StatelessWidget {
           create: (context) => LocalAnnouncementCubit(
             firestoreRepository: context.read<FirestoreRepository>(),
             storageRepository: context.read<StorageRepository>(),
-          )..getData(),
+          ),
         ),
         BlocProvider(
           create: (context) => FurnitureCubit(
             eRadautiWebsiteRepository:
                 context.read<ERadautiWebsiteRepository>(),
-          )..getData(),
+          ),
         ),
         BlocProvider(
           create: (context) => JobsCubit(
             eRadautiWebsiteRepository:
                 context.read<ERadautiWebsiteRepository>(),
-          )..getData(),
+          ),
         ),
       ],
       child: AppTabsScaffold(
         tabs: tabs,
         expandedHeight: AppConstants.expandedHeight,
-        appBarTitle: t.announcements.title,
+        appBarTitle: context.t.announcements.title,
       ),
     );
   }

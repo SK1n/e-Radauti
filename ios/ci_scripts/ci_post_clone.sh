@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-FLUTTER_VERSION="3.10.2"
+FLUTTER_VERSION="3.7.0-1.5.pre"
 FLUTTER_GIT_URL="https://github.com/flutter/flutter.git"
 
 echo "🟩🟩 Navigate from ($PWD) to ($CI_WORKSPACE) 🟩🟩"
@@ -48,7 +48,7 @@ flutter pub run build_runner build --delete-conflicting-outputs
 # Run pod install
 echo "🟩🟩 Running pod install... 🟩🟩"
 cd ios/
-pod install --repo-update
+pod install
 cd ..
 
 echo "🟩🟩🟩🟩 Setup complete! 🟩🟩🟩🟩"

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../../models/announcements/local_announcements_model.dart';
 import '../../../../repository/firestore/firestore_repository.dart';
 import '../../../../repository/storage/storage_repository.dart';
@@ -16,12 +17,14 @@ class LocalAnnouncementCubit extends Cubit<LocalAnnouncementState> {
     required StorageRepository storageRepository,
   })  : _firestoreRepository = firestoreRepository,
         _storageRepository = storageRepository,
-        super(const LocalAnnouncementState());
+        super(const LocalAnnouncementState()) {
+    getData();
+  }
   void getData() async {
     try {
       emit(state.copyWith(state: PageState.inProgress));
-      var data =
-          await _firestoreRepository.fetchDocument('collection/Announcements');
+      var data = await _firestoreRepository
+          .fetchDocument(AppConstants.pathAnnouncements);
       LocalAnnouncementsModel lam =
           LocalAnnouncementsModel.fromJson(data.data() ?? {});
       List<LocalAnnouncementsItemModel> list = lam.items;

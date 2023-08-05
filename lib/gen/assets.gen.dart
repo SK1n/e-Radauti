@@ -48,6 +48,10 @@ class $AssetsDrawerGen {
   AssetGenImage get localAdministrationIcon =>
       const AssetGenImage('assets/drawer/local_administration_icon.png');
 
+  /// File path: assets/drawer/public-transport.png
+  AssetGenImage get publicTransport =>
+      const AssetGenImage('assets/drawer/public-transport.png');
+
   /// File path: assets/drawer/report_problem_icon.png
   AssetGenImage get reportProblemIcon =>
       const AssetGenImage('assets/drawer/report_problem_icon.png');
@@ -67,6 +71,7 @@ class $AssetsDrawerGen {
         eventsIcon,
         homeIcon,
         localAdministrationIcon,
+        publicTransport,
         reportProblemIcon,
         teamIcon,
         usefullInfoIcon

@@ -60,6 +60,7 @@ dependencies:
   flow_builder: ^0.0.9
   timeline_tile: ^2.0.0
   selectable_autolink_text: ^2.6.0
+  shared_preferences: ^2.2.0
 
   # FLUTTER
   flutter:

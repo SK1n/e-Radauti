@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../cubit/report_problem_cubit.dart';
 import 'report_problem_form_tab.dart';
 import 'report_problem_map_tab.dart';
@@ -21,15 +22,15 @@ class ReportProblemPage extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': t.reportProblem.formTab,
+        'text': context.t.reportProblem.formTab,
         'widget': const ReportProblemFormTab(),
       },
       {
-        'text': t.reportProblem.mapTab,
+        'text': context.t.reportProblem.mapTab,
         'widget': const ReportProblemMapTab(),
       },
       {
-        'text': t.reportProblem.myReportsTab,
+        'text': context.t.reportProblem.myReportsTab,
         'widget': const ReportProblemMyReportsTab(),
       }
     ];
@@ -38,21 +39,11 @@ class ReportProblemPage extends StatelessWidget {
         storageRepository: context.read<StorageRepository>(),
         firestoreRepository: context.read<FirestoreRepository>(),
         authRepository: context.read<AuthenticationRepository>(),
-      )
-        ..usernameChanged(
-          context.read<AuthenticationRepository>().currentUser.name ?? "",
-        )
-        ..emailChanged(
-          context.read<AuthenticationRepository>().currentUser.email ?? "",
-        )
-        ..getMarkers()
-        ..getReports()
-        ..locationChanged(false),
-      child: AppTabsScaffold(
-        tabs: tabs,
-        appBarTitle: t.reportProblem.title,
-        expandedHeight: 150.0,
       ),
+      child: AppTabsScaffold(
+          tabs: tabs,
+          appBarTitle: context.t.reportProblem.title,
+          expandedHeight: AppConstants.expandedHeight),
     );
   }
 }

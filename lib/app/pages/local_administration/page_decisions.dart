@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import 'cubit/decisions/local_decisions_cubit.dart';
 import 'item_local_decision.dart';
 import '../../repository/local_administration/local_administration_repository.dart';
@@ -24,20 +25,20 @@ class PageDecisions extends StatelessWidget {
       value: LocalDecisionsCubit(
         localAdministrationRepository:
             context.read<LocalAdministrationRepository>(),
-      )..getDecisions(),
+      ),
       child: AppSliverScaffold(
-        appBarTitle: t.localAdministration.localCouncilDecisions,
+        appBarTitle: context.t.localAdministration.localCouncilDecisions,
         slivers: [
           BlocListener<LocalDecisionsCubit, LocalDecisionsState>(
             listener: (context, state) {},
             child: BlocBuilder<LocalDecisionsCubit, LocalDecisionsState>(
               builder: (context, state) {
                 return SliverPadding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: AppConstants.innerCardPadding,
                   sliver: SliverToBoxAdapter(
                     child: SearchBar(
                       controller: searchController,
-                      hintText: t.localAdministration.search,
+                      hintText: context.t.localAdministration.search,
                       trailing: [
                         state.dataFilter.isEmpty
                             ? IconButton(
@@ -78,7 +79,7 @@ class PageDecisions extends StatelessWidget {
                   if (state.data.isEmpty) {
                     return SliverToBoxAdapter(
                       child: EmptyWidget(
-                        text: t.localAdministration.emptyLocalDecisions,
+                        text: context.t.localAdministration.emptyLocalDecisions,
                       ),
                     );
                   }
@@ -86,7 +87,7 @@ class PageDecisions extends StatelessWidget {
                       ? SliverList.builder(
                           itemBuilder: (context, index) {
                             return Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: AppConstants.innerCardPadding,
                               child: ItemLocalDecision(
                                 item: state.data[index],
                               ),
@@ -97,7 +98,7 @@ class PageDecisions extends StatelessWidget {
                       : SliverList.builder(
                           itemBuilder: (context, index) {
                             return Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: AppConstants.innerCardPadding,
                               child: ItemLocalDecision(
                                 item: state.dataFilter[index],
                               ),

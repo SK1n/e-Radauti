@@ -23,28 +23,15 @@ extension PositionStateX on PositionState {
 @freezed
 class ReportProblemState with _$ReportProblemState {
   const factory ReportProblemState({
-    required ReportProblemForm form,
-    required bool isValid,
-    required FormzSubmissionStatus formzStatus,
-    required PageState storageStatus,
-    required PageState firestoreStatus,
-    required List<ReportProblemUserItemModel> myReportsData,
-    required List<Marker>? markersData,
-    required String? errorMessage,
-    required Position? position,
-    required PositionState positionState,
+    @Default(ReportProblemForm()) final ReportProblemForm form,
+    @Default(FormzSubmissionStatus.initial)
+    final FormzSubmissionStatus formzStatus,
+    @Default(PageState.initial) final PageState storageStatus,
+    @Default(PageState.initial) final PageState firestoreStatus,
+    @Default([]) final List<ReportProblemUserItemModel> myReportsData,
+    @Default([]) final List<Marker>? markersData,
+    @Default('') final String errorMessage,
+    final Position? position,
+    @Default(PositionState.initial) final PositionState positionState,
   }) = _ReportProblemState;
-
-  factory ReportProblemState.initial() => ReportProblemState(
-        form: ReportProblemForm(),
-        isValid: false,
-        errorMessage: "Sorry something went wrong",
-        formzStatus: FormzSubmissionStatus.initial,
-        myReportsData: [],
-        markersData: [],
-        position: null,
-        storageStatus: PageState.initial,
-        firestoreStatus: PageState.initial,
-        positionState: PositionState.initial,
-      );
 }

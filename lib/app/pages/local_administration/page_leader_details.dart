@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../models/local_administration/local_council_leaders_model.dart';
 import 'page_preview_pdf.dart';
 import '../../../gen/strings.g.dart';
@@ -19,7 +20,7 @@ class PageLeadersDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBarTitle: t.localAdministration.localCouncilLeaders,
+      appBarTitle: context.t.localAdministration.localCouncilLeaders,
       slivers: [
         Card(
           child: Column(
@@ -36,43 +37,24 @@ class PageLeadersDetails extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
-                child: Text(
-                  data.function,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: const Color(0xFF434EA0),
-                  ),
-                ),
+                padding: AppConstants.leftDelimiter,
+                child:
+                    Text(data.function, style: AppConstants.smallTextTextStyle),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
-                child: Text(
-                  '${data.firstName} ${data.surname}',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: const Color(
-                      0xFF1F2937,
-                    ),
-                  ),
-                ),
+                padding: AppConstants.leftDelimiter,
+                child: Text('${data.firstName} ${data.surname}',
+                    style: AppConstants.titleBigTextStyle),
               ),
               data.location.isNotEmpty
                   ? Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: Text(
-                        data.location,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: const Color(
-                            0xFF1F2937,
-                          ),
-                        ),
-                      ),
+                      padding: AppConstants.leftDelimiter,
+                      child: Text(data.location,
+                          style: AppConstants.textTextStyle),
                     )
                   : Container(),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
+                padding: AppConstants.leftDelimiter,
                 child: Row(
                   children: [
                     data.fbUrl.isNotEmpty
@@ -100,7 +82,7 @@ class PageLeadersDetails extends StatelessWidget {
               ),
               data.wealth.isNotEmpty
                   ? Padding(
-                      padding: const EdgeInsets.only(left: 20.0, top: 5),
+                      padding: AppConstants.leftDelimiter,
                       child: SizedBox(
                         width: MediaQuery.sizeOf(context).width,
                         child: FilledButton(
@@ -109,15 +91,14 @@ class PageLeadersDetails extends StatelessWidget {
                               data.wealth,
                             ),
                           ),
-                          child: Text(t.localAdministration.wealth),
+                          child: Text(context.t.localAdministration.wealth),
                         ),
                       ),
                     )
                   : Container(),
               data.interests.isNotEmpty
                   ? Padding(
-                      padding:
-                          const EdgeInsets.only(left: 20.0, top: 5, bottom: 5),
+                      padding: AppConstants.leftDelimiter,
                       child: SizedBox(
                         width: MediaQuery.sizeOf(context).width,
                         child: FilledButton(
@@ -126,7 +107,7 @@ class PageLeadersDetails extends StatelessWidget {
                               data.interests,
                             ),
                           ),
-                          child: Text(t.localAdministration.interests),
+                          child: Text(context.t.localAdministration.interests),
                         ),
                       ),
                     )

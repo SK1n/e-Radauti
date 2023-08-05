@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../models/usefull_numbers/authorities/authorities_model.dart';
 import '../cubit/authorities/authorities_cubit.dart';
 import '../../../utils/page_state.dart';
@@ -30,7 +31,7 @@ class TabAuthorities extends StatelessWidget {
           if (state.data.isEmpty) {
             return SliverToBoxAdapter(
               child: EmptyWidget(
-                text: t.usefullNumbers.empty,
+                text: context.t.usefullNumbers.empty,
               ),
             );
           }
@@ -55,40 +56,40 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              _getTranslation(data.title),
-              style: TextStyle(
-                fontSize: 16.0,
+    return BlocBuilder<AuthoritiesCubit, AuthoritiesState>(
+      builder: (context, state) {
+        return Padding(
+          padding: AppConstants.innerCardPadding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: AppConstants.innerCardPadding,
+                child: Text(_getTranslation(data.title),
+                    style: AppConstants.titleBigTextStyle),
               ),
-            ),
+              for (String phone in data.phones) ...{
+                Card(
+                  child: ListTile(
+                    leading: const Icon(Icons.phone),
+                    title: Text(phone),
+                    onTap: () => launchUrlString('tel:$phone'),
+                  ),
+                ),
+              },
+              for (String email in data.emails) ...{
+                Card(
+                  child: ListTile(
+                    leading: const Icon(Icons.email),
+                    title: Text(email),
+                    onTap: () => launchUrlString('mailto:$email'),
+                  ),
+                ),
+              }
+            ],
           ),
-          for (String phone in data.phones) ...{
-            Card(
-              child: ListTile(
-                leading: const Icon(Icons.phone),
-                title: Text(phone),
-                onTap: () => launchUrlString('tel:$phone'),
-              ),
-            ),
-          },
-          for (String email in data.emails) ...{
-            Card(
-              child: ListTile(
-                leading: const Icon(Icons.email),
-                title: Text(email),
-                onTap: () => launchUrlString('mailto:$email'),
-              ),
-            ),
-          }
-        ],
-      ),
+        );
+      },
     );
   }
 }

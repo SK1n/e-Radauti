@@ -26,6 +26,7 @@ mixin _$EventsState {
       throw _privateConstructorUsedError;
   PageState get favoriteStatus => throw _privateConstructorUsedError;
   String get errorMessageFavorites => throw _privateConstructorUsedError;
+  bool get isAnnonymous => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventsStateCopyWith<EventsState> get copyWith =>
@@ -47,7 +48,8 @@ abstract class $EventsStateCopyWith<$Res> {
       String errorMessageOld,
       List<EventsItemModel> favoriteEvents,
       PageState favoriteStatus,
-      String errorMessageFavorites});
+      String errorMessageFavorites,
+      bool isAnnonymous});
 }
 
 /// @nodoc
@@ -72,6 +74,7 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
     Object? favoriteEvents = null,
     Object? favoriteStatus = null,
     Object? errorMessageFavorites = null,
+    Object? isAnnonymous = null,
   }) {
     return _then(_value.copyWith(
       newEvents: null == newEvents
@@ -110,6 +113,10 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
           ? _value.errorMessageFavorites
           : errorMessageFavorites // ignore: cast_nullable_to_non_nullable
               as String,
+      isAnnonymous: null == isAnnonymous
+          ? _value.isAnnonymous
+          : isAnnonymous // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -131,7 +138,8 @@ abstract class _$$_EventsStateCopyWith<$Res>
       String errorMessageOld,
       List<EventsItemModel> favoriteEvents,
       PageState favoriteStatus,
-      String errorMessageFavorites});
+      String errorMessageFavorites,
+      bool isAnnonymous});
 }
 
 /// @nodoc
@@ -154,6 +162,7 @@ class __$$_EventsStateCopyWithImpl<$Res>
     Object? favoriteEvents = null,
     Object? favoriteStatus = null,
     Object? errorMessageFavorites = null,
+    Object? isAnnonymous = null,
   }) {
     return _then(_$_EventsState(
       newEvents: null == newEvents
@@ -192,6 +201,10 @@ class __$$_EventsStateCopyWithImpl<$Res>
           ? _value.errorMessageFavorites
           : errorMessageFavorites // ignore: cast_nullable_to_non_nullable
               as String,
+      isAnnonymous: null == isAnnonymous
+          ? _value.isAnnonymous
+          : isAnnonymous // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -208,7 +221,8 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
       this.errorMessageOld = '',
       final List<EventsItemModel> favoriteEvents = const [],
       this.favoriteStatus = PageState.initial,
-      this.errorMessageFavorites = ''})
+      this.errorMessageFavorites = '',
+      this.isAnnonymous = false})
       : _newEvents = newEvents,
         _oldEvents = oldEvents,
         _favoriteEvents = favoriteEvents;
@@ -258,10 +272,13 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
   @override
   @JsonKey()
   final String errorMessageFavorites;
+  @override
+  @JsonKey()
+  final bool isAnnonymous;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'EventsState(newEvents: $newEvents, newEventsStatus: $newEventsStatus, errorMessageNew: $errorMessageNew, oldEvents: $oldEvents, oldEventsStatus: $oldEventsStatus, errorMessageOld: $errorMessageOld, favoriteEvents: $favoriteEvents, favoriteStatus: $favoriteStatus, errorMessageFavorites: $errorMessageFavorites)';
+    return 'EventsState(newEvents: $newEvents, newEventsStatus: $newEventsStatus, errorMessageNew: $errorMessageNew, oldEvents: $oldEvents, oldEventsStatus: $oldEventsStatus, errorMessageOld: $errorMessageOld, favoriteEvents: $favoriteEvents, favoriteStatus: $favoriteStatus, errorMessageFavorites: $errorMessageFavorites, isAnnonymous: $isAnnonymous)';
   }
 
   @override
@@ -277,8 +294,8 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
       ..add(DiagnosticsProperty('errorMessageOld', errorMessageOld))
       ..add(DiagnosticsProperty('favoriteEvents', favoriteEvents))
       ..add(DiagnosticsProperty('favoriteStatus', favoriteStatus))
-      ..add(
-          DiagnosticsProperty('errorMessageFavorites', errorMessageFavorites));
+      ..add(DiagnosticsProperty('errorMessageFavorites', errorMessageFavorites))
+      ..add(DiagnosticsProperty('isAnnonymous', isAnnonymous));
   }
 
   @override
@@ -303,7 +320,9 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
             (identical(other.favoriteStatus, favoriteStatus) ||
                 other.favoriteStatus == favoriteStatus) &&
             (identical(other.errorMessageFavorites, errorMessageFavorites) ||
-                other.errorMessageFavorites == errorMessageFavorites));
+                other.errorMessageFavorites == errorMessageFavorites) &&
+            (identical(other.isAnnonymous, isAnnonymous) ||
+                other.isAnnonymous == isAnnonymous));
   }
 
   @override
@@ -317,7 +336,8 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
       errorMessageOld,
       const DeepCollectionEquality().hash(_favoriteEvents),
       favoriteStatus,
-      errorMessageFavorites);
+      errorMessageFavorites,
+      isAnnonymous);
 
   @JsonKey(ignore: true)
   @override
@@ -336,7 +356,8 @@ abstract class _EventsState implements EventsState {
       final String errorMessageOld,
       final List<EventsItemModel> favoriteEvents,
       final PageState favoriteStatus,
-      final String errorMessageFavorites}) = _$_EventsState;
+      final String errorMessageFavorites,
+      final bool isAnnonymous}) = _$_EventsState;
 
   @override
   List<EventsItemModel> get newEvents;
@@ -356,6 +377,8 @@ abstract class _EventsState implements EventsState {
   PageState get favoriteStatus;
   @override
   String get errorMessageFavorites;
+  @override
+  bool get isAnnonymous;
   @override
   @JsonKey(ignore: true)
   _$$_EventsStateCopyWith<_$_EventsState> get copyWith =>

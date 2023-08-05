@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../../gen/strings.g.dart';
 import '../../../utils/scaffolds/app_scaffold.dart';
 import 'package:latlong2/latlong.dart' as lat_lng;
@@ -20,32 +21,32 @@ class ReportProblemReportPage extends StatelessWidget {
       appBarTitle: data.subject,
       slivers: [
         Text(
-          t.reportProblem.reportPage.subject(
+          context.t.reportProblem.reportPage.subject(
             value: data.subject,
           ),
         ),
         Text(
-          t.reportProblem.reportPage.description(
+          context.t.reportProblem.reportPage.description(
             value: data.description,
           ),
         ),
         Text(
-          t.reportProblem.reportPage.category(
+          context.t.reportProblem.reportPage.category(
             value: data.category,
           ),
         ),
         Text(
-          t.reportProblem.reportPage.institution(
+          context.t.reportProblem.reportPage.institution(
             value: data.institution,
           ),
         ),
         Text(
-          t.reportProblem.reportPage.institutionEmail(
+          context.t.reportProblem.reportPage.institutionEmail(
             value: data.institutionEmail,
           ),
         ),
         Text(
-          t.reportProblem.reportPage.sentBy(
+          context.t.reportProblem.reportPage.sentBy(
             value: data.name,
           ),
         ),
@@ -60,8 +61,7 @@ class ReportProblemReportPage extends StatelessWidget {
                   ),
                   children: [
                     TileLayer(
-                      urlTemplate:
-                          'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                      urlTemplate: AppConstants.mapUrlTemplate,
                       subdomains: const ['a', 'b', 'c'],
                     ),
                     MarkerLayer(

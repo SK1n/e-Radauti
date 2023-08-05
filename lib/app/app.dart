@@ -2,10 +2,11 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutterapperadauti/app/bloc/app_bloc/app_bloc.dart';
+import 'package:flutterapperadauti/app/repository/notifications/notifications_repository.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import 'package:flutterapperadauti/gen/colors.gen.dart';
 
-import 'bloc/app_bloc.dart';
 import 'repository/authentication/authentication_repository.dart';
 import 'repository/e_radauti_website/e_radauti_website_repository.dart';
 import 'repository/firestore/firestore_repository.dart';
@@ -20,18 +21,24 @@ class App extends StatelessWidget {
     required StorageRepository storageRepository,
     required LocalAdministrationRepository localAdministrationRepository,
     required ERadautiWebsiteRepository eRadautiWebsiteRepository,
+    required NotificationsRepository notificationsRepository,
+    required bool isFirstRun,
     super.key,
   })  : _authenticationRepository = authenticationRepository,
         _firestoreRepository = firestoreRepository,
         _storageRepository = storageRepository,
         _localAdministrationRepository = localAdministrationRepository,
-        _eRadautiWebsiteRepository = eRadautiWebsiteRepository;
+        _eRadautiWebsiteRepository = eRadautiWebsiteRepository,
+        _notificationsRepository = notificationsRepository,
+        _isFirstRun = isFirstRun;
 
   final AuthenticationRepository _authenticationRepository;
   final FirestoreRepository _firestoreRepository;
   final StorageRepository _storageRepository;
   final LocalAdministrationRepository _localAdministrationRepository;
   final ERadautiWebsiteRepository _eRadautiWebsiteRepository;
+  final NotificationsRepository _notificationsRepository;
+  final bool _isFirstRun;
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +58,15 @@ class App extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => _eRadautiWebsiteRepository,
+        ),
+        RepositoryProvider(
+          create: (context) => _notificationsRepository,
         )
       ],
       child: BlocProvider(
         create: (_) => AppBloc(
           authenticationRepository: _authenticationRepository,
+          isFirstRun: _isFirstRun,
         ),
         child: const AppView(),
       ),

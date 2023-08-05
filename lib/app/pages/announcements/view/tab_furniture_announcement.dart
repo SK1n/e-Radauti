@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../models/e_radauti_website/e_radauti_website_model.dart';
 import '../cubit/furniture/furniture_cubit.dart';
 import '../../../utils/extensions/format_date.dart';
@@ -23,7 +24,8 @@ class TabFurnitureAnnouncement extends StatelessWidget {
         } else if (state.state.isSuccess) {
           if (state.data.isEmpty) {
             return SliverToBoxAdapter(
-              child: EmptyWidget(text: t.announcements.emptyAnnouncements),
+              child:
+                  EmptyWidget(text: context.t.announcements.emptyAnnouncements),
             );
           }
           return SliverList.builder(
@@ -54,66 +56,51 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                item.title,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w500,
-                  color: const Color(0xFF1F2937),
+    return Card(
+      child: Padding(
+        padding: AppConstants.innerCardPadding,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: AppConstants.leftDelimiter,
+              child: Text(item.title, style: AppConstants.titleBigTextStyle),
+            ),
+            Padding(
+              padding: AppConstants.leftDelimiter,
+              child: Text(
+                context.t.announcements.posted_at(
+                  value: item.dateCreated.format(),
                 ),
+                style: AppConstants.smallTextTextStyle,
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 1.0),
+            ),
+            Padding(
+              padding: AppConstants.innerCardPadding,
+              child: Text(
+                item.rawContent,
+                maxLines: 10,
+                overflow: TextOverflow.ellipsis,
+                style: AppConstants.textTextStyle,
+              ),
+            ),
+            Padding(
+              padding: AppConstants.innerCardPadding,
+              child: GestureDetector(
+                onTap: () async {
+                  String link =
+                      '${AppConstants.furnitureSlug}${item.slug}-${item.id}';
+                  if (await canLaunchUrlString(link)) {
+                    await launchUrlString(link);
+                  }
+                },
                 child: Text(
-                  t.announcements.posted_at(value: item.dateCreated.format()),
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.w400,
-                    color: const Color(0xFF6B7280),
-                  ),
+                  context.t.announcements.seeDetails,
+                  style: AppConstants.linkTextStyle,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Text(
-                  item.rawContent,
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w400,
-                    color: const Color(0xFF6B7280),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: GestureDetector(
-                  onTap: () async {
-                    String link =
-                        'https://www.eradauti.ro/anunturi/imobiliare-19/${item.slug}-${item.id}';
-                    if (await canLaunchUrlString(link)) {
-                      await launchUrlString(link);
-                    }
-                  },
-                  child: Text(
-                    t.announcements.seeDetails,
-                    style: TextStyle(
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xFF458AFC),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

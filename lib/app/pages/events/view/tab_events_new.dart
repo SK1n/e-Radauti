@@ -32,7 +32,7 @@ class _TabEventsNewState extends State<TabEventsNew>
             if (state.newEvents.isEmpty) {
               return SliverToBoxAdapter(
                 child: EmptyWidget(
-                  text: t.events.emptyEvents,
+                  text: context.t.events.emptyEvents,
                 ),
               );
             }

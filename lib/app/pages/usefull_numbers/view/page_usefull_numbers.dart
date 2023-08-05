@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../cubit/authorities/authorities_cubit.dart';
 import '../cubit/public/public_cubit.dart';
 import '../cubit/upsets/upsets_cubit.dart';
@@ -21,15 +22,15 @@ class PageUsefullNumbers extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {
-        'text': t.usefullNumbers.authoritiesTab,
+        'text': context.t.usefullNumbers.authoritiesTab,
         'widget': const TabAuthorities(),
       },
       {
-        'text': t.usefullNumbers.publicTab,
+        'text': context.t.usefullNumbers.publicTab,
         'widget': const TabPublic(),
       },
       {
-        'text': t.usefullNumbers.upsetsTab,
+        'text': context.t.usefullNumbers.upsetsTab,
         'widget': const TabUpsets(),
       }
     ];
@@ -38,23 +39,23 @@ class PageUsefullNumbers extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthoritiesCubit(
             firestoreRepository: context.read<FirestoreRepository>(),
-          )..getData(),
+          ),
         ),
         BlocProvider(
           create: (context) => PublicCubit(
             firestoreRepository: context.read<FirestoreRepository>(),
-          )..getData(),
+          ),
         ),
         BlocProvider(
           create: (context) => UpsetsCubit(
             firestoreRepository: context.read<FirestoreRepository>(),
-          )..getData(),
+          ),
         ),
       ],
       child: AppTabsScaffold(
         tabs: tabs,
-        expandedHeight: 150.0,
-        appBarTitle: t.usefullNumbers.title,
+        expandedHeight: AppConstants.expandedHeight,
+        appBarTitle: context.t.usefullNumbers.title,
       ),
     );
   }

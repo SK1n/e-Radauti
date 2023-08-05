@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/utils/app_constants.dart';
 import '../../../models/transport/taxi/taxi_model.dart';
 import '../cubit/taxi/taxi_cubit.dart';
 import '../../../repository/firestore/firestore_repository.dart';
@@ -22,7 +23,7 @@ class TabTaxi extends StatelessWidget {
       value: TaxiCubit(
         firestoreRepository: context.read<FirestoreRepository>(),
         storageRepository: context.read<StorageRepository>(),
-      )..getData(),
+      ),
       child: BlocConsumer<TaxiCubit, TaxiState>(
         builder: (context, state) {
           if (state.state.isInProgress) {
@@ -37,7 +38,7 @@ class TabTaxi extends StatelessWidget {
           } else if (state.data.isEmpty) {
             return SliverToBoxAdapter(
               child: EmptyWidget(
-                text: t.transport.emptyTaxi,
+                text: context.t.transport.emptyTaxi,
               ),
             );
           } else {
@@ -63,12 +64,8 @@ class _ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10.0),
+      margin: AppConstants.innerCardPadding,
       child: Card(
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(color: Colors.black12, width: 1),
-          borderRadius: BorderRadius.circular(30),
-        ),
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(30),
@@ -95,44 +92,34 @@ class _ItemCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
+                padding: AppConstants.leftDelimiter,
                 child: Text(
                   data.model,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: const Color(0xFF434EA0),
-                  ),
+                  style: AppConstants.titleBigTextStyle,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
+                padding: AppConstants.leftDelimiter,
                 child: Text(
                   data.plate,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: const Color(0xFF434EA0),
-                  ),
+                  style: AppConstants.titleBigTextStyle,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
-                child: Text(
-                  data.name,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: const Color(
-                      0xFF1F2937,
-                    ),
-                  ),
-                ),
+                padding: AppConstants.leftDelimiter,
+                child: Text(data.name, style: AppConstants.textTextStyle),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8.0),
+                padding: AppConstants.innerCardPadding,
                 child: IconButton(
-                    onPressed: () async => await launchUrlString(
-                          'tel:${data.tel}',
-                        ),
-                    icon: const Icon(Icons.phone)),
+                  onPressed: () async => await launchUrlString(
+                    'tel:${data.tel}',
+                  ),
+                  icon: const Icon(
+                    Icons.phone,
+                    color: Colors.blue,
+                  ),
+                ),
               )
             ],
           ),

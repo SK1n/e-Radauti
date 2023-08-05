@@ -16,7 +16,6 @@ class TabMap extends StatelessWidget {
             AppConstants.airQualityMapLink,
           ),
         ),
-        onWebViewCreated: (controller) {},
       ),
     );
   }
