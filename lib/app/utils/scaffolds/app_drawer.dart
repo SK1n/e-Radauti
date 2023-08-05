@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterapperadauti/app/bloc/app_bloc/app_bloc.dart';
 import 'package:flutterapperadauti/app/pages/usefull_numbers/view/page_usefull_numbers.dart';
 import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
@@ -8,7 +9,6 @@ import 'package:flutterapperadauti/gen/assets.gen.dart';
 import 'package:getwidget/getwidget.dart';
 
 import '../../../gen/strings.g.dart';
-import '../../bloc/app_bloc.dart';
 import '../../pages/air_quality/view/air_quality_page.dart';
 import '../../pages/announcements/view/page_announcements.dart';
 import '../../pages/events/view/events_page.dart';

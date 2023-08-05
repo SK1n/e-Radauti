@@ -1,19 +1,23 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../models/user.dart';
-import '../repository/authentication/authentication_repository.dart';
+import 'package:flutterapperadauti/app/models/user.dart';
+import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-  AppBloc({required AuthenticationRepository authenticationRepository})
-      : _authenticationRepository = authenticationRepository,
+  AppBloc({
+    required AuthenticationRepository authenticationRepository,
+    required this.isFirstRun,
+  })  : _authenticationRepository = authenticationRepository,
         super(
-          authenticationRepository.currentUser.isNotEmpty
-              ? AppState.authenticated(authenticationRepository.currentUser)
-              : const AppState.unauthenticated(),
+          isFirstRun
+              ? const AppState.isFirstRun()
+              : authenticationRepository.currentUser.isNotEmpty
+                  ? AppState.authenticated(authenticationRepository.currentUser)
+                  : const AppState.unauthenticated(),
         ) {
     on<_AppUserChanged>(_onUserChanged);
     on<AppLogoutRequested>(_onLogoutRequested);
@@ -24,6 +28,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
   final AuthenticationRepository _authenticationRepository;
   late final StreamSubscription<User> _userSubscription;
+  final bool isFirstRun;
 
   void _onUserChanged(_AppUserChanged event, Emitter<AppState> emit) {
     emit(
