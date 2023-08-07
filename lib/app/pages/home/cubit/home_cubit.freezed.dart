@@ -21,7 +21,7 @@ mixin _$HomeState {
   DecisionModel? get dmData => throw _privateConstructorUsedError;
   String get dmErrorMessage => throw _privateConstructorUsedError; //Next Event
   PageState get eventState => throw _privateConstructorUsedError;
-  EventsItemModel? get eventData => throw _privateConstructorUsedError;
+  EventModel? get eventData => throw _privateConstructorUsedError;
   String get eventError =>
       throw _privateConstructorUsedError; // Nums of reports
   PageState get numsOfReportsState => throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ abstract class $HomeStateCopyWith<$Res> {
       DecisionModel? dmData,
       String dmErrorMessage,
       PageState eventState,
-      EventsItemModel? eventData,
+      EventModel? eventData,
       String eventError,
       PageState numsOfReportsState,
       dynamic numsOfReports,
@@ -53,7 +53,7 @@ abstract class $HomeStateCopyWith<$Res> {
       dynamic isAnnonymous});
 
   $DecisionModelCopyWith<$Res>? get dmData;
-  $EventsItemModelCopyWith<$Res>? get eventData;
+  $EventModelCopyWith<$Res>? get eventData;
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
       eventData: freezed == eventData
           ? _value.eventData
           : eventData // ignore: cast_nullable_to_non_nullable
-              as EventsItemModel?,
+              as EventModel?,
       eventError: null == eventError
           ? _value.eventError
           : eventError // ignore: cast_nullable_to_non_nullable
@@ -138,12 +138,12 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
 
   @override
   @pragma('vm:prefer-inline')
-  $EventsItemModelCopyWith<$Res>? get eventData {
+  $EventModelCopyWith<$Res>? get eventData {
     if (_value.eventData == null) {
       return null;
     }
 
-    return $EventsItemModelCopyWith<$Res>(_value.eventData!, (value) {
+    return $EventModelCopyWith<$Res>(_value.eventData!, (value) {
       return _then(_value.copyWith(eventData: value) as $Val);
     });
   }
@@ -161,7 +161,7 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
       DecisionModel? dmData,
       String dmErrorMessage,
       PageState eventState,
-      EventsItemModel? eventData,
+      EventModel? eventData,
       String eventError,
       PageState numsOfReportsState,
       dynamic numsOfReports,
@@ -171,7 +171,7 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
   @override
   $DecisionModelCopyWith<$Res>? get dmData;
   @override
-  $EventsItemModelCopyWith<$Res>? get eventData;
+  $EventModelCopyWith<$Res>? get eventData;
 }
 
 /// @nodoc
@@ -216,7 +216,7 @@ class __$$_HomeStateCopyWithImpl<$Res>
       eventData: freezed == eventData
           ? _value.eventData
           : eventData // ignore: cast_nullable_to_non_nullable
-              as EventsItemModel?,
+              as EventModel?,
       eventError: null == eventError
           ? _value.eventError
           : eventError // ignore: cast_nullable_to_non_nullable
@@ -266,7 +266,7 @@ class _$_HomeState implements _HomeState {
   @JsonKey()
   final PageState eventState;
   @override
-  final EventsItemModel? eventData;
+  final EventModel? eventData;
   @override
   @JsonKey()
   final String eventError;
@@ -342,7 +342,7 @@ abstract class _HomeState implements HomeState {
       final DecisionModel? dmData,
       final String dmErrorMessage,
       final PageState eventState,
-      final EventsItemModel? eventData,
+      final EventModel? eventData,
       final String eventError,
       final PageState numsOfReportsState,
       final dynamic numsOfReports,
@@ -358,7 +358,7 @@ abstract class _HomeState implements HomeState {
   @override //Next Event
   PageState get eventState;
   @override
-  EventsItemModel? get eventData;
+  EventModel? get eventData;
   @override
   String get eventError;
   @override // Nums of reports

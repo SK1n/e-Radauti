@@ -20,7 +20,7 @@ mixin _$ReportProblemState {
   FormzSubmissionStatus get formzStatus => throw _privateConstructorUsedError;
   PageState get storageStatus => throw _privateConstructorUsedError;
   PageState get firestoreStatus => throw _privateConstructorUsedError;
-  List<ReportProblemUserItemModel> get myReportsData =>
+  List<ReportProblemModel> get myReportsData =>
       throw _privateConstructorUsedError;
   List<Marker>? get markersData => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $ReportProblemStateCopyWith<$Res> {
       FormzSubmissionStatus formzStatus,
       PageState storageStatus,
       PageState firestoreStatus,
-      List<ReportProblemUserItemModel> myReportsData,
+      List<ReportProblemModel> myReportsData,
       List<Marker>? markersData,
       String errorMessage,
       Position? position,
@@ -95,7 +95,7 @@ class _$ReportProblemStateCopyWithImpl<$Res, $Val extends ReportProblemState>
       myReportsData: null == myReportsData
           ? _value.myReportsData
           : myReportsData // ignore: cast_nullable_to_non_nullable
-              as List<ReportProblemUserItemModel>,
+              as List<ReportProblemModel>,
       markersData: freezed == markersData
           ? _value.markersData
           : markersData // ignore: cast_nullable_to_non_nullable
@@ -137,7 +137,7 @@ abstract class _$$_ReportProblemStateCopyWith<$Res>
       FormzSubmissionStatus formzStatus,
       PageState storageStatus,
       PageState firestoreStatus,
-      List<ReportProblemUserItemModel> myReportsData,
+      List<ReportProblemModel> myReportsData,
       List<Marker>? markersData,
       String errorMessage,
       Position? position,
@@ -188,7 +188,7 @@ class __$$_ReportProblemStateCopyWithImpl<$Res>
       myReportsData: null == myReportsData
           ? _value._myReportsData
           : myReportsData // ignore: cast_nullable_to_non_nullable
-              as List<ReportProblemUserItemModel>,
+              as List<ReportProblemModel>,
       markersData: freezed == markersData
           ? _value._markersData
           : markersData // ignore: cast_nullable_to_non_nullable
@@ -217,7 +217,7 @@ class _$_ReportProblemState implements _ReportProblemState {
       this.formzStatus = FormzSubmissionStatus.initial,
       this.storageStatus = PageState.initial,
       this.firestoreStatus = PageState.initial,
-      final List<ReportProblemUserItemModel> myReportsData = const [],
+      final List<ReportProblemModel> myReportsData = const [],
       final List<Marker>? markersData = const [],
       this.errorMessage = '',
       this.position,
@@ -237,10 +237,10 @@ class _$_ReportProblemState implements _ReportProblemState {
   @override
   @JsonKey()
   final PageState firestoreStatus;
-  final List<ReportProblemUserItemModel> _myReportsData;
+  final List<ReportProblemModel> _myReportsData;
   @override
   @JsonKey()
-  List<ReportProblemUserItemModel> get myReportsData {
+  List<ReportProblemModel> get myReportsData {
     if (_myReportsData is EqualUnmodifiableListView) return _myReportsData;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_myReportsData);
@@ -322,7 +322,7 @@ abstract class _ReportProblemState implements ReportProblemState {
       final FormzSubmissionStatus formzStatus,
       final PageState storageStatus,
       final PageState firestoreStatus,
-      final List<ReportProblemUserItemModel> myReportsData,
+      final List<ReportProblemModel> myReportsData,
       final List<Marker>? markersData,
       final String errorMessage,
       final Position? position,
@@ -337,7 +337,7 @@ abstract class _ReportProblemState implements ReportProblemState {
   @override
   PageState get firestoreStatus;
   @override
-  List<ReportProblemUserItemModel> get myReportsData;
+  List<ReportProblemModel> get myReportsData;
   @override
   List<Marker>? get markersData;
   @override

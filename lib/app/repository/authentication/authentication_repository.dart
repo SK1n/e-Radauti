@@ -198,12 +198,15 @@ class AuthenticationRepository {
     required String username,
   }) async {
     try {
-      firebase_auth.UserCredential lUser =
-          await _firebaseAuth.createUserWithEmailAndPassword(
+      await _firebaseAuth
+          .createUserWithEmailAndPassword(
         email: email,
         password: password,
-      );
-      await lUser.user!.updateDisplayName(username);
+      )
+          .then((userCredential) async {
+        await userCredential.user!.updateDisplayName(username);
+      });
+      //_firebaseAuth.currentUser!.updateDisplayName(username);
     } on firebase_auth.FirebaseAuthException catch (e) {
       throw SignUpWithEmailAndPasswordFailure.fromCode(e.code);
     } catch (_) {

@@ -28,7 +28,7 @@ class ReportProblemState with _$ReportProblemState {
     final FormzSubmissionStatus formzStatus,
     @Default(PageState.initial) final PageState storageStatus,
     @Default(PageState.initial) final PageState firestoreStatus,
-    @Default([]) final List<ReportProblemUserItemModel> myReportsData,
+    @Default([]) final List<ReportProblemModel> myReportsData,
     @Default([]) final List<Marker>? markersData,
     @Default('') final String errorMessage,
     final Position? position,

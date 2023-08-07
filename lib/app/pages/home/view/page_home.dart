@@ -91,22 +91,25 @@ class _PageHomeState extends State<PageHome> {
                                 color: Colors.black12, width: 0),
                             borderRadius: AppConstants.borderRadius,
                           ),
-                          child: InAppWebView(
-                            initialOptions: InAppWebViewGroupOptions(
-                              android: AndroidInAppWebViewOptions(
-                                  builtInZoomControls: false,
-                                  fixedFontFamily: "inter",
-                                  displayZoomControls: false,
-                                  initialScale: 1,
-                                  overScrollMode:
-                                      AndroidOverScrollMode.OVER_SCROLL_NEVER),
-                              ios: IOSInAppWebViewOptions(
-                                enableViewportScale: false,
+                          child: ClipRRect(
+                            borderRadius: AppConstants.borderRadius,
+                            child: InAppWebView(
+                              initialOptions: InAppWebViewGroupOptions(
+                                android: AndroidInAppWebViewOptions(
+                                    builtInZoomControls: false,
+                                    fixedFontFamily: "inter",
+                                    displayZoomControls: false,
+                                    initialScale: 1,
+                                    overScrollMode: AndroidOverScrollMode
+                                        .OVER_SCROLL_NEVER),
+                                ios: IOSInAppWebViewOptions(
+                                  enableViewportScale: false,
+                                ),
                               ),
-                            ),
-                            initialUrlRequest: URLRequest(
-                              url: Uri.parse(
-                                AppConstants.airQualityWidgetLink,
+                              initialUrlRequest: URLRequest(
+                                url: Uri.parse(
+                                  AppConstants.airQualityWidgetLink,
+                                ),
                               ),
                             ),
                           ),

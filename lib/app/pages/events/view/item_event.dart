@@ -1,7 +1,6 @@
+import 'package:flutterapperadauti/app/models/events/event_model.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
-
-import '../../../models/events/events_item_model.dart';
-import '../../../utils/extensions/timestamp_to_date.dart';
+import 'package:flutterapperadauti/app/utils/extensions/timestamp_to_date.dart';
 import '../../../../gen/strings.g.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 
@@ -11,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'event_details_page.dart';
 
 class ItemEvent extends StatelessWidget {
-  final EventsItemModel data;
+  final EventModel data;
   const ItemEvent(
     this.data, {
     super.key,
@@ -37,7 +36,7 @@ class ItemEvent extends StatelessWidget {
                     topRight: AppConstants.cardRadius,
                   ),
                   child: ImageWidget(
-                    link: data.url,
+                    link: data.imageUrl,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -48,7 +47,7 @@ class ItemEvent extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      data.headline,
+                      data.title,
                       style: AppConstants.titleBigTextStyle,
                     ),
                     Row(
@@ -60,7 +59,7 @@ class ItemEvent extends StatelessWidget {
                         Padding(
                           padding: AppConstants.leftDelimiter,
                           child: Text(
-                            data.start.getDate,
+                            data.startTimestamp.getDate,
                             style: AppConstants.textTextStyle,
                           ),
                         )
@@ -75,7 +74,7 @@ class ItemEvent extends StatelessWidget {
                         Padding(
                           padding: AppConstants.leftDelimiter,
                           child: Text(
-                            data.start.getHour,
+                            data.startTimestamp.getHour,
                             style: AppConstants.textTextStyle,
                           ),
                         )

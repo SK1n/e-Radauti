@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:flutterapperadauti/app/models/events/event_model.dart';
+import 'package:flutterapperadauti/app/models/user/user_model.dart';
 import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
-import '../../../models/events/events_item_model.dart';
-import '../../../models/events/new_events_model.dart';
 import '../../../models/local_administration/decision_model.dart';
-import '../../../models/report_problem/report_problem_user_model.dart';
 import '../../../repository/firestore/firestore_repository.dart';
 import '../../../repository/local_administration/local_administration_repository.dart';
 import '../../../repository/storage/storage_repository.dart';
@@ -60,10 +60,9 @@ class HomeCubit extends Cubit<HomeState> {
 
       var data = await _firestoreRepository
           .fetchDocument('${AppConstants.firebaseUser}/$uid');
-      ReportProblemUserModel rpum =
-          ReportProblemUserModel.fromJson(data.data() ?? {});
+      UserModel rpum = UserModel.fromJson(data.data() ?? {});
       emit(state.copyWith(
-          numsOfReports: rpum.markers.length,
+          numsOfReports: rpum.reports.length,
           numsOfReportsState: PageState.success));
     } catch (e) {
       emit(state.copyWith(numsOfReportsState: PageState.failure));
@@ -73,15 +72,18 @@ class HomeCubit extends Cubit<HomeState> {
   void getNextEvent() async {
     try {
       emit(state.copyWith(eventState: PageState.inProgress));
-      var data =
-          await _firestoreRepository.fetchDocument(AppConstants.pathEvents);
-      List<EventsItemModel> list = [];
-      NewEventsModel newEventsModel =
-          NewEventsModel.fromJson(data.data() ?? {});
-      list.addAll(newEventsModel.list);
-      list.sort((a, b) => a.start.compareTo(b.start));
-      var tempUrl = await _storageRepository.getFileDownloadUrl(list.first.url);
-      var item = list.first.copyWith(url: tempUrl);
+      List<dynamic> data = await _firestoreRepository.getDocuments(
+        AppConstants.pathEvents,
+        EventModel.fromJson,
+      );
+      List<EventModel> list = [];
+      for (var element in data) {
+        list.add(element);
+      }
+      list.sort((a, b) => a.startTimestamp.compareTo(b.startTimestamp));
+      var tempUrl =
+          await _storageRepository.getFileDownloadUrl(list.first.imageUrl);
+      var item = list.first.copyWith(imageUrl: tempUrl);
       emit(
         state.copyWith(
           eventState: PageState.success,
@@ -89,6 +91,7 @@ class HomeCubit extends Cubit<HomeState> {
         ),
       );
     } catch (e) {
+      debugPrint(e.toString());
       emit(state.copyWith(eventState: PageState.failure, eventError: ''));
     }
   }

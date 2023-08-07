@@ -2,10 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutterapperadauti/app/models/events/event_model.dart';
+import 'package:flutterapperadauti/app/models/user/user_model.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
-import '../../../models/events/events_item_model.dart';
-import '../../../models/events/new_events_model.dart';
-import '../../../models/events/old_events_model.dart';
 import '../../../models/user.dart';
 import '../../../repository/authentication/authentication_repository.dart';
 import '../../../repository/firestore/firestore_repository.dart';
@@ -30,15 +29,20 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
       (event, emit) async {
         try {
           emit(state.copyWith(newEventsStatus: PageState.inProgress));
-          var result =
-              await _firestoreRepository.fetchDocument(AppConstants.pathEvents);
-          NewEventsModel data = NewEventsModel.fromJson(result.data() ?? {});
-          List<EventsItemModel> list = data.list;
-          final updatedEvents = await Future.wait(list.map((event) async {
-            final tempDownloadUrl =
-                await _storageRepository.getFileDownloadUrl(event.url);
-            return event.copyWith(url: tempDownloadUrl);
-          }));
+          List<dynamic> data = await _firestoreRepository.getDocuments(
+            AppConstants.pathEvents,
+            EventModel.fromJson,
+          );
+
+          debugPrint(data.runtimeType.toString());
+
+          List<EventModel> updatedEvents = [];
+          for (EventModel element in data) {
+            String tempUrl = await _storageRepository.getFileDownloadUrl(
+              element.imageUrl,
+            );
+            updatedEvents.add(element.copyWith(imageUrl: tempUrl));
+          }
           emit(state.copyWith(
             newEventsStatus: PageState.success,
             newEvents: updatedEvents,
@@ -57,18 +61,19 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
       (event, emit) async {
         emit(state.copyWith(oldEventsStatus: PageState.inProgress));
         try {
-          var result = await _firestoreRepository
-              .fetchDocument(AppConstants.pathOldEvents);
-          OldEventsModel data = OldEventsModel.fromJson(result.data() ?? {});
-          List<EventsItemModel> list = data.list;
-
-          final updatedEvents = await Future.wait(list
-              .sublist(list.length > 10 ? list.length - 10 : 0)
-              .map((event) async {
-            final tempDownloadUrl =
-                await _storageRepository.getFileDownloadUrl(event.url);
-            return event.copyWith(url: tempDownloadUrl);
-          }));
+          List<EventModel> data = await _firestoreRepository.getDocuments(
+            AppConstants.pathEvents,
+            EventModel.fromJson,
+          );
+          final updatedEvents = await Future.wait(
+            data.sublist(data.length > 10 ? data.length - 10 : 0).map(
+              (event) async {
+                final tempDownloadUrl =
+                    await _storageRepository.getFileDownloadUrl(event.imageUrl);
+                return event.copyWith(imageUrl: tempDownloadUrl);
+              },
+            ),
+          );
           emit(state.copyWith(
             oldEventsStatus: PageState.success,
             oldEvents: updatedEvents,
@@ -94,13 +99,16 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
         String path = '${AppConstants.firebaseUser}/${user.id}';
         emit(state.copyWith(favoriteStatus: PageState.inProgress));
         await emit.onEach(
-          _firestoreRepository.getFavoriteEvents(
+          _firestoreRepository.getDataStream(
             path,
           ),
           onData: (data) {
-            NewEventsModel favEvents =
-                NewEventsModel.fromJson(data.data() ?? {});
-            return add(EmitFavoriteEventsChanges(favEvents.list));
+            UserModel favEvents = UserModel.fromJson(data.data() ?? {});
+            return add(
+              EmitFavoriteEventsChanges(
+                favEvents.events,
+              ),
+            );
           },
           onError: (error, stackTrace) => emit(
             state.copyWith(

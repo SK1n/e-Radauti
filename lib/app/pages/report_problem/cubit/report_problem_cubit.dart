@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutterapperadauti/app/form_inputs/form_inputs.dart';
 import 'package:flutterapperadauti/app/form_inputs/report_problem_form.dart';
-import 'package:flutterapperadauti/app/models/report_problem/report_problem_marker_model.dart';
-import 'package:flutterapperadauti/app/models/report_problem/report_problem_user_model.dart';
+import 'package:flutterapperadauti/app/models/report_problem/report_problem_model.dart';
+import 'package:flutterapperadauti/app/models/user/user_model.dart';
 import 'package:flutterapperadauti/app/pages/report_problem/view/report_problem_report_page.dart';
 import 'package:flutterapperadauti/app/repository/authentication/authentication_repository.dart';
 import 'package:flutterapperadauti/app/repository/firestore/firestore_repository.dart';
@@ -199,44 +199,50 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
     );
 
     final form = state.form;
-    // try {
-    List<String> urls = [];
-    DateTime time = DateTime.now();
-    urls.addAll(await _storageRepository.uploadFiles(
-        'Notice_A_Problem', form.images.value));
-    ReportProblemMarkerItemModel item = ReportProblemMarkerItemModel(
-      category: form.category.value,
-      description: form.description.value,
-      email: form.email.value,
-      index: category.values.toList().indexOf(form.category.value),
-      institution: getInstitution(form.institution.value),
-      institutionEmail: form.institution.value,
-      name: form.name.value,
-      phone: form.phone.value,
-      status: "In lucru",
-      lat: form.location.value ? state.position!.latitude : null,
-      long: form.location.value ? state.position!.longitude : null,
-      subject: form.subject.value,
-      url: urls,
-      createdAt: time.toUtc().toString(),
-    );
-    await _firestoreRepository.updateArrayField(
-      'collection/Markers',
-      'markers',
-      elementsToAdd: [item],
-    );
-    String uid = _authRepository.currentUser.id;
-    await _firestoreRepository.updateArrayField(
-      'users/$uid',
-      'reports',
-      elementsToAdd: [item],
-    );
-    emit(
-      state.copyWith(
-        formzStatus: FormzSubmissionStatus.success,
-        form: state.form.clear(),
-      ),
-    );
+    try {
+      List<String> urls = [];
+      DateTime time = DateTime.now();
+      urls.addAll(
+        await _storageRepository.uploadFiles(
+          'Notice_A_Problem',
+          form.images.value,
+        ),
+      );
+      String userUid = _authRepository.currentUser.id;
+      ReportProblemModel item = ReportProblemModel(
+        category: form.category.value,
+        description: form.description.value,
+        email: form.email.value,
+        index: category.values.toList().indexOf(form.category.value),
+        institution: getInstitution(form.institution.value),
+        institutionEmail: form.institution.value,
+        name: form.name.value,
+        phone: form.phone.value,
+        status: "In lucru",
+        lat: form.location.value ? state.position!.latitude : null,
+        long: form.location.value ? state.position!.longitude : null,
+        subject: form.subject.value,
+        images: urls,
+        createdAt: time.toUtc().toString(),
+        emailSent: false,
+        shouldShowOnMap: form.location.value,
+        userUid: userUid,
+      );
+      await _firestoreRepository.addDocument('reportProblem', item);
+      emit(
+        state.copyWith(
+          formzStatus: FormzSubmissionStatus.success,
+          form: state.form.clear(),
+        ),
+      );
+    } on StorageFailure catch (e) {
+      emit(
+        state.copyWith(
+          formzStatus: FormzSubmissionStatus.failure,
+          errorMessage: e.toString(),
+        ),
+      );
+    }
   }
 
   void getReports() async {
@@ -244,12 +250,12 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
       emit(state.copyWith(firestoreStatus: PageState.inProgress));
       var userUID = _authRepository.currentUser.id;
       var result = await _firestoreRepository.fetchDocument('users/$userUID');
-      ReportProblemUserModel data = ReportProblemUserModel.fromJson(
+      UserModel data = UserModel.fromJson(
         result.data() ?? {},
       );
       emit(state.copyWith(
         firestoreStatus: PageState.success,
-        myReportsData: data.markers,
+        myReportsData: data.reports,
       ));
     } on FirestoreFetchFailure catch (e) {
       emit(state.copyWith(
@@ -273,14 +279,14 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
   void getMarkers() async {
     try {
       emit(state.copyWith(firestoreStatus: PageState.inProgress));
-      var result =
-          await _firestoreRepository.fetchDocument('collection/Markers');
-      ReportProblemUserModel data =
-          ReportProblemUserModel.fromJson(result.data() ?? {});
+      var result = await _firestoreRepository.getDocuments(
+        'reportProblem',
+        ReportProblemModel.fromJson,
+      );
 
       List<Marker> markers = [];
-      for (ReportProblemUserItemModel item in data.markers) {
-        if (item.lat != null && item.long != null) {
+      for (ReportProblemModel item in result) {
+        if (item.lat != null && item.long != null && item.shouldShowOnMap) {
           markers.add(
             Marker(
               point: lat_lng.LatLng(item.lat as double, item.long as double),
@@ -318,12 +324,13 @@ class ReportProblemCubit extends Cubit<ReportProblemState> {
   }
 
   final Map<int, IconData> _icon = {
-    0: Entypo.dot_3,
-    1: Entypo.trash,
-    2: FontAwesome5.road,
-    3: Entypo.lamp,
+    0: FontAwesome5.city,
+    1: Octicons.light_bulb,
+    2: FontAwesome5.trash,
+    3: FontAwesome5.road,
     4: Entypo.home,
-    5: Octicons.shield_check,
-    6: Icons.blur_circular
+    5: Icons.blur_circular,
+    6: Octicons.shield_check,
+    7: Entypo.dot_3
   };
 }

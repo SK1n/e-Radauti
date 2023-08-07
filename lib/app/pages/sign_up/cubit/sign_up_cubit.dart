@@ -75,7 +75,7 @@ class SignUpCubit extends Cubit<SignUpState> {
         username: state.form.name.value,
       );
       emit(state.copyWith(status: FormzSubmissionStatus.success));
-    } on LogInWithEmailAndPasswordFailure catch (e) {
+    } on SignUpWithEmailAndPasswordFailure catch (e) {
       emit(
         state.copyWith(
           errorMessage: e.message,

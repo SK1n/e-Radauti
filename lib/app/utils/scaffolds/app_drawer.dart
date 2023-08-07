@@ -102,10 +102,10 @@ class AppDrawer extends StatelessWidget {
                               child: CircleAvatar(
                                 child: Text(
                                   context
-                                      .read<AuthenticationRepository>()
-                                      .currentUser
-                                      .name!
-                                      .getIcon(),
+                                          .read<AuthenticationRepository>()
+                                          .currentUser
+                                          .name ??
+                                      "".getIcon(),
                                 ),
                               ),
                             ),
@@ -116,9 +116,10 @@ class AppDrawer extends StatelessWidget {
                                 children: [
                                   Text(
                                     context
-                                        .read<AuthenticationRepository>()
-                                        .currentUser
-                                        .name!,
+                                            .read<AuthenticationRepository>()
+                                            .currentUser
+                                            .name ??
+                                        "",
                                     style: AppConstants.titleBigTextStyle,
                                   ),
                                   Text(

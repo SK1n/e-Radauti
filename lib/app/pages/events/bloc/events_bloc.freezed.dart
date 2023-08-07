@@ -16,14 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EventsState {
-  List<EventsItemModel> get newEvents => throw _privateConstructorUsedError;
+  List<EventModel> get newEvents => throw _privateConstructorUsedError;
   PageState get newEventsStatus => throw _privateConstructorUsedError;
   String get errorMessageNew => throw _privateConstructorUsedError;
-  List<EventsItemModel> get oldEvents => throw _privateConstructorUsedError;
+  List<EventModel> get oldEvents => throw _privateConstructorUsedError;
   PageState get oldEventsStatus => throw _privateConstructorUsedError;
   String get errorMessageOld => throw _privateConstructorUsedError;
-  List<EventsItemModel> get favoriteEvents =>
-      throw _privateConstructorUsedError;
+  List<EventModel> get favoriteEvents => throw _privateConstructorUsedError;
   PageState get favoriteStatus => throw _privateConstructorUsedError;
   String get errorMessageFavorites => throw _privateConstructorUsedError;
   bool get isAnnonymous => throw _privateConstructorUsedError;
@@ -40,13 +39,13 @@ abstract class $EventsStateCopyWith<$Res> {
       _$EventsStateCopyWithImpl<$Res, EventsState>;
   @useResult
   $Res call(
-      {List<EventsItemModel> newEvents,
+      {List<EventModel> newEvents,
       PageState newEventsStatus,
       String errorMessageNew,
-      List<EventsItemModel> oldEvents,
+      List<EventModel> oldEvents,
       PageState oldEventsStatus,
       String errorMessageOld,
-      List<EventsItemModel> favoriteEvents,
+      List<EventModel> favoriteEvents,
       PageState favoriteStatus,
       String errorMessageFavorites,
       bool isAnnonymous});
@@ -80,7 +79,7 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
       newEvents: null == newEvents
           ? _value.newEvents
           : newEvents // ignore: cast_nullable_to_non_nullable
-              as List<EventsItemModel>,
+              as List<EventModel>,
       newEventsStatus: null == newEventsStatus
           ? _value.newEventsStatus
           : newEventsStatus // ignore: cast_nullable_to_non_nullable
@@ -92,7 +91,7 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
       oldEvents: null == oldEvents
           ? _value.oldEvents
           : oldEvents // ignore: cast_nullable_to_non_nullable
-              as List<EventsItemModel>,
+              as List<EventModel>,
       oldEventsStatus: null == oldEventsStatus
           ? _value.oldEventsStatus
           : oldEventsStatus // ignore: cast_nullable_to_non_nullable
@@ -104,7 +103,7 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
       favoriteEvents: null == favoriteEvents
           ? _value.favoriteEvents
           : favoriteEvents // ignore: cast_nullable_to_non_nullable
-              as List<EventsItemModel>,
+              as List<EventModel>,
       favoriteStatus: null == favoriteStatus
           ? _value.favoriteStatus
           : favoriteStatus // ignore: cast_nullable_to_non_nullable
@@ -130,13 +129,13 @@ abstract class _$$_EventsStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<EventsItemModel> newEvents,
+      {List<EventModel> newEvents,
       PageState newEventsStatus,
       String errorMessageNew,
-      List<EventsItemModel> oldEvents,
+      List<EventModel> oldEvents,
       PageState oldEventsStatus,
       String errorMessageOld,
-      List<EventsItemModel> favoriteEvents,
+      List<EventModel> favoriteEvents,
       PageState favoriteStatus,
       String errorMessageFavorites,
       bool isAnnonymous});
@@ -168,7 +167,7 @@ class __$$_EventsStateCopyWithImpl<$Res>
       newEvents: null == newEvents
           ? _value._newEvents
           : newEvents // ignore: cast_nullable_to_non_nullable
-              as List<EventsItemModel>,
+              as List<EventModel>,
       newEventsStatus: null == newEventsStatus
           ? _value.newEventsStatus
           : newEventsStatus // ignore: cast_nullable_to_non_nullable
@@ -180,7 +179,7 @@ class __$$_EventsStateCopyWithImpl<$Res>
       oldEvents: null == oldEvents
           ? _value._oldEvents
           : oldEvents // ignore: cast_nullable_to_non_nullable
-              as List<EventsItemModel>,
+              as List<EventModel>,
       oldEventsStatus: null == oldEventsStatus
           ? _value.oldEventsStatus
           : oldEventsStatus // ignore: cast_nullable_to_non_nullable
@@ -192,7 +191,7 @@ class __$$_EventsStateCopyWithImpl<$Res>
       favoriteEvents: null == favoriteEvents
           ? _value._favoriteEvents
           : favoriteEvents // ignore: cast_nullable_to_non_nullable
-              as List<EventsItemModel>,
+              as List<EventModel>,
       favoriteStatus: null == favoriteStatus
           ? _value.favoriteStatus
           : favoriteStatus // ignore: cast_nullable_to_non_nullable
@@ -213,13 +212,13 @@ class __$$_EventsStateCopyWithImpl<$Res>
 
 class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
   const _$_EventsState(
-      {final List<EventsItemModel> newEvents = const [],
+      {final List<EventModel> newEvents = const [],
       this.newEventsStatus = PageState.initial,
       this.errorMessageNew = '',
-      final List<EventsItemModel> oldEvents = const [],
+      final List<EventModel> oldEvents = const [],
       this.oldEventsStatus = PageState.initial,
       this.errorMessageOld = '',
-      final List<EventsItemModel> favoriteEvents = const [],
+      final List<EventModel> favoriteEvents = const [],
       this.favoriteStatus = PageState.initial,
       this.errorMessageFavorites = '',
       this.isAnnonymous = false})
@@ -227,10 +226,10 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
         _oldEvents = oldEvents,
         _favoriteEvents = favoriteEvents;
 
-  final List<EventsItemModel> _newEvents;
+  final List<EventModel> _newEvents;
   @override
   @JsonKey()
-  List<EventsItemModel> get newEvents {
+  List<EventModel> get newEvents {
     if (_newEvents is EqualUnmodifiableListView) return _newEvents;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_newEvents);
@@ -242,10 +241,10 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
   @override
   @JsonKey()
   final String errorMessageNew;
-  final List<EventsItemModel> _oldEvents;
+  final List<EventModel> _oldEvents;
   @override
   @JsonKey()
-  List<EventsItemModel> get oldEvents {
+  List<EventModel> get oldEvents {
     if (_oldEvents is EqualUnmodifiableListView) return _oldEvents;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_oldEvents);
@@ -257,10 +256,10 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
   @override
   @JsonKey()
   final String errorMessageOld;
-  final List<EventsItemModel> _favoriteEvents;
+  final List<EventModel> _favoriteEvents;
   @override
   @JsonKey()
-  List<EventsItemModel> get favoriteEvents {
+  List<EventModel> get favoriteEvents {
     if (_favoriteEvents is EqualUnmodifiableListView) return _favoriteEvents;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_favoriteEvents);
@@ -348,31 +347,31 @@ class _$_EventsState with DiagnosticableTreeMixin implements _EventsState {
 
 abstract class _EventsState implements EventsState {
   const factory _EventsState(
-      {final List<EventsItemModel> newEvents,
+      {final List<EventModel> newEvents,
       final PageState newEventsStatus,
       final String errorMessageNew,
-      final List<EventsItemModel> oldEvents,
+      final List<EventModel> oldEvents,
       final PageState oldEventsStatus,
       final String errorMessageOld,
-      final List<EventsItemModel> favoriteEvents,
+      final List<EventModel> favoriteEvents,
       final PageState favoriteStatus,
       final String errorMessageFavorites,
       final bool isAnnonymous}) = _$_EventsState;
 
   @override
-  List<EventsItemModel> get newEvents;
+  List<EventModel> get newEvents;
   @override
   PageState get newEventsStatus;
   @override
   String get errorMessageNew;
   @override
-  List<EventsItemModel> get oldEvents;
+  List<EventModel> get oldEvents;
   @override
   PageState get oldEventsStatus;
   @override
   String get errorMessageOld;
   @override
-  List<EventsItemModel> get favoriteEvents;
+  List<EventModel> get favoriteEvents;
   @override
   PageState get favoriteStatus;
   @override

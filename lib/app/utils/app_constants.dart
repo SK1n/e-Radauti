@@ -45,7 +45,7 @@ class AppConstants {
 
   static const String pathAnnouncements = '${firebaseCollection}Announcements';
 
-  static const String pathEvents = '${firebaseCollection}Events';
+  static const String pathEvents = 'events';
 
   static const String pathOldEvents = '${firebaseCollection}OldEvents';
 

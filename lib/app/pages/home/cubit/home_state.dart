@@ -10,7 +10,7 @@ class HomeState with _$HomeState {
 
     //Next Event
     @Default(PageState.initial) PageState eventState,
-    EventsItemModel? eventData,
+    EventModel? eventData,
     @Default('') String eventError,
 
     // Nums of reports

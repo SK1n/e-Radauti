@@ -18,15 +18,15 @@ final class GetFavoriteEvents extends EventsEvent {
 
 final class EmitFavoriteEventsChanges extends EventsEvent {
   const EmitFavoriteEventsChanges(this.items);
-  final List<EventsItemModel> items;
+  final List<EventModel> items;
 }
 
 final class AddToFavorite extends EventsEvent {
   const AddToFavorite(this.item);
-  final EventsItemModel item;
+  final EventModel item;
 }
 
 final class RemoveFromFavorite extends EventsEvent {
   const RemoveFromFavorite(this.item);
-  final EventsItemModel item;
+  final EventModel item;
 }

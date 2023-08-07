@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutterapperadauti/app/models/report_problem/report_problem_model.dart';
 import 'package:flutterapperadauti/app/utils/app_constants.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import '../../../../gen/strings.g.dart';
 import '../../../utils/scaffolds/app_scaffold.dart';
 import 'package:latlong2/latlong.dart' as lat_lng;
 
-import '../../../models/report_problem/report_problem_user_model.dart';
-
 class ReportProblemReportPage extends StatelessWidget {
   const ReportProblemReportPage({super.key, required this.data});
-  final ReportProblemUserItemModel data;
-  static Route<void> route({required ReportProblemUserItemModel data}) {
+  final ReportProblemModel data;
+  static Route<void> route({required ReportProblemModel data}) {
     return MaterialPageRoute<void>(
         builder: (_) => ReportProblemReportPage(data: data));
   }
@@ -40,9 +40,17 @@ class ReportProblemReportPage extends StatelessWidget {
             value: data.institution,
           ),
         ),
-        Text(
-          context.t.reportProblem.reportPage.institutionEmail(
-            value: data.institutionEmail,
+        GestureDetector(
+          onTap: () async {
+            if (await canLaunchUrlString('mailto:${data.institution}')) {
+              await launchUrlString('mailto:${data.institution}');
+            }
+          },
+          child: Text(
+            context.t.reportProblem.reportPage.institutionEmail(
+              value: data.institutionEmail,
+            ),
+            style: AppConstants.linkTextStyle,
           ),
         ),
         Text(
@@ -50,7 +58,7 @@ class ReportProblemReportPage extends StatelessWidget {
             value: data.name,
           ),
         ),
-        data.lat != null && data.long != null
+        data.shouldShowOnMap
             ? SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 200,
@@ -70,6 +78,8 @@ class ReportProblemReportPage extends StatelessWidget {
                           point: lat_lng.LatLng(data.lat!, data.long!),
                           builder: (context) => const Icon(
                             Icons.pin_drop_rounded,
+                            size: 20.0,
+                            color: Colors.red,
                           ),
                         )
                       ],

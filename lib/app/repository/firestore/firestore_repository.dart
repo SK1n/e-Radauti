@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutterapperadauti/app/models/report_problem/report_problem_model.dart';
 
 /// Thrown during the Firestore document fetch process if a failure occurs.
 class FirestoreFetchFailure implements Exception {
@@ -69,18 +70,7 @@ class FirestoreRepository {
     }
   }
 
-  // StreamSubscription<DocumentSnapshot> getFavoriteEvents(
-  //   String path,
-  //   Function converter,
-  //   void Function(List<EventsItemModel>) onData,
-  // ) {
-  //   return fetchDocumentStream(path).listen((document) {
-  //     var favoriteEvents = converter(document.data()) as NewEventsModel;
-  //     onData(favoriteEvents.list);
-  //   });
-  // }
-
-  Stream getFavoriteEvents(String path) {
+  Stream getDataStream(String path) {
     var document = _firestore.doc(path).snapshots();
 
     return document;
@@ -123,6 +113,30 @@ class FirestoreRepository {
     }
   }
 
+  Future addDocument(String collection, dynamic data) async {
+    try {
+      Map<String, dynamic> mapData = data.toJson();
+      await _firestore.collection(collection).add(mapData);
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future getDocuments(String collection, Function convert) async {
+    List data = [];
+    try {
+      QuerySnapshot snapshot = await _firestore.collection(collection).get();
+
+      for (var element in snapshot.docs) {
+        var convertedElement = convert(element.data());
+        data.add(convertedElement);
+      }
+      return data;
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
   /// Updates an array field in a document in Firestore at the specified [path]
   /// by adding or removing elements based on the provided [elementsToAdd] and [elementsToRemove].
   ///
@@ -147,7 +161,10 @@ class FirestoreRepository {
 
       if (elementsToRemove != null) {
         Map<String, dynamic> eventMap = elementsToRemove[0].toJson();
-        updatedArray.removeWhere((element) => mapEquals(eventMap, element));
+
+        updatedArray.removeWhere((element) {
+          return eventMap["description"] == element["description"];
+        });
       }
 
       await docRef.update({arrayField: updatedArray});
