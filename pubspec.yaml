@@ -51,6 +51,7 @@ dependencies:
   slang_flutter: ^3.18.0
 
   # UTILS
+  fuzzywuzzy: ^1.1.6
   intl: ^0.18.0
   logger: ^1.1.0
   lottie: ^2.3.2
